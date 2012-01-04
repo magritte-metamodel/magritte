@@ -1,0 +1,3 @@
+testing
+isDefinitive
+	^ self definitive

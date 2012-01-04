@@ -1,0 +1,1 @@
+I am an error that is raised whenever a user-defined condition is failing.

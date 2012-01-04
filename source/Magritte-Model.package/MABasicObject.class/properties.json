@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "GRObject",
+	"category" : "Magritte-Model-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "MABasicObject",
+	"type" : "normal"
+}

@@ -1,0 +1,3 @@
+visiting-description
+visitMemoDescription: anObject
+	self visitStringDescription: anObject

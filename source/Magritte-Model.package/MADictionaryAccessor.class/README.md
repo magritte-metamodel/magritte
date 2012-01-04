@@ -1,0 +1,1 @@
+I am an access strategy to be used on dictionaries. I use my ==key== to read from and write to indexed collections.

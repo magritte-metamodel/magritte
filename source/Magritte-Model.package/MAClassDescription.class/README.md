@@ -1,0 +1,1 @@
+I am a description of Smalltalk classes, possible values can be any of ==Smalltalk allClasses==.
