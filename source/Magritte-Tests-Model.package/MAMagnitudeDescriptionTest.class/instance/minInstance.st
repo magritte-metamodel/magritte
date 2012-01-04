@@ -1,0 +1,3 @@
+private
+minInstance
+	self subclassResponsibility

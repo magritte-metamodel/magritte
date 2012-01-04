@@ -1,0 +1,3 @@
+private
+maxInstance
+	self subclassResponsibility

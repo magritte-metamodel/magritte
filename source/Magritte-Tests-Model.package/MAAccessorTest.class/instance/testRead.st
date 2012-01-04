@@ -1,0 +1,3 @@
+tests
+testRead
+	self subclassResponsibility

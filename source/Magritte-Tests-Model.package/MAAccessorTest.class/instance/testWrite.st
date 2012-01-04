@@ -1,0 +1,3 @@
+tests
+testWrite
+	self subclassResponsibility

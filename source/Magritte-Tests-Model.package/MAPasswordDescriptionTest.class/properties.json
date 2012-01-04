@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "MAStringDescriptionTest",
+	"category" : "Magritte-Tests-Model-Description",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "MAPasswordDescriptionTest",
+	"type" : "normal"
+}

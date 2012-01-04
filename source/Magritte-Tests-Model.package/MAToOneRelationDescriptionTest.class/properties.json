@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "MARelationDescriptionTest",
+	"category" : "Magritte-Tests-Model-Description",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "MAToOneRelationDescriptionTest",
+	"type" : "normal"
+}

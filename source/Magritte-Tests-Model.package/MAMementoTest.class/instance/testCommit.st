@@ -1,0 +1,3 @@
+tests-actions
+testCommit
+	self subclassResponsibility
