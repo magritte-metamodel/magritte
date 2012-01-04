@@ -1,0 +1,3 @@
+private
+buildMorphView
+	self subclassResponsibility

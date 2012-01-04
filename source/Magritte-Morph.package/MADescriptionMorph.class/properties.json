@@ -1,0 +1,16 @@
+{
+	"commentStamp" : "",
+	"super" : "Model",
+	"category" : "Magritte-Morph-Model",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"memento",
+		"description",
+		"parent",
+		"morph"
+	],
+	"name" : "MADescriptionMorph",
+	"type" : "normal"
+}
