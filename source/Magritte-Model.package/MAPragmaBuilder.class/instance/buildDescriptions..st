@@ -1,31 +1,18 @@
 private
 buildDescriptions: anObject
-	| descriptionPragmas extensionPragmas extensionSelectors |
+	| descriptionExtensions descriptionSelectors |
 	
-	descriptionPragmas := Pragma 
-		allNamed: self class descriptionPragma 
-		from: anObject class to: Object.
-		
-	extensionPragmas := Pragma
-		allNamed: self class descriptionExtensionPragma
-		from: anObject class to: Object.
-		
-	extensionSelectors := Dictionary new.
-	extensionPragmas do: [ :each | 
-		| extensionSelectorTarget |
-		extensionSelectorTarget := each arguments first.
-		(extensionSelectors at: extensionSelectorTarget ifAbsentPut: [ SortedCollection new ]) add: each method selector ].
-	
-	^ descriptionPragmas 
-		collect: [ :each |
-			| selector description |
-			selector := each method selector.
-			description := anObject perform: selector.
+	descriptionSelectors := self uniqueDescriptionSelectors: anObject.
+	descriptionExtensions := self descriptionExtensions: anObject.
+
+	^ descriptionSelectors 
+		collect:  [ :each |
+			| description |
+			description := anObject perform: each.
 			
 			description notNil ifTrue: [
-				extensionSelectors at: selector ifPresent: [ :extensions | 
+				descriptionExtensions at: each ifPresent: [ :extensions | 
 					extensions do: [ :extensionSelector | 
 						description := anObject perform: extensionSelector with: description ] ] ].
-			
-			description	]
-		thenSelect: #notNil
+			description ]
+		thenSelect: #notNil.
