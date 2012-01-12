@@ -1,7 +1,8 @@
 descriptions
 descriptionStreet
-	"<magritte> 
-	the pragma here is DELIBERATELY commented out otherwise we'll end up with two Magritte street descriptions in our description container"
+	<magritte> 
+	"the pragma above is optional as the pragma will be retrieved from the super class's overridden method."
+	
 	^ super descriptionStreet
 		beRequired;
 		yourself
