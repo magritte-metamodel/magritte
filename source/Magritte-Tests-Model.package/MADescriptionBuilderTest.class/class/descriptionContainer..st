@@ -1,4 +1,4 @@
 mock-descriptions
 descriptionContainer: aDescription
-	<magritteContainerExtension>
+	<magritteContainer>
 	^ aDescription propertyAt: #bar put: nil; yourself
