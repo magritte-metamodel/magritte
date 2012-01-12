@@ -1,21 +1,20 @@
 private
 buildContainer: anObject
-	| pragmas extensionPragmas container |
+	| containerPragmas containerPragma containerSelector extensionSelectors container  |
 	
-	pragmas := Pragma 
+	containerPragmas := Pragma 
 		allNamed: self class containerPragma 
-		in: anObject class theMetaClass.
-	extensionPragmas := Pragma 
-		allNamed: self class containerExtensionPragma 
-		in: anObject class theMetaClass.
-
-	pragmas size > 1 
-		ifTrue: [ self error: 'More than one container definition!' ].
-	container := pragmas 
-		ifNotEmpty: [ pragmas anyOne method valueWithReceiver: anObject arguments: #(). ]
-		ifEmpty: [ self defaultContainer: anObject ].
+		from: anObject class to: Object.
 		
-	extensionPragmas do: [ :each | 
-		each method valueWithReceiver: anObject arguments: {container} ].
+	containerPragma := (containerPragmas detect: [ :each | each method numArgs = 0 ]).
+	containerSelector := containerPragma method selector.
+	container := anObject perform: containerSelector.
+	
+	extensionSelectors := containerPragmas 
+		select: [ :each | each method numArgs = 1 ] 
+		thenCollect: [ :each | each method selector ]. 
 
-	^container
+	extensionSelectors do: [ :each | 
+		anObject perform: each with: container ].
+
+	^ cache at: anObject put: container
