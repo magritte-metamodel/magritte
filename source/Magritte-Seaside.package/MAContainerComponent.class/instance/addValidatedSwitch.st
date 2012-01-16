@@ -1,0 +1,3 @@
+decorating
+addValidatedSwitch
+	self addSwitch; addValidation

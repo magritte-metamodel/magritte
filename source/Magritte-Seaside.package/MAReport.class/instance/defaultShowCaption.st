@@ -1,0 +1,3 @@
+accessing-defaults
+defaultShowCaption
+	^ false

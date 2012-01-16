@@ -1,0 +1,3 @@
+testing
+hasLabelId
+	^ self requiresMultipartForm

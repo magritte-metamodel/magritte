@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "lr 8/12/2008 09:26",
+	"super" : "MAContainerDecoration",
+	"category" : "Magritte-Seaside-Decorations",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"buttons"
+	],
+	"name" : "MAFormDecoration",
+	"type" : "normal"
+}

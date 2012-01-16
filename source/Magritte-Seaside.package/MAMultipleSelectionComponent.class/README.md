@@ -1,0 +1,1 @@
+I provide basic functionalities for MAListCompositionComponent and MACheckboxGroupComponent.

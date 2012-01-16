@@ -1,0 +1,3 @@
+accessing-configuration
+defaultDescription
+	self subclassResponsibility

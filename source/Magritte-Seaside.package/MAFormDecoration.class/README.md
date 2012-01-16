@@ -1,0 +1,1 @@
+I surround the owning component with a XHTML form element and render the form buttons.

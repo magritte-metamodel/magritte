@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "MASelectionColumn",
+	"category" : "Magritte-Seaside-Report",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "MAOptionboxColumn",
+	"type" : "normal"
+}

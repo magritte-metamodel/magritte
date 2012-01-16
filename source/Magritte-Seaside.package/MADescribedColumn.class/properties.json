@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "",
+	"super" : "MAColumn",
+	"category" : "Magritte-Seaside-Report",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"description"
+	],
+	"name" : "MADescribedColumn",
+	"type" : "normal"
+}

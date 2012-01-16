@@ -1,0 +1,3 @@
+decorating
+addValidation
+	self addDecoration: MAValidationDecoration new
