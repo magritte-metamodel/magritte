@@ -1,4 +1,4 @@
-*magritte-seaside-description
+*magritte-seaside-accessing
 descriptionReportColumnClass
 	<magritteDescription>
 	^ MASingleOptionDescription new

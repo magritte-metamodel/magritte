@@ -1,4 +1,4 @@
-accessing-description
+acessing-magritte
 descriptionComment
 	<magritteDescription>
 	^ MAStringDescription new
