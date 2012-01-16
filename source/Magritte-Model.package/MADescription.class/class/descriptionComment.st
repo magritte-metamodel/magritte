@@ -1,6 +1,6 @@
-accessing-description
+acessing-magritte
 descriptionComment
-	<magritte>
+	<magritteDescription>
 	^ MAMemoDescription new
 		accessor: #comment;
 		label: 'Comment';

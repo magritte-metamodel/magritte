@@ -1,6 +1,6 @@
-accessing-description
+acessing-magritte
 descriptionLabel
-	<magritte>
+	<magritteDescription>
 	^ MAStringDescription new
 		accessor: #label;
 		label: 'Label';

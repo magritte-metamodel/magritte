@@ -1,6 +1,6 @@
-accessing-description
+acessing-magritte
 descriptionPriority
-	<magritte>
+	<magritteDescription>
 	^ MANumberDescription new
 		accessor: #priority;
 		label: 'Priority';

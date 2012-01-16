@@ -1,6 +1,6 @@
-accessing-description
+acessing-magritte
 descriptionReference
-	<magritte>
+	<magritteDescription>
 	^ MAToOneRelationDescription new
 		accessor: #reference;
 		classes: [ MADescription withAllConcreteClasses ] magritteDynamicObject;

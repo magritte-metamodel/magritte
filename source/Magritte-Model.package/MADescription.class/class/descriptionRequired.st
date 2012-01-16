@@ -1,6 +1,6 @@
-accessing-description
+acessing-magritte
 descriptionRequired
-	<magritte>
+	<magritteDescription>
 	^ MABooleanDescription new
 		accessor: #required;
 		label: 'Required';

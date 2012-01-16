@@ -1,6 +1,6 @@
-accessing-description
+acessing-magritte
 descriptionRowLabels
-	<magritte>
+	<magritteDescription>
 	^ MAMemoDescription new
 		accessor: #rowLabelsTextual;
 		label: 'Row Labels';

@@ -1,6 +1,6 @@
-accessing-description
+acessing-magritte
 descriptionReadonly
-	<magritte>
+	<magritteDescription>
 	^ MABooleanDescription new
 		accessor: #readonly;
 		label: 'Readonly';

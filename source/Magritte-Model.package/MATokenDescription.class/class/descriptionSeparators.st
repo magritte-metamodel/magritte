@@ -1,6 +1,6 @@
-accessing-description
+acessing-magritte
 descriptionSeparators
-	<magritte>
+	<magritteDescription>
 	^ MAStringDescription new
 		accessor: #separators;
 		label: 'Separators';

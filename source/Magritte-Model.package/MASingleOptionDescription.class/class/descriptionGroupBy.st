@@ -1,6 +1,6 @@
-accessing-descriptions
+acessing-magritte
 descriptionGroupBy
-	<magritte>
+	<magritteDescription>
 	^ MASymbolDescription new
 		selectorAccessor: #groupBy;
 		label: 'Grouped by';

@@ -1,6 +1,6 @@
-accessing-description
+acessing-magritte
 descriptionMin
-	<magritte>
+	<magritteDescription>
 	^ self new
 		accessor: #min;
 		label: 'Min';

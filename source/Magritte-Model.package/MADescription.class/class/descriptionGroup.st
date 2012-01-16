@@ -1,6 +1,6 @@
-accessing-description
+acessing-magritte
 descriptionGroup
-	<magritte>
+	<magritteDescription>
 	^ MAStringDescription new
 		accessor: #group;
 		default: self defaultGroup;

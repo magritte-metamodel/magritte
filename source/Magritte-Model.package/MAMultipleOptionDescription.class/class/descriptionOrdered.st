@@ -1,6 +1,6 @@
-accessing-description
+acessing-magritte
 descriptionOrdered
-	<magritte>
+	<magritteDescription>
 	^ MABooleanDescription new
 		accessor: #ordered;
 		label: 'Ordered';

@@ -1,6 +1,6 @@
-accessing-description
+acessing-magritte
 descriptionUndefined
-	<magritte>
+	<magritteDescription>
 	^ MAStringDescription new
 		accessor: #undefined;
 		label: 'Undefined String';

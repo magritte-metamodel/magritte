@@ -1,6 +1,6 @@
-accessing
+acessing-magritte
 descriptionValue
-	<magritte>
+	<magritteDescription>
 	^ MASingleOptionDescription new
 		reference: MAClassDescription new;
 		options: self descriptionClasses;

@@ -1,6 +1,6 @@
-accessing-descriptions
+acessing-magritte
 descriptionFalseString
-	<magritte>
+	<magritteDescription>
 	^ MAStringDescription new
 		accessor: #falseString;
 		default: self defaultFalseString;

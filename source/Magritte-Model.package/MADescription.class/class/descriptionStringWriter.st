@@ -1,6 +1,6 @@
-accessing-description
+acessing-magritte
 descriptionStringWriter
-	<magritte>
+	<magritteDescription>
 	^ MASingleOptionDescription new
 		accessor: #stringWriter;
 		label: 'String Writer';

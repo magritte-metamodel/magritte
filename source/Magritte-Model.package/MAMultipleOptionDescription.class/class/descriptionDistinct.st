@@ -1,6 +1,6 @@
-accessing-description
+acessing-magritte
 descriptionDistinct
-	<magritte>
+	<magritteDescription>
 	^ MABooleanDescription new
 		accessor: #distinct;
 		label: 'Distinct';

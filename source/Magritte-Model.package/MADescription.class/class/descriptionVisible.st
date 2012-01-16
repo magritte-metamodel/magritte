@@ -1,6 +1,6 @@
-accessing-description
+acessing-magritte
 descriptionVisible
-	<magritte>
+	<magritteDescription>
 	^ MABooleanDescription new
 		accessor: #visible;
 		label: 'Visible';

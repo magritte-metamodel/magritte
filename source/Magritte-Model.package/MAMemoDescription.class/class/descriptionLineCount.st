@@ -1,6 +1,6 @@
-accessing-description
+acessing-magritte
 descriptionLineCount
-	<magritte>
+	<magritteDescription>
 	^ MANumberDescription new
 		accessor: #lineCount;
 		label: 'Number of Lines';

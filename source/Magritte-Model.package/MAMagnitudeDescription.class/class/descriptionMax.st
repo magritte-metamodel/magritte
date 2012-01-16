@@ -1,6 +1,6 @@
-accessing-description
+acessing-magritte
 descriptionMax
-	<magritte>
+	<magritteDescription>
 	^ self new
 		accessor: #max;
 		label: 'Maximum';

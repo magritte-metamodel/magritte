@@ -1,6 +1,6 @@
-accessing-description
+acessing-magritte
 descriptionOptions
-	<magritte>
+	<magritteDescription>
 	^ MAMemoDescription new
 		accessor: #optionsTextual;
 		label: 'Options';

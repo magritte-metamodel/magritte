@@ -1,6 +1,6 @@
-accessing-description
+acessing-magritte
 descriptionStringReader
-	<magritte>
+	<magritteDescription>
 	^ MASingleOptionDescription new
 		accessor: #stringReader;
 		label: 'String Reader';

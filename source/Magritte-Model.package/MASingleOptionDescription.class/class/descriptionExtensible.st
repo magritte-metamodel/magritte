@@ -1,6 +1,6 @@
-accessing-descriptions
+acessing-magritte
 descriptionExtensible
-	<magritte>
+	<magritteDescription>
 	^ MABooleanDescription new
 		accessor: #extensible;
 		label: 'Extensible';

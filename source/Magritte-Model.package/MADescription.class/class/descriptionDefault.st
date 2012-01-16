@@ -1,10 +1,11 @@
-accessing-description
+acessing-magritte
 descriptionDefault
-	<magritte>
-	^ self isAbstract ifFalse: 
-		[ self new
-			accessor: #default;
-			label: 'Default';
-			priority: 130;
-			default: self defaultDefault;
-			yourself ]
+	<magritteDescription>
+	^ self isAbstract
+		ifFalse: [ 
+			self new
+				accessor: #default;
+				label: 'Default';
+				priority: 130;
+				default: self defaultDefault;
+				yourself ]

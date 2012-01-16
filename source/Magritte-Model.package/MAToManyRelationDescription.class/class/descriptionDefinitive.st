@@ -1,6 +1,6 @@
-accessing-description
+acessing-magritte
 descriptionDefinitive
-	<magritte>
+	<magritteDescription>
 	^ MABooleanDescription new
 		accessor: #definitive;
 		label: 'Definitive';

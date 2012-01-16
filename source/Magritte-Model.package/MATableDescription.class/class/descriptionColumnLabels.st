@@ -1,6 +1,6 @@
-accessing-description
+acessing-magritte
 descriptionColumnLabels
-	<magritte>
+	<magritteDescription>
 	^ MAMemoDescription new
 		accessor: #columnLabelsTextual;
 		label: 'Column Labels';

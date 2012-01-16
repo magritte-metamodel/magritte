@@ -1,6 +1,6 @@
-accessing-description
+acessing-magritte
 descriptionClasses
-	<magritte>
+	<magritteDescription>
 	^ MAMultipleOptionDescription new
 		accessor: #classes;
 		label: 'Classes';

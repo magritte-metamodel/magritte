@@ -1,6 +1,6 @@
-accessing-description
+acessing-magritte
 descriptionValidator
-	<magritte>
+	<magritteDescription>
 	^ MASingleOptionDescription new
 		accessor: #validator;
 		label: 'Validator';

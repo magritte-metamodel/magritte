@@ -1,6 +1,6 @@
-accessing-description
+acessing-magritte
 descriptionChildren
-	<magritte>
+	<magritteDescription>
 	^ MAToManyRelationDescription new
 		accessor: (MASelectorAccessor read: #children write: #setChildren:);
 		classes: [ MAElementDescription withAllConcreteClasses ] magritteDynamicObject;
