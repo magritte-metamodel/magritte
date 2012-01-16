@@ -1,4 +1,4 @@
-*magritte-morph-description
+*magritte-morph-accessing
 descriptionMorphClass
 	<magritteDescription>
 	^ MASingleOptionDescription new
@@ -6,6 +6,6 @@ descriptionMorphClass
 		label: 'Morph Class';
 		priority: 2000;
 		reference: MAClassDescription new;
-		options: self defaultMorphClasses;
-		default: self defaultMorphClass;
+		options: self class defaultMorphClasses;
+		default: self class defaultMorphClass;
 		yourself
