@@ -1,3 +1,3 @@
 accessing-configuration
 defaultExampleInstance
-	^ MAAdaptiveModel description: self description
+	^ MAAdaptiveModel description: self magritteDescription

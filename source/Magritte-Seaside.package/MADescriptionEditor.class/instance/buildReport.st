@@ -2,7 +2,7 @@ private
 buildReport
 	^ (MAReport rows: self magritteDescription children description: MAElementDescription magritteDescription)
 		addColumn: (MAColumn new
-			accessor: #( description label );
+			accessor: #( magritteDescription label );
 			label: 'Kind';
 			yourself);
 		addColumn: (MACommandColumn new

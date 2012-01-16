@@ -1,6 +1,6 @@
 actions
 preview
 	self show: (self example asComponent
-		addMessage: self description label;
+		addMessage: self magritteDescription label;
 		addValidatedForm;
 		yourself)

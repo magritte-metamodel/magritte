@@ -1,3 +1,3 @@
 accessing
 reference
-	^ self description reference
+	^ self magritteDescription reference
