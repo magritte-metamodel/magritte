@@ -1,6 +1,6 @@
 *magritte-morph-description
 descriptionMorphClass
-	<magritte>
+	<magritteDescription>
 	^ MASingleOptionDescription new
 		accessor: #morphClass;
 		label: 'Morph Class';
