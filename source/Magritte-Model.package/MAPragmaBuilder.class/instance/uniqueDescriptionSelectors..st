@@ -3,7 +3,7 @@ uniqueDescriptionSelectors: anObject
 	| descriptionPragmas uniqueSelectors |
 	
 	descriptionPragmas := Pragma 
-		allNamed: self class descriptionPragma 
+		allNamed: self class magritteDescriptionPragma 
 		from: anObject class to: Object.
 	
 	uniqueSelectors := Set new.

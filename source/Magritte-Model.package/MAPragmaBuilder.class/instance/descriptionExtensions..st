@@ -3,7 +3,7 @@ descriptionExtensions: anObject
 	| extensionPragmas extensionSelectors  |
 	
 	extensionPragmas := Pragma
-		allNamed: self class descriptionExtensionPragma
+		allNamed: self class magritteDescriptionExtensionPragma
 		from: anObject class to: Object.
 		
 	extensionSelectors := Dictionary new.
