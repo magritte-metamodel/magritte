@@ -1,9 +1,9 @@
 acessing-magritte
 descriptionDefault
 	<magritteDescription>
-	^ self isAbstract
+	^ self class isAbstract
 		ifFalse: [ 
-			self new
+			self class new
 				accessor: #default;
 				label: 'Default';
 				priority: 130;

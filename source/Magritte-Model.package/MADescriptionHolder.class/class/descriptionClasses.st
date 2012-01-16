@@ -1,4 +1,3 @@
 acessing-magritte
 descriptionClasses
-	<magritteDescription>
 	^ MAElementDescription withAllConcreteClasses asOrderedCollection
