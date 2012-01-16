@@ -1,6 +1,6 @@
 private
 buildReport
-	^ (MAReport rows: self description children description: MAElementDescription description)
+	^ (MAReport rows: self magritteDescription children description: MAElementDescription magritteDescription)
 		addColumn: (MAColumn new
 			accessor: #( description label );
 			label: 'Kind';

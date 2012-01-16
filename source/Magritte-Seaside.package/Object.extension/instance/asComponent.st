@@ -1,3 +1,3 @@
 *magritte-seaside-converting
 asComponent
-	^ self description asComponentOn: self
+	^ self magritteDescription asComponentOn: self
