@@ -1,4 +1,4 @@
-descriptions-extensions
+acessing-magritte
 descriptionNilled2
-	<magritte>
+	<magritteDescription>
 	^ MAStringDescription new

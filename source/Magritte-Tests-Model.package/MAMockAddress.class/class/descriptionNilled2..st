@@ -1,4 +1,4 @@
 descriptions-extensions
 descriptionNilled2: aDescription
-	<magritte: #descriptionNilled2>
+	<magritteDescription: #descriptionNilled2>
 	^ nil

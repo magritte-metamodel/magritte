@@ -1,4 +1,4 @@
-descriptions-extensions
+acessing-magritte
 descriptionNilled1
-	<magritte>
+	<magritteDescription>
 	^ nil

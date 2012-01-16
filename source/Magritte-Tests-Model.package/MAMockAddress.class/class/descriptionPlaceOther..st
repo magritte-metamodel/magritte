@@ -1,4 +1,4 @@
 descriptions-extensions
 descriptionPlaceOther: aDescription
-	<magritte: #descriptionPlace>
+	<magritteDescription: #descriptionPlace>
 	^ aDescription beHidden

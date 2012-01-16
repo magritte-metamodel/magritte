@@ -1,6 +1,6 @@
-descriptions
+acessing-magritte
 descriptionStreet
-	<magritte>
+	<magritteDescription>
 	^ MAStringDescription new
 		accessor: #street;
 		label: 'Street';

@@ -1,6 +1,6 @@
-descriptions
+acessing-magritte
 descriptionPlace
-	<magritte>
+	<magritteDescription>
 	^ MAStringDescription new
 		accessor: #place;
 		label: 'Place';

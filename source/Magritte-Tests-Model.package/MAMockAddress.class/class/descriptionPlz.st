@@ -1,6 +1,6 @@
-descriptions
+acessing-magritte
 descriptionPlz
-	<magritte>
+	<magritteDescription>
 	^ MANumberDescription new
 		accessor: #plz;
 		label: 'PLZ';

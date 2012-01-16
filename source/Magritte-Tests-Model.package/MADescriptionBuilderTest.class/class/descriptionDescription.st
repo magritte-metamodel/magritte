@@ -1,4 +1,4 @@
-mock-descriptions
+acessing-magritte
 descriptionDescription
-	<magritte>
+	<magritteDescription>
 	^ MAToOneRelationDescription new label: 'foo'

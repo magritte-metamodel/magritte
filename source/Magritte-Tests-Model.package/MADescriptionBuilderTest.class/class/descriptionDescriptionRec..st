@@ -1,4 +1,4 @@
 mock-descriptions
 descriptionDescriptionRec: aDescription
-	<magritte: #descriptionDescription>
+	<magritteDescription: #descriptionDescription>
 	^ aDescription reference: self magritteDescription

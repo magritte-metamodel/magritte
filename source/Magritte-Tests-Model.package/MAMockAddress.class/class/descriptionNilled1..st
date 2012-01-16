@@ -1,4 +1,4 @@
-descriptions-extensions
+acessing-magritte
 descriptionNilled1: aDescription
 	<magritte: #descriptionNilled1>
 	^ aDescription beRequired

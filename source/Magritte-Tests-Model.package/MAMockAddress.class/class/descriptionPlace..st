@@ -1,4 +1,4 @@
 descriptions-extensions
 descriptionPlace: aDescription
-	<magritte: #descriptionPlace>
+	<magritteDescription: #descriptionPlace>
 	^ aDescription beRequired

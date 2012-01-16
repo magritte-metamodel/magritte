@@ -1,4 +1,4 @@
 mock-descriptions
 descriptionDescription: aDescription
-	<magritte: #descriptionDescription>
+	<magritteDescription: #descriptionDescription>
 	^ aDescription propertyAt: #foo put: nil; yourself
