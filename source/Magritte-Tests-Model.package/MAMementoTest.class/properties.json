@@ -6,9 +6,9 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"description",
 		"memento",
-		"value"
+		"value",
+		"description"
 	],
 	"name" : "MAMementoTest",
 	"type" : "normal"

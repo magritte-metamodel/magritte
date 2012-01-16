@@ -1,4 +1,6 @@
-mock-descriptions
+acessing-magritte
 descriptionDescriptionBar: aDescription
 	<magritteDescription: #descriptionDescription>
-	^ aDescription propertyAt: #bar put: nil; yourself
+	^ aDescription
+		propertyAt: #bar put: nil;
+		yourself

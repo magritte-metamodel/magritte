@@ -1,4 +1,4 @@
-description-container
+acessing-magritte
 descriptionContainer
 	<magritteContainer>
 	^ super descriptionContainer
