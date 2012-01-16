@@ -1,7 +1,7 @@
 acessing-magritte
 descriptionMax
 	<magritteDescription>
-	^ self new
+	^ self class new
 		accessor: #max;
 		label: 'Maximum';
 		priority: 410;

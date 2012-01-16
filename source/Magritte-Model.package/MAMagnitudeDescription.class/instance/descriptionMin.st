@@ -1,7 +1,7 @@
 acessing-magritte
 descriptionMin
 	<magritteDescription>
-	^ self new
+	^ self class new
 		accessor: #min;
 		label: 'Min';
 		priority: 400;
