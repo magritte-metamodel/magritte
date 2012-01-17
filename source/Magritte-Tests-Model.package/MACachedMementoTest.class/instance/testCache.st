@@ -1,3 +1,3 @@
 tests-accessing
 testCache
-	self assert: self memento cache size = self description size
+	self assert: self memento cache size = self magritteDescription size

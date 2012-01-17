@@ -1,4 +1,4 @@
 tests-accessing
 testDescription
-	self assert: self memento description = self description.
-	self assert: self memento description = self descriptionInstance
+	self assert: self memento magritteDescription = self magritteDescription.
+	self assert: self memento magritteDescription = self descriptionInstance

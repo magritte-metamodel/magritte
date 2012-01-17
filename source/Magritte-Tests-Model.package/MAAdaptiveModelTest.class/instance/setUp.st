@@ -1,7 +1,7 @@
 running
 setUp
 	scaffolder := MAAdaptiveModel new.
-	scaffolder description
+	scaffolder magritteDescription
 		add: MAStringDescription new;
 		add: MANumberDescription new.
 	scaffolder write: 'foo' using: self descriptions first.

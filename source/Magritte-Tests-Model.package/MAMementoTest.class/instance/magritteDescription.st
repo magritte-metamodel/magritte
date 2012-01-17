@@ -1,3 +1,3 @@
 acessing-magritte
-description
+magritteDescription
 	^ description

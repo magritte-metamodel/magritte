@@ -1,3 +1,3 @@
 accessing
 descriptions
-	^ self scaffolder description children
+	^ self scaffolder magritteDescription children
