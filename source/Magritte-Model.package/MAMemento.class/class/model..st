@@ -1,3 +1,3 @@
 instance creation
 model: aModel
-	^ self model: aModel description: aModel description
+	^ self model: aModel description: aModel magritteDescription

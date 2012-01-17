@@ -4,5 +4,5 @@ validate
 		ifFalse: [ ^ super validate ].
 	self reset.
 	MAConflictError
-		description: self description
-		signal: self description conflictErrorMessage
+		description: self magritteDescription
+		signal: self magritteDescription conflictErrorMessage

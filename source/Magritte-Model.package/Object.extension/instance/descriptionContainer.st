@@ -3,5 +3,5 @@ descriptionContainer
 	"Return the default description container."
 	<magritteContainer>
 	^ MAPriorityContainer new
-		label: self label;
+		label: self class label;
 		yourself

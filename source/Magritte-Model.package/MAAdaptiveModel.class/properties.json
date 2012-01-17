@@ -6,7 +6,7 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"description",
+		"magritteDescription",
 		"values"
 	],
 	"name" : "MAAdaptiveModel",

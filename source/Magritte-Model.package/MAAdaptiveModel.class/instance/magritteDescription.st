@@ -1,5 +1,5 @@
 accessing
-description
+magritteDescription
 	"Answer the description of the receiver."
 
-	^ description
+	^ magritteDescription
