@@ -1,3 +1,3 @@
 accessing
 selected
-	^ (self value ifNil: [ self description default ]) ifNil: [ false ]
+	^ (self value ifNil: [ self magritteDescription default ]) ifNil: [ false ]

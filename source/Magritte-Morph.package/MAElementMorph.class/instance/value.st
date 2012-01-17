@@ -1,3 +1,3 @@
 accessing
 value
-	^ self memento readUsing: self description
+	^ self memento readUsing: self magritteDescription

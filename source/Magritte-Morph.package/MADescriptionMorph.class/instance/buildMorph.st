@@ -1,5 +1,5 @@
 private
 buildMorph
-	^ self description isReadonly
+	^ self magritteDescription isReadonly
 		ifTrue: [ self buildMorphView ]
 		ifFalse: [ self buildMorphEditor ]

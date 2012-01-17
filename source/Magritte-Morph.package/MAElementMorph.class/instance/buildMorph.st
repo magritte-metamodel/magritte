@@ -7,8 +7,8 @@ buildMorph
 		addMorphBack: self buildMorphLabel;
 		addMorphBack: super buildMorph;
 		yourself.
-	self description hasComment
-		ifTrue: [ result setBalloonText: self description comment ].
-	self description isRequired
+	self magritteDescription hasComment
+		ifTrue: [ result setBalloonText: self magritteDescription comment ].
+	self magritteDescription isRequired
 		ifTrue: [ result addMorphBack: self buildMorphRequired ].
 	^ result

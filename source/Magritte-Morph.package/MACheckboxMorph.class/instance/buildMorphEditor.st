@@ -6,5 +6,5 @@ buildMorphEditor
 		getSelected: #selected
 		setSelected: #selected:
 		getEnabled: #enabled
-		label: self description label 
-		help: self description comment
+		label: self magritteDescription label 
+		help: self magritteDescription comment

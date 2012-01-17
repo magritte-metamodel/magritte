@@ -1,3 +1,3 @@
 accessing-dynamic
 options
-	^ self description allOptions
+	^ self magritteDescription allOptions

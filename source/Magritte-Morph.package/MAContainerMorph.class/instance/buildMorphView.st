@@ -2,7 +2,7 @@ private
 buildMorphView
 	| result |
 	result := self rectangleMorph
-		setBalloonText: self description comment;
+		setBalloonText: self magritteDescription comment;
 		listDirection: #topToBottom;
 		cellInset: 3;
 		yourself.

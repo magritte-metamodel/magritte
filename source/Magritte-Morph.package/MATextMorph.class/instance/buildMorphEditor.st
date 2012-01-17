@@ -7,4 +7,4 @@ buildMorphEditor
 		set: #string: 
 		class: String
 		getEnabled: #enabled 
-		help: self description comment
+		help: self magritteDescription comment
