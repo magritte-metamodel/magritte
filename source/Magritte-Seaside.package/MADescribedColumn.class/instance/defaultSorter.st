@@ -1,4 +1,4 @@
 accessing-defaults
 defaultSorter
-	^ (self description isSortable and: [ self description isRequired ])
+	^ (self magritteDescription isSortable and: [ self magritteDescription isRequired ])
 		ifTrue: [ super defaultSorter ]

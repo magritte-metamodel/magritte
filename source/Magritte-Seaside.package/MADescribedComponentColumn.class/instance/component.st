@@ -1,7 +1,7 @@
 accessing
 component
 	component isNil ifTrue: [
-		component := self description componentClass new
-			setDescription: self description;
+		component := self magritteDescription componentClass new
+			setDescription: self magritteDescription;
 			yourself ].
 	^component

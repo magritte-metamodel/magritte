@@ -1,3 +1,3 @@
 actions
 refresh
-	self report rows: self description children
+	self report rows: self magritteDescription children

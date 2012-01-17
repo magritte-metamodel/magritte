@@ -1,3 +1,3 @@
 actions
 stringFor: anObject
-	^ self description toString: anObject
+	^ self magritteDescription toString: anObject

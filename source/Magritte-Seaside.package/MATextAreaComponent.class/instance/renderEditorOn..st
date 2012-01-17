@@ -2,5 +2,5 @@ rendering
 renderEditorOn: html
 	html textArea
 		id: self labelId;
-		rows: self description lineCount;
+		rows: self magritteDescription lineCount;
 		on: #string of: self

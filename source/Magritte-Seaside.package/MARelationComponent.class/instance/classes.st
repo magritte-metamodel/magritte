@@ -1,3 +1,3 @@
 accessing-dynamic
 classes
-	^ self description classes
+	^ self magritteDescription classes

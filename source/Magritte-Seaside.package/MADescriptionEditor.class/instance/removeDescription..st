@@ -1,4 +1,4 @@
 actions-items
 removeDescription: aDescription
-	self description remove: aDescription.
+	self magritteDescription remove: aDescription.
 	self refresh

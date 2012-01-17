@@ -1,5 +1,5 @@
 private
 buildDataTable
 	^ MATableModel
-		rows: self description rowCount
-		columns: self description columnCount
+		rows: self magritteDescription rowCount
+		columns: self magritteDescription columnCount

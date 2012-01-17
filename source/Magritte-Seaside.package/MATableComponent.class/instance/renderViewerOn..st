@@ -5,12 +5,12 @@ renderViewerOn: html
 		with: 
 			[ html tableRow: 
 				[ html tableHeading: nil.
-				self description columnLabels do: [ :each | html tableHeading: each ] ].
-			self description rowLabels keysAndValuesDo: 
+				self magritteDescription columnLabels do: [ :each | html tableHeading: each ] ].
+			self magritteDescription rowLabels keysAndValuesDo: 
 				[ :rindex :row | 
 				html tableRow: 
 					[ html tableHeading: row.
-					self description columnLabels keysAndValuesDo: 
+					self magritteDescription columnLabels keysAndValuesDo: 
 						[ :cindex :col | 
 						html tableData: (self componentTable 
 								uncheckedAt: rindex

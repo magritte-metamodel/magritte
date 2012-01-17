@@ -1,5 +1,5 @@
 accessing
 availableList
-	^ self description isDistinct
+	^ self magritteDescription isDistinct
 		ifFalse: [ super availableList ]
 		ifTrue: [ super availableList copyWithoutAll: self selectedList ]

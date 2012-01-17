@@ -6,5 +6,5 @@ add
 	added := self availableSelected.
 	self add: added.
 	self selectedSelected: added.
-	self description isDistinct
+	self magritteDescription isDistinct
 		ifTrue: [ self availableSelected: nil ]

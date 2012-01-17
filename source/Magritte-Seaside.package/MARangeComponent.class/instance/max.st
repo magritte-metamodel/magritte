@@ -1,3 +1,3 @@
 accessing-dynamic
 max
-	^ self description max ifNil: [ 100 ]
+	^ self magritteDescription max ifNil: [ 100 ]

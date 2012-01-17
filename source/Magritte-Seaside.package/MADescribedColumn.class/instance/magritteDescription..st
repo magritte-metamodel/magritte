@@ -1,4 +1,4 @@
 accessing
-description: aDescription
+magritteDescription: aDescription
 	description := aDescription.
 	accessor := aDescription accessor

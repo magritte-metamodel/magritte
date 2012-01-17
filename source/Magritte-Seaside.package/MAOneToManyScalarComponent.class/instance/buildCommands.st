@@ -3,7 +3,7 @@ buildCommands
 	commands := MAIndexedCommandColumn new
 				setReport: self report.
 
-	self description isDefinitive
+	self magritteDescription isDefinitive
 		ifFalse: [ commands
 					addCommandOn: self selector: #edit:index: text: 'Edit';
 					addCommandOn: self selector: #remove:index: text: 'Remove'].

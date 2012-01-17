@@ -1,3 +1,3 @@
 testing
 isDistinct
-	^ self description isDistinct
+	^ self magritteDescription isDistinct

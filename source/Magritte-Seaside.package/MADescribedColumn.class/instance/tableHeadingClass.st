@@ -1,3 +1,3 @@
 accessing
 tableHeadingClass
-	^ self classFor: self description
+	^ self classFor: self magritteDescription

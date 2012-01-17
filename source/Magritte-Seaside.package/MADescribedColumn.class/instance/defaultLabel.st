@@ -1,3 +1,3 @@
 accessing-defaults
 defaultLabel
-	^ self description label
+	^ self magritteDescription label

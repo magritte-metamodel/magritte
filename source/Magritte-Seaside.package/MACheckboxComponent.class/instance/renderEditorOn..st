@@ -5,4 +5,4 @@ renderEditorOn: html
 			id: self labelId;
 			disabled: self isReadonly;
 			on: #value of: self.
-		html space; render: self description checkboxLabel ]
+		html space; render: self magritteDescription checkboxLabel ]

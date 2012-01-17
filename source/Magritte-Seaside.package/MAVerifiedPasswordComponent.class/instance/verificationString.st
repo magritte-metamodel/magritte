@@ -1,3 +1,3 @@
 accessing
 verificationString
-	^ self description obfuscated: self verificationValue
+	^ self magritteDescription obfuscated: self verificationValue

@@ -1,3 +1,3 @@
 accessing
 options
-	^ self description allOptionsWith: self value
+	^ self magritteDescription allOptionsWith: self value

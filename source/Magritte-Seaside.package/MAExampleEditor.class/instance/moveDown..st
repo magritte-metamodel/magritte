@@ -1,4 +1,4 @@
 actions-items
 moveDown: aDescription
-	self description moveDown: aDescription.
+	self magritteDescription moveDown: aDescription.
 	self refresh

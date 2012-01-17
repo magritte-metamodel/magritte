@@ -1,3 +1,3 @@
 accessing-defaults
 defaultVisible
-	^ self description isVisible
+	^ self magritteDescription isVisible

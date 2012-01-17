@@ -1,3 +1,3 @@
 accessing-dynamic
 min
-	^ self description min ifNil: [ -100 ]
+	^ self magritteDescription min ifNil: [ -100 ]

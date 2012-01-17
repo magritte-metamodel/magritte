@@ -1,8 +1,8 @@
 accessing
 verificationString: aString
 	| value |
-	(self description isObfuscated: aString)
+	(self magritteDescription isObfuscated: aString)
 		ifTrue: [ ^ self ].
-	value := [ self description fromString: aString ]
+	value := [ self magritteDescription fromString: aString ]
 		on: Error do: [ :e | e return: aString ].
 	self verificationValue: value

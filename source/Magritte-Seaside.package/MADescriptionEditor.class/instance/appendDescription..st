@@ -1,4 +1,4 @@
 actions-items
 appendDescription: aDescription
-	self description add: aDescription.
+	self magritteDescription add: aDescription.
 	self refresh

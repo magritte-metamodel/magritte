@@ -1,4 +1,4 @@
 rendering
 renderContentOn: html
-	self description componentRenderer
+	self magritteDescription componentRenderer
 		component: self on: html

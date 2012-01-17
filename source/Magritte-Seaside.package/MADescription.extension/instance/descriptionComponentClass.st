@@ -1,4 +1,4 @@
-*magritte-seaside-accessing
+*magritte-seaside-description
 descriptionComponentClass
 	<magritteDescription>
 	^ MASingleOptionDescription new

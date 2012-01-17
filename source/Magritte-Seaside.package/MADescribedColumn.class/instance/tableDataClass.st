@@ -1,3 +1,3 @@
 accessing
 tableDataClass
-	^ self classFor: self description
+	^ self classFor: self magritteDescription

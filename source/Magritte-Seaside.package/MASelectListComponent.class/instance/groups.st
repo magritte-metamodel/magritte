@@ -6,7 +6,7 @@ groups
 	groups := OrderedCollection new.
 	self options do: [ :option | 
 		option isNil ifFalse: [
-			group := self description groupBy read: option.
+			group := self magritteDescription groupBy read: option.
 			(groups
 				detect: [ :each | each key = group ]
 				ifNone: [ groups addLast: group -> OrderedCollection new ])

@@ -1,4 +1,4 @@
 visiting
 component: aComponent on: aRenderer
 	self setComponent: aComponent; setRenderer: aRenderer.
-	self visit: aComponent description
+	self visit: aComponent magritteDescription

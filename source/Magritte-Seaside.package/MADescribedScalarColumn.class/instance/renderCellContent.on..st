@@ -1,3 +1,3 @@
 rendering
 renderCellContent: anObject on: html
-	html render: (self description reference toString: (self valueFor: anObject))
+	html render: (self magritteDescription reference toString: (self valueFor: anObject))

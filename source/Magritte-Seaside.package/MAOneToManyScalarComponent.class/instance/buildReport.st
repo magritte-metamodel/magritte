@@ -1,3 +1,3 @@
 private
 buildReport
-	^ MAReport rows: self value description: self description
+	^ MAReport rows: self value description: self magritteDescription

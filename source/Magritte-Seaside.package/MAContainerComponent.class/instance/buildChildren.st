@@ -1,6 +1,6 @@
 private
 buildChildren
-	^ self description
+	^ self magritteDescription
 		inject: Dictionary new
 		into: [ :result :each |
 			each isVisible ifTrue: [

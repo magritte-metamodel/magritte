@@ -1,4 +1,4 @@
 accessing
 string: aString
-	(self description isObfuscated: aString)
+	(self magritteDescription isObfuscated: aString)
 		ifFalse: [ super string: aString ]

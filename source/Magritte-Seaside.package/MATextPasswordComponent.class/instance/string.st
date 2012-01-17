@@ -1,3 +1,3 @@
 accessing
 string
-	^ self description obfuscated: super string
+	^ self magritteDescription obfuscated: super string

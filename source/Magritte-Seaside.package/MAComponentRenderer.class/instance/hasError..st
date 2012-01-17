@@ -10,6 +10,6 @@ hasError: aDescription
 			current errors do: [ :each |
 				errors add: (each tag isDescription
 					ifTrue: [ each tag ]
-					ifFalse: [ current description ]) ] ].
+					ifFalse: [ current magritteDescription ]) ] ].
 		current := current parent ].
 	^ self hasError: aDescription

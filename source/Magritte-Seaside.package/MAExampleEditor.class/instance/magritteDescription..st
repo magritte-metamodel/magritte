@@ -1,3 +1,3 @@
 accessing
-description: aDescription
+magritteDescription: aDescription
 	description := aDescription

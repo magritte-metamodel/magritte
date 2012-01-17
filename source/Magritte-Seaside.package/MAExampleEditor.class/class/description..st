@@ -1,5 +1,5 @@
 instance creation
 description: aDescription
 	^ self new
-		description: aDescription;
+		magritteDescription: aDescription;
 		yourself

@@ -1,3 +1,3 @@
 accessing
 availableList
-	^ self description allOptions
+	^ self magritteDescription allOptions

@@ -1,5 +1,5 @@
 columns
 addColumnDescription: aDescription
 	^ self addColumn: (aDescription reportColumnClass new
-		description: aDescription;
+		magritteDescription: aDescription;
 		yourself)

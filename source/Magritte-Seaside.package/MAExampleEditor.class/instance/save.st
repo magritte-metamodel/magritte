@@ -1,3 +1,3 @@
 actions
 save
-	self answer: self description
+	self answer: self magritteDescription

@@ -1,5 +1,5 @@
 rendering
 renderEditorOn: html
 	self renderViewerOn: html.
-	self description isDefinitive
+	self magritteDescription isDefinitive
 		ifFalse: [ self renderSelectListOn: html ]
