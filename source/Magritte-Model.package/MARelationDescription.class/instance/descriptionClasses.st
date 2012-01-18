@@ -5,6 +5,6 @@ descriptionClasses
 		accessor: #classes;
 		label: 'Classes';
 		priority: 400;
-		options: [ Smalltalk allClasses ] magritteDynamicObject;
+		options: Smalltalk allClasses;
 		reference: MAClassDescription new;
 		yourself

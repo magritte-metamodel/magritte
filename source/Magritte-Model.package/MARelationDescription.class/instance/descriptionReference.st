@@ -2,6 +2,6 @@ acessing-magritte
 descriptionReference
 	<magritteDescription>
 	^ super descriptionReference
-		classes: [ MAContainer withAllConcreteClasses ] magritteDynamicObject;
+		classes: MAContainer withAllConcreteClasses;
 		beOptional;
 		yourself

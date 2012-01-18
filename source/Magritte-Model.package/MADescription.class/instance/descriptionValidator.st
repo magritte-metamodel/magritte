@@ -6,6 +6,6 @@ descriptionValidator
 		label: 'Validator';
 		priority: 250;
 		default: self class defaultValidator;
-		options: [ self class defaultValidator withAllSubclasses ] magritteDynamicObject;
+		options: self class defaultValidator withAllSubclasses;
 		reference: MAClassDescription new;
 		yourself

@@ -6,6 +6,6 @@ descriptionStringReader
 		label: 'String Reader';
 		priority: 300;
 		default: self class defaultStringReader;
-		options: [ self class defaultStringReader withAllSubclasses ] magritteDynamicObject;
+		options: self class defaultStringReader withAllSubclasses;
 		reference: MAClassDescription new;
 		yourself

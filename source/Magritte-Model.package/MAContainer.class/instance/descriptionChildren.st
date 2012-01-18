@@ -3,7 +3,7 @@ descriptionChildren
 	<magritteDescription>
 	^ MAToManyRelationDescription new
 		accessor: (MASelectorAccessor read: #children write: #setChildren:);
-		classes: [ MAElementDescription withAllConcreteClasses ] magritteDynamicObject;
+		classes: MAElementDescription withAllConcreteClasses;
 		default: self class defaultCollection;
 		label: 'Elements';
 		priority: 400;
