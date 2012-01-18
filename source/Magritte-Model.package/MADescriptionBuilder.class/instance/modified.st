@@ -1,3 +1,0 @@
-events
-modified
-	self flush

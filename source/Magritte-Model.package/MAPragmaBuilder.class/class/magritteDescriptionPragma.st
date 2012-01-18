@@ -1,3 +1,3 @@
-accessing
+constants
 magritteDescriptionPragma 
-	^#magritteDescription
+	^ #magritteDescription

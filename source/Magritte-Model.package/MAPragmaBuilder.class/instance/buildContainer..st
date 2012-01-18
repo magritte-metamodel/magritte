@@ -17,4 +17,4 @@ buildContainer: anObject
 	extensionSelectors do: [ :each | 
 		anObject perform: each with: container ].
 
-	^ cache at: anObject put: container
+	^ container

@@ -1,3 +1,3 @@
-accessing
+constants
 containerPragma 
-	^#magritteContainer
+	^ #magritteContainer
