@@ -10,6 +10,6 @@
 	"instvars" : [
 		"cache"
 	],
-	"name" : "MADescriptionBuilderOld",
+	"name" : "MADescriptionBuilder",
 	"type" : "normal"
 }

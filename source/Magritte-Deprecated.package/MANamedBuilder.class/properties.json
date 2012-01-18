@@ -1,6 +1,6 @@
 {
 	"commentStamp" : "lr 4/10/2007 21:09",
-	"super" : "MADescriptionBuilderOld",
+	"super" : "MADescriptionBuilder",
 	"category" : "Magritte-Deprecated",
 	"classinstvars" : [ ],
 	"pools" : [ ],
