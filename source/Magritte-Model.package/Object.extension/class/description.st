@@ -1,7 +1,5 @@
 *magritte-model-accessing
 description
-	self 
-		deprecated: '#description has been renamed to #magritteDescription as #description is a heavily overloaded term.' 
-		on: '11 December 2011'  
-		in: 'Magritte 3'.
+	self greaseDeprecatedApi: 'Object class>>#description' details: '#description has been renamed to #magritteDescription as #description is a heavily overloaded term.'. 
+	
 	^ self magritteDescription
