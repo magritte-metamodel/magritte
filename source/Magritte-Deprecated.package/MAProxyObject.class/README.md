@@ -1,0 +1,1 @@
+I represent an abstract proxy object, to be refined by my subclasses.
