@@ -1,3 +1,3 @@
 accessing
 magritteDescription
-	^ MADescriptionBuilder for: self
+	^ MAPragmaBuilder for: self
