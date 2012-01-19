@@ -1,3 +1,3 @@
 visiting
 write: anObject
-	^ self write: anObject description: anObject description
+	^ self write: anObject description: anObject magritteDescription

@@ -1,3 +1,3 @@
 visiting-description
 visitToOneRelationDescription: aDescription
-	self visit: self object description
+	self visit: self object magritteDescription
