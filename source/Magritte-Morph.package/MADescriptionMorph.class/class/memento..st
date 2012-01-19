@@ -1,3 +1,3 @@
 instance creation
 memento: aMemento
-	^ self memento: aMemento description: aMemento description
+	^ self memento: aMemento description: aMemento magritteDescription

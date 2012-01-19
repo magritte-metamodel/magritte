@@ -1,3 +1,3 @@
 prototypes
 windowMorph
-	^ SystemWindow labelled: self description label
+	^ SystemWindow labelled: self magritteDescription label
