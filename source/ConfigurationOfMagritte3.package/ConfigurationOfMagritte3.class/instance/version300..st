@@ -19,11 +19,11 @@ version300: spec
 			package: 'Magritte-Model' with: 'Magritte-Model-NickAger.422';
 			package: 'Magritte-Tests-Model' with: 'Magritte-Tests-Model-NickAger.25';
 			package: 'Magritte-Seaside' with: 'Magritte-Seaside-NickAger.351';
-			package: 'Magritte-Deprecated' with: 'Magritte-Deprecated-NickAger.3' ].
+			package: 'Magritte-Deprecated' with: 'Magritte-Deprecated-NickAger.4' ].
 
 	spec for: #'pharo' do: [
 		spec 
-			package: 'Magritte-Pharo-Model' with: 'Magritte-Pharo-Model-NickAger.23';
+			package: 'Magritte-Pharo-Model' with: 'Magritte-Pharo-Model-NickAger.24';
 			package: 'Magritte-Tests-Pharo-Model' with: 'Magritte-Tests-Pharo-Model-lr.4';
 			package: 'Magritte-Pharo-Seaside' with: 'Magritte-Pharo-Seaside-lr.5';
 			package: 'Magritte-Morph' with: 'Magritte-Morph-NickAger.62';
