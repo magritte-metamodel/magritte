@@ -33,6 +33,7 @@ baseline3000: spec
 			group: 'default' with: #('Core' );
 			group: 'Core' with: #('Magritte-Model' );
 			group: 'Tests' with: #('Magritte-Tests-Model' );
+			group: 'Seaside' with: #('Magritte-Seaside');
 			group: 'Deprecated' with: #('Magritte-Deprecated') ].
 
 	spec for: #'pharo' do: [
