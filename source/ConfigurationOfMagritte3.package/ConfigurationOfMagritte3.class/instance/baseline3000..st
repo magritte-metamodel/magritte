@@ -18,7 +18,7 @@ baseline3000: spec
 				spec
 					className: 'ConfigurationOfSeaside30';
 					versionString: #'stable';
-					loads: #('Base' 'Seaside-HTML5' );
+					loads: #('Core');
 					repository: 'http://www.squeaksource.com/MetacelloRepository' ].
 		spec 
 			package: 'Magritte-Model' with: [
