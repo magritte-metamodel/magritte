@@ -38,13 +38,13 @@ baseline3000: spec
 	spec for: #'pharo' do: [
 		spec 
 			package: 'Magritte-Model' with: [
-				spec includes: #('Magritte-Pharo-Model' 'Magritte-Morph' ). ];
+				spec includes: #('Magritte-Pharo-Model' ). ];
 			package: 'Magritte-Tests-Model' with: [
 				spec includes: #('Magritte-Tests-Pharo-Model' ). ];
 			package: 'Magritte-Seaside' with: [
 				spec includes: #('Magritte-Pharo-Seaside' ). ];
 			package: 'Magritte-Pharo-Model' with: [
-				spec requires: #('Magritte-Model' ). ];
+				spec requires: #('Magritte-Model' 'Magritte-Morph' ). ];
 			package: 'Magritte-Tests-Pharo-Model' with: [
 				spec requires: #('Magritte-Pharo-Model' ). ];
 			package: 'Magritte-Pharo-Seaside' with: [
