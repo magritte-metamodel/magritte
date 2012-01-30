@@ -28,7 +28,7 @@ baseline3000: spec
 			package: 'Magritte-Seaside' with: [
 				spec requires: #('Magritte-Model' 'Seaside30' ) ];
 			package: 'Magritte-Deprecated' with: [
-				spec requires: #('Magritte-Model') ].
+				spec requires: #('Magritte-Model' 'Magritte-Morph') ].
 		spec 
 			group: 'default' with: #('Core' );
 			group: 'Core' with: #('Magritte-Model' );
