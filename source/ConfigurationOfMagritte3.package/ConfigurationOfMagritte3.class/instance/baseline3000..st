@@ -51,4 +51,6 @@ baseline3000: spec
 				spec requires: #('Magritte-Seaside' ). ];
 			package: 'Magritte-Morph' with: [
 				spec requires: #('Magritte-Model' ). ];
+			package: 'Magritte-Pharo-Tools' with: [
+				spec requires: #('Magritte-Pharo-Tools' ). ];
 			group: 'Tools' with: #('Magritte-Pharo-Tools') ]
