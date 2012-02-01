@@ -4,7 +4,7 @@ commonClass
 
 	| current |
 	self classes isEmpty
-		ifTrue: [ ^ self class descriptionContainer ].
+		ifTrue: [ ^ self descriptionContainer ].
 	current := self classes anyOne.
 	self classes do: [ :each |
 		[ each includesBehavior: current ]
