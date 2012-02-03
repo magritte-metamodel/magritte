@@ -16,7 +16,7 @@ version300: spec
 			project: 'Grease' with: #'stable';
 			project: 'Seaside30' with: #'stable'.
 		spec 
-			package: 'Magritte-Model' with: 'Magritte-Model-NickAger.424';
+			package: 'Magritte-Model' with: 'Magritte-Model-NickAger.425';
 			package: 'Magritte-Tests-Model' with: 'Magritte-Tests-Model-NickAger.25';
 			package: 'Magritte-Seaside' with: 'Magritte-Seaside-NickAger.351';
 			package: 'Magritte-Deprecated' with: 'Magritte-Deprecated-NickAger.6' ].
