@@ -1,3 +1,3 @@
 defaults
-defaultAction
+defaultValue
 	^ IdentityDictionary new

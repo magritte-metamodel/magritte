@@ -8,13 +8,14 @@ buildContainer: anObject
 		
 	containerPragma := (containerPragmas detect: [ :each | each method numArgs = 0 ]).
 	containerSelector := containerPragma method selector.
-	container := anObject perform: containerSelector.
-	
+
 	extensionSelectors := containerPragmas 
 		select: [ :each | each method numArgs = 1 ] 
 		thenCollect: [ :each | each method selector ]. 
 
-	extensionSelectors do: [ :each | 
-		anObject perform: each with: container ].
+	MADynamicDescribedObject use: anObject during: [	
+		container := anObject perform: containerSelector.
+		extensionSelectors do: [ :each | 
+			anObject perform: each with: container ] ].
 
 	^ container

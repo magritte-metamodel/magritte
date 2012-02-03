@@ -1,11 +1,11 @@
 {
-	"commentStamp" : "NickAger 1/18/2012 13:59",
-	"super" : "MADynamicVariable",
+	"commentStamp" : "",
+	"super" : "GRNotification",
 	"category" : "Magritte-Model-Utility",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [ ],
-	"name" : "MADynamicDescriptionCache",
+	"name" : "MADynamicVariable",
 	"type" : "normal"
 }
