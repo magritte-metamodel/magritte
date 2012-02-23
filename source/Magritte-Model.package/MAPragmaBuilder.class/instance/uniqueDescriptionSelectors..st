@@ -1,17 +1,11 @@
 private
 uniqueDescriptionSelectors: anObject
-	| descriptionPragmas uniqueSelectors |
+	| descriptionPragmas selectors |
 	
 	descriptionPragmas := Pragma 
 		allNamed: self class magritteDescriptionPragma 
 		from: anObject class to: Object.
+		
+	selectors := descriptionPragmas collect: [ :each | each method selector ].
 	
-	uniqueSelectors := Set new.
-	
-	^ descriptionPragmas 
-		select: [ :each |
-			(uniqueSelectors includes: each method selector) 
-				ifTrue: [ false ]
-				ifFalse: [ uniqueSelectors add: each method selector. true ] ]
-		thenCollect:  [ :each |
-			each method selector ]
+	^ Set withAll: selectors
