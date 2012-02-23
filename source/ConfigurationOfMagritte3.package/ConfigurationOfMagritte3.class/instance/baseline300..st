@@ -28,7 +28,7 @@ baseline300: spec
 			package: 'Magritte-Seaside' with: [
 				spec requires: #('Magritte-Model' 'Seaside30' ) ];
 			package: 'Magritte-Deprecated' with: [
-				spec requires: #('Magritte-Model' 'Magritte-Morph') ].
+				spec requires: #('Magritte-Model') ].
 		spec 
 			group: 'default' with: #('Core' );
 			group: 'Core' with: #('Magritte-Model' );
@@ -45,7 +45,7 @@ baseline300: spec
 			package: 'Magritte-Seaside' with: [
 				spec includes: #('Magritte-Pharo-Seaside' ). ];
 			package: 'Magritte-Pharo-Model' with: [
-				spec requires: #('Magritte-Model' 'Magritte-Morph' ). ];
+				spec requires: #('Magritte-Model' ). ];
 			package: 'Magritte-Tests-Pharo-Model' with: [
 				spec requires: #('Magritte-Pharo-Model' ). ];
 			package: 'Magritte-Pharo-Seaside' with: [
