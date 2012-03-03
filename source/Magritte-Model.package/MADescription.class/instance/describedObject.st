@@ -1,3 +1,3 @@
-as yet unclassified
+owning object
 describedObject
 	^ MADynamicDescribedObject value
