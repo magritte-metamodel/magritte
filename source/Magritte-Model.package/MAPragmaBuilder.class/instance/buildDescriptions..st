@@ -5,7 +5,7 @@ buildDescriptions: anObject
 	descriptionSelectors := self uniqueDescriptionSelectors: anObject.
 	descriptionExtensions := self descriptionExtensions: anObject.
 
-	^ descriptionSelectors 
+	^ (descriptionSelectors 
 		collect:  [ :each |
 			| description |
 			description := anObject perform: each.
@@ -14,5 +14,5 @@ buildDescriptions: anObject
 				descriptionExtensions at: each ifPresent: [ :extensions | 
 					extensions do: [ :extensionSelector | 
 						description := anObject perform: extensionSelector with: description ] ] ].
-			description ]
-		thenSelect: #notNil.
+			description ])
+		select: #notNil.

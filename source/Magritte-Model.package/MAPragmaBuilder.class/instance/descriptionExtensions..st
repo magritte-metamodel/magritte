@@ -1,15 +1,13 @@
 private
 descriptionExtensions: anObject
-	| extensionPragmas extensionSelectors  |
+	| extensionPragmas |
 	
 	extensionPragmas := Pragma
 		allNamed: self class magritteDescriptionExtensionPragma
 		from: anObject class to: Object.
-		
-	extensionSelectors := Dictionary new.
-	extensionPragmas do: [ :each | 
+	
+	^ extensionPragmas inject: Dictionary new into: [ :extensionSelectors :each | 
 		| extensionSelectorTarget |
 		extensionSelectorTarget := each arguments first.
-		(extensionSelectors at: extensionSelectorTarget ifAbsentPut: [ SortedCollection new ]) add: each method selector ].
-	
-	^ extensionSelectors
+		(extensionSelectors at: extensionSelectorTarget ifAbsentPut: [ SortedCollection new ]) add: each method selector.
+		extensionSelectors ].

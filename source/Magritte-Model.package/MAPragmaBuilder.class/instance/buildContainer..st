@@ -1,17 +1,17 @@
 private
 buildContainer: anObject
-	| containerPragmas containerPragma containerSelector extensionSelectors container  |
+	| containerPragmas containerPragma containerSelector extensionSelectors container |
 	
 	containerPragmas := Pragma 
 		allNamed: self class containerPragma 
 		from: anObject class to: Object.
 		
-	containerPragma := (containerPragmas detect: [ :each | each method numArgs = 0 ]).
+	containerPragma := containerPragmas detect: [ :each | each method numArgs = 0 ].
 	containerSelector := containerPragma method selector.
 
-	extensionSelectors := containerPragmas 
-		select: [ :each | each method numArgs = 1 ] 
-		thenCollect: [ :each | each method selector ]. 
+	extensionSelectors := (containerPragmas 
+		select: [ :each | each method numArgs = 1 ]) 
+		collect: [ :each | each method selector ]. 
 
 	MADynamicDescribedObject use: anObject during: [	
 		container := anObject perform: containerSelector.

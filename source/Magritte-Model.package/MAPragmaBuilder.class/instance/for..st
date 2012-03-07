@@ -1,6 +1,6 @@
 description building
 for: anObject
-	|  cache |
+	| cache |
 	cache := MADynamicDescriptionCache value.
 	
 	MADynamicDescriptionCache use: cache during: [
