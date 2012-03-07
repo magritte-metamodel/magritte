@@ -1,4 +1,4 @@
-as yet unclassified
+answering
 answer: anObject
 	answer isNil
 		ifFalse: [ answer value: anObject ].
