@@ -7,9 +7,9 @@ hasError: aDescription
 	current := component.
 	[ current notNil ] whileTrue: [
 		current isMagritteContainer ifTrue: [
-			current errors do: [ :each |
-				errors add: (each tag isDescription
+			errors addAll: (current errors collect: [ :each |
+				each tag isDescription
 					ifTrue: [ each tag ]
-					ifFalse: [ current magritteDescription ]) ] ].
+					ifFalse: [ current magritteDescription ] ]) ].
 		current := current parent ].
 	^ self hasError: aDescription

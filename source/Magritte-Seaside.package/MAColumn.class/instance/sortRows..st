@@ -7,4 +7,4 @@ sortRows: aCollection
 		addAll: aCollection.
 	^ self isReversed
 		ifFalse: [ result ]
-		ifTrue: [ result reversed ]
+		ifTrue: [ result reverse ]
