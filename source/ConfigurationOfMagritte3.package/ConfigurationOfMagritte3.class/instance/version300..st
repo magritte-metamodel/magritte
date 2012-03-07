@@ -16,9 +16,9 @@ version300: spec
 			project: 'Grease' with: #'stable';
 			project: 'Seaside30' with: #'stable'.
 		spec 
-			package: 'Magritte-Model' with: 'Magritte-Model-NickAger.429';
-			package: 'Magritte-Tests-Model' with: 'Magritte-Tests-Model-NickAger.25';
-			package: 'Magritte-Seaside' with: 'Magritte-Seaside-NickAger.352';
+			package: 'Magritte-Model' with: 'Magritte-Model-NickAger.431';
+			package: 'Magritte-Tests-Model' with: 'Magritte-Tests-Model-NickAger.26';
+			package: 'Magritte-Seaside' with: 'Magritte-Seaside-NickAger.353';
 			package: 'Magritte-Deprecated' with: 'Magritte-Deprecated-NickAger.7' ].
 
 	spec for: #'pharo' do: [
@@ -26,7 +26,7 @@ version300: spec
 			package: 'Magritte-Pharo-Model' with: 'Magritte-Pharo-Model-NickAger.26';
 			package: 'Magritte-Tests-Pharo-Model' with: 'Magritte-Tests-Pharo-Model-lr.4';
 			package: 'Magritte-Pharo-Seaside' with: 'Magritte-Pharo-Seaside-lr.5';
-			package: 'Magritte-Morph' with: 'Magritte-Morph-NickAger.62';
+			package: 'Magritte-Morph' with: 'Magritte-Morph-NickAger.63';
 			package: 'Magritte-Pharo-Tools' with: 'Magritte-Pharo-Tools-NickAger.3' ].
 	
 	spec for: #'gemstone' do: [
