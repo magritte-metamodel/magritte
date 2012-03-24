@@ -18,7 +18,7 @@ version300: spec
 		spec 
 			package: 'Magritte-Model' with: 'Magritte-Model-NickAger.431';
 			package: 'Magritte-Tests-Model' with: 'Magritte-Tests-Model-NickAger.26';
-			package: 'Magritte-Seaside' with: 'Magritte-Seaside-NickAger.354';
+			package: 'Magritte-Seaside' with: 'Magritte-Seaside-NickAger.355';
 			package: 'Magritte-Deprecated' with: 'Magritte-Deprecated-NickAger.7' ].
 
 	spec for: #'pharo' do: [
