@@ -6,14 +6,13 @@ uniqueLocation: aLocationDefinition
 	valid := false.
 	result := Array new: aLocationDefinition size.
 	[ valid ] whileFalse: [
-		directory := self baseDirectory assureExistence.
+		directory := self baseDirectory ensureDirectory.
 		result keysAndValuesDo: [ :index :value |
 			definition := aLocationDefinition at: index.
 			result at: index put: ((String new: definition first)
 				collect: [ :each | definition second atRandom ]).
-			directory := directory
-				directoryNamed: (result at: index).
+			directory := directory / (result at: index).
 			directory exists ifFalse: [
-				directory assureExistence.
+				directory ensureDirectory.
 				valid := true ] ] ].
 	^ result
