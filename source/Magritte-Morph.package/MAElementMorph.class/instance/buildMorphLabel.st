@@ -1,4 +1,4 @@
-private
+private-building
 buildMorphLabel
 	^ self stringMorph
 		contents: self magritteDescription label , ':';

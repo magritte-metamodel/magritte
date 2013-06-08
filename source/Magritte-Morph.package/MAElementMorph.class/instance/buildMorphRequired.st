@@ -1,4 +1,4 @@
-private
+private-building
 buildMorphRequired
 	^ self stringMorph
 		contents: ' *';

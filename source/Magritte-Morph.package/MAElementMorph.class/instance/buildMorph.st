@@ -1,4 +1,4 @@
-private
+private-building
 buildMorph
 	| result |
 	result := self rectangleMorph
