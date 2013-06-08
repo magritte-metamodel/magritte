@@ -1,3 +1,4 @@
+SystemOrganization addCategory: #'Magritte-Model'!
 SystemOrganization addCategory: #'Magritte-Model-Accessor'!
 SystemOrganization addCategory: #'Magritte-Model-Core'!
 SystemOrganization addCategory: #'Magritte-Model-Description'!

@@ -1,3 +1,5 @@
 testing
 isDefinitive
-	^ self definitive
+	"Return true if the field is non-modifiable"
+
+	^ self definitive.
