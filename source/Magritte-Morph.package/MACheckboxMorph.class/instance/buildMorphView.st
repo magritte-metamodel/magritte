@@ -1,5 +1,5 @@
 private
-buildMorphEditor
+buildMorphView
 	^ UITheme current 
 		newCheckboxIn: nil
 		for: self

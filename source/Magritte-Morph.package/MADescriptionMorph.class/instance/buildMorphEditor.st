@@ -1,4 +1,0 @@
-private
-buildMorphEditor
-
-	^ self buildMorphView.

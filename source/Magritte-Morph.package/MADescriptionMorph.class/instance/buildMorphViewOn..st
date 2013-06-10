@@ -1,3 +1,3 @@
 private
-buildMorphView
+buildMorphViewOn: aMorph
 	self subclassResponsibility

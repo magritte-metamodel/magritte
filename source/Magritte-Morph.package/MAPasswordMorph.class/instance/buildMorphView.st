@@ -1,5 +1,5 @@
 private
-buildMorphEditor
-	^ super buildMorphEditor
+buildMorphView
+	^ super buildMorphView
 		font: (StrikeFont passwordFontSize: 12);
 		yourself

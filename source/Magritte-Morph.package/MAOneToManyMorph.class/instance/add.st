@@ -1,9 +1,9 @@
 actions
 add
 
-	self selection new asMorph
+	self selected new asMorph
 		onAnswer: [ :result |
-			result isNil ifFalse: [ Halt now. self value: (self value copyWith: result) ] ];
+			result isNil ifFalse: [ self value: (self value copyWith: result) ] ];
 		addButtons; 
 		addWindow;
-		openInWorld.
+		openInWorld
