@@ -1,5 +1,5 @@
 private
-buildMorphEditor
+buildMorphView
 	^ (PluggableListMorph on: self list: #strings primarySelection: #selected changePrimarySelection: #selected: listSelection: #selectionAt: changeListSelection: #selectionAt:put: menu: nil)
 		hResizing: #spaceFill;
 		borderColor: #inset;
