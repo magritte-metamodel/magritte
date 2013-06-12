@@ -1,22 +1,19 @@
 versions
-version300: spec
-	<version: '3.0' imports: #('3.0-baseline' )>
+version310: spec
+	<version: '3.1' imports: #('3.0-baseline' )>
 
 	spec for: #'common' do: [
-		spec blessing: #'stable'.
+		spec blessing: #'development'.
 		
-		spec description: '3.0:
-- #description replaced by #magritteDescription (#description deprecated)
-- MAPragmaBuilder as default - model is now described using pragmas rather than #descriptionXXX naming convention.
-- models are described on the instance side and built dynamically - no need for #magritteDynamicObject
-- refactoring support (Magritte-Tools) transforms model descriptions into pragmas and moves descriptions from class to instance-side'.
-		spec author: 'NickAger'.
-		spec timestamp: '30 January 2012 12:55:56 pm'.
+		spec description: 'initial enhancement of Morphic implementation to bring on par with the Seaside one'.
+		spec author: 'SeanDeNigris'.
+		spec timestamp: '11 June 2013 8:13 am'.
+		
 		spec 
 			project: 'Grease' with: #'stable';
 			project: 'Seaside30' with: #'stable'.
 		spec 
-			package: 'Magritte-Model' with: 'Magritte-Model-NickAger.431';
+			package: 'Magritte-Model' with: 'Magritte-Model-SeanDeNigris.432';
 			package: 'Magritte-Tests-Model' with: 'Magritte-Tests-Model-NickAger.26';
 			package: 'Magritte-Seaside' with: 'Magritte-Seaside-NickAger.355';
 			package: 'Magritte-Deprecated' with: 'Magritte-Deprecated-NickAger.7' ].
@@ -26,7 +23,7 @@ version300: spec
 			package: 'Magritte-Pharo-Model' with: 'Magritte-Pharo-Model-NickAger.26';
 			package: 'Magritte-Tests-Pharo-Model' with: 'Magritte-Tests-Pharo-Model-lr.4';
 			package: 'Magritte-Pharo-Seaside' with: 'Magritte-Pharo-Seaside-lr.5';
-			package: 'Magritte-Morph' with: 'Magritte-Morph-NickAger.63';
+			package: 'Magritte-Morph' with: 'Magritte-Morph-SeanDeNigris.68';
 			package: 'Magritte-Pharo-Tools' with: 'Magritte-Pharo-Tools-NickAger.3' ].
 	
 	spec for: #'gemstone' do: [
