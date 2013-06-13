@@ -6,5 +6,5 @@ buildMorphView
 		getSelected: #selected
 		setSelected: #selected:
 		getEnabled: #enabled
-		label: self magritteDescription label 
+		label: ''
 		help: self magritteDescription comment
