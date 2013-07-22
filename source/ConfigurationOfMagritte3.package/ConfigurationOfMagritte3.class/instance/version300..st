@@ -9,7 +9,8 @@ version300: spec
 - #description replaced by #magritteDescription (#description deprecated)
 - MAPragmaBuilder as default - model is now described using pragmas rather than #descriptionXXX naming convention.
 - models are described on the instance side and built dynamically - no need for #magritteDynamicObject
-- refactoring support (Magritte-Tools) transforms model descriptions into pragmas and moves descriptions from class to instance-side'.
+- refactoring support (Magritte-Tools) transforms model descriptions into pragmas and moves descriptions from class to instance-side.
+Updated configuration to use Seaside3'.
 		spec author: 'NickAger'.
 		spec timestamp: '30 January 2012 12:55:56 pm'.
 		spec 

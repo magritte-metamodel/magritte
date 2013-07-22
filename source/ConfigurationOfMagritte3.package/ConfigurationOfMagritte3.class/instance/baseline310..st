@@ -1,6 +1,6 @@
 baselines
-baseline300: spec
-	<version: '3.0-baseline'>
+baseline310: spec
+	<version: '3.1-baseline'>
 	spec
 		for: #common
 		do: [ 
@@ -8,7 +8,7 @@ baseline300: spec
 			spec author: 'DiegoLont'.
 			spec timestamp: '2013-07-22'.
 			spec repository: 'http://www.smalltalkhub.com/mc/Magritte/Magritte3/main'.
-			self baseline300CommonExtDeps: spec.
+			self baseline310CommonExtDeps: spec.
 			spec
 				package: 'Magritte-Model' with: [ spec requires: #('Grease') ];
 				package: 'Magritte-Tests-Model' with: [ spec requires: #('Magritte-Model') ];

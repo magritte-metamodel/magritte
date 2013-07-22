@@ -1,17 +1,18 @@
 versions
 version310: spec
-	<version: '3.1' imports: #('3.0-baseline' )>
+	<version: '3.1' imports: #('3.1-baseline' )>
 
 	spec for: #'common' do: [
 		spec blessing: #'development'.
 		
-		spec description: 'initial enhancement of Morphic implementation to bring on par with the Seaside one'.
-		spec author: 'SeanDeNigris'.
-		spec timestamp: '11 June 2013 8:13 am'.
+		spec description: 'initial enhancement of Morphic implementation to bring on par with the Seaside one.
+			Updated configuration to use Seaside3'.
+		spec author: 'DiegoLont'.
+		spec timestamp: '22 July 2013 8:13 am'.
 		
-		spec 
-			project: 'Grease' with: #'stable';
-			project: 'Seaside30' with: #'stable'.
+		spec
+			project: 'Grease' with: '1.1.1';
+			project: 'Seaside3' with: '3.1.0'.
 		spec 
 			package: 'Magritte-Model' with: 'Magritte-Model-SeanDeNigris.432';
 			package: 'Magritte-Tests-Model' with: 'Magritte-Tests-Model-NickAger.26';
