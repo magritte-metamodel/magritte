@@ -10,7 +10,8 @@ baseline310CommonExtDeps: spec
 						loads: #('Core' );
 						repository: 'http://smalltalkhub.com/mc/Seaside/MetacelloConfigurations' ];
 		project: 'Seaside3'
-			with: [ 
+			with: [
+				"note: we do not want to depend on Zinc, since this is not present in Squeak. Currently no adapter is loaded" 
 					spec
 						className: 'ConfigurationOfSeaside3';
 						versionString: '3.1.0';

@@ -1,6 +1,19 @@
 baselines
 baseline300ForPharo: spec
 	spec
+		for: #'pharo1.x'
+		do: [ 
+			spec
+				project: 'FileSystem' with: [ 
+					spec
+						className: 'ConfigurationOfFilesystem';
+						versionString: #'stable';
+						loads: #( 'default' );
+						repository: 'http://www.squeaksource.com/MetacelloRepository' ].
+			spec
+				package: 'Magritte-Model' with: [ spec requires: #( 'FileSystem' ) ] ].
+
+	spec
 		for: #pharo
 		do: [ 
 			spec
