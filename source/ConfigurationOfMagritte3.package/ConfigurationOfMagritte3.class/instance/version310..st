@@ -14,14 +14,14 @@ version310: spec
 			project: 'Grease' with: '1.1.1';
 			project: 'Seaside3' with: '3.1.0'.
 		spec 
-			package: 'Magritte-Model' with: 'Magritte-Model-SeanDeNigris.432';
-			package: 'Magritte-Tests-Model' with: 'Magritte-Tests-Model-NickAger.26';
+			package: 'Magritte-Model' with: 'Magritte-Model-SeanDeNigris.433';
+			package: 'Magritte-Tests-Model' with: 'Magritte-Tests-Model-DamienCassou.28';
 			package: 'Magritte-Seaside' with: 'Magritte-Seaside-NickAger.355';
 			package: 'Magritte-Deprecated' with: 'Magritte-Deprecated-NickAger.7' ].
 
 	spec for: #'pharo' do: [
 		spec 
-			package: 'Magritte-Pharo-Model' with: 'Magritte-Pharo-Model-NickAger.26';
+			package: 'Magritte-Pharo-Model' with: 'Magritte-Pharo-Model-DiegoLont.27';
 			package: 'Magritte-Tests-Pharo-Model' with: 'Magritte-Tests-Pharo-Model-lr.4';
 			package: 'Magritte-Pharo-Seaside' with: 'Magritte-Pharo-Seaside-lr.5';
 			package: 'Magritte-Morph' with: 'Magritte-Morph-SeanDeNigris.68';
