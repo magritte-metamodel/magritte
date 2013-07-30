@@ -8,7 +8,7 @@ baseline310CommonExtDeps: spec
 						className: 'ConfigurationOfGrease';
 						versionString: '1.1.1';
 						loads: #('Core' );
-						repository: 'http://smalltalkhub.com/mc/Seaside/MetacelloConfigurations' ];
+						repository: 'http://smalltalkhub.com/mc/Seaside/MetacelloConfigurations/main' ];
 		project: 'Seaside3'
 			with: [
 				"note: we do not want to depend on Zinc, since this is not present in Squeak. Currently no adapter is loaded" 
