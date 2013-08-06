@@ -24,7 +24,7 @@ Updated configuration to use Seaside3'.
 
 	spec for: #'pharo' do: [
 		spec 
-			package: 'Magritte-Pharo-Model' with: 'Magritte-Pharo-Model-NickAger.26';
+			package: 'Magritte-Pharo-Model' with: 'Magritte-Pharo-Model-DiegoLont.27';
 			package: 'Magritte-Tests-Pharo-Model' with: 'Magritte-Tests-Pharo-Model-lr.4';
 			package: 'Magritte-Pharo-Seaside' with: 'Magritte-Pharo-Seaside-lr.5';
 			package: 'Magritte-Morph' with: 'Magritte-Morph-NickAger.63';
