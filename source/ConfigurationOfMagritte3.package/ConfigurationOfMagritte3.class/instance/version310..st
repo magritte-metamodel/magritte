@@ -15,7 +15,7 @@ version310: spec
 			project: 'Seaside3' with: '3.1.0'.
 		spec 
 			package: 'Magritte-Model' with: 'Magritte-Model-SeanDeNigris.433';
-			package: 'Magritte-Tests-Model' with: 'Magritte-Tests-Model-DamienCassou.28';
+			package: 'Magritte-Tests-Model' with: 'Magritte-Tests-Model-DamienCassou.29';
 			package: 'Magritte-Seaside' with: 'Magritte-Seaside-NickAger.355';
 			package: 'Magritte-Deprecated' with: 'Magritte-Deprecated-NickAger.7' ].
 
