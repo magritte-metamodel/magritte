@@ -4,6 +4,6 @@ testTimePrintOn
 	stream := String new writeStream.
 	Time now print24: true showSeconds: true on: stream.
 	
-	self assert: (stream contents size) = 8.
+	self assert: (stream contents size) = 12.
 	self assert: (stream contents at: 3) = $:.
 	self assert: (stream contents at: 6) = $:
