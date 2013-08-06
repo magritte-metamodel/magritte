@@ -31,7 +31,8 @@ Updated configuration to use Seaside3'.
 			package: 'Magritte-Pharo-Tools' with: 'Magritte-Pharo-Tools-NickAger.3' ].
 	
 	spec for: #'pharo3.x' do: [ 
-		spec package: 'Magritte-Tests-Model' with: 'Magritte-Tests-Model-DamienCassou.30'].
+		spec
+			package: 'Magritte-Tests-Model' with: 'Magritte-Tests-Model-DamienCassou.31'].
 	
 	spec for: #'gemstone' do: [
 		spec project: 'GsCore' with: '0.242'.

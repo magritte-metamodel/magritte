@@ -27,6 +27,10 @@ version310: spec
 			package: 'Magritte-Morph' with: 'Magritte-Morph-SeanDeNigris.68';
 			package: 'Magritte-Pharo-Tools' with: 'Magritte-Pharo-Tools-NickAger.3' ].
 	
+	spec for: #'pharo3.x' do: [ 
+		spec
+			package: 'Magritte-Tests-Model' with: 'Magritte-Tests-Model-DamienCassou.31'].
+	
 	spec for: #'gemstone' do: [
 		spec project: 'GsCore' with: '0.242'.
 		spec 
