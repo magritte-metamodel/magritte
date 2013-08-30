@@ -6,7 +6,7 @@ baseline310CommonExtDeps: spec
 			with: [ 
 					spec
 						className: 'ConfigurationOfGrease';
-						versionString: '1.1.1';
+						versionString: '1.1.2';
 						loads: #('Core' );
 						repository: 'http://smalltalkhub.com/mc/Seaside/MetacelloConfigurations/main' ];
 		project: 'Seaside3'
