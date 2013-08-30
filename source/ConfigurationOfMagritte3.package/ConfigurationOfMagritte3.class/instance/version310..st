@@ -11,7 +11,7 @@ version310: spec
 		spec timestamp: '22 July 2013 8:13 am'.
 		
 		spec
-			project: 'Grease' with: '1.1.1';
+			project: 'Grease' with: '1.1.2';
 			project: 'Seaside3' with: '3.1.0'.
 		spec 
 			package: 'Magritte-Model' with: 'Magritte-Model-SeanDeNigris.433';
