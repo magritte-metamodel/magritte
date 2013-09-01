@@ -1,3 +1,3 @@
 *magritte-morph-converting
-asMorph
+asMagritteMorph
 	^ self magritteDescription asMorphOn: self
