@@ -24,7 +24,7 @@ version310: spec
 			package: 'Magritte-Pharo-Model' with: 'Magritte-Pharo-Model-DiegoLont.27';
 			package: 'Magritte-Tests-Pharo-Model' with: 'Magritte-Tests-Pharo-Model-lr.4';
 			package: 'Magritte-Pharo-Seaside' with: 'Magritte-Pharo-Seaside-lr.5';
-			package: 'Magritte-Morph' with: 'Magritte-Morph-SeanDeNigris.68';
+			package: 'Magritte-Morph' with: 'Magritte-Morph-TudorGirba.70';
 			package: 'Magritte-Pharo-Tools' with: 'Magritte-Pharo-Tools-NickAger.3' ].
 	
 	spec for: #(#'pharo2.x' #'pharo3.x') do: [ 
