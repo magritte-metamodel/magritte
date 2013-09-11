@@ -14,7 +14,7 @@ baseline300ForPharo: spec
 				package: 'Magritte-Model' with: [ spec requires: #( 'FileSystem' ) ] ].
 
 	spec
-		for: #pharo
+		for: #squeakCommon
 		do: [ 
 			spec
 				package: 'Magritte-Model' with: [ spec includes: #('Magritte-Pharo-Model') ];

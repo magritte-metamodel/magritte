@@ -19,13 +19,18 @@ version310: spec
 			package: 'Magritte-Seaside' with: 'Magritte-Seaside-NickAger.355';
 			package: 'Magritte-Deprecated' with: 'Magritte-Deprecated-NickAger.7' ].
 
-	spec for: #'pharo' do: [
+	spec for: #'squeakCommon' do: [
 		spec 
-			package: 'Magritte-Pharo-Model' with: 'Magritte-Pharo-Model-DiegoLont.27';
 			package: 'Magritte-Tests-Pharo-Model' with: 'Magritte-Tests-Pharo-Model-lr.4';
 			package: 'Magritte-Pharo-Seaside' with: 'Magritte-Pharo-Seaside-lr.5';
 			package: 'Magritte-Morph' with: 'Magritte-Morph-TudorGirba.70';
 			package: 'Magritte-Pharo-Tools' with: 'Magritte-Pharo-Tools-NickAger.3' ].
+	spec for: #'squeak' do: [
+		spec
+			package: 'Magritte-Pharo-Model' with: 'Magritte-Pharo-Model-NickAger.26' ].
+	spec for: #'pharo' do: [
+		spec
+			package: 'Magritte-Pharo-Model' with: 'Magritte-Pharo-Model-DiegoLont.27' ].
 	
 	spec for: #(#'pharo2.x' #'pharo3.x') do: [ 
 		spec
