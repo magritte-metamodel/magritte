@@ -14,8 +14,8 @@ Updated configuration to use Seaside3'.
 		spec author: 'NickAger'.
 		spec timestamp: '30 January 2012 12:55:56 pm'.
 		spec 
-			project: 'Grease' with: #'stable';
-			project: 'Seaside30' with: #'stable'.
+			project: 'Grease' with: '1.0.8';
+			project: 'Seaside3' with: '3.0.8'.
 		spec 
 			package: 'Magritte-Model' with: 'Magritte-Model-NickAger.431';
 			package: 'Magritte-Tests-Model' with: 'Magritte-Tests-Model-DamienCassou.32';
