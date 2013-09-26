@@ -25,4 +25,6 @@ baseline300ForPharo: spec
 				package: 'Magritte-Pharo-Seaside' with: [ spec requires: #('Magritte-Seaside') ];
 				package: 'Magritte-Morph' with: [ spec requires: #('Magritte-Model') ];
 				package: 'Magritte-Pharo-Tools' with: [ spec requires: #('Magritte-Deprecated') ].
-			spec group: 'Tools' with: #('Magritte-Pharo-Tools') ]
+			spec
+				group: 'Tools' with: #('Magritte-Pharo-Tools');
+				group: 'Morphic' with: #(Magritte-Morph) ]
