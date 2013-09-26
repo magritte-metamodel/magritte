@@ -27,4 +27,4 @@ baseline300ForPharo: spec
 				package: 'Magritte-Pharo-Tools' with: [ spec requires: #('Magritte-Deprecated') ].
 			spec
 				group: 'Tools' with: #('Magritte-Pharo-Tools');
-				group: 'Morphic' with: #(Magritte-Morph) ]
+				group: 'Morphic' with: #('Magritte-Morph') ]
