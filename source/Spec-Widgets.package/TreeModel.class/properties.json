@@ -1,0 +1,17 @@
+{
+	"commentStamp" : "<historical>",
+	"super" : "AbstractBasicWidget",
+	"category" : "Spec-Widgets",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"childrenBlockHolder",
+		"rootsHolder",
+		"selectionHolder",
+		"menuBlockHolder",
+		"wrapBlockHolder"
+	],
+	"name" : "TreeModel",
+	"type" : "normal"
+}
