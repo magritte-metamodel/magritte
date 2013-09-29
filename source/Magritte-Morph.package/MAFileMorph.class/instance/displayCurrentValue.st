@@ -1,4 +1,6 @@
 private
 displayCurrentValue
 
-	self currentValueMorph contents: self value fullName.
+	| displayString |
+	displayString := description displayStringFor: self value.
+	self currentValueMorph contents: displayString.
