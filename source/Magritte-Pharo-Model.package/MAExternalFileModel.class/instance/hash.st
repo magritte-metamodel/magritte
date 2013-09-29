@@ -1,3 +1,3 @@
 comparing
 hash
-	^ super hash bitXor: self location hash
+	^ super hash bitXor: self directory hash
