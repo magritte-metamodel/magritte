@@ -1,3 +1,3 @@
 answering
 onAnswer: aBlock
-	answer := aBlock
+	answerBlock := aBlock

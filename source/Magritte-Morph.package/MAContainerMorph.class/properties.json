@@ -7,7 +7,7 @@
 	"classvars" : [ ],
 	"instvars" : [
 		"children",
-		"answer"
+		"answerBlock"
 	],
 	"name" : "MAContainerMorph",
 	"type" : "normal"
