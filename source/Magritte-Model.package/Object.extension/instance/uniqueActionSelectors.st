@@ -1,5 +1,5 @@
 *magritte-model-actions
-uniqueDescriptionSelectors
+uniqueActionSelectors
 
 	| descriptionPragmas selectors |	
 	descriptionPragmas := Pragma 

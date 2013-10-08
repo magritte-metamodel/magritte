@@ -1,13 +1,15 @@
 {
-	"commentStamp" : "<historical>",
-	"super" : "MADescription",
+	"commentStamp" : "",
+	"super" : "Object",
 	"category" : "Magritte-Model-Description",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"displayBlock"
+		"selector",
+		"enableBlock",
+		"model"
 	],
-	"name" : "MAElementDescription",
+	"name" : "MAActionDescription",
 	"type" : "normal"
 }
