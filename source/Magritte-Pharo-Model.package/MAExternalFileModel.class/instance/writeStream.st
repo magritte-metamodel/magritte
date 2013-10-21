@@ -1,3 +1,3 @@
 accessing-dynamic
 writeStream
-	^ self file writeStream binary
+	^(FileStream forceNewFileNamed: self file fullName) binary
