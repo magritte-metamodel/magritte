@@ -1,6 +1,6 @@
 {
 	"commentStamp" : "",
-	"super" : "RectangleMorph",
+	"super" : "BorderedMorph",
 	"category" : "Magritte-Morph-Report",
 	"classinstvars" : [ ],
 	"pools" : [ ],
