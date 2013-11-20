@@ -16,7 +16,7 @@ version310: spec
 		spec 
 			package: 'Magritte-Model' with: 'Magritte-Model-SeanDeNigris.433';
 			package: 'Magritte-Tests-Model' with: 'Magritte-Tests-Model-DamienCassou.29';
-			package: 'Magritte-Seaside' with: 'Magritte-Seaside-NickAger.355';
+			package: 'Magritte-Seaside' with: 'Magritte-Seaside-DiegoLont.356';
 			package: 'Magritte-Deprecated' with: 'Magritte-Deprecated-NickAger.7' ].
 
 	spec for: #'squeakCommon' do: [
