@@ -5,7 +5,7 @@ renderFilterContentOn: html
 	html form style: 'margin: 0; border: 0; padding: 0;'; with: [
 		html select
 			beOptional;
-			beSubmitOnChange;
+			onChange: 'submit()';	" this is an deprecated way of doing this ... "
 			optionalLabel: '(all)';
 			labels: self formatter;
 			list: self uniqueValues;

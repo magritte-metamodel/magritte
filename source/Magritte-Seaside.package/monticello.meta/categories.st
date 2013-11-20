@@ -1,3 +1,4 @@
+SystemOrganization addCategory: #'Magritte-Seaside'!
 SystemOrganization addCategory: #'Magritte-Seaside-Components'!
 SystemOrganization addCategory: #'Magritte-Seaside-Core'!
 SystemOrganization addCategory: #'Magritte-Seaside-Decorations'!
