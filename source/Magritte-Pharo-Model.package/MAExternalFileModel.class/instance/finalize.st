@@ -1,10 +1,10 @@
 initialization
 finalize
-	| directory |
-	directory := self directory.
-	directory exists
-		ifTrue: [ directory deleteAll ].
-	[ (directory := directory parent) hasChildren ]
-		whileFalse: [ directory ensureDelete ].
+	|  dir |
+	dir := self directory.
+	dir exists
+		ifTrue: [ dir deleteAll ].
+	[ (dir := dir parent) hasChildren ]
+		whileFalse: [ dir ensureDeleted ].
 	super finalize.
 	location := nil
