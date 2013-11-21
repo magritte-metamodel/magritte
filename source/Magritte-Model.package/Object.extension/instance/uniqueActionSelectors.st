@@ -3,7 +3,7 @@ uniqueActionSelectors
 
 	| descriptionPragmas selectors |	
 	descriptionPragmas := Pragma 
-		allNamed: #magritteAction
+		allNamed: #magritteActionDescription
 		from: self class to: Object.
 		
 	selectors := descriptionPragmas collect: [ :each | each method selector ].

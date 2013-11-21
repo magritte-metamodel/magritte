@@ -9,7 +9,9 @@
 		"selector",
 		"enableBlock",
 		"model",
-		"comment"
+		"comment",
+		"priority",
+		"label"
 	],
 	"name" : "MAActionDescription",
 	"type" : "normal"
