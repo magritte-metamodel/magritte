@@ -1,4 +1,3 @@
 visiting-description
 visitDateAndTimeDescription: aDescription
-
-	self printObjectDescribedBy: aDescription.
+	self stream print: self object

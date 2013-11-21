@@ -1,4 +1,10 @@
 visiting-description
 visitTimeDescription: aDescription 
-	
-	self printObjectDescribedBy: aDescription.
+	| time |
+	time := self object.
+	self stream
+		nextPutAll: time hour greaseString;
+		nextPut: $:;
+		nextPutAll: time minute greaseString;
+		nextPut: $:;
+		nextPutAll: time second greaseString
