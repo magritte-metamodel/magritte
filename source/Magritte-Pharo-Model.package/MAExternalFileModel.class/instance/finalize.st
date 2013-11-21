@@ -5,6 +5,6 @@ finalize
 	directory exists
 		ifTrue: [ directory deleteAll ].
 	[ (directory := directory parent) hasChildren ]
-		whileFalse: [ directory ensureDeleted ].
+		whileFalse: [ directory ensureDelete ].
 	super finalize.
 	location := nil
