@@ -1,0 +1,16 @@
+{
+	"commentStamp" : "",
+	"super" : "Object",
+	"category" : "Magritte-Model-Description",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"selector",
+		"enableBlock",
+		"model",
+		"comment"
+	],
+	"name" : "MAActionDescription",
+	"type" : "normal"
+}

@@ -1,4 +1,4 @@
 visiting-description
-visitDateAndTimeDescription: aDescription
+visitStringDescription: aDescription
 
 	self printObjectDescribedBy: aDescription.
