@@ -3,7 +3,7 @@ descriptionReference
 	<magritteDescription>
 	^ MAToOneRelationDescription new
 		accessor: #reference;
-		classes: MADescription withAllConcreteClasses;
+		classes: MAElementDescription withAllConcreteClasses;
 		label: 'Description';
 		priority: 400;
 		beRequired;

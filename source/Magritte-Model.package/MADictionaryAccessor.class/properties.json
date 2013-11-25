@@ -1,5 +1,5 @@
 {
-	"commentStamp" : "<historical>",
+	"commentStamp" : "lr 4/10/2007 21:07",
 	"super" : "MAAccessor",
 	"category" : "Magritte-Model-Accessor",
 	"classinstvars" : [ ],
