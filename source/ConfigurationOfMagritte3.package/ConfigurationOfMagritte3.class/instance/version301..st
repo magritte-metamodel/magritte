@@ -17,7 +17,7 @@ Updated configuration to use Seaside3'.
 			project: 'Grease' with: '1.0.8';
 			project: 'Seaside3' with: '3.0.9'.
 		spec 
-			package: 'Magritte-Model' with: 'Magritte-Model-NickAger.431';
+			package: 'Magritte-Model' with: 'Magritte-Model-DamienCassou.432';
 			package: 'Magritte-Tests-Model' with: 'Magritte-Tests-Model-DamienCassou.32';
 			package: 'Magritte-Seaside' with: 'Magritte-Seaside-NickAger.355';
 			package: 'Magritte-Deprecated' with: 'Magritte-Deprecated-NickAger.7' ].
