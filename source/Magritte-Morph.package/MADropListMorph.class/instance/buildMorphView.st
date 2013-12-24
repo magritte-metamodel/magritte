@@ -5,7 +5,10 @@ buildMorphView
 	list := DropListModel new.
 	list
 		items: self options;
-		displayBlock: [ :e | description displayStringFor: e ];
+		displayBlock: [ :e | 
+			e
+				ifNil: [ '' ]
+				ifNotNil: [ description displayStringFor: e ] ];
 		setSelectedItem: self value;
 		whenSelectedItemChanged: [ :e | self value: e ].
 	
