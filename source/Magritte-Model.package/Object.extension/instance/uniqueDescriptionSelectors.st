@@ -1,9 +1,9 @@
 *magritte-model-actions
-uniqueActionSelectors
+uniqueDescriptionSelectors
 
 	| descriptionPragmas selectors |	
 	descriptionPragmas := Pragma 
-		allNamed: #magritteActionDescription
+		allNamed: #magritteAction
 		from: self class to: Object.
 		
 	selectors := descriptionPragmas collect: [ :each | each method selector ].
