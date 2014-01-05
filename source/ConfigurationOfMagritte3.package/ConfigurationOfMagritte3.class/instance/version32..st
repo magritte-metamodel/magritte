@@ -1,6 +1,6 @@
 versions
-version311: spec
-	<version: '3.1.1' imports: #('3.1-baseline')>
+version32: spec
+	<version: '3.2' imports: #('3.2-baseline')>
 
 	spec for: #'common' do: [
 		spec blessing: #'development'.
@@ -8,10 +8,10 @@ version311: spec
 		spec timestamp: '5 January 2014 11:38:05 am'.
 		
 		spec
-			project: 'Grease' with: '1.1.3';
+			project: 'Grease' with: '1.1.5';
 			project: 'Seaside3' with: '3.1.0'.
 		spec 
-			package: 'Magritte-Model' with: 'Magritte-Model-DamienCassou.434';
+			package: 'Magritte-Model' with: 'Magritte-Model-SeanDeNigris.443';
 			package: 'Magritte-Tests-Model' with: 'Magritte-Tests-Model-DamienCassou.29';
 			package: 'Magritte-Seaside' with: 'Magritte-Seaside-DiegoLont.356';
 			package: 'Magritte-Deprecated' with: 'Magritte-Deprecated-NickAger.7' ].
@@ -20,7 +20,7 @@ version311: spec
 		spec 
 			package: 'Magritte-Tests-Pharo-Model' with: 'Magritte-Tests-Pharo-Model-lr.4';
 			package: 'Magritte-Pharo-Seaside' with: 'Magritte-Pharo-Seaside-lr.5';
-			package: 'Magritte-Morph' with: 'Magritte-Morph-EstebanLorenzano.71';
+			package: 'Magritte-Morph' with: 'Magritte-Morph-SeanDeNigris.84';
 			package: 'Magritte-Pharo-Tools' with: 'Magritte-Pharo-Tools-NickAger.3' ].
 	spec for: #'squeak' do: [
 		spec
@@ -34,7 +34,7 @@ version311: spec
 			package: 'Magritte-Tests-Model' with: 'Magritte-Tests-Model-DamienCassou.33' ].
 	spec for: #(#'pharo3.x') do: [ 
 		spec
-			package: 'Magritte-Pharo-Model' with: 'Magritte-Pharo-Model-DamienCassou.28';
+			package: 'Magritte-Pharo-Model' with: 'Magritte-Pharo-Model-DamienCassou.35';
 			package: 'Magritte-Tests-Model' with: 'Magritte-Tests-Model-DamienCassou.33'].
 	
 	spec for: #'gemstone' do: [
