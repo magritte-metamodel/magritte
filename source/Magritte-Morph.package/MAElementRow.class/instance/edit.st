@@ -1,7 +1,7 @@
 callbacks
 edit
 
-	object asMagritteMorph
+	object asMorph
 		onAnswer: [ :result | self summary: result printString ];
 		addButtons;
 		addWindow;

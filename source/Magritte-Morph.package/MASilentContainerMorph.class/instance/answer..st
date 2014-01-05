@@ -1,4 +1,4 @@
 answering
 answer: anObject
-	answerBlock isNil
-		ifFalse: [ answerBlock value: anObject ].
+	answer isNil
+		ifFalse: [ answer value: anObject ].

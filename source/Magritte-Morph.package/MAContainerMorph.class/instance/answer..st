@@ -1,10 +1,5 @@
 answering
 answer: anObject
-
-	| didUserCancel |
-	self morph delete.
-	
-	didUserCancel := anObject isNil.
-	didUserCancel | answerBlock isNil ifTrue: [ ^ self ].
-
-	answerBlock value: anObject.
+	answer isNil
+		ifFalse: [ answer value: anObject ].
+	self morph delete

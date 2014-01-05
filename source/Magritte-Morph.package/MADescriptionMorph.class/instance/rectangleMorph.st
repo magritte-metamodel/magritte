@@ -1,6 +1,6 @@
 prototypes
 rectangleMorph
-	^ BorderedMorph new
+	^ RectangleMorph new
 		borderWidth: 0;
 		color: Color transparent;
 		layoutPolicy: TableLayout new;
