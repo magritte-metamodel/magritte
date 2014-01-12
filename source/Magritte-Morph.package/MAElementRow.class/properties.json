@@ -1,6 +1,6 @@
 {
 	"commentStamp" : "",
-	"super" : "Morph",
+	"super" : "BorderedMorph",
 	"category" : "Magritte-Morph-Report",
 	"classinstvars" : [ ],
 	"pools" : [ ],

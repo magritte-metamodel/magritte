@@ -12,5 +12,5 @@ initialize
 		cellInset: self cellInset;
 		layoutInset: 0@2.
 	self
-		addMorphBack: object printString asMorph;
+		addMorphBack: (container magritteDescription displayStringFor: object) asMorph;
 		addMorphBack: self buildCommands
