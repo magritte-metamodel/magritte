@@ -3,7 +3,8 @@
 	"super" : "Object",
 	"category" : "Magritte-Pharo-Model",
 	"classinstvars" : [
-		"baseDirectory"
+		"baseDirectory",
+		"baseUrl"
 	],
 	"pools" : [ ],
 	"classvars" : [ ],
