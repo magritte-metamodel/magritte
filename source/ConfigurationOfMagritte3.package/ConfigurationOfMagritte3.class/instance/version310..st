@@ -14,7 +14,7 @@ version310: spec
 			project: 'Grease' with: '1.1.3';
 			project: 'Seaside3' with: '3.1.0'.
 		spec 
-			package: 'Magritte-Model' with: 'Magritte-Model-DiegoLont.444';
+			package: 'Magritte-Model' with: 'Magritte-Model-DiegoLont.445';
 			package: 'Magritte-Tests-Model' with: 'Magritte-Tests-Model-DamienCassou.29';
 			package: 'Magritte-Seaside' with: 'Magritte-Seaside-DiegoLont.356';
 			package: 'Magritte-Deprecated' with: 'Magritte-Deprecated-NickAger.7' ].
