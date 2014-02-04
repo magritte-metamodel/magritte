@@ -1,3 +1,4 @@
 accessing
 baseDirectoryPath
-	^ self baseDirectory fullName
+	" deprecated: use MAFileDatabase baseDirectoryPath instead "
+	^MAFileDatabase baseDirectory fullName

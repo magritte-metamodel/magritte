@@ -1,6 +1,6 @@
 {
 	"commentStamp" : "<historical>",
-	"super" : "MAFileModel",
+	"super" : "Object",
 	"category" : "Magritte-Pharo-Model",
 	"classinstvars" : [
 		"baseDirectory",
@@ -8,10 +8,7 @@
 	],
 	"pools" : [ ],
 	"classvars" : [ ],
-	"instvars" : [
-		"location",
-		"directory"
-	],
-	"name" : "MAExternalFileModel",
+	"instvars" : [ ],
+	"name" : "MAFileDatabase",
 	"type" : "normal"
 }

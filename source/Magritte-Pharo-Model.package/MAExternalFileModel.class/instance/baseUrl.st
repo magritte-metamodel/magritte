@@ -1,3 +1,3 @@
 configuration
 baseUrl
-	^ self class baseUrl
+	^ self database baseUrl
