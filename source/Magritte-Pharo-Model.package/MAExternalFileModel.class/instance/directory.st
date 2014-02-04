@@ -1,4 +1,5 @@
 accessing-dynamic
 directory
-
-	^ directory ifNil: [ directory := self database uniqueLocation ].
+	^ self location
+		inject: self baseDirectory
+		into: [ :result :each | result / each ]
