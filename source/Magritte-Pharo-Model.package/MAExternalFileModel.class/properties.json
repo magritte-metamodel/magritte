@@ -2,10 +2,7 @@
 	"commentStamp" : "<historical>",
 	"super" : "MAFileModel",
 	"category" : "Magritte-Pharo-Model",
-	"classinstvars" : [
-		"baseDirectory",
-		"baseUrl"
-	],
+	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
