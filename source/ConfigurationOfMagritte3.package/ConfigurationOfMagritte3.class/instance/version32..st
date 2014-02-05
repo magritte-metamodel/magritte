@@ -22,20 +22,14 @@ version32: spec
 			package: 'Magritte-Pharo-Seaside' with: 'Magritte-Pharo-Seaside-lr.5';
 			package: 'Magritte-Morph' with: 'Magritte-Morph-SeanDeNigris.84';
 			package: 'Magritte-Pharo-Tools' with: 'Magritte-Pharo-Tools-NickAger.3' ].
+
 	spec for: #'squeak' do: [
 		spec
 			package: 'Magritte-Pharo-Model' with: 'Magritte-Pharo-Model-NickAger.26' ].
 	spec for: #'pharo' do: [
 		spec
-			package: 'Magritte-Pharo-Model' with: 'Magritte-Pharo-Model-DiegoLont.27' ].
-	spec for: #'pharo2.x' do: [
-		spec
-			package: 'Magritte-Pharo-Model' with: 'Magritte-Pharo-Model-DiegoLont.27';
-			package: 'Magritte-Tests-Model' with: 'Magritte-Tests-Model-DamienCassou.33' ].
-	spec for: #(#'pharo3.x') do: [ 
-		spec
-			package: 'Magritte-Pharo-Model' with: 'Magritte-Pharo-Model-DamienCassou.35';
-			package: 'Magritte-Tests-Model' with: 'Magritte-Tests-Model-DamienCassou.33'].
+			package: 'Magritte-Pharo-Model' with: 'Magritte-Pharo-Model-DiegoLont.39';
+			package: 'Magritte-Tests-Model' with: 'Magritte-Tests-Model-SeanDeNigris.36' ].
 	
 	spec for: #'gemstone' do: [
 		spec project: 'GsCore' with: '0.242'.
