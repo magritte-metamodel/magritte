@@ -6,12 +6,13 @@ version310: spec
 		spec blessing: #'development'.
 		
 		spec description: 'initial enhancement of Morphic implementation to bring on par with the Seaside one.
-			Updated configuration to use Seaside3'.
+			Updated configuration to use Seaside3.
+			Updated configuration to use Grease 1.1.5'.
 		spec author: 'DiegoLont'.
 		spec timestamp: '22 July 2013 8:13 am'.
 		
 		spec
-			project: 'Grease' with: '1.1.3';
+			project: 'Grease' with: '1.1.5';
 			project: 'Seaside3' with: '3.1.0'.
 		spec 
 			package: 'Magritte-Model' with: 'Magritte-Model-DiegoLont.445';
