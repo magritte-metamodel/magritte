@@ -15,7 +15,7 @@ version310: spec
 			project: 'Grease' with: '1.1.5';
 			project: 'Seaside3' with: '3.1.0'.
 		spec 
-			package: 'Magritte-Model' with: 'Magritte-Model-DiegoLont.445';
+			package: 'Magritte-Model' with: 'Magritte-Model-DiegoLont.446';
 			package: 'Magritte-Tests-Model' with: 'Magritte-Tests-Model-DamienCassou.29';
 			package: 'Magritte-Seaside' with: 'Magritte-Seaside-DiegoLont.356';
 			package: 'Magritte-Deprecated' with: 'Magritte-Deprecated-NickAger.7' ].
@@ -32,7 +32,7 @@ version310: spec
 	spec for: #'pharo' do: [
 		spec
 			package: 'Magritte-Pharo-Model' with: 'Magritte-Pharo-Model-DiegoLont.39';
-			package: 'Magritte-Tests-Model' with: 'Magritte-Tests-Model-SeanDeNigris.36' ].
+			package: 'Magritte-Tests-Model' with: 'Magritte-Tests-Model-DiegoLont.37' ].
 	
 	spec for: #'gemstone' do: [
 		spec project: 'GsCore' with: '0.242'.
