@@ -12,7 +12,7 @@ version303: spec
 		spec timestamp: '16 January 2014'.
 		spec 
 			project: 'Grease' with: '1.0.8';
-			project: 'Seaside3' with: '3.0.9'.
+			project: 'Seaside3' with: '3.0.10'.
 		spec 
 			package: 'Magritte-Model' with: 'Magritte-Model-DiegoLont.446';
 			package: 'Magritte-Tests-Model' with: 'Magritte-Tests-Model-DamienCassou.32';
