@@ -25,7 +25,9 @@ baseline300ForPharo: spec
 			spec
 				package: 'Magritte-Pharo3-Model' with: [ spec requires: #('Magritte-Model') ];
 				package: 'Magritte-Tests-Pharo-Model' with: [ spec requires: #('Magritte-Pharo3-Model') ];
-				package: 'Magritte-Model' with: [ spec includes: #('Magritte-Pharo3-Model') ]].
+				package: 'Magritte-Model' with: [ spec includes: #('Magritte-Pharo3-Model') ];
+				" create a temporary alias "
+				group: 'Magritte-Pharo-Model' with: 'Magritte-Pharo3-Model' ].
 	spec
 		for: #squeakCommon
 		do: [ 
