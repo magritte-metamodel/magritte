@@ -12,16 +12,26 @@ baseline300ForPharo: spec
 						repository: 'http://www.squeaksource.com/MetacelloRepository' ].
 			spec
 				package: 'Magritte-Model' with: [ spec requires: #( 'FileSystem' ) ] ].
-
+	spec
+		for: #(#'pharo1.x' #'pharo2.x' #'squeak')
+		do: [ 
+			spec
+				package: 'Magritte-Model' with: [ spec includes: #('Magritte-Pharo-Model') ];
+				package: 'Magritte-Tests-Pharo-Model' with: [ spec requires: #('Magritte-Pharo-Model') ];
+				package: 'Magritte-Pharo-Model' with: [ spec requires: #('Magritte-Model') ]].
+	spec
+		for: #'pharo3.x'
+		do: [ 
+			spec
+				package: 'Magritte-Pharo3-Model' with: [ spec requires: #('Magritte-Model') ];
+				package: 'Magritte-Tests-Pharo-Model' with: [ spec requires: #('Magritte-Pharo3-Model') ];
+				package: 'Magritte-Model' with: [ spec includes: #('Magritte-Pharo3-Model') ]].
 	spec
 		for: #squeakCommon
 		do: [ 
 			spec
-				package: 'Magritte-Model' with: [ spec includes: #('Magritte-Pharo-Model') ];
 				package: 'Magritte-Tests-Model' with: [ spec includes: #('Magritte-Tests-Pharo-Model') ];
-				package: 'Magritte-Seaside' with: [ spec includes: #('Magritte-Pharo-Seaside') ];
-				package: 'Magritte-Pharo-Model' with: [ spec requires: #('Magritte-Model') ];
-				package: 'Magritte-Tests-Pharo-Model' with: [ spec requires: #('Magritte-Pharo-Model') ];
+				package: 'Magritte-Seaside' with: [ spec includes: #('Magritte-Pharo-Seaside') ];				
 				package: 'Magritte-Pharo-Seaside' with: [ spec requires: #('Magritte-Seaside') ];
 				package: 'Magritte-Morph' with: [ spec requires: #('Magritte-Model') ];
 				package: 'Magritte-Pharo-Tools' with: [ spec requires: #('Magritte-Deprecated') ].
