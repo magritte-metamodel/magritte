@@ -4,12 +4,12 @@ version32: spec
 
 	spec for: #'common' do: [
 		spec blessing: #'development'.
-		spec author: 'EstebanLorenzano'.
-		spec timestamp: '5 January 2014 11:38:05 am'.
+		spec author: 'Stephan Eggermont'.
+		spec timestamp: '24 March 2014 15:43:05 pm'.
 		
 		spec
-			project: 'Grease' with: '1.1.5';
-			project: 'Seaside3' with: '3.1.0'.
+			project: 'Grease' with: '1.1.6';
+			project: 'Seaside3' with: '3.1.1'.
 		spec 
 			package: 'Magritte-Model' with: 'Magritte-Model-DiegoLont.448';
 			package: 'Magritte-Tests-Model' with: 'Magritte-Tests-Model-DamienCassou.29';
