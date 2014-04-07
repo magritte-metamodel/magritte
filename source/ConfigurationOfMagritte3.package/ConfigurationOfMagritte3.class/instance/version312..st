@@ -1,18 +1,17 @@
 versions
-version311: spec
-	<version: '3.1.1' imports: #('3.1-baseline' )>
+version312: spec
+	<version: '3.1.2' imports: #('3.1-baseline' )>
 
 	spec for: #'common' do: [
 		spec blessing: #'release'.
 		
-		spec description: 'switched grease to #stable. Although it is not a good idea we need to find a solution so that only
-		one version of a package is loaded'.
-		spec author: 'NorbertHartl'.
-		spec timestamp: '21 March 2014'.
+		spec description: 'switched to release based management'.
+		spec author: 'StephanEggermont'.
+		spec timestamp: '7 April 2014'.
 		
 		spec
-			project: 'Grease' with: #'stable';
-			project: 'Seaside3' with: '3.1.0'.
+			project: 'Grease' with: #'release1.1';
+			project: 'Seaside3' with: #'release3.1'.
 		spec 
 			package: 'Magritte-Model' with: 'Magritte-Model-DiegoLont.448';
 			package: 'Magritte-Tests-Model' with: 'Magritte-Tests-Model-DamienCassou.29';
