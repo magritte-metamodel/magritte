@@ -11,7 +11,7 @@ version304: spec
 		spec timestamp: '16 January 2014'.
 		spec 
 			project: 'Grease' with: #'release1.0';
-			project: 'Seaside3' with: 'release3.0'.
+			project: 'Seaside3' with: #'release3.0'.
 		spec 
 			package: 'Magritte-Model' with: 'Magritte-Model-DiegoLont.449';
 			package: 'Magritte-Tests-Model' with: 'Magritte-Tests-Model-DiegoLont.38';
