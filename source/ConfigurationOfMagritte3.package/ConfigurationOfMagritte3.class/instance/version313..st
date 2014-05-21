@@ -27,6 +27,9 @@ version313: spec
 	spec for: #'squeak' do: [
 		spec
 			package: 'Magritte-Pharo-Model' with: 'Magritte-Pharo-Model-NickAger.26' ].
+	spec for: #'pharo' do: [
+		spec
+			package: 'Magritte-Tests-Model' with: 'Magritte-Tests-Model-DiegoLont.37' ].
 	spec for: #(#'pharo1.x' #'pharo2.x') do: [
 		spec
 			package: 'Magritte-Pharo-Model' with: 'Magritte-Pharo-Model-DiegoLont.39'].
