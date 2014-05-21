@@ -14,7 +14,7 @@ version313: spec
 			project: 'Seaside3' with: #'release3.1'.
 		spec 
 			package: 'Magritte-Model' with: 'Magritte-Model-DiegoLont.449';
-			package: 'Magritte-Tests-Model' with: 'Magritte-Tests-Model-DiegoLont.39';
+			package: 'Magritte-Tests-Model' with: 'Magritte-Tests-Model-DiegoLont.38';
 			package: 'Magritte-Seaside' with: 'Magritte-Seaside-DiegoLont.356';
 			package: 'Magritte-Deprecated' with: 'Magritte-Deprecated-NickAger.7' ].
 
