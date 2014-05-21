@@ -6,7 +6,7 @@ baseline310CommonExtDeps: spec
 			with: [ 
 					spec
 						className: 'ConfigurationOfGrease';
-						versionString: '1.1.3';
+						versionString: #'stable';
 						loads: #('Core' );
 						repository: 'http://smalltalkhub.com/mc/Seaside/MetacelloConfigurations/main' ];
 		project: 'Seaside3'
@@ -14,6 +14,6 @@ baseline310CommonExtDeps: spec
 				"note: we do not want to depend on Zinc, since this is not present in Squeak. Currently no adapter is loaded" 
 					spec
 						className: 'ConfigurationOfSeaside3';
-						versionString: '3.1.0';
+						versionString: #'stable';
 						loads: #('Core' 'Javascript' 'RSS' 'Filesystem' 'Welcome' );
 						repository: 'http://smalltalkhub.com/mc/Seaside/MetacelloConfigurations/main' ]
