@@ -22,7 +22,7 @@ version314: spec
 		spec 
 			package: 'Magritte-Tests-Pharo-Model' with: 'Magritte-Tests-Pharo-Model-lr.4';
 			package: 'Magritte-Pharo-Seaside' with: 'Magritte-Pharo-Seaside-lr.5';
-			package: 'Magritte-Morph' with: 'Magritte-Morph-TudorGirba.70';
+			package: 'Magritte-Morph' with: 'Magritte-Morph-SeanDeNigris.84';
 			package: 'Magritte-Pharo-Tools' with: 'Magritte-Pharo-Tools-NickAger.3' ].
 	spec for: #'squeak' do: [
 		spec
