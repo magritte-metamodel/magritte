@@ -5,6 +5,6 @@ finalize
 	dir exists
 		ifTrue: [ dir deleteAll ].
 	[ (dir := dir parent) hasChildren ]
-		whileFalse: [ dir ensureDeleted ].
+		whileFalse: [ dir ensureDelete ].
 	super finalize.
 	location := nil
