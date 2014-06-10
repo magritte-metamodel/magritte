@@ -32,7 +32,7 @@ version313: spec
 			package: 'Magritte-Pharo-Model' with: 'Magritte-Pharo-Model-DiegoLont.39'].
 	spec for: #(#'pharo3.x' #'pharo4.x') do: [
 		spec
-			package: 'Magritte-Pharo3-Model' with: 'Magritte-Pharo3-Model-StephanEggermont.1'].	
+			package: 'Magritte-Pharo3-Model' with: 'Magritte-Pharo3-Model-DamienCassou.2'].	
 	spec for: #'gemstone' do: [
 		spec project: 'GsCore' with: '0.242'.
 		spec 
