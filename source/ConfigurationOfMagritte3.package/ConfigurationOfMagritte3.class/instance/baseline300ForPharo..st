@@ -20,7 +20,7 @@ baseline300ForPharo: spec
 				package: 'Magritte-Tests-Pharo-Model' with: [ spec requires: #('Magritte-Pharo-Model') ];
 				package: 'Magritte-Pharo-Model' with: [ spec requires: #('Magritte-Model') ]].
 	spec
-		for: #(#'pharo3.x' #'pharo4.x')
+		for: #'pharo3.x'
 		do: [ 
 			spec
 				package: 'Magritte-Pharo3-Model' with: [ spec requires: #('Magritte-Model') ];
