@@ -1,9 +1,9 @@
 versions
-version314: spec
-	<version: '3.1.4' imports: #('3.1-baseline' )>
+version315: spec
+	<version: '3.1.5' imports: #('3.1-baseline' )>
 
 	spec for: #'common' do: [
-		spec blessing: #'release'.
+		spec blessing: #'development'.
 		
 		spec description: 'New version opened for development'.
 		spec author: 'Diego Lont'.
