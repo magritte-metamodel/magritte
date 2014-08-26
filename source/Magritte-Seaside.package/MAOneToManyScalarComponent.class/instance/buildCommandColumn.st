@@ -1,10 +1,11 @@
 private
-buildCommands
-	commands := MAIndexedCommandColumn new
+buildCommandColumn
+	|retVal|
+	retVal := MAIndexedCommandColumn new
 				setReport: self report.
 
 	self magritteDescription isDefinitive
-		ifFalse: [ commands
+		ifFalse: [ retVal
 					addCommandOn: self selector: #edit:index: text: 'Edit';
 					addCommandOn: self selector: #remove:index: text: 'Remove'].
 	"not yet implemented
@@ -13,4 +14,4 @@ buildCommands
 					addCommandOn: self selector: #up:index:;
 					addCommandOn: self selector: #down:index: ]. "
 
-	^ commands
+	^ retVal
