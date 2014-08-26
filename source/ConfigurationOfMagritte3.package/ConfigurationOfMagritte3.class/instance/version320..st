@@ -1,11 +1,11 @@
 versions
-version315: spec
-	<version: '3.1.5' imports: #('3.1-baseline' )>
+version320: spec
+	<version: '3.2.0' imports: #('3.1-baseline' )>
 
 	spec for: #'common' do: [
 		spec blessing: #'development'.
 		
-		spec description: 'Updated for recent changes. Not yet published as stable'.
+		spec description: 'New version opened for development'.
 		spec author: 'Diego Lont'.
 		spec timestamp: '26 August 2014'.
 		
@@ -15,7 +15,7 @@ version315: spec
 		spec 
 			package: 'Magritte-Model' with: 'Magritte-Model-StephanEggermont.451';
 			package: 'Magritte-Tests-Model' with: 'Magritte-Tests-Model-DiegoLont.38';
-			package: 'Magritte-Seaside' with: 'Magritte-Seaside-DiegoLont.357';
+			package: 'Magritte-Seaside' with: 'Magritte-Seaside-StephanEggermont.358';
 			package: 'Magritte-Deprecated' with: 'Magritte-Deprecated-NickAger.7' ].
 
 	spec for: #'squeakCommon' do: [
