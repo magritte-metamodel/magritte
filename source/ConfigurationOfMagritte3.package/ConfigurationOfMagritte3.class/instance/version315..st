@@ -6,7 +6,7 @@ version315: spec
 		spec blessing: #'development'.
 		
 		spec description: 'Updated for recent changes. Not yet published as stable'.
-		spec author: 'Diego Lont'.
+		spec author: 'Esteban Maringolo'.
 		spec timestamp: '26 August 2014'.
 		
 		spec
@@ -15,7 +15,7 @@ version315: spec
 		spec 
 			package: 'Magritte-Model' with: 'Magritte-Model-StephanEggermont.451';
 			package: 'Magritte-Tests-Model' with: 'Magritte-Tests-Model-DiegoLont.38';
-			package: 'Magritte-Seaside' with: 'Magritte-Seaside-DiegoLont.357';
+			package: 'Magritte-Seaside' with: 'Magritte-Seaside-EstebanMaringolo.359';
 			package: 'Magritte-Deprecated' with: 'Magritte-Deprecated-NickAger.7' ].
 
 	spec for: #'squeakCommon' do: [
