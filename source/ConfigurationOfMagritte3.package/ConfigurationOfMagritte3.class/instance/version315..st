@@ -13,7 +13,7 @@ version315: spec
 			project: 'Grease' with: #'release1.1';
 			project: 'Seaside3' with: #'release3.1'.
 		spec 
-			package: 'Magritte-Model' with: 'Magritte-Model-StephanEggermont.451';
+			package: 'Magritte-Model' with: 'Magritte-Model-EstebanMaringolo.452';
 			package: 'Magritte-Tests-Model' with: 'Magritte-Tests-Model-DiegoLont.38';
 			package: 'Magritte-Seaside' with: 'Magritte-Seaside-EstebanMaringolo.359';
 			package: 'Magritte-Deprecated' with: 'Magritte-Deprecated-NickAger.7' ].
