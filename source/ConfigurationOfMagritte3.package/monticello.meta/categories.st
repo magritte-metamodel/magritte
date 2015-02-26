@@ -1,1 +1,1 @@
-SystemOrganization addCategory: #ConfigurationOfMagritte3!
+SystemOrganization addCategory: 'ConfigurationOfMagritte3'!
