@@ -6,6 +6,6 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [ ],
-	"name" : "MAStraitMementoTest",
+	"name" : "MAStraightMementoTest",
 	"type" : "normal"
 }
