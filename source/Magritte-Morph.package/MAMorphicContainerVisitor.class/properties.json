@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "MAMorphicVisitor",
+	"category" : "Magritte-Morph-Visitor",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "MAMorphicContainerVisitor",
+	"type" : "normal"
+}

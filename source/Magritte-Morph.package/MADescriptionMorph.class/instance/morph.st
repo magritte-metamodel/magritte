@@ -1,3 +1,9 @@
 accessing
 morph
-	^ morph ifNil: [ morph := self buildMorph ]
+	morph ifNotNil: [ ^ morph ].
+	morph := self rectangleMorph
+		setBalloonText: self magritteDescription comment;
+		cellInset: 3;
+		yourself.
+	self visit: self magritteDescription.
+	^ morph

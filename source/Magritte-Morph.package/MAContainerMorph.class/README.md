@@ -1,0 +1,1 @@
+The easiest way to customize views (e.g. to have labels above the editors instead of to their left) is to override #visitorClass, which provides a hook for each of my subclasses.
