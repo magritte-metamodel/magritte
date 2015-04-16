@@ -1,3 +1,3 @@
 visiting-description
 visitTimeStampDescription: anObject
-	self visitDateAndTimeDescription: anObject
+	self visitMagnitudeDescription: anObject
