@@ -1,6 +1,5 @@
 accessing
 string: aString
 	| value |
-	value := [ self magritteDescription fromString: aString greaseString ]
-		on: Error do: [ :e | aString ].
+	value := self magritteDescription fromString: aString greaseString.
 	self value: value; changed: #string

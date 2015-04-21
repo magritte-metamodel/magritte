@@ -1,4 +1,0 @@
-private
-visitorClass
-
-	^ MAMorphicContainerVisitor
