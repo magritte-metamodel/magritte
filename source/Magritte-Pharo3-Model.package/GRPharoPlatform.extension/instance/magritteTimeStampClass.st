@@ -4,4 +4,4 @@ magritteTimeStampClass
 	have one, though this may not be correct and could require moving timestamp stuff
 	to its own package in order to resolve."
 	
-	^ TimeStamp
+	^ DateAndTime
