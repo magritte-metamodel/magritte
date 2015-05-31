@@ -1,5 +1,5 @@
 *Magritte-GT
-gtInspectorMagritteIn: composite
+gtInspectorReadOnlyMagritteIn: composite
 	<gtInspectorPresentationOrder: 300>
 	| table |
 	table := composite table
