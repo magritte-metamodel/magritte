@@ -1,15 +1,13 @@
 versions
 version332: spec
-  <version: '3.3.2' imports: #('3.3.2-baseline')>
+  <version: '3.3.2' imports: #('3.3-baseline')>
   spec
     for: #'common'
     do: [ 
       spec blessing: #'release'.
-      spec description: 'For Pharo 4.0, load GT presentations by default
-- This requires loading Morphic, so I thought a new baseline/version was appropriate.
-- Bump -GT package to latest version'.
-      spec author: 'SeanDeNigris'.
-      spec timestamp: '06/03/2015 10:51'.
+      spec description: 'configuration in order to avoid deprecated methods'.
+      spec author: 'CyrilFerlicot'.
+      spec timestamp: '05/06/2015 10:51'.
       spec
         project: 'Grease' with: #'release1.1';
         project: 'Seaside3' with: #'release3.1'.
