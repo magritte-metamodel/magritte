@@ -1,0 +1,1 @@
+I am a description of symbols, possible values are instances of ==Symbol==.

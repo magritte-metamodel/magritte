@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "MAWriter",
+	"category" : "Magritte-Model-Visitor",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "MAStringWriter",
+	"type" : "normal"
+}

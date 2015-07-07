@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "lr 4/10/2007 21:03",
+	"super" : "MADelegatorAccessor",
+	"category" : "Magritte-Model-Accessor",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"accessor"
+	],
+	"name" : "MAChainAccessor",
+	"type" : "normal"
+}

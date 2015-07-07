@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "lr 4/10/2007 21:08",
+	"super" : "MAElementDescription",
+	"category" : "Magritte-Model-Description",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "MAMagnitudeDescription",
+	"type" : "normal"
+}

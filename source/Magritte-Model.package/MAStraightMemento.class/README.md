@@ -1,0 +1,1 @@
+I am a memento that forwards read- and write-access directly to the model. I can mostly be replaced with the model itself.

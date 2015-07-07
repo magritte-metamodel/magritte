@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "",
+	"super" : "MACondition",
+	"category" : "Magritte-Model-Utility",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"conditions"
+	],
+	"name" : "MAConjunctiveCondition",
+	"type" : "normal"
+}
