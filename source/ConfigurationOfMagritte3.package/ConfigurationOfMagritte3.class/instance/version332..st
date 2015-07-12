@@ -5,7 +5,8 @@ version332: spec
     for: #'common'
     do: [ 
       spec blessing: #'release'.
-      spec description: 'configuration in order to avoid deprecated methods'.
+      spec description: 'In-place fix add: pharo 5, StephanEggermont 2015-7-12
+ configuration in order to avoid deprecated methods'.
       spec author: 'CyrilFerlicot'.
       spec timestamp: '05/06/2015 10:51'.
       spec
@@ -34,10 +35,10 @@ version332: spec
     for: #(#'pharo1.x' #'pharo2.x')
     do: [ spec package: 'Magritte-Pharo-Model' with: 'Magritte-Pharo-Model-DiegoLont.39' ].
   spec
-    for: #(#'pharo3.x' #'pharo4.x')
+    for: #(#'pharo3.x' #'pharo4.x' #'pharo5.x')
     do: [ spec package: 'Magritte-Pharo3-Model' with: 'Magritte-Pharo3-Model-JohnCBorden.4' ].
   spec
-    for: #'pharo4.x'
+    for: #(#'pharo4.x' #'pharo5.x')
     do: [ spec package: 'Magritte-GT' with: 'Magritte-GT-SeanDeNigris.3' ].
   spec
     for: #'gemstone'
