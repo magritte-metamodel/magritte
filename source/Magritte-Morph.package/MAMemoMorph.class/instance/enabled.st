@@ -1,3 +1,4 @@
 accessing
 enabled
-	^ true
+
+	^ self magritteDescription readonly not
