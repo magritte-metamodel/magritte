@@ -1,4 +1,4 @@
 actions
 create
-	self value: self selected new.
+	self value: self newRelation.
 	component := nil
