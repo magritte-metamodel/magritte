@@ -11,7 +11,8 @@
 		"model",
 		"comment",
 		"priority",
-		"label"
+		"label",
+		"shortcut"
 	],
 	"name" : "MAActionDescription",
 	"type" : "normal"
