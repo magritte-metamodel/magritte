@@ -46,7 +46,10 @@ version350: spec
     do: [ spec package: 'Magritte-Pharo3-Model' with: 'Magritte-Pharo3-Model-JohnCBorden.4' ].
   spec
     for: #(#'pharo4.x' #'pharo5.x')
-    do: [ spec package: 'Magritte-GT' with: 'Magritte-GT-SeanDeNigris.5' ].
+    do: [ 
+			spec
+        project: 'MagritteGlamourForPharo40' with: '1.0'.
+			spec package: 'Magritte-GT' with: 'Magritte-GT-SeanDeNigris.5' ].
   spec
     for: #'gemstone'
     do: [ 

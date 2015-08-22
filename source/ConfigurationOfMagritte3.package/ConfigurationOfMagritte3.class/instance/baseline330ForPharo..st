@@ -34,7 +34,7 @@ baseline330ForPharo: spec
 			spec
 				project: 'MagritteGlamourForPharo40' with: [ 
 					spec
-						className: 'MagritteGlamourForPharo40';
+						className: 'ConfigurationOfMagritteGlamourForPharo40';
 						versionString: #'stable';
 						repository: 'http://www.smalltalkhub.com/mc/SeanDeNigris/SeansMetaRepo/main' ].
 			spec package: 'Magritte-GT' with: [ spec requires: #('Morphic' 'MagritteGlamourForPharo40') ].
