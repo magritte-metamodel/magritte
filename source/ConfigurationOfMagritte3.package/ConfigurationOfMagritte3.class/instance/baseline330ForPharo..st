@@ -31,8 +31,13 @@ baseline330ForPharo: spec
 	spec
 		for: #(#'pharo4.x' #'pharo5.x')
 		do: [ 
-			spec package: 'Glamour-Magritte-Presentations' with: [ spec repository: 'http://www.smalltalkhub.com/mc/Moose/Glamour/main' ].
-			spec package: 'Magritte-GT' with: [ spec requires: #('Morphic' 'Glamour-Magritte-Presentations') ].
+			spec
+				project: 'MagritteGlamourForPharo40' with: [ 
+					spec
+						className: 'MagritteGlamourForPharo40';
+						versionString: #'stable';
+						repository: 'http://www.smalltalkhub.com/mc/SeanDeNigris/SeansMetaRepo/main' ].
+			spec package: 'Magritte-GT' with: [ spec requires: #('Morphic' 'MagritteGlamourForPharo40') ].
 			spec package: 'Magritte-Morph' with: [ spec includes: #('Magritte-GT') ].
 			spec group: 'default' with: #('Magritte-GT') ].
 	spec
