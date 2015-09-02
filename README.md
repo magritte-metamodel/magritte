@@ -17,7 +17,7 @@ Christoph Lamprecht ported Magritte to [Perl](http://sites.google.com/site/vlcla
   * [Seaside](http://lists.squeakfoundation.org/cgi-bin/mailman/listinfo/seaside)
 
 ### Development
-  * [Code Repository](http://smalltalkhub.com/#!/~Magritte/Magritte3)
+  * [Code Repository](http://smalltalkhub.com/#!/&sim;Magritte/Magritte3)
   * [Add-On Repository](http://smalltalkhub.com/#!/~Magritte/MagritteAddons)
   * [Report Issue](https://github.com/magritte-metamodel/magritte/issues)
 
