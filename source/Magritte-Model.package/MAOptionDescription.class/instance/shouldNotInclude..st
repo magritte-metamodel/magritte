@@ -1,3 +1,3 @@
 accessing-dynamic
 shouldNotInclude: anObject
-	^ anObject isNil or: [ self options includes: anObject ]
+	^ self isExtensible not or: [ anObject isNil or: [ self options includes: anObject ] ]
