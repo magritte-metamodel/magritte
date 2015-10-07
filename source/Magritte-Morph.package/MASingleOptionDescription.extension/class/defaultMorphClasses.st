@@ -1,3 +1,5 @@
 *magritte-morph-defaults
 defaultMorphClasses
-	^ Array with: MASingleSelectListMorph
+	^ Array
+			with: MASingleSelectListMorph
+			with: MADropListMorph
