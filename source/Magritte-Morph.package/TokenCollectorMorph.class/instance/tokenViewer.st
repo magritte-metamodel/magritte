@@ -4,7 +4,7 @@ tokenViewer
 	^ tokenViewer := Morph new
 			color: UITheme current backgroundColor;
 			changeTableLayout;
-			vResizing: #spaceFill;
+			vResizing: #shrinkWrap;
 			hResizing: #spaceFill;
 			listDirection: #leftToRight;
 			wrapDirection: #topToBottom;
