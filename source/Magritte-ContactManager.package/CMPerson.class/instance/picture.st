@@ -1,0 +1,3 @@
+accessing
+picture
+	^ picture
