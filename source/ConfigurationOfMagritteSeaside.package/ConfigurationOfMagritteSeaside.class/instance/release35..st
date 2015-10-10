@@ -1,6 +1,6 @@
 version
 release35: spec 
-	<version: #'release3.5'>
+	<version: 'release3.5'>
 	
 	spec 
 		for: #'common'
@@ -11,4 +11,4 @@ release35: spec
 						className: 'ConfigurationOfMagritte3';
 						versionString: #'release3.5';
 						loads: #( 'Seaside' );
-						repository: 'http://www.smalltalkhub.com/mc/Magritte/Magritte3/main' ] ]
+						repository: 'http://www.smalltalkhub.com/mc/Magritte/Magritte3/main/' ] ]
