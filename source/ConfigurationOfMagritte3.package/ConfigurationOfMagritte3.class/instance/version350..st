@@ -45,7 +45,7 @@ version350: spec
     for: #(#'pharo3.x' #'pharo4.x' #'pharo5.x')
     do: [ spec package: 'Magritte-Pharo3-Model' with: 'Magritte-Pharo3-Model-JohnCBorden.4' ].
   spec
-    for: #(#'pharo4.x' #'pharo5.x')
+    for: #(#'pharo4.x')
     do: [ 
 			spec
         project: 'MagritteGlamourForPharo40' with: '1.0'.
