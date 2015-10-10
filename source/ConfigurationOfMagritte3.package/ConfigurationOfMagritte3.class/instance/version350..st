@@ -17,7 +17,7 @@ version350: spec
       spec author: 'SeanDeNigris'.
       spec timestamp: '08/20/2015 10:51'.
       spec
-        project: 'Grease' with: #'release1.1';
+        project: 'Grease' with: #'release1.2';
         project: 'Seaside3' with: #'release3.1'.
       spec
         package: 'Magritte-Model' with: 'Magritte-Model-SeanDeNigris.465';
