@@ -29,7 +29,7 @@ baseline330ForPharo: spec
 				" create a temporary alias "
 				package: 'Magritte-Pharo-Model' with: 'Magritte-Pharo3-Model'].
 	spec
-		for: #(#'pharo4.x' #'pharo5.x')
+		for: #(#'pharo4.x')
 		do: [ 
 			spec
 				project: 'MagritteGlamourForPharo40' with: [ 
@@ -39,6 +39,12 @@ baseline330ForPharo: spec
 						repository: 'http://www.smalltalkhub.com/mc/SeanDeNigris/SeansMetaRepo/main' ].
 			spec package: 'Magritte-GT' with: [ spec requires: #('Morphic' 'MagritteGlamourForPharo40') ].
 			spec package: 'Magritte-Morph' with: [ spec includes: #('Magritte-GT') ].
+			spec group: 'default' with: #('Magritte-GT') ].
+	spec
+		for: #(#'pharo5.x')
+		do: [ 
+			spec package: 'Glamour-Magritte-Presentations' with: [ spec repository: 'http://www.smalltalkhub.com/mc/Moose/Glamour/main' ].
+			spec package: 'Magritte-GT' with: [ spec requires: #('Morphic' 'Glamour-Magritte-Presentations') ].
 			spec group: 'default' with: #('Magritte-GT') ].
 	spec
 		for: #squeakCommon
