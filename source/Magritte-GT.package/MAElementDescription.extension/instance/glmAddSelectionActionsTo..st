@@ -8,7 +8,7 @@ glmAddSelectionActionsTo: presentation
 			action := GLMGenericAction new
 				action: [ pres selection perform: desc selector ];
 				title: desc label;
-				shortcut: desc label first lowercase;
+				shortcut: (desc shortcut ifNil: [ desc label first lowercase ]);
 				yourself.
 			actions add: action ].
 		actions ].
