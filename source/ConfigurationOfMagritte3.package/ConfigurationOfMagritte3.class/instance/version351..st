@@ -12,7 +12,7 @@ version351: spec
         project: 'Grease' with: #'release1.2';
         project: 'Seaside3' with: #'release3.2'.
       spec
-        package: 'Magritte-Model' with: 'Magritte-Model-SeanDeNigris.467';
+        package: 'Magritte-Model' with: 'Magritte-Model-TudorGirba.468';
         package: 'Magritte-Tests-Model'
           with: 'Magritte-Tests-Model-SeanDeNigris.39';
         package: 'Magritte-Seaside'
