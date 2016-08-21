@@ -1,6 +1,8 @@
 *Magritte-Model
 printMagritteOn: aStream
-	self fieldDescriptions
+	"Print the current values of all described fields"
+	
+	self magritteDescription
 		do: [ :d | 
 			| value |
 			value := d read: self.
