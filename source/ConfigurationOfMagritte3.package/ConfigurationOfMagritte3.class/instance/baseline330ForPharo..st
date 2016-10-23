@@ -20,7 +20,7 @@ baseline330ForPharo: spec
 				package: 'Magritte-Tests-Pharo-Model' with: [ spec requires: #('Magritte-Pharo-Model') ];
 				package: 'Magritte-Pharo-Model' with: [ spec requires: #('Magritte-Model') ]].
 	spec
-		for: #(#'pharo3.x' #'pharo4.x' #'pharo5.x')
+		for: #(#'pharo3.x' #'pharo4.x' #'pharo5.x' #'pharo6.x')
 		do: [ 
 			spec
 				package: 'Magritte-Pharo3-Model' with: [ spec requires: #('Magritte-Model') ];
@@ -41,7 +41,7 @@ baseline330ForPharo: spec
 			spec package: 'Magritte-Morph' with: [ spec includes: #('Magritte-GT') ].
 			spec group: 'default' with: #('Magritte-GT') ].
 	spec
-		for: #(#'pharo5.x')
+		for: #(#'pharo5.x' #'pharo6.x')
 		do: [ 
 			spec package: 'Glamour-Magritte-Presentations' with: [ spec repository: 'http://www.smalltalkhub.com/mc/Moose/Glamour/main' ].
 			spec package: 'Magritte-GT' with: [ spec requires: #('Morphic' 'Glamour-Magritte-Presentations') ].

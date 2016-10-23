@@ -34,7 +34,7 @@ version351: spec
     for: #(#'pharo1.x' #'pharo2.x')
     do: [ spec package: 'Magritte-Pharo-Model' with: 'Magritte-Pharo-Model-DiegoLont.39' ].
   spec
-    for: #(#'pharo3.x' #'pharo4.x' #'pharo5.x')
+    for: #(#'pharo3.x' #'pharo4.x' #'pharo5.x' #'pharo6.x')
     do: [ spec package: 'Magritte-Pharo3-Model' with: 'Magritte-Pharo3-Model-JohnCBorden.4' ].
   spec
     for: #(#'pharo4.x')
