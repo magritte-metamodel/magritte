@@ -5,5 +5,5 @@ descriptionLabel
 		accessor: #label;
 		label: 'Label';
 		priority: 100;
-		default: self class defaultLabel;
+		default: self defaultLabel;
 		yourself
