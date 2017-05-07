@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "DiegoLont 4/2/2017 22:45",
+	"super" : "MADescriptionBuilder",
+	"category" : "Magritte-Model-Builder",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "MADescriptionFlattener",
+	"type" : "normal"
+}
