@@ -24,5 +24,9 @@ Christoph Lamprecht ported Magritte to [Perl](http://sites.google.com/site/vlcla
 ### Documentation
   * [Magritte Chapter in Seaside Book](http://book.seaside.st/book/advanced/magritte)
   * [Using Magritte in Seaside](http://onsmalltalk.com/using-magritte-with-seaside)
+  * Ongoing work: [Meta data at Work with Magritte: A Tutorial](https://github.com/SquareBracketAssociates/Magritte) [pdf version](https://ci.inria.fr/pharo-contribution/view/Books/job/Magritte/lastSuccessfulBuild/artifact/book-result/MagritteBooklet.pdf)
+  
+### Papers
   * [Magritte – Meta-Described Web Application Development](http://www.iam.unibe.ch/~scg/Archive/Diploma/Reng06a.pdf)
   * [Magritte – A Meta-Driven Approach to Empower Developers and End Users](http://www.iam.unibe.ch/~scg/Archive/Papers/Reng07aMagritte.pdf)
+  
