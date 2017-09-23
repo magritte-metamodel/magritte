@@ -1,16 +1,11 @@
 {
 	"commentStamp" : "",
-	"super" : "Object",
+	"super" : "GLMCompositePresentation",
 	"category" : "Magritte-Merging",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
-	"instvars" : [
-		"receiver",
-		"field",
-		"oldValue",
-		"newValue"
-	],
-	"name" : "MAPatchOperation",
+	"instvars" : [ ],
+	"name" : "MAPatchBrowser",
 	"type" : "normal"
 }

@@ -1,9 +1,9 @@
-as yet unclassified
+printing
 printOn: aStream
 
 	aStream
 		nextPutAll: 'Change ';
-		nextPutAll: field surroundedBySingleQuotes;
+		nextPutAll: field label;
 		nextPutAll: ' from ';
 		print: oldValue;
 		nextPutAll: ' to ';

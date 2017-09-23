@@ -6,11 +6,9 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"receiver",
-		"field",
-		"oldValue",
-		"newValue"
+		"operations",
+		"model"
 	],
-	"name" : "MAPatchOperation",
+	"name" : "MAPatchMacro",
 	"type" : "normal"
 }
