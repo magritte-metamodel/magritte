@@ -1,7 +1,7 @@
 {
 	"commentStamp" : "",
 	"super" : "GLMCompositePresentation",
-	"category" : "Magritte-Merging",
+	"category" : "Magritte-UI",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
