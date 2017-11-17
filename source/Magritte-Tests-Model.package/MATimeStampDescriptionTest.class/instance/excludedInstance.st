@@ -7,3 +7,4 @@ excludedInstance
 		hour: 11
 		minute: 38
 		second: 12
+		offset: 0
