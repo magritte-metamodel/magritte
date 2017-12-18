@@ -11,7 +11,9 @@
 		"comment",
 		"priority",
 		"label",
-		"action"
+		"action",
+		"icon",
+		"isMutator"
 	],
 	"name" : "MAActionDescription",
 	"type" : "normal"
