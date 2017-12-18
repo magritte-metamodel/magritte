@@ -1,4 +1,4 @@
-*Magritte-Model
+*Magritte-GT
 maAddSelectionActionsFor: aClass 
 	
 	aClass magritteActionDescriptions do: [ :desc |
