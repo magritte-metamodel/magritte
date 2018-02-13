@@ -1,5 +1,5 @@
 *Magritte-Model
-printMagritteOn: aStream
+maPrintOn: aStream
 	"Print the current values of all described fields. Customize the printing of a field with the #maPrintString property, which should store a valuable with the value of the field as an optional argument"
 	
 	self magritteDescription
