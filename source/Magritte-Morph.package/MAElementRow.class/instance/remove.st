@@ -1,4 +1,4 @@
 callbacks
 remove
-	container value: (container value copyWithout: object).
+	container remove: object.
 	self delete.
