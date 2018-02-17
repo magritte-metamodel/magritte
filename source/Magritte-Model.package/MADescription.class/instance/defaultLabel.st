@@ -1,3 +1,3 @@
 acessing-magritte
 defaultLabel
-	^ self accessor defaultLabel	ifNil: [ self class defaultLabel ]
+	^ self accessor defaultLabelFor: self
