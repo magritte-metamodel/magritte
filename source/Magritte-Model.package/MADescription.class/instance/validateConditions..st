@@ -4,4 +4,4 @@ validateConditions: anObject
 
 	self conditions do: [ :each |
 		(each key value: anObject)
-			ifFalse: [ MAConditionError description: self signal: each value ] ]
+			ifFalse: [ MAConditionError description: self signal: (each value cull: anObject) ] ]
