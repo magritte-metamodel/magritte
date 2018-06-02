@@ -1,4 +1,4 @@
-as yet unclassified
+accessing
 diffStrings
 	| lhs rhs |
 	lhs := String streamContents: [ :lstr |
