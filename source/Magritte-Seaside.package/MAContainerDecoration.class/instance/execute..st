@@ -1,5 +1,5 @@
 actions
 execute: anObject
 	anObject isSymbol
-		ifFalse: [ anObject value: self decoratedComponent ]
+		ifFalse: [ anObject cull: self decoratedComponent ]
 		ifTrue: [ self decoratedComponent perform: anObject ]
