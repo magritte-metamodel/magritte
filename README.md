@@ -8,7 +8,7 @@ Magritte is a fully dynamic meta-description framework that helps to solve those
   * [Pharo Smalltalk](http://www.pharo.org/):
     * Pharo 4.x: In the Configuration Browser (under [World Menu]->Tools), "Load Stable Version"
     * Previous versions: Load `ConfigurationOfMagritte3` from http://smalltalkhub.com/mc/Magritte/Magritte3/main/. 
-  * [GemStone Smalltalk](http://seaside.gemstone.com/): Get the latest code from Gemstone repository at http://seaside.gemstone.com/ss/magritte.html.
+  * [GemStone Smalltalk](http://seaside.gemstone.com/): Get the latest code from Gemstone repository at https://github.com/GsDevKit/Magritte3 .
   * [Cincom Smalltalk](http://www.cincomsmalltalk.com/): Load the bundle `MagritteForVisualWorks` from the Cincom public StORE.
   * [GNU Smalltalk](http://smalltalk.gnu.org/): An initial port is available through the the GNU Smalltalk git repository. 
 
