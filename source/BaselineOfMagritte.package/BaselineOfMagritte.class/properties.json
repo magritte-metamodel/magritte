@@ -1,11 +1,11 @@
 {
 	"commentStamp" : "",
 	"super" : "BaselineOf",
-	"category" : "BaselineOfMagritte3",
+	"category" : "BaselineOfMagritte",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [ ],
-	"name" : "BaselineOfMagritte3",
+	"name" : "BaselineOfMagritte",
 	"type" : "normal"
 }
