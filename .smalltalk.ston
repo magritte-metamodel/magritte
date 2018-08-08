@@ -1,7 +1,7 @@
 SmalltalkCISpec {
   #loading : [
       SCIMetacelloLoadSpec {
-          #baseline : 'Magritte',
+          #baseline : 'Magritte3',
           #load : [ 'default' ],
           #platforms : [ #pharo ]
       }
