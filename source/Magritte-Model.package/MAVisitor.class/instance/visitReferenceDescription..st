@@ -1,0 +1,3 @@
+visiting-description
+visitReferenceDescription: anObject
+	self visitElementDescription: anObject

@@ -1,0 +1,3 @@
+accessing
+selectedList
+	^ self value

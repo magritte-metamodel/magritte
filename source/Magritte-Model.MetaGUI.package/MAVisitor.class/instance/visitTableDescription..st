@@ -1,0 +1,3 @@
+visiting-description
+visitTableDescription: anObject
+	self visitReferenceDescription: anObject

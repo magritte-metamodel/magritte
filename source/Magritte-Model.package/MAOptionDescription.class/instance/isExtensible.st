@@ -1,0 +1,3 @@
+testing
+isExtensible
+	^ self extensible

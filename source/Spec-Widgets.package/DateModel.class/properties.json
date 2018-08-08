@@ -1,0 +1,16 @@
+{
+	"commentStamp" : "<historical>",
+	"super" : "ComposableModel",
+	"category" : "Spec-Widgets-PolyWidgets",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"dateLabel",
+		"chooseDateButton",
+		"dateModel",
+		"displayBlockHolder"
+	],
+	"name" : "DateModel",
+	"type" : "normal"
+}

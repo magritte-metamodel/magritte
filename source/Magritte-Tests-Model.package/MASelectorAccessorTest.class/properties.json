@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "MAAccessorTest",
+	"category" : "Magritte-Tests-Model-Accessor",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "MASelectorAccessorTest",
+	"type" : "normal"
+}

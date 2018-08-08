@@ -1,0 +1,1 @@
+I am an adaptive model referencing a dynamic description of myself and a dictionary mapping those descriptions to actual values.

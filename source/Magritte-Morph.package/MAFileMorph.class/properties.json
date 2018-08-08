@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "",
+	"super" : "MAElementMorph",
+	"category" : "Magritte-Morph-Model",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"rectangleMorph"
+	],
+	"name" : "MAFileMorph",
+	"type" : "normal"
+}

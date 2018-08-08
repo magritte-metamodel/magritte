@@ -1,0 +1,4 @@
+morphic
+doItReceiver
+
+	^ doItReceiver contents

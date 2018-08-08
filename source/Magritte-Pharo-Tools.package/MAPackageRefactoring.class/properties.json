@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "",
+	"super" : "RBRefactoring",
+	"category" : "Magritte-Pharo-Tools",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"classes"
+	],
+	"name" : "MAPackageRefactoring",
+	"type" : "normal"
+}

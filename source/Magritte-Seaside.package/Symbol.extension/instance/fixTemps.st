@@ -1,0 +1,3 @@
+*magritte-seaside
+fixTemps
+	^ self

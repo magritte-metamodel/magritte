@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "ORCmdOpen",
+	"category" : "Magritte-Pharo-Tools",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "ORCmdMagritteDescriptionsPackageUpdateWrapper",
+	"type" : "normal"
+}

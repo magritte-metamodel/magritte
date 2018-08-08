@@ -1,0 +1,1 @@
+I'm a simple input box for MAStringDescription.

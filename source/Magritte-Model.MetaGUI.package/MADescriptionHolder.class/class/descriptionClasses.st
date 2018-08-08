@@ -1,0 +1,3 @@
+acessing-magritte
+descriptionClasses
+	^ MAElementDescription withAllConcreteClasses asOrderedCollection

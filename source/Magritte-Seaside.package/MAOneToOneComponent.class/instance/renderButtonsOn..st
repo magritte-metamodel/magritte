@@ -1,0 +1,2 @@
+rendering
+renderButtonsOn: html

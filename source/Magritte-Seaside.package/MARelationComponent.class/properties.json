@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "",
+	"super" : "MAElementComponent",
+	"category" : "Magritte-Seaside-Components",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"selected"
+	],
+	"name" : "MARelationComponent",
+	"type" : "normal"
+}

@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "MAFileDescription",
+	"category" : "Magritte-Model-Description",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "MADirectoryDescription",
+	"type" : "normal"
+}

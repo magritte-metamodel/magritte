@@ -1,0 +1,1 @@
+I am a description of durations, possible values are instances of ==Duration==.

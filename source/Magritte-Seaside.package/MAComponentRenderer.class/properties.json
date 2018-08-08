@@ -1,0 +1,16 @@
+{
+	"commentStamp" : "",
+	"super" : "MAVisitor",
+	"category" : "Magritte-Seaside-Renderer",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"component",
+		"html",
+		"errors",
+		"group"
+	],
+	"name" : "MAComponentRenderer",
+	"type" : "normal"
+}

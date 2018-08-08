@@ -1,0 +1,15 @@
+{
+	"commentStamp" : "",
+	"super" : "MABasicObject",
+	"category" : "Magritte-Deprecated",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [
+		"Default"
+	],
+	"instvars" : [
+		"cache"
+	],
+	"name" : "MADescriptionBuilder",
+	"type" : "normal"
+}

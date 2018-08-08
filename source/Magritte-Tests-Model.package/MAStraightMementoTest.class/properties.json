@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "MAMementoTest",
+	"category" : "Magritte-Tests-Model-Memento",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "MAStraightMementoTest",
+	"type" : "normal"
+}

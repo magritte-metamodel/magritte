@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "lr 5/17/2006 15:12",
+	"super" : "MACachedMemento",
+	"category" : "Magritte-Model-Memento",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"original"
+	],
+	"name" : "MACheckedMemento",
+	"type" : "normal"
+}

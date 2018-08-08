@@ -1,0 +1,3 @@
+prototypes
+stringMorph
+	^ StringMorph new

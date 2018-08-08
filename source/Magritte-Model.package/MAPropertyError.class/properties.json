@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "MAError",
+	"category" : "Magritte-Model-Exception",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "MAPropertyError",
+	"type" : "normal"
+}

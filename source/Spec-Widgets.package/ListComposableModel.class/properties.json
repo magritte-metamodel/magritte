@@ -1,0 +1,24 @@
+{
+	"commentStamp" : "<historical>",
+	"super" : "AbstractBasicWidget",
+	"category" : "Spec-Widgets",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"selectionHolder",
+		"listHolder",
+		"menuHolder",
+		"shortcutsHolder",
+		"multiSelectionHolder",
+		"multiSelection",
+		"allowToSelect",
+		"listItemsCache",
+		"filteringBlockHolder",
+		"sortingBlockHolder",
+		"wrapBlockHolder",
+		"listAnnouncer"
+	],
+	"name" : "ListComposableModel",
+	"type" : "normal"
+}

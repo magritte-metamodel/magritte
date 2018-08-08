@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "MAElementDescriptionTest",
+	"category" : "Magritte-Tests-Model-Description",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "MAClassDescriptionTest",
+	"type" : "normal"
+}

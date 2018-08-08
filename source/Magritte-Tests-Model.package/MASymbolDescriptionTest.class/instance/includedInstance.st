@@ -1,0 +1,3 @@
+private
+includedInstance
+	^ #magritte

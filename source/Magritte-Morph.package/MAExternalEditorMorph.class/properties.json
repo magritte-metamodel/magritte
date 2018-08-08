@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "MAOneToOneMorph",
+	"category" : "Magritte-Morph-Model",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "MAExternalEditorMorph",
+	"type" : "normal"
+}

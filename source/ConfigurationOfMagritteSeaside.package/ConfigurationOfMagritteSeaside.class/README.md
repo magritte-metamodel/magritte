@@ -1,0 +1,1 @@
+(ConfigurationOfMagritteSeaside project version: #stable) load

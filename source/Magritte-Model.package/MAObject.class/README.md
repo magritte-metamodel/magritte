@@ -1,0 +1,1 @@
+I provide functionality available to all Magritte objects. I implement a dictionary of properties, so that extensions can easily store additional data.

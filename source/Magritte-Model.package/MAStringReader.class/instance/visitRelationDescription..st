@@ -1,0 +1,3 @@
+visiting-description
+visitRelationDescription: aDescription
+	self shouldNotImplement

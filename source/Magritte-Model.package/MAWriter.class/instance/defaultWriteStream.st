@@ -1,0 +1,3 @@
+private
+defaultWriteStream
+	self subclassResponsibility

@@ -1,0 +1,3 @@
+testing
+isDistinct
+	^ self distinct

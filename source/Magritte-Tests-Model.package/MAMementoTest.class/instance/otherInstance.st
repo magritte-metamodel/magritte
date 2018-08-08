@@ -1,0 +1,3 @@
+private
+otherInstance
+	^ 'Ursula Freitag'

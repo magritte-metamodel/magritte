@@ -1,0 +1,3 @@
+private-morphic
+buttonState
+	^ true

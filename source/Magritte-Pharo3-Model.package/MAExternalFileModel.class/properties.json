@@ -1,0 +1,14 @@
+{
+	"commentStamp" : "<historical>",
+	"super" : "MAFileModel",
+	"category" : "Magritte-Pharo3-Model",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"location",
+		"directory"
+	],
+	"name" : "MAExternalFileModel",
+	"type" : "normal"
+}

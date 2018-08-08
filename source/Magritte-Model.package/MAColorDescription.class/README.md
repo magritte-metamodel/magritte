@@ -1,0 +1,1 @@
+I am a description of colors, possible values are instances of ==Color==. My visual representation could be a color-chooser.

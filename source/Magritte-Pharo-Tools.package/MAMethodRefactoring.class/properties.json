@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "ORSwapMethodRefactoring",
+	"category" : "Magritte-Pharo-Tools",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "MAMethodRefactoring",
+	"type" : "normal"
+}

@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "lr 9/28/2007 08:06",
+	"super" : "MAFileModel",
+	"category" : "Magritte-Model-Models",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"contents"
+	],
+	"name" : "MAMemoryFileModel",
+	"type" : "normal"
+}

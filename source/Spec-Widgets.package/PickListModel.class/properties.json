@@ -1,0 +1,21 @@
+{
+	"commentStamp" : "<historical>",
+	"super" : "ComposableModel",
+	"category" : "Spec-Widgets-PolyWidgets",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"defaultValueHolder",
+		"labelClickableHolder",
+		"listModel",
+		"pickedItemsHolder",
+		"wrapHolder",
+		"associationsItemToWrapper",
+		"associationsWrapperToItem",
+		"associationsIndexToWrapper",
+		"blockToPerformOnWrappers"
+	],
+	"name" : "PickListModel",
+	"type" : "normal"
+}

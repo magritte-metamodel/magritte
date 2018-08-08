@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "ORCmdRefactoring",
+	"category" : "Magritte-Pharo-Tools",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "ORCmdMagritteDescriptionsPackageUpdate",
+	"type" : "normal"
+}

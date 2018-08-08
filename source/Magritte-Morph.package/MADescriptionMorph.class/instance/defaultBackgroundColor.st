@@ -1,0 +1,3 @@
+accessing-configuration
+defaultBackgroundColor
+	^ self magritteDescription morphColor

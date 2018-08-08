@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "MAFileModelTest",
+	"category" : "Magritte-Tests-Pharo-Model",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "MAExternalFileModelTest",
+	"type" : "normal"
+}

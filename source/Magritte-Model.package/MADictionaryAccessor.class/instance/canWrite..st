@@ -1,0 +1,3 @@
+testing
+canWrite: aModel
+	^ true

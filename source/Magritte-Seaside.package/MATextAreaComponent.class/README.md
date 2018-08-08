@@ -1,0 +1,1 @@
+I display an html text area for the magritte MAMemoDescription.

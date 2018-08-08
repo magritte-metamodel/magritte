@@ -1,0 +1,1 @@
+Like MAToManyRelationDescription but for scalar values.

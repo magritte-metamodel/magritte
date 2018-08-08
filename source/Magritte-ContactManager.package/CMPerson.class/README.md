@@ -1,0 +1,1 @@
+A simple modle of a person.

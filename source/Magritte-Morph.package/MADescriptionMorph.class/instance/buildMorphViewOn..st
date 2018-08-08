@@ -1,0 +1,3 @@
+private
+buildMorphViewOn: aMorph
+	self subclassResponsibility
