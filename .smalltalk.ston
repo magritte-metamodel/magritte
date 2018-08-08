@@ -3,6 +3,7 @@ SmalltalkCISpec {
       SCIMetacelloLoadSpec {
           #baseline : 'Magritte3',
           #load : [ 'default' ],
+          #directory : 'source',
           #platforms : [ #pharo ]
       }
   ]
