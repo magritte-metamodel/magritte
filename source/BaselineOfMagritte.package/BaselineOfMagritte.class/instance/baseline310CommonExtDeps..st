@@ -2,18 +2,12 @@ baselines
 baseline310CommonExtDeps: spec
 	"Common external dependencies for baseline 3.1.0"
 	spec
-		project: 'Grease'
-			with: [ 
-					spec
-						className: 'ConfigurationOfGrease';
-						versionString: #'stable';
-						loads: #('Core' );
-						repository: 'http://smalltalkhub.com/mc/Seaside/MetacelloConfigurations/main' ];
-		project: 'Seaside3'
-			with: [
+		baseline: 'Grease' with: [ 
+			spec 
+				repository: 'github://SeasideSt/Grease:v1.3.0/repository' ];
+			
+		baseline: 'Seaside3' with: [ 
 				"note: we do not want to depend on Zinc, since this is not present in Squeak. Currently no adapter is loaded" 
-					spec
-						className: 'ConfigurationOfSeaside3';
-						versionString: #'stable';
-						loads: #('Core' 'Javascript' 'RSS' 'Filesystem' 'Welcome' );
-						repository: 'http://smalltalkhub.com/mc/Seaside/MetacelloConfigurations/main' ]
+					spec 
+						repository: 'github://SeasideSt/Seaside:v3.2.4/repository';
+						loads: #('Core' 'Javascript' 'RSS' 'Filesystem' 'Welcome' ) ]
