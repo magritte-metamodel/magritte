@@ -4,7 +4,7 @@ baseline310CommonExtDeps: spec
 	spec
 		baseline: 'Grease' with: [ 
 			spec 
-				repository: 'github://SeasideSt/Grease:v1.3.0/repository' ];
+				repository: 'github://SeasideSt/Grease/repository' ];
 			
 		baseline: 'Seaside3' with: [ 
 				"note: we do not want to depend on Zinc, since this is not present in Squeak. Currently no adapter is loaded" 
