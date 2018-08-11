@@ -1,0 +1,4 @@
+locations
+imageDirectory
+
+	^ FileLocator imageDirectory.
