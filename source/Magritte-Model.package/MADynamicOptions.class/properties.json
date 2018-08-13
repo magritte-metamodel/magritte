@@ -1,0 +1,16 @@
+{
+	"category" : "Magritte-Model-Utility",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"block",
+		"completionToObjectBlock",
+		"includesBlock" ],
+	"name" : "MADynamicOptions",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }
