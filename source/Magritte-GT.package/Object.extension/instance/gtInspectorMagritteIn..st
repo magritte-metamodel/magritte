@@ -4,4 +4,4 @@ gtInspectorMagritteIn: composite
 	composite magritte
 		title: 'Form';
 		display: [ self ];
-		when: [ self magritteDescription notEmpty ]
+		when: [ self magritteDescription isContainer not or: [ self magritteDescription notEmpty ] ]
