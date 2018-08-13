@@ -1,4 +1,4 @@
 private
 perform
 
-	model perform: selector.
+	action cull: self.

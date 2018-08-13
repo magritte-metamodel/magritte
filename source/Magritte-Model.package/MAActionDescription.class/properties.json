@@ -6,13 +6,12 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"selector",
 		"enableBlock",
 		"model",
 		"comment",
 		"priority",
 		"label",
-		"shortcut"
+		"action"
 	],
 	"name" : "MAActionDescription",
 	"type" : "normal"
