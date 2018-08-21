@@ -1,4 +1,4 @@
-*magritte-model-builder
+builder
 defaultCanExpand
 	" used to expand a relation description into a group "
 	self isVisible ifFalse: [ ^false ].
