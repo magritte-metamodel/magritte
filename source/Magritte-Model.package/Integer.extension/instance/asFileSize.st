@@ -1,4 +1,4 @@
-*magritte-model-converting
+*Magritte-Model
 asFileSize
 	#( 'B' 'KB' 'MB' 'GB' 'TB' 'PB' 'EB' 'ZB' 'YB' )
 		inject: self

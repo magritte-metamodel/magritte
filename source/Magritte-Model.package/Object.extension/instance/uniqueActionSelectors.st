@@ -1,4 +1,4 @@
-*magritte-model-actions
+*Magritte-Model
 uniqueActionSelectors
 
 	| descriptionPragmas selectors |	

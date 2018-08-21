@@ -1,3 +1,3 @@
-*magritte-morph-defaults
+*Magritte-Morph
 defaultMorphColor
 	^ Color white

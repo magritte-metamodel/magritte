@@ -1,3 +1,3 @@
-*magritte-model-accessing
+*Magritte-Model
 magritteDescription
 	^ MAContainer new
