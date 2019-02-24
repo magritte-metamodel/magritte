@@ -6,7 +6,7 @@ testValidate
 		raise: MAValidationError.
 	self
 		should: [ self description validate: self invalidInstance ]
-		raise: MAKindError.
+		raiseSingle: MAKindError.
 	self
 		should: [ self description validate: self nullInstance ]
-		raise: MARequiredError
+		raiseSingle: MARequiredError

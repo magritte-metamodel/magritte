@@ -1,4 +1,5 @@
 validating
 validateKind: anObject
-	super validateKind: anObject.
-	anObject do: [ :e | self validateOptionKind: e ]
+	self 
+		tryValidation: [ super validateKind: anObject ]
+	  ifPass: [ anObject do: [ :e | self validateOptionKind: e ] ]

@@ -9,4 +9,4 @@ testValidateSpecific
 		raise: MARangeError.
 	self
 		should: [ self description validate: self excludedInstance ]
-		raise: MARangeError
+		raiseSingle: MARangeError
