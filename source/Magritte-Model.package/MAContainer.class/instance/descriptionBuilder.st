@@ -1,3 +1,3 @@
-*magritte-model-builder
+builder
 descriptionBuilder
 	^self propertyAt: #descriptionBuilder ifAbsent: [ nil ]

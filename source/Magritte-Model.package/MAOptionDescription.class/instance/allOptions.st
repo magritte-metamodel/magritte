@@ -1,3 +1,3 @@
 accessing-dynamic
 allOptions
-	^ self prepareOptions: self options copy
+	^ self options maAllOptionsFor: self

@@ -20,7 +20,7 @@ baseline330ForPharo: spec
 				package: 'Magritte-Tests-Pharo-Model' with: [ spec requires: #('Magritte-Pharo-Model') ];
 				package: 'Magritte-Pharo-Model' with: [ spec requires: #('Magritte-Model') ]].
 	spec
-		for: #(#'pharo3.x' #'pharo4.x' #'pharo5.x' #'pharo6.x' #'pharo7.x')
+		for: #(#'pharo3.x' #'pharo4.x' #'pharo5.x' #'pharo6.x')
 		do: [ 
 			spec
 				package: 'Magritte-Pharo3-Model' with: [ spec requires: #('Magritte-Model') ];
@@ -28,6 +28,16 @@ baseline330ForPharo: spec
 				package: 'Magritte-Model' with: [ spec includes: #('Magritte-Pharo3-Model') ];
 				" create a temporary alias "
 				package: 'Magritte-Pharo-Model' with: 'Magritte-Pharo3-Model'].
+	spec
+		for: #(#'pharo7.x')
+		do: [ 
+			spec
+				package: 'Magritte-Pharo7-Model' with: [ spec requires: #('Magritte-Model') ];
+				package: 'Magritte-Tests-Pharo-Model' with: [ spec requires: #('Magritte-Pharo7-Model') ];
+				package: 'Magritte-Model' with: [ spec includes: #('Magritte-Pharo7-Model') ];
+				" create a temporary alias "
+				package: 'Magritte-Pharo-Model' with: 'Magritte-Pharo7-Model'].
+
 	spec
 		for: #(#'pharo4.x')
 		do: [ 

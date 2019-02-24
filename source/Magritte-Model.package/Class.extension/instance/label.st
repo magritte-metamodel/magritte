@@ -1,4 +1,4 @@
-*magritte-model-accessing
+*Magritte-Model
 label
 	"Answer a human-readable name of the receiving class. This implementation tries to be smart and return a nice label, unfortunately for a lot of classes this doesn't work well so subclasses might want to override this method and return soemthing more meaningfull to end-users."
 

@@ -1,4 +1,4 @@
-*magritte-model-model
+*Magritte-Model
 readUsing: aDescription
 	"Dispatch the read-access to the receiver using the accessor of aDescription."
 
