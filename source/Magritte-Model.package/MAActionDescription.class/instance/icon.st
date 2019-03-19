@@ -1,3 +1,3 @@
 accessing
 icon
-	^ icon ifNotNil: [ icon asIcon ]
+	^ icon ifNotNil: [ self iconNamed: icon ]
