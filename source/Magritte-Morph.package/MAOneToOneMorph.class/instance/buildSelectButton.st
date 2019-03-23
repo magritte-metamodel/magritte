@@ -1,4 +1,7 @@
 private
 buildSelectButton
-
-	^ UITheme current builder newButtonFor: self action: #create label: 'Create' help: ''.
+	^ Smalltalk ui theme builder
+		newButtonFor: self
+		action: #create
+		label: 'Create'
+		help: ''

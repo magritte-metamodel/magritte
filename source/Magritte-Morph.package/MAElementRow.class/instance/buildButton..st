@@ -1,3 +1,7 @@
 private
-buildButton: aSymbol 
-	^ UITheme current builder newButtonFor: self action: aSymbol label: aSymbol capitalized help: ''.
+buildButton: aSymbol
+	^ Smalltalk ui theme builder
+		newButtonFor: self
+		action: aSymbol
+		label: aSymbol capitalized
+		help: ''
