@@ -37,6 +37,16 @@ baseline330ForPharo: spec
 				package: 'Magritte-Model' with: [ spec includes: #('Magritte-Pharo7-Model') ];
 				" create a temporary alias "
 				package: 'Magritte-Pharo-Model' with: 'Magritte-Pharo7-Model'].
+		
+	spec
+		for: #(#'pharo8.x')
+		do: [ 
+			spec
+				package: 'Magritte-Pharo7-Model' with: [ spec requires: #('Magritte-Model') ];
+				package: 'Magritte-Tests-Pharo-Model' with: [ spec requires: #('Magritte-Pharo7-Model') ];
+				package: 'Magritte-Model' with: [ spec includes: #('Magritte-Pharo7-Model') ];
+				" create a temporary alias "
+				package: 'Magritte-Pharo-Model' with: 'Magritte-Pharo7-Model'].
 
 	spec
 		for: #(#'pharo4.x')
@@ -51,7 +61,7 @@ baseline330ForPharo: spec
 			spec package: 'Magritte-Morph' with: [ spec includes: #('Magritte-GT') ].
 			spec group: 'default' with: #('Magritte-GT') ].
 	spec
-		for: #(#'pharo5.x' #'pharo6.x' #'pharo7.x')
+		for: #(#'pharo5.x' #'pharo6.x' #'pharo7.x' #'pharo8.x')
 		do: [ 
 			spec package: 'Glamour-Magritte-Presentations' with: [ spec repository: 'http://www.smalltalkhub.com/mc/Moose/Glamour/main' ].
 			spec package: 'Magritte-GT' with: [ spec requires: #('Morphic' 'Glamour-Magritte-Presentations') ].
