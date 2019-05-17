@@ -1,3 +1,3 @@
-*magritte-model-builder
+builder
 descriptionBuilder: aBuilderClass
 	self propertyAt: #descriptionBuilder put: aBuilderClass

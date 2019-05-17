@@ -8,6 +8,7 @@ testRangeErrorMessage
 	self description rangeErrorMessage: 'zork'.
 	self assert: self description rangeErrorMessage = 'zork'.
 
-	[ self description validate: self excludedInstance ]
-		on: MARangeError
-		do: [ :err | self assert: self description rangeErrorMessage = err messageText ]
+	self
+		should: [ self description validate: self excludedInstance ]
+		raiseSingle: MARangeError
+		withExceptionDo: [ :err | self assert: self description rangeErrorMessage = err messageText ]

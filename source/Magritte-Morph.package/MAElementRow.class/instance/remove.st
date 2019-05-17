@@ -1,4 +1,5 @@
 callbacks
 remove
-	container value: (container value copyWithout: object).
+	container remove: object.
+	self owner addMorph: container buildSelectList.
 	self delete.

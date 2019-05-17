@@ -1,4 +1,4 @@
-*magritte-model-builder
+*Magritte-Model
 magritteDescriptionBuilders
 	|builderPragmas container|
 	builderPragmas := Pragma allNamed: #magritteBuilder from: self class to: Object.

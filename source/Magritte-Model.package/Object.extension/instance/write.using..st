@@ -1,4 +1,4 @@
-*magritte-model-model
+*Magritte-Model
 write: anObject using: aDescription
 	"Dispatch the write-access to the receiver of anObject using the accessor of aDescription."
 

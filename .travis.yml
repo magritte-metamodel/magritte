@@ -5,9 +5,11 @@ os:
 - linux
 
 smalltalk:
-  - Pharo-5.0
-  - Pharo-6.0
-  - GemStone-2.4.8
-  - GemStone-3.1.0.6
-  - GemStone-3.2.16
-  - GemStone-3.3.4
+- Pharo32-5.0
+- Pharo32-6.1
+- Pharo64-7.0
+- Pharo64-8.0
+- GemStone-2.4.8
+- GemStone-3.1.0.6
+- GemStone-3.2.16
+- GemStone-3.3.4

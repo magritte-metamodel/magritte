@@ -1,3 +1,3 @@
-*magritte-morph-defaults
+*Magritte-Morph
 defaultMorphClasses
 	^ Array with: MAMultiSelectListMorph

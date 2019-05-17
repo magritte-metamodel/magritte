@@ -1,4 +1,4 @@
-*magritte-morph-defaults
+*Magritte-Morph
 defaultMorphClass
 	^ self defaultMorphClasses notEmpty
 		ifTrue: [ self defaultMorphClasses first ]
