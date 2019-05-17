@@ -1,6 +1,6 @@
 private
 buildMorphView
-	^ UITheme current 
+	^ Smalltalk ui theme
 		newCheckboxIn: nil
 		for: self
 		getSelected: #selected

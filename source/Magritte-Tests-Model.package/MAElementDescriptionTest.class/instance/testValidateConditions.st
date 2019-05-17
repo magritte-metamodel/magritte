@@ -12,4 +12,4 @@ testValidateConditions
 		raise: MAConditionError.
 	self
 		should: [ self description validate: self nonIdenticalInstance ]
-		raise: MAConditionError
+		raiseSingle: MAConditionError

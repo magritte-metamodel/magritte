@@ -1,7 +1,4 @@
 *Magritte-Morph
 maEdit
  
-	self asMagritteMorph
-		addButtons;
-		addWindow;
-		openInWorld.
+	self maEditAnswering: [ :editedObj | ]

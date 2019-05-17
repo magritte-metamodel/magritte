@@ -1,4 +1,4 @@
 accessing
 label
 
-	^ label ifNil: [ selector capitalized normalizeCamelCase ].
+	^ label ifNil: [ action asString capitalized normalizeCamelCase ].

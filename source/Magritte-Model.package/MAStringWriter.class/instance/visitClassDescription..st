@@ -1,3 +1,3 @@
 visiting-description
 visitClassDescription: aDescription
-	self stream nextPutAll: self object label
+	self stream nextPutAll: self object name
