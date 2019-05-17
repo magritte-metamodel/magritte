@@ -37,7 +37,7 @@ baseline330ForPharo: spec
 				package: 'Magritte-Model' with: [ spec includes: #('Magritte-Pharo7-Model') ];
 				" create a temporary alias "
 				package: 'Magritte-Pharo-Model' with: 'Magritte-Pharo7-Model'].
-		
+
 	spec
 		for: #(#'pharo8.x')
 		do: [ 
