@@ -14,6 +14,18 @@ Magritte is a fully dynamic meta-description framework that helps to solve those
 
 Christoph Lamprecht ported Magritte to [Perl](http://sites.google.com/site/vlclamprecht/Home/perl).
 
+### Add as a project dependency
+
+In you project Baseline or Configuration definition, add to the spec:
+
+```
+baseline: 'Magritte' 
+with: [ spec repository: 'github://magritte-metamodel/magritte:v3.5.4'; 
+             loads: #(Core) ]; 
+```
+
+This snippet uses V3.5.4 release version, remember to change the release version to your needs. See BaselineOfMagritte for other groups to load beside of 'Core'.
+
 ### Mailing-Lists
   * [Magritte, Pier and Related Tools](https://www.iam.unibe.ch/mailman/listinfo/smallwiki)
   * [Seaside](http://lists.squeakfoundation.org/cgi-bin/mailman/listinfo/seaside)
