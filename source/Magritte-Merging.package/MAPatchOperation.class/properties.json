@@ -1,0 +1,16 @@
+{
+	"commentStamp" : "",
+	"super" : "Object",
+	"category" : "Magritte-Merging",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"receiver",
+		"field",
+		"oldValue",
+		"newValue"
+	],
+	"name" : "MAPatchOperation",
+	"type" : "normal"
+}
