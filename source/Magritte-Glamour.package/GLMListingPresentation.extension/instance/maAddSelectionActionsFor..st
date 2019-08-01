@@ -1,4 +1,4 @@
-*Magritte-GT
+*Magritte-Glamour
 maAddSelectionActionsFor: aClass 
 	
 	aClass magritteActionDescriptions do: [ :desc |

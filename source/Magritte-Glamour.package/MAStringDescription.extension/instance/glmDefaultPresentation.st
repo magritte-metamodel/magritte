@@ -1,3 +1,3 @@
-*Magritte-GT
+*Magritte-Glamour
 glmDefaultPresentation
 	^ #text
