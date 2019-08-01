@@ -51,10 +51,11 @@ baseline330ForPharo: spec
 			spec package: 'Magritte-Morph' with: [ spec includes: #('Magritte-GT') ].
 			spec group: 'default' with: #('Magritte-GT') ].
 	spec
-		for: #(#'pharo5.x' #'pharo6.x' #'pharo7.x')
+		for: #(#'pharo5.x' #'pharo6.x' #'pharo7.x' #'pharo8.x')
 		do: [ 
-			spec package: 'Glamour-Magritte-Presentations' with: [ spec repository: 'http://www.smalltalkhub.com/mc/Moose/Glamour/main' ].
-			spec package: 'Magritte-GT' with: [ spec requires: #('Morphic' 'Glamour-Magritte-Presentations') ].
+			spec 
+				package: 'Magritte-Glamour-Presentations';
+				package: 'Magritte-GT' with: [ spec requires: #('Morphic' 'Magritte-Glamour-Presentations') ].
 			spec group: 'default' with: #('Magritte-GT') ].
 	spec
 		for: #squeakCommon

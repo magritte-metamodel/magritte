@@ -1,0 +1,14 @@
+{
+	"commentStamp" : "",
+	"super" : "GLMMorphicWidgetRenderer",
+	"category" : "Magritte-Glamour",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"scrollPane",
+		"containerMorphClass"
+	],
+	"name" : "GLMMorphicMagritteRenderer",
+	"type" : "normal"
+}
