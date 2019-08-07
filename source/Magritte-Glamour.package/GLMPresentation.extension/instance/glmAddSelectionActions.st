@@ -7,5 +7,4 @@ glmAddSelectionActions
 					action: [ pres selection perform: desc selector ];
 					title: desc label;
 					shortcut: (desc shortcut ifNil: [ desc label first lowercase ]);
-					yourself ] 
-				as: OrderedCollection ].
+					yourself ] ].

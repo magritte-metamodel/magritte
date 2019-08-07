@@ -1,0 +1,4 @@
+accessing
+priority
+
+	^ priority
