@@ -1,4 +1,4 @@
 *magritte-model-actions
 magritteActionDescriptions
 
-	^ self uniqueActionSelectors collect: [ :each | self perform: each ]
+	^ self uniqueActionSelectors collect: [ :each | self perform: each ] as: SortedCollection
