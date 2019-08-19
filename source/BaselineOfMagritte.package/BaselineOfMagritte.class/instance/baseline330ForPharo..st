@@ -67,8 +67,8 @@ baseline330ForPharo: spec
 				baseline: 'PharoEnhancements' with: [
 					spec repository: 'github://seandenigris/Pharo-Enhancements' ].
 			spec 
-				package: 'Magritte-Glamour-Presentations';
-				package: 'Magritte-GT' with: [ spec requires: #('Morphic' 'Magritte-Glamour-Presentations') ];
+				package: 'Magritte-Glamour';
+				package: 'Magritte-GT' with: [ spec requires: #('Morphic' 'Magritte-Glamour') ];
 				package: 'Magritte-Developer' with: [ spec requires: #('PharoEnhancements') ].
 			spec group: 'default' with: #('Magritte-GT' 'Magritte-Developer') ].
 	spec
