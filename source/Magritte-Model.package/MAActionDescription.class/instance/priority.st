@@ -1,4 +1,4 @@
 accessing
 priority
 
-	^ priority
+	^ priority ifNil: [ 0 ]
