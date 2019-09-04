@@ -1,3 +1,3 @@
 *Magritte-Morph
 defaultMorphClasses
-	^ Array with: MAMultiSelectListMorph
+	^ Array with: MATokenCompletionMorph with: MAMultiSelectListMorph
