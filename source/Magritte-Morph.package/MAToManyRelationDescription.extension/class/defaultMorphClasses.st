@@ -1,3 +1,3 @@
 *magritte-morph-defaults
 defaultMorphClasses
-	^ Array with: MAOneToManyMorph with: MAOneToManyMorph
+	^ Array with: MATokenCompletionMorph with: MAOneToManyMorph
