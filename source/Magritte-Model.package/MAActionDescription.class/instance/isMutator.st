@@ -1,3 +1,3 @@
 accessing
 isMutator
-	^ isMutator
+	^ isMutator ifNil: [ true ]
