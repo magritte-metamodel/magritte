@@ -1,7 +1,7 @@
 *Magritte-Developer
 descriptionFuelOut
 	<magritteActionDescription>
-	^ MAActionDescription new
-			label: 'Fuel Out';
+	^ MAActionDescription new	
 			action: #fuelOut;
+			priority: 1200;
 			yourself

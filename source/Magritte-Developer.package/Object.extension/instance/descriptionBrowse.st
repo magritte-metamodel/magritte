@@ -4,4 +4,5 @@ descriptionBrowse
 	^ MAActionDescription new
 			label: 'Browse Class';
 			action: #browse;
+			priority: 1100;
 			yourself
