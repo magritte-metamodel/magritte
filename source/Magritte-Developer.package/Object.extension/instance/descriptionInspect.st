@@ -2,6 +2,6 @@
 descriptionInspect
 	<magritteActionDescription>
 	^ MAActionDescription new
-			label: 'Inspect';
 			action: #inspect;
+			priority: 1000;
 			yourself
