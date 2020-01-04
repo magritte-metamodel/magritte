@@ -1,4 +1,4 @@
 activation
 contextMenuActivation
 		<classAnnotation>
-		^CmdContextMenuCommandActivation for: ClyBrowserContext
+		^ CmdContextMenuActivation byRootGroupItemFor: ClyClassContextOfFullBrowser
