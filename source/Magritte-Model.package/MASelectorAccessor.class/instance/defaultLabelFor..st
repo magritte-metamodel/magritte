@@ -1,3 +1,3 @@
 accessing
 defaultLabelFor: aDescription
-	^ self readSelector normalizeCamelCase capitalized
+	^ self readSelector asString normalizeCamelCase capitalized
