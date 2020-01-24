@@ -4,6 +4,8 @@ glmPresentation
 	valuable := self 
 		propertyAt: #glmPresentation
 		ifAbsent: [ self glmDefaultPresentation ].
+		
+	valuable ifNil: [ ^ [ ] ].
 	
 	^ [ :composite :context :subject |
 			| presentation |
