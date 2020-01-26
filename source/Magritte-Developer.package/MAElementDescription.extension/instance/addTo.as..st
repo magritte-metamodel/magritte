@@ -9,5 +9,5 @@ addTo: aClass as: aSymbol
 			nextPutAll: '^ ';
 			store: self ].
 	formattedSource := (RBParser parseMethod: source) formattedCode.
-	aClass compile: formattedSource classified: 'accessing-magritte'.
+	aClass compile: formattedSource classified: 'magritte-accessing'.
 	self accessor maSetUp: aClass
