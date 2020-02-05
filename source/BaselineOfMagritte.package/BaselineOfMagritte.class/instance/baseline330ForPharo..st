@@ -51,7 +51,7 @@ baseline330ForPharo: spec
 			spec package: 'Magritte-Morph' with: [ spec includes: #('Magritte-GT') ].
 			spec group: 'default' with: #('Magritte-GT') ].
 	spec
-		for: #(#'pharo5.x' #'pharo6.x' #'pharo7.x' #'pharo8.x')
+		for: #(#'pharo5.x' #'pharo6.x' #'pharo7.x' #'pharo8.x' #'pharo9.x')
 		do: [ 
 			spec
 				baseline: 'PharoEnhancements' with: [
