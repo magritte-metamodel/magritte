@@ -29,7 +29,7 @@ baseline330ForPharo: spec
 				" create a temporary alias "
 				package: 'Magritte-Pharo-Model' with: 'Magritte-Pharo3-Model'].
 	spec
-		for: #(#'pharo7.x' #'pharo8.x' #'pharo9.x')
+		for: #(#'pharo')
 		do: [ 
 			spec
 				package: 'Magritte-Pharo7-Model' with: [ spec requires: #('Magritte-Model') ];
@@ -51,7 +51,7 @@ baseline330ForPharo: spec
 			spec package: 'Magritte-Morph' with: [ spec includes: #('Magritte-GT') ].
 			spec group: 'default' with: #('Magritte-GT') ].
 	spec
-		for: #(#'pharo5.x' #'pharo6.x' #'pharo7.x' #'pharo8.x' #'pharo9.x')
+		for: #(#'pharo5.x' #'pharo6.x' #'pharo')
 		do: [ 
 			spec
 				baseline: 'PharoEnhancements' with: [
