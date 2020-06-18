@@ -1,10 +1,16 @@
 initialization
 initialize
 
+	| scrollPane |
 	super initialize.
 	self
 		changeTableLayout;
-		vResizing: #shrinkWrap.
-	self
-		addMorphBack: self textInput;
-		addMorphBack: self tokenViewer
+		color: Color transparent.
+	self addMorphBack: self textInput.
+	scrollPane := GeneralScrollPane new
+			changeScrollerTableLayout;
+			hResizing: #spaceFill;
+			vResizing: #spaceFill;
+			scrollTarget: self tokenViewer;
+			yourself.
+	self addMorphBack: scrollPane
