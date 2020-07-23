@@ -1,3 +1,3 @@
 actions
 beWriteable
-	self readonly: false
+	self readOnly: false

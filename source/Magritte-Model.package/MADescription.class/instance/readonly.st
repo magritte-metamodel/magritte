@@ -1,5 +1,5 @@
 accessing-properties
-readonly
-	"Answer ==true== if the model described by the receiver is read-only."
+readOnly
+	"Test whether my model is read-only."
 
-	^ self propertyAt: #readonly ifAbsent: [ self class defaultReadonly ]
+	^ self propertyAt: #readOnly ifAbsent: [ self class defaultReadOnly ]

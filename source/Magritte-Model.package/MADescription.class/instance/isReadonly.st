@@ -1,3 +1,3 @@
 testing
-isReadonly
-	^ self readonly
+isReadOnly
+	^ self readOnly

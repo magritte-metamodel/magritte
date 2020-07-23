@@ -1,9 +1,9 @@
 acessing-magritte
-descriptionReadonly
+descriptionReadOnly
 	<magritteDescription>
 	^ MABooleanDescription new
-		accessor: #readonly;
-		label: 'Readonly';
+		accessor: #readOnly;
+		label: 'Read-only';
 		priority: 200;
-		default: self class defaultReadonly;
+		default: self class defaultReadOnly;
 		yourself

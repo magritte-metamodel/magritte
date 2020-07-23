@@ -5,5 +5,5 @@ descriptionName
 		accessor: #name;
 		label: 'Kind';
 		priority: 0;
-		beReadonly;
+		beReadOnly;
 		yourself

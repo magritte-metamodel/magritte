@@ -1,9 +1,9 @@
 tests-actions
-testReadonly
-	self description beReadonly.
-	self assert: self description readonly.
-	self assert: self description isReadonly.
+testReadOnly
+	self description beReadOnly.
+	self assert: self description readOnly.
+	self assert: self description isReadOnly.
 
 	self description beWriteable.
-	self deny: self description readonly.
-	self deny: self description isReadonly
+	self deny: self description readOnly.
+	self deny: self description isReadOnly

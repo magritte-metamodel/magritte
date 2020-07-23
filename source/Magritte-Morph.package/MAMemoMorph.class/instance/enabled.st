@@ -1,4 +1,4 @@
 accessing
 enabled
 
-	^ self magritteDescription readonly not
+	^ self magritteDescription readOnly not
