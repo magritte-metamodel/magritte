@@ -1,3 +1,3 @@
 accessing-properties
-readonly: aBoolean
-	self propertyAt: #readonly put: aBoolean
+readOnly: aBoolean
+	self propertyAt: #readOnly put: aBoolean

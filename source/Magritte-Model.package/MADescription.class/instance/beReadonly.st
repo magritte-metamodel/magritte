@@ -1,3 +1,3 @@
 actions
-beReadonly
-	self readonly: true
+beReadOnly
+	self readOnly: true

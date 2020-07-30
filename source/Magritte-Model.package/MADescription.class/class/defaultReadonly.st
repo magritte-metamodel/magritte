@@ -1,3 +1,3 @@
 accessing-defaults
-defaultReadonly
+defaultReadOnly
 	^ false

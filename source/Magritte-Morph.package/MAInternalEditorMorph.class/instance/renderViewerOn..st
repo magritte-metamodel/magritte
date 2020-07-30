@@ -1,5 +1,5 @@
 rendering
 renderViewerOn: html
 	html render: (self component
-		readonly: self isReadonly;
+		readOnly: self isReadOnly;
 		yourself)
