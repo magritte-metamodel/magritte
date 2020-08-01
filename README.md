@@ -39,6 +39,7 @@ This snippet uses V3.5.4 release version, remember to change the release version
   * [Magritte Chapter in Seaside Book](http://book.seaside.st/book/advanced/magritte)
   * [Using Magritte in Seaside](http://onsmalltalk.com/using-magritte-with-seaside)
   * Ongoing work: [Meta data at Work with Magritte: A Tutorial](https://github.com/SquareBracketAssociates/Magritte) [pdf version](https://ci.inria.fr/pharo-contribution/view/Books/job/Magritte/lastSuccessfulBuild/artifact/book-result/MagritteBooklet.pdf)
+  * [The Magritte Wiki](https://github.com/magritte-metamodel/magritte/wiki)
   
 ### Papers
   * [Magritte – Meta-Described Web Application Development](http://sdmeta.gforge.inria.fr/Teaching/Lille/0910-MetaModelisation/Magritte/Reng06a.pdf)
