@@ -1,0 +1,3 @@
+private-visiting-description
+visitElementDescription: aDescription
+	self renderElement: aDescription
