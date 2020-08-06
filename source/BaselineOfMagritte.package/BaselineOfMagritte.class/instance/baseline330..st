@@ -9,8 +9,11 @@ baseline330: spec
 			spec description: 'For pharo4.x, add Magritte-GT package and add it to the default group'.
 			self baseline310CommonExtDeps: spec.
 			spec
-				package: 'Magritte-Model' with: [ spec requires: #('Grease' 'Magritte-Deprecated3dot7') ];
-				package: 'Magritte-Deprecated3dot7';
+				package: 'Magritte-Model' with: [ 
+					spec 
+						requires: #('Grease');
+						includes: #('Magritte-Deprecated3dot7') ];
+				package: 'Magritte-Deprecated3dot7' with: [ spec requires: #('Magritte-Model') ];
 				package: 'Magritte-Tests-Model' with: [ spec requires: #('Magritte-Model') ];
 				package: 'Magritte-Seaside' with: [ spec requires: #('Magritte-Model' 'Seaside3') ];
 				package: 'Magritte-Bootstrap' with: [ spec requires: #('Magritte-Model') ];
