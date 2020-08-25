@@ -1,3 +1,0 @@
-private
-defaultInstance
-	^ 'Lukas Renggli'

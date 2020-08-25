@@ -1,0 +1,1 @@
+OmEntry {	#tags : {		#author : 'Unknown',		#time : DateAndTime [ '2020-08-25T17:55:18.767766+02:00' ],		#prior : OmReference [ 'Pharo8.0-SNAPSHOT-32bit-1b7a8d8.8jjpzjtlgt2k2jaeytlxu25do', '8324' ],		#self : OmReference [ '1' ]	},	#content : EpSessionSnapshot {		#imageName : '/Users/norbert/work/projects/magritte/magritte.image'	}}

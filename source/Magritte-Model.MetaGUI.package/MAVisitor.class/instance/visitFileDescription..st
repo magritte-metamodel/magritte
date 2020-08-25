@@ -1,3 +1,0 @@
-visiting-description
-visitFileDescription: anObject
-	self visitElementDescription: anObject

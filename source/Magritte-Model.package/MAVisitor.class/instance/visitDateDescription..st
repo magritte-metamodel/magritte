@@ -1,3 +1,0 @@
-visiting-description
-visitDateDescription: anObject
-	self visitMagnitudeDescription: anObject

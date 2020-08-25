@@ -1,3 +1,0 @@
-testing
-canRead: aModel
-	^ true

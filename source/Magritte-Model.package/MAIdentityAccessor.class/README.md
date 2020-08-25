@@ -1,1 +1,0 @@
-I am a read-only access strategy and I answer the model itself when being read.
