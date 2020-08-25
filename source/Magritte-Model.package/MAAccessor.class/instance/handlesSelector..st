@@ -1,3 +1,0 @@
-testing
-handlesSelector: aSelector
-	^ false

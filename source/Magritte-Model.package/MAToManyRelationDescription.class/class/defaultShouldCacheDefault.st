@@ -1,3 +1,0 @@
-accessing-defaults
-defaultShouldCacheDefault
-	^ true

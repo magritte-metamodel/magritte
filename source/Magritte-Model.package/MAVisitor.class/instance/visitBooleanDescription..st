@@ -1,3 +1,0 @@
-visiting-description
-visitBooleanDescription: anObject
-	self visitElementDescription: anObject

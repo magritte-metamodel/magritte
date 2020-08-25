@@ -1,3 +1,0 @@
-private
-otherInstance
-	^ 'Ursula Freitag'

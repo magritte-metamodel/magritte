@@ -1,1 +1,0 @@
-I am a description of the Boolean values ==true== and ==false==. My visual representation could be a check-box.

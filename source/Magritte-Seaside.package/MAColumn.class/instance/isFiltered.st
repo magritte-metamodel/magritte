@@ -1,3 +1,0 @@
-testing
-isFiltered
-	^ self filter

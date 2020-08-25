@@ -1,3 +1,0 @@
-private
-invalidInstance
-	^ Object new

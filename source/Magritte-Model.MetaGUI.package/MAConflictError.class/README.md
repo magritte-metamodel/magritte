@@ -1,1 +1,0 @@
-I am an error that is raised whenever there is an edit conflict.

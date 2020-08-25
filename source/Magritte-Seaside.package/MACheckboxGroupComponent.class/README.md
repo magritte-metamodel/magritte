@@ -1,1 +1,0 @@
-Use for MAMultipleSelectionComponent. I display as many checkboxes as my description has options. Another representation for the same description is MAListCompositionComponent.

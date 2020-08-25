@@ -1,3 +1,0 @@
-private
-excludedInstance
-	self subclassResponsibility

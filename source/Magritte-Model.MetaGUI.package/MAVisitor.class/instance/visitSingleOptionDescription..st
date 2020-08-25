@@ -1,3 +1,0 @@
-visiting-description
-visitSingleOptionDescription: anObject
-	self visitOptionDescription: anObject

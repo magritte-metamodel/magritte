@@ -1,1 +1,0 @@
-I'm the MAFileDescription seaside component. With me user can upload files to the server. I provide a button for the user to browse their computer for files.

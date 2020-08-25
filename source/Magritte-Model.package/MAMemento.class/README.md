@@ -1,1 +1,0 @@
-I am an abstract memento. I reference the model I am working on and the description currently used to describe this model.
