@@ -53,13 +53,13 @@ baseline330ForPharo: spec
 	spec
 		for: #(#'pharo5.x' #'pharo6.x' #'pharo7.x' #'pharo8.x' #'pharo9.x')
 		do: [ 
-			spec
+			"spec
 				baseline: 'PharoEnhancements' with: [
-					spec repository: 'github://seandenigris/Pharo-Enhancements' ].
+					spec repository: 'github://seandenigris/Pharo-Enhancements' ]."
 			spec 
 				package: 'Magritte-Glamour';
 				package: 'Magritte-GT' with: [ spec requires: #('Morphic' 'Magritte-Glamour') ];
-				package: 'Magritte-Developer' with: [ spec requires: #('PharoEnhancements') ].
+				package: 'Magritte-Developer' with: [ "spec requires: #('PharoEnhancements')" ].
 			spec group: 'default' with: #('Magritte-GT' 'Magritte-Developer') ].
 	spec
 		for: #squeakCommon
