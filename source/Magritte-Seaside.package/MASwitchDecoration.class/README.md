@@ -1,1 +1,0 @@
-I turn the owning component read-only and add an edit button. Clicking that button allows one to toggle between view and edit-mode.

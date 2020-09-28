@@ -1,1 +1,0 @@
-(ConfigurationOfMagritteContactManager project version: '1.0') load

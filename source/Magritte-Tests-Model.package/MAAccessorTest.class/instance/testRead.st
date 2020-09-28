@@ -1,3 +1,0 @@
-tests
-testRead
-	self subclassResponsibility

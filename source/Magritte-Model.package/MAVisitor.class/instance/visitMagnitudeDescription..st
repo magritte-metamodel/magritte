@@ -1,3 +1,0 @@
-visiting-description
-visitMagnitudeDescription: anObject
-	self visitElementDescription: anObject

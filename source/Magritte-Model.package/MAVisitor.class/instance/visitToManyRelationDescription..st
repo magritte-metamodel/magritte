@@ -1,3 +1,0 @@
-visiting-description
-visitToManyRelationDescription: anObject
-	self visitRelationDescription: anObject

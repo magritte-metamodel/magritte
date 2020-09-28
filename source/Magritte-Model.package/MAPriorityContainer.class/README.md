@@ -1,1 +1,0 @@
-I am a container holding a collection of descriptions and I keep them sorted according to their priority.

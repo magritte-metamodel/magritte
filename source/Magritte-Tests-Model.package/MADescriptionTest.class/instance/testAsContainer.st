@@ -1,3 +1,0 @@
-tests-converting
-testAsContainer
-	self subclassResponsibility

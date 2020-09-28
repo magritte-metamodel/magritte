@@ -1,3 +1,0 @@
-visiting-description
-visitPasswordDescription: anObject
-	self visitStringDescription: anObject

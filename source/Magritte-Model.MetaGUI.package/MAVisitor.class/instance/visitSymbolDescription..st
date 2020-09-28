@@ -1,3 +1,0 @@
-visiting-description
-visitSymbolDescription: anObject
-	self visitStringDescription: anObject

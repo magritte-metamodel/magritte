@@ -1,1 +1,0 @@
-I cache values being read and written without touching the model. When committing changes, the modifications will be propagated to the model all at once.

@@ -1,3 +1,0 @@
-private
-actualClass
-	^ MAVariableAccessor

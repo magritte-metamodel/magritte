@@ -1,3 +1,0 @@
-running
-tearDown
-	model finalize

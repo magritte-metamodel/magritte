@@ -1,3 +1,0 @@
-private
-emptyInstance
-	^ String new
