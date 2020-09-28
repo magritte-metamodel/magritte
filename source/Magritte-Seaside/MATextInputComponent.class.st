@@ -14,7 +14,7 @@ MATextInputComponent class >> isAbstract [
 
 { #category : #testing }
 MATextInputComponent >> hasLabelId [
-	^ self isReadonly not
+	^ self isReadOnly not
 ]
 
 { #category : #rendering }

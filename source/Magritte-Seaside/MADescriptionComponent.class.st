@@ -50,10 +50,10 @@ MADescriptionComponent >> id [
 ]
 
 { #category : #testing }
-MADescriptionComponent >> isReadonly [
-	^ self magritteDescription isReadonly
+MADescriptionComponent >> isReadOnly [
+	^ self magritteDescription isReadOnly
 		or: [ self isRoot not
-		and: [ self parent isReadonly ] ]
+		and: [ self parent isReadOnly ] ]
 ]
 
 { #category : #testing }

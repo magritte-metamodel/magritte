@@ -11,7 +11,7 @@ MARangeComponent class >> isAbstract [
 
 { #category : #testing }
 MARangeComponent >> hasLabelId [
-	^ self isReadonly not
+	^ self isReadOnly not
 ]
 
 { #category : #accessing }

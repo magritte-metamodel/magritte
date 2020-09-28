@@ -14,7 +14,7 @@ MATextPasswordComponent class >> isAbstract [
 
 { #category : #testing }
 MATextPasswordComponent >> hasLabelId [
-	^ self isReadonly not
+	^ self isReadOnly not
 ]
 
 { #category : #rendering }

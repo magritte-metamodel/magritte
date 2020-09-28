@@ -14,7 +14,7 @@ MACheckboxGroupComponent class >> isAbstract [
 
 { #category : #testing }
 MACheckboxGroupComponent >> hasLabelId [
-	^ self isReadonly
+	^ self isReadOnly
 ]
 
 { #category : #testing }

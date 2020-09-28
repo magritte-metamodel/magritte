@@ -1,5 +1,5 @@
 "
-I provide a basic display for all subclasses of MAElementDescription (only for readonly descriptions). The object is just displayed as a string. For more complex behaviour, overried #renderViewerOn:. 
+I provide a basic display for all subclasses of MAElementDescription (only for readOnly descriptions). The object is just displayed as a string. For more complex behaviour, overried #renderViewerOn:. 
 "
 Class {
 	#name : #MAElementComponent,
@@ -37,7 +37,7 @@ MAElementComponent >> reference [
 
 { #category : #rendering }
 MAElementComponent >> renderContentOn: html [
-	self isReadonly
+	self isReadOnly
 		ifTrue: [ self renderViewerOn: html ]
 		ifFalse: [ self renderEditorOn: html ]
 ]

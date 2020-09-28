@@ -95,7 +95,7 @@ MABooleanDescription >> falseString: aString [
 	self propertyAt: #falseString put: aString
 ]
 
-{ #category : #'accessing-readonly' }
+{ #category : #'accessing-readOnly' }
 MABooleanDescription >> falseStrings [
 	^ self class defaultFalseStrings
 ]
@@ -134,7 +134,7 @@ MABooleanDescription >> trueString: aString [
 	self propertyAt: #trueString put: aString
 ]
 
-{ #category : #'accessing-readonly' }
+{ #category : #'accessing-readOnly' }
 MABooleanDescription >> trueStrings [
 	^ self class defaultTrueStrings
 ]

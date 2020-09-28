@@ -14,7 +14,7 @@ MARadioGroupComponent class >> isAbstract [
 
 { #category : #testing }
 MARadioGroupComponent >> hasLabelId [
-	^ self isReadonly not
+	^ self isReadOnly not
 ]
 
 { #category : #private }

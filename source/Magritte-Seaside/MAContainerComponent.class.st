@@ -3,7 +3,7 @@ Class {
 	#superclass : #MADescriptionComponent,
 	#instVars : [
 		'children',
-		'readonly',
+		'readOnly',
 		'errors',
 		'magritteDescription'
 	],
@@ -28,7 +28,7 @@ MAContainerComponent >> addForm: aCollection [
 { #category : #decorating }
 MAContainerComponent >> addSwitch [
 	self addDecoration: MASwitchDecoration new.
-	self readonly: true
+	self readOnly: true
 ]
 
 { #category : #decorating }
@@ -100,7 +100,7 @@ MAContainerComponent >> doValidateTo: aCollectionOfErrors [
 
 { #category : #actions }
 MAContainerComponent >> edit [
-	self readonly: false
+	self readOnly: false
 ]
 
 { #category : #accessing }
@@ -122,8 +122,8 @@ MAContainerComponent >> isMagritteContainer [
 ]
 
 { #category : #testing }
-MAContainerComponent >> isReadonly [
-	^ super isReadonly or: [ self readonly ]
+MAContainerComponent >> isReadOnly [
+	^ super isReadOnly or: [ self readOnly ]
 ]
 
 { #category : #accessing }
@@ -139,13 +139,13 @@ MAContainerComponent >> magritteDescription [
 ]
 
 { #category : #'accessing-properties' }
-MAContainerComponent >> readonly [
-	^ readonly ifNil: [ readonly := false ]
+MAContainerComponent >> readOnly [
+	^ readOnly ifNil: [ readOnly := false ]
 ]
 
 { #category : #'accessing-properties' }
-MAContainerComponent >> readonly: aBoolean [
-	readonly := aBoolean
+MAContainerComponent >> readOnly: aBoolean [
+	readOnly := aBoolean
 ]
 
 { #category : #rendering }

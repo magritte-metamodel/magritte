@@ -71,7 +71,7 @@ MADescription class >> defaultPriority [
 ]
 
 { #category : #'accessing-defaults' }
-MADescription class >> defaultReadonly [
+MADescription class >> defaultReadOnly [
 	^ false
 ]
 
@@ -189,8 +189,8 @@ MADescription >> beOptional [
 ]
 
 { #category : #actions }
-MADescription >> beReadonly [
-	self readonly: true
+MADescription >> beReadOnly [
+	self readOnly: true
 ]
 
 { #category : #actions }
@@ -205,7 +205,7 @@ MADescription >> beVisible [
 
 { #category : #actions }
 MADescription >> beWriteable [
-	self readonly: false
+	self readOnly: false
 ]
 
 { #category : #accessors }
@@ -342,7 +342,7 @@ MADescription >> descriptionName [
 		accessor: #name;
 		label: 'Kind';
 		priority: 0;
-		beReadonly;
+		beReadOnly;
 		yourself
 ]
 
@@ -359,13 +359,13 @@ MADescription >> descriptionPriority [
 ]
 
 { #category : #'acessing-magritte' }
-MADescription >> descriptionReadonly [
+MADescription >> descriptionReadOnly [
 	<magritteDescription>
 	^ MABooleanDescription new
-		accessor: #readonly;
-		label: 'Readonly';
+		accessor: #readOnly;
+		label: 'ReadOnly';
 		priority: 200;
-		default: self class defaultReadonly;
+		default: self class defaultReadOnly;
 		yourself
 ]
 
@@ -534,8 +534,8 @@ MADescription >> isKindDefined [
 ]
 
 { #category : #testing }
-MADescription >> isReadonly [
-	^ self readonly
+MADescription >> isReadOnly [
+	^ self readOnly
 ]
 
 { #category : #testing }
@@ -650,15 +650,15 @@ MADescription >> propertyAccessor: aSelector [
 ]
 
 { #category : #'accessing-properties' }
-MADescription >> readonly [
+MADescription >> readOnly [
 	"Answer ==true== if the model described by the receiver is read-only."
 
-	^ self propertyAt: #readonly ifAbsent: [ self class defaultReadonly ]
+	^ self propertyAt: #readOnly ifAbsent: [ self class defaultReadOnly ]
 ]
 
 { #category : #'accessing-properties' }
-MADescription >> readonly: aBoolean [
-	self propertyAt: #readonly put: aBoolean
+MADescription >> readOnly: aBoolean [
+	self propertyAt: #readOnly put: aBoolean
 ]
 
 { #category : #'accessing-properties' }

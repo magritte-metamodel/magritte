@@ -39,6 +39,6 @@ MAInternalEditorComponent >> create [
 { #category : #rendering }
 MAInternalEditorComponent >> renderViewerOn: html [
 	html render: (self component
-		readonly: self isReadonly;
+		readOnly: self isReadOnly;
 		yourself)
 ]

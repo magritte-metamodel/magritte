@@ -30,7 +30,7 @@ MASelectListComponent >> groups [
 
 { #category : #testing }
 MASelectListComponent >> hasLabelId [
-	^ self isReadonly not
+	^ self isReadOnly not
 ]
 
 { #category : #'rendering-grouped' }

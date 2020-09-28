@@ -33,7 +33,7 @@ MAMemento >> commit [
 MAMemento >> isDifferent: firstDictionary to: secondDictionary [
 	| firstValue secondValue |
 	self magritteDescription do: [ :each |
-		(each isVisible and: [ each isReadonly not ]) ifTrue: [
+		(each isVisible and: [ each isReadOnly not ]) ifTrue: [
 			firstValue := firstDictionary at: each ifAbsent: [ nil ].
 			secondValue := secondDictionary at: each ifAbsent: [ nil ].
 			firstValue = secondValue ifFalse: [ ^ true ] ] ].
@@ -83,7 +83,7 @@ MAMemento >> push: aDictionary [
 	"Utility method to push a dictionary mapping descriptions to values into the model."
 
 	aDictionary keysAndValuesDo: [ :key :value |
-		(key isVisible and: [ key isReadonly not ]) 
+		(key isVisible and: [ key isReadOnly not ]) 
 			ifTrue: [ self model write: value using: key ] ]
 ]
 

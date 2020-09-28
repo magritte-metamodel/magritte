@@ -9,13 +9,13 @@ Class {
 
 { #category : #accessing }
 MASwitchDecoration >> buttons [
-	^ self decoratedComponent isReadonly
+	^ self decoratedComponent isReadOnly
 		ifTrue: [ Array with: #edit -> 'Edit' ]
 		ifFalse: [ Array with: #save -> 'Save' with: #cancel -> 'Cancel' ]
 ]
 
 { #category : #processing }
 MASwitchDecoration >> handleAnswer: anObject continueWith: aBlock [
-	self decoratedComponent readonly: true.
+	self decoratedComponent readOnly: true.
 	super handleAnswer: anObject continueWith: aBlock
 ]

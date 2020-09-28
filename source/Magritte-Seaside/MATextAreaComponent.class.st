@@ -14,7 +14,7 @@ MATextAreaComponent class >> isAbstract [
 
 { #category : #testing }
 MATextAreaComponent >> hasLabelId [
-	^ self isReadonly not
+	^ self isReadOnly not
 ]
 
 { #category : #rendering }

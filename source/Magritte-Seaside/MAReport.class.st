@@ -110,7 +110,7 @@ MAReport >> batchStartIndex [
 	^ (self batchPage - 1) * self batchSize + 1
 ]
 
-{ #category : #'accessing-readonly' }
+{ #category : #'accessing-readOnly' }
 MAReport >> cache [
 	"Return the cached rows of the receiver, these rows are filtered and sorted."
 
@@ -122,17 +122,17 @@ MAReport >> cache [
 	^ cache
 ]
 
-{ #category : #'accessing-readonly' }
+{ #category : #'accessing-readOnly' }
 MAReport >> cache: aCollection [
 	cache := aCollection
 ]
 
-{ #category : #'accessing-readonly' }
+{ #category : #'accessing-readOnly' }
 MAReport >> columns [
 	^ columns
 ]
 
-{ #category : #'accessing-readonly' }
+{ #category : #'accessing-readOnly' }
 MAReport >> columns: aCollection [
 	columns := aCollection
 ]
@@ -738,7 +738,7 @@ MAReport >> sorterStyles: aCollection [
 	properties at: #sorterStyles put: aCollection
 ]
 
-{ #category : #'accessing-readonly' }
+{ #category : #'accessing-readOnly' }
 MAReport >> states [
 	^ Array with: backtracked
 ]
@@ -773,7 +773,7 @@ MAReport >> tableSummary: aString [
 	properties at: #tableSummary put: aString
 ]
 
-{ #category : #'accessing-readonly' }
+{ #category : #'accessing-readOnly' }
 MAReport >> visible [
 	^ self showBatch
 		ifFalse: [ self cache ]
@@ -783,7 +783,7 @@ MAReport >> visible [
 				to: self batchEndIndex ]
 ]
 
-{ #category : #'accessing-readonly' }
+{ #category : #'accessing-readOnly' }
 MAReport >> visibleColumns [
 	^ self columns select: [ :each | each isVisible ]
 ]

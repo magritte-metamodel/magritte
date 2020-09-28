@@ -54,7 +54,7 @@ CMPerson >> descriptionAge [
 		selectorAccessor: #age;
 		label: 'Age';
 		priority: 80;
-		beReadonly;
+		beReadOnly;
 		yourself
 ]
 
