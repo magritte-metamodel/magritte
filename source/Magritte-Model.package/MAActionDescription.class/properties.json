@@ -1,6 +1,6 @@
 {
 	"commentStamp" : "",
-	"super" : "Object",
+	"super" : "MAObject",
 	"category" : "Magritte-Model-Description",
 	"classinstvars" : [ ],
 	"pools" : [ ],
