@@ -1,18 +1,16 @@
 private
 buildDescriptions: anObject
-	| descriptionExtensions descriptionSelectors |
+	| descriptionExtensions descriptionSelectors extendedDescriptions |
 	
 	descriptionSelectors := self uniqueDescriptionSelectors: anObject.
 	descriptionExtensions := self descriptionExtensions: anObject.
+	
+	Halt once.
 
-	^ (descriptionSelectors 
-		collect:  [ :each |
-			| description |
-			description := anObject perform: each.
-			
-			description notNil ifTrue: [
-				descriptionExtensions at: each ifPresent: [ :extensions | 
-					extensions do: [ :extensionSelector | 
-						description := anObject perform: extensionSelector with: description ] ] ].
-			description ])
-		select: #notNil.
+	extendedDescriptions := descriptionSelectors 
+		collect:  [ :descSel |
+			| initialDescription |
+			initialDescription := anObject perform: descSel.
+			self description: initialDescription extendedBy: descriptionExtensions for: descSel of: anObject ].
+
+	^ extendedDescriptions select: #notNil.

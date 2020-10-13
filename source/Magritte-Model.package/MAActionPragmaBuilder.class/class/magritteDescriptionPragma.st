@@ -1,0 +1,3 @@
+constants
+magritteDescriptionPragma 
+	^ #magritteActionDescription

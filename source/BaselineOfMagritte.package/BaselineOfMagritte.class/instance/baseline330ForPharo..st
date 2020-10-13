@@ -73,4 +73,9 @@ baseline330ForPharo: spec
 			spec
 				group: 'Tools' with: #('Magritte-Pharo-Tools');
 				group: 'Morphic' with: #('Magritte-Morph');
-				group: 'default' with: 'Morphic' ]
+				group: 'default' with: 'Morphic' ].
+		
+		spec for: #GToolkit do: [ 
+			spec package: 'Magritte-GToolkit' with: [ spec requires: #('Magritte-Model') ].
+			spec package: 'Magritte-Developer' with: [ spec includes: #('Magritte-GToolkit') ].
+			spec group: 'default' with: 'Magritte-GToolkit' ]
