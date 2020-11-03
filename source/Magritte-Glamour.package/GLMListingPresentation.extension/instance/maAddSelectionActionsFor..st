@@ -1,7 +1,7 @@
 *Magritte-Glamour
 maAddSelectionActionsFor: aClass 
 	
-	aClass magritteActionDescriptions do: [ :desc |
+	aClass magritteActions do: [ :desc |
 		| glmAction actionBlock |
 		actionBlock := [ :list |
 			desc performOn: list selection.
