@@ -1,9 +1,7 @@
 visiting-description
 visitBooleanDescription: aDescription
-	(aDescription trueString = self contents
-		or: [ aDescription trueStrings includes: self contents ])
+	(self isTrueUsing: aDescription)
 			ifTrue: [ ^ self object: true ].
-	(aDescription falseString = self contents
-		or: [ aDescription falseStrings includes: self contents ])
+	(self isFalseUsing: aDescription)
 			ifTrue: [ ^ self object: false ].
 	MAReadError signal
