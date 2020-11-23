@@ -5,7 +5,7 @@ maSetUp: aClass for: anMAElementDescription
 	needsInstVar := (aClass hasInstVarNamed: variableName) not.
 	needsInstVar ifTrue: [ aClass addInstVarNamed: variableName ].
 	self 
-		maCompile: '<1s><r><t>^ self maLazyFrom: self <2s>Description'
+		maCompile: '<1s><r><t>^ self maLazyInstVarUsing: self <2s>Description'
 		asAccessor: self readSelector 
 		forinstVarNamed: variableName 
 		in: aClass.
