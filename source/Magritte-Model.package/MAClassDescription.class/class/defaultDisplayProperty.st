@@ -1,3 +1,3 @@
 accessing-defaults
 defaultDisplayProperty
-	^ #printMinutes
+	^ #name

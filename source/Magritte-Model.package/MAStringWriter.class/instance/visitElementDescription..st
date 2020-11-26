@@ -1,3 +1,3 @@
 visiting-description
-visitElementDescription: aDescription 
-	self stream nextPutAll: self object greaseString
+visitElementDescription: aDescription
+	self printObjectDescribedBy: aDescription
