@@ -1,1 +1,0 @@
-I am a description of timestamps, possible values are instances of ==TimeStamp==. My visual representation could be a date- and time-picker.

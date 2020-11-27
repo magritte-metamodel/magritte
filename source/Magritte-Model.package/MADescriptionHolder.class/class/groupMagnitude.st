@@ -5,6 +5,5 @@ groupMagnitude
 		add: MADurationDescription;
 		add: MADateDescription;
 		add: MATimeDescription;
-		add: MATimeStampDescription;
 		add: MADateAndTimeDescription;
 		yourself

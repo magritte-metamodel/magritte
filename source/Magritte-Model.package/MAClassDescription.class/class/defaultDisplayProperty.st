@@ -1,3 +1,3 @@
 accessing-defaults
 defaultDisplayProperty
-	^ #filename
+	^ #name
