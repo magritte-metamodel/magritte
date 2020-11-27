@@ -1,1 +1,0 @@
-I recreate Magritte-described domain objects from strings. Typically I am used to convert string values entered into a Magritte form back to the objects they represent. For example, a user may have typed '10/01/2020' into a date field.

@@ -1,3 +1,0 @@
-actions
-valueFor: aRow
-	^aRow

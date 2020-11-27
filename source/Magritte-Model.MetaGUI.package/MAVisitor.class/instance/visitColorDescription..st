@@ -1,3 +1,0 @@
-visiting-description
-visitColorDescription: anObject
-	self visitElementDescription: anObject

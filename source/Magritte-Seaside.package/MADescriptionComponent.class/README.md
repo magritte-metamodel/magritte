@@ -1,1 +1,0 @@
-I'm a seaside object which provides all the functions for my subclasses to display MADescription subclasses.

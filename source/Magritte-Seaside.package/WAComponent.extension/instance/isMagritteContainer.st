@@ -1,3 +1,0 @@
-*magritte-seaside
-isMagritteContainer
-	^ false

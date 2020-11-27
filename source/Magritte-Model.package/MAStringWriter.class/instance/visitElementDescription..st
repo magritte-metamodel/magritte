@@ -1,3 +1,0 @@
-visiting-description
-visitElementDescription: aDescription
-	self printObjectDescribedBy: aDescription

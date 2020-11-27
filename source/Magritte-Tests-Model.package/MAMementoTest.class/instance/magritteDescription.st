@@ -1,3 +1,0 @@
-acessing-magritte
-magritteDescription
-	^ description

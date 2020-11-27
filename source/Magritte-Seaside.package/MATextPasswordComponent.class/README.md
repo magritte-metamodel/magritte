@@ -1,1 +1,0 @@
-Password seaside component, I display stars '*' instead of the text typed by the user. My description is MAPasswordDescription.

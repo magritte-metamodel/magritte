@@ -1,3 +1,0 @@
-converting
-asContainer
-	^ self

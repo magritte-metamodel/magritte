@@ -1,1 +1,0 @@
-I am a description of times, possible values are instances of ==Time==. My visual representation could be a time-picker.
