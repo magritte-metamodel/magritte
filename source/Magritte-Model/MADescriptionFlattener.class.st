@@ -6,7 +6,7 @@ This description is used in a QCMultipartComponent and this is extracted since, 
 "
 Class {
 	#name : #MADescriptionFlattener,
-	#superclass : #AnObsoleteMADescriptionBuilder,
+	#superclass : #MADescriptionBuilder,
 	#category : #'Magritte-Model-Builder'
 }
 

@@ -1,6 +1,6 @@
 Class {
 	#name : #MAComposedDescriptionBuilder,
-	#superclass : #AnObsoleteMADescriptionBuilder,
+	#superclass : #MADescriptionBuilder,
 	#category : #'Magritte-Model-Builder'
 }
 
