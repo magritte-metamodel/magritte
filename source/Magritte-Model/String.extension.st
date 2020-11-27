@@ -1,6 +1,6 @@
 Extension { #name : #String }
 
-{ #category : #'*magritte-model-testing' }
+{ #category : #'*Magritte-Model' }
 String >> matches: aString [
 	aString isEmpty ifTrue: [ ^ true ].
 	^ (aString includesAnyOf: '*#')
@@ -11,7 +11,7 @@ String >> matches: aString [
 { #category : #'*magritte-model' }
 String >> normalizeCamelCase [
 
-	^ String streamContents: [ :out |
+	^ self class streamContents: [ :out |
 		self do: [ :e |
 			(e isUppercase and: [ out position > 0 ]) ifTrue: [ out nextPut: Character space ].
 			out nextPut: e ] ]

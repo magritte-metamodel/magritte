@@ -7,7 +7,7 @@ Class {
 	#instVars : [
 		'key'
 	],
-	#category : 'Magritte-Model-Accessor'
+	#category : #'Magritte-Model-Accessor'
 }
 
 { #category : #testing }
@@ -51,6 +51,15 @@ MADictionaryAccessor >> key [
 { #category : #accessing }
 MADictionaryAccessor >> key: aKey [
 	key := aKey
+]
+
+{ #category : #'magritte-accessing' }
+MADictionaryAccessor >> keyDescription [
+	<magritteDescription>
+	^ MASymbolDescription new
+		accessor: #key;
+		required: true;
+		yourself
 ]
 
 { #category : #model }

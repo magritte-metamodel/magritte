@@ -1,6 +1,6 @@
 Extension { #name : #BlockClosure }
 
-{ #category : #'*magritte-model-description' }
+{ #category : #'*Magritte-Model' }
 BlockClosure >> optionFor: anObject ifPresent: aBlock [
 	aBlock value: (self cull: anObject)
 ]

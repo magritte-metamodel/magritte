@@ -8,7 +8,7 @@ Class {
 		'model',
 		'description'
 	],
-	#category : 'Magritte-Model-Memento'
+	#category : #'Magritte-Model-Memento'
 }
 
 { #category : #'instance creation' }
@@ -29,11 +29,17 @@ MAMemento >> commit [
 	"Commit the receiver into the model."
 ]
 
+{ #category : #'reflective operations' }
+MAMemento >> doesNotUnderstand: aMessage [
+  self model magritteDescription children detect: [ :desc | desc isMessage: aMessage selector ] ifFound: [ : desc | ^ self readUsing: desc ].
+  ^ super doesNotUnderstand: aMessage
+]
+
 { #category : #private }
 MAMemento >> isDifferent: firstDictionary to: secondDictionary [
 	| firstValue secondValue |
 	self magritteDescription do: [ :each |
-		(each isVisible and: [ each isReadonly not ]) ifTrue: [
+		(each isVisible and: [ each isReadOnly not ]) ifTrue: [
 			firstValue := firstDictionary at: each ifAbsent: [ nil ].
 			secondValue := secondDictionary at: each ifAbsent: [ nil ].
 			firstValue = secondValue ifFalse: [ ^ true ] ] ].
@@ -83,8 +89,13 @@ MAMemento >> push: aDictionary [
 	"Utility method to push a dictionary mapping descriptions to values into the model."
 
 	aDictionary keysAndValuesDo: [ :key :value |
-		(key isVisible and: [ key isReadonly not ]) 
+		(key isVisible and: [ key isReadOnly not ]) 
 			ifTrue: [ self model write: value using: key ] ]
+]
+
+{ #category : #private }
+MAMemento >> readUsing: aDescription [
+	^ self subclassResponsibility
 ]
 
 { #category : #actions }

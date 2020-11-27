@@ -1,7 +1,7 @@
 Class {
 	#name : #MADescriptionHolder,
 	#superclass : #MAValueHolder,
-	#category : 'Magritte-Model-Utility'
+	#category : #'Magritte-Model-Utility'
 }
 
 { #category : #'acessing-magritte' }
@@ -28,7 +28,6 @@ MADescriptionHolder class >> groupMagnitude [
 		add: MADurationDescription;
 		add: MADateDescription;
 		add: MATimeDescription;
-		add: MATimeStampDescription;
 		add: MADateAndTimeDescription;
 		yourself
 ]

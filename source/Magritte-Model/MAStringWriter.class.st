@@ -1,7 +1,7 @@
 Class {
 	#name : #MAStringWriter,
 	#superclass : #MAWriter,
-	#category : 'Magritte-Model-Visitor'
+	#category : #'Magritte-Model-Visitor'
 }
 
 { #category : #private }
@@ -22,11 +22,6 @@ MAStringWriter >> visitBooleanDescription: aDescription [
 	self stream nextPutAll: (self object
 		ifTrue: [ aDescription trueString ]
 		ifFalse: [ aDescription falseString ])
-]
-
-{ #category : #'visiting-description' }
-MAStringWriter >> visitClassDescription: aDescription [
-	self stream nextPutAll: self object label
 ]
 
 { #category : #'visiting-description' }
@@ -51,19 +46,8 @@ MAStringWriter >> visitContainer: aDescription [
 ]
 
 { #category : #'visiting-description' }
-MAStringWriter >> visitDateAndTimeDescription: aDescription [
-
-	self printObjectDescribedBy: aDescription.
-]
-
-{ #category : #'visiting-description' }
-MAStringWriter >> visitElementDescription: aDescription [ 
-	self stream nextPutAll: self object greaseString
-]
-
-{ #category : #'visiting-description' }
-MAStringWriter >> visitFileDescription: aDescription [
-	self stream nextPutAll: self object filename
+MAStringWriter >> visitElementDescription: aDescription [
+	self printObjectDescribedBy: aDescription
 ]
 
 { #category : #'visiting-description' }
@@ -79,18 +63,6 @@ MAStringWriter >> visitMultipleOptionDescription: aDescription [
 { #category : #'visiting-description' }
 MAStringWriter >> visitSingleOptionDescription: aDescription [
 	self stream nextPutAll: (aDescription labelForOption: self object)
-]
-
-{ #category : #'visiting-description' }
-MAStringWriter >> visitStringDescription: aDescription [
-
-	self printObjectDescribedBy: aDescription.
-]
-
-{ #category : #'visiting-description' }
-MAStringWriter >> visitTimeDescription: aDescription [ 
-	
-	self printObjectDescribedBy: aDescription.
 ]
 
 { #category : #'visiting-description' }

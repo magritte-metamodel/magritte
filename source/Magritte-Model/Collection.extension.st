@@ -34,3 +34,13 @@ Collection >> copyWithoutFirstOccurrenceOf: anObject [
 			and: [ done not
 			and: [ done := true ] ] ]
 ]
+
+{ #category : #'*magritte-model-dynopt' }
+Collection >> maAllOptionsFor: aDescription [
+	^ aDescription prepareOptions: self copy
+]
+
+{ #category : #'*Magritte-Model' }
+Collection >> maSelectMatching: aString [ 
+	^ self select: [ :e | e asString startsWith: aString ]
+]

@@ -9,7 +9,7 @@ Class {
 	#instVars : [
 		'children'
 	],
-	#category : 'Magritte-Model-Description'
+	#category : #'Magritte-Model-Description'
 }
 
 { #category : #'accessing-defaults' }
@@ -125,6 +125,27 @@ MAContainer >> copyWithoutAll: aCollection [
 	^self reject: [:each | aCollection includes: each]
 ]
 
+{ #category : #builder }
+MAContainer >> descriptionBuilder [
+	^self propertyAt: #descriptionBuilder ifAbsent: [ nil ]
+]
+
+{ #category : #builder }
+MAContainer >> descriptionBuilder: aBuilderClass [
+	self propertyAt: #descriptionBuilder put: aBuilderClass
+]
+
+{ #category : #builder }
+MAContainer >> descriptionBuilders [
+	^self propertyAt: #descriptionBuilders ifAbsent: [ #() ]
+]
+
+{ #category : #builder }
+MAContainer >> descriptionBuilders: aList [ 
+	self descriptionBuilder: MAComposedDescriptionBuilder.
+	self propertyAt: #descriptionBuilders put: aList
+]
+
 { #category : #'acessing-magritte' }
 MAContainer >> descriptionChildren [
 	<magritteDescription>
@@ -217,6 +238,11 @@ MAContainer >> keysAndValuesDo: aBlock [
 	self children keysAndValuesDo: aBlock
 ]
 
+{ #category : #'as yet unclassified' }
+MAContainer >> magritteTemplate [
+	^ self
+]
+
 { #category : #moving }
 MAContainer >> moveDown: aDescription [
 	self children moveDown: aDescription
@@ -241,6 +267,22 @@ MAContainer >> notEmpty [
 MAContainer >> postCopy [
 	super postCopy.
 	self setChildren: self children copy
+]
+
+{ #category : #accessing }
+MAContainer >> print: anObject on: aStream [
+	"Print the current values of all anObject's described fields. Customize the printing of a field with the #maPrintString property, which should store a valuable with the value of the field as an optional argument"
+	self
+		do: [ :d | 
+			| value |
+			value := d read: anObject.
+			value ifNotNil: [ | stringValue |
+				stringValue := d
+					propertyAt: #maPrintString
+					ifPresent: [ :map | map cull: value ]
+					ifAbsent: [ d toString: value ].
+				aStream nextPutAll: stringValue ] ]
+		separatedBy: [ aStream space ]
 ]
 
 { #category : #enumerating }

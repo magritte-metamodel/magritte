@@ -4,7 +4,7 @@ I am a description of an one-to-many relationship, possible values are instances
 Class {
 	#name : #MAToManyRelationDescription,
 	#superclass : #MARelationDescription,
-	#category : 'Magritte-Model-Description'
+	#category : #'Magritte-Model-Description'
 }
 
 { #category : #'accessing-defaults' }
@@ -20,6 +20,11 @@ MAToManyRelationDescription class >> defaultKind [
 { #category : #'accessing-defaults' }
 MAToManyRelationDescription class >> defaultOrdered [
 	^ false
+]
+
+{ #category : #'accessing-defaults' }
+MAToManyRelationDescription class >> defaultShouldCacheDefault [
+	^ true
 ]
 
 { #category : #'accessing-defaults' }
@@ -156,10 +161,13 @@ MAToManyRelationDescription >> sorted: aBoolean [
 
 { #category : #validating }
 MAToManyRelationDescription >> validateKind: anObject [
-	super validateKind: anObject.
-	anObject do: [ :object |
-		(self classes anySatisfy: [ :class | object species includesBehavior: class ])
-			ifFalse: [ MAKindError description: self signal: self kindErrorMessage ] ]
+
+	self
+		tryValidation: [ super validateKind: anObject ]
+		ifPass: [ 
+			anObject do: [ :object |
+				(self classes anySatisfy: [ :class | object species includesBehavior: class ])
+					ifFalse: [ MAKindError description: self signal: self kindErrorMessage ] ] ]
 ]
 
 { #category : #validating }

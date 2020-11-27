@@ -4,7 +4,7 @@ I am a description of multiple options, possible options are stored within the =
 Class {
 	#name : #MAMultipleOptionDescription,
 	#superclass : #MAOptionDescription,
-	#category : 'Magritte-Model-Description'
+	#category : #'Magritte-Model-Description'
 }
 
 { #category : #'accessing-defaults' }
@@ -116,9 +116,9 @@ MAMultipleOptionDescription >> ordered: aBoolean [
 
 { #category : #validating }
 MAMultipleOptionDescription >> validateKind: anObject [
-	super validateKind: anObject.
-	(anObject allSatisfy: [ :each | self options includes: each ])
-		ifFalse: [ MAKindError description: self signal: self kindErrorMessage ]
+	self 
+		tryValidation: [ super validateKind: anObject ]
+	  ifPass: [ anObject do: [ :e | self validateOptionKind: e ] ]
 ]
 
 { #category : #validating }

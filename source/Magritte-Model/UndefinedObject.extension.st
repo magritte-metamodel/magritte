@@ -1,16 +1,16 @@
 Extension { #name : #UndefinedObject }
 
-{ #category : #'*magritte-model-converting' }
+{ #category : #'*Magritte-Model' }
 UndefinedObject >> asAccessor [
 	^ MANullAccessor new
 ]
 
-{ #category : #'*magritte-model-accessing' }
+{ #category : #'*Magritte-Model' }
 UndefinedObject >> label [
 	^ 'n/a'
 ]
 
-{ #category : #'*magritte-model-accessing' }
+{ #category : #'*Magritte-Model' }
 UndefinedObject >> magritteDescription [
 	^ MAContainer new
 ]

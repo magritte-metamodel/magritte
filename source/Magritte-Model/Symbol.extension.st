@@ -5,7 +5,7 @@ Symbol >> asAccessor [
 	^ MASelectorAccessor selector: self
 ]
 
-{ #category : #'*magritte-model-description' }
+{ #category : #'*Magritte-Model' }
 Symbol >> optionFor: anObject ifPresent: aBlock [
 	aBlock value: (anObject perform: self)
 ]

@@ -8,7 +8,7 @@ Class {
 		'readSelector',
 		'writeSelector'
 	],
-	#category : 'Magritte-Model-Accessor'
+	#category : #'Magritte-Model-Accessor'
 }
 
 { #category : #testing }
@@ -46,6 +46,29 @@ MASelectorAccessor >> canRead: aModel [
 { #category : #testing }
 MASelectorAccessor >> canWrite: aModel [
 	^ self writeSelector notNil and: [ aModel respondsTo: self writeSelector ]
+]
+
+{ #category : #accessing }
+MASelectorAccessor >> defaultLabelFor: aDescription [
+	^ self readSelector asString normalizeCamelCase capitalized
+]
+
+{ #category : #'accessing-magritte' }
+MASelectorAccessor >> descriptionSelector [
+	<magritteDescription>
+	^ MASymbolDescription new
+			accessor: #selector;
+			yourself
+]
+
+{ #category : #printing }
+MASelectorAccessor >> fieldDescription [
+	^ self readSelector asString
+]
+
+{ #category : #testing }
+MASelectorAccessor >> handlesSelector: aSelector [
+	^ aSelector = self readSelector or: [ aSelector = self writeSelector ]
 ]
 
 { #category : #comparing }

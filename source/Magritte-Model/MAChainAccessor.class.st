@@ -7,7 +7,7 @@ Class {
 	#instVars : [
 		'accessor'
 	],
-	#category : 'Magritte-Model-Accessor'
+	#category : #'Magritte-Model-Accessor'
 }
 
 { #category : #'instance creation' }
@@ -49,6 +49,17 @@ MAChainAccessor >> canRead: aModel [
 { #category : #testing }
 MAChainAccessor >> canWrite: aModel [
 	^ (super canRead: aModel) and: [ self accessor canWrite: (self next read: aModel) ]
+]
+
+{ #category : #'accessing-magritte' }
+MAChainAccessor >> descriptionAccessor [
+	<magritteDescription>
+	^ MAToOneRelationDescription new
+			reference: MAStringDescription new;
+			accessor: #accessor;
+			classes: MAAccessor allSubclasses;
+			priority: 200;
+			yourself
 ]
 
 { #category : #comparing }

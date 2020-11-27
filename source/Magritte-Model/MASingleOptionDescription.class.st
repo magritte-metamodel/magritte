@@ -4,12 +4,15 @@ I am a description of a single option, possible values are stored within the ==o
 Class {
 	#name : #MASingleOptionDescription,
 	#superclass : #MAOptionDescription,
-	#category : 'Magritte-Model-Description'
+	#category : #'Magritte-Model-Description'
 }
 
-{ #category : #'accessing-defaults' }
-MASingleOptionDescription class >> defaultExtensible [
-	^ false
+{ #category : #accessing }
+MASingleOptionDescription class >> example [
+	<gtExample>
+	^ MASingleOptionDescription new
+		options: #(1 2 3);
+		yourself
 ]
 
 { #category : #testing }
@@ -27,27 +30,6 @@ MASingleOptionDescription >> acceptMagritte: aVisitor [
 	aVisitor visitSingleOptionDescription: self
 ]
 
-{ #category : #actions }
-MASingleOptionDescription >> beExtensible [
-	self extensible: true
-]
-
-{ #category : #actions }
-MASingleOptionDescription >> beLimited [
-	self extensible: false
-]
-
-{ #category : #'acessing-magritte' }
-MASingleOptionDescription >> descriptionExtensible [
-	<magritteDescription>
-	^ MABooleanDescription new
-		accessor: #extensible;
-		label: 'Extensible';
-		priority: 250;
-		default: self class defaultExtensible;
-		yourself
-]
-
 { #category : #'acessing-magritte' }
 MASingleOptionDescription >> descriptionGroupBy [
 	<magritteDescription>
@@ -57,16 +39,6 @@ MASingleOptionDescription >> descriptionGroupBy [
 		priority: 260;
 		default: nil;
 		yourself
-]
-
-{ #category : #'accessing-properties' }
-MASingleOptionDescription >> extensible [
-	^ self propertyAt: #extensible ifAbsent: [ self class defaultExtensible ]
-]
-
-{ #category : #'accessing-properties' }
-MASingleOptionDescription >> extensible: aBoolean [
-	self propertyAt: #extensible put: aBoolean
 ]
 
 { #category : #'accessing-properties' }
@@ -82,11 +54,6 @@ MASingleOptionDescription >> groupBy: anAccessor [
 ]
 
 { #category : #testing }
-MASingleOptionDescription >> isExtensible [
-	^ self extensible
-]
-
-{ #category : #testing }
 MASingleOptionDescription >> isGrouped [
 	^ self groupBy notNil
 ]
@@ -98,17 +65,8 @@ MASingleOptionDescription >> prepareOptions: aCollection [
 		ifFalse: [ (Array with: nil) , (super prepareOptions: aCollection) ]
 ]
 
-{ #category : #'accessing-dynamic' }
-MASingleOptionDescription >> shouldNotInclude: anObject [
-	^ self isExtensible not or: [ super shouldNotInclude: anObject ]
-]
-
 { #category : #validating }
 MASingleOptionDescription >> validateKind: anObject [
 	super validateKind: anObject.
-	(self options includes: anObject)
-		ifTrue: [ ^ self ].
-	self isExtensible
-		ifTrue: [ self reference validate: anObject ]
-		ifFalse: [ MAKindError description: self signal: self kindErrorMessage ]
+	self validateOptionKind: anObject
 ]

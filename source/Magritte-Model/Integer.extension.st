@@ -1,6 +1,6 @@
 Extension { #name : #Integer }
 
-{ #category : #'*magritte-model-converting' }
+{ #category : #'*Magritte-Model' }
 Integer >> asFileSize [
 	#( 'B' 'KB' 'MB' 'GB' 'TB' 'PB' 'EB' 'ZB' 'YB' )
 		inject: self

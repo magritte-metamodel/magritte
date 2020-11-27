@@ -22,7 +22,7 @@ Class {
 	#instVars : [
 		'accessor'
 	],
-	#category : 'Magritte-Model-Description'
+	#category : #'Magritte-Model-Description'
 }
 
 { #category : #'accessing-defaults' }
@@ -71,12 +71,17 @@ MADescription class >> defaultPriority [
 ]
 
 { #category : #'accessing-defaults' }
-MADescription class >> defaultReadonly [
+MADescription class >> defaultReadOnly [
 	^ false
 ]
 
 { #category : #'accessing-defaults' }
 MADescription class >> defaultRequired [
+	^ false
+]
+
+{ #category : #'accessing-defaults' }
+MADescription class >> defaultShouldCacheDefault [
 	^ false
 ]
 
@@ -105,7 +110,7 @@ MADescription class >> defaultVisible [
 	^ true
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #'accessing-defaults' }
 MADescription class >> defaultVisibleInReport [
 	^true
 ]
@@ -171,6 +176,14 @@ MADescription >> addCondition: aCondition labelled: aString [
 			value: aString))
 ]
 
+{ #category : #validation }
+MADescription >> addCondition: aCondition labelled: aStringOrBlock ifValid: aDescription [
+
+	self
+		addCondition: [ :obj | (aDescription isSatisfiedBy: obj) not or: aCondition ] 
+		labelled: aStringOrBlock
+]
+
 { #category : #converting }
 MADescription >> asContainer [
 	"Answer a description container of the receiver."
@@ -189,8 +202,8 @@ MADescription >> beOptional [
 ]
 
 { #category : #actions }
-MADescription >> beReadonly [
-	self readonly: true
+MADescription >> beReadOnly [
+	self readOnly: true
 ]
 
 { #category : #actions }
@@ -205,7 +218,19 @@ MADescription >> beVisible [
 
 { #category : #actions }
 MADescription >> beWriteable [
-	self readonly: false
+	self readOnly: false
+]
+
+{ #category : #builder }
+MADescription >> canExpand [
+	" used to expand a relation description into a group "
+	^self propertyAt: #canExpand ifAbsent: [ self defaultCanExpand ]
+]
+
+{ #category : #builder }
+MADescription >> canExpand: aBoolean [
+	" used to expand a relation description into a group "
+	^self propertyAt: #canExpand put: aBoolean
 ]
 
 { #category : #accessors }
@@ -249,32 +274,6 @@ MADescription >> conflictErrorMessage: aString [
 	self propertyAt: #conflictErrorMessage put: aString
 ]
 
-{ #category : #'development support' }
-MADescription >> constructorSource [
-	| customDescriptions |
-	customDescriptions := self magritteDescription children select: [ :e | (e accessor read: self) ~= e default and: [ e accessor writeSelector ~= #name: ] ].
-
-	^ String streamContents: [ :str |
-		str
-			"nextPutAll: d accessor readSelector;
-			cr;
-			tab;"
-			nextPutAll: '^ ';
-			nextPutAll: self className;
-			nextPutAll: ' new';
-			cr.
-		customDescriptions
-			do: [ :e |
-				str
-					tab; tab;
-					nextPutAll: e accessor writeSelector;
-					space;
-					print: (e accessor read: self);
-					nextPut: $;;
-					cr ].
-		str tab; tab; nextPutAll: 'yourself' ].
-]
-
 { #category : #accessing }
 MADescription >> default [
 	^ nil
@@ -284,9 +283,35 @@ MADescription >> default [
 MADescription >> default: anObject [
 ]
 
+{ #category : #builder }
+MADescription >> defaultCanExpand [
+	" used to expand a relation description into a group "
+	self isVisible ifFalse: [ ^false ].
+	self isReadOnly ifTrue: [ ^false ].
+	self tabDisplay ifTrue: [ ^false ].
+	self group ifNotNil: [ ^false ].
+	^true
+]
+
+{ #category : #'acessing-magritte' }
+MADescription >> defaultLabel [
+	^ self accessor defaultLabelFor: self
+]
+
 { #category : #'owning object' }
 MADescription >> describedObject [
 	^ MADynamicDescribedObject value
+]
+
+{ #category : #'acessing-magritte' }
+MADescription >> descriptionAccessor [
+	<magritteDescription>
+	^ MAToOneRelationDescription new
+		reference: MAStringDescription new;
+		accessor: #accessor;
+		classes: MAAccessor allSubclasses;
+		priority: 10;
+		yourself
 ]
 
 { #category : #'acessing-magritte' }
@@ -331,7 +356,7 @@ MADescription >> descriptionLabel [
 		accessor: #label;
 		label: 'Label';
 		priority: 100;
-		default: self class defaultLabel;
+		default: self defaultLabel;
 		yourself
 ]
 
@@ -342,7 +367,7 @@ MADescription >> descriptionName [
 		accessor: #name;
 		label: 'Kind';
 		priority: 0;
-		beReadonly;
+		beReadOnly;
 		yourself
 ]
 
@@ -359,13 +384,13 @@ MADescription >> descriptionPriority [
 ]
 
 { #category : #'acessing-magritte' }
-MADescription >> descriptionReadonly [
+MADescription >> descriptionReadOnly [
 	<magritteDescription>
 	^ MABooleanDescription new
-		accessor: #readonly;
-		label: 'Readonly';
+		accessor: #readOnly;
+		label: 'Read-only';
 		priority: 200;
-		default: self class defaultReadonly;
+		default: self class defaultReadOnly;
 		yourself
 ]
 
@@ -534,8 +559,8 @@ MADescription >> isKindDefined [
 ]
 
 { #category : #testing }
-MADescription >> isReadonly [
-	^ self readonly
+MADescription >> isReadOnly [
+	^ self readOnly
 ]
 
 { #category : #testing }
@@ -591,7 +616,7 @@ MADescription >> kindErrorMessage: aString [
 MADescription >> label [
 	"Answer the label of the receiving description. The label is mostly used as an identifier that is printed next to the input field when building a GUI from the receiver."
 
-	^ self propertyAt: #label ifAbsent: [ self class defaultLabel ]
+	^ self propertyAt: #label ifAbsent: [ self defaultLabel ]
 ]
 
 { #category : #'accessing-properties' }
@@ -649,16 +674,22 @@ MADescription >> propertyAccessor: aSelector [
 		accessor: (MADictionaryAccessor key: aSelector))
 ]
 
-{ #category : #'accessing-properties' }
-MADescription >> readonly [
-	"Answer ==true== if the model described by the receiver is read-only."
+{ #category : #convenience }
+MADescription >> read: aModel [
 
-	^ self propertyAt: #readonly ifAbsent: [ self class defaultReadonly ]
+	^ self accessor read: aModel
 ]
 
 { #category : #'accessing-properties' }
-MADescription >> readonly: aBoolean [
-	self propertyAt: #readonly put: aBoolean
+MADescription >> readOnly [
+	"Test whether my model is read-only."
+
+	^ self propertyAt: #readOnly ifAbsent: [ self class defaultReadOnly ]
+]
+
+{ #category : #'accessing-properties' }
+MADescription >> readOnly: aBoolean [
+	self propertyAt: #readOnly put: aBoolean
 ]
 
 { #category : #'accessing-properties' }
@@ -688,6 +719,12 @@ MADescription >> selectorAccessor: aSelector [
 	"Uses ==aSelector== to read from the model."
 
 	self accessor: (MASelectorAccessor selector: aSelector)
+]
+
+{ #category : #'accessing-properties' }
+MADescription >> shouldCacheDefault [
+
+	^ self propertyAt: #shouldCacheDefault ifAbsent: [ self class defaultShouldCacheDefault ]
 ]
 
 { #category : #'accessing-strings' }
@@ -740,6 +777,15 @@ MADescription >> toStringCollection: aCollection writer: aFormatter [
 	"Answer a collection of strings being formatted from ==aCollection== using ==aFormatter==."
 
 	^ aCollection collect: [ :each | self toString: each writer: aFormatter ]
+]
+
+{ #category : #private }
+MADescription >> tryValidation: tryBlock ifPass: passBlock [
+	| shouldContinue |
+	shouldContinue := true.
+	tryBlock on: MAValidationError do: [ :e | shouldContinue := false. e pass ].
+	shouldContinue ifFalse: [ ^ self ].
+	passBlock value
 ]
 
 { #category : #'accessing-strings' }
@@ -825,4 +871,9 @@ MADescription >> visibleInReport [
 { #category : #'accessing-properties' }
 MADescription >> visibleInReport: aBoolean [ 
 	self propertyAt: #visibleInReport put: aBoolean
+]
+
+{ #category : #convenience }
+MADescription >> write: anObject to: aModel [
+	^ self accessor write: anObject to: aModel
 ]

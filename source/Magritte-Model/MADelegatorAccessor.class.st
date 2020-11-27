@@ -7,7 +7,7 @@ Class {
 	#instVars : [
 		'next'
 	],
-	#category : 'Magritte-Model-Accessor'
+	#category : #'Magritte-Model-Accessor'
 }
 
 { #category : #testing }
@@ -33,6 +33,17 @@ MADelegatorAccessor >> canRead: aModel [
 { #category : #testing }
 MADelegatorAccessor >> canWrite: aModel [
 	^ self next canWrite: aModel
+]
+
+{ #category : #'accessing-magritte' }
+MADelegatorAccessor >> descriptionNext [
+	<magritteDescription>
+	^ MAToOneRelationDescription new
+			reference: MAStringDescription new;
+			accessor: #next;
+			classes: MAAccessor allSubclasses;
+			priority: 100;
+			yourself
 ]
 
 { #category : #comparing }

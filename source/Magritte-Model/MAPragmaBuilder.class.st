@@ -7,7 +7,7 @@ I dynamically build container descriptions from instance-side methods decorated 
 Class {
 	#name : #MAPragmaBuilder,
 	#superclass : #MABasicObject,
-	#category : 'Magritte-Model-Utility'
+	#category : #'Magritte-Model-Utility'
 }
 
 { #category : #constants }
@@ -33,6 +33,17 @@ MAPragmaBuilder class >> magritteDescriptionPragma [
 { #category : #constants }
 MAPragmaBuilder class >> magritteSelectors [
 	^ Array with: self containerPragma with: self magritteDescriptionExtensionPragma with: self magritteDescriptionPragma
+]
+
+{ #category : #private }
+MAPragmaBuilder >> applyExtensions: descriptionExtensions for: each of: anObject to: description [
+	description ifNil: [ ^ nil ].
+	^ (self extensionsFrom: descriptionExtensions matching: description) 
+		ifEmpty: [ description ]
+		ifNotEmpty: [ :extensions |
+			 extensions
+				inject: description 
+				into: [ :desc :extensionSelector | anObject perform: extensionSelector with: description ] ].
 ]
 
 { #category : #private }
@@ -71,22 +82,29 @@ MAPragmaBuilder >> buildContainer: anObject [
 
 { #category : #private }
 MAPragmaBuilder >> buildDescriptions: anObject [
-	| descriptionExtensions descriptionSelectors |
+	| descriptionExtensions descriptionSelectors extendedDescriptions |
 	
 	descriptionSelectors := self uniqueDescriptionSelectors: anObject.
 	descriptionExtensions := self descriptionExtensions: anObject.
+	
+	extendedDescriptions := descriptionSelectors 
+		collect:  [ :descSel |
+			| initialDescription |
+			initialDescription := anObject perform: descSel.
+			self description: initialDescription extendedBy: descriptionExtensions for: descSel of: anObject ].
 
-	^ (descriptionSelectors 
-		collect:  [ :each |
-			| description |
-			description := anObject perform: each.
-			
-			description notNil ifTrue: [
-				descriptionExtensions at: each ifPresent: [ :extensions | 
-					extensions do: [ :extensionSelector | 
-						description := anObject perform: extensionSelector with: description ] ] ].
-			description ])
-		select: #notNil.
+	^ extendedDescriptions select: #notNil.
+]
+
+{ #category : #private }
+MAPragmaBuilder >> description: description extendedBy: descriptionExtensions for: descriptionSelector of: anObject [
+	description ifNil: [ ^ nil ].
+	^ (self extensionsFrom: descriptionExtensions matching: descriptionSelector) 
+		ifEmpty: [ description ]
+		ifNotEmpty: [ :extensions |
+			 extensions
+				inject: description 
+				into: [ :desc :extensionSelector | anObject perform: extensionSelector with: description ] ].
 ]
 
 { #category : #private }
@@ -103,6 +121,14 @@ MAPragmaBuilder >> descriptionExtensions: anObject [
 		(extensionSelectors at: extensionSelectorTarget ifAbsentPut: [ SortedCollection new ]) add: each method selector.
 		extensionSelectors ].
 
+]
+
+{ #category : #private }
+MAPragmaBuilder >> extensionsFrom: aDictionary matching: aSymbol [
+	"
+	aDictionary - a cache mapping extensionSelectors to the description they extend
+	aSymbol - the getter of the extended description e.g. #fuelOutDescription"
+	^ aDictionary at: aSymbol ifAbsent: [ #() ].
 ]
 
 { #category : #'description building' }

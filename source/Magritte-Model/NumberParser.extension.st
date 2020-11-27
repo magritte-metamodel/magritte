@@ -1,10 +1,10 @@
 Extension { #name : #NumberParser }
 
 { #category : #'*Magritte-Model' }
-NumberParser class >> isNumber: aStringOrStream [
-
-	| stream |
+NumberParser class >> isValidNumber: aStringOrStream [
+	| stream parser |
 	stream := aStringOrStream readStream.
-	NumberParser parse: stream onError: [ ^ false ].
+	parser := (Smalltalk at: #ExtendedNumberParser ifAbsent: [self]).
+	parser parse: stream onError: [ ^ false ].
 	^ stream atEnd
 ]

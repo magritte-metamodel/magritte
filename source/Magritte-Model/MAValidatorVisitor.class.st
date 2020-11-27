@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'object'
 	],
-	#category : 'Magritte-Model-Visitor'
+	#category : #'Magritte-Model-Visitor'
 }
 
 { #category : #'instance creation' }
@@ -36,37 +36,32 @@ MAValidatorVisitor >> validate: anObject using: aDescription [
 	aDescription validateRequired: anObject.
 	anObject isNil ifTrue: [ ^ self ].
 	aDescription
-		validateKind: anObject;
-		validateSpecific: anObject;
-		validateConditions: anObject
+		tryValidation: [ aDescription validateKind: anObject ]
+		ifPass: [ 
+			aDescription
+				validateSpecific: anObject;
+				validateConditions: anObject ]
+		
 ]
 
 { #category : #visiting }
 MAValidatorVisitor >> visit: aDescription [
 	"Only visit objects that are visible and that can be changed."
 	
-	(aDescription isVisible and: [ aDescription isReadonly not ])
+	(aDescription isVisible and: [ aDescription isReadOnly not ])
 		ifTrue: [ super visit: aDescription ].
 	
 ]
 
 { #category : #'visiting-descriptions' }
 MAValidatorVisitor >> visitContainer: aDescription [
-	| errors |
+	
 	super visitContainer: aDescription.
-	self object isNil ifTrue: [ ^ self ].
-	errors := OrderedCollection new.
-	aDescription do: [ :description |
-		[ self
-			use: (self object readUsing: description)
-			during: [ self visit: description ] ]
-				on: MAValidationError
-				do: [ :err | errors add: err ] ].
-	errors isEmpty ifFalse: [
-		MAMultipleErrors
-			description: aDescription 
-			errors: errors
-			signal: aDescription label ]
+	self object ifNotNil: [
+		aDescription do: [ :description |
+			self
+				use: (self object readUsing: description)
+				during: [ self visit: description ] ] ]
 ]
 
 { #category : #'visiting-descriptions' }

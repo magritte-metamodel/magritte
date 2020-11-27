@@ -4,8 +4,20 @@ I recreate Magritte-described domain objects from strings. Typically I am used t
 Class {
 	#name : #MAStringReader,
 	#superclass : #MAReader,
-	#category : 'Magritte-Model-Visitor'
+	#category : #'Magritte-Model-Visitor'
 }
+
+{ #category : #private }
+MAStringReader >> isFalseUsing: aDescription [
+	^ aDescription falseString = self contents
+		or: [ aDescription falseStrings anySatisfy: [ :e | e asLowercase = self contents asLowercase ] ]
+]
+
+{ #category : #private }
+MAStringReader >> isTrueUsing: aDescription [
+	^ aDescription trueString = self contents
+		or: [ aDescription trueStrings anySatisfy: [ :e | e asLowercase = self contents asLowercase ] ]
+]
 
 { #category : #private }
 MAStringReader >> nextMatchAll: aCollection on: aStream [
@@ -30,12 +42,15 @@ MAStringReader >> read: aStream description: aDescription [
 ]
 
 { #category : #'visiting-description' }
+MAStringReader >> visitBlockDescription: aDescription [
+	self object: (Smalltalk compiler evaluate: self contents)
+]
+
+{ #category : #'visiting-description' }
 MAStringReader >> visitBooleanDescription: aDescription [
-	(aDescription trueString = self contents
-		or: [ aDescription trueStrings includes: self contents ])
+	(self isTrueUsing: aDescription)
 			ifTrue: [ ^ self object: true ].
-	(aDescription falseString = self contents
-		or: [ aDescription falseStrings includes: self contents ])
+	(self isFalseUsing: aDescription)
 			ifTrue: [ ^ self object: false ].
 	MAReadError signal
 ]
@@ -100,7 +115,7 @@ MAStringReader >> visitMultipleOptionDescription: aDescription [
 { #category : #'visiting-description' }
 MAStringReader >> visitNumberDescription: aDescription [
 	| isContentsValid |
-	isContentsValid := NumberParser isNumber: self contents.
+	isContentsValid := NumberParser isValidNumber: self contents.
 	isContentsValid ifFalse: [ MAReadError signal ].
 	super visitNumberDescription: aDescription
 ]
@@ -155,4 +170,9 @@ MAStringReader >> visitTokenDescription: aDescription [
 				ifFalse: [ self stream next ].
 			token contents isEmpty
 				ifFalse: [ output nextPut: (aDescription reference fromString: token contents) ] ] ])
+]
+
+{ #category : #'visiting-description' }
+MAStringReader >> visitUrlDescription: aDescription [
+	self object: self contents asUrl
 ]

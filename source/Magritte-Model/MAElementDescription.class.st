@@ -4,7 +4,7 @@ I am an abstract description for all basic description types.
 Class {
 	#name : #MAElementDescription,
 	#superclass : #MADescription,
-	#category : 'Magritte-Model-Description'
+	#category : #'Magritte-Model-Description'
 }
 
 { #category : #'accessing-defaults' }
@@ -47,7 +47,9 @@ MAElementDescription >> display: aBlockOrSymbol [
 		- is performed on the object
 	aBlock
 		- takes one argument, which is the domain object
-		- returns the string to display"
+		- returns the string to display
+	
+	NB. This string may be used to convert back to a domain object, so make sure it is suitable via the string reader in use."
 	self propertyAt: #displayBlockOrSymbol put: aBlockOrSymbol.
 ]
 
@@ -60,5 +62,49 @@ MAElementDescription >> displayBlockOrSymbol [
 MAElementDescription >> displayStringFor: anObject [
 	"Convert object to a string. If a block was passed to #display: use that, otherwise send #greaseString by default"
 
-	^self displayBlockOrSymbol value: anObject.
+	^ self displayBlockOrSymbol value: anObject.
+]
+
+{ #category : #testing }
+MAElementDescription >> handlesSelector: aSelector [
+	^ self accessor handlesSelector: aSelector
+]
+
+{ #category : #'lazy initialization' }
+MAElementDescription >> lazilyInitializeFrom: currentValue for: anObject [
+	"- The default value is cached if the description's #shouldCacheDefault property is true. An example when caching is necessary is for to-many relations because the user may modify the collection, which will then be thrown away if not cached
+
+	Usage: 
+		MyDomainObject>>#getter
+			^ self maLazyPropertyUsing: self descriptionName
+		
+		MyDomainObject>>#descriptionName
+			^ MAStringDescription new
+					accessor: #name;
+					default: 'Alan';
+					yourself"
+	
+	| defaultValue |		
+	currentValue ifNotNil: [ ^ currentValue ].
+	defaultValue := self default.
+	self shouldCacheDefault ifTrue: [ anObject write: defaultValue using: self ].
+	^ defaultValue
+]
+
+{ #category : #'*magritte-model' }
+MAElementDescription >> printFor: anObject on: aWriteStream [ 
+	(self read: anObject) ifNotNil: [ :value | aWriteStream nextPutAll: (self toString: value) ]
+]
+
+{ #category : #printing }
+MAElementDescription >> storeOn: aStream [
+	aStream 
+		nextPutAll: self className;
+		nextPutAll: ' new'; cr.
+	(self magritteDescription reject: #isReadOnly) do: [ :desc |
+		| value |
+		value := desc read: self.
+		(value ~= desc default and: [ value isNotNil ]) ifTrue: [ 
+			desc accessor store: value inDescriptionOn: aStream ] ].
+	aStream nextPutAll: 'yourself'
 ]

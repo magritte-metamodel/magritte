@@ -4,7 +4,7 @@ I am a generic validation error. I reference the description that caused the val
 Class {
 	#name : #MAValidationError,
 	#superclass : #MAError,
-	#category : 'Magritte-Model-Exception'
+	#category : #'Magritte-Model-Exception'
 }
 
 { #category : #'instance creation' }
@@ -13,6 +13,11 @@ MAValidationError class >> description: aDescription signal: aString [
 		setDescription: aDescription;
 		signal: aString;
 		yourself
+]
+
+{ #category : #testing }
+MAValidationError >> isResumable [
+	^ true
 ]
 
 { #category : #printing }

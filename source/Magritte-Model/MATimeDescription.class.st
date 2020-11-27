@@ -4,17 +4,8 @@ I am a description of times, possible values are instances of ==Time==. My visua
 Class {
 	#name : #MATimeDescription,
 	#superclass : #MAMagnitudeDescription,
-	#category : 'Magritte-Model-Description'
+	#category : #'Magritte-Model-Description'
 }
-
-{ #category : #'accessing-defaults' }
-MATimeDescription class >> defaultDisplayProperty [
-
-	^ [ :time | 
-		time hour greaseString, ':',
-		time minute greaseString, ':',
-		time second greaseString ].
-]
 
 { #category : #'accessing-defaults' }
 MATimeDescription class >> defaultKind [

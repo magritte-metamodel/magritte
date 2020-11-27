@@ -7,7 +7,7 @@ Class {
 	#instVars : [
 		'properties'
 	],
-	#category : 'Magritte-Model-Core'
+	#category : #'Magritte-Model-Core'
 }
 
 { #category : #testing }
@@ -66,6 +66,16 @@ MAObject >> hash [
 	"Answer a SmallInteger whose value is related to the receiver's identity. Also redefine the message ==#= == when redefining this message."
 
 	^ self species hash
+]
+
+{ #category : #'*Magritte-Model' }
+MAObject >> maLazyPropertyUsing: description [
+	"Return the current value of a field as specified by its description. See #lazilyInitializeFrom:for: comment for more info.
+		- NB: Only works with a selector accessor with matching property e.g. (readSelector = property = #myField). It could be extended to other cases if the need arises."
+
+	| currentValue |
+	currentValue := self propertyAt: description accessor readSelector ifAbsent: [ nil ].
+	^ description lazilyInitializeFrom: currentValue for: self.
 ]
 
 { #category : #copying }

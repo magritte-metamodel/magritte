@@ -4,13 +4,12 @@ I am a description of files, their contents, filename and mime-type. Possible va
 Class {
 	#name : #MAFileDescription,
 	#superclass : #MAElementDescription,
-	#category : 'Magritte-Model-Description'
+	#category : #'Magritte-Model-Description'
 }
 
 { #category : #'accessing-defaults' }
 MAFileDescription class >> defaultDisplayProperty [
-
-	^ [ :e | e fullName ].
+	^ #filename
 ]
 
 { #category : #'accessing-defaults' }

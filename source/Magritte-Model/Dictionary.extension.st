@@ -1,6 +1,6 @@
 Extension { #name : #Dictionary }
 
-{ #category : #'*magritte-model-description' }
+{ #category : #'*Magritte-Model' }
 Dictionary >> optionFor: anObject ifPresent: aBlock [
 	self at: anObject ifPresent: aBlock
 

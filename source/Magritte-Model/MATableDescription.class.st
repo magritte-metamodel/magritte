@@ -4,7 +4,7 @@ I am a description of tables, their cells and labels. I hold a reference to the 
 Class {
 	#name : #MATableDescription,
 	#superclass : #MAReferenceDescription,
-	#category : 'Magritte-Model-Description'
+	#category : #'Magritte-Model-Description'
 }
 
 { #category : #'accessing-defaults' }
@@ -121,20 +121,22 @@ MATableDescription >> rowLabelsTextual: aString [
 	self rowLabels: (MAStringDescription new fromStringCollection: aString lines)
 ]
 
-{ #category : #'validation-private' }
-MATableDescription >> validateSpecific: anObject [
-	| errors |
-	super validateSpecific: anObject.
+{ #category : #'private-validating' }
+MATableDescription >> validateChildren: anObject [ 
+	anObject do: [ :row :value :each | self reference validate: each ].
+]
+
+{ #category : #'private-validating' }
+MATableDescription >> validateCounts: anObject [ 
 	(anObject rowCount ~= self rowCount or: [ anObject columnCount ~= self columnCount ])
 		ifTrue: [ MAKindError description: self signal: self kindErrorMessage ].
-	errors := OrderedCollection new.
-	anObject do: [ :row :value :each | 
-		[ self reference validate: each ]
-			on: MAValidationError
-			do: [ :err | errors add: err ] ].
-	errors isEmpty ifFalse: [
-		MAMultipleErrors
-			description: self 
-			errors: errors
-			signal: self label ]
+]
+
+{ #category : #'validation-private' }
+MATableDescription >> validateSpecific: anObject [
+	self
+		tryValidation: [ super validateSpecific: anObject ]
+		ifPass: [ 
+			self validateCounts: anObject.
+			self validateChildren: anObject ]
 ]
