@@ -1,3 +1,0 @@
-private
-referenceInstance
-	^ MAStringDescription new

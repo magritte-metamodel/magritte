@@ -1,1 +1,0 @@
-I represent a file using a ByteArray in the object memory. I am not practicable for big files: use me for development and testing only.

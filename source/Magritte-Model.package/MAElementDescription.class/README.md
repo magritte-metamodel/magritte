@@ -1,1 +1,0 @@
-I am an abstract description for all basic description types.

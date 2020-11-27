@@ -1,1 +1,0 @@
-I am a normally invisible component. I show a list of validation errors in case the owner component fails to validate.

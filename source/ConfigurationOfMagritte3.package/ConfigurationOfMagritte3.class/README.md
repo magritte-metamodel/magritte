@@ -1,1 +1,0 @@
-(ConfigurationOfMagritte3 project version: #stable) load

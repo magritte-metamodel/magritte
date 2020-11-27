@@ -1,3 +1,0 @@
-testing
-requiresMultipartForm
-	^ self decoratedComponent requiresMultipartForm

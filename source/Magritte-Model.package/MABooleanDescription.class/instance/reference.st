@@ -1,3 +1,0 @@
-accessing-selection
-reference
-	^ self

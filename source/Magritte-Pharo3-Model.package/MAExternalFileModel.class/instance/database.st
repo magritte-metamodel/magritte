@@ -1,4 +1,0 @@
-private
-database
-
-	^ MAFileDatabase new.

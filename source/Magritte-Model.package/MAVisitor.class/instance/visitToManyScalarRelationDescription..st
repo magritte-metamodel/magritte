@@ -1,3 +1,0 @@
-visiting-description
-visitToManyScalarRelationDescription: anObject
-	self visitToManyRelationDescription: anObject

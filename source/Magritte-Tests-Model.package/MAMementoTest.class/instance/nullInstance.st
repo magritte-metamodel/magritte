@@ -1,3 +1,0 @@
-private
-nullInstance
-	^ nil

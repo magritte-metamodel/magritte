@@ -1,1 +1,0 @@
-A simple address for a city located in Switzerland.

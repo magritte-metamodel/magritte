@@ -1,3 +1,0 @@
-accessing-settings
-accessor
-	^ accessor
