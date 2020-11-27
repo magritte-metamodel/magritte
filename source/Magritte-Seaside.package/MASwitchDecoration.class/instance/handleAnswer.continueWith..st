@@ -1,4 +1,4 @@
 processing
 handleAnswer: anObject continueWith: aBlock
-	self decoratedComponent readonly: true.
+	self decoratedComponent readOnly: true.
 	super handleAnswer: anObject continueWith: aBlock

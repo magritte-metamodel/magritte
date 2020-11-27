@@ -1,5 +1,5 @@
 rendering
 renderContentOn: html
-	self isReadonly
+	self isReadOnly
 		ifTrue: [ self renderViewerOn: html ]
 		ifFalse: [ self renderEditorOn: html ]

@@ -1,3 +1,3 @@
 testing
 hasLabelId
-	^ self isReadonly not
+	^ self isReadOnly not

@@ -1,3 +1,3 @@
 accessing-properties
-readonly
+readOnly
 	^ readonly ifNil: [ readonly := false ]

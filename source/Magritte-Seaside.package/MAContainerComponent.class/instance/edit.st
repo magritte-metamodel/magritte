@@ -1,3 +1,3 @@
 actions
 edit
-	self readonly: false
+	self readOnly: false

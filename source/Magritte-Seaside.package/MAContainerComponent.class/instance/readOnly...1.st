@@ -1,3 +1,3 @@
 accessing-properties
-readonly: aBoolean
+readOnly: aBoolean
 	readonly := aBoolean
