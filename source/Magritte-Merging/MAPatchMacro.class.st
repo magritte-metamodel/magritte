@@ -5,7 +5,7 @@ Class {
 		'operations',
 		'model'
 	],
-	#category : 'Magritte-Merging'
+	#category : #'Magritte-Merging'
 }
 
 { #category : #accessing }
@@ -73,4 +73,9 @@ MAPatchMacro >> printOn: aStream [
 				nextPutAll: 'Patch for ';
 				print: model ]
 		ifNil: [ super printOn: aStream ]
+]
+
+{ #category : #execution }
+MAPatchMacro >> undo [
+	self operations do: #undo
 ]

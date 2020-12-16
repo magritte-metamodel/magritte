@@ -7,7 +7,7 @@ Class {
 		'oldValue',
 		'newValue'
 	],
-	#category : 'Magritte-Merging'
+	#category : #'Magritte-Merging'
 }
 
 { #category : #comparing }
@@ -91,4 +91,9 @@ MAPatchOperation >> receiver [
 { #category : #accessing }
 MAPatchOperation >> receiver: anObject [
 	receiver := anObject
+]
+
+{ #category : #execution }
+MAPatchOperation >> undo [
+	self field accessor write: oldValue to: receiver
 ]
