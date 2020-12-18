@@ -1,16 +1,16 @@
 Class {
-	#name : #MAMemoMorph,
-	#superclass : #MAElementMorph,
-	#category : 'Magritte-Morph-Model'
+	#name : #MAMorphicMemo,
+	#superclass : #MAMorphicElement,
+	#category : #'Magritte-Morph-Model'
 }
 
 { #category : #accessing }
-MAMemoMorph >> annotation [
+MAMorphicMemo >> annotation [
 	^ self string
 ]
 
 { #category : #private }
-MAMemoMorph >> buildMorphView [
+MAMorphicMemo >> buildMorphView [
 	"The selector #annotation should be #string instead, but we use this one and dispatch since this prevents morphic to draw a thin red border around changed fields. Stupid hack, really, but doesn't work otherwise."
 
 	| result lineSpacingFactor height |
@@ -28,17 +28,17 @@ MAMemoMorph >> buildMorphView [
 ]
 
 { #category : #accessing }
-MAMemoMorph >> enabled [
+MAMorphicMemo >> enabled [
 
 	^ self magritteDescription readOnly not
 ]
 
 { #category : #accessing }
-MAMemoMorph >> selected [
+MAMorphicMemo >> selected [
 	^ (self value ifNil: [ self magritteDescription default ]) ifNil: [ false ]
 ]
 
 { #category : #accessing }
-MAMemoMorph >> selected: aBoolean [
+MAMorphicMemo >> selected: aBoolean [
 	self value: aBoolean 
 ]

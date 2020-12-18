@@ -5,7 +5,7 @@ Class {
 		'object',
 		'container'
 	],
-	#category : 'Magritte-Morph-Report'
+	#category : #'Magritte-Morph-Report'
 }
 
 { #category : #'instance creation' }
@@ -98,7 +98,7 @@ MAElementRow >> object: anObject [
 
 { #category : #private }
 MAElementRow >> rectangleMorph [
-	^ MADescriptionMorph new rectangleMorph.
+	^ MAMorphicDescription new rectangleMorph.
 ]
 
 { #category : #callbacks }

@@ -10,5 +10,5 @@ MAContainer >> asMorphOn: anObject [
 
 { #category : #'*Magritte-Morph' }
 MAContainer class >> defaultMorphClasses [
-	^ Array with: MAContainerMorph
+	^ Array with: MAMorphicContainer
 ]

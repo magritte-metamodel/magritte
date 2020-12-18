@@ -1,20 +1,20 @@
 Class {
-	#name : #MAContainerMorph,
-	#superclass : #MADescriptionMorph,
+	#name : #MAMorphicContainer,
+	#superclass : #MAMorphicDescription,
 	#instVars : [
 		'children',
 		'answerBlock'
 	],
-	#category : 'Magritte-Morph-Model'
+	#category : #'Magritte-Morph-Model'
 }
 
 { #category : #decorating }
-MAContainerMorph >> addButtons [
+MAMorphicContainer >> addButtons [
 	self addButtons: #( save cancel )
 ]
 
 { #category : #decorating }
-MAContainerMorph >> addButtons: anArray [
+MAMorphicContainer >> addButtons: anArray [
 	morph := self rectangleMorph
 		addMorphBack: self morph;
 		addMorphBack: (self barMorph: anArray);
@@ -22,7 +22,7 @@ MAContainerMorph >> addButtons: anArray [
 ]
 
 { #category : #decorating }
-MAContainerMorph >> addWindow [
+MAMorphicContainer >> addWindow [
 	| scrollPane newMorph |
 	scrollPane := GeneralScrollPane new.
 	newMorph := self morph 
@@ -40,7 +40,7 @@ MAContainerMorph >> addWindow [
 ]
 
 { #category : #answering }
-MAContainerMorph >> answer: anObject [
+MAMorphicContainer >> answer: anObject [
 
 	| didUserCancel |
 	self morph delete.
@@ -52,7 +52,7 @@ MAContainerMorph >> answer: anObject [
 ]
 
 { #category : #private }
-MAContainerMorph >> buildChildren [
+MAMorphicContainer >> buildChildren [
 	^ Array streamContents: [ :stream |
 		self magritteDescription do: [ :each |
 			each isVisible ifTrue: [
@@ -63,7 +63,7 @@ MAContainerMorph >> buildChildren [
 ]
 
 { #category : #private }
-MAContainerMorph >> buildMorphViewOn: aMorph [
+MAMorphicContainer >> buildMorphViewOn: aMorph [
 
 	| toolbar |
 	aMorph
@@ -82,7 +82,7 @@ MAContainerMorph >> buildMorphViewOn: aMorph [
 ]
 
 { #category : #morphic }
-MAContainerMorph >> callInHand [
+MAMorphicContainer >> callInHand [
 	| result |
 	result := nil.
 	self onAnswer: [ :value | result := value ].
@@ -91,7 +91,7 @@ MAContainerMorph >> callInHand [
 ]
 
 { #category : #morphic }
-MAContainerMorph >> callInWorld [
+MAMorphicContainer >> callInWorld [
 	| result |
 	result := nil.
 	self onAnswer: [ :value | result := value ].
@@ -100,17 +100,17 @@ MAContainerMorph >> callInWorld [
 ]
 
 { #category : #actions }
-MAContainerMorph >> cancel [
+MAMorphicContainer >> cancel [
 	self reset; answer: nil
 ]
 
 { #category : #accessing }
-MAContainerMorph >> children [
+MAMorphicContainer >> children [
 	^ children
 ]
 
 { #category : #'error handling' }
-MAContainerMorph >> doesNotUnderstand: aMessage [
+MAMorphicContainer >> doesNotUnderstand: aMessage [
 	"Forward callbacks from #addButtons: to the model if appropriate"
 
 	(self model respondsTo: aMessage selector)
@@ -119,17 +119,17 @@ MAContainerMorph >> doesNotUnderstand: aMessage [
 ]
 
 { #category : #answering }
-MAContainerMorph >> onAnswer: aBlock [
+MAMorphicContainer >> onAnswer: aBlock [
 	answerBlock := aBlock
 ]
 
 { #category : #morphic }
-MAContainerMorph >> openInHand [
+MAMorphicContainer >> openInHand [
 	^ self morph openInHand
 ]
 
 { #category : #morphic }
-MAContainerMorph >> openInWindow [
+MAMorphicContainer >> openInWindow [
 
 	^ self
 		addWindow;
@@ -137,12 +137,12 @@ MAContainerMorph >> openInWindow [
 ]
 
 { #category : #morphic }
-MAContainerMorph >> openInWorld [
+MAMorphicContainer >> openInWorld [
 	^ self morph openInWorld
 ]
 
 { #category : #actions }
-MAContainerMorph >> save [
+MAMorphicContainer >> save [
 	[ self validate ]
 		on: MAValidationError
 		do: [ :err | ^ self inform: err greaseString ].
@@ -150,18 +150,18 @@ MAContainerMorph >> save [
 ]
 
 { #category : #initialization }
-MAContainerMorph >> setChildren: aCollection [
+MAMorphicContainer >> setChildren: aCollection [
 	children := aCollection
 ]
 
 { #category : #initialization }
-MAContainerMorph >> setDescription: aDescription [
+MAMorphicContainer >> setDescription: aDescription [
 	super setDescription: aDescription.
 	self setChildren: self buildChildren
 ]
 
 { #category : #morphic }
-MAContainerMorph >> waitUntilClosed [
+MAMorphicContainer >> waitUntilClosed [
 	[ self morph world notNil ]
 		whileTrue: [ self morph outermostWorldMorph doOneCycle ]
 ]

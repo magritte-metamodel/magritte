@@ -1,11 +1,11 @@
 Class {
-	#name : #MACheckboxMorph,
-	#superclass : #MAElementMorph,
-	#category : 'Magritte-Morph-Model'
+	#name : #MAMorphicCheckbox,
+	#superclass : #MAMorphicElement,
+	#category : #'Magritte-Morph-Model'
 }
 
 { #category : #private }
-MACheckboxMorph >> buildMorphView [
+MAMorphicCheckbox >> buildMorphView [
 	^ Smalltalk ui theme
 		newCheckboxIn: nil
 		for: self
@@ -17,16 +17,16 @@ MACheckboxMorph >> buildMorphView [
 ]
 
 { #category : #actions }
-MACheckboxMorph >> enabled [
+MAMorphicCheckbox >> enabled [
 	^ true
 ]
 
 { #category : #actions }
-MACheckboxMorph >> selected [
+MAMorphicCheckbox >> selected [
 	^ (self value ifNil: [ self magritteDescription default ]) ifNil: [ false ]
 ]
 
 { #category : #actions }
-MACheckboxMorph >> selected: aBoolean [
+MAMorphicCheckbox >> selected: aBoolean [
 	self value: aBoolean 
 ]

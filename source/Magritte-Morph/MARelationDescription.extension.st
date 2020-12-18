@@ -4,6 +4,6 @@ Extension { #name : #MARelationDescription }
 MARelationDescription >> descriptionClassesWithMorphic: description [
 	<magritteDescription: #descriptionClasses>
 	^ description
-			morphClass: MATokenCompletionMorph;
+			morphClass: MAMorphicTokenCompletion;
 			yourself
 ]

@@ -1,11 +1,11 @@
 Class {
-	#name : #MADropListMorph,
-	#superclass : #MAListMorph,
-	#category : 'Magritte-Morph-Model'
+	#name : #MAMorphicDropList,
+	#superclass : #MAMorphicList,
+	#category : #'Magritte-Morph-Model'
 }
 
 { #category : #'private-building' }
-MADropListMorph >> buildMorphView [
+MAMorphicDropList >> buildMorphView [
 	
 	| list |
 	list := DropListModel new.
