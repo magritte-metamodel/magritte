@@ -727,6 +727,12 @@ MADescription >> shouldCacheDefault [
 	^ self propertyAt: #shouldCacheDefault ifAbsent: [ self class defaultShouldCacheDefault ]
 ]
 
+{ #category : #'accessing-properties' }
+MADescription >> shouldCacheDefault: aBoolean [
+
+	^ self propertyAt: #shouldCacheDefault put: aBoolean
+]
+
 { #category : #'accessing-strings' }
 MADescription >> stringReader [
 	"Answer a Visitor that can be used to parse the model described by the receiver from a string."
