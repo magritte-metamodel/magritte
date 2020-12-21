@@ -1,6 +1,6 @@
 Extension { #name : #MAToOneRelationDescription }
 
 { #category : #'*Magritte-Morph' }
-MAToOneRelationDescription class >> defaultMorphClasses [
+MAToOneRelationDescription class >> defaultMorphicClasses [
 	^ Array with: MAMorphicExternalEditor with: MAMorphicInternalEditor
 ]

@@ -1,6 +1,6 @@
 Extension { #name : #MABooleanDescription }
 
 { #category : #'*magritte-morph-default' }
-MABooleanDescription class >> defaultMorphClasses [
+MABooleanDescription class >> defaultMorphicClasses [
 	^ Array with: MAMorphicCheckbox with: MAMorphicSingleSelectList
 ]

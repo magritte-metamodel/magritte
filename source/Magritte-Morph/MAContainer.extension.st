@@ -2,13 +2,14 @@ Extension { #name : #MAContainer }
 
 { #category : #'*magritte-morph-converting' }
 MAContainer >> asMorphOn: anObject [
-	^ self morphClass
-		memento: (anObject mementoClass
+	| memento |
+	memento := anObject mementoClass
 			model: anObject
-			description: self)
+			description: self.
+	^ self morphicClass memento: memento
 ]
 
 { #category : #'*Magritte-Morph' }
-MAContainer class >> defaultMorphClasses [
+MAContainer class >> defaultMorphicClasses [
 	^ Array with: MAMorphicContainer
 ]
