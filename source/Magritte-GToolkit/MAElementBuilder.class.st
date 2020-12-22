@@ -3,7 +3,8 @@ Class {
 	#superclass : #MAVisitor,
 	#instVars : [
 		'object',
-		'element'
+		'element',
+		'form'
 	],
 	#category : #'Magritte-GToolkit'
 }
@@ -42,7 +43,38 @@ MAElementBuilder >> addButtons: aCollection [
 			action: [ self presenter perform: sel ].
 	toolbar addItem: button ].
 
-	element addChild: toolbar
+	self element addChild: toolbar
+]
+
+{ #category : #accessing }
+MAElementBuilder >> addInputFieldUsing: aDescription [
+	| labelElement inputElement text valueString |
+	
+	valueString := aDescription toString: (aDescription read: self object).
+		
+	labelElement := BrLabel new text: aDescription label, ':'; look: BrGlamorousLabelLook.
+	labelElement constraintsDo: [ :c | 
+		c vertical fitContent.
+		c horizontal fitContent.
+		c grid vertical alignCenter ].
+	
+	inputElement := BrEditorElement new.
+	inputElement look: BrGlamorousInputFieldSpacingLook.
+	inputElement constraintsDo: [ :c | 
+		c vertical fitContent.
+		c horizontal matchParent.
+		c grid vertical alignCenter ].
+	text := valueString asRopedText glamorousRegularFont.
+	inputElement editor: (BrTextEditor new text: text).
+	
+	aDescription isRequired ifTrue: [ self error: 'unsupported' ].
+	
+	aDescription hasComment ifTrue: [ 
+		self addTooltip: aDescription comment to: labelElement.
+		self addTooltip: aDescription comment to: inputElement ].
+	
+	self form addChild: labelElement.
+	self form addChild: inputElement.
 ]
 
 { #category : #accessing }
@@ -61,7 +93,23 @@ MAElementBuilder >> addTooltip: aString to: anElement [
 
 { #category : #accessing }
 MAElementBuilder >> element [
-	^ element ifNil: [ element := MAObjectElement new ].
+	element ifNotNil: [ ^ element ].
+	^ element := BrVerticalPane new
+		vFitContent;
+		hMatchParent;
+		addChild: self form;
+		yourself
+]
+
+{ #category : #accessing }
+MAElementBuilder >> form [
+	form ifNotNil: [ ^ form ].
+	^ form := BlElement new
+		constraintsDo: [ :c |  
+			c vertical fitContent.
+			c horizontal matchParent ];
+		layout: (BlGridLayout horizontal columnCount: 2; cellSpacing: 10);
+ 		yourself.
 ]
 
 { #category : #accessing }
@@ -144,15 +192,7 @@ MAElementBuilder >> visitDurationDescription: anObject [
 
 { #category : #'visiting-description' }
 MAElementBuilder >> visitElementDescription: aDescription [
-	| elementElement valueString |
-	valueString := aDescription toString: (aDescription read: self object).
-	elementElement := self element 
-		inputElementNamed: aDescription label 
-		value: valueString.
-	aDescription hasComment ifTrue: [ 
-		self addTooltip: aDescription comment to: elementElement ].
-	aDescription isRequired
-		ifTrue: [ self error: 'unsupported' ]
+	self addInputFieldUsing: aDescription
 ]
 
 { #category : #'visiting-description' }

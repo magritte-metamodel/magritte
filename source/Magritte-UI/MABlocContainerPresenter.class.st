@@ -36,7 +36,7 @@ MABlocContainerPresenter >> addWindow [
 MABlocContainerPresenter >> answer: anObject [
 
 	| didUserCancel |
-	self view delete.
+	self morph delete.
 	
 	didUserCancel := anObject isNil.
 	didUserCancel | answerBlock isNil ifTrue: [ ^ self ].
