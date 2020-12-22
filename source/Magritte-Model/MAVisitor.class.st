@@ -22,7 +22,7 @@ MAVisitor class >> buildVisitorHierarchyForClass: aClass selector: aBlock classi
 	classesOwnedByMagritte do: [ :class | | visitSelector |
 			visitSelector := aBlock value: class.
 			visitSourceCode := String streamContents: [ :stream |
-					stream nextPutAll: visitSelector; nextPutAll: ' anObject'; cr.
+					stream nextPutAll: visitSelector; nextPutAll: ' aDescription'; cr.
 					class = aClass ifFalse: [
 						stream tab; nextPutAll: 'self '; nextPutAll: (aBlock value: class superclass); nextPutAll: ' anObject' ] ].
 			self compile: visitSourceCode classified: aSelector.

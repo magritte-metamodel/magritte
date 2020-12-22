@@ -29,6 +29,11 @@ Object >> gtActions [
 ]
 
 { #category : #'*Magritte-GToolkit' }
+Object >> magritteElementBuilder [
+	^ MAElementBuilder buildElementFor: self
+]
+
+{ #category : #'*Magritte-GToolkit' }
 Object >> magritteGToolkitActions [
 	^ self magritteActions children collect: [ :desc | desc gtActionFor: self ].
 ]
