@@ -57,6 +57,6 @@ MAMorphicFile >> currentValueMorph [
 MAMorphicFile >> displayCurrentValue [
 
 	| displayString |
-	displayString := description displayStringFor: self value.
+	displayString := self magritteDescription displayStringFor: self value.
 	self currentValueMorph contents: displayString.
 ]

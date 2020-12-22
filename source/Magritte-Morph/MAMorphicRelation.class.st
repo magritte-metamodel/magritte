@@ -48,7 +48,7 @@ MAMorphicRelation >> buildSelectList [
 { #category : #'accessing-dynamic' }
 MAMorphicRelation >> classes [
 
-	^ self magritteDescription classes asSortedCollection: [ :a :b | a name < b name ].
+	^ self magritteDescription classes asSortedCollection: #name ascending.
 ]
 
 { #category : #private }

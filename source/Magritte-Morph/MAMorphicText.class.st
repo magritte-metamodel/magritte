@@ -1,6 +1,6 @@
 Class {
 	#name : #MAMorphicText,
-	#superclass : #MAMorphicMemo,
+	#superclass : #MAMorphicElement,
 	#category : #'Magritte-Morph-Model'
 }
 
@@ -14,4 +14,16 @@ MAMorphicText >> buildMorphView [
 		class: String
 		getEnabled: #enabled
 		help: self magritteDescription comment
+]
+
+{ #category : #accessing }
+MAMorphicText >> enabled [
+
+	^ self magritteDescription readOnly not
+]
+
+{ #category : #private }
+MAMorphicText >> string [
+	Halt once.
+	^ super string
 ]

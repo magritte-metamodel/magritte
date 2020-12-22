@@ -1,3 +1,6 @@
+"
+I take into account the description's specified ==undefined== string. See ${method:MAStringWriter>>#write:description:to:}$.
+"
 Class {
 	#name : #MAStringWriter,
 	#superclass : #MAWriter,
@@ -92,8 +95,10 @@ MAStringWriter >> visitTokenDescription: aDescription [
 
 { #category : #visiting }
 MAStringWriter >> write: anObject description: aDescription to: aStream [
-	anObject isNil 
-		ifTrue: [ aStream nextPutAll: aDescription undefined ]
-		ifFalse: [ super write: anObject description: aDescription to: aStream ].
-	^ aStream contents
+	^ anObject 
+		ifNil: [ 
+			aStream
+				nextPutAll: aDescription undefined;
+				contents ]
+		ifNotNil: [ super write: anObject description: aDescription to: aStream ].
 ]

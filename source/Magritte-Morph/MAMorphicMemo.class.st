@@ -1,6 +1,6 @@
 Class {
 	#name : #MAMorphicMemo,
-	#superclass : #MAMorphicElement,
+	#superclass : #MAMorphicText,
 	#category : #'Magritte-Morph-Model'
 }
 
@@ -18,27 +18,11 @@ MAMorphicMemo >> buildMorphView [
 	
 	"We want to set the height to honor the #lineCount from the description, but PluggableTextMorph doesn't seem to have an API to get the height of a hypothetical block of text e.g. 5 lines in the current font. So we work out an approximation as follows..."
 	lineSpacingFactor := 1.1. "This seems to account well for space between lines"
-	height := (description lineCount * result font height * lineSpacingFactor) + (result borderWidth * 2).
+	height := (self magritteDescription lineCount * result font height * lineSpacingFactor) + (result borderWidth * 2).
 	
 	^ result
 			height: height;
 			hResizing: #spaceFill;
 			borderColor: #inset;
 			borderWidth: 1
-]
-
-{ #category : #accessing }
-MAMorphicMemo >> enabled [
-
-	^ self magritteDescription readOnly not
-]
-
-{ #category : #accessing }
-MAMorphicMemo >> selected [
-	^ (self value ifNil: [ self magritteDescription default ]) ifNil: [ false ]
-]
-
-{ #category : #accessing }
-MAMorphicMemo >> selected: aBoolean [
-	self value: aBoolean 
 ]
