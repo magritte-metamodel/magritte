@@ -1,7 +1,7 @@
 Class {
 	#name : #MAContainerPresenter,
 	#superclass : #MADescriptionPresenter,
-	#traits : 'MATContainerPresenter',
+	#traits : 'MATContainerPresenter @ {#superValidate->#validate}',
 	#classTraits : 'MATContainerPresenter classTrait',
 	#category : #'Magritte-UI'
 }
@@ -132,7 +132,7 @@ MAContainerPresenter >> validate [
 	self morph allMorphsDo: [ :each |
 		(each respondsTo: #accept)
 			ifTrue: [ each accept ] ].
-	self memento validate
+	self superValidate
 ]
 
 { #category : #morphic }

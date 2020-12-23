@@ -31,8 +31,10 @@ MAMemento >> commit [
 
 { #category : #'reflective operations' }
 MAMemento >> doesNotUnderstand: aMessage [
-  self model magritteDescription children detect: [ :desc | desc isMessage: aMessage selector ] ifFound: [ : desc | ^ self readUsing: desc ].
-  ^ super doesNotUnderstand: aMessage
+  ^ self magritteDescription children 
+  	detect: [ :desc | desc handlesSelector: aMessage selector ] 
+  	ifFound: [ :desc | desc handleMessage: aMessage for: self ]
+  	ifNone: [ super doesNotUnderstand: aMessage ]
 ]
 
 { #category : #private }

@@ -21,9 +21,3 @@ MAMorphicText >> enabled [
 
 	^ self magritteDescription readOnly not
 ]
-
-{ #category : #private }
-MAMorphicText >> string [
-	Halt once.
-	^ super string
-]

@@ -4,7 +4,8 @@ Class {
 	#instVars : [
 		'object',
 		'element',
-		'form'
+		'form',
+		'presenter'
 	],
 	#category : #'Magritte-GToolkit'
 }
@@ -47,10 +48,10 @@ MAElementBuilder >> addButtons: aCollection [
 ]
 
 { #category : #accessing }
-MAElementBuilder >> addInputFieldUsing: aDescription [
+MAElementBuilder >> addEditorInputFieldUsing: aDescription [
 	| labelElement inputElement text valueString |
 	
-	valueString := aDescription toString: (aDescription read: self object).
+	valueString := aDescription readToString: self object.
 		
 	labelElement := BrLabel new text: aDescription label, ':'; look: BrGlamorousLabelLook.
 	labelElement constraintsDo: [ :c | 
@@ -58,7 +59,7 @@ MAElementBuilder >> addInputFieldUsing: aDescription [
 		c horizontal fitContent.
 		c grid vertical alignCenter ].
 	
-	inputElement := BrEditorElement new.
+	inputElement := BrEditableLabel new.
 	inputElement look: BrGlamorousInputFieldSpacingLook.
 	inputElement constraintsDo: [ :c | 
 		c vertical fitContent.
@@ -66,6 +67,40 @@ MAElementBuilder >> addInputFieldUsing: aDescription [
 		c grid vertical alignCenter ].
 	text := valueString asRopedText glamorousRegularFont.
 	inputElement editor: (BrTextEditor new text: text).
+	
+	aDescription isRequired ifTrue: [ self error: 'unsupported' ].
+	
+	aDescription hasComment ifTrue: [ 
+		self addTooltip: aDescription comment to: labelElement.
+		self addTooltip: aDescription comment to: inputElement ].
+	
+	self form addChild: labelElement.
+	self form addChild: inputElement.
+]
+
+{ #category : #accessing }
+MAElementBuilder >> addInputFieldUsing: aDescription [
+	| labelElement inputElement text valueString |
+	
+	valueString := aDescription readToString: self memento.
+		
+	labelElement := BrLabel new text: aDescription label, ':'; look: BrGlamorousLabelLook.
+	labelElement constraintsDo: [ :c | 
+		c vertical fitContent.
+		c horizontal fitContent.
+		c grid vertical alignCenter ].
+		
+	text := valueString asRopedText glamorousRegularFont.
+	
+	inputElement := BrEditableLabel new
+		look: BrGlamorousEditableLabelLook new glamorousRegularFontAndSize;
+		constraintsDo: [ :c | 
+			c vertical fitContent.
+			c horizontal matchParent.
+			c grid vertical alignCenter ];
+		when: BrEditorAcceptWish do: [ :aWish |
+			aDescription writeFromString: aWish text greaseString to: self memento ];
+		text: text.
 	
 	aDescription isRequired ifTrue: [ self error: 'unsupported' ].
 	
@@ -113,6 +148,11 @@ MAElementBuilder >> form [
 ]
 
 { #category : #accessing }
+MAElementBuilder >> memento [
+	^ self presenter memento
+]
+
+{ #category : #accessing }
 MAElementBuilder >> object [
 	^ object
 ]
@@ -124,7 +164,7 @@ MAElementBuilder >> object: anObject [
 
 { #category : #accessing }
 MAElementBuilder >> presenter [
-	| presenter memento |
+	| memento |
 	presenter ifNotNil: [ ^ presenter ].
 	"Morphic puts this in container"
 	memento := self object mementoClass
