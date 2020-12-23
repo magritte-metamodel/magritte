@@ -56,11 +56,11 @@ MAMorphicElement >> string: aString [
 
 { #category : #accessing }
 MAMorphicElement >> value [
-	^ self memento readUsing: self magritteDescription
+	^ self magritteDescription read: self memento
 ]
 
 { #category : #accessing }
 MAMorphicElement >> value: anObject [
-	self memento write: anObject using: self magritteDescription.
+	self magritteDescription write: anObject to: self memento.
 	self changed: #value
 ]

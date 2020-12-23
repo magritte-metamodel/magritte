@@ -149,14 +149,14 @@ Object >> mementoClass [
 
 { #category : #'*Magritte-Model' }
 Object >> readUsing: aDescription [
-	"Dispatch the read-access to the receiver using the accessor of aDescription."
+	"This hook is needed so that e.g. mementos and adaptive models can implement their own behavior. All other entry points e.g. MADescription>>#read: should come through here"
 
 	^ aDescription accessor read: self
 ]
 
 { #category : #'*Magritte-Model' }
 Object >> write: anObject using: aDescription [
-	"Dispatch the write-access to the receiver of anObject using the accessor of aDescription."
+	"This hook is needed so that e.g. mementos and adaptive models can implement their own behavior. All other entry points e.g. MADescription>>#read: should come through here"
 
 	aDescription accessor write: anObject to: self
 ]

@@ -32,18 +32,6 @@ MABlocContainerPresenter >> addWindow [
 		yourself
 ]
 
-{ #category : #answering }
-MABlocContainerPresenter >> answer: anObject [
-
-	| didUserCancel |
-	self morph delete.
-	
-	didUserCancel := anObject isNil.
-	didUserCancel | answerBlock isNil ifTrue: [ ^ self ].
-
-	answerBlock value: anObject.
-]
-
 { #category : #private }
 MABlocContainerPresenter >> buildChildren [
 	self flag: 'very similar in Seaside, except children kept in a dictionary, not a sequencable collection. Why?'.
@@ -107,6 +95,12 @@ MABlocContainerPresenter >> onAnswer: aBlock [
 	answerBlock := aBlock
 ]
 
+{ #category : #'as yet unclassified' }
+MABlocContainerPresenter >> onCancel [
+	self reset.
+	self flag: 'that resets the memento, but we need to reset the form values'
+]
+
 { #category : #morphic }
 MABlocContainerPresenter >> openInHand [
 	^ self morph openInHand
@@ -123,16 +117,6 @@ MABlocContainerPresenter >> openInWindow [
 { #category : #morphic }
 MABlocContainerPresenter >> openInWorld [
 	^ self morph openInWorld
-]
-
-{ #category : #actions }
-MABlocContainerPresenter >> validate [
-	"Flushes the cached state of some morphic elements (such as text-morphs) to the memento and then does the validation. I don't know of a better flush the morphic contents (happy flickering), probably morphic is just too limited to customize that easily or I am too dumb to find out."
-
-	self morph allMorphsDo: [ :each |
-		(each respondsTo: #accept)
-			ifTrue: [ each accept ] ].
-	self memento validate
 ]
 
 { #category : #morphic }

@@ -17,6 +17,18 @@ MATContainerPresenter >> addButtons: anArray [
 	self subclassResponsibility
 ]
 
+{ #category : #answering }
+MATContainerPresenter >> answer: anObject [
+
+	| didUserCancel |
+	self onCancel.
+	
+	didUserCancel := anObject isNil.
+	didUserCancel | answerBlock isNil ifTrue: [ ^ self ].
+
+	answerBlock value: anObject.
+]
+
 { #category : #actions }
 MATContainerPresenter >> cancel [
 	self reset; answer: nil
@@ -53,5 +65,5 @@ MATContainerPresenter >> setDescription: aDescription [
 
 { #category : #actions }
 MATContainerPresenter >> validate [
-	self subclassResponsibility
+	self memento validate
 ]
