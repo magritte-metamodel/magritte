@@ -1,11 +1,11 @@
 Class {
-	#name : #MADateMorph,
-	#superclass : #MAElementMorph,
-	#category : 'Magritte-Morph-Model'
+	#name : #MAMorphicDate,
+	#superclass : #MAMorphicElement,
+	#category : #'Magritte-Morph-Model'
 }
 
 { #category : #'private-building' }
-MADateMorph >> buildMorphView [
+MAMorphicDate >> buildMorphView [
 	| model |
 	model := DateModel new
 		displayBlock: [ :e | description displayStringFor: e ];

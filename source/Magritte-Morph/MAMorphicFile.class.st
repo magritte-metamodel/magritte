@@ -1,14 +1,14 @@
 Class {
-	#name : #MAFileMorph,
-	#superclass : #MAElementMorph,
+	#name : #MAMorphicFile,
+	#superclass : #MAMorphicElement,
 	#instVars : [
 		'rectangleMorph'
 	],
-	#category : 'Magritte-Morph-Model'
+	#category : #'Magritte-Morph-Model'
 }
 
 { #category : #'private-building' }
-MAFileMorph >> buildMorphView [
+MAMorphicFile >> buildMorphView [
 
 	| button |
 	rectangleMorph := self rectangleMorph
@@ -23,7 +23,7 @@ MAFileMorph >> buildMorphView [
 ]
 
 { #category : #actions }
-MAFileMorph >> choose [
+MAMorphicFile >> choose [
 	| file |
 	file := self
 		choose: 'Choose ', self magritteDescription label
@@ -34,7 +34,7 @@ MAFileMorph >> choose [
 ]
 
 { #category : #private }
-MAFileMorph >> choose: titleString in: defaultDirectory [
+MAMorphicFile >> choose: titleString in: defaultDirectory [
 
 	^ UIManager default chooseFile: titleString in: defaultDirectory.
 
@@ -45,7 +45,7 @@ MAFileMorph >> choose: titleString in: defaultDirectory [
 ]
 
 { #category : #private }
-MAFileMorph >> currentValueMorph [
+MAMorphicFile >> currentValueMorph [
 
 	| exists |
 	exists := rectangleMorph submorphs size = 2.
@@ -54,7 +54,7 @@ MAFileMorph >> currentValueMorph [
 ]
 
 { #category : #private }
-MAFileMorph >> displayCurrentValue [
+MAMorphicFile >> displayCurrentValue [
 
 	| displayString |
 	displayString := description displayStringFor: self value.

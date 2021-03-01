@@ -1,20 +1,20 @@
 Class {
-	#name : #MAMultiSelectListMorph,
-	#superclass : #MAListMorph,
+	#name : #MAMorphicMultiSelectList,
+	#superclass : #MAMorphicList,
 	#instVars : [
 		'selected'
 	],
-	#category : 'Magritte-Morph-Model'
+	#category : #'Magritte-Morph-Model'
 }
 
 { #category : #private }
-MAMultiSelectListMorph >> buildMorph [
+MAMorphicMultiSelectList >> buildMorph [
 		
 	^ super buildMorph.
 ]
 
 { #category : #private }
-MAMultiSelectListMorph >> buildMorphView [
+MAMorphicMultiSelectList >> buildMorphView [
 	^ (PluggableListMorph on: self list: #strings primarySelection: #selected changePrimarySelection: #selected: listSelection: #selectionAt: changeListSelection: #selectionAt:put: menu: nil)
 		hResizing: #spaceFill;
 		borderColor: #inset;
@@ -24,23 +24,23 @@ MAMultiSelectListMorph >> buildMorphView [
 ]
 
 { #category : #accessing }
-MAMultiSelectListMorph >> selected [
+MAMorphicMultiSelectList >> selected [
 	^ selected ifNil: [ selected := 0 ]
 ]
 
 { #category : #accessing }
-MAMultiSelectListMorph >> selected: anInteger [
+MAMorphicMultiSelectList >> selected: anInteger [
 	selected := anInteger.
 	self changed: #selected
 ]
 
 { #category : #accessing }
-MAMultiSelectListMorph >> selectionAt: anInteger [
+MAMorphicMultiSelectList >> selectionAt: anInteger [
 	^ self value includes: (self options at: anInteger)
 ]
 
 { #category : #accessing }
-MAMultiSelectListMorph >> selectionAt: anInteger put: aBoolean [
+MAMorphicMultiSelectList >> selectionAt: anInteger put: aBoolean [
 	| option |
 	option := self options at: anInteger.
 	self value: (aBoolean

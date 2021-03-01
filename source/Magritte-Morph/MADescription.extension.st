@@ -1,42 +1,32 @@
 Extension { #name : #MADescription }
 
 { #category : #'*Magritte-Morph' }
-MADescription class >> defaultMorphClass [
-	^ self defaultMorphClasses notEmpty
-		ifTrue: [ self defaultMorphClasses first ]
-]
-
-{ #category : #'*Magritte-Morph' }
-MADescription class >> defaultMorphClasses [
-	^ Array new
-]
-
-{ #category : #'*Magritte-Morph' }
 MADescription class >> defaultMorphColor [
 	^ Color white
 ]
 
+{ #category : #'*Magritte-Morph' }
+MADescription class >> defaultMorphicClass [
+	^ self defaultMorphicClasses notEmpty
+		ifTrue: [ self defaultMorphicClasses first ]
+]
+
+{ #category : #'*Magritte-Morph' }
+MADescription class >> defaultMorphicClasses [
+	^ Array new
+]
+
 { #category : #'*magritte-morph-accessing' }
-MADescription >> descriptionMorphClass [
+MADescription >> descriptionMorphicClass [
 	<magritteDescription>
 	^ MASingleOptionDescription new
-		accessor: #morphClass;
+		accessor: #morphicClass;
 		label: 'Morph Class';
 		priority: 2000;
 		reference: MAClassDescription new;
-		options: self class defaultMorphClasses;
-		default: self class defaultMorphClass;
+		options: self class defaultMorphicClasses;
+		default: self class defaultMorphicClass;
 		yourself
-]
-
-{ #category : #'*Magritte-Morph' }
-MADescription >> morphClass [
-	^ self propertyAt: #morphClass ifAbsent: [ self class defaultMorphClass ]
-]
-
-{ #category : #'*Magritte-Morph' }
-MADescription >> morphClass: aClass [
-	^ self propertyAt: #morphClass put: aClass
 ]
 
 { #category : #'*Magritte-Morph' }
@@ -47,4 +37,14 @@ MADescription >> morphColor [
 { #category : #'*Magritte-Morph' }
 MADescription >> morphColor: aColor [
 	^ self propertyAt: #morphColor put: aColor
+]
+
+{ #category : #'*Magritte-Morph' }
+MADescription >> morphicClass [
+	^ self propertyAt: #morphicClass ifAbsent: [ self class defaultMorphicClass ]
+]
+
+{ #category : #'*Magritte-Morph' }
+MADescription >> morphicClass: aClass [
+	^ self propertyAt: #morphicClass put: aClass
 ]

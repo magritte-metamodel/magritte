@@ -1,6 +1,6 @@
 Extension { #name : #MAToManyRelationDescription }
 
 { #category : #'*magritte-morph-defaults' }
-MAToManyRelationDescription class >> defaultMorphClasses [
-	^ Array with: MAOneToManyMorph
+MAToManyRelationDescription class >> defaultMorphicClasses [
+	^ Array with: MAMorphicOneToMany
 ]

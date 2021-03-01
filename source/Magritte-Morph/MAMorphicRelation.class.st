@@ -1,22 +1,22 @@
 Class {
-	#name : #MARelationMorph,
-	#superclass : #MAElementMorph,
+	#name : #MAMorphicRelation,
+	#superclass : #MAMorphicElement,
 	#instVars : [
 		'selected',
 		'selectedIndex'
 	],
-	#category : 'Magritte-Morph-Model'
+	#category : #'Magritte-Morph-Model'
 }
 
 { #category : #'private-building' }
-MARelationMorph >> addSelectListTo: aMorph [
+MAMorphicRelation >> addSelectListTo: aMorph [
 
 	self classes ifEmpty: [ ^ self ].
 	aMorph addMorphBack: self buildSelectList
 ]
 
 { #category : #'private-building' }
-MARelationMorph >> buildClassChooser [
+MAMorphicRelation >> buildClassChooser [
 	| items |
 	items := self classes collect: [ :e | e label ].
 	^ Smalltalk ui theme builder
@@ -28,12 +28,12 @@ MARelationMorph >> buildClassChooser [
 ]
 
 { #category : #'private-building' }
-MARelationMorph >> buildSelectButton [
+MAMorphicRelation >> buildSelectButton [
 	self subclassResponsibility
 ]
 
 { #category : #'private-building' }
-MARelationMorph >> buildSelectList [
+MAMorphicRelation >> buildSelectList [
 
 	| list |
 	list := self rectangleMorph
@@ -46,13 +46,13 @@ MARelationMorph >> buildSelectList [
 ]
 
 { #category : #'accessing-dynamic' }
-MARelationMorph >> classes [
+MAMorphicRelation >> classes [
 
 	^ self magritteDescription classes asSortedCollection: [ :a :b | a name < b name ].
 ]
 
 { #category : #private }
-MARelationMorph >> newRelation [
+MAMorphicRelation >> newRelation [
 
 	| instance |
 	instance := self selected new.
@@ -62,16 +62,16 @@ MARelationMorph >> newRelation [
 ]
 
 { #category : #accessing }
-MARelationMorph >> selected [
+MAMorphicRelation >> selected [
 	^ self classes at: self selectedIndex
 ]
 
 { #category : #private }
-MARelationMorph >> selectedIndex [
+MAMorphicRelation >> selectedIndex [
 	^ selectedIndex ifNil: [ selectedIndex := 1 ]
 ]
 
 { #category : #private }
-MARelationMorph >> selectedIndex: anInteger [
+MAMorphicRelation >> selectedIndex: anInteger [
 	selectedIndex := anInteger.
 ]

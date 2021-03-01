@@ -16,7 +16,7 @@ MABlockDescription class >> defaultLineCount [
 
 { #category : #'as yet unclassified' }
 MABlockDescription class >> defaultMorphClasses [
-	^ Array with: MAMemoMorph
+	^ Array with: MAMorphicMemo
 ]
 
 { #category : #testing }

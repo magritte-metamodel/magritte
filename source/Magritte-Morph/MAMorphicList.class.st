@@ -1,15 +1,15 @@
 Class {
-	#name : #MAListMorph,
-	#superclass : #MAElementMorph,
-	#category : 'Magritte-Morph-Model'
+	#name : #MAMorphicList,
+	#superclass : #MAMorphicElement,
+	#category : #'Magritte-Morph-Model'
 }
 
 { #category : #'accessing-dynamic' }
-MAListMorph >> options [
+MAMorphicList >> options [
 	^ self magritteDescription allOptions
 ]
 
 { #category : #'accessing-dynamic' }
-MAListMorph >> strings [
+MAMorphicList >> strings [
 	^ self options collect: [ :each | self magritteDescription reference toString: each ]
 ]

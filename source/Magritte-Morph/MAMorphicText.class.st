@@ -1,11 +1,11 @@
 Class {
-	#name : #MATextMorph,
-	#superclass : #MAMemoMorph,
-	#category : 'Magritte-Morph-Model'
+	#name : #MAMorphicText,
+	#superclass : #MAMorphicMemo,
+	#category : #'Magritte-Morph-Model'
 }
 
 { #category : #private }
-MATextMorph >> buildMorphView [
+MAMorphicText >> buildMorphView [
 	^ Smalltalk ui theme
 		newTextEntryIn: nil
 		for: self

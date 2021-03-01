@@ -1,11 +1,11 @@
 Class {
-	#name : #MAOneToManyMorph,
-	#superclass : #MARelationMorph,
-	#category : 'Magritte-Morph-Model'
+	#name : #MAMorphicOneToMany,
+	#superclass : #MAMorphicRelation,
+	#category : #'Magritte-Morph-Model'
 }
 
 { #category : #actions }
-MAOneToManyMorph >> add [
+MAMorphicOneToMany >> add [
 
 	self newRelation asMagritteMorph
 		onAnswer: [ :result |
@@ -17,7 +17,7 @@ MAOneToManyMorph >> add [
 ]
 
 { #category : #private }
-MAOneToManyMorph >> add: anObject [
+MAMorphicOneToMany >> add: anObject [
 	| rowParent lastRowIndex newRow |
 	rowParent := morph submorphs second.
 	newRow := MAElementRow for: anObject of: self.
@@ -30,7 +30,7 @@ MAOneToManyMorph >> add: anObject [
 ]
 
 { #category : #private }
-MAOneToManyMorph >> buildMorphView [
+MAMorphicOneToMany >> buildMorphView [
 
 	| table scrollPane |
 	table := self rectangleMorph
@@ -51,7 +51,7 @@ MAOneToManyMorph >> buildMorphView [
 ]
 
 { #category : #private }
-MAOneToManyMorph >> buildSelectButton [
+MAMorphicOneToMany >> buildSelectButton [
 	^ Smalltalk ui theme builder
 		newButtonFor: self
 		action: #add
@@ -60,6 +60,6 @@ MAOneToManyMorph >> buildSelectButton [
 ]
 
 { #category : #private }
-MAOneToManyMorph >> remove: anObject [
+MAMorphicOneToMany >> remove: anObject [
 	self value: (self value copyWithout: anObject).
 ]

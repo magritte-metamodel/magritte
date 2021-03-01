@@ -1,11 +1,11 @@
 Class {
-	#name : #MAOneToOneMorph,
-	#superclass : #MARelationMorph,
-	#category : 'Magritte-Morph-Model'
+	#name : #MAMorphicOneToOne,
+	#superclass : #MAMorphicRelation,
+	#category : #'Magritte-Morph-Model'
 }
 
 { #category : #'as yet unclassified' }
-MAOneToOneMorph >> buildMorphView [
+MAMorphicOneToOne >> buildMorphView [
 
 	| table |
 	table := self rectangleMorph
@@ -18,7 +18,7 @@ MAOneToOneMorph >> buildMorphView [
 ]
 
 { #category : #private }
-MAOneToOneMorph >> buildSelectButton [
+MAMorphicOneToOne >> buildSelectButton [
 	^ Smalltalk ui theme builder
 		newButtonFor: self
 		action: #create
@@ -27,11 +27,11 @@ MAOneToOneMorph >> buildSelectButton [
 ]
 
 { #category : #actions }
-MAOneToOneMorph >> create [
+MAMorphicOneToOne >> create [
 	self subclassResponsibility
 ]
 
 { #category : #removing }
-MAOneToOneMorph >> remove: anObject [
+MAMorphicOneToOne >> remove: anObject [
 	self value: nil
 ]

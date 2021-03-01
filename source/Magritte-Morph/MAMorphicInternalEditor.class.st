@@ -1,19 +1,19 @@
 Class {
-	#name : #MAInternalEditorMorph,
-	#superclass : #MAOneToOneMorph,
+	#name : #MAMorphicInternalEditor,
+	#superclass : #MAMorphicOneToOne,
 	#instVars : [
 		'component'
 	],
-	#category : 'Magritte-Morph-Model'
+	#category : #'Magritte-Morph-Model'
 }
 
 { #category : #testing }
-MAInternalEditorMorph class >> isAbstract [
+MAMorphicInternalEditor class >> isAbstract [
 	^ false
 ]
 
 { #category : #private }
-MAInternalEditorMorph >> buildComponent [
+MAMorphicInternalEditor >> buildComponent [
 	^ self value isNil ifFalse: [ 
 		(self magritteDescription reference asComponentOn: self value)
 			setParent: self;
@@ -21,23 +21,23 @@ MAInternalEditorMorph >> buildComponent [
 ]
 
 { #category : #accessing }
-MAInternalEditorMorph >> children [
+MAMorphicInternalEditor >> children [
 	^ Array with: self component
 ]
 
 { #category : #accessing }
-MAInternalEditorMorph >> component [
+MAMorphicInternalEditor >> component [
 	^ component ifNil: [ component := self buildComponent ]
 ]
 
 { #category : #actions }
-MAInternalEditorMorph >> create [
+MAMorphicInternalEditor >> create [
 	self value: self newRelation.
 	component := nil
 ]
 
 { #category : #rendering }
-MAInternalEditorMorph >> renderViewerOn: html [
+MAMorphicInternalEditor >> renderViewerOn: html [
 	html render: (self component
 		readOnly: self isReadOnly;
 		yourself)
