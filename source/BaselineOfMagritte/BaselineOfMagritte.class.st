@@ -1,7 +1,7 @@
 Class {
 	#name : #BaselineOfMagritte,
 	#superclass : #BaselineOf,
-	#category : 'BaselineOfMagritte'
+	#category : #BaselineOfMagritte
 }
 
 { #category : #baselines }
@@ -58,7 +58,7 @@ BaselineOfMagritte >> baseline330: spec [
 					spec 
 						requires: #('Grease');
 						includes: #('Magritte-Deprecated3dot7') ];
-				package: 'Magritte-Deprecated3dot7' with: [ spec requires: #('Magritte-Model') ];
+				package: 'Magritte-Deprecated3dot7' with: [ spec requires: #('Magritte-Model' 'Magritte-Morph') ];
 				package: 'Magritte-Tests-Model' with: [ spec requires: #('Magritte-Model') ];
 				package: 'Magritte-Seaside' with: [ spec requires: #('Magritte-Model' 'Seaside3') ];
 				package: 'Magritte-Bootstrap' with: [ spec requires: #('Magritte-Model') ];
