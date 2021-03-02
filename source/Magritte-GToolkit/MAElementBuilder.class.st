@@ -5,7 +5,8 @@ Class {
 		'object',
 		'element',
 		'form',
-		'presenter'
+		'presenter',
+		'buttonSelectors'
 	],
 	#category : #'Magritte-GToolkit'
 }
@@ -24,27 +25,8 @@ MAElementBuilder >> addButtons [
 
 { #category : #accessing }
 MAElementBuilder >> addButtons: aCollection [
-	| toolbar |
-	toolbar := BrToolbar new
-		look: BrToolbarLook new;
-		layout:
-			(BlGridLayout horizontal
-				rowCount: 1;
-				cellSpacing: 10);
-		constraintsDo: [ :c | 
-			c horizontal fitContent.
-			c grid horizontal alignRight.
-			c vertical fitContent ].
-	aCollection do: [ :sel |
-		| button |
-		button := BrButton new
-			beSmallSize;
-			look: BrGlamorousButtonLabelLook;
-			label: sel capitalized;
-			action: [ self presenter perform: sel ].
-	toolbar addItem: button ].
-
-	self element addChild: toolbar
+	"#addButtons: is part of the existing Morphic/Seaside API. We store the selectors instead of constructing the buttons to defer all element creation to first element access"
+	self buttonSelectors: aCollection
 ]
 
 { #category : #accessing }
@@ -102,7 +84,7 @@ MAElementBuilder >> addInputFieldUsing: aDescription [
 			aDescription writeFromString: aWish text greaseString to: self memento ];
 		text: text.
 	
-	aDescription isRequired ifTrue: [ self error: 'unsupported' ].
+	aDescription isRequired ifTrue: [ self flag: 'unsupported' ].
 	
 	aDescription hasComment ifTrue: [ 
 		self addTooltip: aDescription comment to: labelElement.
@@ -127,13 +109,25 @@ MAElementBuilder >> addTooltip: aString to: anElement [
 ]
 
 { #category : #accessing }
+MAElementBuilder >> buttonSelectors [
+	^ buttonSelectors ifNil: #()
+]
+
+{ #category : #accessing }
+MAElementBuilder >> buttonSelectors: aCollection [
+	buttonSelectors := aCollection
+]
+
+{ #category : #accessing }
 MAElementBuilder >> element [
 	element ifNotNil: [ ^ element ].
-	^ element := BrVerticalPane new
+	element := BrVerticalPane new
 		vFitContent;
 		hMatchParent;
 		addChild: self form;
-		yourself
+		yourself.
+	self hasButtons ifTrue: [ element addChild: self toolbar ].
+	^ element
 ]
 
 { #category : #accessing }
@@ -145,6 +139,11 @@ MAElementBuilder >> form [
 			c horizontal matchParent ];
 		layout: (BlGridLayout horizontal columnCount: 2; cellSpacing: 10);
  		yourself.
+]
+
+{ #category : #testing }
+MAElementBuilder >> hasButtons [
+	^ self buttonSelectors isNotEmpty
 ]
 
 { #category : #accessing }
@@ -171,6 +170,30 @@ MAElementBuilder >> presenter [
 		model: self object
 		description: self object magritteDescription.
 	^ presenter := MABlocContainerPresenter memento: memento
+]
+
+{ #category : #accessing }
+MAElementBuilder >> toolbar [
+	| toolbar |
+	toolbar := BrToolbar new
+		look: BrToolbarLook new;
+		layout:
+			(BlGridLayout horizontal
+				rowCount: 1;
+				cellSpacing: 10);
+		constraintsDo: [ :c | 
+			c horizontal fitContent.
+			c grid horizontal alignRight.
+			c vertical fitContent ].
+	self buttonSelectors do: [ :sel |
+		| button |
+		button := BrButton new
+			beSmallSize;
+			look: BrGlamorousButtonWithLabelLook;
+			label: sel capitalized;
+			action: [ self presenter perform: sel ].
+	toolbar addItem: button ].
+	^ toolbar
 ]
 
 { #category : #accessing }
