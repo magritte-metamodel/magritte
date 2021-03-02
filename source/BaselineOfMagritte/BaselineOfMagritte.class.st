@@ -44,36 +44,6 @@ BaselineOfMagritte >> baseline310CommonExtDeps: spec [
 ]
 
 { #category : #baselines }
-BaselineOfMagritte >> baseline330: spec [
-	<baseline>
-	spec
-		for: #common
-		do: [ 
-			spec author: 'SeanDeNigris'.
-			spec timestamp: '2015-04-05'.
-			spec description: 'For pharo4.x, add Magritte-GT package and add it to the default group'.
-			self baseline310CommonExtDeps: spec.
-			spec
-				package: 'Magritte-Model' with: [ 
-					spec 
-						requires: #('Grease');
-						includes: #('Magritte-Deprecated3dot7') ];
-				package: 'Magritte-Deprecated3dot7' with: [ spec requires: #('Magritte-Model' 'Magritte-Morph') ];
-				package: 'Magritte-Tests-Model' with: [ spec requires: #('Magritte-Model') ];
-				package: 'Magritte-Seaside' with: [ spec requires: #('Magritte-Model' 'Seaside3') ];
-				package: 'Magritte-Bootstrap' with: [ spec requires: #('Magritte-Model') ];
-				package: 'Magritte-Deprecated' with: [ spec requires: #('Magritte-Model') ];
-				package: 'Magritte-Merging' with: [ spec requires: #('Magritte-Model') ].
-			spec
-				group: 'Core' with: #('Magritte-Model');
-				group: 'Tests' with: #('Magritte-Tests-Model');
-				group: 'Seaside' with: #('Magritte-Seaside');
-				group: 'Deprecated' with: #('Magritte-Deprecated') ].
-	self baseline330ForPharo: spec.
-	self baseline300ForGemStone: spec
-]
-
-{ #category : #baselines }
 BaselineOfMagritte >> baseline330ForPharo: spec [
 	spec
 		for: #'pharo1.x'
@@ -151,9 +121,41 @@ BaselineOfMagritte >> baseline330ForPharo: spec [
 				group: 'default' with: 'Morphic' ].
 		
 		spec for: #GToolkit do: [ 
-			spec package: 'Magritte-GToolkit' with: [ spec requires: #('Magritte-Model') ].
-			spec package: 'Magritte-Developer' with: [ spec includes: #('Magritte-GToolkit') ].
+			spec 
+				package: 'Magritte-UI' with: [ spec requires: #('Magritte-Model') ];
+				package: 'Magritte-GToolkit' with: [ spec requires: #('Magritte-Model' 'Magritte-UI') ];
+				package: 'Magritte-Developer' with: [ spec includes: #('Magritte-GToolkit') ].
 			spec group: 'default' with: 'Magritte-GToolkit' ]
+]
+
+{ #category : #baselines }
+BaselineOfMagritte >> baseline: spec [
+	<baseline>
+	spec
+		for: #common
+		do: [ 
+			spec author: 'SeanDeNigris'.
+			spec timestamp: '2015-04-05'.
+			spec description: 'For pharo4.x, add Magritte-GT package and add it to the default group'.
+			self baseline310CommonExtDeps: spec.
+			spec
+				package: 'Magritte-Model' with: [ 
+					spec 
+						requires: #('Grease');
+						includes: #('Magritte-Deprecated3dot7') ];
+				package: 'Magritte-Deprecated3dot7' with: [ spec requires: #('Magritte-Model' 'Magritte-Morph') ];
+				package: 'Magritte-Tests-Model' with: [ spec requires: #('Magritte-Model') ];
+				package: 'Magritte-Seaside' with: [ spec requires: #('Magritte-Model' 'Seaside3') ];
+				package: 'Magritte-Bootstrap' with: [ spec requires: #('Magritte-Model') ];
+				package: 'Magritte-Deprecated' with: [ spec requires: #('Magritte-Model') ];
+				package: 'Magritte-Merging' with: [ spec requires: #('Magritte-Model') ].
+			spec
+				group: 'Core' with: #('Magritte-Model');
+				group: 'Tests' with: #('Magritte-Tests-Model');
+				group: 'Seaside' with: #('Magritte-Seaside');
+				group: 'Deprecated' with: #('Magritte-Deprecated') ].
+	self baseline330ForPharo: spec.
+	self baseline300ForGemStone: spec
 ]
 
 { #category : #accessing }
