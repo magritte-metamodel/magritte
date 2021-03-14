@@ -61,6 +61,30 @@ MAElementBuilder >> addEditorInputFieldUsing: aDescription [
 ]
 
 { #category : #accessing }
+MAElementBuilder >> addInputField: inputElement using: aDescription [
+	| labelElement text valueString |
+	
+	valueString := aDescription readToString: self memento.
+		
+	labelElement := BrLabel new text: aDescription label, ':'; look: BrGlamorousLabelLook.
+	labelElement constraintsDo: [ :c | 
+		c vertical fitContent.
+		c horizontal fitContent.
+		c grid vertical alignCenter ].
+		
+	text := valueString asRopedText glamorousRegularFont.
+	
+	aDescription isRequired ifTrue: [ self flag: 'unsupported' ].
+	
+	aDescription hasComment ifTrue: [ 
+		self addTooltip: aDescription comment to: labelElement.
+		self addTooltip: aDescription comment to: inputElement ].
+	
+	self form addChild: labelElement.
+	self form addChild: inputElement.
+]
+
+{ #category : #accessing }
 MAElementBuilder >> addInputFieldUsing: aDescription [
 	| labelElement inputElement text valueString |
 	
