@@ -77,22 +77,37 @@ MADropdownElement >> items: anObject [
 MADropdownElement >> popupList [
 	"Adapted from BrDropdownExamples>>#popupList"
 	"listElement ifNotNil: [ ^ listElement ]."
-	^ BrSimpleList new
+	| list |
+	list := BrSimpleList new.
+	^ list
 		lookDo: [ :aLook | aLook listElement constraintsDo: [ :c | c maxHeight: 200 ] ];
 		layout: BlLinearLayout vertical;
 		padding: (BlInsets all: 5);
 		vFitContent;
 		hExact: 200;
 		itemStencil: [
-			BrLabel new
+			BrButton new
 				"hMatchParent;"
 				look: BrGlamorousLabelLook new + (BrStyleCommonLook new
 					selected: [ :aStyle | aStyle background: Color veryVeryLightGray ]);
 				padding: (BlInsets all: 5);
-				addEventHandlerOn: BlClickEvent
-							do: [ :a :b | Halt now ];
+				"addEventHandlerOn: BlClickEvent
+							do: [ :evt | 
+							| selItem |
+							selItem := evt target parent userData at: #item.
+							self selection: selItem.
+							evt target fireEvent: BrDropdownHideWish new ];"
+							action: [ :aButton | 
+							| selItem |
+							selItem := aButton userData at: #item.
+							"Halt now.
+							"self selection: selItem.
+							aButton fireEvent: BrDropdownHideWish new ];
 				yourself ];
-		itemDataBinder: [ :eachElement :eachItem :eachIndex | eachElement text: eachItem asString ];
+				
+		itemDataBinder: [ :eachElement :eachItem :eachIndex | 
+		eachElement userData at: #item put: eachItem.
+		eachElement label: eachItem asString ];
 		items: self items;
 		yourself.
 ]
