@@ -95,7 +95,7 @@ MABlocContainerPresenter >> onAnswer: aBlock [
 	answerBlock := aBlock
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #private }
 MABlocContainerPresenter >> onCancel [
 	self reset.
 	self flag: 'that resets the memento, but we need to reset the form values'

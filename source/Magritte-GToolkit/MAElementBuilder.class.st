@@ -98,6 +98,7 @@ MAElementBuilder >> element [
 		hMatchParent;
 		addChild: self form;
 		yourself.
+	element userData at: #magrittePresenter put: self presenter.
 	self hasButtons ifTrue: [ element addChild: self toolbar ].
 	^ element
 ]
@@ -292,6 +293,7 @@ MAElementBuilder >> visitSingleOptionDescription: aDescription [
 	| inputElement |
 	inputElement := MADropdownElement new 
 		items: aDescription allOptions;
+		selection: (self object readUsing: aDescription);
 		when: MADropdownWish do: [ :aWish | 
 			aDescription write: aWish selection to: self memento ];
 		yourself.

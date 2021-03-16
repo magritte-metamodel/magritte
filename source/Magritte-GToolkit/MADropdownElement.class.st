@@ -26,6 +26,18 @@ MADropdownElement class >> exampleSelection [
 ]
 
 { #category : #accessing }
+MADropdownElement >> handleSelection: anElement [
+	| selItem |
+	"Must check self and parent(s) because target can be label or its text"
+	selItem := anElement
+		withAllParentsDetect: [ :e | e userData includesKey: #item ]
+		ifFound: [ :e | e userData at: #item ]
+		ifNone: [ nil ].
+	self selection: selItem.
+	anElement fireEvent: BrDropdownHideWish new
+]
+
+{ #category : #accessing }
 MADropdownElement >> initialize [
 	super initialize.
 	self initializeToggleButton: self.
@@ -94,19 +106,11 @@ MADropdownElement >> popupList [
 				padding: (BlInsets all: 5);
 				"hMatchParent;"
 				addEventHandlerOn: BlClickEvent
-					do: [ :evt | 
-					| selItem |
-					"Must check self and parent(s) because target can be label or its text"
-					selItem := evt target 
-						withAllParentsDetect: [ :e | e userData includesKey: #item ] 
-						ifFound: [ :e | e userData at: #item ] 
-						ifNone: [ nil ].
-					self selection: selItem.
-					evt target fireEvent: BrDropdownHideWish new ];
+					do: [ :evt | self handleSelection: evt target ];
 				yourself ];
 		itemDataBinder: [ :eachElement :eachItem :eachIndex | 
 			eachElement userData at: #item put: eachItem.
-			eachElement text: eachItem asString ];
+			eachElement text: eachItem displayString ];
 		items: self items;
 		yourself
 ]
@@ -125,5 +129,5 @@ MADropdownElement >> selection: anObject [
 
 { #category : #accessing }
 MADropdownElement >> selectionString [
-	^ self selection ifNotNil: [ :sel | sel asString ] ifNil: ''
+	^ self selection ifNotNil: [ :sel | sel displayString ] ifNil: ''
 ]
