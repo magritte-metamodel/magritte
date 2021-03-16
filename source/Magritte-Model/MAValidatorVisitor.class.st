@@ -34,7 +34,7 @@ MAValidatorVisitor >> use: anObject during: aBlock [
 { #category : #private }
 MAValidatorVisitor >> validate: anObject using: aDescription [
 	aDescription validateRequired: anObject.
-	anObject isNil ifTrue: [ ^ self ].
+	anObject = aDescription undefinedValue ifTrue: [ ^ self ].
 	aDescription
 		tryValidation: [ aDescription validateKind: anObject ]
 		ifPass: [ 
