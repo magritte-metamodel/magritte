@@ -62,7 +62,7 @@ MASingleOptionDescription >> isGrouped [
 MASingleOptionDescription >> prepareOptions: aCollection [
 	^ self isRequired
 		ifTrue: [ super prepareOptions: aCollection ]
-		ifFalse: [ (Array with: nil) , (super prepareOptions: aCollection) ]
+		ifFalse: [ (Array with: self undefinedValue) , (super prepareOptions: aCollection) ]
 ]
 
 { #category : #validating }
