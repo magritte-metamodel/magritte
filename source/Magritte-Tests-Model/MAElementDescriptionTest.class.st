@@ -1,7 +1,7 @@
 Class {
 	#name : #MAElementDescriptionTest,
 	#superclass : #MADescriptionTest,
-	#category : 'Magritte-Tests-Model-Description'
+	#category : #'Magritte-Tests-Model-Description'
 }
 
 { #category : #testing }
@@ -333,6 +333,15 @@ MAElementDescriptionTest >> testToStringUndefined [
 MAElementDescriptionTest >> testUndefined [
 	self description undefined: 'nop'.
 	self assert: self description undefined = 'nop'
+]
+
+{ #category : #'tests-accessing' }
+MAElementDescriptionTest >> testUndefinedValue [
+	self description undefinedValue: 'null'.
+	self assert: self description undefinedValue equals: 'null'.
+	
+	self description accessor: #yourself.
+	self assert: (self nullInstance readUsing: self description) equals: 'null'
 ]
 
 { #category : #'tests-validation' }

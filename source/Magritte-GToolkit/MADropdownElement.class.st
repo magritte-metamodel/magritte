@@ -11,9 +11,9 @@ Class {
 { #category : #accessing }
 MADropdownElement class >> example [
 	<gtExample>
-	^ self basicNew
+	^ self new
 		items: (Smalltalk allClasses first: 5);
-		initialize.
+		yourself.
 ]
 
 { #category : #accessing }
@@ -30,21 +30,20 @@ MADropdownElement >> initialize [
 	super initialize.
 	self initializeToggleButton: self.
 	self
-		addLook: (BrGlamorousWithDropdownLook
-				handle: [ 
-				| handle |
-				handle := BrButton new.
-				self initializeToggleButton: handle.
-				handle
-					label: (self selection ifNotNil: [ :sel | sel asString ] ifNil: '');
-					yourself ]
+		addLook:
+			(BrGlamorousWithDropdownLook
+				handle: [ | handle |
+					handle := BrButton new.
+					self initializeToggleButton: handle.
+					handle
+						label: self selectionString;
+						yourself ]
 				content: [ self popupList ]);
 		yourself
 ]
 
 { #category : #accessing }
 MADropdownElement >> initializeToggleButton: aButton [
-
 	^ aButton
 		label: '';
 		icon:
@@ -69,47 +68,47 @@ MADropdownElement >> items [
 ]
 
 { #category : #accessing }
-MADropdownElement >> items: anObject [
-	items := anObject
+MADropdownElement >> items: aCollection [
+	items := aCollection
 ]
 
 { #category : #accessing }
 MADropdownElement >> popupList [
 	"Adapted from BrDropdownExamples>>#popupList"
+
 	"listElement ifNotNil: [ ^ listElement ]."
+
 	| list |
 	list := BrSimpleList new.
 	^ list
-		lookDo: [ :aLook | aLook listElement constraintsDo: [ :c | c maxHeight: 200 ] ];
+		lookDo:
+				[ :aLook | aLook listElement constraintsDo: [ :c | c maxHeight: 200 ] ];
 		layout: BlLinearLayout vertical;
 		padding: (BlInsets all: 5);
 		vFitContent;
 		hExact: 200;
-		itemStencil: [
-			BrButton new
-				"hMatchParent;"
-				look: BrGlamorousLabelLook new + (BrStyleCommonLook new
-					selected: [ :aStyle | aStyle background: Color veryVeryLightGray ]);
+		itemStencil: [ 
+			BrLabel new
+				look: BrGlamorousLabelLook new +
+					(BrStyleCommonLook new selected: [ :aStyle | aStyle background: Color veryVeryLightGray ]);
 				padding: (BlInsets all: 5);
-				"addEventHandlerOn: BlClickEvent
-							do: [ :evt | 
-							| selItem |
-							selItem := evt target parent userData at: #item.
-							self selection: selItem.
-							evt target fireEvent: BrDropdownHideWish new ];"
-							action: [ :aButton | 
-							| selItem |
-							selItem := aButton userData at: #item.
-							"Halt now.
-							"self selection: selItem.
-							aButton fireEvent: BrDropdownHideWish new ];
+				"hMatchParent;"
+				addEventHandlerOn: BlClickEvent
+					do: [ :evt | 
+					| selItem |
+					"Must check self and parent(s) because target can be label or its text"
+					selItem := evt target 
+						withAllParentsDetect: [ :e | e userData includesKey: #item ] 
+						ifFound: [ :e | e userData at: #item ] 
+						ifNone: [ nil ].
+					self selection: selItem.
+					evt target fireEvent: BrDropdownHideWish new ];
 				yourself ];
-				
 		itemDataBinder: [ :eachElement :eachItem :eachIndex | 
-		eachElement userData at: #item put: eachItem.
-		eachElement label: eachItem asString ];
+			eachElement userData at: #item put: eachItem.
+			eachElement text: eachItem asString ];
 		items: self items;
-		yourself.
+		yourself
 ]
 
 { #category : #accessing }
@@ -120,5 +119,11 @@ MADropdownElement >> selection [
 { #category : #accessing }
 MADropdownElement >> selection: anObject [
 	selection := anObject.
-	self label: (self selection ifNotNil: [ :sel | sel asString ] ifNil: '').
+	self label: self selectionString.
+	self dispatchEvent: (MADropdownWish new selection: self selection)
+]
+
+{ #category : #accessing }
+MADropdownElement >> selectionString [
+	^ self selection ifNotNil: [ :sel | sel asString ] ifNil: ''
 ]

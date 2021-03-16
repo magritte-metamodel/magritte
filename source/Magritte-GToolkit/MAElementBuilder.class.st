@@ -30,41 +30,8 @@ MAElementBuilder >> addButtons: aCollection [
 ]
 
 { #category : #accessing }
-MAElementBuilder >> addEditorInputFieldUsing: aDescription [
-	| labelElement inputElement text valueString |
-	
-	valueString := aDescription readToString: self object.
-		
-	labelElement := BrLabel new text: aDescription label, ':'; look: BrGlamorousLabelLook.
-	labelElement constraintsDo: [ :c | 
-		c vertical fitContent.
-		c horizontal fitContent.
-		c grid vertical alignCenter ].
-	
-	inputElement := BrEditableLabel new.
-	inputElement look: BrGlamorousInputFieldSpacingLook.
-	inputElement constraintsDo: [ :c | 
-		c vertical fitContent.
-		c horizontal matchParent.
-		c grid vertical alignCenter ].
-	text := valueString asRopedText glamorousRegularFont.
-	inputElement editor: (BrTextEditor new text: text).
-	
-	aDescription isRequired ifTrue: [ self error: 'unsupported' ].
-	
-	aDescription hasComment ifTrue: [ 
-		self addTooltip: aDescription comment to: labelElement.
-		self addTooltip: aDescription comment to: inputElement ].
-	
-	self form addChild: labelElement.
-	self form addChild: inputElement.
-]
-
-{ #category : #accessing }
 MAElementBuilder >> addInputField: inputElement using: aDescription [
-	| labelElement text valueString |
-	
-	valueString := aDescription readToString: self memento.
+	| labelElement |
 		
 	labelElement := BrLabel new text: aDescription label, ':'; look: BrGlamorousLabelLook.
 	labelElement constraintsDo: [ :c | 
@@ -72,8 +39,6 @@ MAElementBuilder >> addInputField: inputElement using: aDescription [
 		c horizontal fitContent.
 		c grid vertical alignCenter ].
 		
-	text := valueString asRopedText glamorousRegularFont.
-	
 	aDescription isRequired ifTrue: [ self flag: 'unsupported' ].
 	
 	aDescription hasComment ifTrue: [ 
@@ -86,17 +51,7 @@ MAElementBuilder >> addInputField: inputElement using: aDescription [
 
 { #category : #accessing }
 MAElementBuilder >> addInputFieldUsing: aDescription [
-	| labelElement inputElement text valueString |
-	
-	valueString := aDescription readToString: self memento.
-		
-	labelElement := BrLabel new text: aDescription label, ':'; look: BrGlamorousLabelLook.
-	labelElement constraintsDo: [ :c | 
-		c vertical fitContent.
-		c horizontal fitContent.
-		c grid vertical alignCenter ].
-		
-	text := valueString asRopedText glamorousRegularFont.
+	| inputElement |
 	
 	inputElement := BrEditableLabel new
 		look: BrGlamorousEditableLabelLook new glamorousRegularFontAndSize;
@@ -106,16 +61,9 @@ MAElementBuilder >> addInputFieldUsing: aDescription [
 			c grid vertical alignCenter ];
 		when: BrEditorAcceptWish do: [ :aWish |
 			aDescription writeFromString: aWish text greaseString to: self memento ];
-		text: text.
+		text: (self textUsing: aDescription).
 	
-	aDescription isRequired ifTrue: [ self flag: 'unsupported' ].
-	
-	aDescription hasComment ifTrue: [ 
-		self addTooltip: aDescription comment to: labelElement.
-		self addTooltip: aDescription comment to: inputElement ].
-	
-	self form addChild: labelElement.
-	self form addChild: inputElement.
+	self addInputField: inputElement using: aDescription
 ]
 
 { #category : #accessing }
@@ -194,6 +142,13 @@ MAElementBuilder >> presenter [
 		model: self object
 		description: self object magritteDescription.
 	^ presenter := MABlocContainerPresenter memento: memento
+]
+
+{ #category : #accessing }
+MAElementBuilder >> textUsing: aDescription [
+	| valueString |
+	valueString := aDescription readToString: self memento.
+	^ valueString asRopedText glamorousRegularFont
 ]
 
 { #category : #accessing }
@@ -333,8 +288,14 @@ MAElementBuilder >> visitRelationDescription: anObject [
 ]
 
 { #category : #'visiting-description' }
-MAElementBuilder >> visitSingleOptionDescription: anObject [
-	self visitOptionDescription: anObject
+MAElementBuilder >> visitSingleOptionDescription: aDescription [
+	| inputElement |
+	inputElement := MADropdownElement new 
+		items: aDescription allOptions;
+		when: MADropdownWish do: [ :aWish | 
+			aDescription write: aWish selection to: self memento ];
+		yourself.
+	self addInputField: inputElement using: aDescription
 ]
 
 { #category : #'visiting-description' }
