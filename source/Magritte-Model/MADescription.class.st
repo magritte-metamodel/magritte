@@ -101,6 +101,11 @@ MADescription class >> defaultUndefined [
 ]
 
 { #category : #'accessing-defaults' }
+MADescription class >> defaultUndefinedValue [
+	^ nil
+]
+
+{ #category : #'accessing-defaults' }
 MADescription class >> defaultValidator [
 	^ MAValidatorVisitor
 ]
@@ -276,7 +281,7 @@ MADescription >> conflictErrorMessage: aString [
 
 { #category : #accessing }
 MADescription >> default [
-	^ nil
+	^ self undefinedValue
 ]
 
 { #category : #accessing }
@@ -439,6 +444,16 @@ MADescription >> descriptionUndefined [
 		label: 'Undefined String';
 		priority: 140;
 		default: self class defaultUndefined;
+		yourself
+]
+
+{ #category : #'acessing-magritte' }
+MADescription >> descriptionUndefinedValue [
+	<magritteDescription>
+	^ MAToOneRelationDescription new
+		accessor: #undefinedValue;
+		priority: 150;
+		default: self class defaultUndefinedValue;
 		yourself
 ]
 
@@ -805,6 +820,18 @@ MADescription >> undefined [
 { #category : #'accessing-strings' }
 MADescription >> undefined: aString [
 	self propertyAt: #undefined put: aString
+]
+
+{ #category : #'accessing-properties' }
+MADescription >> undefinedValue [
+	self flag: 'could this be simplified with maLazyXyz?'.
+	^ (self propertyAt: #undefinedValue ifAbsent: [ self class defaultUndefinedValue ])
+		ifNil: [ self class defaultUndefinedValue ]
+]
+
+{ #category : #'accessing-properties' }
+MADescription >> undefinedValue: anObject [
+	self propertyAt: #undefinedValue put: anObject
 ]
 
 { #category : #validation }
