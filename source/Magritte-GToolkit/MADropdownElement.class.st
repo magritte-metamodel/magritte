@@ -129,5 +129,6 @@ MADropdownElement >> selection: anObject [
 
 { #category : #accessing }
 MADropdownElement >> selectionString [
+	self flag: 'Morphic Dropdown does: `self magritteDescription reference toString: e`. Not sure what the ramifications are, but I don''t thing that uses displayString, which we need for undefinedValue/NullPattern - spd'.
 	^ self selection ifNotNil: [ :sel | sel displayString ] ifNil: ''
 ]
