@@ -691,8 +691,7 @@ MADescription >> propertyAccessor: aSelector [
 
 { #category : #convenience }
 MADescription >> read: aModel [
-
-	^ self accessor read: aModel
+	^ aModel readUsing: self
 ]
 
 { #category : #'accessing-properties' }
@@ -705,6 +704,12 @@ MADescription >> readOnly [
 { #category : #'accessing-properties' }
 MADescription >> readOnly: aBoolean [
 	self propertyAt: #readOnly put: aBoolean
+]
+
+{ #category : #convenience }
+MADescription >> readToString: aModel [
+	^ self toString: (self read: aModel)
+	"This is a common idiom, e.g. for the GUI layer, so we reified it"
 ]
 
 { #category : #'accessing-properties' }
@@ -908,5 +913,13 @@ MADescription >> visibleInReport: aBoolean [
 
 { #category : #convenience }
 MADescription >> write: anObject to: aModel [
-	^ self accessor write: anObject to: aModel
+	^ aModel write: anObject using: self
+]
+
+{ #category : #convenience }
+MADescription >> writeFromString: aString to: aModel [
+	| value |
+	value := self fromString: aString.
+	^ self write: value to: aModel
+	"This is a common idiom, e.g. for the GUI layer, so we reified it"
 ]
