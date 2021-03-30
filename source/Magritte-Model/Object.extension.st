@@ -157,6 +157,15 @@ Object >> readUsing: aDescription [
 ]
 
 { #category : #'*Magritte-Model' }
+Object >> storeVia: anAccessor inDescriptionOn: aStream [
+	aStream
+		nextPutAll: anAccessor writeSelector , ' (';
+		store: self;
+		nextPutAll: ');';
+		cr
+]
+
+{ #category : #'*Magritte-Model' }
 Object >> write: anObject using: aDescription [
 	"Dispatch the write-access to the receiver of anObject using the accessor of aDescription."
 
