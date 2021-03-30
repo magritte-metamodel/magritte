@@ -27,20 +27,3 @@ MASelectorAccessor >> maSetUp: aClass for: anMAElementDescription [
 		forinstVarNamed: variableName 
 		in: aClass.
 ]
-
-{ #category : #'*Magritte-Developer-private' }
-MASelectorAccessor >> store: anObject inDescriptionOn: aStream [ 
-	anObject storeVia: self inDescriptionOn: aStream.
-	
-]
-
-{ #category : #'*Magritte-Developer-private' }
-MASelectorAccessor >> storeVia: anAccessor inDescriptionOn: aStream [ 
-	| isSymmetrical |
-	isSymmetrical := self writeSelector = (self readSelector, ':') asSymbol.
-	aStream nextPutAll: 'accessor: '.
-	isSymmetrical 
-		ifTrue: [ aStream print: self selector ]
-		ifFalse: [ aStream nextPut: $(; store: self; nextPut: $) ].
-	aStream nextPut: $;; cr.
-]
