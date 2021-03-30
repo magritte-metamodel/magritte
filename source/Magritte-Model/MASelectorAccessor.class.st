@@ -103,6 +103,12 @@ MASelectorAccessor >> selector: aSelector [
 ]
 
 { #category : #printing }
+MASelectorAccessor >> store: anObject inDescriptionOn: aStream [ 
+	anObject storeVia: self inDescriptionOn: aStream.
+	
+]
+
+{ #category : #printing }
 MASelectorAccessor >> storeOn: aStream [
 	aStream nextPut: $(.
 	self class storeOn: aStream.
@@ -112,6 +118,17 @@ MASelectorAccessor >> storeOn: aStream [
 		nextPutAll: ' write: ';
 		store: self writeSelector;
 		nextPut: $)
+]
+
+{ #category : #printing }
+MASelectorAccessor >> storeVia: anAccessor inDescriptionOn: aStream [ 
+	| isSymmetrical |
+	isSymmetrical := self writeSelector = (self readSelector, ':') asSymbol.
+	aStream nextPutAll: 'accessor: '.
+	isSymmetrical 
+		ifTrue: [ aStream print: self selector ]
+		ifFalse: [ aStream nextPut: $(; store: self; nextPut: $) ].
+	aStream nextPut: $;; cr.
 ]
 
 { #category : #model }

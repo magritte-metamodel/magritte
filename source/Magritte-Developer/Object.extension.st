@@ -73,12 +73,3 @@ Object class >> maAddField: aSymbol with: customizationBlock [
 			customizationBlock value: desc.
 			desc addTo: self as: aSymbol ]
 ]
-
-{ #category : #'*Magritte-Developer' }
-Object >> storeVia: anAccessor inDescriptionOn: aStream [
-	aStream
-		nextPutAll: anAccessor writeSelector , ' (';
-		store: self;
-		nextPutAll: ');';
-		cr
-]

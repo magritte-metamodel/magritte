@@ -31,16 +31,3 @@ MAFileDescription class >> label [
 MAFileDescription >> acceptMagritte: aVisitor [
 	aVisitor visitFileDescription: self
 ]
-
-{ #category : #accessing }
-MAFileDescription >> defaultDirectory [
-
-	^ self propertyAt: #defaultDirectory ifAbsent: [ MAFileSystem imageDirectory ].
-]
-
-{ #category : #accessing }
-MAFileDescription >> defaultDirectory: fileReference [
-	"fileReference - a FileSystem FileReference, or an MAFileReference if FileSystem is not installed"
-
-	self propertyAt: #defaultDirectory put: fileReference
-]
