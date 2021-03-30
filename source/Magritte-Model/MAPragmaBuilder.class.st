@@ -134,7 +134,7 @@ MAPragmaBuilder >> extensionsFrom: aDictionary matching: aSymbol [
 { #category : #'description building' }
 MAPragmaBuilder >> for: anObject [
 	| cache |
-	cache := MADynamicDescriptionCache value.
+	cache := MADynamicDescriptionCache value ifNil: [ MADynamicDescriptionCache defaultValue ].
 	
 	MADynamicDescriptionCache use: cache during: [
 		^ cache at: anObject ifAbsentPut: [ self build: anObject cache: cache ] ]
