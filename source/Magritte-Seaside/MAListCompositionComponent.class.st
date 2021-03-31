@@ -2,22 +2,22 @@
 I'm, like MACheckboxComponent, a seaside component for MAMultipleSelectionDescription. I display two lists. In the first, all available options, in the other, what the user selected. 2 buttons in between to add and remove elements to/from the selected list. If the everything property is set, I display two more buttons to allow the user to add or remove all options in one click.
 "
 Class {
-	#name : #MAListCompositonComponent,
+	#name : #MAListCompositionComponent,
 	#superclass : #MAMultipleSelectionComponent,
 	#instVars : [
 		'availableSelected',
 		'selectedSelected'
 	],
-	#category : 'Magritte-Seaside-Components'
+	#category : #'Magritte-Seaside-Components'
 }
 
 { #category : #testing }
-MAListCompositonComponent class >> isAbstract [
+MAListCompositionComponent class >> isAbstract [
 	^ false
 ]
 
 { #category : #actions }
-MAListCompositonComponent >> add [
+MAListCompositionComponent >> add [
 	| added |
 	self availableSelected isNil
 		ifTrue: [ ^ self ].
@@ -29,36 +29,36 @@ MAListCompositonComponent >> add [
 ]
 
 { #category : #accessing }
-MAListCompositonComponent >> availableList [
+MAListCompositionComponent >> availableList [
 	^ self magritteDescription isDistinct
 		ifFalse: [ super availableList ]
 		ifTrue: [ super availableList copyWithoutAll: self selectedList ]
 ]
 
 { #category : #'accessing-properties' }
-MAListCompositonComponent >> availableSelected [
+MAListCompositionComponent >> availableSelected [
 	^ availableSelected
 ]
 
 { #category : #'accessing-properties' }
-MAListCompositonComponent >> availableSelected: anObject [
+MAListCompositionComponent >> availableSelected: anObject [
 	availableSelected := anObject
 ]
 
 { #category : #actions }
-MAListCompositonComponent >> moveDown [
+MAListCompositionComponent >> moveDown [
 	self selectedSelected isNil
 		ifFalse: [ self selectedList moveDown: self selectedSelected ]
 ]
 
 { #category : #actions }
-MAListCompositonComponent >> moveUp [
+MAListCompositionComponent >> moveUp [
 	self selectedSelected isNil
 		ifFalse: [ self selectedList moveUp: self selectedSelected ]
 ]
 
 { #category : #actions }
-MAListCompositonComponent >> remove [
+MAListCompositionComponent >> remove [
 	self selectedSelected isNil
 		ifTrue: [ ^ self ].
 	self remove: self selectedSelected.
@@ -67,7 +67,7 @@ MAListCompositonComponent >> remove [
 ]
 
 { #category : #'rendering-parts' }
-MAListCompositonComponent >> renderEditorAvailableOn: html [
+MAListCompositionComponent >> renderEditorAvailableOn: html [
 	html select
 		size: 6; 
 		style: 'width: 150px';
@@ -78,7 +78,7 @@ MAListCompositonComponent >> renderEditorAvailableOn: html [
 ]
 
 { #category : #'rendering-buttons' }
-MAListCompositonComponent >> renderEditorButtonAddOn: html [
+MAListCompositionComponent >> renderEditorButtonAddOn: html [
 	html submitButton
 		callback: [ self add ];
 		text: '>>'.
@@ -89,7 +89,7 @@ MAListCompositonComponent >> renderEditorButtonAddOn: html [
 ]
 
 { #category : #'rendering-buttons' }
-MAListCompositonComponent >> renderEditorButtonOrderOn: html [
+MAListCompositionComponent >> renderEditorButtonOrderOn: html [
 	html submitButton
 		callback: [ self moveUp ];
 		text: 'up'.
@@ -100,7 +100,7 @@ MAListCompositonComponent >> renderEditorButtonOrderOn: html [
 ]
 
 { #category : #rendering }
-MAListCompositonComponent >> renderEditorOn: html [ 
+MAListCompositionComponent >> renderEditorOn: html [ 
 	html table id: self labelId; with: [
 		html tableRow: [
 			html tableData: [ self renderEditorAvailableOn: html ].
@@ -115,7 +115,7 @@ MAListCompositonComponent >> renderEditorOn: html [
 ]
 
 { #category : #'rendering-parts' }
-MAListCompositonComponent >> renderEditorSelectedOn: html [
+MAListCompositionComponent >> renderEditorSelectedOn: html [
 	html select
 		size: 6; 
 		style: 'width: 150px';
@@ -126,11 +126,11 @@ MAListCompositonComponent >> renderEditorSelectedOn: html [
 ]
 
 { #category : #'accessing-properties' }
-MAListCompositonComponent >> selectedSelected [
+MAListCompositionComponent >> selectedSelected [
 	^ selectedSelected
 ]
 
 { #category : #'accessing-properties' }
-MAListCompositonComponent >> selectedSelected: anObject [
+MAListCompositionComponent >> selectedSelected: anObject [
 	selectedSelected := anObject
 ]
