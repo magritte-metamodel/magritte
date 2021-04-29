@@ -29,6 +29,16 @@ Object >> gtActions [
 ]
 
 { #category : #'*Magritte-GToolkit' }
+Object >> maGtFormFor: aView [
+	<gtView>
+	(self magritteDescription isContainer not or: [ self magritteDescription isEmpty ]) ifTrue: [ ^ aView empty ].
+	^ aView explicit
+		title: 'Magritte';
+		priority: 90;
+		stencil: [ self magritteElementBuilder addButtons; element ]
+]
+
+{ #category : #'*Magritte-GToolkit' }
 Object >> magritteElementBuilder [
 	^ MAElementBuilder buildElementFor: self
 ]
