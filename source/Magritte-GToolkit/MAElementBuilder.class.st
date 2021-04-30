@@ -32,52 +32,52 @@ MAElementBuilder >> addButtons: aCollection [
 { #category : #accessing }
 MAElementBuilder >> addInputField: inputElement using: aDescription [
 	| labelElement |
-		
-	labelElement := BrLabel new text: aDescription label, ':'; look: BrGlamorousLabelLook.
-	labelElement constraintsDo: [ :c | 
-		c vertical fitContent.
-		c horizontal fitContent.
-		c grid vertical alignCenter ].
-		
-	aDescription isRequired ifTrue: [ self flag: 'unsupported' ].
-	
-	aDescription hasComment ifTrue: [ 
-		self addTooltip: aDescription comment to: labelElement.
-		self addTooltip: aDescription comment to: inputElement ].
-	
+	labelElement := BrLabel new
+		text: aDescription label , ':';
+		aptitude: BrGlamorousLabelLook.
+	labelElement
+		constraintsDo: [ :c | 
+			c vertical fitContent.
+			c horizontal fitContent.
+			c grid vertical alignCenter ].
+	aDescription isRequired
+		ifTrue: [ self flag: 'unsupported' ].
+	aDescription hasComment
+		ifTrue: [ self addTooltip: aDescription comment to: labelElement.
+			self addTooltip: aDescription comment to: inputElement ].
 	self form addChild: labelElement.
-	self form addChild: inputElement.
+	self form addChild: inputElement
 ]
 
 { #category : #accessing }
 MAElementBuilder >> addInputFieldUsing: aDescription [
 	| inputElement |
-	
 	inputElement := BrEditableLabel new
-		look: BrGlamorousEditableLabelLook new glamorousRegularFontAndSize;
+		aptitude: BrGlamorousEditableLabelAptitude new glamorousRegularFontAndSize;
 		constraintsDo: [ :c | 
 			c vertical fitContent.
 			c horizontal matchParent.
 			c grid vertical alignCenter ];
-		when: BrEditorAcceptWish do: [ :aWish |
-			aDescription writeFromString: aWish text greaseString to: self memento ];
+		when: BrEditorAcceptWish
+			do:
+				[ :aWish | aDescription writeFromString: aWish text greaseString to: self memento ];
 		text: (self textUsing: aDescription).
-	
 	self addInputField: inputElement using: aDescription
 ]
 
 { #category : #accessing }
 MAElementBuilder >> addTooltip: aString to: anElement [
 	| look |
-	self flag: 'Didn''t do `BrGlamorousWithTooltipLook content:` due to bug reported on GT discord feedback channel 12/21/2020'.
-	look := BrGlamorousWithTooltipLook new 
-		contentStencil: [ 
-			BrLabel new
-				look: BrGlamorousLabelLook new glamorousRegularFontAndSize;
+	self
+		flag:
+			'Didn''t do `BrGlamorousWithTooltipLook content:` due to bug reported on GT discord feedback channel 12/21/2020'.
+	look := BrGlamorousWithTooltipAptitude new
+		contentStencil: [ BrLabel new
+				look: BrGlamorousLabelAptitude new glamorousRegularFontAndSize;
 				padding: (BlInsets all: 2);
 				text: aString;
 				alignCenter ].
-	anElement addLook: look
+	anElement addAptitude: look
 ]
 
 { #category : #accessing }
@@ -156,7 +156,7 @@ MAElementBuilder >> textUsing: aDescription [
 MAElementBuilder >> toolbar [
 	| toolbar |
 	toolbar := BrToolbar new
-		look: BrToolbarLook new;
+		aptitude: BrToolbarAptitude new;
 		layout:
 			(BlGridLayout horizontal
 				rowCount: 1;
@@ -165,14 +165,15 @@ MAElementBuilder >> toolbar [
 			c horizontal fitContent.
 			c grid horizontal alignRight.
 			c vertical fitContent ].
-	self buttonSelectors do: [ :sel |
-		| button |
-		button := BrButton new
-			beSmallSize;
-			look: BrGlamorousButtonWithLabelLook;
-			label: sel capitalized;
-			action: [ self presenter perform: sel ].
-	toolbar addItem: button ].
+	self buttonSelectors
+		do: [ :sel | 
+			| button |
+			button := BrButton new
+				beSmallSize;
+				aptitude: BrGlamorousButtonWithLabelAptitude;
+				label: sel capitalized;
+				action: [ self presenter perform: sel ].
+			toolbar addItem: button ].
 	^ toolbar
 ]
 
