@@ -5,7 +5,7 @@ Class {
 		'items',
 		'selection'
 	],
-	#category : #'Magritte-GToolkit'
+	#category : #'Magritte-GToolkit-Widgets'
 }
 
 { #category : #accessing }

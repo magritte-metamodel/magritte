@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'selection'
 	],
-	#category : #'Magritte-GToolkit'
+	#category : #'Magritte-GToolkit-Support'
 }
 
 { #category : #accessing }
