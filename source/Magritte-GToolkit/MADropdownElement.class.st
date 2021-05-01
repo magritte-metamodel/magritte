@@ -42,8 +42,8 @@ MADropdownElement >> initialize [
 	super initialize.
 	self initializeToggleButton: self.
 	self
-		addLook:
-			(BrGlamorousWithDropdownLook
+		addAptitude:
+			(BrGlamorousWithDropdownAptitude
 				handle: [ | handle |
 					handle := BrButton new.
 					self initializeToggleButton: handle.
@@ -70,7 +70,7 @@ MADropdownElement >> initializeToggleButton: aButton [
 				background: Color lightGray;
 				margin: (BlInsets left: 6);
 				constraintsDo: [ :c | c linear vertical alignCenter ]);
-		look: BrGlamorousButtonWithLabelAndIconLook;
+		aptitude: BrGlamorousButtonWithLabelAndIconAptitude;
 		yourself
 ]
 
@@ -93,19 +93,21 @@ MADropdownElement >> popupList [
 	| list |
 	list := BrSimpleList new.
 	^ list
-		lookDo:
+		aptitudeDo:
 				[ :aLook | aLook listElement constraintsDo: [ :c | c maxHeight: 200 ] ];
 		layout: BlLinearLayout vertical;
 		padding: (BlInsets all: 5);
 		vFitContent;
 		hExact: 200;
-		itemStencil: [ 
-			BrLabel new
-				look: BrGlamorousLabelLook new +
-					(BrStyleCommonLook new selected: [ :aStyle | aStyle background: Color veryVeryLightGray ]);
+		itemStencil: [ BrLabel new
+				aptitude:
+					BrGlamorousLabelAptitude new
+						+
+							(BrStyleCommonAptitude new
+								selected: [ :aStyle | aStyle background: Color veryVeryLightGray ]);
 				padding: (BlInsets all: 5);
 				"hMatchParent;"
-				addEventHandlerOn: BlClickEvent
+					addEventHandlerOn: BlClickEvent
 					do: [ :evt | self handleSelection: evt target ];
 				yourself ];
 		itemDataBinder: [ :eachElement :eachItem :eachIndex | 
