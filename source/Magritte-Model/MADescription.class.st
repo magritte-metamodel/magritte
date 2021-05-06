@@ -489,10 +489,10 @@ MADescription >> fromString: aString [
 ]
 
 { #category : #strings }
-MADescription >> fromString: aString reader: aParser [
-	"Answer an object being parsed from ==aString== using ==aParser==."
+MADescription >> fromString: aString reader: aReader [
+	"Answer an object being parsed from ==aString== using ==aReader==."
 
-	^ aParser read: aString readStream description: self
+	^ aReader read: aString readStream description: self
 ]
 
 { #category : #strings }
@@ -503,10 +503,10 @@ MADescription >> fromStringCollection: aCollection [
 ]
 
 { #category : #strings }
-MADescription >> fromStringCollection: aCollection reader: aParser [
-	"Answer a collection of objects being parsed from ==aCollection== of strings using ==aParser==."
+MADescription >> fromStringCollection: aCollection reader: aReader [
+	"Answer a collection of objects being parsed from ==aCollection== of strings using ==aReader==."
 
-	^ aCollection collect: [ :each | self fromString: each reader: aParser ]
+	^ aCollection collect: [ :each | self fromString: each reader: aReader ]
 ]
 
 { #category : #'accessing-properties' }
