@@ -28,11 +28,6 @@ Class {
 }
 
 { #category : #'accessing-defaults' }
-MAOptionDescription class >> defaultDisplayProperty [
-	^ [ :anObject :desc | desc reference toString: anObject ]
-]
-
-{ #category : #'accessing-defaults' }
 MAOptionDescription class >> defaultExtensible [
 	^ false
 ]
@@ -150,7 +145,7 @@ MAOptionDescription >> isSorted [
 
 { #category : #private }
 MAOptionDescription >> labelForOption: anObject [
-	self propertyAt: #labels ifPresent: [ :labels | labels optionFor: anObject ifPresent: [ :value | ^value ] ].
+	self propertyAt: #labels ifPresent: [ :labels | labels optionFor: anObject ifPresent: [ :value | ^ value ] ].
 	^ self displayStringFor: anObject.
 ]
 

@@ -3,7 +3,8 @@ Class {
 	#superclass : #BrButton,
 	#instVars : [
 		'items',
-		'selection'
+		'selection',
+		'itemDescription'
 	],
 	#category : #'Magritte-GToolkit-Widgets'
 }
@@ -75,6 +76,16 @@ MADropdownElement >> initializeToggleButton: aButton [
 ]
 
 { #category : #accessing }
+MADropdownElement >> itemDescription [
+	^ itemDescription
+]
+
+{ #category : #accessing }
+MADropdownElement >> itemDescription: anObject [
+	itemDescription := anObject
+]
+
+{ #category : #accessing }
 MADropdownElement >> items [
 	^ items ifNil: [ items := OrderedCollection new ]
 ]
@@ -111,8 +122,10 @@ MADropdownElement >> popupList [
 					do: [ :evt | self handleSelection: evt target ];
 				yourself ];
 		itemDataBinder: [ :eachElement :eachItem :eachIndex | 
+			| displayString |
 			eachElement userData at: #item put: eachItem.
-			eachElement text: eachItem displayString ];
+			displayString := self itemDescription toString: eachItem.
+			eachElement text: displayString ];
 		items: self items;
 		yourself
 ]
@@ -131,6 +144,5 @@ MADropdownElement >> selection: anObject [
 
 { #category : #accessing }
 MADropdownElement >> selectionString [
-	self flag: 'Morphic Dropdown does: `self magritteDescription reference toString: e`. Not sure what the ramifications are, but I don''t thing that uses displayString, which we need for undefinedValue/NullPattern - spd'.
-	^ self selection ifNotNil: [ :sel | sel displayString ] ifNil: ''
+	^ self itemDescription toString: self selection
 ]

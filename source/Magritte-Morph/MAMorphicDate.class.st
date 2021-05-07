@@ -8,7 +8,7 @@ Class {
 MAMorphicDate >> buildMorphView [
 	| model |
 	model := DateModel new
-		displayBlock: [ :e | self magritteDescription displayStringFor: e ];
+		displayBlock: [ :e | self magritteDescription toString: e ];
 		date: self value;
 		whenDateChanged: [ :newDate | self value: newDate ];
 		yourself.

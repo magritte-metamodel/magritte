@@ -1,7 +1,24 @@
 "
 I am an abstract superclass for descriptions holding onto another description.
 !What is a ==reference==?
-My subclasses describe the ''relationship'' between the containing object and the referenced objects (e.g. tree -> apples), but what if we need a decription of a referenced object ''itself''? This is where my ==reference== comes in.
+My subclasses describe the ''relationship'' between the containing object and the referenced objects (e.g. tree -> apples), but what if we need a decription of a referenced object ''itself''? In some cases, the object might already have a description we can use. If not, this is where my ==reference== comes in. 
+!!Use Cases
+Here are two common use cases:
+!!!Fine-grained control
+The comment of ${method:MARelationDescription>>#reference}$ has this tantalizing hint to get you started: ==By setting the reference to a MAContainer instance it is possible to customize the reference description==. Magritte does not seem to offer any examples of how that would actually work, but luckily Lukas provided one [1]:
+> you want a different string to be displayed? If so, try this 
+==
+	reference: (MAContainer with: (MAStringDescription new   
+		selectorAccessor: #printString; yourself)) 
+==
+>and implement your own printOn: method in your referenced object as   
+you wish. 
+!!!No Object Description
+The object doesn't ''have'' a description (although in this case, you could add a description via extension methods). Maybe it is an object from outside your project. In this case when no ==reference== description is provided, Magritte tries to create an appropriate one. See for yourself:
+
+[[[language=smalltalk
+	#reference gtImplementors & 'Magritte' gtPackageMatches
+]]]
 !!Motivation
 Why would we need such a description, you ask? Perhaps you want to convert these objects to strings for display in a GUI (e.g. ${method:MAOptionDescription>>#labelForOption:}$), or validate a user-added option (e.g. ${method:MAOptionDescription>>#validateOptionKind:}$). To get a feel for how references are used in practice, you may want to take a few moments to browse the clients:
 
@@ -9,13 +26,6 @@ Why would we need such a description, you ask? Perhaps you want to convert these
 	#reference gtReferences & 'Magritte' gtPackageMatches
 ]]]
 
-The next question that comes to mind might be, ""why can't we just use the object's own description?"" That's a great question. Here are some reasons why that may not work:
-- You want fine-grained control. The comment of ${method:MARelationDescription>>#reference}$ has this tantalizing hint to get you started: ==By setting the reference to a MAContainer instance it is possible to customize the reference description==. That said, Magritte does not seem to offer any examples of how that would actually work.
-- The object doesn't ''have'' a description (although in this case, you could add a description via extension methods). Maybe it is an object from outside your project. In this case when no ==reference== description is provided, Magritte tries to create an appropriate one. See for yourself:
-
-[[[language=smalltalk
-	#reference gtImplementors & 'Magritte' gtPackageMatches
-]]]
 !!Further Research
 If this isn't clear enough, here are some other 
 Here's a description from the ""Magritte - Web Development"" paper:
@@ -36,15 +46,8 @@ a specialized one. When navigating from an order to an orderLine,
 we might not want to use the orderDescription of the orderLine. - *Stephan Eggermont>http://forum.world.st/reference-what-is-it-tp4805794p4813841.html*
 
 From *a 2006 thread>http://forum.world.st/MA-labaled-options-tp116188.html`*, seems to confirm that a reference is a Magritte description that describes the referenced objects.
-
-*Here>http://forum.world.st/MAToOneRelationDescription-dispaly-data-tp117214p117218.html*, Lukas says:
-> you want a different string to be displayed? If so, try this 
-==
-	reference: (MAContainer with: (MAStringDescription new   
-		selectorAccessor: #printString; yourself)) 
-==
->and implement your own printOn: method in your referenced object as   
-you wish. 
+!References
+1. *Lukas on customizing references via the Magritte ML>http://forum.world.st/MAToOneRelationDescription-dispaly-data-tp117214p117218.html*
 "
 Class {
 	#name : #MAReferenceDescription,
@@ -95,7 +98,10 @@ MAReferenceDescription >> postCopy [
 
 { #category : #accessing }
 MAReferenceDescription >> reference [
-	^ reference ifNil: [ reference := self class defaultReference ]
+	reference ifNil: [ reference := self class defaultReference ].
+	^ reference
+		display: self displayBlockOrSymbol;
+		yourself
 ]
 
 { #category : #accessing }

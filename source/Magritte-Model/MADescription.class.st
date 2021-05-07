@@ -46,6 +46,11 @@ MADescription class >> defaultDefault [
 ]
 
 { #category : #'accessing-defaults' }
+MADescription class >> defaultDisplayProperty [
+	^ #greaseString
+]
+
+{ #category : #'accessing-defaults' }
 MADescription class >> defaultGroup [
 	^ nil
 ]
@@ -479,6 +484,32 @@ MADescription >> descriptionVisible [
 		priority: 210;
 		default: self class defaultVisible;
 		yourself
+]
+
+{ #category : #'accessing-properties' }
+MADescription >> display: aBlockOrSymbol [
+	"Transform how the file is converted to a string.
+	aSymbol
+		- is performed on the object
+		- can optionally take the description as an argument
+	aBlock
+		- takes two optional arguments: the domain object and its description
+		- returns the string to display
+	
+	NB. This string may be used to convert back to a domain object, so make sure it is suitable via the string reader in use."
+	self propertyAt: #displayBlockOrSymbol put: aBlockOrSymbol.
+]
+
+{ #category : #'accessing-properties' }
+MADescription >> displayBlockOrSymbol [
+	^ self propertyAt: #displayBlockOrSymbol ifAbsent: [ self class defaultDisplayProperty ]
+]
+
+{ #category : #displaying }
+MADescription >> displayStringFor: anObject [
+	"Convert object to a string. If a block was passed to #display: use that, otherwise use the defaultDisplayProperty. N.B. It's probably best not to use this outside of the library insternals. It should be private except that it's used by option descriptions and string writer. The canonical way to get this info is `self reference toString: anObject`"
+
+	^ self displayBlockOrSymbol cull: anObject cull: self.
 ]
 
 { #category : #strings }
