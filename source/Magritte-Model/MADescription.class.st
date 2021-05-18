@@ -373,11 +373,9 @@ MADescription >> descriptionLabel [
 { #category : #'acessing-magritte' }
 MADescription >> descriptionName [
 	<magritteDescription>
-	^ MAStringDescription new
+	^ MASymbolDescription new
 		accessor: #name;
-		label: 'Kind';
-		priority: 0;
-		beReadOnly;
+		priority: 1;
 		yourself
 ]
 
@@ -438,6 +436,17 @@ MADescription >> descriptionStringWriter [
 		default: self class defaultStringWriter;
 		options: self class defaultStringWriter withAllSubclasses;
 		reference: MAClassDescription new;
+		yourself
+]
+
+{ #category : #'acessing-magritte' }
+MADescription >> descriptionType [
+	<magritteDescription>
+	^ MAStringDescription new
+		accessor: #type;
+		label: 'Kind';
+		priority: 0;
+		beReadOnly;
 		yourself
 ]
 
@@ -682,9 +691,12 @@ MADescription >> multipleErrorsMessage: aString [
 
 { #category : #'accessing-configuration' }
 MADescription >> name [
-	"Answer the name of the description, a human-readable string describing the type."
+	^ self propertyAt: #name ifAbsent: [ self accessor name ]
+]
 
-	^ self class label
+{ #category : #'accessing-configuration' }
+MADescription >> name: aSymbol [
+	^ self propertyAt: #name put: aSymbol
 ]
 
 { #category : #copying }
@@ -843,6 +855,13 @@ MADescription >> tryValidation: tryBlock ifPass: passBlock [
 	tryBlock on: MAValidationError do: [ :e | shouldContinue := false. e pass ].
 	shouldContinue ifFalse: [ ^ self ].
 	passBlock value
+]
+
+{ #category : #'accessing-configuration' }
+MADescription >> type [
+	"Answer the name of the description, a human-readable string describing the type."
+
+	^ self class label
 ]
 
 { #category : #'accessing-strings' }

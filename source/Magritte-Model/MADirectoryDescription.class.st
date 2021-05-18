@@ -1,12 +1,12 @@
 Class {
 	#name : #MADirectoryDescription,
 	#superclass : #MAFileDescription,
-	#category : 'Magritte-Model-Description'
+	#category : #'Magritte-Model-Description'
 }
 
 { #category : #acessing }
 MADirectoryDescription class >> label [
-	^'Directory'
+	^ 'Directory'
 ]
 
 { #category : #visiting }
