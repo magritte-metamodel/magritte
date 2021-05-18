@@ -57,8 +57,7 @@ BaselineOfMagritte >> baseline330ForPharo: spec [
 			package: 'Magritte-Pharo-Tools' with: [ spec requires: #('Magritte-Deprecated') ].
 		spec
 			group: 'Tools' with: #('Magritte-Pharo-Tools');
-			group: 'Morphic' with: #('Magritte-Morph');
-			group: 'default' with: 'Morphic' ].
+			group: 'default' with: #('Magritte-Morph') ].
 				
 	spec for: #(#'pharo7.x' #'pharo8.x' #'pharo9.x') do: [ 
 		spec
@@ -68,7 +67,7 @@ BaselineOfMagritte >> baseline330ForPharo: spec [
 			" create a temporary alias "
 			package: 'Magritte-Pharo-Model' with: 'Magritte-Pharo7-Model';
 			package: 'Magritte-Glamour' with: [ spec requires: #('Magritte-Model' 'Magritte-Morph') ];
-			package: 'Magritte-GT' with: [ spec requires: #('Morphic' 'Magritte-Glamour') ];
+			package: 'Magritte-GT' with: [ spec requires: #('Magritte-Morph' 'Magritte-Glamour') ];
 			package: 'Magritte-Developer' with: [ spec requires: #('Magritte-Model') ].
 		spec group: 'default' with: #('Magritte-GT' 'Magritte-Developer') ].
 	
