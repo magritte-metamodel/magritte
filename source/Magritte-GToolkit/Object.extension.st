@@ -34,7 +34,7 @@ Object >> maGtFormFor: aView [
 	(self magritteDescription isContainer not or: [ self magritteDescription isEmpty ]) ifTrue: [ ^ aView empty ].
 	^ aView explicit
 		title: 'Magritte';
-		priority: 90;
+		priority: 50;
 		stencil: [ self magritteElementBuilder addButtons; element ]
 ]
 
