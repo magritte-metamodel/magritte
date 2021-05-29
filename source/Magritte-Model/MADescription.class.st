@@ -497,7 +497,7 @@ MADescription >> descriptionVisible [
 
 { #category : #'accessing-properties' }
 MADescription >> display: aBlockOrSymbol [
-	"Transform how the file is converted to a string.
+	"Transform how the model is converted to a string.
 	aSymbol
 		- is performed on the object
 		- can optionally take the description as an argument
