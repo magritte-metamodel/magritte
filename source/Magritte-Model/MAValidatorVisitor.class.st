@@ -57,10 +57,10 @@ MAValidatorVisitor >> visit: aDescription [
 MAValidatorVisitor >> visitContainer: aDescription [
 	
 	super visitContainer: aDescription.
-	self object ifNotNil: [
+	self object ifNotNil: [ :obj |
 		aDescription do: [ :description |
 			self
-				use: (self object readUsing: description)
+				use: (obj readUsing: description)
 				during: [ self visit: description ] ] ]
 ]
 
