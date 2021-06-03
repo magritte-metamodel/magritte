@@ -52,6 +52,11 @@ MADelegatorAccessor >> hash [
 ]
 
 { #category : #accessing }
+MADelegatorAccessor >> name [
+	^ self next name
+]
+
+{ #category : #accessing }
 MADelegatorAccessor >> next [
 	^ next
 ]

@@ -67,6 +67,11 @@ MAChainAccessor >> hash [
 	^ super hash bitXor: self accessor hash
 ]
 
+{ #category : #model }
+MAChainAccessor >> name [
+	^ super name, '::', self accessor name
+]
+
 { #category : #copying }
 MAChainAccessor >> postCopy [
 	super postCopy.

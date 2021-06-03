@@ -76,7 +76,7 @@ MASelectorAccessor >> hash [
 	^  super hash bitXor: (self readSelector hash bitXor: self writeSelector hash)
 ]
 
-{ #category : #'acessing-magritte' }
+{ #category : #accessing }
 MASelectorAccessor >> name [
 	^ self readSelector
 ]

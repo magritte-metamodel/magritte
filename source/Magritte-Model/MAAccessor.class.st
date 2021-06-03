@@ -37,6 +37,11 @@ MAAccessor >> handlesSelector: aSelector [
 
 ]
 
+{ #category : #accessing }
+MAAccessor >> name [
+	^ nil
+]
+
 { #category : #printing }
 MAAccessor >> printOn: aStream [
 	self storeOn: aStream
