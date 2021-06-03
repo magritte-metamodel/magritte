@@ -67,6 +67,11 @@ MADictionaryAccessor >> keyDescription [
 		yourself
 ]
 
+{ #category : #accessing }
+MADictionaryAccessor >> name [
+	^ self key
+]
+
 { #category : #model }
 MADictionaryAccessor >> read: aModel [
 	^ aModel at: self key ifAbsent: [ nil ]
