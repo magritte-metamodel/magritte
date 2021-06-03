@@ -41,32 +41,32 @@ MAChainAccessorTest >> testAsAccessor [
 	accessor := #(value contents) asAccessor.
 	self assert: (accessor isKindOf: MAChainAccessor).
 	self assert: (accessor next isKindOf: MASelectorAccessor).
-	self assert: (accessor next selector = #value).
+	self assert: (accessor next selector = #contents).
 	self assert: (accessor accessor isKindOf: MASelectorAccessor).
-	self assert: (accessor accessor selector = #contents)
+	self assert: (accessor accessor selector = #value)
 ]
 
 { #category : #'tests-testing' }
 MAChainAccessorTest >> testCanRead [
 	self assert: (self accessor canRead: self).
-	self accessor accessor accessor readSelector: #zork.
+	self accessor next accessor readSelector: #zork.
 	self deny: (self accessor canRead: self)
 ]
 
 { #category : #'tests-testing' }
 MAChainAccessorTest >> testCanWrite [
 	self assert: (self accessor canWrite: self).
-	self accessor accessor accessor writeSelector: #zork.
-	self deny: (self accessor canWrite: self)
+	self accessor next accessor writeSelector: #zork.
+	self deny: (self accessor accessor canWrite: self)
 ]
 
 { #category : #tests }
 MAChainAccessorTest >> testKind [
-	self assert: (self accessor class = MAChainAccessor).
-	self assert: (self accessor next class = MASelectorAccessor).
-	self assert: (self accessor accessor class = MAChainAccessor).
-	self assert: (self accessor accessor next class = MASelectorAccessor).
-	self assert: (self accessor accessor accessor class = MASelectorAccessor)
+	self assert: self accessor class equals: MAChainAccessor.
+	self assert: self accessor accessor class equals: MASelectorAccessor.
+	self assert: self accessor next class equals: MAChainAccessor.
+	self assert: self accessor next accessor class equals: MASelectorAccessor.
+	self assert: self accessor next next class equals: MASelectorAccessor
 ]
 
 { #category : #tests }
@@ -88,9 +88,9 @@ MAChainAccessorTest >> testRead [
 
 { #category : #tests }
 MAChainAccessorTest >> testSelector [
-	self assert: self accessor next selector = #holder.
-	self assert: self accessor accessor next selector = #contents.
-	self assert: self accessor accessor accessor selector = #value
+	self assert: self accessor accessor selector equals: #holder.
+	self assert: self accessor next accessor selector equals: #contents.
+	self assert: self accessor next next selector equals: #value
 ]
 
 { #category : #tests }

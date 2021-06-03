@@ -17,8 +17,8 @@ MAChainAccessor class >> accessors: aSequenceableCollection [
 	aSequenceableCollection size = 1
 		ifTrue: [ ^ aSequenceableCollection first asAccessor ].
 	^ self 
-		on: aSequenceableCollection first asAccessor 
-		accessor: (self accessors: aSequenceableCollection allButFirst)
+		on: (self accessors: aSequenceableCollection allButFirst)
+		accessor: aSequenceableCollection first asAccessor
 ]
 
 { #category : #'instance creation' }
@@ -43,12 +43,12 @@ MAChainAccessor >> accessor: anAccessor [
 
 { #category : #testing }
 MAChainAccessor >> canRead: aModel [
-	^ (super canRead: aModel) and: [ self accessor canRead: (self next read: aModel) ]
+	^ (self accessor canRead: aModel) and: [ self next canRead: (self accessor read: aModel) ]
 ]
 
 { #category : #testing }
 MAChainAccessor >> canWrite: aModel [
-	^ (super canRead: aModel) and: [ self accessor canWrite: (self next read: aModel) ]
+	^ (self accessor canRead: aModel) and: [ self next canWrite: (self accessor read: aModel) ]
 ]
 
 { #category : #'accessing-magritte' }
@@ -80,7 +80,7 @@ MAChainAccessor >> postCopy [
 
 { #category : #model }
 MAChainAccessor >> read: aModel [
-	^ self accessor read: (super read: aModel)
+	^ super read: (self accessor read: aModel)
 ]
 
 { #category : #printing }
@@ -97,5 +97,5 @@ MAChainAccessor >> storeOn: aStream [
 
 { #category : #model }
 MAChainAccessor >> write: anObject to: aModel [
-	self accessor write: anObject to: (super read: aModel)
+	super write: anObject to: (self accessor read: aModel)
 ]
