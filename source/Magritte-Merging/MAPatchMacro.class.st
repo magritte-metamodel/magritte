@@ -44,6 +44,25 @@ MAPatchMacro >> execute [
 	self operations do: #execute
 ]
 
+{ #category : #accessing }
+MAPatchMacro >> gtElementViewFor: aView [
+	<gtView>
+	^ aView explicit stencil: [
+		| el |
+		el := BlElement new
+			layout: (BlLinearLayout vertical cellSpacing: 10);
+			constraintsDo: [ :c | 
+				c horizontal fitContent.
+				c vertical fitContent ].
+		self operations do: [ :op | el addChild: op asElement ].
+		el addChild: (BrButton new
+				beSmallSize;
+				aptitude: BrGlamorousButtonWithLabelAptitude;
+				label: 'Apply';
+				action: [ self execute ]).
+		el ]
+]
+
 { #category : #execution }
 MAPatchMacro >> model [
 	^ model

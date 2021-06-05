@@ -5,15 +5,68 @@ Class {
 		'receiver',
 		'field',
 		'oldValue',
-		'newValue'
+		'newValue',
+		'isEnabled'
 	],
 	#category : #'Magritte-Merging'
 }
+
+{ #category : #examples }
+MAPatchOperation class >> example [
+	| desc |
+	desc := MAContainer samplePersonDescription.
+	^ MAPatchOperation for: MAContainer samplePersonHarryPotter set: desc children first to: 'Harry James Potter'
+]
+
+{ #category : #examples }
+MAPatchOperation class >> for: anObject set: aDescription to: anotherObject [
+	^ self new
+		receiver: anObject; 
+		field: aDescription;
+		oldValue: (anObject readUsing: aDescription);
+		newValue: anotherObject;
+		yourself
+]
 
 { #category : #comparing }
 MAPatchOperation >> = rhs [
 	self species = rhs species ifFalse: [ ^ false ].
 	^ self receiver = rhs receiver and: [ self field = rhs field and: [ self oldValue = rhs oldValue and: [ self newValue = rhs newValue ] ] ]
+]
+
+{ #category : #accessing }
+MAPatchOperation >> asElement [
+	^ BlElement new
+		layout: (BlLinearLayout horizontal cellSpacing: 10);
+		constraintsDo: [ :c | 
+			c horizontal fitContent.
+			c vertical fitContent ];
+		addChild:
+			(BrCheckbox new
+				aptitude: BrGlamorousCheckboxAptitude;
+				checked: self isEnabled;
+				when: BrCheckboxChanged do: [ :evt | self isEnabled: evt isChecked ]);
+		addChild:
+			(BrLabel new
+				aptitude: BrGlamorousLabelAptitude;
+				text: (self field label , ':') asRopedText);
+		addChild:
+			(BrLabel new
+				aptitude: BrGlamorousLabelAptitude;
+				text: self oldValue displayString asRopedText;
+				addEventHandlerOn: BlClickEvent
+					do: [ :evt | evt target phlow spawnObject: self oldValue ]);
+		addChild:
+			(BrLabel new
+				aptitude: BrGlamorousLabelAptitude;
+				text: ' > ' asRopedText);
+		addChild:
+			(BrLabel new
+				aptitude: BrGlamorousLabelAptitude;
+				text: self newValue displayString asRopedText;
+				addEventHandlerOn: BlClickEvent
+					do: [ :evt | evt target phlow spawnObject: self newValue ]);
+		yourself
 ]
 
 { #category : #accessing }
@@ -28,6 +81,7 @@ MAPatchOperation >> diffStrings [
 
 { #category : #execution }
 MAPatchOperation >> execute [
+	self isEnabled ifFalse: [ ^ self ].
 	self field accessor write: newValue to: receiver
 ]
 
@@ -41,9 +95,25 @@ MAPatchOperation >> field: anObject [
 	field := anObject
 ]
 
+{ #category : #accessing }
+MAPatchOperation >> gtElementViewFor: aView [
+	<gtView>
+	^ aView explicit stencil: [ self asElement ]
+]
+
 { #category : #comparing }
 MAPatchOperation >> hash [
 	^ ((self receiver hash bitXor: self field hash) bitXor: self oldValue hash) bitXor: self newValue hash
+]
+
+{ #category : #accessing }
+MAPatchOperation >> isEnabled [
+	^ isEnabled ifNil: [ true ]
+]
+
+{ #category : #accessing }
+MAPatchOperation >> isEnabled: aBoolean [
+	isEnabled := aBoolean
 ]
 
 { #category : #accessing }
@@ -58,7 +128,7 @@ MAPatchOperation >> newValue: anObject [
 
 { #category : #accessing }
 MAPatchOperation >> oldValue [
-	^ oldValue
+	^ oldValue 
 ]
 
 { #category : #accessing }
@@ -78,7 +148,7 @@ MAPatchOperation >> printOn: aStream [
 		nextPutAll: 'Change ';
 		nextPutAll: field label;
 		nextPutAll: ' from ';
-		print: oldValue;
+		print: self oldValue;
 		nextPutAll: ' to ';
 		print: newValue
 ]
