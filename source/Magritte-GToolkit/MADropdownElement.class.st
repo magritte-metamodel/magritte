@@ -118,7 +118,7 @@ MADropdownElement >> popupList [
 								selected: [ :aStyle | aStyle background: Color veryVeryLightGray ]);
 				padding: (BlInsets all: 5);
 				"hMatchParent;"
-					addEventHandlerOn: BlClickEvent
+				addEventHandlerOn: BlClickEvent
 					do: [ :evt | self handleSelection: evt target ];
 				yourself ];
 		itemDataBinder: [ :eachElement :eachItem :eachIndex | 

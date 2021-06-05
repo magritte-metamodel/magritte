@@ -27,6 +27,32 @@ MAContainer class >> isAbstract [
 	^ false
 ]
 
+{ #category : #'example support' }
+MAContainer class >> samplePersonDescription [
+	^ MAPriorityContainer
+		withAll:
+			{(MAStringDescription new
+				accessor: (MADictionaryAccessor key: #name);
+				yourself).
+			(MAStringDescription new
+				accessor: (MADictionaryAccessor key: #birthplace);
+				yourself)}
+]
+
+{ #category : #'example support' }
+MAContainer class >> samplePersonDumbledore [
+	^ {
+			#name ->'Albus Percival Wulfric Brian Dumbledore'.
+			#birthplace -> 'Godric''s Hollow' } asDictionary
+]
+
+{ #category : #'example support' }
+MAContainer class >> samplePersonHarryPotter [
+	^ {
+			#name ->'Harry Potter'.
+			#birthplace -> 'Godric''s Hollow' } asDictionary
+]
+
 { #category : #'instance creation' }
 MAContainer class >> with: aDescription [
 	^ self new

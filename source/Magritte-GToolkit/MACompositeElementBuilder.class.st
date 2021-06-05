@@ -9,8 +9,8 @@ MACompositeElementBuilder class >> example [
 	<gtExample>
 	^ self new
 		object: { #people -> { 
-			self samplePersonHarryPotter.
-			self samplePersonDumbledore } } asDictionary;
+			MAContainer samplePersonHarryPotter.
+			MAContainer samplePersonDumbledore } } asDictionary;
 		objectDescription: self sampleDescription;
 		addButtons;
 		element
@@ -19,7 +19,7 @@ MACompositeElementBuilder class >> example [
 { #category : #'example support' }
 MACompositeElementBuilder class >> sampleDescription [
 	| desc |
-	desc := super sampleDescription
+	desc := MAContainer sampleDescription
 		blocClass: MACompositeElementBuilder;
 		yourself.
 	desc children do: [ :e | 
@@ -27,20 +27,6 @@ MACompositeElementBuilder class >> sampleDescription [
 		prefixAccessor := MADictionaryAccessor key: #people.
 		acc := MACompositeAccessor via: prefixAccessor using: e ].
 	^ desc
-]
-
-{ #category : #'example support' }
-MACompositeElementBuilder class >> samplePersonDumbledor [
-	^ {
-			#name ->'Albus Percival Wulfric Brian Dumbledore'.
-			#birthplace -> 'Godric''s Hollow' } asDictionary
-]
-
-{ #category : #'example support' }
-MACompositeElementBuilder class >> samplePersonDumbledore [
-	^ {
-			#name ->'Albus Percival Wulfric Brian Dumbledore'.
-			#birthplace -> 'Godric''s Hollow' } asDictionary
 ]
 
 { #category : #accessing }
