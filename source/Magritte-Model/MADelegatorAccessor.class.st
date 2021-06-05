@@ -35,6 +35,11 @@ MADelegatorAccessor >> canWrite: aModel [
 	^ self next canWrite: aModel
 ]
 
+{ #category : #accessing }
+MADelegatorAccessor >> defaultLabelFor: aDescription [
+	^ self next defaultLabelFor: aDescription
+]
+
 { #category : #'accessing-magritte' }
 MADelegatorAccessor >> descriptionNext [
 	<magritteDescription>

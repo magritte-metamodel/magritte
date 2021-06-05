@@ -1,5 +1,5 @@
 "
-I cache values as my superclass and also remember the original values of the model at the time the cache is built. With this information I am able to detect edit conflicts and can prevent accidental loss of data by merging the changes.
+Besides caching values like my superclass, I also remember the original values of the model at the time the cache is built. With this information I am able to detect edit conflicts and can prevent accidental loss of data by merging the changes.
 "
 Class {
 	#name : #MACheckedMemento,
@@ -7,7 +7,7 @@ Class {
 	#instVars : [
 		'original'
 	],
-	#category : 'Magritte-Model-Memento'
+	#category : #'Magritte-Model-Memento'
 }
 
 { #category : #testing }
