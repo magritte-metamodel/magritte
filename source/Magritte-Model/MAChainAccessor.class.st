@@ -51,6 +51,11 @@ MAChainAccessor >> canWrite: aModel [
 	^ (self accessor canRead: aModel) and: [ self next canWrite: (self accessor read: aModel) ]
 ]
 
+{ #category : #accessing }
+MAChainAccessor >> defaultLabelFor: aDescription [
+	^ (self accessor defaultLabelFor: aDescription), '::', (super defaultLabelFor: aDescription)
+]
+
 { #category : #'accessing-magritte' }
 MAChainAccessor >> descriptionAccessor [
 	<magritteDescription>

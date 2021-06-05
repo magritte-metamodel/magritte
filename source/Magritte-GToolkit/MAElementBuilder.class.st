@@ -1,3 +1,10 @@
+"
+I create a Bloc element representing a Magritte form. By default, I use my model ${method:MAElementBuilder>>#object}$'s Magritte Description, but you can pass any to ${method:MAElementBuilder>>#visit:}$.
+!Implementation Note
+Unlike the Morphic implementation, which has a presenter class per description type, I take advantage of Magritte's built-in visitor capabilities. This allowed us to avoid about 18 classes, many of which had only a few methods. We will see if this approach holds up as the implementation is fleshed out and used in the real world. We ''did'' implement ${class:MABlocContainerPresenter}$ because it represents the model object and:
+- provides a nice point for inspection/debugging. To access from my built element: ==anElement userData at: #magrittePresenter==
+- serves as the reciever for form actions like ${method:MABlocContainerPresenter>>#save|label='save'}$.
+"
 Class {
 	#name : #MAElementBuilder,
 	#superclass : #MAVisitor,
@@ -6,7 +13,8 @@ Class {
 		'element',
 		'form',
 		'presenter',
-		'buttonSelectors'
+		'buttonSelectors',
+		'objectDescription'
 	],
 	#category : #'Magritte-GToolkit'
 }
@@ -18,6 +26,33 @@ MAElementBuilder class >> buildElementFor: anObject [
 		visit: anObject magritteDescription
 ]
 
+{ #category : #accessing }
+MAElementBuilder class >> example [
+	<gtExample>
+	^ self new
+		object: self samplePersonHarryPotter;
+		objectDescription: self sampleDescription
+]
+
+{ #category : #accessing }
+MAElementBuilder class >> sampleDescription [
+	^ MAPriorityContainer
+		withAll:
+			{(MAStringDescription new
+				accessor: (MADictionaryAccessor key: #name);
+				yourself).
+			(MAStringDescription new
+				accessor: (MADictionaryAccessor key: #birthplace);
+				yourself)}
+]
+
+{ #category : #accessing }
+MAElementBuilder class >> samplePersonHarryPotter [
+	^ {
+			#name ->'Harry Potter'.
+			#birthplace -> 'Godric''s Hollow' } asDictionary
+]
+
 { #category : #generic }
 MAElementBuilder >> addButtons [
 	self addButtons: #( save cancel )
@@ -25,28 +60,31 @@ MAElementBuilder >> addButtons [
 
 { #category : #accessing }
 MAElementBuilder >> addButtons: aCollection [
-	"#addButtons: is part of the existing Morphic/Seaside API. We store the selectors instead of constructing the buttons to defer all element creation to first element access"
+	"#addButtons: is part of the existing Morphic/Seaside API"
+	self flag: 'The comment said "We store the selectors instead of constructing the buttons to defer all element creation to first element access", but does that really make sense because the form and toolbar are created on visit?'.
 	self buttonSelectors: aCollection
 ]
 
 { #category : #accessing }
 MAElementBuilder >> addInputField: inputElement using: aDescription [
-	| labelElement |
+	| labelElement diffElement |
 	labelElement := BrLabel new
 		text: aDescription label , ':';
-		aptitude: BrGlamorousLabelLook.
-	labelElement
-		constraintsDo: [ :c | 
+		aptitude: BrGlamorousLabelAptitude.
+	labelElement constraintsDo: [ :c | 
 			c vertical fitContent.
 			c horizontal fitContent.
 			c grid vertical alignCenter ].
-	aDescription isRequired
-		ifTrue: [ self flag: 'unsupported' ].
-	aDescription hasComment
-		ifTrue: [ self addTooltip: aDescription comment to: labelElement.
-			self addTooltip: aDescription comment to: inputElement ].
+	aDescription isRequired ifTrue: [ self flag: 'unsupported' ].
+	aDescription hasComment ifTrue: [ 
+		self addTooltip: aDescription comment to: labelElement.
+		self addTooltip: aDescription comment to: inputElement ].
+	diffElement := BrEditor new
+		text: inputElement text copy; "if we don't copy, diff magically changes as input updates"
+		aptitude: BrGlamorousEditorAptitude.
 	self form addChild: labelElement.
-	self form addChild: inputElement
+	self form addChild: inputElement.
+	self form addChild: diffElement.
 ]
 
 { #category : #accessing }
@@ -59,8 +97,7 @@ MAElementBuilder >> addInputFieldUsing: aDescription [
 			c horizontal matchParent.
 			c grid vertical alignCenter ];
 		when: BrEditorAcceptWish
-			do:
-				[ :aWish | aDescription writeFromString: aWish text greaseString to: self memento ];
+			do: [ :aWish | aDescription writeFromString: aWish text greaseString to: self memento ];
 		text: (self textUsing: aDescription).
 	self addInputField: inputElement using: aDescription
 ]
@@ -73,7 +110,7 @@ MAElementBuilder >> addTooltip: aString to: anElement [
 			'Didn''t do `BrGlamorousWithTooltipLook content:` due to bug reported on GT discord feedback channel 12/21/2020'.
 	look := BrGlamorousWithTooltipAptitude new
 		contentStencil: [ BrLabel new
-				look: BrGlamorousLabelAptitude new glamorousRegularFontAndSize;
+				aptitude: BrGlamorousLabelAptitude new glamorousRegularFontAndSize;
 				padding: (BlInsets all: 2);
 				text: aString;
 				alignCenter ].
@@ -92,7 +129,10 @@ MAElementBuilder >> buttonSelectors: aCollection [
 
 { #category : #accessing }
 MAElementBuilder >> element [
+	| hasVisited |
 	element ifNotNil: [ ^ element ].
+	hasVisited := form isNotNil.
+	hasVisited ifFalse: [ self visit: self objectDescription ].
 	element := BrVerticalPane new
 		vFitContent;
 		hMatchParent;
@@ -105,12 +145,21 @@ MAElementBuilder >> element [
 
 { #category : #accessing }
 MAElementBuilder >> form [
+	| headerStancil |
 	form ifNotNil: [ ^ form ].
+	headerStancil := [ :string | 
+		BrLabel new 
+			text: string asRopedText bold;
+			aptitude: BrGlamorousLabelAptitude;
+			yourself ].
 	^ form := BlElement new
 		constraintsDo: [ :c |  
 			c vertical fitContent.
 			c horizontal matchParent ];
-		layout: (BlGridLayout horizontal columnCount: 2; cellSpacing: 10);
+		layout: (BlGridLayout horizontal columnCount: 3; cellSpacing: 10);
+		addChild: (headerStancil value: 'Field');
+		addChild: (headerStancil value: 'Current');
+		addChild: (headerStancil value: 'Original');
  		yourself.
 ]
 
@@ -135,13 +184,23 @@ MAElementBuilder >> object: anObject [
 ]
 
 { #category : #accessing }
+MAElementBuilder >> objectDescription [
+	^ objectDescription ifNil: [ objectDescription := self object magritteDescription ]
+]
+
+{ #category : #accessing }
+MAElementBuilder >> objectDescription: aDescription [
+	objectDescription := aDescription
+]
+
+{ #category : #accessing }
 MAElementBuilder >> presenter [
 	| memento |
 	presenter ifNotNil: [ ^ presenter ].
 	"Morphic puts this in container"
 	memento := self object mementoClass
 		model: self object
-		description: self object magritteDescription.
+		description: self objectDescription.
 	^ presenter := MABlocContainerPresenter memento: memento
 ]
 
@@ -295,7 +354,7 @@ MAElementBuilder >> visitSingleOptionDescription: aDescription [
 	inputElement := MADropdownElement new 
 		items: aDescription allOptions;
 		itemDescription: aDescription reference;
-		selection: (self object readUsing: aDescription);
+		selection: (self memento readUsing: aDescription);
 		when: MADropdownWish do: [ :aWish | 
 			aDescription write: aWish selection to: self memento ];
 		yourself.

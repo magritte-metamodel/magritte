@@ -146,3 +146,9 @@ MADropdownElement >> selection: anObject [
 MADropdownElement >> selectionString [
 	^ self itemDescription toString: self selection
 ]
+
+{ #category : #accessing }
+MADropdownElement >> text [
+	"This is to show the initial value in the container UI"
+	^ self selectionString
+]

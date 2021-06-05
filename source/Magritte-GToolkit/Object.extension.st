@@ -31,16 +31,21 @@ Object >> gtActions [
 { #category : #'*Magritte-GToolkit' }
 Object >> maGtFormFor: aView [
 	<gtView>
-	(self magritteDescription isContainer not or: [ self magritteDescription isEmpty ]) ifTrue: [ ^ aView empty ].
+	| description |
+	
+	"Cache the description because this can be expensive and we want the view to be fast not to break the debugging workflow"
+	description := self magritteDescription.
+	
+	(description isContainer not or: [ description isEmpty ]) ifTrue: [ ^ aView empty ].
 	^ aView explicit
 		title: 'Magritte';
 		priority: 50;
-		stencil: [ self magritteElementBuilder addButtons; element ]
+		stencil: [ (description elementBuilderFor: self) addButtons; element ]
 ]
 
 { #category : #'*Magritte-GToolkit' }
 Object >> magritteElementBuilder [
-	^ MAElementBuilder buildElementFor: self
+	^ self magritteDescription elementBuilderFor: self
 ]
 
 { #category : #'*Magritte-GToolkit' }
