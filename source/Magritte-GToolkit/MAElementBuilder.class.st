@@ -26,31 +26,13 @@ MAElementBuilder class >> buildElementFor: anObject [
 		visit: anObject magritteDescription
 ]
 
-{ #category : #accessing }
+{ #category : #examples }
 MAElementBuilder class >> example [
 	<gtExample>
 	^ self new
-		object: self samplePersonHarryPotter;
-		objectDescription: self sampleDescription
-]
-
-{ #category : #accessing }
-MAElementBuilder class >> sampleDescription [
-	^ MAPriorityContainer
-		withAll:
-			{(MAStringDescription new
-				accessor: (MADictionaryAccessor key: #name);
-				yourself).
-			(MAStringDescription new
-				accessor: (MADictionaryAccessor key: #birthplace);
-				yourself)}
-]
-
-{ #category : #accessing }
-MAElementBuilder class >> samplePersonHarryPotter [
-	^ {
-			#name ->'Harry Potter'.
-			#birthplace -> 'Godric''s Hollow' } asDictionary
+		object: MAContainer samplePersonHarryPotter;
+		objectDescription: MAContainer samplePersonDescription;
+		element
 ]
 
 { #category : #generic }
@@ -70,6 +52,8 @@ MAElementBuilder >> addInputField: inputElement using: aDescription [
 	| labelElement diffElement |
 	labelElement := BrLabel new
 		text: aDescription label , ':';
+		addEventHandlerOn: BlClickEvent
+			do: [ :evt | evt target phlow spawnObject: (aDescription read: self object) ];
 		aptitude: BrGlamorousLabelAptitude.
 	labelElement constraintsDo: [ :c | 
 			c vertical fitContent.
