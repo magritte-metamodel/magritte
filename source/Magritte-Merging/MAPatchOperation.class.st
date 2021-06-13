@@ -19,11 +19,17 @@ MAPatchOperation class >> example [
 ]
 
 { #category : #examples }
+MAPatchOperation class >> example2 [
+	| desc |
+	desc := MAContainer samplePersonDescription.
+	^ MAPatchOperation for: MAContainer samplePersonHarryPotter set: desc children second to: 'Godric''s Hollow, England'
+]
+
+{ #category : #examples }
 MAPatchOperation class >> for: anObject set: aDescription to: anotherObject [
 	^ self new
 		receiver: anObject; 
 		field: aDescription;
-		oldValue: (anObject readUsing: aDescription);
 		newValue: anotherObject;
 		yourself
 ]
@@ -70,6 +76,12 @@ MAPatchOperation >> asElement [
 ]
 
 { #category : #accessing }
+MAPatchOperation >> cacheOldValue [
+	(self receiver isNil or: [ self field isNil ]) ifTrue: [ ^ self ].
+	self oldValue: (self receiver readUsing: self field)
+]
+
+{ #category : #accessing }
 MAPatchOperation >> children [
 	^ #()
 ]
@@ -92,7 +104,8 @@ MAPatchOperation >> field [
 
 { #category : #accessing }
 MAPatchOperation >> field: anObject [
-	field := anObject
+	field := anObject.
+	self cacheOldValue
 ]
 
 { #category : #accessing }
@@ -160,7 +173,8 @@ MAPatchOperation >> receiver [
 
 { #category : #accessing }
 MAPatchOperation >> receiver: anObject [
-	receiver := anObject
+	receiver := anObject.
+	self cacheOldValue
 ]
 
 { #category : #execution }

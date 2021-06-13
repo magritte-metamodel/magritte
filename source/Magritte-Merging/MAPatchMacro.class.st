@@ -2,11 +2,41 @@ Class {
 	#name : #MAPatchMacro,
 	#superclass : #Object,
 	#instVars : [
-		'operations',
-		'model'
+		'operations'
 	],
 	#category : #'Magritte-Merging'
 }
+
+{ #category : #accessing }
+MAPatchMacro class >> example [
+	<gtExample>
+	^ self
+		given: [ self new ]
+		when: [ :macro |
+			| op |
+			op := MAPatchOperation example.
+			macro operations
+				add: op;
+				add: (MAPatchOperation example2 receiver: op receiver; yourself).
+			macro ]
+		then: [ :macro |
+			macro operations size should equal: 2 ]
+]
+
+{ #category : #accessing }
+MAPatchMacro >> addOperationFor: modelObject set: aDescription to: valueObject [
+	| newOp |
+	newOp := MAPatchOperation
+		for: modelObject
+		set: aDescription
+		to: valueObject.
+	^ self operations add: newOp.
+]
+
+{ #category : #accessing }
+MAPatchMacro >> asElement [
+	^ MAPatchMacroElement on: self
+]
 
 { #category : #accessing }
 MAPatchMacro >> children [
@@ -21,6 +51,7 @@ MAPatchMacro >> descriptionOperations [
 		accessor: #operations;
 		glmPresentation: [ :a | a list ];
 		classes: { MAPatchOperation };
+		default: OrderedCollection new;
 		yourself
 ]
 
@@ -47,35 +78,14 @@ MAPatchMacro >> execute [
 { #category : #accessing }
 MAPatchMacro >> gtElementViewFor: aView [
 	<gtView>
-	^ aView explicit stencil: [
-		| el |
-		el := BlElement new
-			layout: (BlLinearLayout vertical cellSpacing: 10);
-			constraintsDo: [ :c | 
-				c horizontal fitContent.
-				c vertical fitContent ].
-		self operations do: [ :op | el addChild: op asElement ].
-		el addChild: (BrButton new
-				beSmallSize;
-				aptitude: BrGlamorousButtonWithLabelAptitude;
-				label: 'Apply';
-				action: [ self execute ]).
-		el ]
-]
-
-{ #category : #execution }
-MAPatchMacro >> model [
-	^ model
+	^ aView explicit 
+		priority: 25;
+		stencil: [ self asElement ]
 ]
 
 { #category : #accessing }
-MAPatchMacro >> model: anObject [
-	model := anObject
-]
-
-{ #category : #execution }
 MAPatchMacro >> operations [
-	^ operations
+	^ self maLazyInstVarUsing: self descriptionOperations
 ]
 
 { #category : #accessing }
@@ -86,12 +96,18 @@ MAPatchMacro >> operations: anObject [
 { #category : #printing }
 MAPatchMacro >> printOn: aStream [
 
-	model 
-		ifNotNil: [ 
-			aStream
-				nextPutAll: 'Patch for ';
-				print: model ]
-		ifNil: [ super printOn: aStream ]
+	self receivers
+		ifNotEmpty: [ :recs |
+			aStream nextPutAll: 'Patch for '.
+			recs
+				do: [ :e | aStream print: e ]
+				separatedBy: [ aStream space ] ]
+		ifEmpty: [ super printOn: aStream ]
+]
+
+{ #category : #accessing }
+MAPatchMacro >> receivers [
+	^ self operations collect: #receiver as: Set
 ]
 
 { #category : #execution }
