@@ -30,6 +30,7 @@ MAPatchMacro >> addOperationFor: modelObject set: aDescription to: valueObject [
 		for: modelObject
 		set: aDescription
 		to: valueObject.
+	newOp isNoOp ifTrue: [ ^ self ].
 	^ self operations add: newOp.
 ]
 

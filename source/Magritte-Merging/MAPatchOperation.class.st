@@ -130,6 +130,11 @@ MAPatchOperation >> isEnabled: aBoolean [
 ]
 
 { #category : #accessing }
+MAPatchOperation >> isNoOp [
+	^ self oldValue = self newValue
+]
+
+{ #category : #accessing }
 MAPatchOperation >> newValue [
 	^ newValue
 ]
