@@ -116,7 +116,7 @@ BaselineOfMagritte >> baseline: spec [
 { #category : #accessing }
 BaselineOfMagritte >> customProjectAttributes [
 	^ self isGTImage
-			ifFalse: [ #() ]
+			ifFalse: [ #(notGToolkit) ]
 			ifTrue: [ #(GToolkit) ]
 ]
 
