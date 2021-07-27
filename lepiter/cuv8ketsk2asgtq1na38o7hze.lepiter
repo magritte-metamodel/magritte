@@ -1,0 +1,76 @@
+{
+	"__schema" : "4.1",
+	"__type" : "page",
+	"children" : {
+		"__type" : "snippets",
+		"items" : [
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2021-07-27T13:57:17.944597-04:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2021-07-27T13:57:17.944597-04:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "IKNtVoCEDQC5l0/jD3Qt2Q=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "I'd like to have code which automatically flips description names to new-style. I asked on Discord how to wrap the following in a cool GT GUI:\r```\rdescSels := self localSelectors select: [ :e | e matchesRegex: 'description.+' ].\rnewSels := descSels collect: [ :e | \r\tfieldName := e allButFirst: 'description' size.\r\tfieldName uncapitalized, 'Description' ].\r\tr := RBRenameMethodRefactoring renameMethod: #descriptionReference in: VsTransaction to: #referenceDescription permutation: #().\rr execute\r```\r\r- Mariano mentioned some extensions he had done but not releasedhere>http://forum.world.st/Adding-to-Magritte-tp4728958p4729020.html*\r- Field dependency discussion regarding QC and Seaside [here](http://forum.world.st/Adding-to-Magritte-tp4728958p4729953.html)\r- Dynamic descriptions - [here](http://forum.world.st/Understanding-dynamic-descriptions-tp4840991p4841017.html) is a question about `visible` being set at description creation time, but potentially having a different value later on when the model is changed. A few thoughts came to mind: blocks (with the disadvantages that coem with them in Magritte), value holders, or accept aSymbol that is sent to the object in addition to aBoolean. To my surprise 5 years later, I posted a [response](http://forum.world.st/Understanding-dynamic-descriptions-tp4840991p4843449.html), connecting the problem to mementos being static and added that just passing a block wouldn't help\r- *\"I really like describing domain objects with Magritte and using chains of visitors to add cross-cutting concerns like translations, styling and access control. The resulting domain code is very clean and DRY. To map to database/Glorp I would just add properties to the description wherever needed, and add a visitor creating the mappings.\"* [per Stephan Eggermont](http://forum.world.st/Web-stack-practices-Glorp-QCMagritte-tp4969583p4969932.html)\r"
+			}
+		]
+	},
+	"createEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"createTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2021-07-27T13:57:17.944584-04:00"
+		}
+	},
+	"editEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"editTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2021-07-27T13:57:17.944584-04:00"
+		}
+	},
+	"pageType" : {
+		"__type" : "namedPage",
+		"title" : "FurtherResearch"
+	},
+	"uid" : {
+		"__type" : "uuid",
+		"uuid" : "ca3e0856-8084-0d00-b98f-28170f742dd9"
+	}
+}
