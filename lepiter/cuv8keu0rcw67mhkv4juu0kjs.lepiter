@@ -1,0 +1,76 @@
+{
+	"__schema" : "4.1",
+	"__type" : "page",
+	"children" : {
+		"__type" : "snippets",
+		"items" : [
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2021-07-27T13:57:17.941562-04:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2021-07-27T13:57:17.941562-04:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "S5dtVoCEDQC5lnJ0D3Qt2Q=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "NB We will move this to Magritte-GToolkit once Lepiter is integrated in GToolkit because we don't want to add the Wiki dependency to Magritte.\r# Use cases\r## Databases\r- Custom memento subclasses can be the glue, per Diego Lont in [this post](http://forum.world.st/Web-stack-practices-Glorp-QCMagritte-tp4969583p4970881.html) which also touches on QCMagritte and performance issues.\r- *\"To map to database/Glorp I would just add properties to the description wherever needed, and add a visitor creating the mappings.\"* [per Stephan Eggermont](http://forum.world.st/Web-stack-practices-Glorp-QCMagritte-tp4969583p4969932.html)\r## Matching options to string representations\r**UPDATE:** After a thorough exploration and much learned, it seems that Magritte is not designed to convert arbitrary/multiply-formatted strings into option objects. The reason for this may be simple: unlike for other description types (e.g. numbers) where the user may e.g. type a string represenation into a text editor, for existing options (i.e. not user supplied), you probably already have the option object behind a dropdown or list control. \r\rLet's say, for example while OCRing receipts, we have the following options for payment method: `{ Cash. Credit. Check }`. Since there is a lot of variation in receipt formats, we need to accept multiple string representations for each object. Let's take the simplest case, `Cash`. At minimum, we want case insensitive matching, so that `cash`, `Cash`, and `CASH` all map to the same option. So how are option strings matched to options? We look to {{gtClass:MAStringReader}} , the default visitor magritte uses to convert from strings to objects; specifically: {{gtMethod:MAStringReader>>#visitSingleOptionDescription:|expanded=true}}\rOne option would be to create our own description type, `MAPaymentTypeDescription`. If it was a subclass of single option description, we could write a corresponding `MAPaymentTypeReader` that overrides `visitSingleOptionDescription:` to do what we want. It's unclear whether it would be worth the effort vs. say just handling the string to object conversion outside of Magritte.\rAlternately, let's see if there's a way to configure the existing Magritte classes to get the same result. Revisiting `visitSingleOptionDescription:`, we see that its first attempt is to match the string to the labels property. However, this seems to be of limited use, as a query shows that there is only one entry point that sets this property:\r```language=smalltalk\r #labels gtReferences & #propertyAt:put: gtReferences & 'Magritte-' gtPackageMatches\r```\r\rOther entry points, like {{gtMethod:MAOptionDescription>>#options:}} and {{gtMethod:MAOptionDescription>>#optionsTextual:}} do not set this property, causing this first matching attempt to always fail.\r\rThe next tactic is quite subtle and relies on several aspects of Magritte which may not be obvious. The reader reenters itself, passing the description's `reference`. References can be tricky to understand, but there is an extensive explanation in the comment of {{gtClass:MAReferenceDescription|show=#gtCoderCommentsFor:}}.\r\rThere is a tempation to refactor so that the label comparison is more generally useful, but since we already have this `reference` hook, let's step around that rabbit hole for the moment and see if there's an acceptable way to set the reference up to do what we want. The default seems to be the same {{gtMethod:MADescription class>>#defaultStringReader|expanded=true|label='MAStringReader'}} class we saw above:\r"
+			}
+		]
+	},
+	"createEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"createTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2021-07-27T13:57:17.941506-04:00"
+		}
+	},
+	"editEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"editTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2021-07-27T13:57:17.941506-04:00"
+		}
+	},
+	"pageType" : {
+		"__type" : "namedPage",
+		"title" : "Main"
+	},
+	"uid" : {
+		"__type" : "uuid",
+		"uuid" : "08ae0656-8084-0d00-b98e-c01e0f742dd9"
+	}
+}

@@ -1,0 +1,76 @@
+{
+	"__schema" : "4.1",
+	"__type" : "page",
+	"children" : {
+		"__type" : "snippets",
+		"items" : [
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2021-07-27T13:57:17.956602-04:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2021-07-27T13:57:17.956602-04:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "/NFtVoCEDQC5nBHaD3Qt2Q=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "A library by Diego Lont that is build on top of Magritte... contains a lot of good add ons; a stack based on Seaside, Magritte, and Bootstrap.\r- some dynamic stuff (i.e. dynamic columns, groups that can collapse, automatic values)\r- Repos - Laurent Laffont announced [a port to GH](https://github.com/Afibre/QCMagritte), from which there are several other forks with newer commits. Not sure if work also continued on [original SqS repo](http://smalltalkhub.com/#!/~DiegoLont/QCMagritte/).\r- per Diego, maybe should end up in MagritteAddOns, but still WIP; same per Stephan Eggermont\r- some tips on using it for ajax are [here](http://forum.world.st/QCMagritte-and-MAJQDateInputComponent-tp4777365p4777407.html)\r- *\"QCQuery is to search in a dataset, arbitrarily how it is organised. It does so by recursively visiting the magritte description of the objects, and has protection against loops.\"* - excerpt from longer post [here](http://forum.world.st/Deep-QCMagritte-tutorial-tp4744612p4744943.html)\r- [Getting started slideshow](https://www.slideshare.net/esug/getting-started-with-qcmagritte)\r- Tutorial included: *\"Once you have [the framework] loaded, you can start the webpage to localhost:8080 and there you have your tutorial.\"*\r- Builders were apparently ported back to Magritte [per diego](http://forum.world.st/Port-of-builders-to-Magritte-Model-tp4945490.html)\r"
+			}
+		]
+	},
+	"createEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"createTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2021-07-27T13:57:17.956599-04:00"
+		}
+	},
+	"editEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"editTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2021-07-27T13:57:17.956599-04:00"
+		}
+	},
+	"pageType" : {
+		"__type" : "namedPage",
+		"title" : "QCMagritte"
+	},
+	"uid" : {
+		"__type" : "uuid",
+		"uuid" : "ae4f6d56-8084-0d00-b994-1ec00f742dd9"
+	}
+}
