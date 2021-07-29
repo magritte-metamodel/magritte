@@ -1,3 +1,6 @@
+"
+When you have a ""to-many"" relationship, I describe the flattened collection of its items - something like {{gtMethod:Collection>>#flatCollect:}} meets {{gtClass:MAChainAccessor}}. Here's a usage example {{gtExample:MACompositeElementBuilder class>>#example}}:
+"
 Class {
 	#name : #MACompositeAccessor,
 	#superclass : #MAChainAccessor,
@@ -9,6 +12,20 @@ Class {
 	],
 	#category : #'Magritte-Model-Accessor'
 }
+
+{ #category : #'example support' }
+MACompositeAccessor class >> sampleContainer [
+	
+	| desc |
+	desc := MAContainer samplePersonDescription
+		blocClass: MACompositeElementBuilder;
+		yourself.
+	desc children do: [ :e | 
+		| acc prefixAccessor |
+		prefixAccessor := MADictionaryAccessor key: #people.
+		acc := MACompositeAccessor via: prefixAccessor using: e ].
+	^ desc
+]
 
 { #category : #'instance creation' }
 MACompositeAccessor class >> via: anAccessor using: aDescription [

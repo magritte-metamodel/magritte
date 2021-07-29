@@ -293,8 +293,23 @@ MAElementBuilder >> visitMagnitudeDescription: anObject [
 ]
 
 { #category : #'visiting-description' }
-MAElementBuilder >> visitMemoDescription: anObject [
-	self visitStringDescription: anObject
+MAElementBuilder >> visitMemoDescription: aDescription [
+	| inputElement lineHeight |
+	self flag: 'Lots of duplication from standard inputElement creation; line height very rough based on 14 pt size - waiting on answer on Discord'.
+	lineHeight := 14 * 1.5.
+	inputElement := BrEditor new
+		beEditable;
+		text: (self textUsing: aDescription);
+		aptitude: BrGlamorousEditorAptitude new glamorousRegularFontAndSize;
+		"vFitContent;"
+		vExact: lineHeight * aDescription lineCount;
+		constraintsDo: [ :c | 
+			c horizontal matchParent.
+			c grid vertical alignCenter ].
+	inputElement editor when: BrTextEditorModifiedEvent
+			do: [ :event | aDescription writeFromString: event text greaseString to: self memento ].
+	
+	self addInputField: inputElement using: aDescription
 ]
 
 { #category : #'visiting-description' }
