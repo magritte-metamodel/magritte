@@ -1,3 +1,8 @@
+"
+I build a form for an object described by an {{gtClass:MAContainer}} whose children are  {{gtClass:MACompositeAccessor}}s. Here's an example: {{gtExample:MACompositeElementBuilder class>>#example}}
+
+See {{gtClass:MACompositeAccessor}} for more info.
+"
 Class {
 	#name : #MACompositeElementBuilder,
 	#superclass : #MAElementBuilder,
@@ -11,22 +16,9 @@ MACompositeElementBuilder class >> example [
 		object: { #people -> { 
 			MAContainer samplePersonHarryPotter.
 			MAContainer samplePersonDumbledore } } asDictionary;
-		objectDescription: self sampleDescription;
+		objectDescription: MACompositeAccessor sampleContainer;
 		addButtons;
 		element
-]
-
-{ #category : #'example support' }
-MACompositeElementBuilder class >> sampleDescription [
-	| desc |
-	desc := MAContainer sampleDescription
-		blocClass: MACompositeElementBuilder;
-		yourself.
-	desc children do: [ :e | 
-		| acc prefixAccessor |
-		prefixAccessor := MADictionaryAccessor key: #people.
-		acc := MACompositeAccessor via: prefixAccessor using: e ].
-	^ desc
 ]
 
 { #category : #accessing }
