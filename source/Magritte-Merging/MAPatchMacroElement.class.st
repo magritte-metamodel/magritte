@@ -9,6 +9,12 @@ Class {
 	#category : #'Magritte-Merging'
 }
 
+{ #category : #examples }
+MAPatchMacroElement class >> example [
+	<gtExample>
+	^ MAPatchMacro example asElement
+]
+
 { #category : #'instance creation' }
 MAPatchMacroElement class >> on: macro [
 	^ self new
