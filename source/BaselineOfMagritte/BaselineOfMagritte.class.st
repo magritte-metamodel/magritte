@@ -103,7 +103,8 @@ BaselineOfMagritte >> baseline: spec [
 				package: 'Magritte-Seaside' with: [ spec requires: #('Magritte-Model' 'Seaside3') ];
 				package: 'Magritte-Bootstrap' with: [ spec requires: #('Magritte-Model') ];
 				package: 'Magritte-Deprecated' with: [ spec requires: #('Magritte-Model') ];
-				package: 'Magritte-Merging' with: [ spec requires: #('Magritte-Model') ].
+				package: 'Magritte-Merging' with: [ spec requires: #('Magritte-Model') ];
+				package: 'Magritte-Money' with: [ spec requires: #('Magritte-Model') ].
 			spec
 				group: 'Core' with: #('Magritte-Model');
 				group: 'Tests' with: #('Magritte-Tests-Model');
