@@ -4,12 +4,12 @@ I build a form for an object described by an {{gtClass:MAContainer}} whose child
 See {{gtClass:MACompositeAccessor}} for more info.
 "
 Class {
-	#name : #MACompositeElementBuilder,
-	#superclass : #MAElementBuilder,
-	#category : #'Magritte-GToolkit'
+	#name : 'MACompositeElementBuilder',
+	#superclass : 'MAElementBuilder',
+	#category : 'Magritte-GToolkit'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MACompositeElementBuilder class >> example [
 	<gtExample>
 	^ self new
@@ -21,7 +21,7 @@ MACompositeElementBuilder class >> example [
 		element
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MACompositeElementBuilder >> visitSingleOptionDescription: aDescription [
 	| inputElement items |
 	self flag: 'lots of duplication with super implementation'.
