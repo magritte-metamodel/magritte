@@ -6,8 +6,8 @@ Unlike the Morphic implementation, which has a presenter class per description t
 - serves as the reciever for form actions like ${method:MABlocContainerPresenter>>#save|label='save'}$.
 "
 Class {
-	#name : #MAElementBuilder,
-	#superclass : #MAVisitor,
+	#name : 'MAElementBuilder',
+	#superclass : 'MAVisitor',
 	#instVars : [
 		'object',
 		'element',
@@ -16,17 +16,17 @@ Class {
 		'buttonSelectors',
 		'objectDescription'
 	],
-	#category : #'Magritte-GToolkit'
+	#category : 'Magritte-GToolkit'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 MAElementBuilder class >> buildElementFor: anObject [
 	^ self new
 		object: anObject;
 		visit: anObject magritteDescription
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 MAElementBuilder class >> example [
 	<gtExample>
 	^ self new
@@ -35,19 +35,19 @@ MAElementBuilder class >> example [
 		element
 ]
 
-{ #category : #generic }
+{ #category : 'generic' }
 MAElementBuilder >> addButtons [
 	self addButtons: #( save cancel )
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAElementBuilder >> addButtons: aCollection [
 	"#addButtons: is part of the existing Morphic/Seaside API"
 	self flag: 'The comment said "We store the selectors instead of constructing the buttons to defer all element creation to first element access", but does that really make sense because the form and toolbar are created on visit?'.
 	self buttonSelectors: aCollection
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAElementBuilder >> addInputField: inputElement using: aDescription [
 	| labelElement diffElement |
 	labelElement := BrLabel new
@@ -63,15 +63,15 @@ MAElementBuilder >> addInputField: inputElement using: aDescription [
 	aDescription hasComment ifTrue: [ 
 		self addTooltip: aDescription comment to: labelElement.
 		self addTooltip: aDescription comment to: inputElement ].
-	diffElement := BrEditor new
-		text: inputElement text copy; "if we don't copy, diff magically changes as input updates"
-		aptitude: BrGlamorousEditorAptitude.
+	"diffElement := BrEditor new
+		text: inputElement text copy; ""if we don't copy, diff magically changes as input updates"
+		"aptitude: BrGlamorousEditorAptitude".
 	self form addChild: labelElement.
 	self form addChild: inputElement.
-	self form addChild: diffElement.
+	"self form addChild: diffElement."
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAElementBuilder >> addInputFieldUsing: aDescription [
 	| inputElement |
 	inputElement := BrEditableLabel new
@@ -86,7 +86,7 @@ MAElementBuilder >> addInputFieldUsing: aDescription [
 	self addInputField: inputElement using: aDescription
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAElementBuilder >> addTooltip: aString to: anElement [
 	| look |
 	self
@@ -101,17 +101,17 @@ MAElementBuilder >> addTooltip: aString to: anElement [
 	anElement addAptitude: look
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAElementBuilder >> buttonSelectors [
 	^ buttonSelectors ifNil: #()
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAElementBuilder >> buttonSelectors: aCollection [
 	buttonSelectors := aCollection
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAElementBuilder >> element [
 	| hasVisited |
 	element ifNotNil: [ ^ element ].
@@ -127,7 +127,7 @@ MAElementBuilder >> element [
 	^ element
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAElementBuilder >> form [
 	| headerStancil |
 	form ifNotNil: [ ^ form ].
@@ -140,44 +140,44 @@ MAElementBuilder >> form [
 		constraintsDo: [ :c |  
 			c vertical fitContent.
 			c horizontal matchParent ];
-		layout: (BlGridLayout horizontal columnCount: 3; cellSpacing: 10);
+		layout: (BlGridLayout horizontal columnCount: 2; cellSpacing: 10);
 		addChild: (headerStancil value: 'Field');
 		addChild: (headerStancil value: 'Current');
-		addChild: (headerStancil value: 'Original');
- 		yourself.
+		"addChild: (headerStancil value: 'Original');"
+ 	yourself.
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 MAElementBuilder >> hasButtons [
 	^ self buttonSelectors isNotEmpty
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAElementBuilder >> memento [
 	^ self presenter memento
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAElementBuilder >> object [
 	^ object
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAElementBuilder >> object: anObject [
 	object := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAElementBuilder >> objectDescription [
 	^ objectDescription ifNil: [ objectDescription := self object magritteDescription ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAElementBuilder >> objectDescription: aDescription [
 	objectDescription := aDescription
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAElementBuilder >> presenter [
 	| memento |
 	presenter ifNotNil: [ ^ presenter ].
@@ -188,14 +188,14 @@ MAElementBuilder >> presenter [
 	^ presenter := MABlocContainerPresenter memento: memento
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAElementBuilder >> textUsing: aDescription [
 	| valueString |
 	valueString := aDescription readToString: self memento.
 	^ valueString asRopedText glamorousRegularFont
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAElementBuilder >> toolbar [
 	| toolbar |
 	toolbar := BrToolbar new
@@ -220,79 +220,85 @@ MAElementBuilder >> toolbar [
 	^ toolbar
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAElementBuilder >> visit: anObject [
 	self flag: 'if we keep the decorator stuff here, remove this method'.
 	super visit: anObject.
 	"^ self element"
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 MAElementBuilder >> visitBlockDescription: anObject [
 	self visitElementDescription: anObject
 ]
 
-{ #category : #'visiting-description' }
-MAElementBuilder >> visitBooleanDescription: anObject [
-	self visitElementDescription: anObject
+{ #category : 'visiting-description' }
+MAElementBuilder >> visitBooleanDescription: aDescription [
+	| inputElement |
+	inputElement := BrCheckbox new 
+		aptitude: BrGlamorousCheckboxAptitude;
+		checked: (aDescription read: self memento);
+		whenCheckedDo: [ aDescription write: true to: self memento ];
+		whenUncheckedDo: [ aDescription write: false to: self memento ].
+	self addInputField: inputElement using: aDescription
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 MAElementBuilder >> visitClassDescription: anObject [
 	self visitElementDescription: anObject
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 MAElementBuilder >> visitColorDescription: anObject [
 	self visitElementDescription: anObject
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 MAElementBuilder >> visitContainer: anObject [
 	anObject do: [ :each | self visit: each ].
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 MAElementBuilder >> visitDateAndTimeDescription: anObject [
 	self visitMagnitudeDescription: anObject
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 MAElementBuilder >> visitDateDescription: anObject [
 	self visitMagnitudeDescription: anObject
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 MAElementBuilder >> visitDescription: anObject [
 
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 MAElementBuilder >> visitDirectoryDescription: anObject [
 	self visitFileDescription: anObject
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 MAElementBuilder >> visitDurationDescription: anObject [
 	self visitMagnitudeDescription: anObject
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 MAElementBuilder >> visitElementDescription: aDescription [
 	self addInputFieldUsing: aDescription
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 MAElementBuilder >> visitFileDescription: anObject [
 	self visitElementDescription: anObject
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 MAElementBuilder >> visitMagnitudeDescription: anObject [
 	self visitElementDescription: anObject
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 MAElementBuilder >> visitMemoDescription: aDescription [
 	| inputElement lineHeight |
 	self flag: 'Lots of duplication from standard inputElement creation; line height very rough based on 14 pt size - waiting on answer on Discord'.
@@ -312,42 +318,42 @@ MAElementBuilder >> visitMemoDescription: aDescription [
 	self addInputField: inputElement using: aDescription
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 MAElementBuilder >> visitMultipleOptionDescription: anObject [
 	self visitOptionDescription: anObject
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 MAElementBuilder >> visitNumberDescription: anObject [
 	self visitMagnitudeDescription: anObject
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 MAElementBuilder >> visitOptionDescription: anObject [
 	self visitReferenceDescription: anObject
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 MAElementBuilder >> visitPasswordDescription: anObject [
 	self visitStringDescription: anObject
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 MAElementBuilder >> visitPriorityContainer: anObject [
 	self visitContainer: anObject
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 MAElementBuilder >> visitReferenceDescription: anObject [
 	self visitElementDescription: anObject
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 MAElementBuilder >> visitRelationDescription: anObject [
 	self visitReferenceDescription: anObject
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 MAElementBuilder >> visitSingleOptionDescription: aDescription [
 	| inputElement |
 	inputElement := MADropdownElement new 
@@ -360,47 +366,47 @@ MAElementBuilder >> visitSingleOptionDescription: aDescription [
 	self addInputField: inputElement using: aDescription
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 MAElementBuilder >> visitStringDescription: anObject [
 	self visitElementDescription: anObject
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 MAElementBuilder >> visitSymbolDescription: anObject [
 	self visitStringDescription: anObject
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 MAElementBuilder >> visitTableDescription: anObject [
 	self visitReferenceDescription: anObject
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 MAElementBuilder >> visitTimeDescription: anObject [
 	self visitMagnitudeDescription: anObject
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 MAElementBuilder >> visitToManyRelationDescription: anObject [
 	self visitRelationDescription: anObject
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 MAElementBuilder >> visitToManyScalarRelationDescription: anObject [
 	self visitToManyRelationDescription: anObject
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 MAElementBuilder >> visitToOneRelationDescription: anObject [
 	self visitRelationDescription: anObject
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 MAElementBuilder >> visitTokenDescription: anObject [
 	self visitReferenceDescription: anObject
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 MAElementBuilder >> visitUrlDescription: anObject [
 	self visitElementDescription: anObject
 ]

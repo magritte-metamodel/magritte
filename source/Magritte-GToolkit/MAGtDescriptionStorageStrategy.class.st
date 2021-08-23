@@ -1,45 +1,45 @@
 Class {
-	#name : #MAGtDescriptionStorageStrategy,
-	#superclass : #GtStorageStrategy,
+	#name : 'MAGtDescriptionStorageStrategy',
+	#superclass : 'GtStorageStrategy',
 	#instVars : [
 		'description',
 		'object'
 	],
-	#category : #'Magritte-GToolkit-Support'
+	#category : 'Magritte-GToolkit-Support'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAGtDescriptionStorageStrategy >> description [
 	^ description
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAGtDescriptionStorageStrategy >> description: anObject [
 	description := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAGtDescriptionStorageStrategy >> object [
 	^ object
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAGtDescriptionStorageStrategy >> object: anObject [
 	object := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAGtDescriptionStorageStrategy >> read: aGtDocument [
 	^ aGtDocument text: (self description read: self object)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAGtDescriptionStorageStrategy >> rootDirectory [
 	<return: #FileReference>
 	^ FileSystem workingDirectory
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAGtDescriptionStorageStrategy >> save: aGtDocument [ 
 	self description write: aGtDocument text asString to: self object
 ]

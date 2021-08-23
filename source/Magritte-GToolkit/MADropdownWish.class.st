@@ -1,18 +1,18 @@
 Class {
-	#name : #MADropdownWish,
-	#superclass : #BrWish,
+	#name : 'MADropdownWish',
+	#superclass : 'BrWish',
 	#instVars : [
 		'selection'
 	],
-	#category : #'Magritte-GToolkit-Support'
+	#category : 'Magritte-GToolkit-Support'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MADropdownWish >> selection [
 	^ selection
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MADropdownWish >> selection: anObject [
 	selection := anObject
 ]
