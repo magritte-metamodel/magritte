@@ -1,5 +1,7 @@
-*Magritte-Pillar
-pillarFor: anObject
+Extension { #name : 'MAToOneRelationDescription' }
+
+{ #category : '*Magritte-Pillar' }
+MAToOneRelationDescription >> pillarFor: anObject [
 	| container |
 	"Implementation note: A bit hackish maybe, but renderOn: needs a parent on which to render, so we make a document and then discard it"
 	container := PRDocument new.
@@ -7,3 +9,4 @@ pillarFor: anObject
 		object: (self read: anObject);
 		renderOn: container.
 	^ container children first
+]

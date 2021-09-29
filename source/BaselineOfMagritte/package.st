@@ -1,1 +1,1 @@
-Package { #name : #BaselineOfMagritte }
+Package { #name : 'BaselineOfMagritte' }
