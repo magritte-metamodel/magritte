@@ -1,1 +1,0 @@
-I am a description of an one-to-one relationship.

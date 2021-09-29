@@ -1,0 +1,76 @@
+{
+	"__schema" : "4.1",
+	"__type" : "page",
+	"children" : {
+		"__type" : "snippets",
+		"items" : [
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2021-07-27T13:57:17.951428-04:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2021-07-27T13:57:17.951428-04:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "yL1tVoCEDQC5mQdGD3Qt2Q=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "# Hooks from Model\rThe current entry points from `Object` are:\r- `asComponent` (Seaside)\r- {{gtMethod:Object>>#asMagritteMorph}}\r- (WIP) `asMagritteSpec2Presenter` (name will be finalized when Spec2 is)\r- (WIP) `asMagritteBlElement`\r# Down the Rabbit Hole\rThese all delegate to the description with something like `self magritteDescription asXyzOn: self`. Let's take Morphic as an example. Looking at {{gtMethod:MAContainer>>#asMorphOn:|expanded=true}}\rWe see that the presenter class receives a {{gtClass:MAMemento}}, which inserts itself as a layer between the UI and the model object, and which knows both the object and its description.\r# Presenters~~/Controllers~~\rSettle on presenter term based on [this SO answer](https://stackoverflow.com/a/101561).\r## Instance Variables\rEach has access to the following, but are they needed for every element?\r- `description` - Most of the uses seem static i.e. during Morph building. A few that aren't are: file choosing, new relation creation, and the actual string reading and writing for each (which maybe could be hardcoded at build time?).\r- `memento` \r  - used again for reading and writing\r  - for `commit` and `validate`, but do these actions have meaning at the element level?\r  - for model access, but this seems to only be used by containers, where it clearly makes sense\r- `morph`, which could be generalized to `view`, and would make sense for each presenter to keep around, but is only used by containers and during building\r- `parent` is only used by {{gtMethod:MAMorphicDescription>>#root}}, which is itself unused.\r## Behavior\rThe UI controller classes all seem to implement certain methods over and over (e.g. `string`, `value`, `isReadOnly`) creating the suspicion that they might be better implemented elsewhere. Here are some requirements:\r- subclassing seems not to be a good general option because some libraries have their own subclassing requirements e.g. Seaside's `WAComponent`\r- slight variations may be needed e.g. for different change notification mechanisms.\r\rCan the visitor pattern rescue us here?! **TODO: Read up on visitor**\r## Reimagining\rThe Morphic and Seaside (i.e. Component) objects are in effect slightly divergent and extended versions of each other. Let's extract out the commonality. The hurdle that still remains though is that there can't be one common hierarchy because each framework has its own expectations. I don't see how to do this without traits...\r\rAnother issue with the controllers is that, since they hold a reference to the memento for the parent object, it's not immediately clear how to instantiate something basic for testing and example purposes. Maybe mock a memento? Pass the actual object? I think the two are polymorphic.\r"
+			}
+		]
+	},
+	"createEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"createTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2021-07-27T13:57:17.951423-04:00"
+		}
+	},
+	"editEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"editTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2021-07-27T13:57:17.951423-04:00"
+		}
+	},
+	"pageType" : {
+		"__type" : "namedPage",
+		"title" : "GUI"
+	},
+	"uid" : {
+		"__type" : "uuid",
+		"uuid" : "32df0956-8084-0d00-b991-1acb0f742dd9"
+	}
+}

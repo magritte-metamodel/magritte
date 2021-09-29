@@ -1,0 +1,76 @@
+{
+	"__schema" : "4.1",
+	"__type" : "page",
+	"children" : {
+		"__type" : "snippets",
+		"items" : [
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2021-07-27T13:57:17.958323-04:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2021-07-27T13:57:17.958323-04:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "tdhtVoCEDQC5nQOJD3Qt2Q=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "The lowest level of element reading and writing uses the description's accessor to retrieve or store the value. The main point of entry is `readUsing:`.  This hook is needed to make `Object` and all stand-ins (e.g. mementos) polymorphic. For more details, you can delve into the implementors:\r```\r#readUsing: gtImplementors\r```\r{{gtClass:MADescription}} also provides a convenience method, {{gtMethod:MADescription>>#read:}}.\r\rLayered on top of the above-described *object* reading/writing is a *string* reading/writing mechanism. This is used when you want to represent a described object as a string. The most common use case is probably for GUIs. Under the covers, the workhorses are {{gtClass:MAStringReader}} and {{gtClass:MAStringWriter}}, which in turn consult the object and its description, but typically these are not dealt with directly. {{gtClass:MADescription}} provides an API covering the common cases. Check it out:\r```\r(GtSearchMethodConditionsFilter \r\t\tcondition: [ :aMethod | #(#oString #romString) anySatisfy: [ :s | aMethod selector includesSubstring: s ] ]) & 'MADescription' gtClassMatches\r```\r\rWhile customization is possible by subclassing the reader and writer, that may seem like a heavyweight solution when you just want to alter the string representation a bit. As an example, say you have a Money object, and in different contexts you want to represent it with strings like '$15', '$15 USD', and '$15.000'. The reader/writer subclasses would quickly grow. A recent alternative has been provided: the display string mechanism. Just send {{gtMethod:MAElementDescription>>#display:}}. This will override the default behavior of the built-in reader/writer. See its comment for details about accepted arguments.\r\r"
+			}
+		]
+	},
+	"createEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"createTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2021-07-27T13:57:17.95832-04:00"
+		}
+	},
+	"editEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"editTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2021-07-27T13:57:17.95832-04:00"
+		}
+	},
+	"pageType" : {
+		"__type" : "namedPage",
+		"title" : "Reading and Writing"
+	},
+	"uid" : {
+		"__type" : "uuid",
+		"uuid" : "dc906d56-8084-0d00-b995-f3f10f742dd9"
+	}
+}

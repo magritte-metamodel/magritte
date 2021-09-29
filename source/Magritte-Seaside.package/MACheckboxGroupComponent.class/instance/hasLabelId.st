@@ -1,3 +1,0 @@
-testing
-hasLabelId
-	^ self isReadonly

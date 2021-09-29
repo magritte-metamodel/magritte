@@ -6,6 +6,13 @@ Magritte is a fully dynamic meta-description framework that helps to solve those
 
 ### Installation
   * [Pharo Smalltalk](http://www.pharo.org/):
+    * Pharo 6.x - 8.x: 
+    ```smalltalk
+    Metacello new
+      baseline: 'Magritte';
+      repository: 'github://magritte-metamodel/Magritte';
+      load
+       ```
     * Pharo 4.x: In the Configuration Browser (under [World Menu]->Tools), "Load Stable Version"
     * Previous versions: Load `ConfigurationOfMagritte3` from http://smalltalkhub.com/mc/Magritte/Magritte3/main/. 
   * [GemStone Smalltalk](http://seaside.gemstone.com/): Get the latest code from Gemstone repository at https://github.com/GsDevKit/Magritte3 .
@@ -38,7 +45,8 @@ This snippet uses V3.5.4 release version, remember to change the release version
 ### Documentation
   * [Magritte Chapter in Seaside Book](http://book.seaside.st/book/advanced/magritte)
   * [Using Magritte in Seaside](http://onsmalltalk.com/using-magritte-with-seaside)
-  * Ongoing work: [Meta data at Work with Magritte: A Tutorial](https://github.com/SquareBracketAssociates/Magritte) [pdf version](https://ci.inria.fr/pharo-contribution/view/Books/job/Magritte/lastSuccessfulBuild/artifact/book-result/MagritteBooklet.pdf)
+  * Ongoing work: [A booklet on the Magritte the Meta Data-Driven Framework](https://github.com/SquareBracketAssociates/Booklet-Magritte)
+  * [The Magritte Wiki](https://github.com/magritte-metamodel/magritte/wiki)
   
 ### Papers
   * [Magritte – Meta-Described Web Application Development](http://sdmeta.gforge.inria.fr/Teaching/Lille/0910-MetaModelisation/Magritte/Reng06a.pdf)

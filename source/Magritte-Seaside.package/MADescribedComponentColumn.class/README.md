@@ -1,1 +1,0 @@
-This column uses the component of a description to render the cell value.

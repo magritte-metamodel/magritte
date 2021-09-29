@@ -1,4 +1,0 @@
-private
-buildMorph
-		
-	^ super buildMorph.

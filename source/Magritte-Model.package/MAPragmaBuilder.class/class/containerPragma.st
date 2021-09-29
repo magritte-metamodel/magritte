@@ -1,3 +1,0 @@
-constants
-containerPragma 
-	^ #magritteContainer

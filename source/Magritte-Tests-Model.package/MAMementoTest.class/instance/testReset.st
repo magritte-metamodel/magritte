@@ -1,3 +1,0 @@
-tests-actions
-testReset
-	self subclassResponsibility

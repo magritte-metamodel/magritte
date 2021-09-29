@@ -1,3 +1,0 @@
-accessing-generated
-street
-	^ street

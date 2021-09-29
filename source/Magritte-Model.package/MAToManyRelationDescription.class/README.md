@@ -1,1 +1,0 @@
-I am a description of an one-to-many relationship, possible values are instances of ==Collection==.
