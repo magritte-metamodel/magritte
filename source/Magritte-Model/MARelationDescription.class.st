@@ -49,11 +49,6 @@ MARelationDescription class >> defaultClasses [
 	^ Set new
 ]
 
-{ #category : #'accessing-defaults' }
-MARelationDescription class >> defaultReference [
-	^ nil
-]
-
 { #category : #visiting }
 MARelationDescription >> acceptMagritte: aVisitor [
 	aVisitor visitRelationDescription: self

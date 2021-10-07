@@ -86,7 +86,7 @@ MAElementRow >> initialize [
 		cellInset: self cellInset;
 		layoutInset: 0@2.
 	self
-		addMorphBack: (container magritteDescription toString: object) asMorph;
+		addMorphBack: (container magritteDescription reference toString: object) asMorph;
 		addMorphBack: self buildCommands
 ]
 
