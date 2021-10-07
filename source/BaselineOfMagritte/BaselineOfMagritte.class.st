@@ -1,10 +1,10 @@
 Class {
-	#name : 'BaselineOfMagritte',
-	#superclass : 'BaselineOf',
-	#category : 'BaselineOfMagritte'
+	#name : #BaselineOfMagritte,
+	#superclass : #BaselineOf,
+	#category : #BaselineOfMagritte
 }
 
-{ #category : 'baselines' }
+{ #category : #baselines }
 BaselineOfMagritte >> baseline300ForGemStone: spec [
 	spec
 		for: #gemstone
@@ -29,7 +29,7 @@ BaselineOfMagritte >> baseline300ForGemStone: spec [
 				package: 'Magritte-GemStone-Seaside' with: [ spec requires: #('Magritte-Seaside') ] ]
 ]
 
-{ #category : 'baselines' }
+{ #category : #baselines }
 BaselineOfMagritte >> baseline310CommonExtDeps: spec [
 	"Common external dependencies for baseline 3.1.0"
 	
@@ -43,7 +43,7 @@ BaselineOfMagritte >> baseline310CommonExtDeps: spec [
 
 ]
 
-{ #category : 'baselines' }
+{ #category : #baselines }
 BaselineOfMagritte >> baseline330ForPharo: spec [
 	spec for: #squeakCommon do: [ 
 		spec
@@ -88,7 +88,7 @@ BaselineOfMagritte >> baseline330ForPharo: spec [
 		spec group: 'default' with: 'Magritte-GToolkit' ]
 ]
 
-{ #category : 'baselines' }
+{ #category : #baselines }
 BaselineOfMagritte >> baseline: spec [
 	<baseline>
 	spec
@@ -105,6 +105,7 @@ BaselineOfMagritte >> baseline: spec [
 						includes: #('Magritte-Deprecated3dot7') ];
 				package: 'Magritte-Deprecated3dot7' with: [ spec requires: #('Magritte-Model' 'Magritte-Morph') ];
 				package: 'Magritte-Tests-Model' with: [ spec requires: #('Magritte-Model') ];
+				package: 'Magritte-Tests-Files-Model' with: [ spec requires: #('Grease' 'Magritte-Tests-Model') ];
 				package: 'Magritte-Seaside' with: [ spec requires: #('Magritte-Model' 'Seaside3') ];
 				package: 'Magritte-Bootstrap' with: [ spec requires: #('Magritte-Model') ];
 				package: 'Magritte-Deprecated' with: [ spec requires: #('Magritte-Model') ];
@@ -112,21 +113,21 @@ BaselineOfMagritte >> baseline: spec [
 				package: 'Magritte-Money' with: [ spec requires: #('Magritte-Model') ].
 			spec
 				group: 'Core' with: #('Magritte-Model');
-				group: 'Tests' with: #('Magritte-Tests-Model');
+				group: 'Tests' with: #('Magritte-Tests-Files-Model');
 				group: 'Seaside' with: #('Magritte-Seaside');
 				group: 'Deprecated' with: #('Magritte-Deprecated') ].
 	self baseline330ForPharo: spec.
 	self baseline300ForGemStone: spec
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 BaselineOfMagritte >> customProjectAttributes [
 	^ self isGTImage
 			ifFalse: [ #(notGToolkit) ]
 			ifTrue: [ #(GToolkit) ]
 ]
 
-{ #category : 'testing' }
+{ #category : #testing }
 BaselineOfMagritte >> isGTImage [
 	^ RPackageOrganizer default packageNames anySatisfy: [ :pn | pn beginsWith: 'GToolkit-' ]
 ]
