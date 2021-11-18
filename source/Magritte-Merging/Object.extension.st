@@ -15,9 +15,8 @@ Object >> patchRelativeToBase: baseName [
 	operations := relevantFields collect: [ :desc | desc patch: self relativeTo: baseName ].
 	relevantOperations := operations select: #isNotNil.
 	^ MAPatchMacro new
-			model: self;
-			operations: relevantOperations;
-			yourself
+		operations: relevantOperations;
+		yourself
 ]
 
 { #category : #'*Magritte-Merging' }
