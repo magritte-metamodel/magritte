@@ -1,6 +1,6 @@
 Class {
-	#name : 'MADropdownElement',
-	#superclass : 'BrButton',
+	#name : #MADropdownElement,
+	#superclass : #BrButton,
 	#instVars : [
 		'items',
 		'selection',
@@ -9,7 +9,7 @@ Class {
 	#category : 'Magritte-GToolkit-Widgets'
 }
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MADropdownElement class >> example [
 	<gtExample>
 	^ self new
@@ -17,7 +17,7 @@ MADropdownElement class >> example [
 		yourself.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MADropdownElement class >> exampleSelection [
 	<gtExample>
 	| result |
@@ -26,7 +26,7 @@ MADropdownElement class >> exampleSelection [
 	^ result
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MADropdownElement >> handleSelection: anElement [
 	| selItem |
 	"Must check self and parent(s) because target can be label or its text"
@@ -38,7 +38,7 @@ MADropdownElement >> handleSelection: anElement [
 	anElement fireEvent: BrDropdownHideWish new
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MADropdownElement >> initialize [
 	super initialize.
 	self initializeToggleButton: self.
@@ -55,7 +55,7 @@ MADropdownElement >> initialize [
 		yourself
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MADropdownElement >> initializeToggleButton: aButton [
 	^ aButton
 		label: '';
@@ -75,27 +75,27 @@ MADropdownElement >> initializeToggleButton: aButton [
 		yourself
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MADropdownElement >> itemDescription [
 	^ itemDescription
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MADropdownElement >> itemDescription: anObject [
 	itemDescription := anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MADropdownElement >> items [
 	^ items ifNil: [ items := OrderedCollection new ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MADropdownElement >> items: aCollection [
 	items := aCollection
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MADropdownElement >> popupList [
 	"Adapted from BrDropdownExamples>>#popupList"
 
@@ -130,24 +130,24 @@ MADropdownElement >> popupList [
 		yourself
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MADropdownElement >> selection [
 	^ selection
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MADropdownElement >> selection: anObject [
 	selection := anObject.
 	self label: self selectionString.
 	self dispatchEvent: (MADropdownWish new selection: self selection)
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MADropdownElement >> selectionString [
 	^ self itemDescription toString: self selection
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MADropdownElement >> text [
 	"This is to show the initial value in the container UI"
 	^ self selectionString

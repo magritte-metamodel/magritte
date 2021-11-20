@@ -1,6 +1,6 @@
-Extension { #name : 'GtDocumenter' }
+Extension { #name : #GtDocumenter }
 
-{ #category : '*Magritte-GToolkit' }
+{ #category : #'*Magritte-GToolkit' }
 GtDocumenter class >> maFor: anObject using: aDescription [
 	| result |
 	result := self new.
