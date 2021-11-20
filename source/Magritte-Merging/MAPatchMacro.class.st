@@ -79,9 +79,16 @@ MAPatchMacro >> execute [
 { #category : #accessing }
 MAPatchMacro >> gtElementViewFor: aView [
 	<gtView>
-	^ aView explicit 
+	^ aView explicit
+		title: 'Element';
 		priority: 25;
-		stencil: [ self asElement ]
+		stencil: [ 
+			BlScrollableElement new 
+				constraintsDo: [ :c |
+					c horizontal matchParent.
+					c vertical matchParent ];
+				addChild: self asElement;
+				yourself ]
 ]
 
 { #category : #accessing }

@@ -111,7 +111,16 @@ MAPatchOperation >> field: anObject [
 { #category : #accessing }
 MAPatchOperation >> gtElementViewFor: aView [
 	<gtView>
-	^ aView explicit stencil: [ self asElement ]
+	^ aView explicit
+		title: 'Element';
+		priority: 25;
+		stencil: [ 
+			BlScrollableElement new 
+				constraintsDo: [ :c |
+					c horizontal matchParent.
+					c vertical matchParent ];
+				addChild: self asElement;
+				yourself ]
 ]
 
 { #category : #comparing }

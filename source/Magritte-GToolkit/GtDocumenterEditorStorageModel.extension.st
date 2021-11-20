@@ -1,6 +1,6 @@
-Extension { #name : 'GtDocumenterEditorStorageModel' }
+Extension { #name : #GtDocumenterEditorStorageModel }
 
-{ #category : '*Magritte-GToolkit' }
+{ #category : #'*Magritte-GToolkit' }
 GtDocumenterEditorStorageModel >> maFor: anObject using: aDescription [ 
 	| s |
 	s := MAGtDescriptionStorageStrategy new
