@@ -16,7 +16,7 @@ Class {
 		'buttonSelectors',
 		'objectDescription'
 	],
-	#category : 'Magritte-GToolkit'
+	#category : #'Magritte-GToolkit'
 }
 
 { #category : #'as yet unclassified' }
@@ -76,10 +76,8 @@ MAElementBuilder >> addInputFieldUsing: aDescription [
 	| inputElement |
 	inputElement := BrEditableLabel new
 		aptitude: BrGlamorousEditableLabelAptitude new glamorousRegularFontAndSize;
-		constraintsDo: [ :c | 
-			c vertical fitContent.
-			c horizontal matchParent.
-			c grid vertical alignCenter ];
+		vFitContent;
+		hMatchParent;
 		when: BrEditorAcceptWish
 			do: [ :aWish | aDescription writeFromString: aWish text greaseString to: self memento ];
 		text: (self textUsing: aDescription).
@@ -300,22 +298,27 @@ MAElementBuilder >> visitMagnitudeDescription: anObject [
 
 { #category : #'visiting-description' }
 MAElementBuilder >> visitMemoDescription: aDescription [
-	| inputElement lineHeight |
+	| inputElement lineHeight resizableElement |
 	self flag: 'Lots of duplication from standard inputElement creation; line height very rough based on 14 pt size - waiting on answer on Discord'.
 	lineHeight := 14 * 1.5.
 	inputElement := BrEditor new
 		beEditable;
 		text: (self textUsing: aDescription);
 		aptitude: BrGlamorousEditorAptitude new glamorousRegularFontAndSize;
-		"vFitContent;"
-		vExact: lineHeight * aDescription lineCount;
-		constraintsDo: [ :c | 
-			c horizontal matchParent.
-			c grid vertical alignCenter ].
+		vMatchParent;
+		hMatchParent.
 	inputElement editor when: BrTextEditorModifiedEvent
 			do: [ :event | aDescription writeFromString: event text greaseString to: self memento ].
+			
+	resizableElement := BlElement new
+		aptitude: BrGlamorousWithVerticalResizerAptitude;
+		constraintsDo: [ :c | 
+			c horizontal matchParent.
+			c vertical exact: lineHeight * aDescription lineCount ];
+		addChild: inputElement;
+		yourself.
 	
-	self addInputField: inputElement using: aDescription
+	self addInputField: resizableElement using: aDescription
 ]
 
 { #category : #'visiting-description' }
