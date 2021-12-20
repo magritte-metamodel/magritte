@@ -1,0 +1,150 @@
+{
+	"__schema" : "4.1",
+	"__type" : "page",
+	"children" : {
+		"__type" : "snippets",
+		"items" : [
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2021-12-20T14:32:12.973694-05:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2021-12-20T14:32:13.933146-05:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "a9KUrvqPDQCT1TkzDdyZPw=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "# Actions"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2021-12-20T14:42:57.174667-05:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2021-12-20T14:49:55.104036-05:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "fE4b1fqPDQCT289dDdyZPw=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "The default way to specify an object action in GT is to create a method that takes a builder as an argument and is annotated with the `gtAction` pragma. One example is {{gtMethod:Object>>#gtActionSearchFor:}}. \n\nWe provide a message analogous to the pragma, {{gtMethod:MAActionDescription>>#gtAction:}} in which you can write essentially the same code, and  will be added to the other GT actions.\n\nNB. GT's actions are collected in {{gtMethod:ProtoObject>>#gtActions}}. To avoid an override, we hook in one level up in  {{gtMethod:Object>>#gtActions}}. Therefore, Magritte GT actions will not show up in ProtoObject or its subclasses/instances."
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2021-12-20T14:45:48.219058-05:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2021-12-20T14:46:22.888425-05:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "djxN3/qPDQCT3AhaDdyZPw=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "# Documenter\n\n**NB. Documenter is no longer part of GT and this functionality will be replaced by a Lepiter-based solution**\n\nSimilar to {{gtClass:GtDocumenter}}'s built-in ability to store documents in class comments via {{gtMethod:GtDocument class>>#forClass:}}, you can view and edit fields described by {{gtClass:MAStringDescription}}. For example: ==GtDocument maFor: recipe using: self noteDescription.=\r"
+			}
+		]
+	},
+	"createEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"createTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2021-07-27T13:57:17.946354-04:00"
+		}
+	},
+	"editEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"editTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2021-07-27T13:57:17.946354-04:00"
+		}
+	},
+	"pageType" : {
+		"__type" : "namedPage",
+		"title" : "GToolkit Integration"
+	},
+	"uid" : {
+		"__type" : "uuid",
+		"uuid" : "25510856-8084-0d00-b990-29850f742dd9"
+	}
+}
