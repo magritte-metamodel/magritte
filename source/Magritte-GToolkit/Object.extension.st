@@ -50,5 +50,5 @@ Object >> magritteElementBuilder [
 
 { #category : #'*Magritte-GToolkit' }
 Object >> magritteGToolkitActions [
-	^ self magritteActions children collect: [ :desc | desc gtActionFor: self ].
+	^ self magritteActions children collect: [ :desc | desc gtActionOf: self ].
 ]

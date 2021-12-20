@@ -2,34 +2,30 @@ Extension { #name : #MAActionDescription }
 
 { #category : #'*Magritte-GToolkit' }
 MAActionDescription >> gtAction: aValuable [
-	"aValuable - optional arguments are the button and this description"
+	"aValuable - optional arguments:
+		- aGtPhlowNoAction (same as the argument to a standard GT action method)
+		- this description
+		- NB. the receiver is *not* passed as an argument, because it should be available in the description creation method"
 
 	^ self propertyAt: #gtAction put: aValuable
 ]
 
 { #category : #'*Magritte-GToolkit' }
-MAActionDescription >> gtActionFor: anObject [
-	| result tooltip |
-	result := GtPhlowNoAction new button.
+MAActionDescription >> gtActionOf: anObject [
 	
-	result action: [ :button |
-		self
-			propertyAt: #gtAction
-			ifPresent: [ :valuable | 
-				valuable cull: button cull: self ]
-			ifAbsent: [ self performOn: anObject ] ].
-	self
-		propertyAt: #gtIcon
-		ifPresent: [ :i | 
-			result icon: i value.
-			tooltip := self label, ': ', self comment ]
+	^ self
+		propertyAt: #gtAction
+		ifPresent: [ :valuable | 
+			valuable cull: GtPhlowAction noAction cull: self ]
 		ifAbsent: [ 
-			result label: self label.
-			tooltip := self comment ].
-	
-	tooltip ifNotEmpty: [ result tooltip: tooltip ].
-	
-	^ result
+			| button |
+			button := GtPhlowAction noAction button.
+			self comment ifNotEmpty: [ :tt | button tooltip: tt ].
+			self icon ifNotNil: [ :icn | button icon: icn ].
+			button
+				action: [ self performOn: anObject ];
+				label: self label;
+				yourself ].
 ]
 
 { #category : #'*Magritte-GToolkit' }
