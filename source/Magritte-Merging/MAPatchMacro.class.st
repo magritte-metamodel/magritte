@@ -35,11 +35,6 @@ MAPatchMacro >> addOperationFor: modelObject set: aDescription to: valueObject [
 ]
 
 { #category : #accessing }
-MAPatchMacro >> asElement [
-	^ MAPatchMacroElement on: self
-]
-
-{ #category : #accessing }
 MAPatchMacro >> children [
 	^ self operations
 ]
@@ -82,13 +77,7 @@ MAPatchMacro >> gtElementViewFor: aView [
 	^ aView explicit
 		title: 'Element';
 		priority: 25;
-		stencil: [ 
-			BlScrollableElement new 
-				constraintsDo: [ :c |
-					c horizontal matchParent.
-					c vertical matchParent ];
-				addChild: self asElement;
-				yourself ]
+		stencil: [ self asElement asScrollableElement ]
 ]
 
 { #category : #accessing }
