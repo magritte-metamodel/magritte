@@ -82,11 +82,12 @@ BaselineOfMagritte >> baseline330ForPharo: spec [
 		
 	spec for: #GToolkit do: [ 
 		spec 
-			package: 'Magritte-Developer' with: [ spec includes: #('Magritte-GToolkit');
+			package: 'Magritte-Developer' with: [ spec includes: #('Magritte-GToolkit') ];
 			package: 'Magritte-GToolkit' with: [ spec requires: #('Magritte-Model' 'Magritte-UI') ];
-			package: 'Magritte-Merging' with: [ spec includes: #('Magritte-Merging-Bloc') ];
-			package: 'Magritte-UI' with: [ spec requires: #('Magritte-Model') ] ].
-		spec group: 'default' with: 'Magritte-GToolkit' ]
+			package: 'Magritte-Merging';
+			package: 'Magritte-Merging-Bloc' with: [ spec requires: #('Magritte-Merging') ];
+			package: 'Magritte-UI' with: [ spec requires: #('Magritte-Model') ].
+		spec group: 'default' with: #(#'Magritte-GToolkit') ]
 ]
 
 { #category : #baselines }
