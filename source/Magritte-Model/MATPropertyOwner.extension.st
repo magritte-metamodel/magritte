@@ -1,7 +1,7 @@
-Extension { #name : #MAObject }
+Extension { #name : #MATPropertyOwner }
 
 { #category : #'*Magritte-Model' }
-MAObject >> maLazyPropertyUsing: description [
+MATPropertyOwner >> maLazyPropertyUsing: description [
 	"Return the current value of a field as specified by its description. See #lazilyInitializeFrom:for: comment for more info.
 		- NB: Only works with a selector accessor with matching property e.g. (readSelector = property = #myField). It could be extended to other cases if the need arises."
 
