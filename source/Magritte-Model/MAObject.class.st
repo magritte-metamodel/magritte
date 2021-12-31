@@ -4,9 +4,8 @@ I provide functionality available to all Magritte objects. I implement a diction
 Class {
 	#name : #MAObject,
 	#superclass : #MABasicObject,
-	#instVars : [
-		'properties'
-	],
+	#traits : 'MATPropertyOwner',
+	#classTraits : 'MATPropertyOwner classTrait',
 	#category : #'Magritte-Model-Core'
 }
 
@@ -49,31 +48,6 @@ MAObject >> = anObject [
 MAObject >> acceptMagritte: aVisitor [
 ]
 
-{ #category : #private }
-MAObject >> errorPropertyNotFound: aSelector [ 
-	MAPropertyError signal: 'Property ' , aSelector , ' not found.'
-]
-
-{ #category : #accessing }
-MAObject >> gtViewPropertiesOn: aView [
-	<gtView>
-	^ aView columnedList
-		title: 'Properties' translated;
-		priority: 75;
-		items: [ self properties associations ];
-		column: 'Name' 
-			text: [ :a | a key ]
-			width: 75;
-		column: 'Value' text: [ :a | a value ]
-]
-
-{ #category : #testing }
-MAObject >> hasProperty: aKey [
-	"Test if the property ==aKey== is defined within the receiver."
-
-	^ self properties includesKey: aKey
-]
-
 { #category : #comparing }
 MAObject >> hash [
 	"Answer a SmallInteger whose value is related to the receiver's identity. Also redefine the message ==#= == when redefining this message."
@@ -81,68 +55,10 @@ MAObject >> hash [
 	^ self species hash
 ]
 
-{ #category : #'*Magritte-Model' }
-MAObject >> maLazyPropertyUsing: description [
-	"Return the current value of a field as specified by its description. See #lazilyInitializeFrom:for: comment for more info.
-		- NB: Only works with a selector accessor with matching property e.g. (readSelector = property = #myField). It could be extended to other cases if the need arises."
-
-	| currentValue |
-	currentValue := self propertyAt: description accessor readSelector ifAbsent: [ nil ].
-	^ description lazilyInitializeFrom: currentValue for: self.
-]
-
 { #category : #copying }
 MAObject >> postCopy [
 	"This method is called whenever a shallow copy of the receiver is made. Redefine this method in subclasses to copy other fields as necessary. Never forget to call super, else class invariants might be violated."
 
 	super postCopy.
-	properties := properties copy
-]
-
-{ #category : #accessing }
-MAObject >> properties [
-	"Answer the property dictionary of the receiver."
-
-	^ properties ifNil: [ properties := Dictionary new ]
-]
-
-{ #category : #accessing }
-MAObject >> propertyAt: aKey [
-	"Answer the value of the property ==aKey==, raises an error if the property doesn't exist."
-
-	^ self propertyAt: aKey ifAbsent: [ self errorPropertyNotFound: aKey ]
-]
-
-{ #category : #accessing }
-MAObject >> propertyAt: aKey ifAbsent: aBlock [
-	"Answer the value of the property ==aKey==, or the result of ==aBlock== if the property doesn't exist."
-
-	^ self properties at: aKey ifAbsent: aBlock
-]
-
-{ #category : #accessing }
-MAObject >> propertyAt: aKey ifAbsentPut: aBlock [
-	"Answer the value of the property ==aKey==, or if the property doesn't exist adds and answers the result of evaluating ==aBlock==."
-
-	^ self properties at: aKey ifAbsentPut: aBlock
-]
-
-{ #category : #accessing }
-MAObject >> propertyAt: aKey ifPresent: aBlock [
-	"Lookup the property ==aKey==, if it is present, answer the value of evaluating ==aBlock== block with the value. Otherwise, answer ==nil==."
-
-	^ self properties at: aKey ifPresent: aBlock
-]
-
-{ #category : #accessing }
-MAObject >> propertyAt: aKey ifPresent: oneArgBlock ifAbsent: absentBlock [
-	"Lookup ==aKey==, if it is present, answer the value of evaluating the oneArgBlock with the value associated with the key, otherwise answer the value of absentBlock."
-	^ self properties at: aKey ifPresent: oneArgBlock ifAbsent: absentBlock
-]
-
-{ #category : #accessing }
-MAObject >> propertyAt: aKey put: aValue [
-	"Adds or replaces the property ==aKey== with ==aValue==."
-
-	^ self properties at: aKey put: aValue
+	self postCopyProperties
 ]
