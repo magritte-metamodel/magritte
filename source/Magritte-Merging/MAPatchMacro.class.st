@@ -81,6 +81,11 @@ MAPatchMacro >> gtElementViewFor: aView [
 ]
 
 { #category : #accessing }
+MAPatchMacro >> isEmptyOrNil [
+	^ self operations isEmpty
+]
+
+{ #category : #accessing }
 MAPatchMacro >> operations [
 	^ self maLazyInstVarUsing: self descriptionOperations
 ]
@@ -104,7 +109,7 @@ MAPatchMacro >> printOn: aStream [
 
 { #category : #accessing }
 MAPatchMacro >> receivers [
-	^ self operations collect: #receiver as: Set
+	^ self operations collect: #receivers as: Set
 ]
 
 { #category : #execution }

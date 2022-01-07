@@ -88,6 +88,11 @@ MAPatchOperation >> hash [
 ]
 
 { #category : #accessing }
+MAPatchOperation >> isEmptyOrNil [
+	^ false
+]
+
+{ #category : #accessing }
 MAPatchOperation >> isEnabled [
 	^ isEnabled ifNil: [ true ]
 ]
@@ -150,7 +155,17 @@ MAPatchOperation >> receiver: anObject [
 	self cacheOldValue
 ]
 
+{ #category : #'macro compatibility' }
+MAPatchOperation >> receivers [
+	^ { self receiver }
+]
+
 { #category : #execution }
 MAPatchOperation >> undo [
 	self field accessor write: oldValue to: receiver
+]
+
+{ #category : #accessing }
+MAPatchOperation >> valuePatch [
+	^ self newValue patchRelativeToBase: self oldValue
 ]

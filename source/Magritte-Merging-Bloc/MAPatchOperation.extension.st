@@ -15,7 +15,9 @@ MAPatchOperation >> asElement [
 		addChild:
 			(BrLabel new
 				aptitude: BrGlamorousLabelAptitude;
-				text: (self field label , ':') asRopedText);
+				text: (self field label , ':') asRopedText;
+				addEventHandlerOn: BlClickEvent
+					do: [ :evt | evt target phlow spawnObject: self ]);
 		addChild:
 			(BrLabel new
 				aptitude: BrGlamorousLabelAptitude;
