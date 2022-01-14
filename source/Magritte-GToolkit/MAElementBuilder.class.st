@@ -73,14 +73,9 @@ MAElementBuilder >> addInputField: inputElement using: aDescription [
 
 { #category : #accessing }
 MAElementBuilder >> addInputFieldUsing: aDescription [
+
 	| inputElement |
-	inputElement := BrEditableLabel new
-		aptitude: BrGlamorousEditableLabelAptitude new glamorousRegularFontAndSize;
-		vFitContent;
-		hMatchParent;
-		when: BrEditorAcceptWish
-			do: [ :aWish | aDescription writeFromString: aWish text greaseString to: self memento ];
-		text: (self textUsing: aDescription).
+	inputElement := self newInputElementUsing: aDescription.
 	self addInputField: inputElement using: aDescription
 ]
 
@@ -153,6 +148,21 @@ MAElementBuilder >> hasButtons [
 { #category : #accessing }
 MAElementBuilder >> memento [
 	^ self presenter memento
+]
+
+{ #category : #accessing }
+MAElementBuilder >> newInputElementUsing: aDescription [
+
+	^ BrEditableLabel new
+		  aptitude:
+			  BrGlamorousEditableLabelAptitude new glamorousRegularFontAndSize;
+		  vFitContent;
+		  hMatchParent;
+		  when: BrEditorAcceptWish do: [ :aWish | 
+		  	aDescription
+				  writeFromString: aWish text greaseString
+				  to: self memento ];
+		  text: (self textUsing: aDescription)
 ]
 
 { #category : #accessing }
@@ -262,8 +272,46 @@ MAElementBuilder >> visitDateAndTimeDescription: anObject [
 ]
 
 { #category : #'visiting-description' }
-MAElementBuilder >> visitDateDescription: anObject [
-	self visitMagnitudeDescription: anObject
+MAElementBuilder >> visitDateDescription: aDescription [
+	| inputElement editor calendarButton |
+	editor := self newInputElementUsing: aDescription.
+	
+	"Adapted from GtSpotterDropdownButtonStencil>>#create"
+	calendarButton := BrButton new
+		icon: BrGlamorousVectorIcons note;
+		label: 'Pick from calendar';
+		aptitude: BrGlamorousButtonWithIconAptitude;
+		addAptitude: (BrGlamorousWithDropdownAptitude
+			handle: [ BrButton new
+				icon: BrGlamorousVectorIcons note;
+				aptitude:
+					BrGlamorousButtonWithIconAptitude
+						- BrGlamorousButtonWithLabelTooltipAptitude
+						- BrGlamorousButtonExteriorAptitude ]
+				content: [ 
+					| calendar date |
+					date := [ editor text asString asDate ] 
+						on: Error 
+						do: [ Date today ].
+					calendar := GtCalendarElement forDate: date.
+					calendar
+						when: GtCalendarDateClickedEvent
+						do: [ :event | 
+							"calendar date: event date. Redundant because a new calendar will be created on next button click"
+							editor 
+								beEditable;
+								text: event date mmddyyyy; 
+								acceptEdition.
+							calendar fireEvent: BrDropdownHideWish new ] ]);
+				yourself.
+	inputElement := BrHorizontalPane new
+		fitContent;
+		cellSpacing: 5;
+		addChild: editor;
+		addChild: calendarButton;
+		yourself.
+	
+	self addInputField: inputElement using: aDescription
 ]
 
 { #category : #'visiting-description' }
