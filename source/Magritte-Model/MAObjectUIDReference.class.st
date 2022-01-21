@@ -20,6 +20,16 @@ Class {
 }
 
 { #category : #accessing }
+MAObjectUIDReference >> = rhs [
+	^ self uid = rhs uid
+]
+
+{ #category : #accessing }
+MAObjectUIDReference >> hash [
+	^ self uid hash
+]
+
+{ #category : #accessing }
 MAObjectUIDReference >> object [
 	self subclassResponsibility
 ]
