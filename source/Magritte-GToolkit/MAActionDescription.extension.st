@@ -12,19 +12,22 @@ MAActionDescription >> gtAction: aValuable [
 
 { #category : #'*Magritte-GToolkit' }
 MAActionDescription >> gtActionOf: anObject [
+
+	(self enableBlock cull: anObject) ifFalse: [ ^ GtPhlowAction noAction ].
 	
 	^ self
 		propertyAt: #gtAction
 		ifPresent: [ :valuable | 
 			valuable cull: GtPhlowAction noAction cull: self ]
 		ifAbsent: [ 
-			| button |
+			| button icn |
 			button := GtPhlowAction noAction button.
 			self comment ifNotEmpty: [ :tt | button tooltip: tt ].
-			self icon ifNotNil: [ :icn | button icon: icn ].
+			icn := self gtIcon ifNil: [ self icon ].
+			icn ifNotNil: [ :i | button icon: i ].
+			self isLabelVisible ifTrue: [ button label: self label ].
 			button
 				action: [ self performOn: anObject ];
-				label: self label;
 				yourself ].
 ]
 
