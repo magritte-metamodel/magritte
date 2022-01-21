@@ -6,6 +6,14 @@ Trait {
 	#category : #'Magritte-Model-Core'
 }
 
+{ #category : #uuids }
+MATPropertyOwner >> ensureUUID [
+	"See #uuid comment"
+	 ^ self 
+	 	propertyAt: #uuid
+	 	ifAbsentPut: [ UUIDGenerator next ]
+]
+
 { #category : #private }
 MATPropertyOwner >> errorPropertyNotFound: aSelector [ 
 	MAPropertyError signal: 'Property ' , aSelector , ' not found.'
@@ -94,4 +102,11 @@ MATPropertyOwner >> propertyAt: aKey put: aValue [
 	"Adds or replaces the property ==aKey== with ==aValue==."
 
 	^ self properties at: aKey put: aValue
+]
+
+{ #category : #uuids }
+MATPropertyOwner >> uuid [
+	
+	 ^ self propertyAt: #uuid ifAbsent: [ nil ]
+	"It is a stretch to place this in MATPropertyOwner, but it's only two methods, so in the interest of simplicity we'll put it here until someone complains"
 ]
