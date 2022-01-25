@@ -21,6 +21,7 @@ Class {
 
 { #category : #accessing }
 MAObjectUIDReference >> = rhs [
+	self species = rhs species ifFalse: [ ^ false ].
 	^ self uid = rhs uid
 ]
 
