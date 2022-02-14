@@ -31,3 +31,9 @@ MAFileDescription class >> label [
 MAFileDescription >> acceptMagritte: aVisitor [
 	aVisitor visitFileDescription: self
 ]
+
+{ #category : #accessing }
+MAFileDescription >> pharoFileReferenceFor: aFileModel [
+
+	^ aFileModel filename asFileReference
+]
