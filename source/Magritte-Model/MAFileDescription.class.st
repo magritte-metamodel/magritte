@@ -33,7 +33,7 @@ MAFileDescription >> acceptMagritte: aVisitor [
 ]
 
 { #category : #accessing }
-MAFileDescription >> pharoFileReferenceFor: aFileModel [
+MAFileDescription >> pharoFileReferenceFor: aValue [
 
-	^ aFileModel filename asFileReference
+	^ aValue asFileReference
 ]
