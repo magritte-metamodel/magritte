@@ -80,6 +80,10 @@ BaselineOfMagritte >> baseline330ForPharo: spec [
 		" create a temporary alias "
 		spec package: 'Magritte-Pharo-Model' with: 'Magritte-Pharo3-Model' ].
 		
+	spec for: #notGToolkit do: [ 
+		spec package: 'Magritte-Pharo7-PlainPharo'.
+		spec package: 'Magritte-Model' with: [ spec requires: #('Magritte-Pharo7-PlainPharo') ] ].
+		
 	spec for: #GToolkit do: [ 
 		spec 
 			package: 'Magritte-Developer' with: [ spec includes: #('Magritte-GToolkit') ];
