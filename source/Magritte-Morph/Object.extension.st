@@ -23,5 +23,5 @@ Object >> maEditAnswering: aBlock [
 
 { #category : #'*Magritte-Morph' }
 Object >> magritteActionButtons [
-	^ self magritteActions children collect: [ :e | e buttonOn: self ].
+	^ self magritteActions collect: [ :e | e buttonOn: self ].
 ]
