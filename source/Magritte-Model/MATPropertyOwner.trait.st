@@ -22,7 +22,8 @@ MATPropertyOwner >> gtViewPropertiesOn: aView [
 			text: [ :a | a key ]
 			width: 75;
 		column: 'Value' text: [ :a | a value ];
-		send: [ :e | e value ]
+		send: [ :e | e value ];
+		actionUpdateButton
 ]
 
 { #category : #testing }
