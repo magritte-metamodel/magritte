@@ -34,6 +34,7 @@ BaselineOfMagritte >> baseline310CommonExtDeps: spec [
 	"Common external dependencies for baseline 3.1.0"
 	
 	spec
+		baseline: 'Grease' with: [ spec repository: 'github://SeasideSt/Grease:v1.9.0/repository' ];	
 		baseline: 'Seaside3'
 			with: [ "note: we do not want to depend on Zinc, since this is not present in Squeak. Currently no adapter is loaded"
 			spec
@@ -52,7 +53,6 @@ BaselineOfMagritte >> baseline330ForPharo: spec [
 			
 	spec for: #(#'pharo10.x') do: [ 
 		spec 
-			baseline: 'Grease' with: [ spec repository: 'github://SeasideSt/Grease:v1.9.0/repository' ];			
 			baseline: 'PharoEnhancements' with: [ spec repository: 'github://seandenigris/Pharo-Enhancements' ].
 		spec
 			" create a temporary alias "
@@ -66,7 +66,6 @@ BaselineOfMagritte >> baseline330ForPharo: spec [
 	
 	spec for: #(#'pharo7.x' #'pharo8.x' #'pharo9.x') do: [ 
 		spec
-			baseline: 'Grease' with: [ spec repository: 'github://SeasideSt/Grease:v1.8.x/repository' ];		
 			baseline: 'PharoEnhancements' with: [ spec repository: 'github://seandenigris/Pharo-Enhancements' ].
 		spec
 			" create a temporary alias "
@@ -92,7 +91,7 @@ BaselineOfMagritte >> baseline330ForPharo: spec [
 ]
 
 { #category : #baselines }
-BaselineOfMagritte >> baseline330ForSqueak: spec [
+BaselineOfMagritte >> baseline330ForSqueakCommon: spec [
 
 	spec for: #squeakCommon do: [ 
 		spec
@@ -139,7 +138,7 @@ BaselineOfMagritte >> baseline: spec [
 				group: 'Seaside' with: #('Magritte-Seaside');
 				group: 'Deprecated' with: #('Magritte-Deprecated') ].
 	self baseline330ForPharo: spec.
-	self baseline330ForSqueak: spec.
+	self baseline330ForSqueakCommon: spec.
 	self baseline300ForGemStone: spec
 ]
 
