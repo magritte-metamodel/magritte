@@ -34,7 +34,7 @@ BaselineOfMagritte >> baseline310CommonExtDeps: spec [
 	"Common external dependencies for baseline 3.1.0"
 	
 	spec
-		baseline: 'Grease' with: [ spec repository: 'github://SeasideSt/Grease:v1.7.x/repository' ];
+		baseline: 'Grease' with: [ spec repository: 'github://SeasideSt/Grease:v1.9.0/repository' ];	
 		baseline: 'Seaside3'
 			with: [ "note: we do not want to depend on Zinc, since this is not present in Squeak. Currently no adapter is loaded"
 			spec
@@ -45,32 +45,32 @@ BaselineOfMagritte >> baseline310CommonExtDeps: spec [
 
 { #category : #baselines }
 BaselineOfMagritte >> baseline330ForPharo: spec [
-	spec for: #squeakCommon do: [ 
-		spec
-			package: 'Magritte-Model' with: [ spec includes: #('Magritte-Pharo-Model') ];
-			package: 'Magritte-Tests-Model' with: [ spec includes: #('Magritte-Tests-Pharo-Model') ];
-			package: 'Magritte-Pharo-Model' with: [ spec requires: #('Magritte-Model') ];
-			package: 'Magritte-Tests-Pharo-Model' with: [ spec requires: #('Magritte-Pharo-Model') ];
-			package: 'Magritte-Seaside' with: [ spec includes: #('Magritte-Pharo-Seaside') ];				
-			package: 'Magritte-Pharo-Seaside' with: [ spec requires: #('Magritte-Seaside') ];
-			package: 'Magritte-Morph' with: [ spec requires: #('Magritte-Model') ];
-			package: 'Magritte-Pharo-Tools' with: [ spec requires: #('Magritte-Deprecated') ].
-		spec
-			group: 'Tools' with: #('Magritte-Pharo-Tools');
-			group: 'default' with: #('Magritte-Morph') ].
-				
-	spec for: #'pharo9.x' do: [
+			
+	spec for: #(#'pharo9.x' #'pharo10.x') do: [
 		spec
 			package: 'Magritte-Pillar' 
 				with: [ spec requires: #('Magritte-Model') "assumes Pillar is loaded, which is the case in P9 and GT" ] ].
+			
+	spec for: #(#'pharo10.x') do: [ 
+		spec 
+			baseline: 'PharoEnhancements' with: [ spec repository: 'github://seandenigris/Pharo-Enhancements' ].
+		spec
+			" create a temporary alias "
+			package: 'Magritte-Pharo7-Model'	with: [ spec requires: #('Magritte-Model') ];
+			package: 'Magritte-Pharo-Model' with: [ 
+				spec 
+					includes: #('Magritte-Pharo7-Model');
+					requires: #('Magritte-Model') ];
+			package: 'Magritte-Developer' with: [ spec requires: #('Magritte-Model') ].
+		spec group: 'default' with: #('Magritte-Developer') ].
 	
 	spec for: #(#'pharo7.x' #'pharo8.x' #'pharo9.x') do: [ 
 		spec
-			baseline: 'PharoEnhancements' with: [
-				spec repository: 'github://seandenigris/Pharo-Enhancements' ].
+			baseline: 'PharoEnhancements' with: [ spec repository: 'github://seandenigris/Pharo-Enhancements' ].
 		spec
 			" create a temporary alias "
-			package: 'Magritte-Pharo-Model' with: 'Magritte-Pharo7-Model';
+			package: 'Magritte-Pharo7-Model';
+			package: 'Magritte-Pharo-Model' with: [ spec includes: #('Magritte-Pharo7-Model') ];
 			package: 'Magritte-Glamour' with: [ spec requires: #('Magritte-Model' 'Magritte-Morph') ];
 			package: 'Magritte-GT' with: [ spec requires: #('Magritte-Morph' 'Magritte-Glamour') ];
 			package: 'Magritte-Developer' with: [ spec requires: #('Magritte-Model') ].
@@ -88,6 +88,25 @@ BaselineOfMagritte >> baseline330ForPharo: spec [
 			package: 'Magritte-Merging-Bloc' with: [ spec requires: #('Magritte-Merging') ];
 			package: 'Magritte-UI' with: [ spec requires: #('Magritte-Model') ].
 		spec group: 'default' with: #(#'Magritte-GToolkit' 'Magritte-Merging-Bloc') ]
+]
+
+{ #category : #baselines }
+BaselineOfMagritte >> baseline330ForSqueakCommon: spec [
+
+	spec for: #squeakCommon do: [ 
+		spec
+			package: 'Magritte-Model' with: [ spec includes: #('Magritte-Pharo-Model') ];
+			package: 'Magritte-Tests-Model' with: [ spec includes: #('Magritte-Tests-Pharo-Model') ];
+			package: 'Magritte-Pharo-Model' with: [ spec requires: #('Magritte-Model') ];
+			package: 'Magritte-Tests-Pharo-Model' with: [ spec requires: #('Magritte-Pharo-Model') ];
+			package: 'Magritte-Seaside' with: [ spec includes: #('Magritte-Pharo-Seaside') ];				
+			package: 'Magritte-Pharo-Seaside' with: [ spec requires: #('Magritte-Seaside') ];
+			package: 'Magritte-Morph' with: [ spec requires: #('Magritte-Model') ];
+			package: 'Magritte-Pharo-Tools' with: [ spec requires: #('Magritte-Deprecated') ].
+		spec
+			group: 'Tools' with: #('Magritte-Pharo-Tools');
+			group: 'default' with: #('Magritte-Morph') ].
+
 ]
 
 { #category : #baselines }
@@ -119,6 +138,7 @@ BaselineOfMagritte >> baseline: spec [
 				group: 'Seaside' with: #('Magritte-Seaside');
 				group: 'Deprecated' with: #('Magritte-Deprecated') ].
 	self baseline330ForPharo: spec.
+	self baseline330ForSqueakCommon: spec.
 	self baseline300ForGemStone: spec
 ]
 
