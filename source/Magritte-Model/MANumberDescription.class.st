@@ -4,7 +4,7 @@ I am a description of numbers, possible values are instances of ==Number== and a
 Class {
 	#name : #MANumberDescription,
 	#superclass : #MAMagnitudeDescription,
-	#category : 'Magritte-Model-Description'
+	#category : #'Magritte-Model-Description'
 }
 
 { #category : #'accessing-defaults' }
@@ -40,4 +40,15 @@ MANumberDescription >> beNegative [
 { #category : #convenience }
 MANumberDescription >> bePositive [
 	self addCondition: (MACondition selector: #positive) labelled: 'No positive number was entered'
+]
+
+{ #category : #accessing }
+MANumberDescription >> blocStencil [
+
+	^ self propertyAt: #blocStencil ifAbsent: [ nil ]
+]
+
+{ #category : #accessing }
+MANumberDescription >> blocStencil: aBlock [
+	self propertyAt: #blocStencil put: aBlock
 ]
