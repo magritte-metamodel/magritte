@@ -448,8 +448,23 @@ MAElementBuilder >> visitToManyScalarRelationDescription: anObject [
 ]
 
 { #category : #'visiting-description' }
-MAElementBuilder >> visitToOneRelationDescription: anObject [
-	self visitRelationDescription: anObject
+MAElementBuilder >> visitToOneRelationDescription: aDescription [
+	| inputElement valueLabel searchButton |
+	
+	aDescription gtSearchSource ifNil: [ ^ self visitRelationDescription: aDescription ].
+	
+	inputElement := MATokenCollectorElement new
+		relationDescription: aDescription;
+		tokenClickAction: [ :evt | 
+			(self object readUsing: aDescription)
+				ifNotNil: [ :obj | evt target phlow spawnObject: obj ] ];
+		spotterAction: [ :evt :colElem | 
+			aDescription write: evt element to: self memento.
+			colElem valueLabel text: (self textUsing: aDescription) ].	
+	
+	inputElement valueLabel text: (self textUsing: aDescription).
+		
+	self addInputField: inputElement using: aDescription
 ]
 
 { #category : #'visiting-description' }
