@@ -30,6 +30,7 @@ MACachedMemento >> commit [
 { #category : #private }
 MACachedMemento >> cookRawPull: aDictionary [
 
+	super cookRawPull: aDictionary.
 	aDictionary keysAndValuesDo: [ :key :value |
 		| isCollectionOfRelations |
 		isCollectionOfRelations := value isCollection and: [ key isKindOf: MAToManyRelationDescription ].
