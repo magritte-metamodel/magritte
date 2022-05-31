@@ -3,21 +3,26 @@ Class {
 	#superclass : #BrButton,
 	#instVars : [
 		'object',
-		'removeAction'
+		'removeAction',
+		'contextMenuActions'
 	],
 	#category : #'Magritte-GToolkit-Widgets'
 }
 
 { #category : #accessing }
+MATokenElement >> contextMenuActions [
+
+	contextMenuActions ifNotNil: [ ^ contextMenuActions ].
+	
+	^ contextMenuActions := OrderedCollection with:
+		'Remove' -> [ self removeAction value ].
+]
+
+{ #category : #accessing }
 MATokenElement >> initialize [
 
-	| clsListBuilder dropdownHandleBuilder dropdownAptitude tokenActions |
+	| clsListBuilder dropdownHandleBuilder dropdownAptitude |
 	super initialize.
-	
-	tokenActions := {
-		'Remove' -> [ self removeAction value ]. 
-		'Splint' -> []
-	}.
 	
 	clsListBuilder := [ BrSimpleList new
 		itemStencil: [
@@ -35,7 +40,7 @@ MATokenElement >> initialize [
 						(eachElement userData at: #action) value.
 						self fireEvent: BrDropdownHideWish new ];
 				text: eachClass key ];
-		items: (tokenActions sorted: [ :a :b | a key < b key  ]);
+		items: self contextMenuActions;
 		vFitContent; 
 		hFitContent; 
 		yourself ].
