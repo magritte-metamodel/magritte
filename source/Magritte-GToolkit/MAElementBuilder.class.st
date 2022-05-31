@@ -404,6 +404,17 @@ MAElementBuilder >> visitRelationDescription: anObject [
 	self visitReferenceDescription: anObject
 ]
 
+{ #category : #private }
+MAElementBuilder >> visitRelationDescription: aDescription withTokenElementClass: aClass [
+	| inputElement valueLabel searchButton |
+	
+	aDescription gtSearchSource ifNil: [ ^ self visitRelationDescription: aDescription ].
+	
+	inputElement := aClass forObject: self memento withRelationDescription: aDescription.
+	
+	self addInputField: inputElement using: aDescription
+]
+
 { #category : #'visiting-description' }
 MAElementBuilder >> visitSingleOptionDescription: aDescription [
 	| inputElement |
@@ -438,8 +449,10 @@ MAElementBuilder >> visitTimeDescription: anObject [
 ]
 
 { #category : #'visiting-description' }
-MAElementBuilder >> visitToManyRelationDescription: anObject [
-	self visitRelationDescription: anObject
+MAElementBuilder >> visitToManyRelationDescription: aDescription [
+	^ self 
+		visitRelationDescription: aDescription 
+		withTokenElementClass: MATokenCollectorElement
 ]
 
 { #category : #'visiting-description' }
@@ -449,22 +462,9 @@ MAElementBuilder >> visitToManyScalarRelationDescription: anObject [
 
 { #category : #'visiting-description' }
 MAElementBuilder >> visitToOneRelationDescription: aDescription [
-	| inputElement valueLabel searchButton |
-	
-	aDescription gtSearchSource ifNil: [ ^ self visitRelationDescription: aDescription ].
-	
-	inputElement := MATokenCollectorElement new
-		relationDescription: aDescription;
-		tokenClickAction: [ :evt | 
-			(self object readUsing: aDescription)
-				ifNotNil: [ :obj | evt target phlow spawnObject: obj ] ];
-		spotterAction: [ :evt :colElem | 
-			aDescription write: evt element to: self memento.
-			colElem valueLabel text: (self textUsing: aDescription) ].	
-	
-	inputElement valueLabel text: (self textUsing: aDescription).
-		
-	self addInputField: inputElement using: aDescription
+	^ self 
+		visitRelationDescription: aDescription 
+		withTokenElementClass: MATokenSelectorElement
 ]
 
 { #category : #'visiting-description' }
