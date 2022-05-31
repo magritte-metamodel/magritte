@@ -7,7 +7,7 @@ Class {
 	#instVars : [
 		'cache'
 	],
-	#category : 'Magritte-Model-Memento'
+	#category : #'Magritte-Model-Memento'
 }
 
 { #category : #testing }
@@ -25,6 +25,16 @@ MACachedMemento >> commit [
 	super commit.
 	self push: self cache.
 	self reset
+]
+
+{ #category : #private }
+MACachedMemento >> cookRawPull: aDictionary [
+
+	super cookRawPull: aDictionary.
+	aDictionary keysAndValuesDo: [ :key :value |
+		| isCollectionOfRelations |
+		isCollectionOfRelations := value isCollection and: [ key isKindOf: MAToManyRelationDescription ].
+		isCollectionOfRelations ifTrue: [ aDictionary at: key put: value copy ] ].
 ]
 
 { #category : #testing }
