@@ -21,7 +21,9 @@ MATPropertyOwner >> gtViewPropertiesOn: aView [
 		column: 'Name' 
 			text: [ :a | a key ]
 			width: 75;
-		column: 'Value' text: [ :a | a value ]
+		column: 'Value' text: [ :a | a value ];
+		send: [ :e | e value ];
+		actionUpdateButton
 ]
 
 { #category : #testing }
@@ -93,4 +95,12 @@ MATPropertyOwner >> propertyAt: aKey put: aValue [
 	"Adds or replaces the property ==aKey== with ==aValue==."
 
 	^ self properties at: aKey put: aValue
+]
+
+{ #category : #accessing }
+MATPropertyOwner >> propertyAt: aSymbol putRemovingNil: aValue [
+	
+	^ (aValue isNil and: [ self hasProperty: aSymbol ])
+		ifTrue: [ self properties removeKey: aSymbol ]
+		ifFalse: [ self propertyAt: aSymbol put: aValue ]
 ]

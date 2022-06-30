@@ -86,7 +86,7 @@ Object >> maValidate [
 
 { #category : #'*magritte-model-builder' }
 Object >> magritteActions [
-	^ MAActionPragmaBuilder for: self
+	^ (MAActionPragmaBuilder for: self) children
 ]
 
 { #category : #'*Magritte-Model' }

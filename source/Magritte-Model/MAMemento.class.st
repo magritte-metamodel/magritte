@@ -33,6 +33,14 @@ MAMemento >> commit [
 	"Commit the receiver into the model."
 ]
 
+{ #category : #private }
+MAMemento >> cookRawPull: aDictionary [
+
+	aDictionary keysAndValuesDo: [ :key :value |
+		value isNil
+			ifTrue: [ aDictionary at: key put: key default yourself ] ]
+]
+
 { #category : #'reflective operations' }
 MAMemento >> doesNotUnderstand: aMessage [
   ^ self magritteDescription children 
@@ -75,9 +83,7 @@ MAMemento >> pull [
 
 	| result |
 	result := self pullRaw.
-	result keysAndValuesDo: [ :key :value |
-		value isNil
-			ifTrue: [ result at: key put: key default yourself ] ].
+	self cookRawPull: result.
 	^ result
 ]
 

@@ -25,7 +25,26 @@ Object >> descriptionInspect: aDescription [
 { #category : #'*Magritte-GToolkit' }
 Object >> gtActions [
 	"Hack to extend GToolkit's actions. The GT mechanism is in ProtoObject, which is the only class we miss by hooking in here"
-	^ super gtActions, self magritteGToolkitActions
+	| magritteGToolkitActions |
+	magritteGToolkitActions := self magritteActions collect: [ :desc | desc gtActionOf: self ].
+	^ super gtActions, magritteGToolkitActions
+]
+
+{ #category : #'*Magritte-GToolkit' }
+Object >> gtViewsInContext: aContext [
+	
+	| magritteGToolkitViews views |
+	magritteGToolkitViews := MaGtPhlowViewsCollector new
+		fromObject: self;
+		context: aContext;
+		collect.
+	
+	views := (super gtViewsInContext: aContext), magritteGToolkitViews.
+	
+	self flag: 'This is duplicated work because each collector did its own sort, but we do it here for now because it made the MA collector implementation simpler'.
+	GtPhlowUtility sortByPriority:views.
+	
+	^ views
 ]
 
 { #category : #'*Magritte-GToolkit' }
@@ -46,9 +65,4 @@ Object >> maGtFormFor: aView [
 { #category : #'*Magritte-GToolkit' }
 Object >> magritteElementBuilder [
 	^ self magritteDescription elementBuilderFor: self
-]
-
-{ #category : #'*Magritte-GToolkit' }
-Object >> magritteGToolkitActions [
-	^ self magritteActions children collect: [ :desc | desc gtActionOf: self ].
 ]
