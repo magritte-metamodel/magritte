@@ -41,41 +41,6 @@ MAPatchOperation >> = rhs [
 ]
 
 { #category : #accessing }
-MAPatchOperation >> asElement [
-	^ BlElement new
-		layout: (BlLinearLayout horizontal cellSpacing: 10);
-		constraintsDo: [ :c | 
-			c horizontal fitContent.
-			c vertical fitContent ];
-		addChild:
-			(BrCheckbox new
-				aptitude: BrGlamorousCheckboxAptitude;
-				checked: self isEnabled;
-				when: BrCheckboxChanged do: [ :evt | self isEnabled: evt isChecked ]);
-		addChild:
-			(BrLabel new
-				aptitude: BrGlamorousLabelAptitude;
-				text: (self field label , ':') asRopedText);
-		addChild:
-			(BrLabel new
-				aptitude: BrGlamorousLabelAptitude;
-				text: self oldValue displayString asRopedText;
-				addEventHandlerOn: BlClickEvent
-					do: [ :evt | evt target phlow spawnObject: self oldValue ]);
-		addChild:
-			(BrLabel new
-				aptitude: BrGlamorousLabelAptitude;
-				text: ' > ' asRopedText);
-		addChild:
-			(BrLabel new
-				aptitude: BrGlamorousLabelAptitude;
-				text: self newValue displayString asRopedText;
-				addEventHandlerOn: BlClickEvent
-					do: [ :evt | evt target phlow spawnObject: self newValue ]);
-		yourself
-]
-
-{ #category : #accessing }
 MAPatchOperation >> cacheOldValue [
 	(self receiver isNil or: [ self field isNil ]) ifTrue: [ ^ self ].
 	self oldValue: (self receiver readUsing: self field)
@@ -114,18 +79,17 @@ MAPatchOperation >> gtElementViewFor: aView [
 	^ aView explicit
 		title: 'Element';
 		priority: 25;
-		stencil: [ 
-			BlScrollableElement new 
-				constraintsDo: [ :c |
-					c horizontal matchParent.
-					c vertical matchParent ];
-				addChild: self asElement;
-				yourself ]
+		stencil: [ self asElement asScrollableElement ]
 ]
 
 { #category : #comparing }
 MAPatchOperation >> hash [
 	^ ((self receiver hash bitXor: self field hash) bitXor: self oldValue hash) bitXor: self newValue hash
+]
+
+{ #category : #accessing }
+MAPatchOperation >> isEmptyOrNil [
+	^ false
 ]
 
 { #category : #accessing }
@@ -191,7 +155,17 @@ MAPatchOperation >> receiver: anObject [
 	self cacheOldValue
 ]
 
+{ #category : #'macro compatibility' }
+MAPatchOperation >> receivers [
+	^ { self receiver }
+]
+
 { #category : #execution }
 MAPatchOperation >> undo [
 	self field accessor write: oldValue to: receiver
+]
+
+{ #category : #accessing }
+MAPatchOperation >> valuePatch [
+	^ self newValue patchRelativeToBase: self oldValue
 ]

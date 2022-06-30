@@ -81,6 +81,25 @@ MAReferenceDescription >> descriptionReference [
 ]
 
 { #category : #accessing }
+MAReferenceDescription >> gtSearchDelegateTo: anObjectValuable message: aSymbol [
+	| source |
+	source := MAGtDelegatedSearch 
+		to: anObjectValuable 
+		message: aSymbol.
+	self gtSearchSource: source
+]
+
+{ #category : #accessing }
+MAReferenceDescription >> gtSearchSource [
+	^ self propertyAt: #gtSearchSource ifAbsent: [ nil ]
+]
+
+{ #category : #accessing }
+MAReferenceDescription >> gtSearchSource: valuable [
+	self propertyAt: #gtSearchSource put: valuable
+]
+
+{ #category : #accessing }
 MAReferenceDescription >> initializer [
 	^ self propertyAt: #initializer ifAbsent: [ #yourself ]
 ]

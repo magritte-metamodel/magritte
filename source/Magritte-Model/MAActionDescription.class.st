@@ -82,7 +82,7 @@ MAActionDescription >> comment: aString [
 
 { #category : #accessing }
 MAActionDescription >> enableBlock [
-	^ [ true ]
+	^ enableBlock ifNil: [ true ]
 ]
 
 { #category : #accessing }

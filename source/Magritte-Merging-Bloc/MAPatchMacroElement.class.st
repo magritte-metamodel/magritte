@@ -6,7 +6,7 @@ Class {
 		'expander',
 		'header'
 	],
-	#category : #'Magritte-Merging'
+	#category : #'Magritte-Merging-Bloc'
 }
 
 { #category : #examples }
