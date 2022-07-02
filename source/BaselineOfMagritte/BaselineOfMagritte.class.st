@@ -46,40 +46,32 @@ BaselineOfMagritte >> baseline310CommonExtDeps: spec [
 { #category : #baselines }
 BaselineOfMagritte >> baseline330ForPharo: spec [
 			
-	spec for: #(#'pharo9.x' #'pharo10.x') do: [
-		spec
-			package: 'Magritte-Pillar' 
-				with: [ spec requires: #('Magritte-Model') "assumes Pillar is loaded, which is the case in P9 and GT" ] ].
-			
 	spec for: #(#'pharo10.x') do: [ 
 		spec 
 			baseline: 'PharoEnhancements' with: [ spec repository: 'github://seandenigris/Pharo-Enhancements' ].
 		spec
 			" create a temporary alias "
-			package: 'Magritte-Pharo7-Model'	with: [ spec requires: #('Magritte-Model') ];
-			package: 'Magritte-Pharo-Model' with: [ 
-				spec 
-					includes: #('Magritte-Pharo7-Model');
-					requires: #('Magritte-Model') ];
+			package: 'Magritte-Pharo-Model' with: 'Magritte-Pharo7-Model';
 			package: 'Magritte-Developer' with: [ spec requires: #('Magritte-Model') ].
 		spec group: 'default' with: #('Magritte-Developer') ].
+	
+	spec for: #(#'pharo9.x') do: [
+		spec
+			package: 'Magritte-Pillar' 
+				with: [ spec requires: #('Magritte-Model') "assumes Pillar is loaded, which is the case in P9 and GT before port to P10" ] ].
+			
 	
 	spec for: #(#'pharo7.x' #'pharo8.x' #'pharo9.x') do: [ 
 		spec
 			baseline: 'PharoEnhancements' with: [ spec repository: 'github://seandenigris/Pharo-Enhancements' ].
 		spec
 			" create a temporary alias "
-			package: 'Magritte-Pharo7-Model';
-			package: 'Magritte-Pharo-Model' with: [ spec includes: #('Magritte-Pharo7-Model') ];
+			package: 'Magritte-Pharo-Model' with: 'Magritte-Pharo7-Model';
 			package: 'Magritte-Glamour' with: [ spec requires: #('Magritte-Model' 'Magritte-Morph') ];
 			package: 'Magritte-GT' with: [ spec requires: #('Magritte-Morph' 'Magritte-Glamour') ];
 			package: 'Magritte-Developer' with: [ spec requires: #('Magritte-Model') ].
 		spec group: 'default' with: #('Magritte-GT' 'Magritte-Developer') ].
 	
-	spec for: #(#'pharo6.x') do: [ 
-		" create a temporary alias "
-		spec package: 'Magritte-Pharo-Model' with: 'Magritte-Pharo3-Model' ].
-		
 	spec for: #GToolkit do: [ 
 		spec 
 			package: 'Magritte-Developer' with: [ spec includes: #('Magritte-GToolkit') ];
