@@ -406,7 +406,7 @@ MAElementBuilder >> visitRelationDescription: anObject [
 
 { #category : #private }
 MAElementBuilder >> visitRelationDescription: aDescription withTokenElementClass: aClass [
-	| inputElement valueLabel searchButton |
+	| inputElement |
 	
 	aDescription gtSearchSource ifNil: [ ^ self visitRelationDescription: aDescription ].
 	
