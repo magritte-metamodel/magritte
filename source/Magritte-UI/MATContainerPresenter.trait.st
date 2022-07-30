@@ -45,6 +45,11 @@ MATContainerPresenter >> commit [
 ]
 
 { #category : #actions }
+MATContainerPresenter >> force [
+	self commit; answer: self model
+]
+
+{ #category : #actions }
 MATContainerPresenter >> save [
 	[ self validate ]
 		on: MAValidationError

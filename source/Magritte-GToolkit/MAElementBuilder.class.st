@@ -37,7 +37,7 @@ MAElementBuilder class >> example [
 
 { #category : #generic }
 MAElementBuilder >> addButtons [
-	self addButtons: #( save cancel )
+	self addButtons: #( save force cancel )
 ]
 
 { #category : #accessing }
