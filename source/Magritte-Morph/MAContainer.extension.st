@@ -21,5 +21,5 @@ MAContainer >> elementBuilderFor: anObject [
 	"memento := anObject mementoClass
 			model: anObject
 			description: self."
-	^ self blocClass buildElementFor: anObject"memento: memento"
+	^ self blocClass on: anObject"memento: memento"
 ]

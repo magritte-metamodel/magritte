@@ -14,17 +14,12 @@ Class {
 		'form',
 		'presenter',
 		'buttonSelectors',
-		'objectDescription'
+		'objectDescription',
+		'completionControllerClass',
+		'completionStrategy'
 	],
 	#category : #'Magritte-GToolkit'
 }
-
-{ #category : #'as yet unclassified' }
-MAElementBuilder class >> buildElementFor: anObject [
-	^ self new
-		object: anObject;
-		visit: anObject magritteDescription
-]
 
 { #category : #examples }
 MAElementBuilder class >> example [
@@ -33,6 +28,13 @@ MAElementBuilder class >> example [
 		object: MAContainer samplePersonHarryPotter;
 		objectDescription: MAContainer samplePersonDescription;
 		element
+]
+
+{ #category : #'instance creation' }
+MAElementBuilder class >> on: anObject [
+	^ self new
+		object: anObject;
+		yourself
 ]
 
 { #category : #generic }
@@ -105,6 +107,32 @@ MAElementBuilder >> buttonSelectors: aCollection [
 ]
 
 { #category : #accessing }
+MAElementBuilder >> completionControllerClass [
+
+	^ completionControllerClass ifNil: [ GtCompletionController ]
+]
+
+{ #category : #accessing }
+MAElementBuilder >> completionControllerClass: anObject [
+
+	completionControllerClass := anObject
+]
+
+{ #category : #accessing }
+MAElementBuilder >> completionStrategy [
+
+	^ completionStrategy 
+		ifNil: [ GtStringsCompletionStrategy new ]
+		ifNotNil: [ completionStrategy value ].
+]
+
+{ #category : #accessing }
+MAElementBuilder >> completionStrategy: aValuable [
+
+	completionStrategy := aValuable
+]
+
+{ #category : #accessing }
 MAElementBuilder >> element [
 	| hasVisited |
 	element ifNotNil: [ ^ element ].
@@ -153,7 +181,8 @@ MAElementBuilder >> memento [
 { #category : #accessing }
 MAElementBuilder >> newInputElementUsing: aDescription [
 
-	^ BrEditableLabel new
+	| editor |
+	editor := BrEditableLabel new
 		  aptitude:
 			  BrGlamorousEditableLabelAptitude new glamorousRegularFontAndSize;
 		  vFitContent;
@@ -162,7 +191,19 @@ MAElementBuilder >> newInputElementUsing: aDescription [
 		  	aDescription
 				  writeFromString: aWish text greaseString
 				  to: self memento ];
-		  text: (self textUsing: aDescription)
+		  text: (self textUsing: aDescription).
+		  
+	aDescription propertyAt: #completions ifPresent: [ :comps |
+		| compStrings compStrat |
+		compStrings := comps value: self object.
+		compStrat := self completionStrategy 
+			completions: (GtPrefixTree withAll: compStrings);
+			yourself.
+		(self completionControllerClass on: editor strategy: compStrat)
+			showOnTextModification: true;
+			install ].
+	
+	^ editor
 ]
 
 { #category : #accessing }
