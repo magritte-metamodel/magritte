@@ -19,13 +19,6 @@ Class {
 	#category : #'Magritte-GToolkit'
 }
 
-{ #category : #'as yet unclassified' }
-MAElementBuilder class >> buildElementFor: anObject [
-	^ self new
-		object: anObject;
-		visit: anObject magritteDescription
-]
-
 { #category : #examples }
 MAElementBuilder class >> example [
 	<gtExample>
@@ -33,6 +26,13 @@ MAElementBuilder class >> example [
 		object: MAContainer samplePersonHarryPotter;
 		objectDescription: MAContainer samplePersonDescription;
 		element
+]
+
+{ #category : #'instance creation' }
+MAElementBuilder class >> on: anObject [
+	^ self new
+		object: anObject;
+		yourself
 ]
 
 { #category : #generic }
