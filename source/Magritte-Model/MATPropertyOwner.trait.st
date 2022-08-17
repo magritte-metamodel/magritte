@@ -14,6 +14,9 @@ MATPropertyOwner >> errorPropertyNotFound: aSelector [
 { #category : #accessing }
 MATPropertyOwner >> gtViewPropertiesOn: aView [
 	<gtView>
+	
+	self properties ifEmpty: [ ^ aView empty ].
+	
 	^ aView columnedList
 		title: 'Properties' translated;
 		priority: 75;
