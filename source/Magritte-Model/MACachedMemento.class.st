@@ -33,8 +33,10 @@ MACachedMemento >> cookRawPull: aDictionary [
 	super cookRawPull: aDictionary.
 	aDictionary keysAndValuesDo: [ :key :value |
 		| isCollectionOfRelations |
+		self flag: 'duplicate logic with cookRawPull:'.
 		isCollectionOfRelations := value isCollection and: [ key isKindOf: MAToManyRelationDescription ].
-		isCollectionOfRelations ifTrue: [ aDictionary at: key put: value copy ] ].
+		isCollectionOfRelations ifTrue: [ 
+			aDictionary at: key put: value copy ] ].
 ]
 
 { #category : #testing }
