@@ -14,7 +14,12 @@ Class {
 MACheckedMemento >> hasConflict [
 	"Answer ==true==, if there is an edit conflict."
 
-	^ self hasChanged and: [ self isDifferent: self original to: self pullRaw ]
+	^ self hasChanges and: [ self hasModelChangedElsewhere ]
+]
+
+{ #category : #testing }
+MACheckedMemento >> hasModelChangedElsewhere [
+	^ self isDifferent: self original to: self pullRaw
 ]
 
 { #category : #accessing }
@@ -36,14 +41,10 @@ MACheckedMemento >> setOriginal: aDictionary [
 { #category : #'private-testing' }
 MACheckedMemento >> shouldPush: anObject using: aDescription [
 
-	| originalValue cachedValue hasValueChanged isCollectionOfRelations |
+	| originalValue cachedValue |
 	originalValue := self original at: aDescription.
 	cachedValue := self cache at: aDescription.
-	isCollectionOfRelations := originalValue isCollection and: [ aDescription isKindOf: MAToManyRelationDescription ].
-	hasValueChanged := isCollectionOfRelations
-		ifTrue: [ (originalValue = cachedValue) not ]
-		ifFalse: [ (originalValue == cachedValue) not ].
-	^ hasValueChanged and: [ super shouldPush: anObject using: aDescription ]
+	^ (originalValue = cachedValue) not and: [ super shouldPush: anObject using: aDescription ]
 ]
 
 { #category : #actions }

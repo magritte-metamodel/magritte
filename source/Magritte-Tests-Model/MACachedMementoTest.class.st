@@ -1,7 +1,7 @@
 Class {
 	#name : #MACachedMementoTest,
 	#superclass : #MAMementoTest,
-	#category : 'Magritte-Tests-Model-Memento'
+	#category : #'Magritte-Tests-Model-Memento'
 }
 
 { #category : #testing }
@@ -24,12 +24,12 @@ MACachedMementoTest >> testCommit [
 	self write: self includedInstance.
 	self assert: self read = self includedInstance.
 	self assert: self value = self nullInstance.
-	self assert: self memento hasChanged.
+	self assert: self memento hasChanges.
 
 	self memento commit.
 	self assert: self read = self includedInstance.
 	self assert: self value = self includedInstance.
-	self deny: self memento hasChanged
+	self deny: self memento hasChanges
 ]
 
 { #category : #'tests-basic' }
@@ -44,12 +44,12 @@ MACachedMementoTest >> testRead [
 MACachedMementoTest >> testReset [
 	self value: self defaultInstance.
 	self write: self includedInstance.
-	self assert: self memento hasChanged.
+	self assert: self memento hasChanges.
 
 	self memento reset.
 	self assert: self read = self defaultInstance.
 	self assert: self value = self defaultInstance.
-	self deny: self memento hasChanged
+	self deny: self memento hasChanges
 ]
 
 { #category : #'tests-basic' }
