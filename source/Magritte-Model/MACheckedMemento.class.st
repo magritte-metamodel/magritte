@@ -37,7 +37,7 @@ MACheckedMemento >> setOriginal: aDictionary [
 MACheckedMemento >> shouldPush: anObject using: aDescription [
 
 	| originalValue cachedValue hasValueChanged isCollectionOfRelations |
-	originalValue := self readOriginalUsing: aDescription.
+	originalValue := self original at: aDescription.
 	cachedValue := self cache at: aDescription.
 	isCollectionOfRelations := originalValue isCollection and: [ aDescription isKindOf: MAToManyRelationDescription ].
 	hasValueChanged := isCollectionOfRelations
