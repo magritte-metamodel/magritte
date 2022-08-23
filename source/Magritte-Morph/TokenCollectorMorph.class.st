@@ -12,7 +12,7 @@ Class {
 		'whenObjectsChangedBlock',
 		'factory'
 	],
-	#category : 'Magritte-Morph-Morphs'
+	#category : #'Magritte-Morph-Morphs'
 }
 
 { #category : #private }
@@ -137,7 +137,7 @@ TokenCollectorMorph >> tokenViewer [
 	tokenViewer ifNotNil: [ ^ tokenViewer ].
 	^ tokenViewer := Morph new
 		color:
-			Smalltalk ui theme backgroundColor;
+			self theme backgroundColor;
 		changeTableLayout;
 		vResizing: #shrinkWrap;
 		hResizing: #spaceFill;

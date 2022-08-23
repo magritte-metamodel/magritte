@@ -19,7 +19,7 @@ MAMorphicRelation >> addSelectListTo: aMorph [
 MAMorphicRelation >> buildClassChooser [
 	| items |
 	items := self classes collect: [ :e | e label ].
-	^ Smalltalk ui theme builder
+	^ self theme builder
 		newDropListFor: self
 		list: items
 		getSelected: #selectedIndex
