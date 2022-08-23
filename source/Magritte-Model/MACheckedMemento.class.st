@@ -33,6 +33,19 @@ MACheckedMemento >> setOriginal: aDictionary [
 	original := aDictionary
 ]
 
+{ #category : #'private-testing' }
+MACheckedMemento >> shouldPush: anObject using: aDescription [
+
+	| originalValue cachedValue hasValueChanged isCollectionOfRelations |
+	originalValue := self original at: aDescription.
+	cachedValue := self cache at: aDescription.
+	isCollectionOfRelations := originalValue isCollection and: [ aDescription isKindOf: MAToManyRelationDescription ].
+	hasValueChanged := isCollectionOfRelations
+		ifTrue: [ (originalValue = cachedValue) not ]
+		ifFalse: [ (originalValue == cachedValue) not ].
+	^ hasValueChanged and: [ super shouldPush: anObject using: aDescription ]
+]
+
 { #category : #actions }
 MACheckedMemento >> validate [
 	self hasConflict

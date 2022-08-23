@@ -92,8 +92,12 @@ MAMemento >> pullRaw [
 	| result |
 	result := Dictionary new.
 	self magritteDescription do: [ :each |
-		result at: each put: (self model
-			readUsing: each) ].
+		| value isCollectionOfRelations |
+		value := self model readUsing: each.
+		self flag: 'duplicate logic with cookRawPull:'.
+		isCollectionOfRelations := value isCollection and: [ each isKindOf: MAToManyRelationDescription ].
+		isCollectionOfRelations ifTrue: [ value := value copy ].
+		result at: each put: value ].
 	^ result
 ]
 
@@ -102,7 +106,7 @@ MAMemento >> push: aDictionary [
 	"Utility method to push a dictionary mapping descriptions to values into the model."
 
 	aDictionary keysAndValuesDo: [ :key :value |
-		(key isVisible and: [ key isReadOnly not ]) 
+		(self shouldPush: value using: key) 
 			ifTrue: [ self model write: value using: key ] ]
 ]
 
@@ -124,6 +128,11 @@ MAMemento >> setDescription: aDescription [
 { #category : #initialization }
 MAMemento >> setModel: aModel [
 	model := aModel
+]
+
+{ #category : #'private-testing' }
+MAMemento >> shouldPush: anObject using: aDescription [
+	^ aDescription isVisible and: [ aDescription isReadOnly not ]
 ]
 
 { #category : #actions }
