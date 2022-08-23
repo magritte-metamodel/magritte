@@ -92,12 +92,9 @@ MAMemento >> pullRaw [
 	| result |
 	result := Dictionary new.
 	self magritteDescription do: [ :each |
-		| value isCollectionOfRelations |
+		| value |
 		value := self model readUsing: each.
-		self flag: 'duplicate logic with cookRawPull:'.
-		isCollectionOfRelations := value isCollection and: [ each isKindOf: MAToManyRelationDescription ].
-		isCollectionOfRelations ifTrue: [ value := value copy ].
-		result at: each put: value ].
+		result at: each put: value copy ].
 	^ result
 ]
 
