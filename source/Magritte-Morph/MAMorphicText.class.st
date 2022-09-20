@@ -6,7 +6,7 @@ Class {
 
 { #category : #private }
 MAMorphicText >> buildMorphView [
-	^ Smalltalk ui theme
+	^ self theme
 		newTextEntryIn: nil
 		for: self
 		get: #string

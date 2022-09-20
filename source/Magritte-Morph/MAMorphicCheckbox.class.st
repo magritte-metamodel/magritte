@@ -6,7 +6,7 @@ Class {
 
 { #category : #private }
 MAMorphicCheckbox >> buildMorphView [
-	^ Smalltalk ui theme
+	^ self theme
 		newCheckboxIn: nil
 		for: self
 		getSelected: #selected

@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'object'
 	],
-	#category : 'Magritte-Morph-Morphs'
+	#category : #'Magritte-Morph-Morphs'
 }
 
 { #category : #'instance creation' }
@@ -21,7 +21,7 @@ TokenMorph >> initialize [
 	self roundedCorners: #(1 2 3 4).	"Seems to do nothing"
 	self
 		color:
-			Smalltalk ui theme buttonColor;
+			self theme buttonColor;
 		changeTableLayout;
 		vResizing: #shrinkWrap;
 		hResizing: #shrinkWrap;

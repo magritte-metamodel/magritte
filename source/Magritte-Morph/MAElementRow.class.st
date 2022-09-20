@@ -25,7 +25,7 @@ MAElementRow class >> for: anObject of: aDescriptionMorph [
 
 { #category : #private }
 MAElementRow >> buildButton: aSymbol [
-	^ Smalltalk ui theme builder
+	^ self theme builder
 		newButtonFor: self
 		action: aSymbol
 		label: aSymbol capitalized
