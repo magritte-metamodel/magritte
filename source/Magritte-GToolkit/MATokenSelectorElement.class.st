@@ -89,7 +89,7 @@ MATokenSelectorElement >> refreshTokens [
 
 	| currentValue |
 	self tokenContainer removeChildren.
-	currentValue := self object readUsing: self relationDescription.
+	currentValue := self object readModelUsing: self relationDescription.
 	currentValue ifNotNil: [ self addTokenFor: currentValue ].
 ]
 
