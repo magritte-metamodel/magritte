@@ -148,13 +148,6 @@ Object >> mementoClass [
 ]
 
 { #category : #'*Magritte-Model' }
-Object >> readModelUsing: aDescription [
-	"This makes Object and MACheckedMemento polymorphic. It is needed e.g. for Magritte forms because inspectable field values should open on the actual object, not the memento's copies. See MAMemento>>#pullRaw for more info"
-
-	^ self readUsing: aDescription
-]
-
-{ #category : #'*Magritte-Model' }
 Object >> readUsing: aDescription [
 	"This hook is needed so that e.g. mementos and adaptive models can implement their own behavior. All other entry points e.g. MADescription>>#read: should come through here"
 

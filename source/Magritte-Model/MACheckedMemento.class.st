@@ -30,7 +30,9 @@ MACheckedMemento >> original [
 { #category : #actions }
 MACheckedMemento >> reset [
 	super reset.
-	self setOriginal: self pullRaw
+	self setOriginal: (self pullRawTransforming: [ :e | e copy ]).
+	
+	"Implementation note: We copy the field values because checked mementos compare this to the current object to see if it has changed elsewhere. Unless we make a copy each time, this comparison would not be possible for complex objects, because any changes to them from outside will be reflected equally in this `original` dictionary. E.g. if `original at: #person == self model person` and outside someone does `self model person age: 25`, the check above would pass even though it should fail."
 ]
 
 { #category : #initialization }
