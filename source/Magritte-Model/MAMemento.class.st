@@ -94,8 +94,10 @@ MAMemento >> pullRaw [
 	self magritteDescription do: [ :each |
 		| value |
 		value := self model readUsing: each.
-		result at: each put: value copy ].
+		result at: each put: value copy "see implementation note" ].
 	^ result
+	
+	"Implementation note: We copy the field values because checked mementos compare the `original` pull to the current object to see if it has changed elsewhere. Unless we make a copy each time, this comparison would not be possible for complex objects, because any changes to them from outside will be reflected equally in the `original` dictionary. E.g. if `original at: #person == self model person` and outside someone does `self model person age: 25`, the check above would pass even though it should fail."
 ]
 
 { #category : #private }
@@ -105,6 +107,11 @@ MAMemento >> push: aDictionary [
 	aDictionary keysAndValuesDo: [ :key :value |
 		(self shouldPush: value using: key) 
 			ifTrue: [ self model write: value using: key ] ]
+]
+
+{ #category : #private }
+MAMemento >> readModelUsing: aDescription [
+	^ self model readUsing: aDescription
 ]
 
 { #category : #private }
