@@ -69,6 +69,7 @@ MATPropertyOwner >> propertiesSearchOn: aSearch [
 		previewElement: [ :assoc | 
 			(assoc value gtViewsFor: GtPhlowView empty) originalView
 				asElementDo: [ :anElement | anElement ] ];
+		filterBySubstring;
 		itemActLogic: [ :anObject :step :spotterElement |
 			spotterElement phlow spawnObject: anObject value ]
 ]
