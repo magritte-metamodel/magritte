@@ -60,6 +60,20 @@ MATPropertyOwner >> properties [
 ]
 
 { #category : #accessing }
+MATPropertyOwner >> propertiesSearchOn: aSearch [
+	<gtSearch>
+	
+	^ aSearch list
+		title: 'Properties';
+		items: [ self properties associations ];
+		previewElement: [ :assoc | 
+			(assoc value gtViewsFor: GtPhlowView empty) originalView
+				asElementDo: [ :anElement | anElement ] ];
+		itemActLogic: [ :anObject :step :spotterElement |
+			spotterElement phlow spawnObject: anObject value ]
+]
+
+{ #category : #accessing }
 MATPropertyOwner >> propertyAt: aKey [
 	"Answer the value of the property ==aKey==, raises an error if the property doesn't exist."
 
