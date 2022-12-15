@@ -41,14 +41,3 @@ MANumberDescription >> beNegative [
 MANumberDescription >> bePositive [
 	self addCondition: (MACondition selector: #positive) labelled: 'No positive number was entered'
 ]
-
-{ #category : #accessing }
-MANumberDescription >> blocStencil [
-
-	^ self propertyAt: #blocStencil ifAbsent: [ nil ]
-]
-
-{ #category : #accessing }
-MANumberDescription >> blocStencil: aBlock [
-	self propertyAt: #blocStencil put: aBlock
-]
