@@ -32,33 +32,29 @@ MATokenSelectorElement >> addTokenFor: anObject [
 
 { #category : #initialization }
 MATokenSelectorElement >> initialize [
-
 	| searchButton |
 	super initialize.
-	
+
 	self
 		hMatchParent;
 		padding: (BlInsets top: 4 bottom: 4);
 		alignCenterLeft;
 		cellSpacing: 5;
 		vFitContent.
-		
+
 	searchButton := GtSpotterDropdownButtonStencil new
-		valuable: [ self relationDescription gtSearchSource value ];
-		icon: BrGlamorousVectorIcons search;
-		spotterModelDo: [ :sm |
-			sm announcer
-				when: GtSpotterActOn
-				do: [ :evt | 
-					self onTokenRequestFor: evt element.
-					evt actedUpon: true ] ];
-		create.
-		
+			valuable: [ self relationDescription gtSearchSource value ];
+			icon: BrGlamorousVectorIcons search;
+			actOn: [ :anActOnEvent :anItem :theButton | 
+				self onTokenRequestFor: anActOnEvent objectToSend.
+				anActOnEvent beActed ];
+			create.
+
 	self refreshTokens.
-	
+
 	self
 		addChild: searchButton;
-		addChild: self tokenContainer.
+		addChild: self tokenContainer
 ]
 
 { #category : #accessing }
