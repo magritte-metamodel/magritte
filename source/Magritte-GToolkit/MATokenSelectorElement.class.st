@@ -45,8 +45,11 @@ MATokenSelectorElement >> initialize [
 	searchButton := GtSpotterDropdownButtonStencil new
 			valuable: [ self relationDescription gtSearchSource value ];
 			icon: BrGlamorousVectorIcons search;
-			actOn: [ :anActOnEvent :anItem :theButton | 
-				self onTokenRequestFor: anActOnEvent objectToSend.
+			actOn: [ :anActOnEvent :anItem :theButton |
+				| result spottedObject |
+				spottedObject := anActOnEvent objectToSend.
+				result := self relationDescription gtSearchTransform value: spottedObject.
+				self onTokenRequestFor: result.
 				anActOnEvent beActed ];
 			create.
 

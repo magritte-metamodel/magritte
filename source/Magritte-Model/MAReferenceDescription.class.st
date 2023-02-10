@@ -91,6 +91,16 @@ MAReferenceDescription >> gtSearchSource: valuable [
 ]
 
 { #category : #accessing }
+MAReferenceDescription >> gtSearchTransform [
+	^ self propertyAt: #gtSearchTransform ifAbsent: #yourself
+]
+
+{ #category : #accessing }
+MAReferenceDescription >> gtSearchTransform: valuable [
+	self propertyAt: #gtSearchTransform put: valuable
+]
+
+{ #category : #accessing }
 MAReferenceDescription >> initializer [
 	^ self propertyAt: #initializer ifAbsent: [ #yourself ]
 ]
