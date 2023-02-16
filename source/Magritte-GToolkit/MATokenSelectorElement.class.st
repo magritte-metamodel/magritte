@@ -48,7 +48,9 @@ MATokenSelectorElement >> initialize [
 			actOn: [ :anActOnEvent :anItem :theButton |
 				| result spottedObject |
 				spottedObject := anActOnEvent objectToSend.
-				result := self relationDescription gtSearchTransform value: spottedObject.
+				result := self relationDescription gtSearchTransform 
+					"cull: self object - we want to pass the object too, but sometimes we get a memento"
+					value: spottedObject.
 				self onTokenRequestFor: result.
 				anActOnEvent beActed ];
 			create.
