@@ -23,7 +23,7 @@ MATokenSelectorElement >> addTokenFor: anObject [
 	
 	| token |
 	token := MATokenElement new
-		label: (self relationDescription reference toString: anObject);
+		label: anObject gtDisplayText;
 		object: anObject;
 		removeAction: [ :obj | self onTokenRemovedFor: obj ];
 		yourself.
