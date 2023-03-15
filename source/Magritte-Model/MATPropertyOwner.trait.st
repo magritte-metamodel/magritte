@@ -117,7 +117,10 @@ MATPropertyOwner >> propertyAt: aKey put: aValue [
 { #category : #accessing }
 MATPropertyOwner >> propertyAt: aSymbol putRemovingNil: aValue [
 	
-	^ (aValue isNil and: [ self hasProperty: aSymbol ])
+	aValue ifNotNil: [ 
+		^ self propertyAt: aSymbol put: aValue ].
+	
+	^ (self hasProperty: aSymbol)
 		ifTrue: [ self properties removeKey: aSymbol ]
-		ifFalse: [ self propertyAt: aSymbol put: aValue ]
+		ifFalse: [ aValue ].
 ]
