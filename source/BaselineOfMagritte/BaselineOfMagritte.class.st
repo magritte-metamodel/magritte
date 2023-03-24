@@ -45,7 +45,7 @@ BaselineOfMagritte >> baseline310CommonExtDeps: spec [
 { #category : #baselines }
 BaselineOfMagritte >> baseline330ForPharo: spec [
 			
-	spec for: #(#'pharo7.x' #'pharo8.x' #'pharo9.x' #'pharo10.x') do: [ 
+	spec for: #(#'pharo7.x' #'pharo8.x' #'pharo9.x' #'pharo10.x' #'pharo11.x' #'pharo12.x') do: [
 		spec 
 			baseline: 'PharoEnhancements' with: [ spec repository: 'github://seandenigris/Pharo-Enhancements' ].
 		spec
