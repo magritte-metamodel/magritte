@@ -62,6 +62,17 @@ MAActionDescription >> comment: aString [
 ]
 
 { #category : #accessing }
+MAActionDescription >> definingSource [
+	<return: #MADescriptionMethodSource>
+	^ self propertyAt: #definingSource ifAbsent: [ nil ]
+]
+
+{ #category : #accessing }
+MAActionDescription >> definingSource: aSource [
+	^ self propertyAt: #definingSource put: aSource
+]
+
+{ #category : #accessing }
 MAActionDescription >> enableBlock [
 	^ enableBlock ifNil: [ true ]
 ]
