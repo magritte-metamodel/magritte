@@ -81,15 +81,6 @@ MAReferenceDescription >> descriptionReference [
 ]
 
 { #category : #accessing }
-MAReferenceDescription >> gtSearchDelegateTo: anObjectValuable message: aSymbol [
-	| source |
-	source := MAGtDelegatedSearch 
-		to: anObjectValuable 
-		message: aSymbol.
-	self gtSearchSource: source
-]
-
-{ #category : #accessing }
 MAReferenceDescription >> gtSearchSource [
 	^ self propertyAt: #gtSearchSource ifAbsent: [ nil ]
 ]
@@ -97,6 +88,18 @@ MAReferenceDescription >> gtSearchSource [
 { #category : #accessing }
 MAReferenceDescription >> gtSearchSource: valuable [
 	self propertyAt: #gtSearchSource put: valuable
+]
+
+{ #category : #accessing }
+MAReferenceDescription >> gtSearchTransform [
+	^ self propertyAt: #gtSearchTransform ifAbsent: #yourself
+]
+
+{ #category : #accessing }
+MAReferenceDescription >> gtSearchTransform: aValuable [
+	"aValuable - parameter is the object returned by the Search (already transformed by its send block if present)"
+
+	self propertyAt: #gtSearchTransform put: aValuable
 ]
 
 { #category : #accessing }

@@ -6,6 +6,8 @@ MAActionDescription >> gtAction: aValuable [
 		- aGtPhlowNoAction (same as the argument to a standard GT action method)
 		- this description
 		- NB. the receiver is *not* passed as an argument, because it should be available in the description creation method"
+		
+	self flag: 'RE the last argument NB, the receiver SHOULD be passed, because descriptions are designed to be independent of model and applied to any compatible'.
 
 	^ self propertyAt: #gtAction put: aValuable
 ]

@@ -39,18 +39,6 @@ MAPatchMacro >> children [
 	^ self operations
 ]
 
-{ #category : #'accessing-magritte' }
-MAPatchMacro >> descriptionOperations [
-	<magritteDescription>
-	<gtInspectorPresentationOrder: 1>
-	^ MAToManyRelationDescription new
-		accessor: #operations;
-		glmPresentation: [ :a | a list ];
-		classes: { MAPatchOperation };
-		default: OrderedCollection new;
-		yourself
-]
-
 { #category : #accessing }
 MAPatchMacro >> diffStrings [
 	| lhs rhs |
@@ -87,12 +75,23 @@ MAPatchMacro >> isEmptyOrNil [
 
 { #category : #accessing }
 MAPatchMacro >> operations [
-	^ self maLazyInstVarUsing: self descriptionOperations
+	^ self maLazyInstVarUsing: self operationsDescription
 ]
 
 { #category : #accessing }
 MAPatchMacro >> operations: anObject [
 	operations := anObject
+]
+
+{ #category : #'accessing-magritte' }
+MAPatchMacro >> operationsDescription [
+	<magritteDescription>
+	<gtInspectorPresentationOrder: 1>
+	^ MAToManyRelationDescription new
+		accessor: #operations;
+		classes: { MAPatchOperation };
+		default: OrderedCollection new;
+		yourself
 ]
 
 { #category : #printing }

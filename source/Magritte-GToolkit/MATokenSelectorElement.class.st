@@ -23,7 +23,7 @@ MATokenSelectorElement >> addTokenFor: anObject [
 	
 	| token |
 	token := MATokenElement new
-		label: anObject displayString;
+		label: anObject gtDisplayText;
 		object: anObject;
 		removeAction: [ :obj | self onTokenRemovedFor: obj ];
 		yourself.
@@ -32,33 +32,34 @@ MATokenSelectorElement >> addTokenFor: anObject [
 
 { #category : #initialization }
 MATokenSelectorElement >> initialize [
-
 	| searchButton |
 	super initialize.
-	
+
 	self
 		hMatchParent;
 		padding: (BlInsets top: 4 bottom: 4);
 		alignCenterLeft;
 		cellSpacing: 5;
 		vFitContent.
-		
+
 	searchButton := GtSpotterDropdownButtonStencil new
-		valuable: [ self relationDescription gtSearchSource value ];
-		icon: BrGlamorousVectorIcons search;
-		spotterModelDo: [ :sm |
-			sm announcer
-				when: GtSpotterActOn
-				do: [ :evt | 
-					self onTokenRequestFor: evt element.
-					evt actedUpon: true ] ];
-		create.
-		
+			valuable: [ self relationDescription gtSearchSource value ];
+			icon: BrGlamorousVectorIcons search;
+			actOn: [ :anActOnEvent :anItem :theButton |
+				| result spottedObject |
+				spottedObject := anActOnEvent objectToSend.
+				result := self relationDescription gtSearchTransform 
+					"cull: self object - we want to pass the object too, but sometimes we get a memento"
+					value: spottedObject.
+				self onTokenRequestFor: result.
+				anActOnEvent beActed ];
+			create.
+
 	self refreshTokens.
-	
+
 	self
-		addChild: self tokenContainer;
-		addChild: searchButton.
+		addChild: searchButton;
+		addChild: self tokenContainer
 ]
 
 { #category : #accessing }

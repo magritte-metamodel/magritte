@@ -6,7 +6,7 @@ Class {
 		'selection',
 		'itemDescription'
 	],
-	#category : 'Magritte-GToolkit-Widgets'
+	#category : #'Magritte-GToolkit-Widgets'
 }
 
 { #category : #accessing }
@@ -144,7 +144,9 @@ MADropdownElement >> selection: anObject [
 
 { #category : #accessing }
 MADropdownElement >> selectionString [
-	^ self itemDescription toString: self selection
+	^ self selection 
+		ifNil: [ '' ]
+		ifNotNil: [ :sel | sel gtDisplayText ]
 ]
 
 { #category : #accessing }

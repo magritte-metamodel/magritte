@@ -89,11 +89,19 @@ MAMemento >> pull [
 
 { #category : #private }
 MAMemento >> pullRaw [
+	
+	^ self pullRawTransforming: [ :e | e ]
+]
+
+{ #category : #private }
+MAMemento >> pullRawTransforming: aBlock [
 	| result |
 	result := Dictionary new.
 	self magritteDescription do: [ :each |
-		result at: each put: (self model
-			readUsing: each) ].
+		| value transformedValue |
+		value := self model readUsing: each.
+		transformedValue := aBlock value: value.
+		result at: each put: transformedValue ].
 	^ result
 ]
 
@@ -102,7 +110,7 @@ MAMemento >> push: aDictionary [
 	"Utility method to push a dictionary mapping descriptions to values into the model."
 
 	aDictionary keysAndValuesDo: [ :key :value |
-		(key isVisible and: [ key isReadOnly not ]) 
+		(self shouldPush: value using: key) 
 			ifTrue: [ self model write: value using: key ] ]
 ]
 
@@ -124,6 +132,11 @@ MAMemento >> setDescription: aDescription [
 { #category : #initialization }
 MAMemento >> setModel: aModel [
 	model := aModel
+]
+
+{ #category : #'private-testing' }
+MAMemento >> shouldPush: anObject using: aDescription [
+	^ aDescription isVisible and: [ aDescription isReadOnly not ]
 ]
 
 { #category : #actions }
