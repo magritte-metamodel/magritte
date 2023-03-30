@@ -1,7 +1,7 @@
 Class {
 	#name : #MAPatchBrowser,
-	#superclass : #GLMCompositePresentation,
-	#category : 'Magritte-UI'
+	#superclass : #SpPresenter,
+	#category : #'Magritte-UI'
 }
 
 { #category : #building }

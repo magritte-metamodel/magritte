@@ -4,7 +4,7 @@ Class {
 	#category : #'Magritte-Morph-Model'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #private }
 MAMorphicOneToOne >> buildMorphView [
 
 	| table |
@@ -19,7 +19,7 @@ MAMorphicOneToOne >> buildMorphView [
 
 { #category : #private }
 MAMorphicOneToOne >> buildSelectButton [
-	^ Smalltalk ui theme builder
+	^ self theme builder
 		newButtonFor: self
 		action: #create
 		label: 'Create'

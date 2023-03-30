@@ -52,7 +52,7 @@ MAMorphicOneToMany >> buildMorphView [
 
 { #category : #private }
 MAMorphicOneToMany >> buildSelectButton [
-	^ Smalltalk ui theme builder
+	^ self theme builder
 		newButtonFor: self
 		action: #add
 		label: 'Add'

@@ -59,7 +59,8 @@ Object >> maGtFormFor: aView [
 	^ aView explicit
 		title: 'Magritte';
 		priority: 50;
-		stencil: [ (description elementBuilderFor: self) addButtons; element ]
+		stencil: [ (description elementBuilderFor: self) addButtons; element ];
+		actionUpdateButton
 ]
 
 { #category : #'*Magritte-GToolkit' }

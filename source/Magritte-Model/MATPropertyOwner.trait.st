@@ -14,6 +14,9 @@ MATPropertyOwner >> errorPropertyNotFound: aSelector [
 { #category : #accessing }
 MATPropertyOwner >> gtViewPropertiesOn: aView [
 	<gtView>
+	
+	self properties ifEmpty: [ ^ aView empty ].
+	
 	^ aView columnedList
 		title: 'Properties' translated;
 		priority: 75;
@@ -54,6 +57,20 @@ MATPropertyOwner >> properties [
 	"Answer the property dictionary of the receiver."
 
 	^ properties ifNil: [ properties := Dictionary new ]
+]
+
+{ #category : #accessing }
+MATPropertyOwner >> propertiesSearchOn: aSearch [
+	<gtSearch>
+	
+	^ aSearch list
+		title: 'Properties';
+		items: [ self properties associations ];
+		previewElement: [ :assoc | 
+			(assoc value gtViewsFor: GtPhlowView empty) originalView
+				asElementDo: [ :anElement | anElement ] ];
+		filterBySubstring;
+		send: [ :anObject | anObject value ]
 ]
 
 { #category : #accessing }
@@ -100,7 +117,10 @@ MATPropertyOwner >> propertyAt: aKey put: aValue [
 { #category : #accessing }
 MATPropertyOwner >> propertyAt: aSymbol putRemovingNil: aValue [
 	
-	^ (aValue isNil and: [ self hasProperty: aSymbol ])
+	aValue ifNotNil: [ 
+		^ self propertyAt: aSymbol put: aValue ].
+	
+	^ (self hasProperty: aSymbol)
 		ifTrue: [ self properties removeKey: aSymbol ]
-		ifFalse: [ self propertyAt: aSymbol put: aValue ]
+		ifFalse: [ aValue ].
 ]

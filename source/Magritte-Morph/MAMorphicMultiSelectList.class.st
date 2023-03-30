@@ -8,12 +8,6 @@ Class {
 }
 
 { #category : #private }
-MAMorphicMultiSelectList >> buildMorph [
-		
-	^ super buildMorph.
-]
-
-{ #category : #private }
 MAMorphicMultiSelectList >> buildMorphView [
 	^ (PluggableListMorph on: self list: #strings primarySelection: #selected changePrimarySelection: #selected: listSelection: #selectionAt: changeListSelection: #selectionAt:put: menu: nil)
 		hResizing: #spaceFill;

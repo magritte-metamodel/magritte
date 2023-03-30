@@ -12,7 +12,7 @@ Class {
 		'whenObjectsChangedBlock',
 		'factory'
 	],
-	#category : 'Magritte-Morph-Morphs'
+	#category : #'Magritte-Morph-Morphs'
 }
 
 { #category : #private }
@@ -31,9 +31,14 @@ TokenCollectorMorph >> entryCompletion [
 
 	entryCompletion ifNotNil: [ ^ entryCompletion ].
 	^ entryCompletion := EntryCompletion new
-			dataSourceBlock: [ :currText | self options collect: self stringEncoder ];
-			filterBlock: [ :currApplicant :currText | currApplicant asString asUppercase includesSubstring: currText asString asUppercase ];
-			yourself.
+		                     dataSourceBlock: [ :currText | 
+			                     self options collect: self stringEncoder ];
+		                     filterBlock: [ :currApplicant :currText | 
+			                     currApplicant asString asUppercase 
+				                     includesSubstring:
+					                     currText asString asUppercase ];
+		                     chooseBlock: [ :text | self accept: text ];
+		                     yourself
 ]
 
 { #category : #accessing }
@@ -122,10 +127,10 @@ TokenCollectorMorph >> stringEncoder: aBlock [
 TokenCollectorMorph >> textInput [
 
 	textInput ifNotNil: [ ^ textInput ].
-	textInput := TextInputFieldModel new
-		entryCompletion: self entryCompletion;
-		acceptBlock: [ :text | self accept: text ];
-		buildWithSpec.
+	textInput := SpTextInputFieldPresenter new
+		             entryCompletion: self entryCompletion;
+		             whenSubmitDo: [ :text | self accept: text ];
+		             build.
 	textInput
 		vResizing: #rigid;
 		height: textInput textFont height + (textInput borderWidth * 2).
@@ -137,7 +142,7 @@ TokenCollectorMorph >> tokenViewer [
 	tokenViewer ifNotNil: [ ^ tokenViewer ].
 	^ tokenViewer := Morph new
 		color:
-			Smalltalk ui theme backgroundColor;
+			self theme backgroundColor;
 		changeTableLayout;
 		vResizing: #shrinkWrap;
 		hResizing: #spaceFill;
