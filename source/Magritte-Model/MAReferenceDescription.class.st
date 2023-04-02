@@ -1,10 +1,10 @@
 "
 I am an abstract superclass for descriptions holding onto another description.
-!What is a ==reference==?
+# What is a `reference`?
 My subclasses describe the ''relationship'' between the containing object and the referenced objects (e.g. tree -> apples), but what if we need a decription of a referenced object ''itself''? In some cases, the object might already have a description we can use. If not, this is where my ==reference== comes in. 
-!!Use Cases
+## Use Cases
 Here are two common use cases:
-!!!Fine-grained control
+### Fine-grained control
 The comment of ${method:MARelationDescription>>#reference}$ has this tantalizing hint to get you started: ==By setting the reference to a MAContainer instance it is possible to customize the reference description==. Magritte does not seem to offer any examples of how that would actually work, but luckily Lukas provided one [1]:
 > you want a different string to be displayed? If so, try this 
 ==
@@ -13,20 +13,20 @@ The comment of ${method:MARelationDescription>>#reference}$ has this tantalizing
 ==
 >and implement your own printOn: method in your referenced object as   
 you wish. 
-!!!No Object Description
+### No Object Description
 The object doesn't ''have'' a description (although in this case, you could add a description via extension methods). Maybe it is an object from outside your project. In this case when no ==reference== description is provided, Magritte tries to create an appropriate one. See for yourself:
 
 [[[language=smalltalk
 	#reference gtImplementors & 'Magritte' gtPackageMatches
 ]]]
-!!Motivation
+## Motivation
 Why would we need such a description, you ask? Perhaps you want to convert these objects to strings for display in a GUI (e.g. ${method:MAOptionDescription>>#labelForOption:}$), or validate a user-added option (e.g. ${method:MAOptionDescription>>#validateOptionKind:}$). To get a feel for how references are used in practice, you may want to take a few moments to browse the clients:
 
 [[[language=smalltalk
 	#reference gtReferences & 'Magritte' gtPackageMatches
 ]]]
 
-!!Further Research
+## Further Research
 If this isn't clear enough, here are some other 
 Here's a description from the ""Magritte - Web Development"" paper:
 	''""""Relationship Descriptions.""""... The referenced objects are described by the referencing description, which is – if not manually defined by the developer – automatically built from the intersection of the element descriptions. (Section 2.3 on page 7)''
