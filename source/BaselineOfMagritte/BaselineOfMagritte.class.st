@@ -52,7 +52,8 @@ BaselineOfMagritte >> baseline330ForPharo: spec [
 			package: 'Magritte-Developer' with: [ spec requires: #('Magritte-Model') ];
 			package: 'Magritte-FileSystem' with: [ spec requires: #('Magritte-Model') ];
 			" create a temporary alias "
-			package: 'Magritte-Pharo-Model' with: 'Magritte-Pharo7-Model'.
+			package: 'Magritte-Pharo-Model' with: 'Magritte-Pharo7-Model';
+			package: 'Magritte-Tests-Files-Model' with: [ spec requires: #('Magritte-FileSystem') ].
 		spec group: 'default' with: #('Magritte-Developer') ].
 	
 	spec for: #(#'pharo9.x') do: [
@@ -90,8 +91,7 @@ BaselineOfMagritte >> baseline330ForSqueakCommon: spec [
 			package: 'Magritte-Pharo-Seaside' with: [ spec requires: #('Magritte-Seaside') ];
 			package: 'Magritte-Pharo-Tools' with: [ spec requires: #('Magritte-Deprecated') ];
 			package: 'Magritte-Seaside' with: [ spec includes: #('Magritte-Pharo-Seaside') ];
-			package: 'Magritte-Tests-Model' with: [ spec includes: #('Magritte-Tests-Pharo-Model') ];
-			package: 'Magritte-Tests-Pharo-Model' with: [ spec requires: #('Magritte-Pharo-Model') ].
+			package: 'Magritte-Tests-Model' with: [ spec includes: #('Magritte-Tests-Pharo-Model') ].
 		spec
 			group: 'Tools' with: #('Magritte-Pharo-Tools');
 			group: 'default' with: #('Magritte-Morph') ].
