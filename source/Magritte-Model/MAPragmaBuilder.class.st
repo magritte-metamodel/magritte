@@ -91,6 +91,9 @@ MAPragmaBuilder >> buildDescriptions: anObject [
 		collect:  [ :descSel |
 			| initialDescription |
 			initialDescription := anObject perform: descSel.
+			
+			self setDefiningContextOf: initialDescription to: descSel in: anObject class.
+			
 			self description: initialDescription extendedBy: descriptionExtensions for: descSel of: anObject ].
 
 	^ extendedDescriptions select: #notNil.
@@ -138,6 +141,18 @@ MAPragmaBuilder >> for: anObject [
 	
 	MADynamicDescriptionCache use: cache during: [
 		^ cache at: anObject ifAbsentPut: [ self build: anObject cache: cache ] ]
+]
+
+{ #category : #private }
+MAPragmaBuilder >> setDefiningContextOf: aDescription to: aSelector in: aClass [
+	| aSource |
+	aDescription ifNil: [ ^ nil ].
+	
+	aSource := MADescriptionContext new
+		modelClass: aClass;
+		methodSelector: aSelector.
+	
+	aDescription definingContext: aSource.
 ]
 
 { #category : #private }

@@ -35,6 +35,18 @@ MAElementDescription >> default: anObject [
 	self propertyAt: #default put: anObject
 ]
 
+{ #category : #accessing }
+MAElementDescription >> definingContext [
+	
+	^ self propertyAt: #definingContext ifAbsent: [ nil ]
+]
+
+{ #category : #accessing }
+MAElementDescription >> definingContext: anMADefiningContext [
+	
+	^ self propertyAt: #definingContext  put: anMADefiningContext
+]
+
 { #category : #testing }
 MAElementDescription >> handleMessage: aMessage for: anObject [
 	"We do no error checking; you probably want to send #handlesSelector: first to make sure"

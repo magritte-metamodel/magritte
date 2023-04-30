@@ -62,6 +62,18 @@ MAActionDescription >> comment: aString [
 ]
 
 { #category : #accessing }
+MAActionDescription >> definingContext [
+	
+	^ self propertyAt: #definingContext ifAbsent: [ nil ]
+]
+
+{ #category : #accessing }
+MAActionDescription >> definingContext: anMADefiningContext [
+	
+	^ self propertyAt: #definingContext  put: anMADefiningContext
+]
+
+{ #category : #accessing }
 MAActionDescription >> enableBlock [
 	^ enableBlock ifNil: [ true ]
 ]
