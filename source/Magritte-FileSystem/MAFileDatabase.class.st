@@ -21,7 +21,7 @@ Class {
 		'baseDirectory',
 		'baseUrl'
 	],
-	#category : 'Magritte-FileSystem'
+	#category : #'Magritte-FileSystem'
 }
 
 { #category : #accessing }
@@ -112,8 +112,8 @@ MAFileDatabase >> uniqueLocation [
 	[
 		partition := self randomPartitionFolderName.
 		id := self randomIdentifierName.
-		result := self baseDirectory ensureDirectory / partition / id.
+		result := self baseDirectory ensureCreateDirectory / partition / id.
 	] doWhileTrue: [ result exists ].
 	
-	^ result ensureDirectory.
+	^ result ensureCreateDirectory.
 ]

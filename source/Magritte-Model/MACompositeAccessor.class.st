@@ -13,20 +13,6 @@ Class {
 	#category : #'Magritte-Model-Accessor'
 }
 
-{ #category : #'example support' }
-MACompositeAccessor class >> sampleContainer [
-	
-	| desc |
-	desc := MAContainer samplePersonDescription
-		blocClass: MACompositeElementBuilder;
-		yourself.
-	desc children do: [ :e | 
-		| acc prefixAccessor |
-		prefixAccessor := MADictionaryAccessor key: #people.
-		acc := MACompositeAccessor via: prefixAccessor using: e ].
-	^ desc
-]
-
 { #category : #'instance creation' }
 MACompositeAccessor class >> via: anAccessor using: aDescription [
 	| result |
