@@ -40,7 +40,6 @@ BaselineOfMagritte >> baseline310CommonExtDeps: spec [
 			spec
 				repository: 'github://SeasideSt/Seaside:master/repository';
 				loads: #('Core') ]
-
 ]
 
 { #category : #baselines }
@@ -79,7 +78,7 @@ BaselineOfMagritte >> baseline330ForPharo: spec [
 { #category : #baselines }
 BaselineOfMagritte >> baseline330ForSqueakCommon: spec [
 
-	spec for: #squeakCommon do: [ 
+	spec for: #squeakCommon do: [
 		spec
 			package: 'Magritte-Bootstrap' with: [ spec requires: #('Magritte-Model') ];
 			package: 'Magritte-Deprecated3dot7' with: [ spec requires: #('Magritte-Model' 'Magritte-Morph') ];
@@ -90,9 +89,9 @@ BaselineOfMagritte >> baseline330ForSqueakCommon: spec [
 			package: 'Magritte-Pharo-Model';				
 			package: 'Magritte-Pharo-Seaside' with: [ spec requires: #('Magritte-Seaside') ];
 			package: 'Magritte-Pharo-Tools' with: [ spec requires: #('Magritte-Deprecated') ];
-			package: 'Magritte-Seaside' with: [ spec includes: #('Magritte-Pharo-Seaside');
+			package: 'Magritte-Seaside' with: [ spec includes: #('Magritte-Pharo-Seaside') ];
 			package: 'Magritte-Tests-Model' with: [ spec includes: #('Magritte-Tests-Pharo-Model') ];
-			package: 'Magritte-Tests-Pharo-Model' with: [ spec requires: #('Magritte-Pharo-Model') ] ].
+			package: 'Magritte-Tests-Pharo-Model' with: [ spec requires: #('Magritte-Pharo-Model') ].
 		spec
 			group: 'Tools' with: #('Magritte-Pharo-Tools');
 			group: 'default' with: #('Magritte-Morph') ].
