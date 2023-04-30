@@ -10,7 +10,7 @@ Class {
 		'location',
 		'directory'
 	],
-	#category : 'Magritte-FileSystem'
+	#category : #'Magritte-FileSystem'
 }
 
 { #category : #accessing }
@@ -91,7 +91,7 @@ MAExternalFileModel >> finalize [
 	dir exists
 		ifTrue: [ dir deleteAll ].
 	[ (dir := dir parent) hasChildren ]
-		whileFalse: [ dir ensureDeleted ].
+		whileFalse: [ dir ensureDelete ].
 	super finalize.
 	location := nil
 ]
@@ -112,10 +112,10 @@ MAExternalFileModel >> postCopy [
 
 { #category : #'accessing-dynamic' }
 MAExternalFileModel >> readStream [
-	^ self file readStream binary.
+	^ self file binaryReadStream 
 ]
 
 { #category : #'accessing-dynamic' }
 MAExternalFileModel >> writeStream [
-	^ self file writeStream binary
+	^ self file binaryWriteStream 
 ]

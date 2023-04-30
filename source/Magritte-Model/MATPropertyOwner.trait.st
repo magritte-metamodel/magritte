@@ -66,9 +66,7 @@ MATPropertyOwner >> propertiesSearchOn: aSearch [
 	^ aSearch list
 		title: 'Properties';
 		items: [ self properties associations ];
-		previewElement: [ :assoc | 
-			(assoc value gtViewsFor: GtPhlowView empty) originalView
-				asElementDo: [ :anElement | anElement ] ];
+		previewObject: [ :assoc | assoc value ];
 		filterBySubstring;
 		send: [ :anObject | anObject value ]
 ]
