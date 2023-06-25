@@ -6,6 +6,14 @@ Trait {
 	#category : #'Magritte-Model-Core'
 }
 
+{ #category : #uuid }
+MATPropertyOwner >> ensureUUID [
+	"See #uuid comment"
+	 ^ self 
+	 	propertyAt: #uuid
+	 	ifAbsentPut: [ UUIDGenerator next ]
+]
+
 { #category : #private }
 MATPropertyOwner >> errorPropertyNotFound: aSelector [ 
 	MAPropertyError signal: 'Property ' , aSelector , ' not found.'
@@ -121,4 +129,11 @@ MATPropertyOwner >> propertyAt: aSymbol putRemovingNil: aValue [
 	^ (self hasProperty: aSymbol)
 		ifTrue: [ self properties removeKey: aSymbol ]
 		ifFalse: [ aValue ].
+]
+
+{ #category : #uuid }
+MATPropertyOwner >> uuid [
+	
+	 ^ self propertyAt: #uuid ifAbsent: [ nil ]
+	"It is a stretch to place this in MATPropertyOwner, but it's only two methods, so in the interest of simplicity we'll put it here until someone complains. We had extracted this to ObjectiveLepiter, the only user. However, due to limitations in Pharo packaging, namely lack of extension traits, users become unusable unless in GT, where OL works. For now, it seems prudent to live with the two methods in question to make life easier"
 ]
