@@ -26,6 +26,17 @@ MADescriptionContext >> compiledMethod [
 		ifNotNil: [ :aClass | aClass >> self methodSelector asSymbol ]
 ]
 
+{ #category : #accessing }
+MADescriptionContext >> compiledMethodGtViewFor: aView [
+	 <gtView>
+		
+	^ aView forward
+		title: 'Method';
+		priority: 10;
+		object: [ self compiledMethod ];
+		view: #gtSourceFor:
+]
+
 { #category : #comparing }
 MADescriptionContext >> hash [
 	^ self methodSelector hash
