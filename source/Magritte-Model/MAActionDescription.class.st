@@ -146,7 +146,11 @@ MAActionDescription >> label [
 { #category : #accessing }
 MAActionDescription >> label: aString [
 
+	| anOldLabel |
+	anOldLabel := label.
 	label := aString.
+	
+	self propertyAnnounceKey: #label oldValue: anOldLabel newValue: aString
 ]
 
 { #category : #private }
