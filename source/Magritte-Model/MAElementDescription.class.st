@@ -7,6 +7,11 @@ Class {
 	#category : #'Magritte-Model-Description'
 }
 
+{ #category : #'accessing-defaults' }
+MAElementDescription class >> defaultAutoAccept [
+	^ false
+]
+
 { #category : #'instance creation' }
 MAElementDescription class >> new [
 	"override #new so that we can create an object without adding it to the collection returned by: MAElementDescription withAllConcreteClasses,
@@ -23,6 +28,20 @@ MAElementDescription >> acceptMagritte: aVisitor [
 { #category : #converting }
 MAElementDescription >> asContainer [
 	^ MAContainer with: self
+]
+
+{ #category : #accessing }
+MAElementDescription >> autoAccept [
+	"Test whether new mement values should be automatically propagated to the model."
+
+	^ self 
+		propertyAt: #autoAccept 
+		ifAbsent: [ self class defaultAutoAccept ]
+]
+
+{ #category : #accessing }
+MAElementDescription >> autoAccept: aBoolean [
+	self propertyAt: #autoAccept put: aBoolean
 ]
 
 { #category : #accessing }
