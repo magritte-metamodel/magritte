@@ -32,7 +32,9 @@ MAElementDescription >> asContainer [
 
 { #category : #accessing }
 MAElementDescription >> autoAccept [
-	"Test whether new mement values should be automatically propagated to the model."
+	"Define whether new memento values should be automatically propagated to a model.
+	
+	New values are propagated to the model only if successfully validated. See {{gtMethod: GtMagritteMemento >> #autoAcceptValue: }} for more details."
 
 	^ self 
 		propertyAt: #autoAccept 
@@ -41,6 +43,10 @@ MAElementDescription >> autoAccept [
 
 { #category : #accessing }
 MAElementDescription >> autoAccept: aBoolean [
+	"Set whether new memento values should be automatically propagated to a model.
+	
+	New values are propagated to the model only if successfully validated. See {{gtMethod: GtMagritteMemento >> #autoAcceptValue: }} for more details."
+	
 	self propertyAt: #autoAccept put: aBoolean
 ]
 
