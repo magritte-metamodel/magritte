@@ -308,17 +308,6 @@ MADescription >> defaultLabel [
 	^ self accessor defaultLabelFor: self
 ]
 
-{ #category : #'as yet unclassified' }
-MADescription >> definingSource [
-	<return: #MADescriptionMethodSource>
-	^ self propertyAt: #definingSource ifAbsent: [ nil ]
-]
-
-{ #category : #'as yet unclassified' }
-MADescription >> definingSource: aSource [
-	^ self propertyAt: #definingSource put: aSource
-]
-
 { #category : #'owning object' }
 MADescription >> describedObject [
 	^ MADynamicDescribedObject value
