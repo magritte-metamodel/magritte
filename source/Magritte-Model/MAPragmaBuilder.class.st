@@ -156,6 +156,18 @@ MAPragmaBuilder >> object: anObject description: aDescription definedAt: aSelect
 ]
 
 { #category : #private }
+MAPragmaBuilder >> setDefiningContextOf: aDescription to: aSelector in: aClass [
+	| aSource |
+	aDescription ifNil: [ ^ nil ].
+	
+	aSource := MADescriptionContext new
+		modelClass: aClass;
+		methodSelector: aSelector.
+	
+	aDescription definingContext: aSource.
+]
+
+{ #category : #private }
 MAPragmaBuilder >> uniqueDescriptionSelectors: anObject [
 	| descriptionPragmas selectors |
 	
