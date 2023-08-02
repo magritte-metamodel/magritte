@@ -193,6 +193,15 @@ MATPropertyOwner >> propertyAt: aSymbol putRemovingNil: aValue [
 	^ anOldValue
 ]
 
+{ #category : #subscriptions }
+MATPropertyOwner >> unsubscribe: aSubscriber [
+	self properties
+		at: #propertyAnnouncer
+		ifPresent: [ :anAnnouncer | 
+			anAnnouncer unsubscribe: aSubscriber ]
+		ifAbsent: [  "ignore" ]
+]
+
 { #category : #uuid }
 MATPropertyOwner >> uuid [
 	
