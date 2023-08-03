@@ -46,7 +46,11 @@ MAActionDescription >> action [
 { #category : #accessing }
 MAActionDescription >> action: aValuable [
 
+	| anOldAction |
+	anOldAction := action.
 	action := aValuable.
+	
+	self propertyAnnounceKey: #action oldValue: anOldAction newValue: aValuable
 ]
 
 { #category : #accessing }
@@ -147,7 +151,11 @@ MAActionDescription >> label [
 { #category : #accessing }
 MAActionDescription >> label: aString [
 
+	| anOldLabel |
+	anOldLabel := label.
 	label := aString.
+	
+	self propertyAnnounceKey: #label oldValue: anOldLabel newValue: aString
 ]
 
 { #category : #private }

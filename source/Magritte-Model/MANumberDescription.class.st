@@ -4,7 +4,7 @@ I am a description of numbers, possible values are instances of ==Number== and a
 Class {
 	#name : #MANumberDescription,
 	#superclass : #MAMagnitudeDescription,
-	#category : 'Magritte-Model-Description'
+	#category : #'Magritte-Model-Description'
 }
 
 { #category : #'accessing-defaults' }

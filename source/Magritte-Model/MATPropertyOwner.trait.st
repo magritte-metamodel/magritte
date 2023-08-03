@@ -79,6 +79,28 @@ MATPropertyOwner >> propertiesSearchOn: aSearch [
 		send: [ :anObject | anObject value ]
 ]
 
+{ #category : #subscriptions }
+MATPropertyOwner >> propertyAnnounceKey: aPropertyKey oldValue: anOldValue newValue: aNewValue [
+	"Announce a property change if there are subscriptions."
+	
+	self propertyAnnouncerDo: [ :anAnnouncer |
+		anOldValue = aNewValue ifFalse: [
+			anAnnouncer announce: (MAPropertyChangedAnnouncement new
+					owner: self;
+					key: aPropertyKey;
+					value: aNewValue) ] ]
+]
+
+{ #category : #subscriptions }
+MATPropertyOwner >> propertyAnnouncerDo: aBlock [
+	"Announce a property change if there are subscriptions."
+
+	self properties
+		at: #propertyAnnouncer
+		ifPresent: aBlock
+		ifAbsent: [  "ignore" ]
+]
+
 { #category : #accessing }
 MATPropertyOwner >> propertyAt: aKey [
 	"Answer the value of the property ==aKey==, raises an error if the property doesn't exist."
@@ -97,7 +119,19 @@ MATPropertyOwner >> propertyAt: aKey ifAbsent: aBlock [
 MATPropertyOwner >> propertyAt: aKey ifAbsentPut: aBlock [
 	"Answer the value of the property ==aKey==, or if the property doesn't exist adds and answers the result of evaluating ==aBlock==."
 
-	^ self properties at: aKey ifAbsentPut: aBlock
+	| aValue shouldAnnounce |
+	shouldAnnounce := false.
+	
+	aValue := self properties 
+		at: aKey 
+		ifAbsentPut: [
+			shouldAnnounce := true.
+			aBlock value ].
+			
+	shouldAnnounce ifTrue: [ 
+		self propertyAnnounceKey: aKey oldValue: nil newValue: aValue ].
+		
+	^ aValue
 ]
 
 { #category : #accessing }
@@ -114,21 +148,58 @@ MATPropertyOwner >> propertyAt: aKey ifPresent: oneArgBlock ifAbsent: absentBloc
 ]
 
 { #category : #accessing }
+MATPropertyOwner >> propertyAt: aKey ifPresent: oneArgBlock ifAbsentPut: absentBlock [
+	"Lookup ==aKey==, if it is present, answer the value of evaluating the oneArgBlock with the value associated with the key, otherwise answer the value of absentBlock."
+	| anOldValue aNewValue |
+	anOldValue := nil.
+	aNewValue := self properties 
+		at: aKey 
+		ifPresent: [ :aValue | 
+			anOldValue := aValue. 
+			oneArgBlock value ]
+		ifAbsentPut: absentBlock.
+			
+	self propertyAnnounceKey: aKey oldValue: anOldValue newValue: aNewValue.
+	
+	^ aNewValue
+]
+
+{ #category : #accessing }
 MATPropertyOwner >> propertyAt: aKey put: aValue [
 	"Adds or replaces the property ==aKey== with ==aValue==."
 
-	^ self properties at: aKey put: aValue
+	| anOldValue aNewValue |
+	anOldValue := self properties at: aKey ifAbsent: [ nil ].
+	aNewValue := self properties at: aKey put: aValue.
+	
+	self propertyAnnounceKey: aKey oldValue: anOldValue newValue: aNewValue.
+
+	^ aNewValue
 ]
 
 { #category : #accessing }
 MATPropertyOwner >> propertyAt: aSymbol putRemovingNil: aValue [
 	
+	| anOldValue |
 	aValue ifNotNil: [ 
 		^ self propertyAt: aSymbol put: aValue ].
 	
-	^ (self hasProperty: aSymbol)
+	anOldValue := (self hasProperty: aSymbol)
 		ifTrue: [ self properties removeKey: aSymbol ]
 		ifFalse: [ aValue ].
+		
+	self propertyAnnounceKey: aSymbol oldValue: anOldValue newValue: aValue.
+	
+	^ anOldValue
+]
+
+{ #category : #subscriptions }
+MATPropertyOwner >> unsubscribe: aSubscriber [
+	self properties
+		at: #propertyAnnouncer
+		ifPresent: [ :anAnnouncer | 
+			anAnnouncer unsubscribe: aSubscriber ]
+		ifAbsent: [  "ignore" ]
 ]
 
 { #category : #uuid }
@@ -136,4 +207,17 @@ MATPropertyOwner >> uuid [
 	
 	 ^ self propertyAt: #uuid ifAbsent: [ nil ]
 	"It is a stretch to place this in MATPropertyOwner, but it's only two methods, so in the interest of simplicity we'll put it here until someone complains. We had extracted this to ObjectiveLepiter, the only user. However, due to limitations in Pharo packaging, namely lack of extension traits, users become unusable unless in GT, where OL works. For now, it seems prudent to live with the two methods in question to make life easier"
+]
+
+{ #category : #subscriptions }
+MATPropertyOwner >> whenPropertyChangedSend: aSelector to: aReceiver [
+	| anAnnouncer |
+	anAnnouncer := self properties 
+		at: #propertyAnnouncer
+		ifAbsentPut: [ Announcer new ].
+		
+	^ anAnnouncer weak 
+		when: MAPropertyChangedAnnouncement
+		send: aSelector
+		to: aReceiver
 ]
