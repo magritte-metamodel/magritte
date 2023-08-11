@@ -47,6 +47,32 @@ MAElementDescription >> definingContext: anMADefiningContext [
 	^ self propertyAt: #definingContext  put: anMADefiningContext
 ]
 
+{ #category : #accessing }
+MAElementDescription >> gtAddColumnTo: aView [
+
+	self 
+		propertyAt: #columnWidth
+		ifPresent: [ :width |
+			aView 
+				column: self label 
+					text: [ :anObj | self readToString: anObj ]
+					width: width.
+			^ self ].
+			
+	self 
+		propertyAt: #columnWeight
+		ifPresent: [ :weight |
+			aView 
+				column: self label 
+					text: [ :anObj | self readToString: anObj ]
+					weight: weight.
+			^ self ].
+			
+	aView 
+		column: self label 
+			text: [ :anObj | self readToString: anObj ]
+]
+
 { #category : #testing }
 MAElementDescription >> handleMessage: aMessage for: anObject [
 	"We do no error checking; you probably want to send #handlesSelector: first to make sure"
