@@ -60,7 +60,19 @@ Object >> maGtFormFor: aView [
 		title: 'Magritte';
 		priority: 50;
 		stencil: [ (description elementBuilderFor: self) addButtons; element ];
-		actionUpdateButton
+		actionButtonIcon: BrGlamorousVectorIcons inspect
+		  label: 'Memento'
+		  tooltip: 'Inspect Memento'
+		  action: [ :aButton :aTab | 
+		  	aTab viewContentElement
+				  allChildrenBreadthFirstDetect: [ :anElement | 
+					  anElement userData includesKey:
+							  #magrittePresenter ]
+				  ifFound: [ :anElement | 
+				  	| memento |
+				  	memento := (anElement userData at: #magrittePresenter) memento.
+					  aButton phlow spawnObject: memento ] ];
+		actionUpdateButton.
 ]
 
 { #category : #'*Magritte-GToolkit' }
