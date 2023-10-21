@@ -85,6 +85,16 @@ MAElementDescription >> handlesSelector: aSelector [
 	^ self accessor handlesSelector: aSelector
 ]
 
+{ #category : #accessing }
+MAElementDescription >> initialAnswer [
+	^ self propertyAt: #initialAnswer ifAbsent: [ self default ]
+]
+
+{ #category : #accessing }
+MAElementDescription >> initialAnswer: aValuable [
+	self propertyAt: #initialAnswer put: aValuable
+]
+
 { #category : #'lazy initialization' }
 MAElementDescription >> lazilyInitializeFrom: currentValue for: anObject [
 	"- The default value is cached if the description's #shouldCacheDefault property is true. An example when caching is necessary is for to-many relations because the user may modify the collection, which will then be thrown away if not cached
