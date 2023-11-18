@@ -14,6 +14,14 @@ MACheckedMementoTest >> actualClass [
 	^ MACheckedMemento
 ]
 
+{ #category : #'tests-accessing' }
+MACheckedMementoTest >> testClassHasModelChangedElsewhere [
+        self value: self class.
+        self memento reset.
+        self deny: self memento hasModelChangedElsewhere
+
+]
+
 { #category : #'tests-actions' }
 MACheckedMementoTest >> testConflictCommit [
 	self write: self includedInstance.
