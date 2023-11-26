@@ -1,6 +1,19 @@
 Extension { #name : #GtPhlowProtoView }
 
 { #category : #'*Magritte-GToolkit' }
+GtPhlowProtoView >> maColumnedListFromContainer: anMAContainer descriptionsSelect: aBlock [
+	
+	| result |
+	result := self columnedList.
+		
+	anMAContainer children
+		select: aBlock
+		thenDo: [ :desc | desc gtAddColumnTo: result ].
+				
+	^ result
+]
+
+{ #category : #'*Magritte-GToolkit' }
 GtPhlowProtoView >> maColumnedListOf: aClass [
 	
 	^ self 
@@ -11,12 +24,7 @@ GtPhlowProtoView >> maColumnedListOf: aClass [
 { #category : #'*Magritte-GToolkit' }
 GtPhlowProtoView >> maColumnedListOf: aClass descriptionsSelect: aBlock [
 	
-	| result |
-	result := self columnedList.
-		
-	aClass magritteTemplate magritteDescription children
-		select: aBlock
-		thenDo: [ :desc | desc gtAddColumnTo: result ].
-				
-	^ result
+	^ self 
+		maColumnedListFromContainer: aClass magritteTemplate magritteDescription 
+		descriptionsSelect: aBlock
 ]
