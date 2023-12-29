@@ -6,7 +6,7 @@ See {{gtClass:MACompositeAccessor}} for more info.
 Class {
 	#name : #MACompositeElementBuilder,
 	#superclass : #MAElementBuilder,
-	#category : 'Magritte-GToolkit'
+	#category : #'Magritte-GToolkit'
 }
 
 { #category : #accessing }
@@ -23,15 +23,19 @@ MACompositeElementBuilder class >> example [
 
 { #category : #accessing }
 MACompositeElementBuilder >> visitSingleOptionDescription: aDescription [
-	| inputElement items |
+	
 	self flag: 'lots of duplication with super implementation'.
-	items := aDescription allOptions copyWith: MACompositeConflict new; yourself.
-	inputElement := MADropdownElement new 
-		items: items;
-		itemDescription: aDescription reference;
-		selection: (aDescription read: self memento);
-		when: MADropdownWish do: [ :aWish | 
-			aWish selection = MACompositeConflict new ifFalse: [ aDescription write: aWish selection to: self memento ] ];
-		yourself.
-	self addInputField: inputElement using: aDescription
+	
+	self 
+		using: aDescription
+		addInputField: [ 
+			| items |
+			items := aDescription allOptions copyWith: MACompositeConflict new; yourself.
+			MADropdownElement new 
+				items: items;
+				itemDescription: aDescription reference;
+				selection: (aDescription read: self memento);
+				when: MADropdownWish do: [ :aWish | 
+					aWish selection = MACompositeConflict new ifFalse: [ aDescription write: aWish selection to: self memento ] ];
+				yourself ] 
 ]
