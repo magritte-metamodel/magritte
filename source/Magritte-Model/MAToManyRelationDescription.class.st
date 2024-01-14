@@ -129,6 +129,11 @@ MAToManyRelationDescription >> isDefinitive [
 	^ self definitive.
 ]
 
+{ #category : #accessing }
+MAToManyRelationDescription >> isMultiple [
+	^true
+]
+
 { #category : #testing }
 MAToManyRelationDescription >> isOrdered [
 	^ self ordered
