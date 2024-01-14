@@ -35,10 +35,13 @@ MAMemento >> commit [
 
 { #category : #private }
 MAMemento >> cookRawPull: aDictionary [
+	"The reason for the somewhat cryptic message name is that each subclass is free to perform any needed actions. Here we just replace undefinedValues with default values"
 
-	aDictionary keysAndValuesDo: [ :key :value |
-		value isNil
-			ifTrue: [ aDictionary at: key put: key default yourself ] ]
+	aDictionary keysAndValuesDo: [ :elemDescription :value |
+		value = elemDescription undefinedValue ifTrue: [ 
+			aDictionary 
+				at: elemDescription 
+				put: elemDescription default ] ]
 ]
 
 { #category : #'reflective operations' }
@@ -50,13 +53,14 @@ MAMemento >> doesNotUnderstand: aMessage [
 ]
 
 { #category : #private }
-MAMemento >> isDifferent: firstDictionary to: secondDictionary [
-	| firstValue secondValue |
-	self magritteDescription do: [ :each |
-		(each isVisible and: [ each isReadOnly not ]) ifTrue: [
-			firstValue := firstDictionary at: each ifAbsent: [ nil ].
-			secondValue := secondDictionary at: each ifAbsent: [ nil ].
-			firstValue = secondValue ifFalse: [ ^ true ] ] ].
+MAMemento >> has: firstDictionary changedFrom: secondDictionary [
+	
+	self magritteDescription do: [ :desc |
+		| firstValue secondValue hasFieldChanged |
+		firstValue := firstDictionary at: desc ifAbsent: [ nil ].
+		secondValue := secondDictionary at: desc ifAbsent: [ nil ].
+		hasFieldChanged := desc shouldWrite: firstValue over: secondValue.
+		hasFieldChanged ifTrue: [ ^ true ] ].
 	^ false
 ]
 
@@ -97,11 +101,11 @@ MAMemento >> pullRaw [
 MAMemento >> pullRawTransforming: aBlock [
 	| result |
 	result := Dictionary new.
-	self magritteDescription do: [ :each |
+	self magritteDescription do: [ :elemDescription |
 		| value transformedValue |
-		value := self model readUsing: each.
-		transformedValue := aBlock value: value.
-		result at: each put: transformedValue ].
+		value := self model readUsing: elemDescription.
+		transformedValue := aBlock cull: value cull: elemDescription.
+		result at: elemDescription put: transformedValue ].
 	^ result
 ]
 
@@ -136,7 +140,10 @@ MAMemento >> setModel: aModel [
 
 { #category : #'private-testing' }
 MAMemento >> shouldPush: anObject using: aDescription [
-	^ aDescription isVisible and: [ aDescription isReadOnly not ]
+
+	| modelValue |
+	modelValue := self model readUsing: aDescription.
+	^ aDescription shouldWrite: anObject over: modelValue.
 ]
 
 { #category : #actions }

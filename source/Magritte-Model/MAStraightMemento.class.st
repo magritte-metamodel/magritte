@@ -4,7 +4,7 @@ I am a memento that forwards read- and write-access directly to the model. I can
 Class {
 	#name : #MAStraightMemento,
 	#superclass : #MAMemento,
-	#category : 'Magritte-Model-Memento'
+	#category : #'Magritte-Model-Memento'
 }
 
 { #category : #testing }
@@ -20,5 +20,6 @@ MAStraightMemento >> readUsing: aDescription [
 
 { #category : #private }
 MAStraightMemento >> write: anObject using: aDescription [
+	(self shouldPush: anObject using: aDescription) ifFalse: [ ^ self ].
 	self model write: anObject using: aDescription
 ]

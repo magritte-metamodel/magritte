@@ -6,7 +6,7 @@ Class {
 		'value',
 		'description'
 	],
-	#category : 'Magritte-Tests-Model-Memento'
+	#category : #'Magritte-Tests-Model-Memento'
 }
 
 { #category : #testing }
@@ -95,6 +95,31 @@ MAMementoTest >> setUp [
 ]
 
 { #category : #'tests-actions' }
+MAMementoTest >> testCachedDefaultValues [
+
+	| obj plzDescription |
+	obj := MAMockAddress new.
+	
+	memento := self actualClass
+		model: obj
+		description: obj magritteDescription.
+		
+	memento := self actualClass
+		model: obj
+		description: obj magritteDescription.
+		
+	plzDescription := obj descriptionPlz
+		default: 1;
+		shouldCacheDefault: true;
+		yourself.
+	
+	memento push: {
+		plzDescription -> plzDescription default } asDictionary.
+		
+	self assert: obj plz equals: plzDescription default
+]
+
+{ #category : #'tests-actions' }
 MAMementoTest >> testCommit [
 	self subclassResponsibility
 ]
@@ -118,6 +143,41 @@ MAMementoTest >> testRead [
 { #category : #'tests-actions' }
 MAMementoTest >> testReset [
 	self subclassResponsibility
+]
+
+{ #category : #'tests-actions' }
+MAMementoTest >> testSingletonValue [
+
+	| obj |
+	obj := MAMockAddress new
+		plzType: Number;
+		yourself.
+		
+	memento := obj mementoClass
+		model: obj
+		description: obj magritteDescription.
+		
+	self assert: (memento original at: obj plzTypeDescription) == obj plzType.
+]
+
+{ #category : #'tests-actions' }
+MAMementoTest >> testUncachedDefaultValues [
+
+	| obj plzDescription |
+	obj := MAMockAddress new.
+	
+	memento := self actualClass
+		model: obj
+		description: obj magritteDescription.
+		
+	plzDescription := obj descriptionPlz
+		default: 1;
+		yourself.
+	
+	memento push: {
+		plzDescription -> plzDescription default } asDictionary.
+		
+	self assert: obj plz equals: nil
 ]
 
 { #category : #'tests-actions' }
