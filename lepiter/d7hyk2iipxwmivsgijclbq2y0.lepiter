@@ -1,0 +1,747 @@
+{
+	"__schema" : "4.1",
+	"__type" : "page",
+	"uid" : {
+		"__type" : "uuid",
+		"uuid" : "6870a1aa-38cb-0d00-8f66-51a200a61adf"
+	},
+	"pageType" : {
+		"__type" : "namedPage",
+		"title" : "Cached Mementos - To Copy or Not To Copy?"
+	},
+	"children" : {
+		"__type" : "snippets",
+		"items" : [
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-01-13T21:15:02.295492-05:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-01-13T21:15:04.52591-05:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "DvCoM0DLDQCUvW8oDmVp6Q=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "```smalltalk\nMACachedMemento>>cookRawPull: aDictionary\r\r\tsuper cookRawPull: aDictionary.\r\taDictionary keysAndValuesDo: [ :key :value |\r\t\t| isCollectionOfRelations |\r\t\tisCollectionOfRelations := value isCollection and: [ key isKindOf: MAToManyRelationDescription ].\r\t\tisCollectionOfRelations ifTrue: [ \r\t\t\taDictionary at: key put: value copy ] ].```"
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-01-13T15:10:23.303431-05:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-01-13T21:15:34.383327-05:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "mhAqGzvLDQCqHkyvBYVcUQ=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "There are several problems with the above: Firstly, it is applied to cached mementos. This overly broad, since the motivating problem affects the `original` dictionary - something only checked mementos have. Even worse, it applies to all pulls, not just those to `original` dictionaries. This lead to a host of problems described in more detail below."
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [
+									{
+										"__type" : "textSnippet",
+										"children" : {
+											"__type" : "snippets",
+											"items" : [ ]
+										},
+										"createEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"createTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2024-01-13T12:15:57.283707-05:00"
+											}
+										},
+										"editEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"editTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2024-01-13T21:28:02.243445-05:00"
+											}
+										},
+										"uid" : {
+											"__type" : "uid",
+											"uidString" : "oEG/qzjLDQCPaJEoAKYa3w=="
+										},
+										"paragraphStyle" : {
+											"__type" : "textStyle"
+										},
+										"string" : "While this second copying might sometimes be what we want, it clearly does not work in some scenarios, creating the false impression that the model object has changed elsewhere, which prevents committing the memento."
+									},
+									{
+										"__type" : "textSnippet",
+										"children" : {
+											"__type" : "snippets",
+											"items" : [ ]
+										},
+										"createEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"createTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2024-01-13T14:11:23.632865-05:00"
+											}
+										},
+										"editEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"editTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2024-01-13T21:30:58.326014-05:00"
+											}
+										},
+										"uid" : {
+											"__type" : "uid",
+											"uidString" : "qvKWSDrLDQCWb4zOAKYa3w=="
+										},
+										"paragraphStyle" : {
+											"__type" : "textStyle"
+										},
+										"string" : "For example, {{gtMethod:MAMementoTest>>testSingletonValue}} was failing because the value was a class and the memento was storing a copying of it. Validation then failed because the installed class is not equivalent to a copy."
+									}
+								]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-01-13T12:41:59.218048-05:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-01-13T14:08:54.366768-05:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "y3XYCDnLDQCYHE5pAKYa3w=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "```smalltalk\nMACheckedMemento>>reset\r\tsuper reset.\r\tself setOriginal: (self pullRawTransforming: [ :e | e copy ]).\n```"
+						}
+					]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-01-13T13:09:25.64184-05:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-01-13T14:06:52.577448-05:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "KuX6ajnLDQCjkkexAKYa3w=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "The problem is that mementos were copying described values in two places:"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-01-13T13:15:17.154524-05:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-01-13T21:14:38.476851-05:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "TIzufznLDQCoJxcnAKYa3w=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "1. the model itself, which is the real *current* state"
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-01-13T13:16:22.674676-05:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-01-13T21:21:44.989027-05:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "T1DWgznLDQCq316JAKYa3w=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "2. the cache, which is the desired state which the memento will attempt to push all at once on commit"
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-01-13T13:16:48.400288-05:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-01-13T21:22:26.874825-05:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "s9tehTnLDQCspUBhAKYa3w=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "3. the original, which is the memento's copy of the model state at the time the memento was created. This will be used before committing to make sure the model state hasn't changed elsewhere because otherwise committing might intentionally overwrite/destroy needed data."
+						}
+					]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-01-13T13:16:03.343177-05:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-01-13T15:13:44.04558-05:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "BVmvgjnLDQCqbjclAKYa3w=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "Let's take a step back and review the domain model. For checked mementos, there are three versions of model state:"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-01-13T14:00:28.071116-05:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-01-13T21:23:14.918565-05:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "G8rBIDrLDQCGxhQxAKYa3w=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "{{gtMethod:MACheckedMementoTest>>testValidateFailsOnReferencedCollectionChange}} tests for this. If we comment out the `#copy` in {{gtMethod:MACheckedMemento>>reset}} it will fail."
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-01-13T14:02:16.223282-05:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-01-13T22:10:42.463849-05:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "9CD2JzrLDQCJJWd0AKYa3w=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "Interestingly, outside changes also \"bleed\" into the cache, but it seems not to matter. If a user was worried about outside changes, they would use an {{gtClass:MACheckedMemento}} which would flag the problem during validation, not an {{gtClass:MACachedMemento}}. Choosing that memento type means we are specifically *not* checking for whether the model has changed elsewhere. Since the cache is changing with the model, there will be nothing to commit unless we explicitly change the field in the memento, which seems like the expected behavior."
+						}
+					]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-01-13T13:18:41.587253-05:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-01-13T22:05:33.783955-05:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "CPMdjDnLDQCzQ4jFAKYa3w=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "The motivating problem with the *original*, which inspired all this copying, is that, if a field references a collection, and we hold onto that actual collection, and the elements in the collection are changed from the outside, our \"original\" will also change and validation will never fail and so offers no protection. "
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-01-13T13:12:25.214197-05:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-01-13T15:05:47.598878-05:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "lPKudTnLDQCmPtikAKYa3w=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "2019-09-04 - [Mementos Should Ignore Default values](https://github.com/magritte-metamodel/magritte/issues/120) - claims to be fixed by the \"...Copy Collections\" fix below, but I don't see how"
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-01-13T15:05:49.415651-05:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-01-13T15:09:37.818001-05:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "Is4+CzvLDQCb+VbtBYVcUQ=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "2022-05-31 - [Cached Memento Should Copy ToMany Collections](https://github.com/magritte-metamodel/magritte/pull/281) - this first fix led to a lot of future pain. The primary mistake seems to have been that it was applied to all pulls by cached mementos, instead of just pulls to the original dictionary by checked mementos only. The issue talks about \"the protection of the cache\", but I think I meant \"the protection of the original dictionary\" because I don't see what damage could be caused by the cache changing underneath you. If you explicitly change a field, it will overwrite the cache, and if not it will be ignored because it is equivalent to the real live model state."
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-01-13T12:59:28.896048-05:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-01-13T14:58:24.210511-05:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "7EZpRznLDQCcfRcPAKYa3w=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "2022-08-22 - [Checked Memento \"Original\" Should Copy Collections](https://github.com/magritte-metamodel/magritte/pull/295) - the description states \"Otherwise changes to the model can bleed through to the \"original\" dictionary\". However, the fix is applied to cached memento, not checked memento only"
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-01-13T15:00:27.959074-05:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-01-13T15:03:05.83124-05:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "bbQV+DrLDQCXycoMBYVcUQ=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "2022-08-23 - [Bloc Form To-One Tokens Pointing to Copy](https://github.com/magritte-metamodel/magritte/pull/304) - tried to workaround ramifications of the overly broad copy problem fix"
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-01-13T14:48:17.909974-05:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-01-13T15:03:22.259765-05:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "Qh+SzDrLDQCLAM1vBYVcUQ=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "2022-08-23 - [Mementos - Only Copy Checked Original](https://github.com/magritte-metamodel/magritte/pull/305/files) attempted to improve the situation by replacing the original behavior - when pulling copy every value in every memento type - with a more targeted approach - copy only when setting the original of a checked memento. However, this still copied *all* values, not just the problematic referenced collections. It also missed the fact that cached mementos were copying collections during all pulls via `#cookPullRaw:`, not just when pulling to the original dictionary. It also seemingly undid some of the fix above"
+						}
+					]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-01-13T13:11:27.886984-05:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-01-13T21:23:56.642796-05:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "2TVEcjnLDQCkhAyxAKYa3w=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "There are a bunch of seemingly related GH issues and PRs:"
+			}
+		]
+	},
+	"createEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"createTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2024-01-13T12:15:38.552643-05:00"
+		}
+	},
+	"editEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"editTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2024-01-13T21:14:14.78749-05:00"
+		}
+	}
+}

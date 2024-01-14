@@ -157,7 +157,7 @@ MAMementoTest >> testSingletonValue [
 		model: obj
 		description: obj magritteDescription.
 		
-	self assert: (memento readOriginalUsing: obj plzTypeDescription) == obj plzType.
+	self assert: (memento original at: obj plzTypeDescription) == obj plzType.
 ]
 
 { #category : #'tests-actions' }
