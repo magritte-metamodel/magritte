@@ -1,30 +1,26 @@
 Extension { #name : #GtPhlowProtoView }
 
 { #category : #'*Magritte-GToolkit' }
-GtPhlowProtoView >> maColumnedListFromContainer: anMAContainer descriptionsSelect: aBlock [
-	
-	| result |
-	result := self columnedList.
-		
-	anMAContainer children
-		select: aBlock
-		thenDo: [ :desc | desc gtAddColumnTo: result ].
-				
-	^ result
-]
-
-{ #category : #'*Magritte-GToolkit' }
-GtPhlowProtoView >> maColumnedListOf: aClass [
+GtPhlowProtoView >> maColumnedListOf: aClassOrContainer [
 	
 	^ self 
-		maColumnedListOf: aClass 
+		maColumnedListOf: aClassOrContainer 
 		descriptionsSelect: [ :desc | true ]
 ]
 
 { #category : #'*Magritte-GToolkit' }
-GtPhlowProtoView >> maColumnedListOf: aClass descriptionsSelect: aBlock [
+GtPhlowProtoView >> maColumnedListOf: aClassOrContainer descriptionsSelect: aBlock [
 	
-	^ self 
-		maColumnedListFromContainer: aClass magritteTemplate magritteDescription 
-		descriptionsSelect: aBlock
+	| result container |
+	result := self columnedList.
+	
+	container := aClassOrContainer isClass
+		ifTrue: [ aClassOrContainer magritteTemplate magritteDescription ]
+		ifFalse: [ aClassOrContainer ].
+		
+	container children
+		select: aBlock
+		thenDo: [ :desc | desc gtAddColumnTo: result ].
+				
+	^ result
 ]
