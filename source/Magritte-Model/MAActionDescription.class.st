@@ -34,7 +34,7 @@ MAActionDescription >> <= anObject [
 
 { #category : #comparing }
 MAActionDescription >> = anObject [
-	^ super = anObject and: [ self action = anObject action ]
+	^ self == anObject
 ]
 
 { #category : #accessing }
