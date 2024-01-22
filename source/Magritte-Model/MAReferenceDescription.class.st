@@ -112,6 +112,11 @@ MAReferenceDescription >> initializer: valuable [
 	self propertyAt: #initializer put: valuable
 ]
 
+{ #category : #testing }
+MAReferenceDescription >> isMultiple [
+	^false
+]
+
 { #category : #copying }
 MAReferenceDescription >> postCopy [
 	super postCopy.

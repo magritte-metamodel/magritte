@@ -27,23 +27,11 @@ MACachedMemento >> commit [
 	self reset
 ]
 
-{ #category : #private }
-MACachedMemento >> cookRawPull: aDictionary [
-
-	super cookRawPull: aDictionary.
-	aDictionary keysAndValuesDo: [ :key :value |
-		| isCollectionOfRelations |
-		self flag: 'duplicate logic with cookRawPull:'.
-		isCollectionOfRelations := value isCollection and: [ key isKindOf: MAToManyRelationDescription ].
-		isCollectionOfRelations ifTrue: [ 
-			aDictionary at: key put: value copy ] ].
-]
-
 { #category : #testing }
 MACachedMemento >> hasChanges [
 	"Answer ==true==, if the cached data is different to the data in the model."
 
-	^ self isDifferent: self cache to: self pullRaw
+	^ self has: self cache changedFrom: self pullRaw
 ]
 
 { #category : #private }

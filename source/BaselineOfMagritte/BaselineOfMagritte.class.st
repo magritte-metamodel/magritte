@@ -34,7 +34,7 @@ BaselineOfMagritte >> baseline310CommonExtDeps: spec [
 	"Common external dependencies for baseline 3.1.0"
 	
 	spec
-		baseline: 'Grease' with: [ spec repository: 'github://SeasideSt/Grease:v1.9.0/repository' ];	
+		baseline: 'Grease' with: [ spec repository: 'github://SeasideSt/Grease:v1.12.0/repository' ];	
 		baseline: 'Seaside3'
 			with: [ "note: we do not want to depend on Zinc, since this is not present in Squeak. Currently no adapter is loaded"
 			spec
@@ -45,7 +45,7 @@ BaselineOfMagritte >> baseline310CommonExtDeps: spec [
 { #category : #baselines }
 BaselineOfMagritte >> baseline330ForPharo: spec [
 			
-	spec for: #(#'pharo7.x' #'pharo8.x' #'pharo9.x' #'pharo10.x') do: [ 
+	spec for: #(#'pharo7.x' #'pharo8.x' #'pharo9.x' #'pharo10.x' #'pharo11.x' #'pharo12.x') do: [
 		spec 
 			baseline: 'PharoEnhancements' with: [ spec repository: 'github://seandenigris/Pharo-Enhancements' ].
 		spec
