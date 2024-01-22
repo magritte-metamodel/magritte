@@ -7,6 +7,11 @@ Class {
 	#category : #'Magritte-Model-Description'
 }
 
+{ #category : #'accessing-defaults' }
+MAElementDescription class >> defaultAutoAccept [
+	^ false
+]
+
 { #category : #'instance creation' }
 MAElementDescription class >> new [
 	"override #new so that we can create an object without adding it to the collection returned by: MAElementDescription withAllConcreteClasses,
@@ -26,6 +31,26 @@ MAElementDescription >> asContainer [
 ]
 
 { #category : #accessing }
+MAElementDescription >> autoAccept [
+	"Define whether new memento values should be automatically propagated to a model.
+	
+	New values are propagated to the model only if successfully validated. See {{gtMethod: GtMagritteMemento >> #autoAcceptValue: }} for more details."
+
+	^ self 
+		propertyAt: #autoAccept 
+		ifAbsent: [ self class defaultAutoAccept ]
+]
+
+{ #category : #accessing }
+MAElementDescription >> autoAccept: aBoolean [
+	"Set whether new memento values should be automatically propagated to a model.
+	
+	New values are propagated to the model only if successfully validated. See {{gtMethod: GtMagritteMemento >> #autoAcceptValue: }} for more details."
+	
+	self propertyAt: #autoAccept put: aBoolean
+]
+
+{ #category : #accessing }
 MAElementDescription >> default [
 	^ self propertyAt: #default ifAbsent: [ self class defaultDefault ]
 ]
@@ -33,6 +58,18 @@ MAElementDescription >> default [
 { #category : #accessing }
 MAElementDescription >> default: anObject [
 	self propertyAt: #default put: anObject
+]
+
+{ #category : #accessing }
+MAElementDescription >> definingContext [
+	
+	^ self propertyAt: #definingContext ifAbsent: [ nil ]
+]
+
+{ #category : #accessing }
+MAElementDescription >> definingContext: anMADefiningContext [
+	
+	^ self propertyAt: #definingContext  put: anMADefiningContext
 ]
 
 { #category : #testing }
@@ -46,6 +83,16 @@ MAElementDescription >> handleMessage: aMessage for: anObject [
 { #category : #testing }
 MAElementDescription >> handlesSelector: aSelector [
 	^ self accessor handlesSelector: aSelector
+]
+
+{ #category : #accessing }
+MAElementDescription >> initialAnswer [
+	^ self propertyAt: #initialAnswer ifAbsent: [ self default ]
+]
+
+{ #category : #accessing }
+MAElementDescription >> initialAnswer: aValuable [
+	self propertyAt: #initialAnswer put: aValuable
 ]
 
 { #category : #'lazy initialization' }
@@ -72,6 +119,34 @@ MAElementDescription >> lazilyInitializeFrom: currentValue for: anObject [
 { #category : #'*magritte-model' }
 MAElementDescription >> printFor: anObject on: aWriteStream [ 
 	(self read: anObject) ifNotNil: [ :value | aWriteStream nextPutAll: (self toString: value) ]
+]
+
+{ #category : #utility }
+MAElementDescription >> shouldWrite: anObject over: anotherObject [
+
+	| defaultValues areBothDefaultValues isIgnorableDefault |
+
+	self isVisible ifFalse: [ ^ false ].
+	self isReadOnly ifTrue: [ ^ false ].
+	
+	defaultValues := OrderedCollection
+		with: nil
+		with: self undefinedValue.
+	
+	isIgnorableDefault := self shouldCacheDefault not and: [ anObject = self default ].
+	isIgnorableDefault ifTrue: [ defaultValues add: self default ].
+	
+	areBothDefaultValues := { anObject. anotherObject } allSatisfy: [ :obj | defaultValues includes: obj ].
+	
+	areBothDefaultValues ifTrue: [ ^ false ].
+	(anObject == anotherObject or: [ anObject = anotherObject ])
+		ifTrue: [ ^ false ].
+		
+	^ true
+	
+	"Implementation note: We compare via both #== and #= to cover two scenarios:
+		1) a referenced object that changes on the outside. From our perspective, as long as we are still refering to the same object there is no relevant change. Unless we accept identity equality, any changes to complex objects from outside will bleed into this object. E.g. if outside someone does `self person age: 25`, this object will appear to be changed. This would wreak havoc with mementos, forms, etc.
+		2) objects (e.g. strings and other value objects) that override #= to mean something other than identity comparison."
 ]
 
 { #category : #printing }

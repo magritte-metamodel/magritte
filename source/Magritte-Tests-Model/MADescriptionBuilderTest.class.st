@@ -1,7 +1,7 @@
 Class {
 	#name : #MADescriptionBuilderTest,
 	#superclass : #TestCase,
-	#category : 'Magritte-Tests-Model-Utility'
+	#category : #'Magritte-Tests-Model-Utility'
 }
 
 { #category : #'acessing-magritte' }
@@ -85,7 +85,7 @@ MADescriptionBuilderTest >> testExtension [
 MADescriptionBuilderTest >> testNilled [
 	| description |
 	description := MAMockAddress new magritteDescription.
-	self assert: description size = 3
+	self assert: description size = 5
 ]
 
 { #category : #tests }

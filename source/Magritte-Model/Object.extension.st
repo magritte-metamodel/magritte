@@ -52,6 +52,12 @@ Object >> isSameAs: rhs using: valuableDescription [
 ]
 
 { #category : #'*Magritte-Model' }
+Object >> maFullPrintString [
+	
+	^ String streamContents: [ :str | self maPrintOn: str ]
+]
+
+{ #category : #'*Magritte-Model' }
 Object >> maHash [
 	^ self maHashUsing: [ self magritteDescription ]
 ]

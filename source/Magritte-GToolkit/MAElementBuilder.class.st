@@ -49,36 +49,12 @@ MAElementBuilder >> addButtons: aCollection [
 	self buttonSelectors: aCollection
 ]
 
-{ #category : #accessing }
-MAElementBuilder >> addInputField: inputElement using: aDescription [
-	| labelElement diffElement |
-	labelElement := BrLabel new
-		text: aDescription label , ':';
-		addEventHandlerOn: BlClickEvent
-			do: [ :evt | evt target phlow spawnObject: (aDescription read: self object) ];
-		aptitude: BrGlamorousLabelAptitude.
-	labelElement constraintsDo: [ :c | 
-			c vertical fitContent.
-			c horizontal fitContent.
-			c grid vertical alignCenter ].
-	aDescription isRequired ifTrue: [ self flag: 'unsupported' ].
-	aDescription hasComment ifTrue: [ 
-		self addTooltip: aDescription comment to: labelElement.
-		self addTooltip: aDescription comment to: inputElement ].
-	"diffElement := BrEditor new
-		text: inputElement text copy; ""if we don't copy, diff magically changes as input updates"
-		"aptitude: BrGlamorousEditorAptitude".
-	self form addChild: labelElement.
-	self form addChild: inputElement.
-	"self form addChild: diffElement."
-]
-
-{ #category : #accessing }
+{ #category : #private }
 MAElementBuilder >> addInputFieldUsing: aDescription [
 
-	| inputElement |
-	inputElement := self newInputElementUsing: aDescription.
-	self addInputField: inputElement using: aDescription
+	self 
+		using: aDescription
+		addInputField: [ self newInputElementUsing: aDescription ]
 ]
 
 { #category : #accessing }
@@ -104,6 +80,37 @@ MAElementBuilder >> buttonSelectors [
 { #category : #accessing }
 MAElementBuilder >> buttonSelectors: aCollection [
 	buttonSelectors := aCollection
+]
+
+{ #category : #private }
+MAElementBuilder >> calendarButtonFor: editor [
+	"Adapted from GtSpotterDropdownButtonStencil>>#create"
+
+	| dropdownAptitude |
+	dropdownAptitude := BrGlamorousWithDropdownAptitude
+		handle: [ 
+			BrButton new
+				icon: BrGlamorousVectorIcons note;
+				aptitude: BrGlamorousButtonWithIconAptitude - BrGlamorousButtonWithLabelTooltipAptitude
+						- BrGlamorousButtonExteriorAptitude ]
+		content: [ | calendar date |
+			date := [ editor text asString asDate ] on: Error do: [ Date today ].
+			calendar := GtCalendarElement forDate: date.
+			calendar
+				when: GtCalendarDateClickedEvent
+				do: [  "calendar date: event date. Redundant because a new calendar will be created on next button click":event | 
+					editor
+						beEditable;
+						text: event date mmddyyyy;
+						acceptEdition.
+					calendar fireEvent: BrDropdownHideWish new ] ].
+
+	^ BrButton new
+		icon: BrGlamorousVectorIcons note;
+		label: 'Pick from calendar';
+		aptitude: BrGlamorousButtonWithIconAptitude;
+		addAptitude: dropdownAptitude;
+		yourself
 ]
 
 { #category : #accessing }
@@ -269,6 +276,38 @@ MAElementBuilder >> toolbar [
 	^ toolbar
 ]
 
+{ #category : #private }
+MAElementBuilder >> using: aDescription addInputField: aValuable [
+
+	| labelElement "diffElement" inputElement |
+	aDescription isVisible ifFalse: [ ^ self ].
+	
+	inputElement := aValuable value.
+	labelElement := BrLabel new
+		text: aDescription label , ':';
+		addEventHandlerOn: BlClickEvent
+			do: [ :evt | evt target phlow spawnObject: (aDescription read: self object) ];
+		aptitude: BrGlamorousLabelAptitude.
+	labelElement constraintsDo: [ :c | 
+			c vertical fitContent.
+			c horizontal fitContent.
+			c grid vertical alignCenter ].
+			
+	aDescription isRequired ifTrue: [ self flag: 'unsupported' ].
+	
+	aDescription hasComment ifTrue: [ 
+		self addTooltip: aDescription comment to: labelElement.
+		self addTooltip: aDescription comment to: inputElement ].
+		
+	"diffElement := BrEditor new
+		text: inputElement text copy; ""if we don't copy, diff magically changes as input updates"
+		"aptitude: BrGlamorousEditorAptitude".
+		
+	self form addChild: labelElement.
+	self form addChild: inputElement.
+	"self form addChild: diffElement."
+]
+
 { #category : #accessing }
 MAElementBuilder >> visit: anObject [
 	self flag: 'if we keep the decorator stuff here, remove this method'.
@@ -283,13 +322,15 @@ MAElementBuilder >> visitBlockDescription: anObject [
 
 { #category : #'visiting-description' }
 MAElementBuilder >> visitBooleanDescription: aDescription [
-	| inputElement |
-	inputElement := BrCheckbox new 
-		aptitude: BrGlamorousCheckboxAptitude;
-		checked: (aDescription read: self memento);
-		whenCheckedDo: [ aDescription write: true to: self memento ];
-		whenUncheckedDo: [ aDescription write: false to: self memento ].
-	self addInputField: inputElement using: aDescription
+
+	self 
+		using: aDescription
+		addInputField: [ 
+			BrCheckbox new 
+				aptitude: BrGlamorousCheckboxAptitude;
+				checked: (aDescription read: self memento);
+				whenCheckedDo: [ aDescription write: true to: self memento ];
+				whenUncheckedDo: [ aDescription write: false to: self memento ] ]
 ]
 
 { #category : #'visiting-description' }
@@ -314,45 +355,19 @@ MAElementBuilder >> visitDateAndTimeDescription: anObject [
 
 { #category : #'visiting-description' }
 MAElementBuilder >> visitDateDescription: aDescription [
-	| inputElement editor calendarButton |
-	editor := self newInputElementUsing: aDescription.
-	
-	"Adapted from GtSpotterDropdownButtonStencil>>#create"
-	calendarButton := BrButton new
-		icon: BrGlamorousVectorIcons note;
-		label: 'Pick from calendar';
-		aptitude: BrGlamorousButtonWithIconAptitude;
-		addAptitude: (BrGlamorousWithDropdownAptitude
-			handle: [ BrButton new
-				icon: BrGlamorousVectorIcons note;
-				aptitude:
-					BrGlamorousButtonWithIconAptitude
-						- BrGlamorousButtonWithLabelTooltipAptitude
-						- BrGlamorousButtonExteriorAptitude ]
-				content: [ 
-					| calendar date |
-					date := [ editor text asString asDate ] 
-						on: Error 
-						do: [ Date today ].
-					calendar := GtCalendarElement forDate: date.
-					calendar
-						when: GtCalendarDateClickedEvent
-						do: [ :event | 
-							"calendar date: event date. Redundant because a new calendar will be created on next button click"
-							editor 
-								beEditable;
-								text: event date mmddyyyy; 
-								acceptEdition.
-							calendar fireEvent: BrDropdownHideWish new ] ]);
-				yourself.
-	inputElement := BrHorizontalPane new
-		fitContent;
-		cellSpacing: 5;
-		addChild: editor;
-		addChild: calendarButton;
-		yourself.
-	
-	self addInputField: inputElement using: aDescription
+
+	self 
+		using: aDescription 
+		addInputField: [ 
+			| editor calendarButton |
+			editor := self newInputElementUsing: aDescription.
+			calendarButton := self calendarButtonFor: editor.	"calendar date: event date. Redundant because a new calendar will be created on next button click"
+			BrHorizontalPane new
+					fitContent;
+					cellSpacing: 5;
+					addChild: editor;
+					addChild: calendarButton;
+					yourself ]
 ]
 
 { #category : #'visiting-description' }
@@ -387,27 +402,31 @@ MAElementBuilder >> visitMagnitudeDescription: anObject [
 
 { #category : #'visiting-description' }
 MAElementBuilder >> visitMemoDescription: aDescription [
-	| inputElement lineHeight resizableElement |
+	| lineHeight |
 	self flag: 'Lots of duplication from standard inputElement creation; line height very rough based on 14 pt size - waiting on answer on Discord'.
 	lineHeight := 14 * 1.5.
-	inputElement := BrEditor new
-		beEditable;
-		text: (self textUsing: aDescription);
-		aptitude: BrGlamorousEditorAptitude new glamorousRegularFontAndSize;
-		vMatchParent;
-		hMatchParent.
-	inputElement editor when: BrTextEditorModifiedEvent
-			do: [ :event | aDescription writeFromString: event text greaseString to: self memento ].
-			
-	resizableElement := BlElement new
-		aptitude: BrGlamorousWithVerticalResizerAptitude;
-		constraintsDo: [ :c | 
-			c horizontal matchParent.
-			c vertical exact: lineHeight * aDescription lineCount ];
-		addChild: inputElement;
-		yourself.
 	
-	self addInputField: resizableElement using: aDescription
+	self 
+		using: aDescription
+		addInputField: [ 
+			| inputElement |
+			inputElement := BrEditor new
+				beEditable;
+				text: (self textUsing: aDescription);
+				aptitude: BrGlamorousEditorAptitude new glamorousRegularFontAndSize;
+				vMatchParent;
+				hMatchParent.
+				
+			inputElement editor when: BrTextEditorModifiedEvent
+					do: [ :event | aDescription writeFromString: event text greaseString to: self memento ].
+					
+			BlElement new
+				aptitude: BrGlamorousWithVerticalResizerAptitude;
+				constraintsDo: [ :c | 
+					c horizontal matchParent.
+					c vertical exact: lineHeight * aDescription lineCount ];
+				addChild: inputElement;
+				yourself ]
 ]
 
 { #category : #'visiting-description' }
@@ -447,26 +466,30 @@ MAElementBuilder >> visitRelationDescription: anObject [
 
 { #category : #private }
 MAElementBuilder >> visitRelationDescription: aDescription withTokenElementClass: aClass [
-	| inputElement |
-	
+
 	aDescription gtSearchSource ifNil: [ ^ self visitRelationDescription: aDescription ].
 	
-	inputElement := aClass forObject: self memento withRelationDescription: aDescription.
-	
-	self addInputField: inputElement using: aDescription
+	self 
+		using: aDescription
+		addInputField: [ 
+			aClass 
+				forObject: self memento 
+				withRelationDescription: aDescription ]
 ]
 
 { #category : #'visiting-description' }
 MAElementBuilder >> visitSingleOptionDescription: aDescription [
-	| inputElement |
-	inputElement := MADropdownElement new 
-		items: aDescription allOptions;
-		itemDescription: aDescription reference;
-		selection: (self memento readUsing: aDescription);
-		when: MADropdownWish do: [ :aWish | 
-			aDescription write: aWish selection to: self memento ];
-		yourself.
-	self addInputField: inputElement using: aDescription
+
+	self 
+		using: aDescription
+		addInputField: [ 
+			MADropdownElement new 
+				items: aDescription allOptions;
+				itemDescription: aDescription reference;
+				selection: (self memento readUsing: aDescription);
+				when: MADropdownWish do: [ :aWish | 
+					aDescription write: aWish selection to: self memento ];
+				yourself ]
 ]
 
 { #category : #'visiting-description' }

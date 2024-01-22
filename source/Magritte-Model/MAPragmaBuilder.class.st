@@ -92,7 +92,7 @@ MAPragmaBuilder >> buildDescriptions: anObject [
 			| initialDescription |
 			initialDescription := anObject perform: descSel.
 			
-			self object: anObject description: initialDescription definedAt: descSel.
+			self setDefiningContextOf: initialDescription to: descSel in: anObject class.
 			
 			self description: initialDescription extendedBy: descriptionExtensions for: descSel of: anObject ].
 
@@ -144,15 +144,15 @@ MAPragmaBuilder >> for: anObject [
 ]
 
 { #category : #private }
-MAPragmaBuilder >> object: anObject description: aDescription definedAt: aSelector [
+MAPragmaBuilder >> setDefiningContextOf: aDescription to: aSelector in: aClass [
 	| aSource |
 	aDescription ifNil: [ ^ nil ].
 	
-	aSource := MADescriptionMethodSource new
-		modelClass: anObject class;
+	aSource := MADescriptionContext new
+		modelClass: aClass;
 		methodSelector: aSelector.
 	
-	aDescription definingSource: aSource.
+	aDescription definingContext: aSource.
 ]
 
 { #category : #private }

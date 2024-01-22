@@ -4,9 +4,11 @@ Class {
 	#instVars : [
 		'place',
 		'street',
-		'plz'
+		'plz',
+		'plzType',
+		'occupants'
 	],
-	#category : 'Magritte-Tests-Model-Mocks'
+	#category : #'Magritte-Tests-Model-Mocks'
 }
 
 { #category : #comparing }
@@ -76,6 +78,7 @@ MAMockAddress >> descriptionPlz [
 	^ MANumberDescription new
 		accessor: #plz;
 		label: 'PLZ';
+		default: 1;
 		yourself
 ]
 
@@ -84,13 +87,31 @@ MAMockAddress >> descriptionStreet [
 	<magritteDescription>
 	^ MAStringDescription new
 		accessor: #street;
-		label: 'Street';
 		yourself
 ]
 
 { #category : #comparing }
 MAMockAddress >> hash [
 	^ self street hash
+]
+
+{ #category : #accessing }
+MAMockAddress >> occupants [
+	^ occupants
+]
+
+{ #category : #accessing }
+MAMockAddress >> occupants: anObject [
+	occupants := anObject
+]
+
+{ #category : #'acessing-magritte' }
+MAMockAddress >> occupantsDescription [
+	<magritteDescription>
+	^ MAToManyRelationDescription new
+		accessor: #occupants;
+		classes: String withAllSubclasses;
+		yourself
 ]
 
 { #category : #'accessing-generated' }
@@ -111,6 +132,25 @@ MAMockAddress >> plz [
 { #category : #'accessing-generated' }
 MAMockAddress >> plz: anObject [
 	plz := anObject
+]
+
+{ #category : #accessing }
+MAMockAddress >> plzType [
+	^ plzType
+]
+
+{ #category : #accessing }
+MAMockAddress >> plzType: anObject [
+	plzType := anObject
+]
+
+{ #category : #'acessing-magritte' }
+MAMockAddress >> plzTypeDescription [
+	<magritteDescription>
+	^ MASingleOptionDescription new
+		accessor: #plzType;
+		options: Number withAllSubclasses;
+		yourself
 ]
 
 { #category : #'accessing-generated' }

@@ -134,11 +134,6 @@ MAOptionDescription >> isExtensible [
 ]
 
 { #category : #testing }
-MAOptionDescription >> isMultiple [
-	^false
-]
-
-{ #category : #testing }
 MAOptionDescription >> isSorted [
 	^ self sorted
 ]

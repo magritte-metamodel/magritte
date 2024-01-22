@@ -40,12 +40,13 @@ MAStringWriter >> visitColorDescription: aDescription [
 
 { #category : #'visiting-description' }
 MAStringWriter >> visitContainer: aDescription [
-	aDescription do: [ :each |
-		each isVisible ifTrue: [
-			each stringWriter
-				write: (self object readUsing: each)
-				description: each to: stream.
-			^ self ] ]
+	aDescription 
+		do: [ :each |
+			each isVisible ifTrue: [
+				each stringWriter
+					write: (self object readUsing: each)
+					description: each to: stream ] ]
+		separatedBy: [ stream nextPut: $- ]
 ]
 
 { #category : #'visiting-description' }
@@ -77,13 +78,13 @@ MAStringWriter >> visitTimeStampDescription: aDescription [
 { #category : #'visiting-description' }
 MAStringWriter >> visitToManyRelationDescription: aDescription [
 	self object
-		do: [ :each | self object: each during: [ self visit: each magritteDescription ] ]
+		do: [ :each | self stream nextPutAll: (aDescription reference toString: each) ]
 		separatedBy: [ self stream nextPutAll: ', ' ]
 ]
 
 { #category : #'visiting-description' }
 MAStringWriter >> visitToOneRelationDescription: aDescription [
-	self visit: self object magritteDescription
+	self stream nextPutAll: (aDescription reference toString: self object)
 ]
 
 { #category : #'visiting-description' }
