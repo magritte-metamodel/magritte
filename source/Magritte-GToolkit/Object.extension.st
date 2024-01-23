@@ -59,7 +59,7 @@ Object >> maGtFormFor: aView [
 	^ aView explicit
 		title: 'Magritte';
 		priority: 50;
-		stencil: [ (description elementBuilderFor: self) addButtons; element ];
+		stencil: [ ((description elementBuilderFor: self) addButtons; element) asScrollableElement ];
 		actionButtonIcon: BrGlamorousVectorIcons inspect
 		  label: 'Memento'
 		  tooltip: 'Inspect Memento'
