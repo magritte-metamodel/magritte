@@ -48,9 +48,24 @@ MAValidatorVisitor >> validate: anObject using: aDescription [
 MAValidatorVisitor >> visit: aDescription [
 	"Only visit objects that are visible and that can be changed."
 	
+	| errors |
 	(aDescription isVisible and: [ aDescription isReadOnly not ])
-		ifTrue: [ super visit: aDescription ].
-	
+		ifFalse: [ ^ self ].
+
+	errors := OrderedCollection new.
+	[ 
+		super visit: aDescription
+	]
+		on: MAValidationError
+		do: [ :err | 
+			errors add: err. 
+			err resume ].
+		
+	errors isEmpty ifFalse: [
+		MAMultipleErrors
+			description: aDescription 
+			errors: errors
+			signal: aDescription label ]
 ]
 
 { #category : #'visiting-descriptions' }
