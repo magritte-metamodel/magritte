@@ -1,7 +1,7 @@
 Class {
 	#name : #MACondition,
 	#superclass : #MAObject,
-	#category : 'Magritte-Model-Utility'
+	#category : #'Magritte-Model-Utility'
 }
 
 { #category : #testing }

@@ -7,7 +7,7 @@ Class {
 	#instVars : [
 		'contents'
 	],
-	#category : 'Magritte-Model-Models'
+	#category : #'Magritte-Model-Models'
 }
 
 { #category : #comparing }
