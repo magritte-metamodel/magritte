@@ -1,7 +1,7 @@
 Class {
 	#name : #MAToManyScalarRelationDescriptionTest,
 	#superclass : #MAToManyRelationDescriptionTest,
-	#category : 'Magritte-Tests-Model-Description'
+	#category : #'Magritte-Tests-Model-Description'
 }
 
 { #category : #private }

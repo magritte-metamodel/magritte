@@ -1,15 +1,13 @@
 Class {
-	#name : 'TokenMorph',
-	#superclass : 'Morph',
+	#name : #TokenMorph,
+	#superclass : #Morph,
 	#instVars : [
 		'object'
 	],
-	#category : 'Magritte-Morph-Morphs',
-	#package : 'Magritte-Morph',
-	#tag : 'Morphs'
+	#category : #'Magritte-Morph-Morphs'
 }
 
-{ #category : 'instance creation' }
+{ #category : #'instance creation' }
 TokenMorph class >> on: anObject [ 
 
 	^ self new
@@ -17,7 +15,7 @@ TokenMorph class >> on: anObject [
 		yourself
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 TokenMorph >> initialize [
 	super initialize.
 	self roundedCorners: #(1 2 3 4).	"Seems to do nothing"
@@ -30,12 +28,12 @@ TokenMorph >> initialize [
 		layoutInset: 5 @ 1
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 TokenMorph >> object [
 	^ object
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 TokenMorph >> object: anObject [
 	object := anObject.
 	self removeAllMorphs.

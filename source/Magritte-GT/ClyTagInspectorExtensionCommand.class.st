@@ -1,7 +1,7 @@
 Class {
 	#name : #ClyTagInspectorExtensionCommand,
 	#superclass : #SycMethodCommand,
-	#category : 'Magritte-GT'
+	#category : #'Magritte-GT'
 }
 
 { #category : #testing }

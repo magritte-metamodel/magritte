@@ -4,7 +4,7 @@ Use for MAMultipleSelectionComponent. I display as many checkboxes as my descrip
 Class {
 	#name : #MACheckboxGroupComponent,
 	#superclass : #MAMultipleSelectionComponent,
-	#category : 'Magritte-Seaside-Components'
+	#category : #'Magritte-Seaside-Components'
 }
 
 { #category : #testing }

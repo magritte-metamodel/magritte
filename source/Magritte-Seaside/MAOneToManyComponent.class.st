@@ -5,7 +5,7 @@ Class {
 		'report',
 		'commandColumn'
 	],
-	#category : 'Magritte-Seaside-Components'
+	#category : #'Magritte-Seaside-Components'
 }
 
 { #category : #testing }

@@ -1,7 +1,7 @@
 Class {
 	#name : #MAMultipleOptionDescriptionTest,
 	#superclass : #MAOptionDescriptionTest,
-	#category : 'Magritte-Tests-Model-Description'
+	#category : #'Magritte-Tests-Model-Description'
 }
 
 { #category : #'accessing-default' }

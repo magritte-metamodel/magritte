@@ -7,7 +7,7 @@ Class {
 	#instVars : [
 		'paneMorphs'
 	],
-	#category : 'Spec-Widgets-Utilities'
+	#category : #'Spec-Widgets-Utilities'
 }
 
 { #category : #'submorphs-add/remove' }

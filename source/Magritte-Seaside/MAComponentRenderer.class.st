@@ -7,7 +7,7 @@ Class {
 		'errors',
 		'group'
 	],
-	#category : 'Magritte-Seaside-Renderer'
+	#category : #'Magritte-Seaside-Renderer'
 }
 
 { #category : #'instance creation' }

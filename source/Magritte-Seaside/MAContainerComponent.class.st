@@ -7,7 +7,7 @@ Class {
 		'errors',
 		'magritteDescription'
 	],
-	#category : 'Magritte-Seaside-Components'
+	#category : #'Magritte-Seaside-Components'
 }
 
 { #category : #testing }

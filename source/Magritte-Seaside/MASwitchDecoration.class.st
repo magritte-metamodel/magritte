@@ -4,7 +4,7 @@ I turn the owning component read-only and add an edit button. Clicking that butt
 Class {
 	#name : #MASwitchDecoration,
 	#superclass : #MAContainerDecoration,
-	#category : 'Magritte-Seaside-Decorations'
+	#category : #'Magritte-Seaside-Decorations'
 }
 
 { #category : #accessing }

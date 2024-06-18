@@ -4,7 +4,7 @@ Password seaside component, I display stars '*' instead of the text typed by the
 Class {
 	#name : #MATextPasswordComponent,
 	#superclass : #MAElementComponent,
-	#category : 'Magritte-Seaside-Components'
+	#category : #'Magritte-Seaside-Components'
 }
 
 { #category : #testing }

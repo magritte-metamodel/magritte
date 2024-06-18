@@ -1,7 +1,7 @@
 Class {
 	#name : #MAOneToOneComponent,
 	#superclass : #MARelationComponent,
-	#category : 'Magritte-Seaside-Components'
+	#category : #'Magritte-Seaside-Components'
 }
 
 { #category : #actions }

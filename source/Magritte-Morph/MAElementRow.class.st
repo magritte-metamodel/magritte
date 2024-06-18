@@ -1,23 +1,21 @@
 Class {
-	#name : 'MAElementRow',
-	#superclass : 'BorderedMorph',
+	#name : #MAElementRow,
+	#superclass : #BorderedMorph,
 	#instVars : [
 		'object',
 		'container'
 	],
-	#category : 'Magritte-Morph-Report',
-	#package : 'Magritte-Morph',
-	#tag : 'Report'
+	#category : #'Magritte-Morph-Report'
 }
 
-{ #category : 'instance creation' }
+{ #category : #'instance creation' }
 MAElementRow class >> addMorphFor: anObject of: aDescriptionMorph to: aMorph [
 	| instance |
 	instance := self for: anObject of: aDescriptionMorph.
 	aMorph addMorphBack: instance.
 ]
 
-{ #category : 'instance creation' }
+{ #category : #'instance creation' }
 MAElementRow class >> for: anObject of: aDescriptionMorph [
 	^ self basicNew
 		object: anObject;
@@ -25,7 +23,7 @@ MAElementRow class >> for: anObject of: aDescriptionMorph [
 		initialize.
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 MAElementRow >> buildButton: aSymbol [
 	^ self theme builder
 		newButtonFor: self
@@ -34,7 +32,7 @@ MAElementRow >> buildButton: aSymbol [
 		help: ''
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 MAElementRow >> buildCommands [
 	| commands |
 	commands := self rectangleMorph
@@ -53,18 +51,18 @@ MAElementRow >> buildCommands [
 	^ commands
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 MAElementRow >> cellInset [
 
 	^ 4@4.
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 MAElementRow >> container: aDescriptionMorph [
 	container := aDescriptionMorph
 ]
 
-{ #category : 'callbacks' }
+{ #category : #callbacks }
 MAElementRow >> edit [
 
 	object asMagritteMorph
@@ -74,7 +72,7 @@ MAElementRow >> edit [
 		openInWorld.
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 MAElementRow >> initialize [
 	super initialize.
 	self
@@ -92,35 +90,35 @@ MAElementRow >> initialize [
 		addMorphBack: self buildCommands
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 MAElementRow >> object: anObject [
 
 	object := anObject
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 MAElementRow >> rectangleMorph [
 	^ MAMorphicDescription new rectangleMorph.
 ]
 
-{ #category : 'callbacks' }
+{ #category : #callbacks }
 MAElementRow >> remove [
 	container remove: object.
 	self owner addMorph: container buildSelectList.
 	self delete.
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 MAElementRow >> summary: aString [
 	submorphs first contents: aString
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 MAElementRow >> value [
 	^ self memento readUsing: self magritteDescription
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 MAElementRow >> value: anObject [
 	self memento write: anObject using: self magritteDescription
 ]

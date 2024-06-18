@@ -1,7 +1,7 @@
 Class {
 	#name : #MAActionColumn,
 	#superclass : #MAColumn,
-	#category : 'Magritte-Seaside-Report'
+	#category : #'Magritte-Seaside-Report'
 }
 
 { #category : #'accessing-defaults' }

@@ -8,7 +8,7 @@ Class {
 		'okButton',
 		'okAction'
 	],
-	#category : 'Spec-Widgets-PolyWidgets'
+	#category : #'Spec-Widgets-PolyWidgets'
 }
 
 { #category : #specs }

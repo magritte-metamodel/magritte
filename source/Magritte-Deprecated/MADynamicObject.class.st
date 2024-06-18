@@ -7,7 +7,7 @@ A dynamic object can be used for almost any property within Magritte that is not
 Class {
 	#name : #MADynamicObject,
 	#superclass : #MAProxyObject,
-	#category : 'Magritte-Deprecated'
+	#category : #'Magritte-Deprecated'
 }
 
 { #category : #accessing }

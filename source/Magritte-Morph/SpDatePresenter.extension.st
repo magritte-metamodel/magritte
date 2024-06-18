@@ -1,6 +1,6 @@
-Extension { #name : 'SpDatePresenter' }
+Extension { #name : #SpDatePresenter }
 
-{ #category : '*Magritte-Morph' }
+{ #category : #'*Magritte-Morph' }
 SpDatePresenter >> whenDateChanged: aBlock [
 
 	self flag:

@@ -24,7 +24,7 @@ Class {
 		'baseDirectory',
 		'baseUrl'
 	],
-	#category : 'Magritte-FileDirectory'
+	#category : #'Magritte-FileDirectory'
 }
 
 { #category : #accessing }

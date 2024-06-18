@@ -10,7 +10,7 @@ Class {
 		'title',
 		'isClosedHolder'
 	],
-	#category : 'Spec-Widgets'
+	#category : #'Spec-Widgets'
 }
 
 { #category : #specs }

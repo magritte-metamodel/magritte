@@ -1,7 +1,7 @@
 Class {
 	#name : #MAMethodRefactoring,
 	#superclass : #ORSwapMethodRefactoring,
-	#category : 'Magritte-Pharo-Tools'
+	#category : #'Magritte-Pharo-Tools'
 }
 
 { #category : #private }

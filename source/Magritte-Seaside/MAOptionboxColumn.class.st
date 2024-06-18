@@ -1,7 +1,7 @@
 Class {
 	#name : #MAOptionboxColumn,
 	#superclass : #MASelectionColumn,
-	#category : 'Magritte-Seaside-Report'
+	#category : #'Magritte-Seaside-Report'
 }
 
 { #category : #'accessing-defaults' }

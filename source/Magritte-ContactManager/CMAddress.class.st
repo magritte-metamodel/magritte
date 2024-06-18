@@ -11,7 +11,7 @@ Class {
 		'canton',
 		'nationality'
 	],
-	#category : 'Magritte-ContactManager'
+	#category : #'Magritte-ContactManager'
 }
 
 { #category : #comparing }

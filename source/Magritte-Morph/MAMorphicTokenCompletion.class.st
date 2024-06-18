@@ -1,12 +1,10 @@
 Class {
-	#name : 'MAMorphicTokenCompletion',
-	#superclass : 'MAMorphicList',
-	#category : 'Magritte-Morph-Model',
-	#package : 'Magritte-Morph',
-	#tag : 'Model'
+	#name : #MAMorphicTokenCompletion,
+	#superclass : #MAMorphicList,
+	#category : #'Magritte-Morph-Model'
 }
 
-{ #category : 'private-building' }
+{ #category : #'private-building' }
 MAMorphicTokenCompletion >> buildMorphView [
 
 	self flag: 'Obviously, the inline conditionals are horrifying. I think the nil check will go away if we set a default value'.

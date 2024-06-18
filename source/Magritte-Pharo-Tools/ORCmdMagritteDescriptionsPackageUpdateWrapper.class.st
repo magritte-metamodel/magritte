@@ -1,7 +1,7 @@
 Class {
 	#name : #ORCmdMagritteDescriptionsPackageUpdateWrapper,
 	#superclass : #ORCmdOpen,
-	#category : 'Magritte-Pharo-Tools'
+	#category : #'Magritte-Pharo-Tools'
 }
 
 { #category : #'instance creation' }

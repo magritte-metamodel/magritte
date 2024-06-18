@@ -1,7 +1,7 @@
 Class {
 	#name : #MAMockAddress2,
 	#superclass : #MAMockAddress,
-	#category : 'Magritte-Tests-Model-Mocks'
+	#category : #'Magritte-Tests-Model-Mocks'
 }
 
 { #category : #'acessing-magritte' }

@@ -1,12 +1,10 @@
 Class {
-	#name : 'MAMorphicOneToMany',
-	#superclass : 'MAMorphicRelation',
-	#category : 'Magritte-Morph-Model',
-	#package : 'Magritte-Morph',
-	#tag : 'Model'
+	#name : #MAMorphicOneToMany,
+	#superclass : #MAMorphicRelation,
+	#category : #'Magritte-Morph-Model'
 }
 
-{ #category : 'actions' }
+{ #category : #actions }
 MAMorphicOneToMany >> add [
 
 	self newRelation asMagritteMorph
@@ -18,7 +16,7 @@ MAMorphicOneToMany >> add [
 		openInWorld
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 MAMorphicOneToMany >> add: anObject [
 	| rowParent lastRowIndex newRow |
 	rowParent := morph submorphs second.
@@ -31,7 +29,7 @@ MAMorphicOneToMany >> add: anObject [
 			after: (rowParent submorphs at: lastRowIndex) ].
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 MAMorphicOneToMany >> buildMorphView [
 
 	| table scrollPane |
@@ -51,7 +49,7 @@ MAMorphicOneToMany >> buildMorphView [
 	^ scrollPane
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 MAMorphicOneToMany >> buildSelectButton [
 	^ self theme builder
 		newButtonFor: self
@@ -60,7 +58,7 @@ MAMorphicOneToMany >> buildSelectButton [
 		help: ''
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 MAMorphicOneToMany >> remove: anObject [
 	self value: (self value copyWithout: anObject).
 ]

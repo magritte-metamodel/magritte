@@ -1,6 +1,6 @@
-Extension { #name : 'MAActionDescription' }
+Extension { #name : #MAActionDescription }
 
-{ #category : '*magritte-morph' }
+{ #category : #'*magritte-morph' }
 MAActionDescription >> buttonOn: anObject [
 	| buttonLabel |
 	"Copied alpha morph wrapping from TEasilyThemed. Not sure how/why it works..."

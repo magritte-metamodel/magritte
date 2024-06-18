@@ -4,7 +4,7 @@ I display a set of radio buttons to render MASingleSelectionDescription.
 Class {
 	#name : #MARadioGroupComponent,
 	#superclass : #MASingleSelectionComponent,
-	#category : 'Magritte-Seaside-Components'
+	#category : #'Magritte-Seaside-Components'
 }
 
 { #category : #testing }

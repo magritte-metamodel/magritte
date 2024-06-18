@@ -1,7 +1,7 @@
 Class {
 	#name : #MADynamicObjectTest,
 	#superclass : #TestCase,
-	#category : 'Magritte-Deprecated'
+	#category : #'Magritte-Deprecated'
 }
 
 { #category : #tests }

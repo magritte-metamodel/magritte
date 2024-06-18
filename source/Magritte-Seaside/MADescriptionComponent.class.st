@@ -9,7 +9,7 @@ Class {
 		'description',
 		'parent'
 	],
-	#category : 'Magritte-Seaside-Components'
+	#category : #'Magritte-Seaside-Components'
 }
 
 { #category : #'instance creation' }

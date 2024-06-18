@@ -5,7 +5,7 @@ Class {
 		'baseModel',
 		'derivedModel'
 	],
-	#category : 'Magritte-Tests-Model-Utility'
+	#category : #'Magritte-Tests-Model-Utility'
 }
 
 { #category : #running }

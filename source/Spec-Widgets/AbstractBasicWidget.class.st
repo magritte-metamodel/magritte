@@ -10,7 +10,7 @@ Class {
 		'borderColor',
 		'enabledHolder'
 	],
-	#category : 'Spec-Widgets'
+	#category : #'Spec-Widgets'
 }
 
 { #category : #specs }

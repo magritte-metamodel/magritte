@@ -1,7 +1,7 @@
 Class {
 	#name : #MAOptionComponent,
 	#superclass : #MAElementComponent,
-	#category : 'Magritte-Seaside-Components'
+	#category : #'Magritte-Seaside-Components'
 }
 
 { #category : #private }

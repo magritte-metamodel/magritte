@@ -1,7 +1,7 @@
 Class {
 	#name : #MADescriptionRenameRefactoring,
 	#superclass : #RBMethodRefactoring,
-	#category : 'Magritte-Pharo-Tools'
+	#category : #'Magritte-Pharo-Tools'
 }
 
 { #category : #initialization }

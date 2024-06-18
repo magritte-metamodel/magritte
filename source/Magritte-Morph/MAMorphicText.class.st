@@ -1,12 +1,10 @@
 Class {
-	#name : 'MAMorphicText',
-	#superclass : 'MAMorphicElement',
-	#category : 'Magritte-Morph-Model',
-	#package : 'Magritte-Morph',
-	#tag : 'Model'
+	#name : #MAMorphicText,
+	#superclass : #MAMorphicElement,
+	#category : #'Magritte-Morph-Model'
 }
 
-{ #category : 'private' }
+{ #category : #private }
 MAMorphicText >> buildMorphView [
 	^ self theme
 		newTextEntryIn: nil
@@ -18,7 +16,7 @@ MAMorphicText >> buildMorphView [
 		help: self magritteDescription comment
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MAMorphicText >> enabled [
 
 	^ self magritteDescription readOnly not

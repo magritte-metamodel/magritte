@@ -7,7 +7,7 @@ Class {
 	#instVars : [
 		'contentMorph'
 	],
-	#category : 'Spec-Widgets'
+	#category : #'Spec-Widgets'
 }
 
 { #category : #specs }

@@ -5,7 +5,7 @@ Class {
 		'description',
 		'report'
 	],
-	#category : 'Magritte-Seaside-Examples'
+	#category : #'Magritte-Seaside-Examples'
 }
 
 { #category : #'instance creation' }

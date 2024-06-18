@@ -7,7 +7,7 @@ Class {
 	#instVars : [
 		'buttons'
 	],
-	#category : 'Magritte-Seaside-Decorations'
+	#category : #'Magritte-Seaside-Decorations'
 }
 
 { #category : #'instance creation' }

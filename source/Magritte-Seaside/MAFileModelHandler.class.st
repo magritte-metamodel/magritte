@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'model'
 	],
-	#category : 'Magritte-Seaside-Core'
+	#category : #'Magritte-Seaside-Core'
 }
 
 { #category : #'error handling' }

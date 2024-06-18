@@ -12,7 +12,7 @@ Class {
 		'entryCompletion',
 		'isEncrypted'
 	],
-	#category : 'Spec-Widgets'
+	#category : #'Spec-Widgets'
 }
 
 { #category : #specs }

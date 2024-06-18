@@ -1,6 +1,6 @@
 Class {
-	#name : 'TokenCollectorMorph',
-	#superclass : 'Morph',
+	#name : #TokenCollectorMorph,
+	#superclass : #Morph,
 	#instVars : [
 		'options',
 		'tokenViewer',
@@ -12,12 +12,10 @@ Class {
 		'whenObjectsChangedBlock',
 		'factory'
 	],
-	#category : 'Magritte-Morph-Morphs',
-	#package : 'Magritte-Morph',
-	#tag : 'Morphs'
+	#category : #'Magritte-Morph-Morphs'
 }
 
-{ #category : 'private' }
+{ #category : #private }
 TokenCollectorMorph >> accept: text [
 	| object |
 	object := self options
@@ -28,7 +26,7 @@ TokenCollectorMorph >> accept: text [
 	self refresh
 ]
 
-{ #category : 'private-building' }
+{ #category : #'private-building' }
 TokenCollectorMorph >> entryCompletion [
 
 	entryCompletion ifNotNil: [ ^ entryCompletion ].
@@ -43,19 +41,19 @@ TokenCollectorMorph >> entryCompletion [
 		                     yourself
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 TokenCollectorMorph >> factory [
 
 	^ factory ifNil: [ factory := [ :text | text ] ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 TokenCollectorMorph >> factory: aBlock [
 
 	factory := aBlock
 ]
 
-{ #category : 'initialization' }
+{ #category : #initialization }
 TokenCollectorMorph >> initialize [
 
 	| scrollPane |
@@ -72,28 +70,28 @@ TokenCollectorMorph >> initialize [
 	self addMorphBack: scrollPane
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 TokenCollectorMorph >> objects [
 	^ objects ifNil: [ objects := OrderedCollection new ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 TokenCollectorMorph >> objects: aCollection [
 	objects := aCollection.
 	self refresh
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 TokenCollectorMorph >> options [
 	^ options
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 TokenCollectorMorph >> options: anObject [
 	options := anObject
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 TokenCollectorMorph >> refresh [
 	self textInput model model text: ''.
 	self tokenViewer removeAllMorphs.
@@ -102,29 +100,29 @@ TokenCollectorMorph >> refresh [
 					
 ]
 
-{ #category : 'private-building' }
+{ #category : #'private-building' }
 TokenCollectorMorph >> stringDecoder [
 	"Test whether a string represents an object"
 	^ stringDecoder ifNil: [ stringDecoder := [ :obj :str | obj asString = str ] ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 TokenCollectorMorph >> stringDecoder: aBlock [
 	stringDecoder := aBlock
 ]
 
-{ #category : 'private-building' }
+{ #category : #'private-building' }
 TokenCollectorMorph >> stringEncoder [
 	^ stringEncoder ifNil: [ stringEncoder := [ :obj | obj asString ] ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 TokenCollectorMorph >> stringEncoder: aBlock [
 	"Turn data object into a string"
 	stringEncoder := aBlock
 ]
 
-{ #category : 'private-building' }
+{ #category : #'private-building' }
 TokenCollectorMorph >> textInput [
 
 	textInput ifNotNil: [ ^ textInput ].
@@ -138,7 +136,7 @@ TokenCollectorMorph >> textInput [
 	^ textInput
 ]
 
-{ #category : 'private-building' }
+{ #category : #'private-building' }
 TokenCollectorMorph >> tokenViewer [
 	tokenViewer ifNotNil: [ ^ tokenViewer ].
 	^ tokenViewer := Morph new
@@ -153,7 +151,7 @@ TokenCollectorMorph >> tokenViewer [
 		yourself
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 TokenCollectorMorph >> whenObjectsChanged: aBlock [
 
 	whenObjectsChangedBlock := aBlock

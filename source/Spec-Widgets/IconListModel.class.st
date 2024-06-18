@@ -7,7 +7,7 @@ Class {
 	#instVars : [
 		'iconHolder'
 	],
-	#category : 'Spec-Widgets'
+	#category : #'Spec-Widgets'
 }
 
 { #category : #specs }

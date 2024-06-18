@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'scaffolder'
 	],
-	#category : 'Magritte-Tests-Model-Models'
+	#category : #'Magritte-Tests-Model-Models'
 }
 
 { #category : #accessing }

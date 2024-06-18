@@ -7,7 +7,7 @@ Class {
 	#instVars : [
 		'realSubject'
 	],
-	#category : 'Magritte-Deprecated'
+	#category : #'Magritte-Deprecated'
 }
 
 { #category : #'instance creation' }

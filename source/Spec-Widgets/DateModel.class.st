@@ -16,7 +16,7 @@ Class {
 		'dateModel',
 		'displayBlockHolder'
 	],
-	#category : 'Spec-Widgets-PolyWidgets'
+	#category : #'Spec-Widgets-PolyWidgets'
 }
 
 { #category : #'as yet unclassified' }

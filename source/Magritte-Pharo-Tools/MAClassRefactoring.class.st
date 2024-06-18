@@ -1,7 +1,7 @@
 Class {
 	#name : #MAClassRefactoring,
 	#superclass : #RBClassRefactoring,
-	#category : 'Magritte-Pharo-Tools'
+	#category : #'Magritte-Pharo-Tools'
 }
 
 { #category : #transforming }

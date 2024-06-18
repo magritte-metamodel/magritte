@@ -1,7 +1,7 @@
 Class {
 	#name : #MADescribedScalarColumn,
 	#superclass : #MADescribedColumn,
-	#category : 'Magritte-Seaside-Report'
+	#category : #'Magritte-Seaside-Report'
 }
 
 { #category : #rendering }

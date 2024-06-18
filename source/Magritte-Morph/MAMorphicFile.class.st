@@ -1,15 +1,13 @@
 Class {
-	#name : 'MAMorphicFile',
-	#superclass : 'MAMorphicElement',
+	#name : #MAMorphicFile,
+	#superclass : #MAMorphicElement,
 	#instVars : [
 		'rectangleMorph'
 	],
-	#category : 'Magritte-Morph-Model',
-	#package : 'Magritte-Morph',
-	#tag : 'Model'
+	#category : #'Magritte-Morph-Model'
 }
 
-{ #category : 'private-building' }
+{ #category : #'private-building' }
 MAMorphicFile >> buildMorphView [
 
 	| button |
@@ -24,7 +22,7 @@ MAMorphicFile >> buildMorphView [
 	^ rectangleMorph.
 ]
 
-{ #category : 'actions' }
+{ #category : #actions }
 MAMorphicFile >> choose [
 	| file |
 	file := self
@@ -35,7 +33,7 @@ MAMorphicFile >> choose [
 	self displayCurrentValue.
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 MAMorphicFile >> choose: titleString in: defaultDirectory [
 
 	^ UIManager default chooseFile: titleString in: defaultDirectory.
@@ -46,7 +44,7 @@ MAMorphicFile >> choose: titleString in: defaultDirectory [
 	However, none of the Squeak/Pharo common UIManager API does what's needed e.g. to specify a starting folder. So I'm implementing the #chooseFile:in: for headful Pharo. At such time when someone tries in another scenario i.e. headless/Squeak, we have an entry point to implement support for those"
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 MAMorphicFile >> currentValueMorph [
 
 	| exists |
@@ -55,7 +53,7 @@ MAMorphicFile >> currentValueMorph [
 	^ rectangleMorph submorphs first.
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 MAMorphicFile >> displayCurrentValue [
 
 	| displayString |

@@ -16,7 +16,7 @@ Class {
 		'doItContext',
 		'doItReceiver'
 	],
-	#category : 'Spec-Widgets'
+	#category : #'Spec-Widgets'
 }
 
 { #category : #specs }

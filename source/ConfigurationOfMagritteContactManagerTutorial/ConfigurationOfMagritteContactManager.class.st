@@ -10,7 +10,7 @@ Class {
 	#classVars : [
 		'LastVersionLoad'
 	],
-	#category : 'ConfigurationOfMagritteContactManagerTutorial'
+	#category : #ConfigurationOfMagritteContactManagerTutorial
 }
 
 { #category : #'development support' }

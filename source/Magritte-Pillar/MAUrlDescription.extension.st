@@ -1,6 +1,6 @@
-Extension { #name : 'MAUrlDescription' }
+Extension { #name : #MAUrlDescription }
 
-{ #category : '*Magritte-Pillar' }
+{ #category : #'*Magritte-Pillar' }
 MAUrlDescription >> pillarFor: anObject [
 	^ PRExternalLink new reference: (self toString: (self read: anObject))
 ]

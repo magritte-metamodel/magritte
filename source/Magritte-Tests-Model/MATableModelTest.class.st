@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'table'
 	],
-	#category : 'Magritte-Tests-Model-Models'
+	#category : #'Magritte-Tests-Model-Models'
 }
 
 { #category : #running }

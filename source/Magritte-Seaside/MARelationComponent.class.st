@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'selected'
 	],
-	#category : 'Magritte-Seaside-Components'
+	#category : #'Magritte-Seaside-Components'
 }
 
 { #category : #'accessing-dynamic' }

@@ -8,7 +8,7 @@ Class {
 		'layout',
 		'morph'
 	],
-	#category : 'Spec-Widgets-Utilities'
+	#category : #'Spec-Widgets-Utilities'
 }
 
 { #category : #'instance creation' }

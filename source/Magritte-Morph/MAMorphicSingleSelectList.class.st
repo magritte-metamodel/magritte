@@ -1,12 +1,10 @@
 Class {
-	#name : 'MAMorphicSingleSelectList',
-	#superclass : 'MAMorphicList',
-	#category : 'Magritte-Morph-Model',
-	#package : 'Magritte-Morph',
-	#tag : 'Model'
+	#name : #MAMorphicSingleSelectList,
+	#superclass : #MAMorphicList,
+	#category : #'Magritte-Morph-Model'
 }
 
-{ #category : 'private' }
+{ #category : #private }
 MAMorphicSingleSelectList >> buildMorphView [
 	^ (PluggableListMorph on: self list: #strings selected: #selected changeSelected: #selected:)
 		hResizing: #spaceFill;
@@ -15,12 +13,12 @@ MAMorphicSingleSelectList >> buildMorphView [
 		yourself
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MAMorphicSingleSelectList >> selected [
 	^ self options indexOf: self value
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 MAMorphicSingleSelectList >> selected: anInteger [
 	self value: (self options at: anInteger ifAbsent: [ nil ]).
 	self changed: #selected

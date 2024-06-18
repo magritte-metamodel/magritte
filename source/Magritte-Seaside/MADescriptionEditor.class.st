@@ -6,7 +6,7 @@ Class {
 		'selected',
 		'selectedComponent'
 	],
-	#category : 'Magritte-Seaside-Examples'
+	#category : #'Magritte-Seaside-Examples'
 }
 
 { #category : #initialization }

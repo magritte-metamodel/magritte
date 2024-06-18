@@ -1,7 +1,7 @@
 Class {
 	#name : #MAStraightMementoTest,
 	#superclass : #MAMementoTest,
-	#category : 'Magritte-Tests-Model-Memento'
+	#category : #'Magritte-Tests-Model-Memento'
 }
 
 { #category : #testing }

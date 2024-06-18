@@ -10,7 +10,7 @@ Class {
 	#classVars : [
 		'LastVersionLoad'
 	],
-	#category : 'ConfigurationOfMagritteSeaside'
+	#category : #ConfigurationOfMagritteSeaside
 }
 
 { #category : #private }

@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'commands'
 	],
-	#category : 'Magritte-Seaside-Report'
+	#category : #'Magritte-Seaside-Report'
 }
 
 { #category : #actions }

@@ -4,7 +4,7 @@ I provide a basic display for all subclasses of MAElementDescription (only for r
 Class {
 	#name : #MAElementComponent,
 	#superclass : #MADescriptionComponent,
-	#category : 'Magritte-Seaside-Components'
+	#category : #'Magritte-Seaside-Components'
 }
 
 { #category : #calling }

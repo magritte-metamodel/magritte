@@ -1,6 +1,6 @@
-Extension { #name : 'GRPackage' }
+Extension { #name : #GRPackage }
 
-{ #category : '*magritte-morph' }
+{ #category : #'*magritte-morph' }
 GRPackage class >> magritteMorph [
 	^ self new
 		name: 'Magritte-Morph';

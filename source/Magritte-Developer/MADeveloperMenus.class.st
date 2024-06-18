@@ -1,7 +1,7 @@
 Class {
 	#name : #MADeveloperMenus,
 	#superclass : #Object,
-	#category : 'Magritte-Developer'
+	#category : #'Magritte-Developer'
 }
 
 { #category : #'nautilus menus' }

@@ -5,7 +5,7 @@ Class {
 		'report',
 		'accessor'
 	],
-	#category : 'Magritte-Seaside-Report'
+	#category : #'Magritte-Seaside-Report'
 }
 
 { #category : #testing }

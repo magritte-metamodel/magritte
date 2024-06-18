@@ -1,7 +1,7 @@
 Class {
 	#name : #MATimeSelectorComponent,
 	#superclass : #MATimeInputComponent,
-	#category : 'Magritte-Seaside-Components'
+	#category : #'Magritte-Seaside-Components'
 }
 
 { #category : #testing }

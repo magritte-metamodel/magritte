@@ -5,7 +5,7 @@ Class {
 		'accessor',
 		'value'
 	],
-	#category : 'Magritte-Tests-Model-Accessor'
+	#category : #'Magritte-Tests-Model-Accessor'
 }
 
 { #category : #testing }

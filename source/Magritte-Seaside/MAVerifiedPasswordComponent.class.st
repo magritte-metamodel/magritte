@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'verificationValue'
 	],
-	#category : 'Magritte-Seaside-Components'
+	#category : #'Magritte-Seaside-Components'
 }
 
 { #category : #private }

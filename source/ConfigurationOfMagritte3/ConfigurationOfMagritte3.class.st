@@ -10,7 +10,7 @@ Class {
 	#classVars : [
 		'LastVersionLoad'
 	],
-	#category : 'ConfigurationOfMagritte3'
+	#category : #ConfigurationOfMagritte3
 }
 
 { #category : #private }

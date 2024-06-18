@@ -16,7 +16,7 @@ Class {
 		'phones',
 		'password'
 	],
-	#category : 'Magritte-ContactManager'
+	#category : #'Magritte-ContactManager'
 }
 
 { #category : #comparing }

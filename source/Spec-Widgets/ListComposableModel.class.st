@@ -41,7 +41,7 @@ Class {
 		'wrapBlockHolder',
 		'listAnnouncer'
 	],
-	#category : 'Spec-Widgets'
+	#category : #'Spec-Widgets'
 }
 
 { #category : #specs }

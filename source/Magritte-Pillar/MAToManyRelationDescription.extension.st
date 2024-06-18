@@ -1,6 +1,6 @@
-Extension { #name : 'MAToManyRelationDescription' }
+Extension { #name : #MAToManyRelationDescription }
 
-{ #category : '*Magritte-Pillar' }
+{ #category : #'*Magritte-Pillar' }
 MAToManyRelationDescription >> pillarFor: anObject [
 	| doc elements |
 	doc := PRTable new.

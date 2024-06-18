@@ -1,6 +1,6 @@
-Extension { #name : 'Collection' }
+Extension { #name : #Collection }
 
-{ #category : '*Magritte-Pillar' }
+{ #category : #'*Magritte-Pillar' }
 Collection >> maPillarPushTo: stack do: aBlock [
 	self do: [ :e | 
 		stack top add: e.

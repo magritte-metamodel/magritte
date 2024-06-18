@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'classes'
 	],
-	#category : 'Magritte-Pharo-Tools'
+	#category : #'Magritte-Pharo-Tools'
 }
 
 { #category : #initialization }

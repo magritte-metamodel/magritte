@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'fieldName'
 	],
-	#category : 'Magritte-Developer'
+	#category : #'Magritte-Developer'
 }
 
 { #category : #activation }

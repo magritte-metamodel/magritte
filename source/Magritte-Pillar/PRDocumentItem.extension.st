@@ -1,6 +1,6 @@
-Extension { #name : 'PRDocumentItem' }
+Extension { #name : #PRDocumentItem }
 
-{ #category : '*Magritte-Pillar' }
+{ #category : #'*Magritte-Pillar' }
 PRDocumentItem >> maPillarPushTo: stack do: aBlock [
 	stack top add: self.
 	stack push: self.

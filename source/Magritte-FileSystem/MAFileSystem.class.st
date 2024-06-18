@@ -1,7 +1,7 @@
 Class {
 	#name : #MAFileSystem,
 	#superclass : #Object,
-	#category : 'Magritte-FileSystem'
+	#category : #'Magritte-FileSystem'
 }
 
 { #category : #paths }

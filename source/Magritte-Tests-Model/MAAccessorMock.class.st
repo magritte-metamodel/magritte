@@ -1,5 +1,5 @@
 Class {
 	#name : #MAAccessorMock,
 	#superclass : #Object,
-	#category : 'Magritte-Tests-Model-Accessor'
+	#category : #'Magritte-Tests-Model-Accessor'
 }

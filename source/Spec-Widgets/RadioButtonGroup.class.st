@@ -7,7 +7,7 @@ Class {
 	#instVars : [
 		'buttons'
 	],
-	#category : 'Spec-Widgets-Utilities'
+	#category : #'Spec-Widgets-Utilities'
 }
 
 { #category : #protocol }

@@ -4,7 +4,7 @@ I am a normally invisible component. I show a list of validation errors in case 
 Class {
 	#name : #MAValidationDecoration,
 	#superclass : #MAComponentDecoration,
-	#category : 'Magritte-Seaside-Decorations'
+	#category : #'Magritte-Seaside-Decorations'
 }
 
 { #category : #accessing }

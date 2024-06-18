@@ -8,7 +8,7 @@ Class {
 		'kind',
 		'number'
 	],
-	#category : 'Magritte-ContactManager'
+	#category : #'Magritte-ContactManager'
 }
 
 { #category : #comparing }

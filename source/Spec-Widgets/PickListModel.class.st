@@ -15,7 +15,7 @@ Class {
 		'associationsIndexToWrapper',
 		'blockToPerformOnWrappers'
 	],
-	#category : 'Spec-Widgets-PolyWidgets'
+	#category : #'Spec-Widgets-PolyWidgets'
 }
 
 { #category : #specs }

@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'description'
 	],
-	#category : 'Magritte-Seaside-Report'
+	#category : #'Magritte-Seaside-Report'
 }
 
 { #category : #accessing }

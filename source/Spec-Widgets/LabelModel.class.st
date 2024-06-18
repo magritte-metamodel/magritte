@@ -7,7 +7,7 @@ Class {
 	#instVars : [
 		'textHolder'
 	],
-	#category : 'Spec-Widgets'
+	#category : #'Spec-Widgets'
 }
 
 { #category : #specs }

@@ -13,7 +13,7 @@ Class {
 		'actionPerformedHolder',
 		'askBeforeChangingHolder'
 	],
-	#category : 'Spec-Widgets'
+	#category : #'Spec-Widgets'
 }
 
 { #category : #specs }

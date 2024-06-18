@@ -4,7 +4,7 @@ I am similar to MASelectListComponent, but rather than displaying the options in
 Class {
 	#name : #MASelectListRowsComponent,
 	#superclass : #MASelectListComponent,
-	#category : 'Magritte-Seaside-Components'
+	#category : #'Magritte-Seaside-Components'
 }
 
 { #category : #private }

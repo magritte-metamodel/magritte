@@ -1,6 +1,6 @@
 Trait {
 	#name : #TMagritteBootstrap,
-	#category : 'Magritte-Bootstrap'
+	#category : #'Magritte-Bootstrap'
 }
 
 { #category : #'reflective operations' }

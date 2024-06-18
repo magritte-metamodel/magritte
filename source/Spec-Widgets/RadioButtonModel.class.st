@@ -15,7 +15,7 @@ Class {
 		'labelClickableHolder',
 		'labelHolder'
 	],
-	#category : 'Spec-Widgets'
+	#category : #'Spec-Widgets'
 }
 
 { #category : #specs }

@@ -1,7 +1,7 @@
 Class {
 	#name : #MADateInputComponent,
 	#superclass : #MATextInputComponent,
-	#category : 'Magritte-Seaside-Components'
+	#category : #'Magritte-Seaside-Components'
 }
 
 { #category : #actions }

@@ -1,7 +1,7 @@
 Class {
 	#name : #MAComponent,
 	#superclass : #WAComponent,
-	#category : 'Magritte-Seaside-Core'
+	#category : #'Magritte-Seaside-Core'
 }
 
 { #category : #'error handling' }

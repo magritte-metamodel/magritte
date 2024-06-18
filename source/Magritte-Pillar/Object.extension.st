@@ -1,6 +1,6 @@
-Extension { #name : 'Object' }
+Extension { #name : #Object }
 
-{ #category : '*Magritte-Pillar' }
+{ #category : #'*Magritte-Pillar' }
 Object >> maPillar [
 	| doc |
 	doc := PRDocument new.
@@ -8,7 +8,7 @@ Object >> maPillar [
 	^ doc
 ]
 
-{ #category : '*Magritte-Pillar' }
+{ #category : #'*Magritte-Pillar' }
 Object >> maPillarRenderer [
 	^ MAPillarRenderer new
 			object: self;

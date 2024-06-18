@@ -1,7 +1,7 @@
 Class {
 	#name : #MAContainerDecoration,
 	#superclass : #MAComponentDecoration,
-	#category : 'Magritte-Seaside-Decorations'
+	#category : #'Magritte-Seaside-Decorations'
 }
 
 { #category : #accessing }

@@ -11,7 +11,7 @@ Class {
 		'menuBlockHolder',
 		'wrapBlockHolder'
 	],
-	#category : 'Spec-Widgets'
+	#category : #'Spec-Widgets'
 }
 
 { #category : #specs }

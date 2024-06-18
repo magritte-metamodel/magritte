@@ -1,7 +1,7 @@
 Class {
 	#name : #MAExtensionsTest,
 	#superclass : #TestCase,
-	#category : 'Magritte-Tests-Model-Utility'
+	#category : #'Magritte-Tests-Model-Utility'
 }
 
 { #category : #helpers }

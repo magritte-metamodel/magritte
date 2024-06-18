@@ -1,6 +1,6 @@
-Extension { #name : 'MAElementDescription' }
+Extension { #name : #MAElementDescription }
 
-{ #category : '*Magritte-Morph' }
+{ #category : #'*Magritte-Morph' }
 MAElementDescription class >> defaultMorphicClasses [
 	^ Array with: MAMorphicText
 ]

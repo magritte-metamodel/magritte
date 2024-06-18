@@ -1,7 +1,7 @@
 Class {
 	#name : #MASingleSelectionComponent,
 	#superclass : #MAOptionComponent,
-	#category : 'Magritte-Seaside-Components'
+	#category : #'Magritte-Seaside-Components'
 }
 
 { #category : #accessing }
