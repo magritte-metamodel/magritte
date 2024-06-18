@@ -1,6 +1,6 @@
-Extension { #name : #MAFileDescription }
+Extension { #name : 'MAFileDescription' }
 
-{ #category : #'*Magritte-Morph' }
+{ #category : '*Magritte-Morph' }
 MAFileDescription class >> defaultMorphicClasses [
 	^ Array with: MAMorphicFile
 ]

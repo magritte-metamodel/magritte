@@ -1,6 +1,6 @@
-Extension { #name : #GRPackage }
+Extension { #name : 'GRPackage' }
 
-{ #category : #'*magritte-pharo-model' }
+{ #category : '*magritte-pharo-model' }
 GRPackage class >> magrittePharoModel [
 	^ self new
 		name: 'Magritte-Pharo-Model';

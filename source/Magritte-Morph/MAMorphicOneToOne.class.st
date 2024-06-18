@@ -1,10 +1,12 @@
 Class {
-	#name : #MAMorphicOneToOne,
-	#superclass : #MAMorphicRelation,
-	#category : #'Magritte-Morph-Model'
+	#name : 'MAMorphicOneToOne',
+	#superclass : 'MAMorphicRelation',
+	#category : 'Magritte-Morph-Model',
+	#package : 'Magritte-Morph',
+	#tag : 'Model'
 }
 
-{ #category : #private }
+{ #category : 'private' }
 MAMorphicOneToOne >> buildMorphView [
 
 	| table |
@@ -17,7 +19,7 @@ MAMorphicOneToOne >> buildMorphView [
 	^ table.
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAMorphicOneToOne >> buildSelectButton [
 	^ self theme builder
 		newButtonFor: self
@@ -26,12 +28,12 @@ MAMorphicOneToOne >> buildSelectButton [
 		help: ''
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 MAMorphicOneToOne >> create [
 	self subclassResponsibility
 ]
 
-{ #category : #removing }
+{ #category : 'removing' }
 MAMorphicOneToOne >> remove: anObject [
 	self value: nil
 ]

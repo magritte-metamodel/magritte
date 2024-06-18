@@ -1,6 +1,6 @@
-Extension { #name : #MABlockDescription }
+Extension { #name : 'MABlockDescription' }
 
-{ #category : #'*Magritte-Morph' }
+{ #category : '*Magritte-Morph' }
 MABlockDescription class >> defaultMorphClasses [
 	^ Array with: MAMorphicMemo
 ]

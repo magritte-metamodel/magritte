@@ -1,10 +1,12 @@
 Class {
-	#name : #MAMorphicDate,
-	#superclass : #MAMorphicElement,
-	#category : #'Magritte-Morph-Model'
+	#name : 'MAMorphicDate',
+	#superclass : 'MAMorphicElement',
+	#category : 'Magritte-Morph-Model',
+	#package : 'Magritte-Morph',
+	#tag : 'Model'
 }
 
-{ #category : #'private-building' }
+{ #category : 'private-building' }
 MAMorphicDate >> buildMorphView [
 
 	^ SpDatePresenter new

@@ -1,17 +1,17 @@
-Extension { #name : #Object }
+Extension { #name : 'Object' }
 
-{ #category : #'*Magritte-Morph' }
+{ #category : '*Magritte-Morph' }
 Object >> asMagritteMorph [
 	^ self magritteDescription asMorphOn: self
 ]
 
-{ #category : #'*Magritte-Morph' }
+{ #category : '*Magritte-Morph' }
 Object >> maEdit [
  
 	self maEditAnswering: [ :editedObj | ]
 ]
 
-{ #category : #'*Magritte-Morph' }
+{ #category : '*Magritte-Morph' }
 Object >> maEditAnswering: aBlock [
  
 	self asMagritteMorph
@@ -21,7 +21,7 @@ Object >> maEditAnswering: aBlock [
 		openInWorld.
 ]
 
-{ #category : #'*Magritte-Morph' }
+{ #category : '*Magritte-Morph' }
 Object >> magritteActionButtons [
 	^ self magritteActions collect: [ :e | e buttonOn: self ].
 ]

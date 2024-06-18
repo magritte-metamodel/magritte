@@ -1,10 +1,12 @@
 Class {
-	#name : #MAMorphicDirectory,
-	#superclass : #MAMorphicFile,
-	#category : #'Magritte-Morph-Model'
+	#name : 'MAMorphicDirectory',
+	#superclass : 'MAMorphicFile',
+	#category : 'Magritte-Morph-Model',
+	#package : 'Magritte-Morph',
+	#tag : 'Model'
 }
 
-{ #category : #private }
+{ #category : 'private' }
 MAMorphicDirectory >> choose: titleString in: defaultDirectory [
 
 	^ UIManager default chooseDirectory: titleString from: defaultDirectory.

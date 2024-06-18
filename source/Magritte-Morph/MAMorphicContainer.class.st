@@ -1,19 +1,21 @@
 Class {
-	#name : #MAMorphicContainer,
-	#superclass : #MAMorphicDescription,
+	#name : 'MAMorphicContainer',
+	#superclass : 'MAMorphicDescription',
 	#instVars : [
 		'children',
 		'answerBlock'
 	],
-	#category : #'Magritte-Morph-Model'
+	#category : 'Magritte-Morph-Model',
+	#package : 'Magritte-Morph',
+	#tag : 'Model'
 }
 
-{ #category : #decorating }
+{ #category : 'decorating' }
 MAMorphicContainer >> addButtons [
 	self addButtons: #( save cancel )
 ]
 
-{ #category : #decorating }
+{ #category : 'decorating' }
 MAMorphicContainer >> addButtons: anArray [
 	morph := self rectangleMorph
 		addMorphBack: self morph;
@@ -21,25 +23,25 @@ MAMorphicContainer >> addButtons: anArray [
 		yourself
 ]
 
-{ #category : #decorating }
+{ #category : 'decorating' }
 MAMorphicContainer >> addWindow [
-	| scrollPane newMorph |
-	scrollPane := GeneralScrollPane new.
-	newMorph := self morph 
-		vResizing: #spaceFill;
-		hResizing: #spaceFill.
-	scrollPane changeScrollerTableLayout; scrollTarget: newMorph.	
 
+	| scrollPane newMorph |
+	newMorph := self morph
+		            vResizing: #spaceFill;
+		            hResizing: #spaceFill.
+	scrollPane := UIManager default newScrollPaneFor: newMorph.
+	scrollPane changeScrollerTableLayout.
 
 	morph := self windowMorph
-		model: self;
-		vResizing: #shrinkWrap;
-		addMorph: (scrollPane layoutInset: 5 @ 5)
-			frame: (0 @ 0 corner: 1 @ 1);
-		yourself
+		         model: self;
+		         vResizing: #shrinkWrap;
+		         addMorph: (scrollPane layoutInset: 5 @ 5)
+		         frame: (0 @ 0 corner: 1 @ 1);
+		         yourself
 ]
 
-{ #category : #answering }
+{ #category : 'answering' }
 MAMorphicContainer >> answer: anObject [
 
 	| didUserCancel |
@@ -51,7 +53,7 @@ MAMorphicContainer >> answer: anObject [
 	answerBlock value: anObject.
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAMorphicContainer >> buildChildren [
 	^ Array streamContents: [ :stream |
 		self magritteDescription do: [ :each |
@@ -62,7 +64,7 @@ MAMorphicContainer >> buildChildren [
 					parent: self) ] ] ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAMorphicContainer >> buildMorphViewOn: aMorph [
 
 	| toolbar |
@@ -81,7 +83,7 @@ MAMorphicContainer >> buildMorphViewOn: aMorph [
 		
 ]
 
-{ #category : #morphic }
+{ #category : 'morphic' }
 MAMorphicContainer >> callInHand [
 	| result |
 	result := nil.
@@ -90,7 +92,7 @@ MAMorphicContainer >> callInHand [
 	^ result
 ]
 
-{ #category : #morphic }
+{ #category : 'morphic' }
 MAMorphicContainer >> callInWorld [
 	| result |
 	result := nil.
@@ -99,17 +101,17 @@ MAMorphicContainer >> callInWorld [
 	^ result
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 MAMorphicContainer >> cancel [
 	self reset; answer: nil
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAMorphicContainer >> children [
 	^ children
 ]
 
-{ #category : #'error handling' }
+{ #category : 'error handling' }
 MAMorphicContainer >> doesNotUnderstand: aMessage [
 	"Forward callbacks from #addButtons: to the model if appropriate"
 
@@ -118,17 +120,17 @@ MAMorphicContainer >> doesNotUnderstand: aMessage [
 		ifFalse: [ super doesNotUnderstand: aMessage ].
 ]
 
-{ #category : #answering }
+{ #category : 'answering' }
 MAMorphicContainer >> onAnswer: aBlock [
 	answerBlock := aBlock
 ]
 
-{ #category : #morphic }
+{ #category : 'morphic' }
 MAMorphicContainer >> openInHand [
 	^ self morph openInHand
 ]
 
-{ #category : #morphic }
+{ #category : 'morphic' }
 MAMorphicContainer >> openInWindow [
 
 	^ self
@@ -136,12 +138,12 @@ MAMorphicContainer >> openInWindow [
 		openInWorld.
 ]
 
-{ #category : #morphic }
+{ #category : 'morphic' }
 MAMorphicContainer >> openInWorld [
 	^ self morph openInWorld
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 MAMorphicContainer >> save [
 	[ self validate ]
 		on: MAValidationError
@@ -149,18 +151,18 @@ MAMorphicContainer >> save [
 	self commit; answer: self model
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 MAMorphicContainer >> setChildren: aCollection [
 	children := aCollection
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 MAMorphicContainer >> setDescription: aDescription [
 	super setDescription: aDescription.
 	self setChildren: self buildChildren
 ]
 
-{ #category : #morphic }
+{ #category : 'morphic' }
 MAMorphicContainer >> waitUntilClosed [
 	[ self morph world notNil ]
 		whileTrue: [ self morph outermostWorldMorph doOneCycle ]

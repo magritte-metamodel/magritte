@@ -1,10 +1,12 @@
 Class {
-	#name : #MAMorphicPassword,
-	#superclass : #MAMorphicText,
-	#category : #'Magritte-Morph-Model'
+	#name : 'MAMorphicPassword',
+	#superclass : 'MAMorphicText',
+	#category : 'Magritte-Morph-Model',
+	#package : 'Magritte-Morph',
+	#tag : 'Model'
 }
 
-{ #category : #private }
+{ #category : 'private' }
 MAMorphicPassword >> buildMorphView [
 	^ super buildMorphView
 		font: (StrikeFont passwordFontSize: 12);
