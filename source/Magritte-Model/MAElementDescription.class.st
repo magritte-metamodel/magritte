@@ -142,7 +142,7 @@ MAElementDescription >> shouldWrite: anObject over: anotherObject [
 	self isVisible ifFalse: [ ^ false ].
 	self isReadOnly ifTrue: [ ^ false ].
 	
-	((self isIgnorableValue: anObject) and: (self isIgnorableValue: anotherObject))
+	((self isIgnorableValue: anObject) and: [ self isIgnorableValue: anotherObject ])
 		ifTrue: [ ^ false ].
 	
 	(anObject == anotherObject or: [ anObject = anotherObject ])

@@ -1,7 +1,7 @@
 Class {
 	#name : #MAStraightMementoTest,
 	#superclass : #MAMementoTest,
-	#category : 'Magritte-Tests-Model-Memento'
+	#category : #'Magritte-Tests-Model-Memento'
 }
 
 { #category : #testing }
@@ -49,12 +49,14 @@ MAStraightMementoTest >> testValidateRequired [
 
 { #category : #'tests-basic' }
 MAStraightMementoTest >> testWrite [
-	self write: self includedInstance.
-	self assert: self value = self includedInstance.
 
+	"No need to save the default value"
 	self write: self defaultInstance.
-	self assert: self value = self defaultInstance.
-
+	self assert: self value equals: self nullInstance.
+	
 	self write: self nullInstance.
-	self assert: self value = self nullInstance
+	self assert: self value equals: self nullInstance.
+	
+	self write: self includedInstance.
+	self assert: self value equals: self includedInstance.
 ]
