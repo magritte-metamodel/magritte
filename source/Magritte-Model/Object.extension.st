@@ -34,11 +34,11 @@ Object >> isSameAs: rhs [
 ]
 
 { #category : #'*Magritte-Model' }
-Object >> isSameAs: rhs using: valuableDescription [
+Object >> isSameAs: rhs using: descriptionValuable [
 	"Use #isSameAs: unless you need to cache the description for efficiency.
 	CAUTION: this may not work if the description depends on the instance e.g. uses `self` in a block
 	(See comment below for more details)"
-	^ valuableDescription value allSatisfy: [ :desc |
+	^ descriptionValuable value allSatisfy: [ :desc |
 			| myVal rhsVal |
 			(desc accessor canRead: rhs)
 				ifFalse: [ false ]

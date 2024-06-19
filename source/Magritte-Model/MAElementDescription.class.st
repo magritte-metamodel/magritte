@@ -95,6 +95,21 @@ MAElementDescription >> initialAnswer: aValuable [
 	self propertyAt: #initialAnswer put: aValuable
 ]
 
+{ #category : #utility }
+MAElementDescription >> isIgnorableValue: anObject [
+
+	| ignorableValues isIgnorableDefault |
+
+	ignorableValues := OrderedCollection
+		with: nil
+		with: self undefinedValue.
+	
+	isIgnorableDefault := self shouldCacheDefault not and: [ anObject = self default ].
+	isIgnorableDefault ifTrue: [ ignorableValues add: self default ].
+	
+	^ ignorableValues includes: anObject
+]
+
 { #category : #'lazy initialization' }
 MAElementDescription >> lazilyInitializeFrom: currentValue for: anObject [
 	"- The default value is cached if the description's #shouldCacheDefault property is true. An example when caching is necessary is for to-many relations because the user may modify the collection, which will then be thrown away if not cached
@@ -124,21 +139,12 @@ MAElementDescription >> printFor: anObject on: aWriteStream [
 { #category : #utility }
 MAElementDescription >> shouldWrite: anObject over: anotherObject [
 
-	| defaultValues areBothDefaultValues isIgnorableDefault |
-
 	self isVisible ifFalse: [ ^ false ].
 	self isReadOnly ifTrue: [ ^ false ].
 	
-	defaultValues := OrderedCollection
-		with: nil
-		with: self undefinedValue.
+	((self isIgnorableValue: anObject) and: [ self isIgnorableValue: anotherObject ])
+		ifTrue: [ ^ false ].
 	
-	isIgnorableDefault := self shouldCacheDefault not and: [ anObject = self default ].
-	isIgnorableDefault ifTrue: [ defaultValues add: self default ].
-	
-	areBothDefaultValues := { anObject. anotherObject } allSatisfy: [ :obj | defaultValues includes: obj ].
-	
-	areBothDefaultValues ifTrue: [ ^ false ].
 	(anObject == anotherObject or: [ anObject = anotherObject ])
 		ifTrue: [ ^ false ].
 		
@@ -151,13 +157,20 @@ MAElementDescription >> shouldWrite: anObject over: anotherObject [
 
 { #category : #printing }
 MAElementDescription >> storeOn: aStream [
-	aStream 
-		nextPutAll: self className;
-		nextPutAll: ' new'; cr.
-	(self magritteDescription reject: #isReadOnly) do: [ :desc |
-		| value |
-		value := desc read: self.
-		(value ~= desc default and: [ value isNotNil ]) ifTrue: [ 
-			desc accessor store: value inDescriptionOn: aStream ] ].
-	aStream nextPutAll: 'yourself'
+	
+	| source formattedSource |
+	source := String streamContents: [ :str |
+		str
+			nextPutAll: self className;
+			nextPutAll: ' new'; cr.
+		(self magritteDescription reject: #isReadOnly) do: [ :desc |
+			| value |
+			value := desc read: self.
+			(desc isIgnorableValue: value) ifFalse: [ 
+				desc accessor store: value inDescriptionOn: str ] ].
+		str nextPutAll: 'yourself' ].
+		
+	formattedSource := (RBParser parseExpression: source) formattedCode.
+	
+	aStream << formattedSource
 ]
