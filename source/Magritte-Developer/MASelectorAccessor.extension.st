@@ -10,6 +10,8 @@ MASelectorAccessor >> maCompile: templateString asAccessor: aSymbol forinstVarNa
 
 { #category : #'*Magritte-Developer-private' }
 MASelectorAccessor >> maSetUp: aClass for: anMAElementDescription [
+	"Ensure inst var, setter and getter exist"
+
 	| variableName needsInstVar defaultArgumentType setterArgumentName |
 	variableName := self readSelector.
 	needsInstVar := (aClass hasInstVarNamed: variableName) not.
@@ -31,7 +33,6 @@ MASelectorAccessor >> maSetUp: aClass for: anMAElementDescription [
 { #category : #'*Magritte-Developer-private' }
 MASelectorAccessor >> store: anObject inDescriptionOn: aStream [ 
 	anObject storeVia: self inDescriptionOn: aStream.
-	
 ]
 
 { #category : #'*Magritte-Developer-private' }

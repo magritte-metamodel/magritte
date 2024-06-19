@@ -76,6 +76,7 @@ Object class >> maAddField: aSymbol with: customizationBlock [
 
 { #category : #'*Magritte-Developer' }
 Object >> storeVia: anAccessor inDescriptionOn: aStream [
+
 	aStream
 		nextPutAll: anAccessor writeSelector , ' (';
 		store: self;

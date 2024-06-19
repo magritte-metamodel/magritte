@@ -7,7 +7,7 @@ Class {
 	#instVars : [
 		'uuid'
 	],
-	#category : 'Magritte-Model-Accessor'
+	#category : #'Magritte-Model-Accessor'
 }
 
 { #category : #testing }
@@ -42,6 +42,11 @@ MANullAccessor >> hash [
 	^ super hash bitXor: self uuid hash
 ]
 
+{ #category : #accessing }
+MANullAccessor >> maSetUp: aClass for: anMAElementDescription [
+	"do nothing"
+]
+
 { #category : #model }
 MANullAccessor >> read: aModel [ 
 	MAReadError signal: 'This message is not appropriate for this object'
@@ -55,6 +60,10 @@ MANullAccessor >> storeOn: aStream [
 		nextPutAll: ' uuid: ';
 		store: self uuid;
 		nextPut: $)
+]
+
+{ #category : #accessing }
+MANullAccessor >> storeVia: anAccessor inDescriptionOn: aStream [
 ]
 
 { #category : #accessing }
