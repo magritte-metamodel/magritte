@@ -4,7 +4,7 @@ I am a container holding a collection of descriptions and I keep them sorted acc
 Class {
 	#name : #MAPriorityContainer,
 	#superclass : #MAContainer,
-	#category : 'Magritte-Model-Description'
+	#category : #'Magritte-Model-Description'
 }
 
 { #category : #'accessing-defaults' }

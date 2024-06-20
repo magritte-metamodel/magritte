@@ -4,7 +4,7 @@ I am a description of the Boolean values ==true== and ==false==. My visual repre
 Class {
 	#name : #MABooleanDescription,
 	#superclass : #MAElementDescription,
-	#category : 'Magritte-Model-Description'
+	#category : #'Magritte-Model-Description'
 }
 
 { #category : #'accessing-defaults' }

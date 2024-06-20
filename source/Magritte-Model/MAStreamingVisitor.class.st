@@ -5,7 +5,7 @@ Class {
 		'stream',
 		'object'
 	],
-	#category : 'Magritte-Model-Visitor'
+	#category : #'Magritte-Model-Visitor'
 }
 
 { #category : #streaming }

@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'conditions'
 	],
-	#category : 'Magritte-Model-Utility'
+	#category : #'Magritte-Model-Utility'
 }
 
 { #category : #operators }
