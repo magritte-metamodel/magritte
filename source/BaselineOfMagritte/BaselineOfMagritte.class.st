@@ -45,14 +45,13 @@ BaselineOfMagritte >> baseline310CommonExtDeps: spec [
 { #category : #baselines }
 BaselineOfMagritte >> baseline330ForPharo: spec [
 			
-	spec for: #(#'pharo7.x' #'pharo8.x' #'pharo9.x' #'pharo10.x' #'pharo11.x' #'pharo12.x') do: [
+	spec for: #(#'pharo7.x' #'pharo8.x' #'pharo9.x' #'pharo10.x' #'pharo11.x' #'pharo12.x' #'pharo13.x') do: [
 		spec 
 			baseline: #'PharoEnhancements' with: [ spec repository: 'github://seandenigris/Pharo-Enhancements' ].
 		spec
 			package: #'Magritte-Developer' with: [ spec requires: #(#'Magritte-Model') ];
 			package: #'Magritte-FileSystem' with: [ spec requires: #(#'Magritte-Model') ];
-			" create a temporary alias "
-			package: #'Magritte-Pharo-Model' with: #'Magritte-Pharo7-Model';
+			package: #'Magritte-Pharo-Model';
 			package: #'Magritte-Tests-Files-Model' with: [ spec requires: #(#'Magritte-FileSystem') ];
 			package: #'Magritte-Tests-Model' with: [ spec includes: #(#'Magritte-Tests-Files-Model') ].
 		spec group: #'default' with: #(#'Magritte-Developer') ].
