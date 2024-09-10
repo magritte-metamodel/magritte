@@ -1,7 +1,7 @@
 Class {
 	#name : #MANumberDescriptionTest,
 	#superclass : #MAMagnitudeDescriptionTest,
-	#category : 'Magritte-Tests-Model-Description'
+	#category : #'Magritte-Tests-Model-Description'
 }
 
 { #category : #testing }
@@ -83,6 +83,25 @@ MANumberDescriptionTest >> testFromString [
 	self assert: (self description fromString: '') isNil description: 'Empty string should be parsed to nil'.
 	self assert: (self description fromString: '-20')
 			= -20 description: 'Negative numbers should be accepted'
+]
+
+{ #category : #private }
+MANumberDescriptionTest >> testThousandsSeparatorCustom [
+	
+	self 
+		assert: (self description
+			thousandsSeparator: $.;
+			fromString: '20.000')
+		equals: 20000 "By default, commas should be ignored"
+]
+
+{ #category : #private }
+MANumberDescriptionTest >> testThousandsSeparatorDefault [
+	
+	"self assert: (self description fromString: '') isNil description: 'Empty string should be parsed to nil'."
+	self 
+		assert: (self description fromString: '20,000')
+		equals: 20000 "By default, commas should be ignored"
 ]
 
 { #category : #tests }

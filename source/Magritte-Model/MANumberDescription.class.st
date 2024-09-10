@@ -12,6 +12,12 @@ MANumberDescription class >> defaultKind [
 	^ Number
 ]
 
+{ #category : #'accessing-defaults' }
+MANumberDescription class >> defaultThousandsSeparator [
+
+	^ $,
+]
+
 { #category : #testing }
 MANumberDescription class >> isAbstract [
 	^ false
@@ -40,4 +46,20 @@ MANumberDescription >> beNegative [
 { #category : #convenience }
 MANumberDescription >> bePositive [
 	self addCondition: (MACondition selector: #positive) labelled: 'No positive number was entered'
+]
+
+{ #category : #accessing }
+MANumberDescription >> thousandsSeparator [
+
+	^ self 
+		propertyAt: #thousandsSeparator
+		ifAbsent: [ self class defaultThousandsSeparator ]
+]
+
+{ #category : #accessing }
+MANumberDescription >> thousandsSeparator: aCharacter [
+
+	^ self 
+		propertyAt: #thousandsSeparator
+		putRemovingNil: aCharacter
 ]
