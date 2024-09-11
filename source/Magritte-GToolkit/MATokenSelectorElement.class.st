@@ -110,8 +110,8 @@ MATokenSelectorElement >> relationDescription: anObject [
 MATokenSelectorElement >> tokenContainer [
 	tokenContainer ifNotNil: [ ^ tokenContainer ].
 	
-	^ tokenContainer := BrHorizontalPane new
+	^ tokenContainer := BrHorizontalFlow new
 		vFitContent;
-		hFitContent;
+		hMatchParent;
 		yourself
 ]
