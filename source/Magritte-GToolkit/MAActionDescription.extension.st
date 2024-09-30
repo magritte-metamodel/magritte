@@ -4,8 +4,8 @@ Extension { #name : #MAActionDescription }
 MAActionDescription >> gtAction: aValuable [
 	"aValuable - optional arguments:
 		- aGtPhlowNoAction (same as the argument to a standard GT action method)
-		- this description
-		- NB. the receiver is *not* passed as an argument, because it should be available in the description creation method"
+		- the receiver. Although it is available in the description creation method, it is a best practice not to use self in descriptions because descriptions are designed to be late bindable to any compatible object
+		- this description"
 		
 	self flag: 'RE the last argument NB, the receiver SHOULD be passed, because descriptions are designed to be independent of model and applied to any compatible'.
 
@@ -20,17 +20,22 @@ MAActionDescription >> gtActionOf: anObject [
 	^ self
 		propertyAt: #gtAction
 		ifPresent: [ :valuable | 
-			valuable cull: GtPhlowAction noAction cull: self ]
-		ifAbsent: [ 
-			| button icn |
-			button := GtPhlowAction noAction button.
-			self comment ifNotEmpty: [ :tt | button tooltip: tt ].
-			icn := self gtIcon ifNil: [ self icon ].
-			icn ifNotNil: [ :i | button icon: i ].
-			self isLabelVisible ifTrue: [ button label: self label ].
-			button
-				action: [ self performOn: anObject ];
-				yourself ].
+			valuable cull: GtPhlowAction noAction cull: anObject cull: self ]
+		ifAbsent: [ self gtButtonFor: anObject ].
+]
+
+{ #category : #'*Magritte-GToolkit' }
+MAActionDescription >> gtButtonFor: anObject [
+
+	| button icn |
+	button := GtPhlowAction noAction button.
+	self comment ifNotEmpty: [ :tt | button tooltip: tt ].
+	icn := self gtIcon ifNil: [ self icon ].
+	icn ifNotNil: [ :i | button icon: i ].
+	self isLabelVisible ifTrue: [ button label: self label ].
+	^ button
+		action: [ self performOn: anObject ];
+		yourself.
 ]
 
 { #category : #'*Magritte-GToolkit' }
