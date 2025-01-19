@@ -54,7 +54,10 @@ MAElementBuilder >> addInputFieldUsing: aDescription [
 
 	self 
 		using: aDescription
-		addInputField: [ self newInputElementUsing: aDescription ]
+		addInputField: [ :headerElement |
+			(self newInputElementUsing: aDescription)
+				header: headerElement;
+				yourself ]
 ]
 
 { #category : #accessing }
@@ -101,8 +104,7 @@ MAElementBuilder >> calendarButtonFor: editor [
 				do: [  "calendar date: event date. Redundant because a new calendar will be created on next button click":event | 
 					editor
 						beEditable;
-						text: event date mmddyyyy;
-						acceptEdition.
+						text: event date mmddyyyy asRopedText.
 					calendar fireEvent: BrDropdownHideWish new ] ].
 
 	^ BrButton new
@@ -113,10 +115,17 @@ MAElementBuilder >> calendarButtonFor: editor [
 		yourself
 ]
 
+{ #category : #private }
+MAElementBuilder >> checkIcon [
+	^ BrGlamorousVectorIcons accept create
+		background: Color green;
+		yourself
+]
+
 { #category : #accessing }
 MAElementBuilder >> completionControllerClass [
 
-	^ completionControllerClass ifNil: [ GtCompletionController ]
+	^ completionControllerClass ifNil: [ PeGtCompletionController ]
 ]
 
 { #category : #accessing }
@@ -164,13 +173,13 @@ MAElementBuilder >> form [
 			text: string asRopedText bold;
 			aptitude: BrGlamorousLabelAptitude;
 			yourself ].
-	^ form := BlElement new
+	^ form := "BlElement"BrVerticalPane new
 		constraintsDo: [ :c |  
 			c vertical fitContent.
-			c horizontal matchParent ];
-		layout: (BlGridLayout horizontal columnCount: 2; cellSpacing: 10);
+			c horizontal matchParent ]";
+		layout: (BlGridLayout horizontal columnCount: 2; cellSpacing: 10)"";
 		addChild: (headerStancil value: 'Field');
-		addChild: (headerStancil value: 'Current');
+		addChild: (headerStancil value: 'Current');"
 		"addChild: (headerStancil value: 'Original');"
  	yourself.
 ]
@@ -188,29 +197,9 @@ MAElementBuilder >> memento [
 { #category : #accessing }
 MAElementBuilder >> newInputElementUsing: aDescription [
 
-	| editor |
-	editor := BrEditableLabel new
-		  aptitude:
-			  BrGlamorousEditableLabelAptitude new glamorousRegularFontAndSize;
-		  vFitContent;
-		  hMatchParent;
-		  when: BrEditorAcceptWish do: [ :aWish | 
-		  	aDescription
-				  writeFromString: aWish text greaseString
-				  to: self memento ];
-		  text: (self textUsing: aDescription).
-		  
-	aDescription propertyAt: #completions ifPresent: [ :comps |
-		| compStrings compStrat |
-		compStrings := comps value: self object.
-		compStrat := self completionStrategy 
-			completions: (GtPrefixTree withAll: compStrings);
-			yourself.
-		(self completionControllerClass on: editor strategy: compStrat)
-			showOnTextModification: true;
-			install ].
-	
-	^ editor
+	^ MABrTextEditor 
+		onDescription: aDescription
+		forBuilder: self
 ]
 
 { #category : #accessing }
@@ -242,6 +231,32 @@ MAElementBuilder >> presenter [
 		model: self object
 		description: self objectDescription.
 	^ presenter := MABlocContainerPresenter memento: memento
+]
+
+{ #category : #accessing }
+MAElementBuilder >> showValidationPassFor: headerElement [
+
+	headerElement
+		childNamed: #icon 
+		ifFound: [ :oldIcon | 
+			headerElement
+				replaceChild: oldIcon
+				with: self checkIcon
+				as: #icon ]
+		ifNone: [ headerElement addChild: self checkIcon as: #icon ]
+]
+
+{ #category : #accessing }
+MAElementBuilder >> showWarningFor: headerElement [
+
+	headerElement
+		childNamed: #icon 
+		ifFound: [ :oldIcon | 
+			headerElement
+				replaceChild: oldIcon
+				with: self warningIcon
+				as: #icon ]
+		ifNone: [ headerElement addChild: self warningIcon as: #icon ]
 ]
 
 { #category : #accessing }
@@ -278,34 +293,42 @@ MAElementBuilder >> toolbar [
 
 { #category : #private }
 MAElementBuilder >> using: aDescription addInputField: aValuable [
-
-	| labelElement "diffElement" inputElement |
+	| labelElement "diffElement" inputElement labelString headerElement |
 	aDescription isVisible ifFalse: [ ^ self ].
-	
-	inputElement := aValuable value.
+
+	labelString := aDescription label.
+	aDescription isRequired ifTrue: [ labelString := labelString , ' *' ].
+
 	labelElement := BrLabel new
-		text: aDescription label , ':';
+		text: labelString asRopedText bold;
 		addEventHandlerOn: BlClickEvent
 			do: [ :evt | evt target phlow spawnObject: (aDescription read: self object) ];
 		aptitude: BrGlamorousLabelAptitude.
-	labelElement constraintsDo: [ :c | 
+			
+	headerElement := BrHorizontalPane new
+		fitContent;
+		margin: (BlInsets all: 3);
+		addChild: labelElement;
+		yourself.
+
+	inputElement := (aValuable cull: headerElement)
+		margin: (BlInsets top: 2 bottom: 10);
+		yourself.
+
+	labelElement
+		constraintsDo: [ :c | 
 			c vertical fitContent.
 			c horizontal fitContent.
-			c grid vertical alignCenter ].
-			
-	aDescription isRequired ifTrue: [ self flag: 'unsupported' ].
-	
-	aDescription hasComment ifTrue: [ 
-		self addTooltip: aDescription comment to: labelElement.
-		self addTooltip: aDescription comment to: inputElement ].
-		
-	"diffElement := BrEditor new
-		text: inputElement text copy; ""if we don't copy, diff magically changes as input updates"
-		"aptitude: BrGlamorousEditorAptitude".
-		
-	self form addChild: labelElement.
-	self form addChild: inputElement.
-	"self form addChild: diffElement."
+			c grid vertical alignCenter.
+			c grid horizontal alignRight ].
+
+	aDescription hasComment
+		ifTrue: [ self addTooltip: aDescription comment to: headerElement.
+			self addTooltip: aDescription comment to: inputElement ].	"diffElement := BrEditor new
+		text: inputElement text copy; ""if we don't copy, diff magically changes as input updates"	"aptitude: BrGlamorousEditorAptitude"
+
+	self form addChild: headerElement.
+	self form addChild: inputElement	"self form addChild: diffElement."
 ]
 
 { #category : #accessing }
@@ -358,10 +381,14 @@ MAElementBuilder >> visitDateDescription: aDescription [
 
 	self 
 		using: aDescription 
-		addInputField: [ 
+		addInputField: [ :headerElement |
 			| editor calendarButton |
-			editor := self newInputElementUsing: aDescription.
-			calendarButton := self calendarButtonFor: editor.	"calendar date: event date. Redundant because a new calendar will be created on next button click"
+			editor := (self newInputElementUsing: aDescription)
+				header: headerElement;
+				yourself.
+			editor constraintsDo: [ :c |
+				c minWidth: 100 ].
+			calendarButton := self calendarButtonFor: editor.
 			BrHorizontalPane new
 					fitContent;
 					cellSpacing: 5;
@@ -387,6 +414,7 @@ MAElementBuilder >> visitDurationDescription: anObject [
 
 { #category : #'visiting-description' }
 MAElementBuilder >> visitElementDescription: aDescription [
+	
 	self addInputFieldUsing: aDescription
 ]
 
@@ -539,4 +567,14 @@ MAElementBuilder >> visitTokenDescription: anObject [
 { #category : #'visiting-description' }
 MAElementBuilder >> visitUrlDescription: anObject [
 	self visitElementDescription: anObject
+]
+
+{ #category : #accessing }
+MAElementBuilder >> warningIcon [
+
+	^ BlElement new
+		geometry: BlTriangleGeometry new beTop;
+		size: 8@8;
+		background: Color orange;
+		yourself.
 ]
