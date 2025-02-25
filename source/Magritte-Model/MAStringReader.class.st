@@ -34,6 +34,14 @@ MAStringReader >> nextMatchAll: aCollection on: aStream [
 	^ true
 ]
 
+{ #category : #'visiting-description' }
+MAStringReader >> objectReadFromKindOf: aDescription [
+	"This implementation can be very dangerous and might lead to a potential security hole (this is tested), since the default implementation of #readFrom: in Object evaluates the expression to find its value. Most subclasses like Number, Date, Time, ... override this implementation, but some others (like Boolean) do not."
+
+	self object: ([ aDescription kind readFrom: self stream ]
+		on: Error do: [ :err | MAReadError signal: err messageText ])
+]
+
 { #category : #visiting }
 MAStringReader >> read: aStream description: aDescription [
 	(aStream atEnd or: [ self nextMatchAll: aDescription undefined on: aStream ])
@@ -91,10 +99,8 @@ MAStringReader >> visitDurationDescription: aDescription [
 
 { #category : #'visiting-description' }
 MAStringReader >> visitElementDescription: aDescription [
-	"This implementation can be very dangerous and might lead to a potential security hole (this is tested), since the default implementation of #readFrom: in Object evaluates the expression to find its value. Most subclasses like Number, Date, Time, ... override this implementation, but some others (like Boolean) do not."
-
-	self object: ([ aDescription kind readFrom: self stream ]
-		on: Error do: [ :err | MAReadError signal: err messageText ])
+	
+	self objectReadFromKindOf: aDescription
 ]
 
 { #category : #'visiting-description' }
@@ -158,7 +164,7 @@ MAStringReader >> visitTimeDescription: aDescription [
 	string := self contents.
 	(string notEmpty and: [ string allSatisfy: [ :each | '0123456789: apm' includes: each ] ])
 		ifFalse: [ MAReadError signal ].
-	self object: (aDescription kind readFrom: string readStream)
+	self objectReadFromKindOf: aDescription
 ]
 
 { #category : #'visiting-description' }

@@ -56,6 +56,15 @@ MAPatchOperation >> diffStrings [
 	^ { self field label, ': ', self oldValue asString. self field label, ': ', self newValue asString }
 ]
 
+{ #category : #accessing }
+MAPatchOperation >> elementGtViewFor: aView [
+	<gtView>
+	^ aView explicit
+		title: 'Element';
+		priority: 25;
+		stencil: [ self asElement asScrollableElement ]
+]
+
 { #category : #execution }
 MAPatchOperation >> execute [
 	self isEnabled ifFalse: [ ^ self ].
@@ -71,15 +80,6 @@ MAPatchOperation >> field [
 MAPatchOperation >> field: anObject [
 	field := anObject.
 	self cacheOldValue
-]
-
-{ #category : #accessing }
-MAPatchOperation >> gtElementViewFor: aView [
-	<gtView>
-	^ aView explicit
-		title: 'Element';
-		priority: 25;
-		stencil: [ self asElement asScrollableElement ]
 ]
 
 { #category : #comparing }
