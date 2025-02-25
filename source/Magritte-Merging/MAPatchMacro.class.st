@@ -54,18 +54,18 @@ MAPatchMacro >> diffStrings [
 	^ { lhs. rhs }
 ]
 
-{ #category : #execution }
-MAPatchMacro >> execute [
-	self operations do: #execute
-]
-
 { #category : #accessing }
-MAPatchMacro >> gtElementViewFor: aView [
+MAPatchMacro >> elementGtViewFor: aView [
 	<gtView>
 	^ aView explicit
 		title: 'Element';
 		priority: 25;
 		stencil: [ self asElement asScrollableElement ]
+]
+
+{ #category : #execution }
+MAPatchMacro >> execute [
+	self operations do: #execute
 ]
 
 { #category : #accessing }
@@ -92,6 +92,16 @@ MAPatchMacro >> operationsDescription [
 		classes: { MAPatchOperation };
 		default: OrderedCollection new;
 		yourself
+]
+
+{ #category : #accessing }
+MAPatchMacro >> operationsGtViewFor: aView [
+	<gtView>
+	
+	^ aView list
+		title: 'Operations';
+		priority: 35;
+		items: [ self operations ]
 ]
 
 { #category : #printing }
