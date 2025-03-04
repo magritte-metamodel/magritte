@@ -6,7 +6,7 @@ Magritte is a fully dynamic meta-description framework that helps to solve those
 
 ### Installation
   * [Pharo Smalltalk](http://www.pharo.org/):
-    * Pharo 6.x - 11.x: 
+    * Pharo 6.x - 12.x: 
     ```smalltalk
     Metacello new
       baseline: 'Magritte';
@@ -31,7 +31,7 @@ with: [ spec repository: 'github://magritte-metamodel/magritte:v3.8';
              loads: #(Core) ]; 
 ```
 
-This snippet uses v3.8 release version, remember to change the release version to your needs. See BaselineOfMagritte for other groups to load beside of 'Core'.
+This snippet uses v3.8 release version that is not compatible with Pharo 12+, remember to change the release version to your needs. See BaselineOfMagritte for other groups to load beside of 'Core'.
 
 ### Mailing-Lists
   * [Magritte, Pier and Related Tools](https://www.iam.unibe.ch/mailman/listinfo/smallwiki)
