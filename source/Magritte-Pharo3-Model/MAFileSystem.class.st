@@ -26,11 +26,3 @@ MAFileSystem class >> imageDirectory [
 
 	^ FileLocator imageDirectory.
 ]
-
-{ #category : #'mime types' }
-MAFileSystem class >> mimeTypesForExtension: aString [ 
-
-	| types |
-	types := MIMEType forExtensionReturnMimeTypesOrNil: aString.
-	^ types ifNotNil: [ types collect: [ :e | e asString ] ].
-]
