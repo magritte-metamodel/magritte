@@ -1,7 +1,7 @@
 Class {
 	#name : #ORCmdMagritteDescriptionUpdate,
 	#superclass : #ORCmdMethodRefactoring,
-	#category : 'Magritte-Pharo-Tools'
+	#category : 'Magritte-OmniBrowser-Tools'
 }
 
 { #category : #accessing }
