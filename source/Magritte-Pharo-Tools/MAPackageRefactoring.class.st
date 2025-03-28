@@ -27,12 +27,17 @@ MAPackageRefactoring >> classes: anObject [
 
 { #category : #preconditions }
 MAPackageRefactoring >> preconditions [
-	^ RBCondition empty
+	^ RBCondition true
 ]
 
 { #category : #transforming }
 MAPackageRefactoring >> transform [
+	self privateTransform
+]
+
+{ #category : #transforming }
+MAPackageRefactoring >> privateTransform [
 	self classes 
 		collect: [ :each | MAClassRefactoring model: self model className: each ]
-		thenDo: [ :each | self performComponentRefactoring: each ]
+		thenDo: [ :each | self generateChangesFor: each ]
 ]
