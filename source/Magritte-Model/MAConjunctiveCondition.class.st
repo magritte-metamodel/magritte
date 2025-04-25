@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'conditions'
 	],
-	#category : 'Magritte-Model-Utility'
+	#category : #'Magritte-Model-Utility'
 }
 
 { #category : #operators }
@@ -19,5 +19,10 @@ MAConjunctiveCondition >> initialize [
 
 { #category : #evaluating }
 MAConjunctiveCondition >> value: anObject [
-	^ conditions allSatisfy: [ :each | each value: anObject ]
+
+	conditions 
+		detect: [ :each | (each value: anObject) not ]
+		ifFound: [ ^ false ].
+		
+	^ true
 ]
