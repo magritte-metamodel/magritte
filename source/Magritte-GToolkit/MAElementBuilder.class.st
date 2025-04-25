@@ -16,7 +16,8 @@ Class {
 		'buttonSelectors',
 		'objectDescription',
 		'completionControllerClass',
-		'completionStrategy'
+		'completionStrategy',
+		'toolbar'
 	],
 	#category : #'Magritte-GToolkit'
 }
@@ -268,7 +269,9 @@ MAElementBuilder >> textUsing: aDescription [
 
 { #category : #accessing }
 MAElementBuilder >> toolbar [
-	| toolbar |
+
+	toolbar ifNotNil: [ ^ toolbar ].
+	
 	toolbar := BrToolbar new
 		aptitude: BrToolbarAptitude new;
 		layout:

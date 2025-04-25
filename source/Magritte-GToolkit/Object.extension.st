@@ -59,7 +59,17 @@ Object >> maGtFormFor: aView [
 	^ aView explicit
 		title: 'Magritte';
 		priority: 50;
-		stencil: [ ((description elementBuilderFor: self) addButtons; element) asScrollableElement ];
+		stencil: [ 
+			| builder |
+			builder := description elementBuilderFor: self.
+			builder addButtons.
+			builder toolbar children do: [ :button |
+				| currentAction |
+				currentAction := button action.
+				button action: [ 
+					currentAction value.
+					button phlow firstParentWithViewContent phlow update ] ].
+			builder element asScrollableElement. ];
 		actionButtonIcon: BrGlamorousVectorIcons inspect
 		  label: 'Memento'
 		  tooltip: 'Inspect Memento'
