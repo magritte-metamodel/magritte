@@ -6,15 +6,21 @@ Magritte is a fully dynamic meta-description framework that helps to solve those
 
 ### Installation
   * [Pharo Smalltalk](http://www.pharo.org/):
-    * Pharo 6.x - 12.x: 
+    * Pharo 8.x - 12.x:
     ```smalltalk
     Metacello new
       baseline: 'Magritte';
       repository: 'github://magritte-metamodel/Magritte';
       load
        ```
-    * Pharo 4.x: In the Configuration Browser (under [World Menu]->Tools), "Load Stable Version"
-    * Previous versions: Load `ConfigurationOfMagritte3` from http://smalltalkhub.com/mc/Magritte/Magritte3/main/. 
+    * Pharo 7.x: 
+    ```smalltalk
+    Metacello new
+      baseline: 'Magritte';
+      repository: 'github://magritte-metamodel/Magritte:v3.8';
+      load
+       ```
+    * Pharo up to 6.x: Load `ConfigurationOfMagritte3` from http://smalltalkhub.com/mc/Magritte/Magritte3/main/. 
   * [GemStone Smalltalk](http://seaside.gemstone.com/): Get the latest code from Gemstone repository at https://github.com/GsDevKit/Magritte3 .
   * [Cincom Smalltalk](http://www.cincomsmalltalk.com/): Load the bundle `MagritteForVisualWorks` from the Cincom public StORE.
   * [GNU Smalltalk](http://smalltalk.gnu.org/): An initial port is available through the the GNU Smalltalk git repository. 
@@ -27,20 +33,21 @@ In you project Baseline or Configuration definition, add to the spec:
 
 ```
 baseline: 'Magritte' 
-with: [ spec repository: 'github://magritte-metamodel/magritte:v3.8'; 
+with: [ spec repository: 'github://magritte-metamodel/magritte'; 
              loads: #(Core) ]; 
 ```
 
-This snippet uses v3.8 release version that is not compatible with Pharo 12+, remember to change the release version to your needs. See BaselineOfMagritte for other groups to load beside of 'Core'.
+This snippet loads latest commit in the repository. In order to load a specific version, add for example `:v3.8` at the end of github URI. See BaselineOfMagritte for other groups to load beside of 'Core'.
 
 ### Mailing-Lists
   * [Magritte, Pier and Related Tools](https://www.iam.unibe.ch/mailman/listinfo/smallwiki)
   * [Seaside](http://lists.squeakfoundation.org/cgi-bin/mailman/listinfo/seaside)
 
 ### Development
-  * [Code Repository](http://smalltalkhub.com/\#\!/~Magritte/Magritte3)
-  * [Add-On Repository](http://smalltalkhub.com/\#\!/~Magritte/MagritteAddons)
+  * [Code Repository](https://github.com/magritte-metamodel/magritte)
   * [Report Issue](https://github.com/magritte-metamodel/magritte/issues)
+  * [Legacy Code Repository](http://smalltalkhub.com/\#\!/~Magritte/Magritte3)
+  * [Legacy Add-On Repository](http://smalltalkhub.com/\#\!/~Magritte/MagritteAddons)
 
 ### Documentation
   * [Magritte Chapter in Seaside Book](http://book.seaside.st/book/advanced/magritte)
