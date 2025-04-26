@@ -110,7 +110,6 @@ BaselineOfMagritte >> baseline: spec [
 		do: [ 
 			spec author: 'SeanDeNigris'.
 			spec timestamp: '2015-04-05'.
-			spec description: 'For pharo4.x, add Magritte-GT package and add it to the default group'.
 			self baseline310CommonExtDeps: spec.
 			spec
 				package: #'Magritte-Model' with: [ 
@@ -124,11 +123,13 @@ BaselineOfMagritte >> baseline: spec [
 				package: #'Magritte-Bootstrap' with: [ spec requires: #(#'Magritte-Model') ];
 				package: #'Magritte-Deprecated' with: [ spec requires: #(#'Magritte-Model') ];
 				package: #'Magritte-Merging' with: [ spec requires: #(#'Magritte-Model') ];
-				package: #'Magritte-Money' with: [ spec requires: #(#'Magritte-Model') ].
+				package: #'Magritte-Money' with: [ spec requires: #(#'Magritte-Model') ];
+				package: #'Magritte-ContactManager' with: [ spec requires: #(#'Magritte-Seaside') ].
 			spec
 				group: #'Core' with: #(#'Magritte-Model');
 				group: #'Tests' with: #(#'Magritte-Tests-Files-Model');
 				group: #'Seaside' with: #(#'Magritte-Seaside');
+				group: #'ContactManager' with: #(#'Magritte-ContactManager');
 				group: #'Deprecated' with: #(#'Magritte-Deprecated') ].
 	self baseline330ForPharo: spec.
 	self baseline330ForSqueakCommon: spec.
