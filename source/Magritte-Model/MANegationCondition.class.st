@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'condition'
 	],
-	#category : 'Magritte-Model-Utility'
+	#category : #'Magritte-Model-Utility'
 }
 
 { #category : #'instance creation' }

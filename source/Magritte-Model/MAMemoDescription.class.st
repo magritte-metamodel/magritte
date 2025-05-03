@@ -4,7 +4,7 @@ I am a description of multiline strings, possible values are instances of ==Stri
 Class {
 	#name : #MAMemoDescription,
 	#superclass : #MAStringDescription,
-	#category : 'Magritte-Model-Description'
+	#category : #'Magritte-Model-Description'
 }
 
 { #category : #'accessing-defaults' }

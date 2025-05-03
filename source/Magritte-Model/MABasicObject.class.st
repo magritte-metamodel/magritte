@@ -1,7 +1,7 @@
 Class {
 	#name : #MABasicObject,
 	#superclass : #GRObject,
-	#category : 'Magritte-Model-Core'
+	#category : #'Magritte-Model-Core'
 }
 
 { #category : #'error handling' }

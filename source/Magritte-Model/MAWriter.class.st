@@ -1,7 +1,7 @@
 Class {
 	#name : #MAWriter,
 	#superclass : #MAStreamingVisitor,
-	#category : 'Magritte-Model-Visitor'
+	#category : #'Magritte-Model-Visitor'
 }
 
 { #category : #'instance creation' }

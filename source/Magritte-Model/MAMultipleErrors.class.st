@@ -7,7 +7,7 @@ Class {
 	#instVars : [
 		'collection'
 	],
-	#category : 'Magritte-Model-Exception'
+	#category : #'Magritte-Model-Exception'
 }
 
 { #category : #'instance creation' }

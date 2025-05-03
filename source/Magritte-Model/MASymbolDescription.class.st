@@ -4,7 +4,7 @@ I am a description of symbols, possible values are instances of ==Symbol==.
 Class {
 	#name : #MASymbolDescription,
 	#superclass : #MAStringDescription,
-	#category : 'Magritte-Model-Description'
+	#category : #'Magritte-Model-Description'
 }
 
 { #category : #'accessing-defaults' }

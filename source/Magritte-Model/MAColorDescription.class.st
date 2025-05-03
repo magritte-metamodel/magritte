@@ -4,7 +4,7 @@ I am a description of colors, possible values are instances of ==Color==. My vis
 Class {
 	#name : #MAColorDescription,
 	#superclass : #MAElementDescription,
-	#category : 'Magritte-Model-Description'
+	#category : #'Magritte-Model-Description'
 }
 
 { #category : #'accessing-defaults' }

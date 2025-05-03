@@ -62,12 +62,11 @@ TokenCollectorMorph >> initialize [
 		changeTableLayout;
 		color: Color transparent.
 	self addMorphBack: self textInput.
-	scrollPane := GeneralScrollPane new
-			changeScrollerTableLayout;
-			hResizing: #spaceFill;
-			vResizing: #spaceFill;
-			scrollTarget: self tokenViewer;
-			yourself.
+	scrollPane := (UIManager default newScrollPaneFor: self tokenViewer)
+		              changeScrollerTableLayout;
+		              hResizing: #spaceFill;
+		              vResizing: #spaceFill;
+		              yourself.
 	self addMorphBack: scrollPane
 ]
 

@@ -1,7 +1,7 @@
 Class {
 	#name : #MADynamicVariable,
 	#superclass : #GRNotification,
-	#category : 'Magritte-Model-Utility'
+	#category : #'Magritte-Model-Utility'
 }
 
 { #category : #defaults }

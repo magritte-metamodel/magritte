@@ -9,7 +9,7 @@ Class {
 		'columnCount',
 		'contents'
 	],
-	#category : 'Magritte-Model-Models'
+	#category : #'Magritte-Model-Models'
 }
 
 { #category : #'instance creation' }

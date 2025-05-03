@@ -7,7 +7,7 @@ Class {
 		'arguments',
 		'index'
 	],
-	#category : 'Magritte-Model-Utility'
+	#category : #'Magritte-Model-Utility'
 }
 
 { #category : #initialization }

@@ -24,7 +24,7 @@ jobs:
     
     strategy:
       matrix:
-        smalltalk: [ Pharo64-10, Pharo64-9.0, Pharo64-8.0, Pharo64-7.0 ]
+        smalltalk: [ Pharo64-12, Pharo64-11, Pharo64-10, Pharo64-9.0, Pharo64-8.0, Pharo64-7.0 ]
     name: ${{ matrix.smalltalk }}
     
     # Steps represent a sequence of tasks that will be executed as part of the job

@@ -14,7 +14,7 @@ Class {
 	#classVars : [
 		'MimeTypes'
 	],
-	#category : 'Magritte-Model-Models'
+	#category : #'Magritte-Model-Models'
 }
 
 { #category : #'accessing-defaults' }
