@@ -208,3 +208,16 @@ MATPropertyOwner >> whenPropertyChangedSend: aSelector to: aReceiver [
 		send: aSelector
 		to: aReceiver
 ]
+
+{ #category : #subscriptions }
+MATPropertyOwner >> whenPropertyChangedSend: aSelector to: aReceiver [
+	| anAnnouncer |
+	anAnnouncer := self properties 
+		at: #propertyAnnouncer
+		ifAbsentPut: [ Announcer new ].
+		
+	^ anAnnouncer weak 
+		when: MAPropertyChangedAnnouncement
+		send: aSelector
+		to: aReceiver
+]
