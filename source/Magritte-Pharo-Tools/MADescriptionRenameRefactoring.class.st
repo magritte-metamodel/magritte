@@ -18,12 +18,17 @@ MADescriptionRenameRefactoring >> class: aClass [
 
 { #category : #preconditions }
 MADescriptionRenameRefactoring >> preconditions [
-	^ RBCondition empty
+	^ RBCondition true
 ]
 
 { #category : #transforming }
 MADescriptionRenameRefactoring >> transform [
-	| selector target parseTree |
+	self privateTransform
+]
+
+{ #category : #transforming }
+MADescriptionRenameRefactoring >> privateTransform [
+	| parseTree |
 	parseTree := class parseTreeFor: #description.
 	parseTree selector: #magritteDescription.
 	class compile: (parseTree formattedCode) classified: 'acessing-magritte'.

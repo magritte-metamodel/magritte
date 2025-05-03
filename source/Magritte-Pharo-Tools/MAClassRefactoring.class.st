@@ -8,13 +8,13 @@ Class {
 MAClassRefactoring >> descriptionMethodRename [
 	| class |
 	class := self classObjectFor: className asSymbol.
-	(class selectors detect: [ :each | each = #description ] ifNone: [ nil ]) notNil ifTrue: [
-		self performComponentRefactoring: (MADescriptionRenameRefactoring forClass: class) ]
+        (class selectors anySatisfy: [ :each | each = #description ]) ifTrue: [
+		self generateChangesFor: (MADescriptionRenameRefactoring forClass: class) ]
 ]
 
 { #category : #preconditions }
 MAClassRefactoring >> preconditions [
-	^ RBCondition empty
+	^ RBCondition true
 ]
 
 { #category : #accessing }
@@ -36,7 +36,12 @@ MAClassRefactoring >> theClass [
 ]
 
 { #category : #transforming }
-MAClassRefactoring >> transform [
+MAClassRefactoring >> privateTransform [
 	self descriptionMethodRename.
-	self refactorings do: [ :each | self performComponentRefactoring: each ]
+	self refactorings do: [ :each | self generateChangesFor: each ]
+]
+
+{ #category : #transforming }
+MAClassRefactoring >> transform [
+	self privateTransform
 ]

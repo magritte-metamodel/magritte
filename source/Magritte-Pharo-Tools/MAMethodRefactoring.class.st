@@ -1,21 +1,25 @@
 Class {
 	#name : #MAMethodRefactoring,
-	#superclass : #ORSwapMethodRefactoring,
+	#superclass : #RBMethodRefactoring,
+	#instVars : [
+		'selector',
+		'target'
+	],
 	#category : 'Magritte-Pharo-Tools'
 }
 
 { #category : #private }
 MAMethodRefactoring >> alreadyIncludesMagritteSelectors: parseTree [
-	^ (parseTree pragmas detect: [ :each | MAPragmaBuilder magritteSelectors includes: each selector ] ifNone: [ nil ]) notNil
+	^ parseTree pragmas anySatisfy: [ :each | MAPragmaBuilder magritteSelectors includes: each selector ]
 ]
 
 { #category : #private }
 MAMethodRefactoring >> createPragma [
 	((selector = #descriptionContainer) or: [ selector isDescriptionExtension: #descriptionContainer ]) ifTrue: [
-		^ RBPragmaNode selectorParts: (Array with: MAPragmaBuilder containerPragma) arguments: #() ].
+		^ RBPragmaNode selector: (Array with: MAPragmaBuilder containerPragma) arguments: #() ].
 	
 	(selector isDescriptionDefinition) ifTrue: [
-		^ RBPragmaNode selectorParts: (Array with: MAPragmaBuilder magritteDescriptionPragma) arguments: #() ].
+		^ RBPragmaNode selector: (Array with: MAPragmaBuilder magritteDescriptionPragma) arguments: #() ].
 	
 	((selector isDescriptionSelector) and: [ selector numArgs = 1 ]) ifTrue: [
 		| descriptionDefinitionSelector |
@@ -23,12 +27,10 @@ MAMethodRefactoring >> createPragma [
 		descriptionDefinitionSelector := class allSelectors detect: [ :each | 
 			each isDescriptionDefinition and: [ selector isDescriptionExtension: each ] ] ifNone: [ nil ].
 		
-		descriptionDefinitionSelector isNil ifTrue: [
+		descriptionDefinitionSelector ifNil: [
 			descriptionDefinitionSelector := class soleInstance allSelectors detect: [ :each | 
-				each isDescriptionDefinition and: [ selector isDescriptionExtension: each ] ] ifNone: [ nil ] ].
-		
-		descriptionDefinitionSelector notNil ifTrue: [
-			^ RBPragmaNode selectorParts: (Array with: MAPragmaBuilder magritteDescriptionExtensionPragma) arguments: (Array with: (RBLiteralValueNode literalToken: descriptionDefinitionSelector))] ].
+				each isDescriptionDefinition and: [ selector isDescriptionExtension: each ] ] ifNone: [ nil ] ] 
+			ifNotNil: [ ^ RBPragmaNode selector: (Array with: MAPragmaBuilder magritteDescriptionExtensionPragma) arguments: (Array with: (RBLiteralValueNode value: descriptionDefinitionSelector)) ] ].		
 	^ nil
 
 ]
@@ -40,6 +42,10 @@ MAMethodRefactoring >> preconditions [
 
 { #category : #transforming }
 MAMethodRefactoring >> transform [
+	self privateTransform
+]
+{ #category : #transforming }
+MAMethodRefactoring >> privateTransform [
 	| parseTree methodBody category |
 
 	parseTree := class parseTreeFor: selector.
@@ -47,7 +53,7 @@ MAMethodRefactoring >> transform [
 	(self alreadyIncludesMagritteSelectors: parseTree) ifFalse: [
 		| pragma |
 		pragma := self createPragma.
-		pragma notNil ifTrue: [
+		pragma ifNotNil: [
 			parseTree pragmas: (parseTree pragmas, (Array with: pragma)) ] ].
 	
 	category := class realClass organization categoryOfElement: selector.
@@ -55,4 +61,16 @@ MAMethodRefactoring >> transform [
 	methodBody := class methodFor: selector.
 	target compile: (parseTree formattedCode) classified: category.
 	class removeMethod: selector
+]
+{ #category : #'instance creation' }
+MAMethodRefactoring class >> swapMethod: aSelector in: aClass [
+	^ self new swapMethod: aSelector in: aClass
+]
+
+{ #category : #'instance creation' }
+MAMethodRefactoring class >> model: aRBSmalltalk swapMethod: aSelector in: aClass [
+	^ self new 
+		model: aRBSmalltalk;
+		swapMethod: aSelector in: aClass;
+		yourself
 ]
