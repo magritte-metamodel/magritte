@@ -6,7 +6,7 @@ Magritte is a fully dynamic meta-description framework that helps to solve those
 
 ### Installation
   * [Pharo Smalltalk](http://www.pharo.org/):
-    * Pharo 8.x - 12.x:
+    * Pharo 8.x - 13.x:
     ```smalltalk
     Metacello new
       baseline: 'Magritte';
