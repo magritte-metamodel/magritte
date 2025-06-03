@@ -1,7 +1,7 @@
 Class {
 	#name : #MAObjectTest,
 	#superclass : #TestCase,
-	#category : 'Magritte-Tests-Model-Core'
+	#category : #'Magritte-Tests-Model-Core'
 }
 
 { #category : #building }

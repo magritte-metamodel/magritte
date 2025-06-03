@@ -1,7 +1,7 @@
 Class {
 	#name : #MAMemoDescriptionTest,
 	#superclass : #MAStringDescriptionTest,
-	#category : 'Magritte-Tests-Model-Description'
+	#category : #'Magritte-Tests-Model-Description'
 }
 
 { #category : #private }

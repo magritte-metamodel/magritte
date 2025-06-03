@@ -1,7 +1,7 @@
 Class {
 	#name : #MANullAccessorTest,
 	#superclass : #MAAccessorTest,
-	#category : 'Magritte-Tests-Model-Accessor'
+	#category : #'Magritte-Tests-Model-Accessor'
 }
 
 { #category : #testing }

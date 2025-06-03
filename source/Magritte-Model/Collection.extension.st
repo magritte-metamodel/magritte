@@ -2,10 +2,11 @@ Extension { #name : #Collection }
 
 { #category : #'*magritte-model' }
 Collection >> asMultilineString [
+
 	^ String streamContents: [ :stream |
-		self
-			do: [ :each | stream nextPutAll: each ]
-			separatedBy: [ stream nextPut: Character cr ] ]
+			  self
+				  do: [ :each | stream nextPutAll: each asString ]
+				  separatedBy: [ stream nextPut: Character cr ] ]
 ]
 
 { #category : #'*magritte-model' }

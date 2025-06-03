@@ -1,7 +1,7 @@
 Class {
 	#name : #MABooleanDescriptionTest,
 	#superclass : #MAElementDescriptionTest,
-	#category : 'Magritte-Tests-Model-Description'
+	#category : #'Magritte-Tests-Model-Description'
 }
 
 { #category : #testing }
