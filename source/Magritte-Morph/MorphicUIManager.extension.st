@@ -1,6 +1,6 @@
-Extension { #name : #MorphicUIManager }
+Extension { #name : 'MorphicUIManager' }
 
-{ #category : #'*Magritte-Morph' }
+{ #category : '*Magritte-Morph' }
 MorphicUIManager >> chooseFile: windowTitle in: directoryString [
 	| chooser |
 	chooser := FileDialogWindow newWithTheme: Smalltalk ui theme.

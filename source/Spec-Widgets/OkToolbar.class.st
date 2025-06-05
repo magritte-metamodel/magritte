@@ -2,8 +2,8 @@
 An OkCancelToolbar is a model for a basic Ok toolbar
 "
 Class {
-	#name : #OkToolbar,
-	#superclass : #ComposableModel,
+	#name : 'OkToolbar',
+	#superclass : 'ComposableModel',
 	#instVars : [
 		'okButton',
 		'okAction'
@@ -11,7 +11,7 @@ Class {
 	#category : 'Spec-Widgets-PolyWidgets'
 }
 
-{ #category : #specs }
+{ #category : 'specs' }
 OkToolbar class >> defaultSpec [
 	<spec>
 	^ { #Panel.
@@ -31,13 +31,13 @@ OkToolbar class >> defaultSpec [
 			#vShrinkWrap.	}
 ]
 
-{ #category : #specs }
+{ #category : 'specs' }
 OkToolbar class >> title [
 
 	^ 'Ok Toolbar'
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 OkToolbar >> addAll: aWindow  withSpec: aSpec [
 
 	aWindow
@@ -45,7 +45,7 @@ OkToolbar >> addAll: aWindow  withSpec: aSpec [
 		fullFrame: ((0@0 corner: 1@0) asLayoutFrame bottomOffset: 30).
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 OkToolbar >> hFill [
 
 	^ Morph new
@@ -55,7 +55,7 @@ OkToolbar >> hFill [
 		hResizing: #spaceFill
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 OkToolbar >> initialize [
 	"Initialization code for OkCancelToolbar"
 
@@ -63,7 +63,7 @@ OkToolbar >> initialize [
 	okAction := [ true ] asValueHolder.
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 OkToolbar >> initializePresenter [ 
 
 	okButton 
@@ -75,7 +75,7 @@ OkToolbar >> initializePresenter [
 							ifNotNil: [ owner delete ]]].
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 OkToolbar >> initializeWidgets [
 	
 	
@@ -86,25 +86,25 @@ OkToolbar >> initializeWidgets [
 		add: okButton
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 OkToolbar >> okAction [
 
 	^ okAction contents
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 OkToolbar >> okAction: aBlock [
 
 	^ okAction contents: aBlock
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OkToolbar >> okButton [
 
 	^ okButton
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 OkToolbar >> registerOkButtonEvents [
 
 	okButton 

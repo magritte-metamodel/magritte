@@ -1,5 +1,5 @@
 Class {
-	#name : #MATokenCompletionMorph,
-	#superclass : #MAMorphicTokenCompletion,
-	#category : #'Magritte-Deprecated3dot7'
+	#name : 'MATokenCompletionMorph',
+	#superclass : 'MAMorphicTokenCompletion',
+	#category : 'Magritte-Deprecated3dot7'
 }

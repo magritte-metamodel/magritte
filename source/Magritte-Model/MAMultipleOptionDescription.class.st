@@ -2,62 +2,62 @@
 I am a description of multiple options, possible options are stored within the ==options== field, possible values are instances of ==Collection==. My visual representation could be a multi-select list or a group of check-boxes.
 "
 Class {
-	#name : #MAMultipleOptionDescription,
-	#superclass : #MAOptionDescription,
-	#category : #'Magritte-Model-Description'
+	#name : 'MAMultipleOptionDescription',
+	#superclass : 'MAOptionDescription',
+	#category : 'Magritte-Model-Description'
 }
 
-{ #category : #'accessing-defaults' }
+{ #category : 'accessing-defaults' }
 MAMultipleOptionDescription class >> defaultDistinct [
 	^ false
 ]
 
-{ #category : #'accessing-defaults' }
+{ #category : 'accessing-defaults' }
 MAMultipleOptionDescription class >> defaultKind [
 	^ Collection
 ]
 
-{ #category : #'accessing-defaults' }
+{ #category : 'accessing-defaults' }
 MAMultipleOptionDescription class >> defaultOrdered [
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 MAMultipleOptionDescription class >> isAbstract [
 	^ false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAMultipleOptionDescription class >> label [
 	^ 'Multiple-Option'
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 MAMultipleOptionDescription >> acceptMagritte: aVisitor [
 	aVisitor visitMultipleOptionDescription: self
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 MAMultipleOptionDescription >> beDistinct [
 	self distinct: true
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 MAMultipleOptionDescription >> beIndefinite [
 	self distinct: false
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 MAMultipleOptionDescription >> beOrdered [
 	self ordered: true
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 MAMultipleOptionDescription >> beUnordered [
 	self ordered: false
 ]
 
-{ #category : #'acessing-magritte' }
+{ #category : 'acessing-magritte' }
 MAMultipleOptionDescription >> descriptionDistinct [
 	<magritteDescription>
 	^ MABooleanDescription new
@@ -68,7 +68,7 @@ MAMultipleOptionDescription >> descriptionDistinct [
 		yourself
 ]
 
-{ #category : #'acessing-magritte' }
+{ #category : 'acessing-magritte' }
 MAMultipleOptionDescription >> descriptionOrdered [
 	<magritteDescription>
 	^ MABooleanDescription new
@@ -79,49 +79,49 @@ MAMultipleOptionDescription >> descriptionOrdered [
 		yourself
 ]
 
-{ #category : #'accessing-properties' }
+{ #category : 'accessing-properties' }
 MAMultipleOptionDescription >> distinct [
 	^ self propertyAt: #distinct ifAbsent: [ self class defaultDistinct ]
 ]
 
-{ #category : #'accessing-properties' }
+{ #category : 'accessing-properties' }
 MAMultipleOptionDescription >> distinct: aBoolean [
 	self propertyAt: #distinct put: aBoolean
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 MAMultipleOptionDescription >> isDistinct [
 	^ self distinct
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 MAMultipleOptionDescription >> isMultiple [
 	^true
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 MAMultipleOptionDescription >> isOrdered [
 	^ self ordered
 ]
 
-{ #category : #'accessing-properties' }
+{ #category : 'accessing-properties' }
 MAMultipleOptionDescription >> ordered [
 	^ self propertyAt: #ordered ifAbsent: [ self class defaultOrdered ]
 ]
 
-{ #category : #'accessing-properties' }
+{ #category : 'accessing-properties' }
 MAMultipleOptionDescription >> ordered: aBoolean [
 	self propertyAt: #ordered put: aBoolean
 ]
 
-{ #category : #validating }
+{ #category : 'validating' }
 MAMultipleOptionDescription >> validateKind: anObject [
 	self 
 		tryValidation: [ super validateKind: anObject ]
 	  ifPass: [ anObject do: [ :e | self validateOptionKind: e ] ]
 ]
 
-{ #category : #validating }
+{ #category : 'validating' }
 MAMultipleOptionDescription >> validateRequired: anObject [
 	super validateRequired: anObject.
 	(self isRequired and: [ anObject isCollection and: [ anObject isEmpty ] ])

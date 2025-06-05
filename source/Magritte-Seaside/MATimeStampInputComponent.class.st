@@ -1,15 +1,15 @@
 Class {
-	#name : #MATimeStampInputComponent,
-	#superclass : #MATextInputComponent,
+	#name : 'MATimeStampInputComponent',
+	#superclass : 'MATextInputComponent',
 	#category : 'Magritte-Seaside-Components'
 }
 
-{ #category : #actions }
+{ #category : 'actions' }
 MATimeStampInputComponent >> current [
 	self value: GRPlatform current magritteTimeStampClass current
 ]
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 MATimeStampInputComponent >> renderButtonOn: html [
 	html submitButton on: #current of: self
 ]

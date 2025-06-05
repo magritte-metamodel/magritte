@@ -1,6 +1,6 @@
-Extension { #name : #ExecutableBlock }
+Extension { #name : 'ExecutableBlock' }
 
-{ #category : #'*magritte-gemstone-seaside' }
+{ #category : '*magritte-gemstone-seaside' }
 ExecutableBlock >> decompile [
 	"used by MaPluggableAccessort>>storeBlockOn:, but I'm suspicious ot wheter it will really work ... probably used for 
 	 export/import  of Pier which GemStone will do differently"

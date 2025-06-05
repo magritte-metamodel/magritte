@@ -1,20 +1,20 @@
 Class {
-	#name : #MARelationDescriptionTest,
-	#superclass : #MAReferenceDescriptionTest,
+	#name : 'MARelationDescriptionTest',
+	#superclass : 'MAReferenceDescriptionTest',
 	#category : 'Magritte-Tests-Model-Description'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 MARelationDescriptionTest class >> isAbstract [
 	^ true
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MARelationDescriptionTest >> actualClass [
 	^ MARelationDescription
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MARelationDescriptionTest >> addressInstance1 [
 	^ MAMockAddress new
 		street: 'Tillierstrasse 17';
@@ -22,7 +22,7 @@ MARelationDescriptionTest >> addressInstance1 [
 		yourself
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MARelationDescriptionTest >> addressInstance2 [
 	^ MAMockAddress new
 		street: 'In der Au';
@@ -30,7 +30,7 @@ MARelationDescriptionTest >> addressInstance2 [
 		yourself
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 MARelationDescriptionTest >> setUp [
 	super setUp.
 	self description
@@ -38,12 +38,12 @@ MARelationDescriptionTest >> setUp [
 		classes: (Array with: MAMockAddress)
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MARelationDescriptionTest >> shouldSkipStringTests [
 	^ true
 ]
 
-{ #category : #'tests-copying' }
+{ #category : 'tests-copying' }
 MARelationDescriptionTest >> testCopyClasses [
 	self assert: self description copy classes = self description classes.
 	self deny: self description copy classes == self description classes

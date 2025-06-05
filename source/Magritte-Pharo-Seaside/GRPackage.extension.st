@@ -1,7 +1,7 @@
-Extension { #name : #GRPackage }
+Extension { #name : 'GRPackage' }
 
-{ #category : #'*magritte-pharo-seaside' }
-GRPackage class >> magrittePharoSeaside [
+{ #category : '*magritte-pharo-seaside' }
+GRPackage classSide >> magrittePharoSeaside [
 	^ self new
 		name: 'Magritte-Pharo-Seaside';
 		addDependency: 'Magritte-Seaside';

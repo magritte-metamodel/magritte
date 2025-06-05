@@ -1,29 +1,29 @@
 Class {
-	#name : #MAContainerDecoration,
-	#superclass : #MAComponentDecoration,
+	#name : 'MAContainerDecoration',
+	#superclass : 'MAComponentDecoration',
 	#category : 'Magritte-Seaside-Decorations'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAContainerDecoration >> buttons [
 	"Answer a collection of associations. The key is either a symbol that will be performed on the decorated component or a one-argument block that will be executed with the component as argument. The value is the button label."
 	
 	self subclassResponsibility
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAContainerDecoration >> default [
 	^ self buttons first key
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 MAContainerDecoration >> execute: anObject [
 	anObject isSymbol
 		ifFalse: [ anObject cull: self decoratedComponent ]
 		ifTrue: [ self decoratedComponent perform: anObject ]
 ]
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 MAContainerDecoration >> renderButtonsOn: html [
 	html div class: 'buttons'; with: [
 		self buttons do: [ :each |
@@ -33,7 +33,7 @@ MAContainerDecoration >> renderButtonsOn: html [
 				text: each value ] ]
 ]
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 MAContainerDecoration >> renderContentOn: html [
 	html form
 		class: 'magritte';
@@ -44,7 +44,7 @@ MAContainerDecoration >> renderContentOn: html [
 			self renderButtonsOn: html ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 MAContainerDecoration >> requiresMultipartForm [
 	^ self decoratedComponent requiresMultipartForm
 ]

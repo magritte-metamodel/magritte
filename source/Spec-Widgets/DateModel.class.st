@@ -8,8 +8,8 @@ Usage: the simplest way is to add a DateModel in your UI, and send #date when yo
 As it is Spec-based, it can be easily adapted and composed into a larger UI.
 "
 Class {
-	#name : #DateModel,
-	#superclass : #ComposableModel,
+	#name : 'DateModel',
+	#superclass : 'ComposableModel',
 	#instVars : [
 		'dateLabel',
 		'chooseDateButton',
@@ -19,7 +19,7 @@ Class {
 	#category : 'Spec-Widgets-PolyWidgets'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 DateModel class >> spec [
 	<spec: #default>
 
@@ -35,7 +35,7 @@ DateModel class >> spec [
 			yourself.
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 DateModel >> chooseDate [
 
 	| calendar |
@@ -43,19 +43,19 @@ DateModel >> chooseDate [
 	calendar onChoiceSend: #onDateChosen: to: self.
 ]
 
-{ #category : #'accessing-widgets' }
+{ #category : 'accessing-widgets' }
 DateModel >> chooseDateButton [
 
 	^ chooseDateButton.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DateModel >> date [
 
 	^ self dateModel getText asDate.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DateModel >> date: aDate [
 
 	| string |
@@ -63,19 +63,19 @@ DateModel >> date: aDate [
 	^ self dateModel text: string.
 ]
 
-{ #category : #'accessing-widgets' }
+{ #category : 'accessing-widgets' }
 DateModel >> dateLabel [
 
 	^ dateLabel.
 ]
 
-{ #category : #'accessing-widgets' }
+{ #category : 'accessing-widgets' }
 DateModel >> dateModel [
 
 	^ dateModel.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 DateModel >> displayBlock [
 	<api: #inspect>
 	"Return the one argument block used to wrap your domain specific items.
@@ -84,7 +84,7 @@ DateModel >> displayBlock [
 	^ displayBlockHolder contents
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 DateModel >> displayBlock: aBlock [
 	<api: #block getter:#displayBlock registration: #whenDisplayBlockChanged:>
 	"Set the one argument block used to transfrom your date into a string"
@@ -92,13 +92,13 @@ DateModel >> displayBlock: aBlock [
 	displayBlockHolder contents: aBlock
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 DateModel >> iconMorph [
 
 	^ ImageMorph new image: ThemeIcons calendarIcon.
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 DateModel >> initialize [
 
 	displayBlockHolder := [ :object | object asStringOrText ] asValueHolder.
@@ -106,7 +106,7 @@ DateModel >> initialize [
 	super initialize. "do this last so default will be set after displayBlock"
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 DateModel >> initializeWidgets [
 
 	self instantiateModels: #(
@@ -127,14 +127,14 @@ DateModel >> initializeWidgets [
 		extent: self iconMorph extent.
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 DateModel >> onDateChosen: aChoseDate [
 
 	aChoseDate calendar delete.
 	self date: aChoseDate date.
 ]
 
-{ #category : #'protocol-events' }
+{ #category : 'protocol-events' }
 DateModel >> whenDateChanged: aBlock [
 
 	dateModel whenTextChanged: [:newText :oldText :announcement :announcer || newDate oldDate |

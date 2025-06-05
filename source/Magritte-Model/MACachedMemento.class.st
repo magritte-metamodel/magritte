@@ -2,55 +2,55 @@
 I cache values being read and written without touching the model. When committing changes, the modifications will be propagated to the model all at once.
 "
 Class {
-	#name : #MACachedMemento,
-	#superclass : #MAMemento,
+	#name : 'MACachedMemento',
+	#superclass : 'MAMemento',
 	#instVars : [
 		'cache'
 	],
-	#category : #'Magritte-Model-Memento'
+	#category : 'Magritte-Model-Memento'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 MACachedMemento class >> isAbstract [
 	^ false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MACachedMemento >> cache [
 	^ cache
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 MACachedMemento >> commit [
 	super commit.
 	self push: self cache.
 	self reset
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 MACachedMemento >> hasChanges [
 	"Answer ==true==, if the cached data is different to the data in the model."
 
 	^ self has: self cache changedFrom: self pullRaw
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MACachedMemento >> readUsing: aDescription [
 	^ self cache at: aDescription
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 MACachedMemento >> reset [
 	super reset.
 	self setCache: self pull
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 MACachedMemento >> setCache: aDictionary [
 	cache := aDictionary
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MACachedMemento >> write: anObject using: aDescription [
 	self cache at: aDescription put: anObject
 ]

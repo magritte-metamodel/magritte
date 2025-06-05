@@ -1,6 +1,6 @@
-Extension { #name : #Object }
+Extension { #name : 'Object' }
 
-{ #category : #'*Magritte-Developer' }
+{ #category : '*Magritte-Developer' }
 Object >> descriptionBrowse [
 	<magritteActionDescription>
 	^ MAActionDescription new
@@ -10,7 +10,7 @@ Object >> descriptionBrowse [
 			yourself
 ]
 
-{ #category : #'*Magritte-Developer' }
+{ #category : '*Magritte-Developer' }
 Object >> descriptionFuelOut [
 	<magritteActionDescription>
 	^ MAActionDescription new	
@@ -21,7 +21,7 @@ Object >> descriptionFuelOut [
 			yourself
 ]
 
-{ #category : #'*Magritte-Developer' }
+{ #category : '*Magritte-Developer' }
 Object >> descriptionInspect [
 	<magritteActionDescription>
 	^ MAActionDescription new
@@ -30,7 +30,7 @@ Object >> descriptionInspect [
 			yourself
 ]
 
-{ #category : #'*Magritte-Developer' }
+{ #category : '*Magritte-Developer' }
 Object class >> instVarBoilerplateFromDescriptions [
 	self new magritteDescription do: [ :e | 
 		| varName refactoring |
@@ -44,12 +44,12 @@ Object class >> instVarBoilerplateFromDescriptions [
 		refactoring execute ]
 ]
 
-{ #category : #'*Magritte-Developer' }
+{ #category : '*Magritte-Developer' }
 Object class >> maAddField: aSymbol [
 	self maAddField: aSymbol with: [ :desc | ]
 ]
 
-{ #category : #'*Magritte-Developer' }
+{ #category : '*Magritte-Developer' }
 Object class >> maAddField: aSymbol with: customizationBlock [
 	"If you don't need to customize the field description, you can use the simpler `#maAddField:`
 	
@@ -74,7 +74,7 @@ Object class >> maAddField: aSymbol with: customizationBlock [
 			desc addTo: self as: aSymbol ]
 ]
 
-{ #category : #'*Magritte-Developer' }
+{ #category : '*Magritte-Developer' }
 Object >> storeVia: anAccessor inDescriptionOn: aStream [
 
 	aStream

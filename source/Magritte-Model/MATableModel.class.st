@@ -2,8 +2,8 @@
 I am a model class representing a table within the Magritte framework. Internally I store my cells within a flat array, however users may access data giving ''row'' and ''column'' coordinates with ==#at:at:== and ==#at:at:put:==. I can support reshaping myself, but of course this might lead to loss of data-cells.
 "
 Class {
-	#name : #MATableModel,
-	#superclass : #MABasicObject,
+	#name : 'MATableModel',
+	#superclass : 'MABasicObject',
 	#instVars : [
 		'rowCount',
 		'columnCount',
@@ -12,12 +12,12 @@ Class {
 	#category : 'Magritte-Model-Models'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 MATableModel class >> rows: aRowCount columns: aColumnCount [
 	^ self rows: aRowCount columns: aColumnCount contents: (Array new: aRowCount * aColumnCount)
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 MATableModel class >> rows: aRowCount columns: aColumnCount contents: anArray [
 	^ self new
 		setRowCount: aRowCount;
@@ -26,7 +26,7 @@ MATableModel class >> rows: aRowCount columns: aColumnCount contents: anArray [
 		yourself
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 MATableModel >> = aTable [
 	^ self species = aTable species
 		and: [ self rowCount = aTable rowCount
@@ -34,7 +34,7 @@ MATableModel >> = aTable [
 		and: [ self contents = aTable contents ] ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MATableModel >> at: aRowIndex at: aColumnIndex [
 	"Answer the contents of ==aRowIndex== and ==aColumnIndex==. Raises an error if the coordinates are out of bounds."
 
@@ -42,7 +42,7 @@ MATableModel >> at: aRowIndex at: aColumnIndex [
 	^ self uncheckedAt: aRowIndex at: aColumnIndex
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MATableModel >> at: aRowIndex at: aColumnIndex put: aValue [
 	"Set the contents of ==aRowIndex== and ==aColumnIndex==> to ==aValue==. Raises an error if the coordinates are out of bounds."
 
@@ -50,7 +50,7 @@ MATableModel >> at: aRowIndex at: aColumnIndex put: aValue [
 	^ self uncheckedAt: aRowIndex at: aColumnIndex put: aValue
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MATableModel >> checkAt: aRowIndex at: aColumnIndex [
 	(aRowIndex between: 1 and: self rowCount)
 		ifFalse: [ self error: 'Row subscript out of range.' ].
@@ -58,7 +58,7 @@ MATableModel >> checkAt: aRowIndex at: aColumnIndex [
 		ifFalse: [ self error: 'Column subscript out of range.' ]
 ]
 
-{ #category : #enumeration }
+{ #category : 'enumeration' }
 MATableModel >> collect: aBlock [
 	| copy |
 	copy := self copyEmpty.
@@ -69,26 +69,26 @@ MATableModel >> collect: aBlock [
 	^ copy
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MATableModel >> columnCount [
 	"Answer the column count of the table."
 
 	^ columnCount
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MATableModel >> contents [
 	"Answer the contents array of the receiver."
 
 	^ contents
 ]
 
-{ #category : #copying }
+{ #category : 'copying' }
 MATableModel >> copyEmpty [
 	^ self class rows: self rowCount columns: self columnCount
 ]
 
-{ #category : #copying }
+{ #category : 'copying' }
 MATableModel >> copyRows: aRowCount columns: aColumnCount [
 	| table |
 	table := self class rows: aRowCount columns: aColumnCount.
@@ -100,7 +100,7 @@ MATableModel >> copyRows: aRowCount columns: aColumnCount [
 	^ table
 ]
 
-{ #category : #enumeration }
+{ #category : 'enumeration' }
 MATableModel >> do: aBlock [
 	1 to: self rowCount do: [ :row |
 		1 to: self columnCount do: [ :col |
@@ -109,28 +109,28 @@ MATableModel >> do: aBlock [
 				value: (self uncheckedAt: row at: col) ] ]
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 MATableModel >> hash [
 	^ self contents hash
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MATableModel >> indexAt: aRowIndex at: aColumnIndex [
 	^ (aRowIndex - 1) * self columnCount + aColumnIndex
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MATableModel >> pointAt: anIndex [
 	^ Point x: (anIndex - 1 // self columnCount + 1) y: (anIndex - 1 \\ self columnCount + 1)
 ]
 
-{ #category : #copying }
+{ #category : 'copying' }
 MATableModel >> postCopy [
 	super postCopy.
 	self setContents: self contents copy
 ]
 
-{ #category : #operations }
+{ #category : 'operations' }
 MATableModel >> reshapeRows: aRowCount columns: aColumnCount [
 	"Change the size of the receiving table to ==aRowCount== times ==aColumnCount==, throwing away elements that are cut off and initializing empty cells with ==nil==."
 
@@ -138,34 +138,34 @@ MATableModel >> reshapeRows: aRowCount columns: aColumnCount [
 	self setRowCount: aRowCount; setColumnCount: aColumnCount
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MATableModel >> rowCount [
 	"Answer the row count of the table."
 
 	^ rowCount
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 MATableModel >> setColumnCount: anInteger [
 	columnCount := anInteger
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 MATableModel >> setContents: anArray [
 	contents := anArray
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 MATableModel >> setRowCount: anInteger [
 	rowCount := anInteger
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MATableModel >> uncheckedAt: aRowIndex at: aColumnIndex [
 	^ self contents at: (self indexAt: aRowIndex at: aColumnIndex)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MATableModel >> uncheckedAt: aRowIndex at: aColumnIndex put: aValue [
 	^ self contents at: (self indexAt: aRowIndex at: aColumnIndex) put: aValue
 ]

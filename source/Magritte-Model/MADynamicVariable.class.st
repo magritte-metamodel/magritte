@@ -1,29 +1,29 @@
 Class {
-	#name : #MADynamicVariable,
-	#superclass : #GRNotification,
+	#name : 'MADynamicVariable',
+	#superclass : 'GRNotification',
 	#category : 'Magritte-Model-Utility'
 }
 
-{ #category : #defaults }
+{ #category : 'defaults' }
 MADynamicVariable class >> defaultValue [
 	^ nil
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MADynamicVariable class >> use: anObject during: aBlock [
 	"Set the dynamic value of the receiver to anObject during the evaluation of aBlock."
 	
 	^ aBlock on: self do: [ :notification | notification resume: anObject ]
 ]
 
-{ #category : #evaluating }
+{ #category : 'evaluating' }
 MADynamicVariable class >> value [
 	"Answer the dynamic value of the receiver."
 	
 	^ self signal
 ]
 
-{ #category : #defaults }
+{ #category : 'defaults' }
 MADynamicVariable >> defaultAction [
 	^ self class defaultValue
 ]

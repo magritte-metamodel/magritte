@@ -2,21 +2,21 @@
 I'm, like MACheckboxComponent, a seaside component for MAMultipleSelectionDescription. I display two lists. In the first, all available options, in the other, what the user selected. 2 buttons in between to add and remove elements to/from the selected list. If the everything property is set, I display two more buttons to allow the user to add or remove all options in one click.
 "
 Class {
-	#name : #MAListCompositionComponent,
-	#superclass : #MAMultipleSelectionComponent,
+	#name : 'MAListCompositionComponent',
+	#superclass : 'MAMultipleSelectionComponent',
 	#instVars : [
 		'availableSelected',
 		'selectedSelected'
 	],
-	#category : #'Magritte-Seaside-Components'
+	#category : 'Magritte-Seaside-Components'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 MAListCompositionComponent class >> isAbstract [
 	^ false
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 MAListCompositionComponent >> add [
 	| added |
 	self availableSelected isNil
@@ -28,36 +28,36 @@ MAListCompositionComponent >> add [
 		ifTrue: [ self availableSelected: nil ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAListCompositionComponent >> availableList [
 	^ self magritteDescription isDistinct
 		ifFalse: [ super availableList ]
 		ifTrue: [ super availableList copyWithoutAll: self selectedList ]
 ]
 
-{ #category : #'accessing-properties' }
+{ #category : 'accessing-properties' }
 MAListCompositionComponent >> availableSelected [
 	^ availableSelected
 ]
 
-{ #category : #'accessing-properties' }
+{ #category : 'accessing-properties' }
 MAListCompositionComponent >> availableSelected: anObject [
 	availableSelected := anObject
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 MAListCompositionComponent >> moveDown [
 	self selectedSelected isNil
 		ifFalse: [ self selectedList moveDown: self selectedSelected ]
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 MAListCompositionComponent >> moveUp [
 	self selectedSelected isNil
 		ifFalse: [ self selectedList moveUp: self selectedSelected ]
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 MAListCompositionComponent >> remove [
 	self selectedSelected isNil
 		ifTrue: [ ^ self ].
@@ -66,7 +66,7 @@ MAListCompositionComponent >> remove [
 	self selectedSelected: nil
 ]
 
-{ #category : #'rendering-parts' }
+{ #category : 'rendering-parts' }
 MAListCompositionComponent >> renderEditorAvailableOn: html [
 	html select
 		size: 6; 
@@ -77,7 +77,7 @@ MAListCompositionComponent >> renderEditorAvailableOn: html [
 		labels: [ :value | self labelForOption: value ]
 ]
 
-{ #category : #'rendering-buttons' }
+{ #category : 'rendering-buttons' }
 MAListCompositionComponent >> renderEditorButtonAddOn: html [
 	html submitButton
 		callback: [ self add ];
@@ -88,7 +88,7 @@ MAListCompositionComponent >> renderEditorButtonAddOn: html [
 		text: '<<'
 ]
 
-{ #category : #'rendering-buttons' }
+{ #category : 'rendering-buttons' }
 MAListCompositionComponent >> renderEditorButtonOrderOn: html [
 	html submitButton
 		callback: [ self moveUp ];
@@ -99,7 +99,7 @@ MAListCompositionComponent >> renderEditorButtonOrderOn: html [
 		text: 'down'
 ]
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 MAListCompositionComponent >> renderEditorOn: html [ 
 	html table id: self labelId; with: [
 		html tableRow: [
@@ -114,7 +114,7 @@ MAListCompositionComponent >> renderEditorOn: html [
 					with: [ self renderEditorButtonOrderOn: html ] ] ] ]
 ]
 
-{ #category : #'rendering-parts' }
+{ #category : 'rendering-parts' }
 MAListCompositionComponent >> renderEditorSelectedOn: html [
 	html select
 		size: 6; 
@@ -125,12 +125,12 @@ MAListCompositionComponent >> renderEditorSelectedOn: html [
 		labels: [ :value | self labelForOption: value ]
 ]
 
-{ #category : #'accessing-properties' }
+{ #category : 'accessing-properties' }
 MAListCompositionComponent >> selectedSelected [
 	^ selectedSelected
 ]
 
-{ #category : #'accessing-properties' }
+{ #category : 'accessing-properties' }
 MAListCompositionComponent >> selectedSelected: anObject [
 	selectedSelected := anObject
 ]

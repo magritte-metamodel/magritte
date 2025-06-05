@@ -1,6 +1,6 @@
 Class {
-	#name : #MAComponentRenderer,
-	#superclass : #MAVisitor,
+	#name : 'MAComponentRenderer',
+	#superclass : 'MAVisitor',
 	#instVars : [
 		'component',
 		'html',
@@ -10,22 +10,22 @@ Class {
 	#category : 'Magritte-Seaside-Renderer'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 MAComponentRenderer class >> component: aComponent on: aRenderer [
 	^ self new component: aComponent on: aRenderer
 ]
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 MAComponentRenderer >> basicRenderControl: aDescription [
 	html render: (self childAt: aDescription)
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAComponentRenderer >> childAt: aDescription [
 	^ component childAt: aDescription
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAComponentRenderer >> classFor: aDescription [
 	| classes |
 	classes := OrderedCollection withAll: aDescription currentCssClasses.
@@ -35,13 +35,13 @@ MAComponentRenderer >> classFor: aDescription [
 		ifFalse: [ classes reduce: [ :a :b | a , ' ' , b ] ]
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 MAComponentRenderer >> component: aComponent on: aRenderer [
 	self setComponent: aComponent; setRenderer: aRenderer.
 	self visit: aComponent magritteDescription
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 MAComponentRenderer >> hasError: aDescription [
 	| current |
 	errors isNil
@@ -58,20 +58,20 @@ MAComponentRenderer >> hasError: aDescription [
 	^ self hasError: aDescription
 ]
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 MAComponentRenderer >> renderContainer: aDescription [
 	self visitAll: (aDescription select: [ :each |
 		each isVisible
 			and: [ each componentClass notNil ] ])
 ]
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 MAComponentRenderer >> renderControl: aDescription [
 
 	self basicRenderControl: aDescription
 ]
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 MAComponentRenderer >> renderElement: aDescription [
 	aDescription group = group
 		ifFalse: [ self renderGroup: aDescription ].
@@ -79,12 +79,12 @@ MAComponentRenderer >> renderElement: aDescription [
 	self renderControl: aDescription
 ]
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 MAComponentRenderer >> renderGroup: aDescription [
 	group := aDescription group
 ]
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 MAComponentRenderer >> renderLabel: aDescription [
 	| label |
 	aDescription hasLabel ifFalse: [ ^ self ].
@@ -94,22 +94,22 @@ MAComponentRenderer >> renderLabel: aDescription [
 	label with: [ html render: aDescription label; text: ':' ]
 ]
 
-{ #category : #initilization }
+{ #category : 'initilization' }
 MAComponentRenderer >> setComponent: aComponent [
 	component := aComponent
 ]
 
-{ #category : #initilization }
+{ #category : 'initilization' }
 MAComponentRenderer >> setRenderer: aRenderer [
 	html := aRenderer
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 MAComponentRenderer >> visitContainer: aDescription [
 	self renderContainer: aDescription
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 MAComponentRenderer >> visitElementDescription: aDescription [
 	self renderElement: aDescription
 ]

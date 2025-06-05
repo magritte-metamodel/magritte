@@ -1,16 +1,16 @@
 Class {
-	#name : #MABrTextEditor,
-	#superclass : #BrEditor,
+	#name : 'MABrTextEditor',
+	#superclass : 'BrEditor',
 	#instVars : [
 		'elementDescription',
 		'builder',
 		'errors',
 		'header'
 	],
-	#category : #'Magritte-GToolkit'
+	#category : 'Magritte-GToolkit'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MABrTextEditor class >> elementDescription: anMAElementDescription [
 
 	^ self basicNew
@@ -18,7 +18,7 @@ MABrTextEditor class >> elementDescription: anMAElementDescription [
 		initialize
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MABrTextEditor class >> onDescription: anMAElementDescription forBuilder: anMAElementBuilder [
 
 	^ self basicNew
@@ -27,58 +27,58 @@ MABrTextEditor class >> onDescription: anMAElementDescription forBuilder: anMAEl
 		initialize
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MABrTextEditor >> builder [
 	^ builder
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MABrTextEditor >> builder: anObject [
 	builder := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MABrTextEditor >> elementDescription [
 	^ elementDescription
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MABrTextEditor >> elementDescription: anObject [
 	elementDescription := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MABrTextEditor >> errorBorder [
 
 	^ BlBorder paint: Color red width: 1
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MABrTextEditor >> errors [
 	^ errors ifNil: [ false "MAMultipleErrors new" ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MABrTextEditor >> errors: anObject [
 	errors := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MABrTextEditor >> hasErrors [
 	^ self errors" collection isNotNil"
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MABrTextEditor >> header [
 	^ header
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MABrTextEditor >> header: anObject [
 	header := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MABrTextEditor >> initialize [
 	super initialize.
 
@@ -94,7 +94,7 @@ MABrTextEditor >> initialize [
 	self initializeCompletion
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MABrTextEditor >> initializeCompletion [
 
 	self elementDescription propertyAt: #completions ifPresent: [ :comps |
@@ -108,7 +108,7 @@ MABrTextEditor >> initializeCompletion [
 			install ].
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MABrTextEditor >> initializeListeners [
 
 	"Handle typed in text"
@@ -122,7 +122,7 @@ MABrTextEditor >> initializeListeners [
 		do: [ :evt | self validate ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MABrTextEditor >> validate [
 	[ 
 		self elementDescription

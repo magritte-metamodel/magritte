@@ -1,20 +1,20 @@
 Class {
-	#name : #MAColorDescriptionTest,
-	#superclass : #MAElementDescriptionTest,
+	#name : 'MAColorDescriptionTest',
+	#superclass : 'MAElementDescriptionTest',
 	#category : 'Magritte-Tests-Model-Description'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 MAColorDescriptionTest class >> isAbstract [
 	^ false
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAColorDescriptionTest >> actualClass [
 	^ MAColorDescription
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAColorDescriptionTest >> includedInstance [
 	^ GRPlatform current magritteColorClass blue
 ]

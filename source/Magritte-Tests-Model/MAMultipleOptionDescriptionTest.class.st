@@ -1,30 +1,30 @@
 Class {
-	#name : #MAMultipleOptionDescriptionTest,
-	#superclass : #MAOptionDescriptionTest,
+	#name : 'MAMultipleOptionDescriptionTest',
+	#superclass : 'MAOptionDescriptionTest',
 	#category : 'Magritte-Tests-Model-Description'
 }
 
-{ #category : #'accessing-default' }
+{ #category : 'accessing-default' }
 MAMultipleOptionDescriptionTest class >> defaultUnique [
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 MAMultipleOptionDescriptionTest class >> isAbstract [
 	^ false
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAMultipleOptionDescriptionTest >> actualClass [
 	^ MAMultipleOptionDescription
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAMultipleOptionDescriptionTest >> includedInstance [
 	^ self optionInstances copyFrom: 1 to: 2
 ]
 
-{ #category : #'tests-properties' }
+{ #category : 'tests-properties' }
 MAMultipleOptionDescriptionTest >> testOrdered [
 	self description beOrdered.
 	self assert: self description isOrdered.
@@ -35,7 +35,7 @@ MAMultipleOptionDescriptionTest >> testOrdered [
 	self deny: self description ordered
 ]
 
-{ #category : #'tests-properties' }
+{ #category : 'tests-properties' }
 MAMultipleOptionDescriptionTest >> testSorted [
 	self description beDistinct.
 	self assert: self description isDistinct.

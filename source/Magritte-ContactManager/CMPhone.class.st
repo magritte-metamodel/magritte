@@ -2,8 +2,8 @@
 A simple phone model
 "
 Class {
-	#name : #CMPhone,
-	#superclass : #Object,
+	#name : 'CMPhone',
+	#superclass : 'Object',
 	#instVars : [
 		'kind',
 		'number'
@@ -11,14 +11,14 @@ Class {
 	#category : 'Magritte-ContactManager'
 }
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 CMPhone >> = anObject [
 	^ self species = anObject species
 		and: [ self kind = anObject kind
 		and: [ self number = anObject number ] ]
 ]
 
-{ #category : #descriptions }
+{ #category : 'descriptions' }
 CMPhone >> descriptionKind [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -28,7 +28,7 @@ CMPhone >> descriptionKind [
 		yourself
 ]
 
-{ #category : #descriptions }
+{ #category : 'descriptions' }
 CMPhone >> descriptionNumber [
 	<magritteDescription>
 	
@@ -39,27 +39,27 @@ CMPhone >> descriptionNumber [
 		yourself
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 CMPhone >> hash [
 	^ self kind hash bitXor: self number hash
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CMPhone >> kind [
 	^ kind
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CMPhone >> kind: anObject [
 	kind := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CMPhone >> number [
 	^ number
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CMPhone >> number: anObject [
 	number := anObject
 ]

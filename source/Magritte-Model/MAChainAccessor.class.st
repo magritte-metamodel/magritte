@@ -2,15 +2,15 @@
 I am an access strategy used to chain two access strategies. To read and write a value the ==accessor== is performed on the given model and the result is passed into the ==next== accessor.
 "
 Class {
-	#name : #MAChainAccessor,
-	#superclass : #MADelegatorAccessor,
+	#name : 'MAChainAccessor',
+	#superclass : 'MADelegatorAccessor',
 	#instVars : [
 		'accessor'
 	],
-	#category : #'Magritte-Model-Accessor'
+	#category : 'Magritte-Model-Accessor'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 MAChainAccessor class >> accessors: aSequenceableCollection [
 	aSequenceableCollection isEmpty
 		ifTrue: [ self error: 'Unable to create accessor sequence from empty collection.' ].
@@ -21,42 +21,42 @@ MAChainAccessor class >> accessors: aSequenceableCollection [
 		accessor: aSequenceableCollection first asAccessor
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 MAChainAccessor class >> on: anAccessor accessor: anotherAccessor [
 	^ (self on: anAccessor) accessor: anotherAccessor
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 MAChainAccessor >> = anObject [
 	^ super = anObject and: [ self accessor = anObject accessor ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAChainAccessor >> accessor [
 	^ accessor
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAChainAccessor >> accessor: anAccessor [
 	accessor := anAccessor
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 MAChainAccessor >> canRead: aModel [
 	^ (self accessor canRead: aModel) and: [ self next canRead: (self accessor read: aModel) ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 MAChainAccessor >> canWrite: aModel [
 	^ (self accessor canRead: aModel) and: [ self next canWrite: (self accessor read: aModel) ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAChainAccessor >> defaultLabelFor: aDescription [
 	^ (self accessor defaultLabelFor: aDescription), '::', (super defaultLabelFor: aDescription)
 ]
 
-{ #category : #'accessing-magritte' }
+{ #category : 'accessing-magritte' }
 MAChainAccessor >> descriptionAccessor [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
@@ -67,28 +67,28 @@ MAChainAccessor >> descriptionAccessor [
 			yourself
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 MAChainAccessor >> hash [
 	^ super hash bitXor: self accessor hash
 ]
 
-{ #category : #model }
+{ #category : 'model' }
 MAChainAccessor >> name [
 	^ super name, '::', self accessor name
 ]
 
-{ #category : #copying }
+{ #category : 'copying' }
 MAChainAccessor >> postCopy [
 	super postCopy.
 	accessor := accessor copy
 ]
 
-{ #category : #model }
+{ #category : 'model' }
 MAChainAccessor >> read: aModel [
 	^ super read: (self accessor read: aModel)
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 MAChainAccessor >> storeOn: aStream [
 	aStream nextPut: $(.
 	self class storeOn: aStream.
@@ -100,7 +100,7 @@ MAChainAccessor >> storeOn: aStream [
 		nextPut: $)
 ]
 
-{ #category : #model }
+{ #category : 'model' }
 MAChainAccessor >> write: anObject to: aModel [
 	super write: anObject to: (self accessor read: aModel)
 ]

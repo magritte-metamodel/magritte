@@ -1,15 +1,15 @@
 Class {
-	#name : #MATimeSelectorComponent,
-	#superclass : #MATimeInputComponent,
+	#name : 'MATimeSelectorComponent',
+	#superclass : 'MATimeInputComponent',
 	#category : 'Magritte-Seaside-Components'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 MATimeSelectorComponent class >> isAbstract [
 	^false
 ]
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 MATimeSelectorComponent >> renderInputOn: html [
 	html timeInput
 		withSeconds;

@@ -1,15 +1,15 @@
 Class {
-	#name : #MAMorphicMemo,
-	#superclass : #MAMorphicText,
-	#category : #'Magritte-Morph-Model'
+	#name : 'MAMorphicMemo',
+	#superclass : 'MAMorphicText',
+	#category : 'Magritte-Morph-Model'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAMorphicMemo >> annotation [
 	^ self string
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAMorphicMemo >> buildMorphView [
 	"The selector #annotation should be #string instead, but we use this one and dispatch since this prevents morphic to draw a thin red border around changed fields. Stupid hack, really, but doesn't work otherwise."
 

@@ -1,7 +1,7 @@
-Extension { #name : #MACompositeAccessor }
+Extension { #name : 'MACompositeAccessor' }
 
-{ #category : #'*Magritte-GToolkit' }
-MACompositeAccessor class >> sampleContainer [
+{ #category : '*Magritte-GToolkit' }
+MACompositeAccessor classSide >> sampleContainer [
 	
 	| desc |
 	desc := MAContainer samplePersonDescription

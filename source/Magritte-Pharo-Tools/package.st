@@ -1,1 +1,1 @@
-Package { #name : #'Magritte-Pharo-Tools' }
+Package { #name : 'Magritte-Pharo-Tools' }

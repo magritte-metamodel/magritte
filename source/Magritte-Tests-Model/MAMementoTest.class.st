@@ -1,30 +1,30 @@
 Class {
-	#name : #MAMementoTest,
-	#superclass : #MAObjectTest,
+	#name : 'MAMementoTest',
+	#superclass : 'MAObjectTest',
 	#instVars : [
 		'memento',
 		'value',
 		'description'
 	],
-	#category : #'Magritte-Tests-Model-Memento'
+	#category : 'Magritte-Tests-Model-Memento'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 MAMementoTest class >> isAbstract [
 	^ true
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAMementoTest >> actualClass [
 	^ MAMemento
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAMementoTest >> defaultInstance [
 	^ 'Lukas Renggli'
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAMementoTest >> descriptionInstance [
 	^ MAContainer with: (MAStringDescription new
 			default: self defaultInstance;
@@ -32,69 +32,69 @@ MAMementoTest >> descriptionInstance [
 			yourself)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAMementoTest >> descriptionValue [
 	^ self magritteDescription children first
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAMementoTest >> includedInstance [
 	^ 'Rene Magritte'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAMementoTest >> instance [
 	^ memento
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAMementoTest >> invalidInstance [
 	^ 31415
 ]
 
-{ #category : #'acessing-magritte' }
+{ #category : 'acessing-magritte' }
 MAMementoTest >> magritteDescription [
 	^ description
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAMementoTest >> memento [
 	^ memento
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAMementoTest >> mementoInstance [
 	^ self actualClass model: self modelInstance
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAMementoTest >> modelInstance [
 	^ self
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAMementoTest >> nullInstance [
 	^ nil
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAMementoTest >> otherInstance [
 	^ 'Ursula Freitag'
 ]
 
-{ #category : #'accessing-memento' }
+{ #category : 'accessing-memento' }
 MAMementoTest >> read [
 	^ self memento readUsing: self descriptionValue
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 MAMementoTest >> setUp [
 	super setUp.
 	description := self descriptionInstance.
 	memento := self mementoInstance
 ]
 
-{ #category : #'tests-actions' }
+{ #category : 'tests-actions' }
 MAMementoTest >> testCachedDefaultValues [
 
 	| obj plzDescription |
@@ -119,33 +119,33 @@ MAMementoTest >> testCachedDefaultValues [
 	self assert: obj plz equals: plzDescription default
 ]
 
-{ #category : #'tests-actions' }
+{ #category : 'tests-actions' }
 MAMementoTest >> testCommit [
 	self subclassResponsibility
 ]
 
-{ #category : #'tests-accessing' }
+{ #category : 'tests-accessing' }
 MAMementoTest >> testDescription [
 	self assert: self memento magritteDescription = self magritteDescription.
 	self assert: self memento magritteDescription = self descriptionInstance
 ]
 
-{ #category : #'tests-accessing' }
+{ #category : 'tests-accessing' }
 MAMementoTest >> testModel [
 	self assert: self memento model = self modelInstance
 ]
 
-{ #category : #'tests-basic' }
+{ #category : 'tests-basic' }
 MAMementoTest >> testRead [
 	self subclassResponsibility
 ]
 
-{ #category : #'tests-actions' }
+{ #category : 'tests-actions' }
 MAMementoTest >> testReset [
 	self subclassResponsibility
 ]
 
-{ #category : #'tests-actions' }
+{ #category : 'tests-actions' }
 MAMementoTest >> testSingletonValue [
 
 	| obj |
@@ -160,7 +160,7 @@ MAMementoTest >> testSingletonValue [
 	self assert: (memento original at: obj plzTypeDescription) == obj plzType.
 ]
 
-{ #category : #'tests-actions' }
+{ #category : 'tests-actions' }
 MAMementoTest >> testUncachedDefaultValues [
 
 	| obj plzDescription |
@@ -180,19 +180,19 @@ MAMementoTest >> testUncachedDefaultValues [
 	self assert: obj plz equals: nil
 ]
 
-{ #category : #'tests-actions' }
+{ #category : 'tests-actions' }
 MAMementoTest >> testValidateIncluded [
 	self write: self includedInstance.
 	self shouldnt: [ self memento validate ] raise: MAValidationError
 ]
 
-{ #category : #'tests-actions' }
+{ #category : 'tests-actions' }
 MAMementoTest >> testValidateInvalid [
 	self write: self invalidInstance.
 	self should: [ self memento validate ] raise: MAValidationError
 ]
 
-{ #category : #'tests-actions' }
+{ #category : 'tests-actions' }
 MAMementoTest >> testValidateRequired [
 	self descriptionValue beRequired.
 
@@ -200,22 +200,22 @@ MAMementoTest >> testValidateRequired [
 	self should: [ self memento validate ] raise: MAValidationError
 ]
 
-{ #category : #'tests-basic' }
+{ #category : 'tests-basic' }
 MAMementoTest >> testWrite [
 	self subclassResponsibility
 ]
 
-{ #category : #'accessing-model' }
+{ #category : 'accessing-model' }
 MAMementoTest >> value [
 	^ value
 ]
 
-{ #category : #'accessing-model' }
+{ #category : 'accessing-model' }
 MAMementoTest >> value: anObject [
 	value := anObject
 ]
 
-{ #category : #'accessing-memento' }
+{ #category : 'accessing-memento' }
 MAMementoTest >> write: anObject [
 	self memento write: anObject using: self descriptionValue
 ]

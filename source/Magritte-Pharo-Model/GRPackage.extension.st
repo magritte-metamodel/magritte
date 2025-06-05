@@ -1,7 +1,7 @@
-Extension { #name : #GRPackage }
+Extension { #name : 'GRPackage' }
 
-{ #category : #'*magritte-pharo-model' }
-GRPackage class >> magrittePharoModel [
+{ #category : '*magritte-pharo-model' }
+GRPackage classSide >> magrittePharoModel [
 	^ self new
 		name: 'Magritte-Pharo-Model';
 		addDependency: 'Magritte-Model';

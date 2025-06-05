@@ -1,35 +1,35 @@
 Class {
-	#name : #MAMagnitudeDescriptionTest,
-	#superclass : #MAElementDescriptionTest,
+	#name : 'MAMagnitudeDescriptionTest',
+	#superclass : 'MAElementDescriptionTest',
 	#category : 'Magritte-Tests-Model-Description'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 MAMagnitudeDescriptionTest class >> isAbstract [
 	^ true
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAMagnitudeDescriptionTest >> actualClass [
 	^ MAMagnitudeDescription
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAMagnitudeDescriptionTest >> excludedInstance [
 	self subclassResponsibility
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAMagnitudeDescriptionTest >> maxInstance [
 	self subclassResponsibility
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAMagnitudeDescriptionTest >> minInstance [
 	self subclassResponsibility
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MAMagnitudeDescriptionTest >> testInfToInf [
 	self assert: self description min isNil.
 	self assert: self description max isNil.
@@ -39,7 +39,7 @@ MAMagnitudeDescriptionTest >> testInfToInf [
 	self assert: (self description isSatisfiedBy: self maxInstance)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MAMagnitudeDescriptionTest >> testInfToVal [
 	self description max: self includedInstance.
 
@@ -51,26 +51,26 @@ MAMagnitudeDescriptionTest >> testInfToVal [
 	self deny: (self description isSatisfiedBy: self maxInstance)
 ]
 
-{ #category : #'tests-accessing' }
+{ #category : 'tests-accessing' }
 MAMagnitudeDescriptionTest >> testMax [
 	self description max: self maxInstance.
 	self assert: self description max = self maxInstance
 ]
 
-{ #category : #'tests-accessing' }
+{ #category : 'tests-accessing' }
 MAMagnitudeDescriptionTest >> testMin [
 	self description min: self minInstance.
 	self assert: self description min = self minInstance
 ]
 
-{ #category : #'tests-accessing' }
+{ #category : 'tests-accessing' }
 MAMagnitudeDescriptionTest >> testMinMax [
 	self description min: self minInstance max: self maxInstance.
 	self assert: self description min = self minInstance.
 	self assert: self description max = self maxInstance
 ]
 
-{ #category : #'tests-validation' }
+{ #category : 'tests-validation' }
 MAMagnitudeDescriptionTest >> testRangeErrorMessage [
 	self description
 		min: self minInstance;
@@ -86,7 +86,7 @@ MAMagnitudeDescriptionTest >> testRangeErrorMessage [
 		withExceptionDo: [ :err | self assert: self description rangeErrorMessage = err messageText ]
 ]
 
-{ #category : #'tests-validation' }
+{ #category : 'tests-validation' }
 MAMagnitudeDescriptionTest >> testRangeErrorMessageGenerated [
 	self description min: nil max: nil.
 	self assert: self description rangeErrorMessage isNil.
@@ -101,7 +101,7 @@ MAMagnitudeDescriptionTest >> testRangeErrorMessageGenerated [
 	self assert: self description rangeErrorMessage notEmpty
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MAMagnitudeDescriptionTest >> testValToInf [
 	self description min: self includedInstance.
 
@@ -113,7 +113,7 @@ MAMagnitudeDescriptionTest >> testValToInf [
 	self assert: (self description isSatisfiedBy: self maxInstance)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MAMagnitudeDescriptionTest >> testValToVal [
 	self description min: self includedInstance.
 	self description max: self includedInstance.
@@ -126,7 +126,7 @@ MAMagnitudeDescriptionTest >> testValToVal [
 	self deny: (self description isSatisfiedBy: self maxInstance)
 ]
 
-{ #category : #'tests-validation' }
+{ #category : 'tests-validation' }
 MAMagnitudeDescriptionTest >> testValidateSpecific [
 	super testValidateSpecific.
 	self description

@@ -1,10 +1,10 @@
 Class {
-	#name : #BaselineOfMagritte,
-	#superclass : #BaselineOf,
-	#category : #BaselineOfMagritte
+	#name : 'BaselineOfMagritte',
+	#superclass : 'BaselineOf',
+	#category : 'BaselineOfMagritte'
 }
 
-{ #category : #baselines }
+{ #category : 'baselines' }
 BaselineOfMagritte >> baseline300ForGemStone: spec [
 	spec
 		for: #gemstone
@@ -29,12 +29,12 @@ BaselineOfMagritte >> baseline300ForGemStone: spec [
 				package: #'Magritte-GemStone-Seaside' with: [ spec requires: #(#'Magritte-Seaside') ] ]
 ]
 
-{ #category : #baselines }
+{ #category : 'baselines' }
 BaselineOfMagritte >> baseline310CommonExtDeps: spec [
 	"Common external dependencies for baseline 3.1.0"
 	
 	spec
-		baseline: #'Grease' with: [ spec repository: 'github://SeasideSt/Grease:v1.18.0/repository' ];	
+		baseline: #'Grease' with: [ spec repository: 'github://SeasideSt/Grease:v1.18.x/repository' ];	
 		baseline: #'Seaside3'
 			with: [ "note: we do not want to depend on Zinc, since this is not present in Squeak. Currently no adapter is loaded"
 			spec
@@ -42,17 +42,16 @@ BaselineOfMagritte >> baseline310CommonExtDeps: spec [
 				loads: #(#'Core') ]
 ]
 
-{ #category : #baselines }
+{ #category : 'baselines' }
 BaselineOfMagritte >> baseline330ForPharo: spec [
 			
-	spec for: #(#'pharo7.x' #'pharo8.x' #'pharo9.x' #'pharo10.x' #'pharo11.x' #'pharo12.x') do: [
+	spec for: #(#'pharo7.x' #'pharo8.x' #'pharo9.x' #'pharo10.x' #'pharo11.x' #'pharo12.x' #'pharo13.x') do: [
 		spec 
 			baseline: #'PharoEnhancements' with: [ spec repository: 'github://seandenigris/Pharo-Enhancements' ].
 		spec
 			package: #'Magritte-Developer' with: [ spec requires: #(#'Magritte-Model') ];
 			package: #'Magritte-FileSystem' with: [ spec requires: #(#'Magritte-Model') ];
-			" create a temporary alias "
-			package: #'Magritte-Pharo-Model' with: #'Magritte-Pharo7-Model';
+			package: #'Magritte-Pharo-Model';
 			package: #'Magritte-Tests-Files-Model' with: [ spec requires: #(#'Magritte-FileSystem') ];
 			package: #'Magritte-Tests-Model' with: [ spec includes: #(#'Magritte-Tests-Files-Model') ].
 		spec group: #'default' with: #(#'Magritte-Developer') ].
@@ -77,7 +76,7 @@ BaselineOfMagritte >> baseline330ForPharo: spec [
 		spec group: #'default' with: #(#'Magritte-GToolkit' #'Magritte-Merging-Bloc') ].
 ]
 
-{ #category : #baselines }
+{ #category : 'baselines' }
 BaselineOfMagritte >> baseline330ForSqueakCommon: spec [
 
 	spec for: #squeakCommon do: [
@@ -103,7 +102,7 @@ BaselineOfMagritte >> baseline330ForSqueakCommon: spec [
 			package: #'Magritte-NotGToolkit' ]
 ]
 
-{ #category : #baselines }
+{ #category : 'baselines' }
 BaselineOfMagritte >> baseline: spec [
 	<baseline>
 	spec
@@ -111,7 +110,6 @@ BaselineOfMagritte >> baseline: spec [
 		do: [ 
 			spec author: 'SeanDeNigris'.
 			spec timestamp: '2015-04-05'.
-			spec description: 'For pharo4.x, add Magritte-GT package and add it to the default group'.
 			self baseline310CommonExtDeps: spec.
 			spec
 				package: #'Magritte-Model' with: [ 
@@ -125,27 +123,33 @@ BaselineOfMagritte >> baseline: spec [
 				package: #'Magritte-Bootstrap' with: [ spec requires: #(#'Magritte-Model') ];
 				package: #'Magritte-Deprecated' with: [ spec requires: #(#'Magritte-Model') ];
 				package: #'Magritte-Merging' with: [ spec requires: #(#'Magritte-Model') ];
-				package: #'Magritte-Money' with: [ spec requires: #(#'Magritte-Model') ].
+				package: #'Magritte-Money' with: [ spec requires: #(#'Magritte-Model') ];
+				package: #'Magritte-ContactManager' with: [ spec requires: #(#'Magritte-Seaside') ].
 			spec
 				group: #'Core' with: #(#'Magritte-Model');
 				group: #'Tests' with: #(#'Magritte-Tests-Files-Model');
 				group: #'Seaside' with: #(#'Magritte-Seaside');
+				group: #'ContactManager' with: #(#'Magritte-ContactManager');
 				group: #'Deprecated' with: #(#'Magritte-Deprecated') ].
 	self baseline330ForPharo: spec.
 	self baseline330ForSqueakCommon: spec.
 	self baseline300ForGemStone: spec
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BaselineOfMagritte >> customProjectAttributes [
 	^ self isGTImage
 			ifFalse: [ #(notGToolkit) ]
 			ifTrue: [ #(GToolkit) ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 BaselineOfMagritte >> isGTImage [
+
+	(self class respondsTo: #packageOrganizer) ifFalse: [ ^ false ]. 
+	"All versions of Pharo used by GT support this method"
 	
-	^ RPackageOrganizer default packageNames anySatisfy: [ :pn | pn beginsWith: 'Lepiter-' ].
+	^ self class packageOrganizer packageNames anySatisfy: [ :pn | 
+		pn beginsWith: 'Lepiter-' ] 
 	"Implementation note: used to check for GToolkit prefix, but P7 has a GToolkit-Examples package. Lepiter, OTOH, could only be loaded in a GT image"
 ]

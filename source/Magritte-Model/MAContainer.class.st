@@ -4,30 +4,30 @@ I am a container holding a collection of descriptions, all instances of subclass
 I fully support the collection protocol: descriptions can be added and removed. Moreover I implement most enumeration methods, so that users are able to iterate (==do:==), filter (==select:==, ==reject:==), transform (==collect:==), extract (==detect:==, ==detect:ifNone:==), and test (==allSatisfy:==, ==anySatisfy:==, ==noneSatisfy:==) my elements.
 "
 Class {
-	#name : #MAContainer,
-	#superclass : #MADescription,
+	#name : 'MAContainer',
+	#superclass : 'MADescription',
 	#instVars : [
 		'children'
 	],
-	#category : #'Magritte-Model-Description'
+	#category : 'Magritte-Model-Description'
 }
 
-{ #category : #'accessing-defaults' }
+{ #category : 'accessing-defaults' }
 MAContainer class >> defaultAccessor [
 	^ MAIdentityAccessor new
 ]
 
-{ #category : #'accessing-defaults' }
+{ #category : 'accessing-defaults' }
 MAContainer class >> defaultCollection [
 	^ OrderedCollection new
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 MAContainer class >> isAbstract [
 	^ false
 ]
 
-{ #category : #'example support' }
+{ #category : 'example support' }
 MAContainer class >> samplePersonDescription [
 	^ MAPriorityContainer
 		withAll:
@@ -39,100 +39,100 @@ MAContainer class >> samplePersonDescription [
 				yourself)}
 ]
 
-{ #category : #'example support' }
+{ #category : 'example support' }
 MAContainer class >> samplePersonDumbledore [
 	^ {
 			#name ->'Albus Percival Wulfric Brian Dumbledore'.
 			#birthplace -> 'Godric''s Hollow' } asDictionary
 ]
 
-{ #category : #'example support' }
+{ #category : 'example support' }
 MAContainer class >> samplePersonHarryPotter [
 	^ {
 			#name ->'Harry Potter'.
 			#birthplace -> 'Godric''s Hollow' } asDictionary
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 MAContainer class >> with: aDescription [
 	^ self new
 		add: aDescription;
 		yourself
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 MAContainer class >> withAll: aCollection [
 	^ self new
 		addAll: aCollection;
 		yourself
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 MAContainer >> = anObject [
 	^ super = anObject
 		and: [ self children = anObject children ]
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 MAContainer >> acceptMagritte: aVisitor [
 	aVisitor visitContainer: self
 ]
 
-{ #category : #adding }
+{ #category : 'adding' }
 MAContainer >> add: aDescription [
 	self children add: aDescription
 ]
 
-{ #category : #adding }
+{ #category : 'adding' }
 MAContainer >> addAll: aCollection [
 	self children addAll: aCollection
 ]
 
-{ #category : #enumerating }
+{ #category : 'enumerating' }
 MAContainer >> allSatisfy: aBlock [
 	^ self children allSatisfy: aBlock
 ]
 
-{ #category : #enumerating }
+{ #category : 'enumerating' }
 MAContainer >> anySatisfy: aBlock [
 	^ self children anySatisfy: aBlock
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 MAContainer >> asContainer [
 	^ self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAContainer >> at: anIndex [
 	^ self children at: anIndex
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAContainer >> at: anIndex ifAbsent: aBlock [
 	^ self children at: anIndex ifAbsent: aBlock
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAContainer >> children [
 	^ children
 ]
 
-{ #category : #enumerating }
+{ #category : 'enumerating' }
 MAContainer >> collect: aBlock [
 	^ self copy
 		setChildren: (self children collect: aBlock);
 		yourself
 ]
 
-{ #category : #copying }
+{ #category : 'copying' }
 MAContainer >> copyEmpty [
 	^ self copy
 		setChildren: self class defaultCollection;
 		yourself
 ]
 
-{ #category : #copying }
+{ #category : 'copying' }
 MAContainer >> copyFrom: aStartIndex to: anEndIndex [
 	^ self copy
 		setChildren: (self children
@@ -141,38 +141,38 @@ MAContainer >> copyFrom: aStartIndex to: anEndIndex [
 		yourself
 ]
 
-{ #category : #copying }
+{ #category : 'copying' }
 MAContainer >> copyWithout: anObject [
 	^self reject: [:each | each = anObject]
 ]
 
-{ #category : #copying }
+{ #category : 'copying' }
 MAContainer >> copyWithoutAll: aCollection [
 	^self reject: [:each | aCollection includes: each]
 ]
 
-{ #category : #builder }
+{ #category : 'builder' }
 MAContainer >> descriptionBuilder [
 	^self propertyAt: #descriptionBuilder ifAbsent: [ nil ]
 ]
 
-{ #category : #builder }
+{ #category : 'builder' }
 MAContainer >> descriptionBuilder: aBuilderClass [
 	self propertyAt: #descriptionBuilder put: aBuilderClass
 ]
 
-{ #category : #builder }
+{ #category : 'builder' }
 MAContainer >> descriptionBuilders [
 	^self propertyAt: #descriptionBuilders ifAbsent: [ #() ]
 ]
 
-{ #category : #builder }
+{ #category : 'builder' }
 MAContainer >> descriptionBuilders: aList [ 
 	self descriptionBuilder: MAComposedDescriptionBuilder.
 	self propertyAt: #descriptionBuilders put: aList
 ]
 
-{ #category : #'acessing-magritte' }
+{ #category : 'acessing-magritte' }
 MAContainer >> descriptionChildren [
 	<magritteDescription>
 	^ MAToManyRelationDescription new
@@ -185,117 +185,117 @@ MAContainer >> descriptionChildren [
 		yourself
 ]
 
-{ #category : #'acessing-magritte' }
+{ #category : 'acessing-magritte' }
 MAContainer >> descriptionDefault [
 	<magritteDescription>
 	^ nil
 ]
 
-{ #category : #enumerating }
+{ #category : 'enumerating' }
 MAContainer >> detect: aBlock [
 	^ self children detect: aBlock
 ]
 
-{ #category : #enumerating }
+{ #category : 'enumerating' }
 MAContainer >> detect: aBlock ifNone: anExceptionBlock [
 	^ self children detect: aBlock ifNone: anExceptionBlock
 ]
 
-{ #category : #enumerating }
+{ #category : 'enumerating' }
 MAContainer >> do: aBlock [
 	self children do: aBlock
 ]
 
-{ #category : #enumerating }
+{ #category : 'enumerating' }
 MAContainer >> do: aBlock separatedBy: aSeparatorBlock [
 	self children do: aBlock separatedBy: aSeparatorBlock
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAContainer >> errorNotFound: aDescription [
 	self error: aDescription class label , ' not found.'
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 MAContainer >> hasChildren [
 	^ self notEmpty
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 MAContainer >> hash [
 	^ super hash bitXor: self children hash
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 MAContainer >> includes: aDescription [
 	^ self children includes: aDescription
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 MAContainer >> initialize [
 	super initialize.
 	self setChildren: self class defaultCollection
 ]
 
-{ #category : #enumerating }
+{ #category : 'enumerating' }
 MAContainer >> inject: anObject into: aBlock [
 	^ self children inject: anObject into: aBlock
 ]
 
-{ #category : #enumerating }
+{ #category : 'enumerating' }
 MAContainer >> intersection: aCollection [
 	^ self copy
 		setChildren: (self children intersection: aCollection);
 		yourself
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 MAContainer >> isContainer [
 	^ true
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 MAContainer >> isEmpty [
 	^ self children isEmpty
 ]
 
-{ #category : #enumerating }
+{ #category : 'enumerating' }
 MAContainer >> keysAndValuesDo: aBlock [
 	self children keysAndValuesDo: aBlock
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 MAContainer >> magritteTemplate [
 	^ self
 ]
 
-{ #category : #moving }
+{ #category : 'moving' }
 MAContainer >> moveDown: aDescription [
 	self children moveDown: aDescription
 ]
 
-{ #category : #moving }
+{ #category : 'moving' }
 MAContainer >> moveUp: aDescription [
 	self children moveUp: aDescription
 ]
 
-{ #category : #enumerating }
+{ #category : 'enumerating' }
 MAContainer >> noneSatisfy: aBlock [
 	^ self children noneSatisfy: aBlock
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 MAContainer >> notEmpty [
 	^ self children notEmpty
 ]
 
-{ #category : #copying }
+{ #category : 'copying' }
 MAContainer >> postCopy [
 	super postCopy.
 	self setChildren: self children copy
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAContainer >> print: anObject on: aStream [
 
 	"Print the current values of all anObject's described fields. Your can customize:
@@ -320,48 +320,48 @@ MAContainer >> print: anObject on: aStream [
 		separatedBy: [ separatorBlock cull: aStream ]
 ]
 
-{ #category : #enumerating }
+{ #category : 'enumerating' }
 MAContainer >> reject: aBlock [
 	^ self copy
 		setChildren: (self children reject: aBlock);
 		yourself
 ]
 
-{ #category : #removing }
+{ #category : 'removing' }
 MAContainer >> remove: aDescription [
 	self children remove: aDescription ifAbsent: [ self errorNotFound: aDescription ]
 ]
 
-{ #category : #removing }
+{ #category : 'removing' }
 MAContainer >> removeAll [
 	self setChildren: self class defaultCollection
 ]
 
-{ #category : #enumerating }
+{ #category : 'enumerating' }
 MAContainer >> select: aBlock [
 	^ self copy
 		setChildren: (self children select: aBlock);
 		yourself
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 MAContainer >> setChildren: aCollection [
 	children := aCollection
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAContainer >> size [
 	^ self children size
 ]
 
-{ #category : #enumerating }
+{ #category : 'enumerating' }
 MAContainer >> union: aContainer [
 	^ self copy
 		addAll: (aContainer reject: [ :each | self includes: each ]);
 		yourself
 ]
 
-{ #category : #enumerating }
+{ #category : 'enumerating' }
 MAContainer >> with: aCollection do: aBlock [
 	self children with: aCollection do: aBlock
 ]

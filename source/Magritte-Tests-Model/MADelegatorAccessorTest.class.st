@@ -1,25 +1,25 @@
 Class {
-	#name : #MADelegatorAccessorTest,
-	#superclass : #MAAccessorTest,
+	#name : 'MADelegatorAccessorTest',
+	#superclass : 'MAAccessorTest',
 	#category : 'Magritte-Tests-Model-Accessor'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 MADelegatorAccessorTest class >> isAbstract [
 	^ false
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MADelegatorAccessorTest >> accessorInstance [
 	^ self actualClass on: (MASelectorAccessor selector: #value)
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MADelegatorAccessorTest >> actualClass [
 	^ MADelegatorAccessor
 ]
 
-{ #category : #'tests-testing' }
+{ #category : 'tests-testing' }
 MADelegatorAccessorTest >> testCanRead [
 	self assert: (self accessor canRead: self).
 
@@ -27,7 +27,7 @@ MADelegatorAccessorTest >> testCanRead [
 	self deny: (self accessor canRead: self)
 ]
 
-{ #category : #'tests-testing' }
+{ #category : 'tests-testing' }
 MADelegatorAccessorTest >> testCanWrite [
 	self assert: (self accessor canWrite: self).
 
@@ -35,7 +35,7 @@ MADelegatorAccessorTest >> testCanWrite [
 	self deny: (self accessor canWrite: self)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MADelegatorAccessorTest >> testRead [
 	self value: 123.
 	self assert: (self accessor read: self) = 123.
@@ -44,7 +44,7 @@ MADelegatorAccessorTest >> testRead [
 	self assert: (self accessor read: self) = '123'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MADelegatorAccessorTest >> testWrite [
 	self accessor write: 123 to: self.
 	self assert: self value = 123.

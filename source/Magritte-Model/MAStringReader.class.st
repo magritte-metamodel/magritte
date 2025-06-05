@@ -2,24 +2,24 @@
 I recreate Magritte-described domain objects from strings. Typically I am used to convert string values entered into a Magritte form back to the objects they represent. For example, a user may have typed '10/01/2020' into a date field.
 "
 Class {
-	#name : #MAStringReader,
-	#superclass : #MAReader,
-	#category : #'Magritte-Model-Visitor'
+	#name : 'MAStringReader',
+	#superclass : 'MAReader',
+	#category : 'Magritte-Model-Visitor'
 }
 
-{ #category : #private }
+{ #category : 'private' }
 MAStringReader >> isFalseUsing: aDescription [
 	^ aDescription falseString = self contents
 		or: [ aDescription falseStrings anySatisfy: [ :e | e asLowercase = self contents asLowercase ] ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAStringReader >> isTrueUsing: aDescription [
 	^ aDescription trueString = self contents
 		or: [ aDescription trueStrings anySatisfy: [ :e | e asLowercase = self contents asLowercase ] ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAStringReader >> nextMatchAll: aCollection on: aStream [
 	"Tries to match ==aCollection== on ==aStream==. Answer ==true== if ==aCollection== was consumed, otherwise ==false==."
 
@@ -34,7 +34,7 @@ MAStringReader >> nextMatchAll: aCollection on: aStream [
 	^ true
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 MAStringReader >> objectReadFromKindOf: aDescription [
 	"This implementation can be very dangerous and might lead to a potential security hole (this is tested), since the default implementation of #readFrom: in Object evaluates the expression to find its value. Most subclasses like Number, Date, Time, ... override this implementation, but some others (like Boolean) do not."
 
@@ -42,19 +42,19 @@ MAStringReader >> objectReadFromKindOf: aDescription [
 		on: Error do: [ :err | MAReadError signal: err messageText ])
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 MAStringReader >> read: aStream description: aDescription [
 	(aStream atEnd or: [ self nextMatchAll: aDescription undefined on: aStream ])
 		ifTrue: [ ^ nil ].
 	^ super read: aStream description: aDescription
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 MAStringReader >> visitBlockDescription: aDescription [
 	self object: (Smalltalk compiler evaluate: self contents)
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 MAStringReader >> visitBooleanDescription: aDescription [
 	(self isTrueUsing: aDescription)
 			ifTrue: [ ^ self object: true ].
@@ -63,24 +63,24 @@ MAStringReader >> visitBooleanDescription: aDescription [
 	MAReadError signal
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 MAStringReader >> visitClassDescription: aDescription [
 	self shouldNotImplement
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 MAStringReader >> visitColorDescription: aDescription [
 	(self contents notEmpty and: [ self contents allSatisfy: [ :each | '#0123456789ABCDEFabcdef.' includes: each ] ])
 		ifFalse: [ MAReadError signal ].
 	self object: (aDescription kind fromString: self contents)
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 MAStringReader >> visitContainer: anObject [
 	self shouldNotImplement
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 MAStringReader >> visitDurationDescription: aDescription [
 	| contents |
 	contents := self contents.
@@ -97,18 +97,18 @@ MAStringReader >> visitDurationDescription: aDescription [
 	super visitDurationDescription: aDescription
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 MAStringReader >> visitElementDescription: aDescription [
 	
 	self objectReadFromKindOf: aDescription
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 MAStringReader >> visitFileDescription: aDescription [
 	self shouldNotImplement
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 MAStringReader >> visitMultipleOptionDescription: aDescription [
 	self object: (Array streamContents: [ :output |
 		[ self stream atEnd ] whileFalse: [
@@ -118,7 +118,7 @@ MAStringReader >> visitMultipleOptionDescription: aDescription [
 				ifTrue: [ self stream next ] ] ])
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 MAStringReader >> visitNumberDescription: aDescription [
 	| isContentsValid cleanedContents |
 	cleanedContents := self contents reject: [ :e | e = aDescription thousandsSeparator ].
@@ -129,12 +129,12 @@ MAStringReader >> visitNumberDescription: aDescription [
 	super visitNumberDescription: aDescription
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 MAStringReader >> visitRelationDescription: aDescription [
 	self shouldNotImplement
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 MAStringReader >> visitSingleOptionDescription: aDescription [
 	aDescription propertyAt: #labels ifPresent: [ :labels |
 		labels keysAndValuesDo: [ :key :value |
@@ -143,22 +143,22 @@ MAStringReader >> visitSingleOptionDescription: aDescription [
 	self visit: aDescription reference
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 MAStringReader >> visitStringDescription: aDescription [
 	self object: self contents
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 MAStringReader >> visitSymbolDescription: aDescription [
 	self object: self contents asSymbol
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 MAStringReader >> visitTableDescription: aDescription [
 	self shouldNotImplement
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 MAStringReader >> visitTimeDescription: aDescription [
 	| string |
 	string := self contents.
@@ -167,7 +167,7 @@ MAStringReader >> visitTimeDescription: aDescription [
 	self objectReadFromKindOf: aDescription
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 MAStringReader >> visitTokenDescription: aDescription [
 	| token |
 	self object: (aDescription kind streamContents: [ :output |
@@ -181,7 +181,7 @@ MAStringReader >> visitTokenDescription: aDescription [
 				ifFalse: [ output nextPut: (aDescription reference fromString: token contents) ] ] ])
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 MAStringReader >> visitUrlDescription: aDescription [
 	self object: self contents asUrl
 ]

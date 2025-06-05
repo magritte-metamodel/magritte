@@ -2,12 +2,12 @@
 I am a description of a single option, possible values are stored within the ==options== field, but I might also be extensible so that the user can add its own option. My visual representation could be a drop-down list or a group of option-buttons.
 "
 Class {
-	#name : #MASingleOptionDescription,
-	#superclass : #MAOptionDescription,
-	#category : #'Magritte-Model-Description'
+	#name : 'MASingleOptionDescription',
+	#superclass : 'MAOptionDescription',
+	#category : 'Magritte-Model-Description'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MASingleOptionDescription class >> example [
 	<gtExample>
 	^ MASingleOptionDescription new
@@ -15,22 +15,22 @@ MASingleOptionDescription class >> example [
 		yourself
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 MASingleOptionDescription class >> isAbstract [
 	^ false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MASingleOptionDescription class >> label [
 	^ 'Single-Option'
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 MASingleOptionDescription >> acceptMagritte: aVisitor [
 	aVisitor visitSingleOptionDescription: self
 ]
 
-{ #category : #'acessing-magritte' }
+{ #category : 'acessing-magritte' }
 MASingleOptionDescription >> descriptionGroupBy [
 	<magritteDescription>
 	^ MASymbolDescription new
@@ -41,31 +41,31 @@ MASingleOptionDescription >> descriptionGroupBy [
 		yourself
 ]
 
-{ #category : #'accessing-properties' }
+{ #category : 'accessing-properties' }
 MASingleOptionDescription >> groupBy [
 	^ self propertyAt: #groupBy ifAbsent: [ nil ]
 ]
 
-{ #category : #'accessing-properties' }
+{ #category : 'accessing-properties' }
 MASingleOptionDescription >> groupBy: anAccessor [
 	"anAccessor to be sent to the options objects for getting their group."
 	
 	self propertyAt: #groupBy put: anAccessor asAccessor
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 MASingleOptionDescription >> isGrouped [
 	^ self groupBy notNil
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MASingleOptionDescription >> prepareOptions: aCollection [
 	^ self isRequired
 		ifTrue: [ super prepareOptions: aCollection ]
 		ifFalse: [ (Array with: self undefinedValue) , (super prepareOptions: aCollection) ]
 ]
 
-{ #category : #validating }
+{ #category : 'validating' }
 MASingleOptionDescription >> validateKind: anObject [
 	super validateKind: anObject.
 	self validateOptionKind: anObject

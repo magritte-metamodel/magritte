@@ -2,8 +2,8 @@
 AbstractBasicWidget is an abstract class for basic widgets
 "
 Class {
-	#name : #AbstractBasicWidget,
-	#superclass : #ComposableModel,
+	#name : 'AbstractBasicWidget',
+	#superclass : 'ComposableModel',
 	#instVars : [
 		'helpHolder',
 		'borderWidth',
@@ -13,13 +13,13 @@ Class {
 	#category : 'Spec-Widgets'
 }
 
-{ #category : #specs }
+{ #category : 'specs' }
 AbstractBasicWidget class >> defaultSpec [
 
 	^ SpecLayout composed
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 AbstractBasicWidget >> borderColor [
 	<api: #inspect>
 	"Return the border color"
@@ -27,7 +27,7 @@ AbstractBasicWidget >> borderColor [
 	^ borderColor contents
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 AbstractBasicWidget >> borderColor: aColor [
 	<api: #color getter:#borderColor registration: #whenBorderColorChanged:>
 	"Set the border width"
@@ -35,7 +35,7 @@ AbstractBasicWidget >> borderColor: aColor [
 	borderColor contents: aColor 
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 AbstractBasicWidget >> borderWidth [
 	<api: #inspect>
 	"Return the border width"
@@ -43,7 +43,7 @@ AbstractBasicWidget >> borderWidth [
 	^ borderWidth contents
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 AbstractBasicWidget >> borderWidth: anInteger [
 	<api: #integer min:0 max: 5 getter:#borderWidth registration: #whenBorderWidthChanged:>
 	"Set the border width"
@@ -51,7 +51,7 @@ AbstractBasicWidget >> borderWidth: anInteger [
 	borderWidth contents: anInteger
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 AbstractBasicWidget >> buildWithSpec: aSpec [
 	"Build the widget using the spec name provided as argument"
 	| widget |
@@ -68,7 +68,7 @@ AbstractBasicWidget >> buildWithSpec: aSpec [
 	^ widget
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 AbstractBasicWidget >> buildWithSpecLayout: aSpecLayout [
 	"Build the widget using the spec name provided as argument"
 	| widget |
@@ -85,7 +85,7 @@ AbstractBasicWidget >> buildWithSpecLayout: aSpecLayout [
 	^ widget
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 AbstractBasicWidget >> color [
 
 	^ self widget
@@ -93,14 +93,14 @@ AbstractBasicWidget >> color [
 		ifNotNil: [:w | w color ]
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 AbstractBasicWidget >> color: aColor [
 
 	^ self widget
 		ifNotNil: [:w | w color: aColor ]
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 AbstractBasicWidget >> disable [
 	<api: #do>
 	"Disable the label"
@@ -108,7 +108,7 @@ AbstractBasicWidget >> disable [
 	self enabled: false
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 AbstractBasicWidget >> enable [
 	<api: #do>
 	"Enable the label"
@@ -116,13 +116,13 @@ AbstractBasicWidget >> enable [
 	self enabled: true
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 AbstractBasicWidget >> enabled [
 	<api: #inspect>
 	^ enabledHolder contents
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 AbstractBasicWidget >> enabled: aBoolean [
 	<api: #boolean getter: #enabled registration: #whenEnabledChanged:>
 	"Set if the button is enabled (clickable)"
@@ -130,7 +130,7 @@ AbstractBasicWidget >> enabled: aBoolean [
 	enabledHolder contents: aBoolean
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 AbstractBasicWidget >> help [
 	<api: #inspect>
 	"Return the ballon text"
@@ -138,7 +138,7 @@ AbstractBasicWidget >> help [
 	^ helpHolder contents
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 AbstractBasicWidget >> help: aString [
 	<api: #string getter:#help registration: #whenHelpChanged:>
 	"Set the help string"
@@ -146,7 +146,7 @@ AbstractBasicWidget >> help: aString [
 	helpHolder contents: aString
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 AbstractBasicWidget >> initialize [
 	"Initialization code for AbstractBasicWidget"
 
@@ -170,12 +170,12 @@ AbstractBasicWidget >> initialize [
 		self widget ifNotNil: [:w | w enabled: b ]].
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 AbstractBasicWidget >> initializeWidgets [ 
 	"ignore this method since there is no composition in basic widgets"
 ]
 
-{ #category : #'protocol-events' }
+{ #category : 'protocol-events' }
 AbstractBasicWidget >> whenBorderColorChanged: aBlock [
 	<api: #event>
 	"Set a block to be performed when the brder width changed"
@@ -183,7 +183,7 @@ AbstractBasicWidget >> whenBorderColorChanged: aBlock [
 	borderColor whenChangedDo: aBlock
 ]
 
-{ #category : #'protocol-events' }
+{ #category : 'protocol-events' }
 AbstractBasicWidget >> whenBorderWidthChanged: aBlock [
 	<api: #event>
 	"Set a block to be performed when the brder width changed"
@@ -191,7 +191,7 @@ AbstractBasicWidget >> whenBorderWidthChanged: aBlock [
 	borderWidth whenChangedDo: aBlock
 ]
 
-{ #category : #'protocol-events' }
+{ #category : 'protocol-events' }
 AbstractBasicWidget >> whenEnabledChanged: aBlock [
 	<api: #event>
 	"Set a block to performed when the widget is enabled or disabled"
@@ -199,7 +199,7 @@ AbstractBasicWidget >> whenEnabledChanged: aBlock [
 	enabledHolder whenChangedDo: aBlock
 ]
 
-{ #category : #'protocol-events' }
+{ #category : 'protocol-events' }
 AbstractBasicWidget >> whenHelpChanged: aBlock [
 	<api: #event>
 	"Set a block to be performed when the help changed"

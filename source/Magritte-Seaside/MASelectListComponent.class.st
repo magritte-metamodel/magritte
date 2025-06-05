@@ -2,17 +2,17 @@
 I display a simple list to allow the user to choose one element from the list. I am one of the two seaside components to render MASingleSelectionDescription.
 "
 Class {
-	#name : #MASelectListComponent,
-	#superclass : #MASingleSelectionComponent,
+	#name : 'MASelectListComponent',
+	#superclass : 'MASingleSelectionComponent',
 	#category : 'Magritte-Seaside-Components'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 MASelectListComponent class >> isAbstract [
 	^ false
 ]
 
-{ #category : #'accessing-model' }
+{ #category : 'accessing-model' }
 MASelectListComponent >> groups [
 	"The options objects are assumed to understand the 'groupBy' selector supplied by the description object. Keep the global ordering intact."
 
@@ -28,12 +28,12 @@ MASelectListComponent >> groups [
 	^ groups
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 MASelectListComponent >> hasLabelId [
 	^ self isReadOnly not
 ]
 
-{ #category : #'rendering-grouped' }
+{ #category : 'rendering-grouped' }
 MASelectListComponent >> renderEditorForGroupedOn: html [ 
 	html select 
 		id: self labelId;
@@ -41,7 +41,7 @@ MASelectListComponent >> renderEditorForGroupedOn: html [
 		with: [ self renderGroupsOn: html ]
 ]
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 MASelectListComponent >> renderEditorForUngroupedOn: html [
 	html select
 		id: self labelId;
@@ -51,7 +51,7 @@ MASelectListComponent >> renderEditorForUngroupedOn: html [
 		labels: [ :value | self labelForOption: value ]
 ]
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 MASelectListComponent >> renderEditorOn: html [
 	(self magritteDescription isGrouped and: [ self magritteDescription groupBy canRead: self value ])
 		ifTrue: [ self renderEditorForGroupedOn: html ]
@@ -59,7 +59,7 @@ MASelectListComponent >> renderEditorOn: html [
 
 ]
 
-{ #category : #'rendering-grouped' }
+{ #category : 'rendering-grouped' }
 MASelectListComponent >> renderGroupsOn: html [
 	^ self groups do: [ :association |
 		html optionGroup
@@ -69,7 +69,7 @@ MASelectListComponent >> renderGroupsOn: html [
 					do: [ :option | self renderOption: option on: html ] ] ]
 ]
 
-{ #category : #'rendering-grouped' }
+{ #category : 'rendering-grouped' }
 MASelectListComponent >> renderOption: option on: html [
 	^ html option
 		selected: self value = option;

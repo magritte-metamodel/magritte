@@ -1,6 +1,6 @@
-Extension { #name : #MADateAndTimeDescription }
+Extension { #name : 'MADateAndTimeDescription' }
 
-{ #category : #'*magritte-seaside' }
-MADateAndTimeDescription class >> defaultComponentClasses [
+{ #category : '*magritte-seaside' }
+MADateAndTimeDescription classSide >> defaultComponentClasses [
 	^ Array with: MATimeStampInputComponent
 ]

@@ -1,31 +1,31 @@
 Class {
-	#name : #MATableRenderer,
-	#superclass : #MAComponentRenderer,
+	#name : 'MATableRenderer',
+	#superclass : 'MAComponentRenderer',
 	#category : 'Magritte-Seaside-Renderer'
 }
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 MATableRenderer >> renderContainer: aDescription [ 
 	html table
 		class: (self classFor: aDescription);
 		with: [ super renderContainer: aDescription ]
 ]
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 MATableRenderer >> renderControl: aDescription [
 	html tableData
 		class: (self classFor: aDescription);
 		with: [ self basicRenderControl: aDescription ]
 ]
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 MATableRenderer >> renderElement: aDescription [
 	aDescription group = group
 		ifFalse: [ self renderGroup: aDescription ].
 	html tableRow: [ self renderElementRow: aDescription ]
 ]
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 MATableRenderer >> renderElementRow: aDescription [
 	"Extracted this method to be better able to override behavior"
 
@@ -33,7 +33,7 @@ MATableRenderer >> renderElementRow: aDescription [
 	self renderControl: aDescription
 ]
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 MATableRenderer >> renderGroup: aDescription [
 	super renderGroup: aDescription.
 	group isNil ifTrue: [ ^ self ].
@@ -43,7 +43,7 @@ MATableRenderer >> renderGroup: aDescription [
 			with: group ]
 ]
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 MATableRenderer >> renderLabel: aDescription [
 	html tableHeading
 		title: aDescription comment;

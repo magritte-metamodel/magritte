@@ -1,5 +1,5 @@
 Class {
-	#name : #MAPropertyError,
-	#superclass : #MAError,
+	#name : 'MAPropertyError',
+	#superclass : 'MAError',
 	#category : 'Magritte-Model-Exception'
 }

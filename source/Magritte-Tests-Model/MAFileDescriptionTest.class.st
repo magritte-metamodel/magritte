@@ -1,20 +1,20 @@
 Class {
-	#name : #MAFileDescriptionTest,
-	#superclass : #MAElementDescriptionTest,
+	#name : 'MAFileDescriptionTest',
+	#superclass : 'MAElementDescriptionTest',
 	#category : 'Magritte-Tests-Model-Description'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 MAFileDescriptionTest class >> isAbstract [
 	^ false
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAFileDescriptionTest >> actualClass [
 	^ MAFileDescription
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAFileDescriptionTest >> includedInstance [
 	^ MAMemoryFileModel new
 		contents: 'Lukas Renggli';
@@ -22,12 +22,12 @@ MAFileDescriptionTest >> includedInstance [
 		yourself
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAFileDescriptionTest >> shouldSkipStringTests [
 	^ true
 ]
 
-{ #category : #'tests-accessing' }
+{ #category : 'tests-accessing' }
 MAFileDescriptionTest >> testKind [
 	super testKind.
 	self description kind: MAFileModelStub.

@@ -25,8 +25,8 @@ t items: (Smalltalk allClasses).
 
 "
 Class {
-	#name : #ListComposableModel,
-	#superclass : #AbstractBasicWidget,
+	#name : 'ListComposableModel',
+	#superclass : 'AbstractBasicWidget',
 	#instVars : [
 		'selectionHolder',
 		'listHolder',
@@ -44,7 +44,7 @@ Class {
 	#category : 'Spec-Widgets'
 }
 
-{ #category : #specs }
+{ #category : 'specs' }
 ListComposableModel class >> defaultSpec [
 	<spec: #default>
 	^ {#ListSpec.
@@ -66,7 +66,7 @@ ListComposableModel class >> defaultSpec [
 			#vResizing:. 					#spaceFill}
 ]
 
-{ #category : #example }
+{ #category : 'example' }
 ListComposableModel class >> example [
 	| instance |
 
@@ -75,13 +75,13 @@ ListComposableModel class >> example [
 	instance items: (Smalltalk allClasses).
 ]
 
-{ #category : #specs }
+{ #category : 'specs' }
 ListComposableModel class >> title [
 
 	^ 'List'
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 ListComposableModel >> allowToSelect [
 	<api: #inspect>
 	"Return whether the list items can be selected or not"
@@ -89,7 +89,7 @@ ListComposableModel >> allowToSelect [
 	^ allowToSelect contents
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 ListComposableModel >> allowToSelect: aBoolean [
 	<api: #boolean getter: #allowToSelect registration: #whenAllowToSelectChanged:>
 	"Set if the list items can be selected or not"
@@ -99,7 +99,7 @@ ListComposableModel >> allowToSelect: aBoolean [
 		ifFalse: [ self resetSelection ].
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 ListComposableModel >> beMultipleSelection [
 	<api: #do>
 	"Make list selection multiple"
@@ -107,7 +107,7 @@ ListComposableModel >> beMultipleSelection [
 	self multiSelection: true
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 ListComposableModel >> beSingleSelection [
 	<api: #do>
 	"Make list selection single"
@@ -115,7 +115,7 @@ ListComposableModel >> beSingleSelection [
 	self multiSelection: false
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 ListComposableModel >> clickOnSelectedItem [
 	| item |
 	
@@ -124,17 +124,17 @@ ListComposableModel >> clickOnSelectedItem [
 		ifTrue: [ ^ item click ]
 ]
 
-{ #category : #initialize }
+{ #category : 'initialize' }
 ListComposableModel >> defaultFilteringBlock [ 
 	^ [:col | col]
 ]
 
-{ #category : #initialize }
+{ #category : 'initialize' }
 ListComposableModel >> defaultSortingBlock [ 
 	^ [:a :b | true]
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 ListComposableModel >> displayBlock [
 	<api: #inspect>
 	"Return the one argument block used to wrap your domain specific items.
@@ -143,7 +143,7 @@ ListComposableModel >> displayBlock [
 	^ wrapBlockHolder contents
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 ListComposableModel >> displayBlock: aBlock [
 	<api: #block getter:#displayBlock registration: #whenDisplayBlockChanged:>
 	"Set the one argument block used to wrap your domain specific items.
@@ -152,19 +152,19 @@ ListComposableModel >> displayBlock: aBlock [
 	wrapBlockHolder contents: aBlock
 ]
 
-{ #category : #focus }
+{ #category : 'focus' }
 ListComposableModel >> eventKeyStrokeForNextFocus [
 	"String describing the keystroke to perform to jump to the next widget"	
 	^ Character arrowRight asShortcut
 ]
 
-{ #category : #focus }
+{ #category : 'focus' }
 ListComposableModel >> eventKeyStrokeForPreviousFocus [
 	"String describing the keystroke to perform to jump to the previous widget"
 	^ Character arrowLeft asShortcut
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 ListComposableModel >> filteringBlock [
 	<api: #inspect>
 	"Return the filtering of the items"
@@ -172,7 +172,7 @@ ListComposableModel >> filteringBlock [
 	^ filteringBlockHolder contents
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 ListComposableModel >> filteringBlock: aBlock [
 	<api: #block getter: #filteringBlock registration: #whenFilteringBlockChanged:>
 	"To set the filtering of the items"
@@ -180,7 +180,7 @@ ListComposableModel >> filteringBlock: aBlock [
 	filteringBlockHolder contents: aBlock
 ]
 
-{ #category : #'private-morphic' }
+{ #category : 'private-morphic' }
 ListComposableModel >> getIndex [
 	"Morphic API - The method should only be used internally for the communication between the model and the morphic widget" 
 	"Return the index of the selected item"
@@ -188,7 +188,7 @@ ListComposableModel >> getIndex [
 	^  selectionHolder index contents
 ]
 
-{ #category : #'private-morphic' }
+{ #category : 'private-morphic' }
 ListComposableModel >> getSelectionStateFor: anIndex [
 	"Morphic API - The method should only be used internally for the communication between the model and the morphic widget" 
 	"Return the current state of the item -if selected or not - iun a multiple selection list"
@@ -197,7 +197,7 @@ ListComposableModel >> getSelectionStateFor: anIndex [
 	^ (multiSelectionHolder at: anIndex ifAbsent: [ ^ false ]) == true
 ]
 
-{ #category : #initialize }
+{ #category : 'initialize' }
 ListComposableModel >> initialize [
 	super initialize.
 	
@@ -218,7 +218,7 @@ ListComposableModel >> initialize [
 		do: [ self clickOnSelectedItem ]
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 ListComposableModel >> items: aList [
 	"Set the items of the list.
 	aList is a collection of your domain specific items.
@@ -231,7 +231,7 @@ ListComposableModel >> items: aList [
 	listAnnouncer announce: (ValueChanged oldContents: oldContents newContents: listHolder contents)
 ]
 
-{ #category : #'private-morphic' }
+{ #category : 'private-morphic' }
 ListComposableModel >> listElementAt: anIndex [
 	"Morphic API - The method should only be used internally for the communication between the model and the morphic widget" 
 	"Return the item at index _anIndex_"
@@ -239,7 +239,7 @@ ListComposableModel >> listElementAt: anIndex [
 	^ self listItems at: anIndex ifAbsent: [ nil ]
 ]
 
-{ #category : #'private-morphic' }
+{ #category : 'private-morphic' }
 ListComposableModel >> listElementAt: anIndex ifAbsent: aBlock [
 	"Morphic API - The method should only be used internally for the communication between the model and the morphic widget" 
 	"Return the item at index _anIndex_"
@@ -247,7 +247,7 @@ ListComposableModel >> listElementAt: anIndex ifAbsent: aBlock [
 	^ self listItems at: anIndex ifAbsent: aBlock
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 ListComposableModel >> listItems [
 	<api: #inspect>
 	"Return the items of the list. They are your domain specific items"
@@ -256,7 +256,7 @@ ListComposableModel >> listItems [
 	
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 ListComposableModel >> listSize [
 	<api: #inspect>
 	"Return the size of the list"
@@ -264,7 +264,7 @@ ListComposableModel >> listSize [
 	^ self listItems size
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 ListComposableModel >> menu [
 	<api: #inspect>
 	"Return the block used to defined the menu"
@@ -272,7 +272,7 @@ ListComposableModel >> menu [
 	^ menuHolder contents
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 ListComposableModel >> menu: aBlock [
 	<api: #block getter: #menu registration: #whenMenuChanged:>
 	"Set the block used to defined the menu"
@@ -280,7 +280,7 @@ ListComposableModel >> menu: aBlock [
 	menuHolder contents: aBlock
 ]
 
-{ #category : #'private-morphic' }
+{ #category : 'private-morphic' }
 ListComposableModel >> menu: aMenu shifted: aBoolean [
 	"Morphic API - The method should only be used internally for the communication between the model and the morphic widget" 
 	"Build the menu when you right click on an item"
@@ -288,7 +288,7 @@ ListComposableModel >> menu: aMenu shifted: aBoolean [
 	^ menuHolder contents cull: aMenu cull: aBoolean
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 ListComposableModel >> multiSelection [
 	<api: #inspect>
 	"Return true if the list has a multiple selection.
@@ -297,7 +297,7 @@ ListComposableModel >> multiSelection [
 	^ multiSelection contents
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 ListComposableModel >> multiSelection: aBoolean [
 	<api: #boolean getter: #multiSelection registration: #whenMultiSelectionChanged:>
 	"Make the list seelction become multiple if aBoolean is true.
@@ -307,14 +307,14 @@ ListComposableModel >> multiSelection: aBoolean [
 	
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 ListComposableModel >> refreshListItems [
 
 	listItemsCache := nil.
 	^ self changed: #listElementAt:
 ]
 
-{ #category : #initialize }
+{ #category : 'initialize' }
 ListComposableModel >> registerEvents [
 
 	listHolder whenChangedDo: [ self refreshListItems ].
@@ -329,7 +329,7 @@ ListComposableModel >> registerEvents [
 
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 ListComposableModel >> resetFilteringBlock [
 	<api: #do>
 	"Reset the filtering block with the default value which consists in showing everything"
@@ -337,7 +337,7 @@ ListComposableModel >> resetFilteringBlock [
 	filteringBlockHolder contents: self defaultFilteringBlock
 ]
 
-{ #category : #'private-morphic' }
+{ #category : 'private-morphic' }
 ListComposableModel >> resetListSelection [
 	"Morphic API - The method should only be used internally for the communication between the model and the morphic widget" 
 	"Reset the selection manager for multiple selection lists"
@@ -345,7 +345,7 @@ ListComposableModel >> resetListSelection [
 	multiSelectionHolder removeAll
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 ListComposableModel >> resetSelection [
 	<api: #do>
 	"Unselect every items"
@@ -354,7 +354,7 @@ ListComposableModel >> resetSelection [
 	multiSelectionHolder removeAll
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 ListComposableModel >> resetSortingBlock [
 	<api: #do>
 	"Reset the sortering block with the default value which consists in not sorting"
@@ -362,7 +362,7 @@ ListComposableModel >> resetSortingBlock [
 	sortingBlockHolder contents: self defaultSortingBlock
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 ListComposableModel >> selectedIndex [
 	<api: #inspect>
 	"Return the index of the selected item
@@ -371,7 +371,7 @@ ListComposableModel >> selectedIndex [
 	^ self getIndex
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 ListComposableModel >> selectedIndexes [
 	<api: #inspect>
 	"Return the indexes of selected items on the case of a multiple selection list"
@@ -379,7 +379,7 @@ ListComposableModel >> selectedIndexes [
 	^ multiSelectionHolder keys select: [:index | multiSelectionHolder at: index ]
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 ListComposableModel >> selectedItem [
 	<api: #inspect>
 	"Return the selected item.
@@ -388,13 +388,13 @@ ListComposableModel >> selectedItem [
 	^ self selectedItemHolder contents
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 ListComposableModel >> selectedItemHolder [
 
 	^ selectionHolder selection
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 ListComposableModel >> selectedItems [
 	<api: #inspect>
 	"Return all the selected items in the case of a multiple selection list"
@@ -402,7 +402,7 @@ ListComposableModel >> selectedItems [
 	^ multiSelectionHolder keys select: [:index | multiSelectionHolder at: index ] thenCollect: [:index | self listElementAt: index ]
 ]
 
-{ #category : #'private-morphic' }
+{ #category : 'private-morphic' }
 ListComposableModel >> setIndex: anIndex [
 	"Morphic API - The method should only be used internally for the communication between the model and the morphic widget" 
 	"Set the index of the selected item when you click on an item"
@@ -413,7 +413,7 @@ ListComposableModel >> setIndex: anIndex [
 	selectionHolder selection contents: (self listElementAt: anIndex).
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 ListComposableModel >> setSelectedIndex: anIndex [
 	<api: #integer min: 0 max: #listSize getter: #selectedIndex registration: #whenSelectionIndexChanged:>
 	"Set the index of the item you want to be selected"
@@ -432,7 +432,7 @@ ListComposableModel >> setSelectedIndex: anIndex [
 	selectionHolder selection contents: selection.
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 ListComposableModel >> setSelectedItem: anItem [
 	<api: #st getter: #selectedItem registration: #whenSelectedItemChanged:>
 	"Set the item you want to be selected"
@@ -444,7 +444,7 @@ ListComposableModel >> setSelectedItem: anItem [
 	selectionHolder selection contents: anItem
 ]
 
-{ #category : #'private-morphic' }
+{ #category : 'private-morphic' }
 ListComposableModel >> setSelectionStateFor: anIndex at: aBoolean [
 	"Morphic API - The method should only be used internally for the communication between the model and the morphic widget" 
 	"Set the selection state of the item at index _anIndex_ in the case of multiple selection list"
@@ -453,7 +453,7 @@ ListComposableModel >> setSelectionStateFor: anIndex at: aBoolean [
 	^ multiSelectionHolder at: anIndex put: aBoolean
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 ListComposableModel >> sortingBlock [
 	<api: #inspect>
 	"Return the ordering of the items"
@@ -461,7 +461,7 @@ ListComposableModel >> sortingBlock [
 	^ sortingBlockHolder contents
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 ListComposableModel >> sortingBlock: aBlock [
 	<api: #block getter: #sortingBlock registration: #whenSortingBlockChanged:>
 	"To set the ordering of the items"
@@ -469,7 +469,7 @@ ListComposableModel >> sortingBlock: aBlock [
 	sortingBlockHolder contents: aBlock
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 ListComposableModel >> updateList [
 	<api: #do>
 	"Refresh the list"
@@ -478,7 +478,7 @@ ListComposableModel >> updateList [
 	self resetSelection
 ]
 
-{ #category : #'protocol-events' }
+{ #category : 'protocol-events' }
 ListComposableModel >> whenAllowToSelectChanged: aBlock [
 	<api: #event>
 	"Set a block to value when the value of allowToSelect has changed"
@@ -486,7 +486,7 @@ ListComposableModel >> whenAllowToSelectChanged: aBlock [
 	allowToSelect whenChangedDo: aBlock
 ]
 
-{ #category : #'protocol-events' }
+{ #category : 'protocol-events' }
 ListComposableModel >> whenDisplayBlockChanged: aBlock [
 	<api: #event>
 	"Set a block to value when the filtering block block has changed"
@@ -494,7 +494,7 @@ ListComposableModel >> whenDisplayBlockChanged: aBlock [
 	wrapBlockHolder whenChangedDo: aBlock
 ]
 
-{ #category : #'protocol-events' }
+{ #category : 'protocol-events' }
 ListComposableModel >> whenFilteringBlockChanged: aBlock [
 	<api: #event>
 	"Set a block to value when the filtering block block has changed"
@@ -502,7 +502,7 @@ ListComposableModel >> whenFilteringBlockChanged: aBlock [
 	filteringBlockHolder whenChangedDo: aBlock
 ]
 
-{ #category : #'protocol-events' }
+{ #category : 'protocol-events' }
 ListComposableModel >> whenListChanged: aBlock [
 	"Specify a block to value after the contents of the list has changed"
 
@@ -521,7 +521,7 @@ ListComposableModel >> whenListChanged: aBlock [
 		do: block
 ]
 
-{ #category : #'protocol-events' }
+{ #category : 'protocol-events' }
 ListComposableModel >> whenMenuChanged: aBlock [
 	<api: #event>
 	"Set a block to value when the menu block has changed"
@@ -529,7 +529,7 @@ ListComposableModel >> whenMenuChanged: aBlock [
 	menuHolder whenChangedDo: aBlock
 ]
 
-{ #category : #'protocol-events' }
+{ #category : 'protocol-events' }
 ListComposableModel >> whenMultiSelectionChanged: aBlock [
 	<api: #event>
 	"Set a block to value when the multiSelection value has changed"
@@ -537,7 +537,7 @@ ListComposableModel >> whenMultiSelectionChanged: aBlock [
 	multiSelection whenChangedDo: aBlock
 ]
 
-{ #category : #'protocol-events' }
+{ #category : 'protocol-events' }
 ListComposableModel >> whenSelectedItemChanged: aBlock [
 	<api: #event>
 	"Set a block to value when the select item is changed"
@@ -545,7 +545,7 @@ ListComposableModel >> whenSelectedItemChanged: aBlock [
 	selectionHolder selection whenChangedDo: aBlock
 ]
 
-{ #category : #'protocol-events' }
+{ #category : 'protocol-events' }
 ListComposableModel >> whenSelectionChanged: aBlock [
 	<api: #event>
 	"Set a block to value when the selection of the list has changed"
@@ -554,7 +554,7 @@ ListComposableModel >> whenSelectionChanged: aBlock [
 	multiSelectionHolder whenChangedDo: aBlock.
 ]
 
-{ #category : #'protocol-events' }
+{ #category : 'protocol-events' }
 ListComposableModel >> whenSelectionIndexChanged: aBlock [
 	<api: #event>
 	"Set a block to value when the selection index has changed"
@@ -562,7 +562,7 @@ ListComposableModel >> whenSelectionIndexChanged: aBlock [
 	selectionHolder index whenChangedDo: aBlock
 ]
 
-{ #category : #'protocol-events' }
+{ #category : 'protocol-events' }
 ListComposableModel >> whenSortingBlockChanged: aBlock [
 	<api: #event>
 	"Set a block to value when the sorting block has changed"
@@ -570,7 +570,7 @@ ListComposableModel >> whenSortingBlockChanged: aBlock [
 	sortingBlockHolder whenChangedDo: aBlock
 ]
 
-{ #category : #'private-morphic' }
+{ #category : 'private-morphic' }
 ListComposableModel >> wrapItem: anObject index: index [
 	"Morphic API - The method should only be used internally for the communication between the model and the morphic widget" 
 	"Return the item _anObject_ wrapped"

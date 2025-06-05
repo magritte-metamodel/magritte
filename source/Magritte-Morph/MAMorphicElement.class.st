@@ -1,10 +1,10 @@
 Class {
-	#name : #MAMorphicElement,
-	#superclass : #MAMorphicDescription,
-	#category : #'Magritte-Morph-Model'
+	#name : 'MAMorphicElement',
+	#superclass : 'MAMorphicDescription',
+	#category : 'Magritte-Morph-Model'
 }
 
-{ #category : #'private-building' }
+{ #category : 'private-building' }
 MAMorphicElement >> buildMorphLabel [
 	^ self stringMorph
 		contents: self magritteDescription label , ':';
@@ -12,7 +12,7 @@ MAMorphicElement >> buildMorphLabel [
 		yourself
 ]
 
-{ #category : #'private-building' }
+{ #category : 'private-building' }
 MAMorphicElement >> buildMorphRequired [
 	^ self stringMorph
 		contents: ' *';
@@ -20,7 +20,7 @@ MAMorphicElement >> buildMorphRequired [
 		yourself
 ]
 
-{ #category : #'private-building' }
+{ #category : 'private-building' }
 MAMorphicElement >> buildMorphView [
 
 	^ self stringMorph
@@ -28,7 +28,7 @@ MAMorphicElement >> buildMorphView [
 		yourself
 ]
 
-{ #category : #'private-building' }
+{ #category : 'private-building' }
 MAMorphicElement >> buildMorphViewOn: aMorph [
 
 	aMorph
@@ -42,24 +42,24 @@ MAMorphicElement >> buildMorphViewOn: aMorph [
 		ifTrue: [ aMorph addMorphBack: self buildMorphRequired ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAMorphicElement >> string [
 	^ self magritteDescription toString: self value
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAMorphicElement >> string: aString [
 	| value |
 	value := self magritteDescription fromString: aString greaseString.
 	self value: value; changed: #string
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAMorphicElement >> value [
 	^ self magritteDescription read: self memento
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAMorphicElement >> value: anObject [
 	self magritteDescription write: anObject to: self memento.
 	self changed: #value

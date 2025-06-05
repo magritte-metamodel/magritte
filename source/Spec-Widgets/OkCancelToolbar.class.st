@@ -2,8 +2,8 @@
 An OkCancelToolbar is a model for a basic Ok-Cancel toolbar
 "
 Class {
-	#name : #OkCancelToolbar,
-	#superclass : #OkToolbar,
+	#name : 'OkCancelToolbar',
+	#superclass : 'OkToolbar',
 	#instVars : [
 		'cancelButton',
 		'cancelAction',
@@ -12,7 +12,7 @@ Class {
 	#category : 'Spec-Widgets-PolyWidgets'
 }
 
-{ #category : #specs }
+{ #category : 'specs' }
 OkCancelToolbar class >> defaultSpec [
 	<spec>
 	^ { #Panel.
@@ -30,37 +30,37 @@ OkCancelToolbar class >> defaultSpec [
 			#vShrinkWrap.	}
 ]
 
-{ #category : #specs }
+{ #category : 'specs' }
 OkCancelToolbar class >> title [
 
 	^ 'Ok Cancel'
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 OkCancelToolbar >> cancelAction [
 
 	^ cancelAction contents
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 OkCancelToolbar >> cancelAction: aBlock [
 
 	^ cancelAction contents: aBlock
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OkCancelToolbar >> cancelButton [
 
 	^ cancelButton
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 OkCancelToolbar >> cancelled [
 
 	^ cancelled contents
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 OkCancelToolbar >> initialize [
 	"Initialization code for OkCancelToolbar"
 
@@ -69,7 +69,7 @@ OkCancelToolbar >> initialize [
 	super initialize.
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 OkCancelToolbar >> initializePresenter [ 
 
 	super initializePresenter.
@@ -83,7 +83,7 @@ OkCancelToolbar >> initializePresenter [
 							ifNotNil: [ owner delete ]]].
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 OkCancelToolbar >> initializeWidgets [
 
 	super initializeWidgets.
@@ -94,7 +94,7 @@ OkCancelToolbar >> initializeWidgets [
 		add: cancelButton
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 OkCancelToolbar >> registerCancelButtonEvents [
 
 	cancelButton 

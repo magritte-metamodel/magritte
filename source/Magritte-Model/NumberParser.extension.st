@@ -1,6 +1,6 @@
-Extension { #name : #NumberParser }
+Extension { #name : 'NumberParser' }
 
-{ #category : #'*Magritte-Model' }
+{ #category : '*Magritte-Model' }
 NumberParser class >> isValidNumber: aStringOrStream [
 	| stream parser |
 	stream := aStringOrStream readStream.

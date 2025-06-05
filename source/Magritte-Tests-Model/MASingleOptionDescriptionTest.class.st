@@ -1,25 +1,25 @@
 Class {
-	#name : #MASingleOptionDescriptionTest,
-	#superclass : #MAOptionDescriptionTest,
+	#name : 'MASingleOptionDescriptionTest',
+	#superclass : 'MAOptionDescriptionTest',
 	#category : 'Magritte-Tests-Model-Description'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 MASingleOptionDescriptionTest class >> isAbstract [
 	^ false
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MASingleOptionDescriptionTest >> actualClass [
 	^ MASingleOptionDescription
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MASingleOptionDescriptionTest >> includedInstance [
 	^ self optionInstances first
 ]
 
-{ #category : #'tests-accessing' }
+{ #category : 'tests-accessing' }
 MASingleOptionDescriptionTest >> testAllOptionsOptional [
 	self description beOptional; beSorted; options: #( c b a ).
 	self assert: self description allOptions = #( nil a b c ).
@@ -28,7 +28,7 @@ MASingleOptionDescriptionTest >> testAllOptionsOptional [
 	self assert: self description allOptions = #( nil c b a )
 ]
 
-{ #category : #'tests-accessing' }
+{ #category : 'tests-accessing' }
 MASingleOptionDescriptionTest >> testAllOptionsWithExtensible [
 	self description beRequired; beUnsorted; beLimited; options: #( c d a ).
 	self assert: (self description allOptionsWith: #b) = #( c d a ).
@@ -43,7 +43,7 @@ MASingleOptionDescriptionTest >> testAllOptionsWithExtensible [
 	self assert: (self description allOptionsWith: #b) = #( a b c d )
 ]
 
-{ #category : #'tests-accessing' }
+{ #category : 'tests-accessing' }
 MASingleOptionDescriptionTest >> testAllOptionsWithOptional [
 	self description beOptional; beSorted; beExtensible; options: #( c d a ).
 	self assert: (self description allOptionsWith: #b) = #( nil a b c d ).
@@ -58,7 +58,7 @@ MASingleOptionDescriptionTest >> testAllOptionsWithOptional [
 	self assert: (self description allOptionsWith: #b) = #( nil c d a )
 ]
 
-{ #category : #'tests-properties' }
+{ #category : 'tests-properties' }
 MASingleOptionDescriptionTest >> testExtensible [
 	self description beExtensible.
 	self assert: self description isExtensible.
@@ -69,7 +69,7 @@ MASingleOptionDescriptionTest >> testExtensible [
 	self deny: self description extensible
 ]
 
-{ #category : #'tests-properties' }
+{ #category : 'tests-properties' }
 MASingleOptionDescriptionTest >> testGroupBy [
 	self deny: self description isGrouped.
 	self description groupBy: #grouping.
@@ -77,13 +77,13 @@ MASingleOptionDescriptionTest >> testGroupBy [
 
 ]
 
-{ #category : #'tests-properties' }
+{ #category : 'tests-properties' }
 MASingleOptionDescriptionTest >> testGroupOf [
 	self assert: MADateDescription grouping = 'Magnitude'.
 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MASingleOptionDescriptionTest >> testOptionsAndLabelsFromString [
 	self description 
 		undefined: 'void';
@@ -94,7 +94,7 @@ MASingleOptionDescriptionTest >> testOptionsAndLabelsFromString [
 	self assert: (self description fromString: 'two') = 2
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MASingleOptionDescriptionTest >> testOptionsAndLabelsToString [
 	self description 
 		undefined: 'void';
@@ -106,7 +106,7 @@ MASingleOptionDescriptionTest >> testOptionsAndLabelsToString [
 	self assert: (self description toString: 3) = '3'
 ]
 
-{ #category : #'tests-validation' }
+{ #category : 'tests-validation' }
 MASingleOptionDescriptionTest >> testValidationExtensible [
 	self description beLimited.
 	self assert: (self description isSatisfiedBy: 'foo').

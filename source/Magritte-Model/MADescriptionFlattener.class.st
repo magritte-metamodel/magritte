@@ -5,12 +5,12 @@ This description is used in a QCMultipartComponent and this is extracted since, 
 
 "
 Class {
-	#name : #MADescriptionFlattener,
-	#superclass : #MADescriptionBuilder,
-	#category : #'Magritte-Model-Builder'
+	#name : 'MADescriptionFlattener',
+	#superclass : 'MADescriptionBuilder',
+	#category : 'Magritte-Model-Builder'
 }
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 MADescriptionFlattener >> addToBuildedDescription: aDescription for: aValue [
 	"aValue is the intermediate value that can be processed by further expansion"
 	aDescription canExpand
@@ -18,7 +18,7 @@ MADescriptionFlattener >> addToBuildedDescription: aDescription for: aValue [
 		ifFalse: [ builtDescription add: aDescription ]
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 MADescriptionFlattener >> expandDescription: aDescription for: aValue [
 	aValue magritteDescription do: [ :each |
 		| val |
@@ -32,7 +32,7 @@ MADescriptionFlattener >> expandDescription: aDescription for: aValue [
 		self addToBuildedDescription: each for: val ]
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 MADescriptionFlattener >> visitToOneRelationDescription: aDescription [
 	| sample |
 	aDescription canExpand ifFalse: [ ^ super visitToOneRelationDescription: aDescription ].

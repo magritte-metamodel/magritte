@@ -1,1 +1,1 @@
-Package { #name : #BaselineOfMagritteForGToolkit }
+Package { #name : 'BaselineOfMagritteForGToolkit' }

@@ -1,6 +1,6 @@
-Extension { #name : #Object }
+Extension { #name : 'Object' }
 
-{ #category : #'*Magritte-Deprecated3dot7' }
+{ #category : '*Magritte-Deprecated3dot7' }
 Object >> maLazyFrom: description [
 	self 
 		deprecated: 'Renamed to #maLazyInstVarUsing: because now there is also #maLazyPropertyUsing:'
@@ -9,7 +9,7 @@ Object >> maLazyFrom: description [
 	^ self maLazyInstVarUsing: description
 ]
 
-{ #category : #'*Magritte-Deprecated3dot7' }
+{ #category : '*Magritte-Deprecated3dot7' }
 Object >> magritteActionDescriptions [
 	self 
 		deprecated: 'Renamed to #magritteActions for ease of use and also slightly more accurate (see new method comment'

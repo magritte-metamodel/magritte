@@ -1,10 +1,10 @@
 Class {
-	#name : #MAMemoryFileModelTest,
-	#superclass : #MAFileModelTest,
+	#name : 'MAMemoryFileModelTest',
+	#superclass : 'MAFileModelTest',
 	#category : 'Magritte-Tests-Model-Models'
 }
 
-{ #category : #private }
+{ #category : 'private' }
 MAMemoryFileModelTest >> actualClass [
 	^ MAMemoryFileModel
 ]

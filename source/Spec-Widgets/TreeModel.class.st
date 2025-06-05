@@ -2,8 +2,8 @@
 A TreeModel is a spec model of a Tree ;)
 "
 Class {
-	#name : #TreeModel,
-	#superclass : #AbstractBasicWidget,
+	#name : 'TreeModel',
+	#superclass : 'AbstractBasicWidget',
 	#instVars : [
 		'childrenBlockHolder',
 		'rootsHolder',
@@ -14,7 +14,7 @@ Class {
 	#category : 'Spec-Widgets'
 }
 
-{ #category : #specs }
+{ #category : 'specs' }
 TreeModel class >> defaultSpec [
 	<spec>
 	
@@ -33,7 +33,7 @@ TreeModel class >> defaultSpec [
 			#vResizing:. 						#spaceFill.}
 ]
 
-{ #category : #example }
+{ #category : 'example' }
 TreeModel class >> example [
 	| m |
 
@@ -48,13 +48,13 @@ TreeModel class >> example [
 								ifFalse: [ item printString ]].
 ]
 
-{ #category : #specs }
+{ #category : 'specs' }
 TreeModel class >> title [
 
 	^ 'Tree'
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 TreeModel >> childrenBlock [
 	< api: #inspect>
 	"Return the block used to retrieve the children of a node.
@@ -65,7 +65,7 @@ TreeModel >> childrenBlock [
 	^ childrenBlockHolder contents
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 TreeModel >> childrenBlock: aBlock [
 	< api: #block getter: #childrenBlock registration: #whenChildrenBlockChanged:>
 	"Set the block used to retrieve the children of a node.
@@ -76,7 +76,7 @@ TreeModel >> childrenBlock: aBlock [
 	childrenBlockHolder contents: aBlock
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 TreeModel >> displayBlock [
 	< api: #inspect>
 	"Return the block used to generate the display of the items.
@@ -87,7 +87,7 @@ TreeModel >> displayBlock [
 	^ wrapBlockHolder contents
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 TreeModel >> displayBlock: aBlock [
 	< api: #block getter: #displayBlock registration: #whenDisplayBlockChanged:>
 	"Set the block used to generate the display of the items.
@@ -98,38 +98,38 @@ TreeModel >> displayBlock: aBlock [
 	wrapBlockHolder contents: aBlock
 ]
 
-{ #category : #focus }
+{ #category : 'focus' }
 TreeModel >> eventKeyStrokeForNextFocus [
 	"String describing the keystroke to perform to jump to the next widget"
 	^ Character arrowRight asShortcut
 ]
 
-{ #category : #focus }
+{ #category : 'focus' }
 TreeModel >> eventKeyStrokeForPreviousFocus [
 	"String describing the keystroke to perform to jump to the previous widget"
 	^ Character arrowLeft asShortcut
 ]
 
-{ #category : #morphic }
+{ #category : 'morphic' }
 TreeModel >> getChildrenFor: anItem [
 
 		^ childrenBlockHolder contents cull: anItem cull: self
 ]
 
-{ #category : #morphic }
+{ #category : 'morphic' }
 TreeModel >> getMenu: aMenu [
 
 	menuBlockHolder contents cull: aMenu cull: self.
 	^ aMenu
 ]
 
-{ #category : #morphic }
+{ #category : 'morphic' }
 TreeModel >> getRoots [
 							
 	^ rootsHolder contents
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TreeModel >> initialize [
 	"Initialization code for TreeModel"
 
@@ -144,7 +144,7 @@ TreeModel >> initialize [
 	self registerEvents
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 TreeModel >> menu [
 	<api: #inspect>
 	"Return the block used to generate the tree menu"
@@ -152,7 +152,7 @@ TreeModel >> menu [
 	^ menuBlockHolder contents
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 TreeModel >> menu: aBlock [
 	< api: #block getter: #menu registration: #whenMenuChanged:>
 	"Set the block used to generate the tree menu"
@@ -160,7 +160,7 @@ TreeModel >> menu: aBlock [
 	menuBlockHolder contents: aBlock
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TreeModel >> registerEvents [
 
 	rootsHolder whenChangedDo: [ self changed: #getRoots ].
@@ -168,7 +168,7 @@ TreeModel >> registerEvents [
 	wrapBlockHolder whenChangedDo: [ self changed: #getRoots ].
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 TreeModel >> roots [
 	< api: #inspect>
 	"Return the tree roots"
@@ -176,7 +176,7 @@ TreeModel >> roots [
 	^ rootsHolder contents
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 TreeModel >> roots: aCollection [
 	< api: #st getter: #roots registration: #whenRootsChanged:>
 	"Set the tree roots"
@@ -184,7 +184,7 @@ TreeModel >> roots: aCollection [
 	rootsHolder contents: aCollection
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 TreeModel >> selectedItem [
 	< api: #inspect>
 	"Return the selected item"
@@ -193,7 +193,7 @@ TreeModel >> selectedItem [
 	^ selectionHolder contents
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 TreeModel >> selectedItem: anItem [
 	< api: #st getter: #selectedItem registration: #whenSelectedItemChanged:>
 	"Set the selected item"
@@ -202,13 +202,13 @@ TreeModel >> selectedItem: anItem [
 	selectionHolder contents: anItem
 ]
 
-{ #category : #morphic }
+{ #category : 'morphic' }
 TreeModel >> setSelectedItem: anItem [
 
 	selectionHolder contents: anItem.
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 TreeModel >> updateTree [
 	< api: #do>
 	"Force the tree to refresh"
@@ -216,35 +216,35 @@ TreeModel >> updateTree [
 	self changed: #getRoots
 ]
 
-{ #category : #'protocol-events' }
+{ #category : 'protocol-events' }
 TreeModel >> whenChildrenBlockChanged: aBlock [
 	"Set a block to perform when a new childrenBlock is set"
 
 	childrenBlockHolder whenChangedDo: aBlock
 ]
 
-{ #category : #'protocol-events' }
+{ #category : 'protocol-events' }
 TreeModel >> whenDisplayBlockChanged: aBlock [
 	"Set a block to perform when a new displayBlock is set"
 
 	wrapBlockHolder whenChangedDo: aBlock
 ]
 
-{ #category : #'protocol-events' }
+{ #category : 'protocol-events' }
 TreeModel >> whenMenuChanged: aBlock [
 	"Set a block to perform when a new menuBlock is set"
 
 	menuBlockHolder whenChangedDo: aBlock
 ]
 
-{ #category : #'protocol-events' }
+{ #category : 'protocol-events' }
 TreeModel >> whenSelectedItemChanged: aBlock [
 	"Set a block to perform when a new item is selected"
 
 	selectionHolder whenChangedDo: aBlock
 ]
 
-{ #category : #morphic }
+{ #category : 'morphic' }
 TreeModel >> wrapItem: anItem [
 
 	^ wrapBlockHolder contents cull: anItem cull: self

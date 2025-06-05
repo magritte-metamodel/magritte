@@ -1,13 +1,13 @@
-Extension { #name : #Object }
+Extension { #name : 'Object' }
 
-{ #category : #'*Magritte-GToolkit' }
+{ #category : '*Magritte-GToolkit' }
 Object >> descriptionBrowse: aDescription [
 	<magritteActionDescription: #descriptionBrowse>
 	"Redundant because already provided by GToolkit"
 	^ nil
 ]
 
-{ #category : #'*Magritte-GToolkit' }
+{ #category : '*Magritte-GToolkit' }
 Object >> descriptionFuelOut: desc [
 	<magritteActionDescription: #descriptionFuelOut>
 	^ desc
@@ -15,14 +15,14 @@ Object >> descriptionFuelOut: desc [
 			yourself
 ]
 
-{ #category : #'*Magritte-GToolkit' }
+{ #category : '*Magritte-GToolkit' }
 Object >> descriptionInspect: aDescription [
 	<magritteActionDescription: #descriptionInspect>
 	"Redundant because already provided by GToolkit"
 	^ nil
 ]
 
-{ #category : #'*Magritte-GToolkit' }
+{ #category : '*Magritte-GToolkit' }
 Object >> gtActionsInContext: aPhlowContext [
 	"Hack to extend GToolkit's actions. The GT mechanism is in ProtoObject, which is the only class we miss by hooking in here"
 	| magritteGToolkitActions |
@@ -30,7 +30,7 @@ Object >> gtActionsInContext: aPhlowContext [
 	^ (super gtActionsInContext: aPhlowContext), magritteGToolkitActions
 ]
 
-{ #category : #'*Magritte-GToolkit' }
+{ #category : '*Magritte-GToolkit' }
 Object >> gtViewsInContext: aContext [
 	
 	| magritteGToolkitViews views |
@@ -47,7 +47,7 @@ Object >> gtViewsInContext: aContext [
 	^ views
 ]
 
-{ #category : #'*Magritte-GToolkit' }
+{ #category : '*Magritte-GToolkit' }
 Object >> maGtFormFor: aView [
 	<gtView>
 	| description |
@@ -85,7 +85,7 @@ Object >> maGtFormFor: aView [
 		actionUpdateButton.
 ]
 
-{ #category : #'*Magritte-GToolkit' }
+{ #category : '*Magritte-GToolkit' }
 Object >> magritteElementBuilder [
 	^ self magritteDescription elementBuilderFor: self
 ]

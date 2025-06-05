@@ -1,6 +1,6 @@
 Class {
-	#name : #MAStreamingVisitor,
-	#superclass : #MAVisitor,
+	#name : 'MAStreamingVisitor',
+	#superclass : 'MAVisitor',
 	#instVars : [
 		'stream',
 		'object'
@@ -8,34 +8,34 @@ Class {
 	#category : 'Magritte-Model-Visitor'
 }
 
-{ #category : #streaming }
+{ #category : 'streaming' }
 MAStreamingVisitor >> contents [
 	^ self stream contents
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAStreamingVisitor >> object [
 	^ object
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAStreamingVisitor >> object: anObject [
 	object := anObject
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAStreamingVisitor >> object: anObject during: aBlock [
 	| previous |
 	previous := self object. self object: anObject.
 	aBlock ensure: [ self object: previous ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAStreamingVisitor >> stream [
 	^ stream
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAStreamingVisitor >> stream: aStream [
 	stream := aStream
 ]

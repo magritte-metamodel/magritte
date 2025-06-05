@@ -1,6 +1,6 @@
-Extension { #name : #MAPatchMacro }
+Extension { #name : 'MAPatchMacro' }
 
-{ #category : #'*Magritte-Merging-Bloc' }
+{ #category : '*Magritte-Merging-Bloc' }
 MAPatchMacro >> asElement [
 	^ MAPatchMacroElement on: self
 ]

@@ -2,94 +2,94 @@
 I am a description of an one-to-many relationship, possible values are instances of ==Collection==.
 "
 Class {
-	#name : #MAToManyRelationDescription,
-	#superclass : #MARelationDescription,
-	#category : #'Magritte-Model-Description'
+	#name : 'MAToManyRelationDescription',
+	#superclass : 'MARelationDescription',
+	#category : 'Magritte-Model-Description'
 }
 
-{ #category : #'accessing-defaults' }
+{ #category : 'accessing-defaults' }
 MAToManyRelationDescription class >> defaultDefinitive [
 	^ false
 ]
 
-{ #category : #'accessing-defaults' }
+{ #category : 'accessing-defaults' }
 MAToManyRelationDescription class >> defaultKind [
 	^ Collection
 ]
 
-{ #category : #'accessing-defaults' }
+{ #category : 'accessing-defaults' }
 MAToManyRelationDescription class >> defaultOrdered [
 	^ false
 ]
 
-{ #category : #'accessing-defaults' }
+{ #category : 'accessing-defaults' }
 MAToManyRelationDescription class >> defaultShouldCacheDefault [
 	^ true
 ]
 
-{ #category : #'accessing-defaults' }
+{ #category : 'accessing-defaults' }
 MAToManyRelationDescription class >> defaultSorted [
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 MAToManyRelationDescription class >> isAbstract [
 	^ false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAToManyRelationDescription class >> label [
 	^ '1:m Relation'
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 MAToManyRelationDescription >> acceptMagritte: aVisitor [
 	aVisitor visitToManyRelationDescription: self
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 MAToManyRelationDescription >> beDefinitive [
 	self definitive: true
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 MAToManyRelationDescription >> beModifiable [
 	self definitive: false
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 MAToManyRelationDescription >> beOrdered [
 	self ordered: true
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 MAToManyRelationDescription >> beSorted [
 	self sorted: true
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 MAToManyRelationDescription >> beUnordered [
 	self ordered: false
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 MAToManyRelationDescription >> beUnsorted [
 	self sorted: false
 ]
 
-{ #category : #'accessing-properties' }
+{ #category : 'accessing-properties' }
 MAToManyRelationDescription >> definitive [
 	"Return true if the field is non-modifiable"
 
 	^ self propertyAt: #definitive ifAbsent: [ self class defaultDefinitive ]
 ]
 
-{ #category : #'accessing-properties' }
+{ #category : 'accessing-properties' }
 MAToManyRelationDescription >> definitive: aBoolean [
 	self propertyAt: #definitive put: aBoolean
 ]
 
-{ #category : #'acessing-magritte' }
+{ #category : 'acessing-magritte' }
 MAToManyRelationDescription >> descriptionDefinitive [
 	<magritteDescription>
 	^ MABooleanDescription new
@@ -100,7 +100,7 @@ MAToManyRelationDescription >> descriptionDefinitive [
 		yourself
 ]
 
-{ #category : #'acessing-magritte' }
+{ #category : 'acessing-magritte' }
 MAToManyRelationDescription >> descriptionOrdered [
 	<magritteDescription>
 	^ MABooleanDescription new
@@ -111,7 +111,7 @@ MAToManyRelationDescription >> descriptionOrdered [
 		yourself
 ]
 
-{ #category : #'acessing-magritte' }
+{ #category : 'acessing-magritte' }
 MAToManyRelationDescription >> descriptionSorted [
 	<magritteDescription>
 	^ MABooleanDescription new
@@ -122,49 +122,49 @@ MAToManyRelationDescription >> descriptionSorted [
 		yourself
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 MAToManyRelationDescription >> isDefinitive [
 	"Return true if the field is non-modifiable"
 
 	^ self definitive.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAToManyRelationDescription >> isMultiple [
 	^true
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 MAToManyRelationDescription >> isOrdered [
 	^ self ordered
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 MAToManyRelationDescription >> isSorted [
 	^ self sorted
 ]
 
-{ #category : #'accessing-properties' }
+{ #category : 'accessing-properties' }
 MAToManyRelationDescription >> ordered [
 	^ self propertyAt: #ordered ifAbsent: [ self class defaultOrdered ]
 ]
 
-{ #category : #'accessing-properties' }
+{ #category : 'accessing-properties' }
 MAToManyRelationDescription >> ordered: aBoolean [
 	self propertyAt: #ordered put: aBoolean
 ]
 
-{ #category : #'accessing-properties' }
+{ #category : 'accessing-properties' }
 MAToManyRelationDescription >> sorted [
 	^ self propertyAt: #sorted ifAbsent: [ self class defaultSorted ]
 ]
 
-{ #category : #'accessing-properties' }
+{ #category : 'accessing-properties' }
 MAToManyRelationDescription >> sorted: aBoolean [
 	self propertyAt: #sorted put: aBoolean
 ]
 
-{ #category : #validating }
+{ #category : 'validating' }
 MAToManyRelationDescription >> validateKind: anObject [
 
 	self
@@ -175,7 +175,7 @@ MAToManyRelationDescription >> validateKind: anObject [
 					ifFalse: [ MAKindError description: self signal: self kindErrorMessage ] ] ]
 ]
 
-{ #category : #validating }
+{ #category : 'validating' }
 MAToManyRelationDescription >> validateRequired: anObject [
 	super validateRequired: anObject.
 	(self isRequired and: [ anObject isCollection and: [ anObject isEmpty ] ])

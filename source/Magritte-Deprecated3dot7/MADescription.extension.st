@@ -1,6 +1,6 @@
-Extension { #name : #MADescription }
+Extension { #name : 'MADescription' }
 
-{ #category : #'*Magritte-Deprecated3dot7' }
+{ #category : '*Magritte-Deprecated3dot7' }
 MADescription >> beReadonly [
 	self 
 		deprecated: 'Use #beReadOnly instead.' 
@@ -11,20 +11,20 @@ MADescription >> beReadonly [
 		^ self beReadOnly
 ]
 
-{ #category : #'*Magritte-Deprecated3dot7' }
-MADescription class >> defaultMorphClass [
+{ #category : '*Magritte-Deprecated3dot7' }
+MADescription classSide >> defaultMorphClass [
 	self deprecated: 'Send message defaultMorphicClass' transformWith: '`@receiver defaultMorphClass' -> '`@receiver defaultMorphicClass'.
 	^ self defaultMorphicClass
 ]
 
-{ #category : #'*Magritte-Deprecated3dot7' }
-MADescription class >> defaultMorphClasses [
+{ #category : '*Magritte-Deprecated3dot7' }
+MADescription classSide >> defaultMorphClasses [
 	self deprecated: 'Send message defaultMorphicClasses' transformWith: '`@receiver defaultMorphClasses' -> '`@receiver defaultMorphicClasses'.
 	^ self defaultMorphicClasses
 ]
 
-{ #category : #'*Magritte-Deprecated3dot7' }
-MADescription class >> defaultReadonly [
+{ #category : '*Magritte-Deprecated3dot7' }
+MADescription classSide >> defaultReadonly [
 	self 
 		deprecated: 'Use #defaultReadOnly instead.' 
 		on: '2020-01-23'
@@ -34,13 +34,13 @@ MADescription class >> defaultReadonly [
 	^ self defaultReadOnly
 ]
 
-{ #category : #'*Magritte-Deprecated3dot7' }
+{ #category : '*Magritte-Deprecated3dot7' }
 MADescription >> descriptionMorphClass [
 	self deprecated: 'Send message descriptionMorphicClass' transformWith: '`@receiver descriptionMorphClass' -> '`@receiver descriptionMorphicClass'.
 	^ self descriptionMorphicClass
 ]
 
-{ #category : #'*Magritte-Deprecated3dot7' }
+{ #category : '*Magritte-Deprecated3dot7' }
 MADescription >> isReadonly [
 	self 
 		deprecated: 'Use #isReadOnly instead.' 
@@ -51,19 +51,19 @@ MADescription >> isReadonly [
 	^ self isReadOnly
 ]
 
-{ #category : #'*Magritte-Deprecated3dot7' }
+{ #category : '*Magritte-Deprecated3dot7' }
 MADescription >> morphClass [
 		self deprecated: 'Send message morphicClass' transformWith: '`@receiver morphClass' -> '`@receiver morphicClass'.
 	^ self morphicClass
 ]
 
-{ #category : #'*Magritte-Deprecated3dot7' }
+{ #category : '*Magritte-Deprecated3dot7' }
 MADescription >> morphClass: aClass [
 			self deprecated: 'Send message morphicClass:' transformWith: '`@receiver morphClass: `@argument' -> '`@receiver morphicClass: `@argument'.
 	^ self morphicClass: aClass
 ]
 
-{ #category : #'*Magritte-Deprecated3dot7' }
+{ #category : '*Magritte-Deprecated3dot7' }
 MADescription >> readonly [
 	self 
 		deprecated: 'Use #readOnly instead.' 
@@ -74,7 +74,7 @@ MADescription >> readonly [
 		^ self readOnly
 ]
 
-{ #category : #'*Magritte-Deprecated3dot7' }
+{ #category : '*Magritte-Deprecated3dot7' }
 MADescription >> readonly: aBoolean [
 	self 
 		deprecated: 'Use #readOnly: instead.' 

@@ -1,15 +1,15 @@
 Class {
-	#name : #MAActionPragmaBuilder,
-	#superclass : #MAPragmaBuilder,
-	#category : #'Magritte-Model-Utility'
+	#name : 'MAActionPragmaBuilder',
+	#superclass : 'MAPragmaBuilder',
+	#category : 'Magritte-Model-Utility'
 }
 
-{ #category : #constants }
+{ #category : 'constants' }
 MAActionPragmaBuilder class >> magritteDescriptionExtensionPragma [ 
 	^ #magritteActionDescription:
 ]
 
-{ #category : #constants }
+{ #category : 'constants' }
 MAActionPragmaBuilder class >> magritteDescriptionPragma [ 
 	^ #magritteActionDescription
 ]

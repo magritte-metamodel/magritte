@@ -1,6 +1,6 @@
-Extension { #name : #WriteStream }
+Extension { #name : 'WriteStream' }
 
-{ #category : #'*magritte-model' }
+{ #category : '*magritte-model' }
 WriteStream >> maPrint: anMADescription for: anObject [
 	anMADescription printFor: anObject on: self
 	

@@ -1,23 +1,23 @@
 Trait {
-	#name : #MATContainerPresenter,
+	#name : 'MATContainerPresenter',
 	#instVars : [
 		'children',
 		'answerBlock'
 	],
-	#category : #'Magritte-UI'
+	#category : 'Magritte-UI'
 }
 
-{ #category : #decorating }
+{ #category : 'decorating' }
 MATContainerPresenter >> addButtons [
 	self addButtons: #( save cancel )
 ]
 
-{ #category : #decorating }
+{ #category : 'decorating' }
 MATContainerPresenter >> addButtons: anArray [
 	self subclassResponsibility
 ]
 
-{ #category : #answering }
+{ #category : 'answering' }
 MATContainerPresenter >> answer: anObject [
 
 	| didUserCancel |
@@ -29,27 +29,27 @@ MATContainerPresenter >> answer: anObject [
 	answerBlock value: anObject.
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 MATContainerPresenter >> cancel [
 	self reset; answer: nil
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MATContainerPresenter >> children [
 	^ children
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 MATContainerPresenter >> commit [
 	self memento commit
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 MATContainerPresenter >> force [
 	self commit; answer: self model
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 MATContainerPresenter >> save [
 	[ self validate ]
 		on: MAValidationError
@@ -57,18 +57,18 @@ MATContainerPresenter >> save [
 	self commit; answer: self model
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 MATContainerPresenter >> setChildren: aCollection [
 	children := aCollection
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 MATContainerPresenter >> setDescription: aDescription [
 	super setDescription: aDescription.
 	self setChildren: self buildChildren
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 MATContainerPresenter >> validate [
 	self memento validate
 ]

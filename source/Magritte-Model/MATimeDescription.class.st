@@ -2,27 +2,27 @@
 I am a description of times, possible values are instances of ==Time==. My visual representation could be a time-picker.
 "
 Class {
-	#name : #MATimeDescription,
-	#superclass : #MAMagnitudeDescription,
-	#category : #'Magritte-Model-Description'
+	#name : 'MATimeDescription',
+	#superclass : 'MAMagnitudeDescription',
+	#category : 'Magritte-Model-Description'
 }
 
-{ #category : #'accessing-defaults' }
+{ #category : 'accessing-defaults' }
 MATimeDescription class >> defaultKind [
 	^ Time
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 MATimeDescription class >> isAbstract [
 	^ false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MATimeDescription class >> label [
 	^ 'Time'
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 MATimeDescription >> acceptMagritte: aVisitor [
 	aVisitor visitTimeDescription: self
 ]

@@ -1,6 +1,6 @@
-Extension { #name : #MATableDescription }
+Extension { #name : 'MATableDescription' }
 
-{ #category : #'*magritte-seaside-defaults' }
-MATableDescription class >> defaultComponentClasses [
+{ #category : '*magritte-seaside-defaults' }
+MATableDescription classSide >> defaultComponentClasses [
 	^ Array with: MATableComponent
 ]

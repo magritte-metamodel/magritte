@@ -1,15 +1,15 @@
 Class {
-	#name : #MAMethodRefactoring,
-	#superclass : #ORSwapMethodRefactoring,
+	#name : 'MAMethodRefactoring',
+	#superclass : 'ORSwapMethodRefactoring',
 	#category : 'Magritte-Pharo-Tools'
 }
 
-{ #category : #private }
+{ #category : 'private' }
 MAMethodRefactoring >> alreadyIncludesMagritteSelectors: parseTree [
 	^ (parseTree pragmas detect: [ :each | MAPragmaBuilder magritteSelectors includes: each selector ] ifNone: [ nil ]) notNil
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAMethodRefactoring >> createPragma [
 	((selector = #descriptionContainer) or: [ selector isDescriptionExtension: #descriptionContainer ]) ifTrue: [
 		^ RBPragmaNode selectorParts: (Array with: MAPragmaBuilder containerPragma) arguments: #() ].
@@ -33,12 +33,12 @@ MAMethodRefactoring >> createPragma [
 
 ]
 
-{ #category : #preconditions }
+{ #category : 'preconditions' }
 MAMethodRefactoring >> preconditions [
 	^ RBCondition withBlock: [ selector isDescriptionSelector ]
 ]
 
-{ #category : #transforming }
+{ #category : 'transforming' }
 MAMethodRefactoring >> transform [
 	| parseTree methodBody category |
 

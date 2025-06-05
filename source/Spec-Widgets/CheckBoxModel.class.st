@@ -5,8 +5,8 @@ You can also have a look at CheckBoxExample for a full example of how to use the
 
 "
 Class {
-	#name : #CheckBoxModel,
-	#superclass : #AbstractBasicWidget,
+	#name : 'CheckBoxModel',
+	#superclass : 'AbstractBasicWidget',
 	#instVars : [
 		'actionWhenActivatedHolder',
 		'actionWhenDesactivatedHolder',
@@ -17,7 +17,7 @@ Class {
 	#category : 'Spec-Widgets'
 }
 
-{ #category : #specs }
+{ #category : 'specs' }
 CheckBoxModel class >> defaultSpec [
 	<spec>
 	^ {#CheckboxSpec.
@@ -32,13 +32,13 @@ CheckBoxModel class >> defaultSpec [
 			#labelClickable:.					{	#model. #labelClickable}.}
 ]
 
-{ #category : #specs }
+{ #category : 'specs' }
 CheckBoxModel class >> title [
 
 	^ 'Checkbox Button'
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 CheckBoxModel >> activationAction: aBlock [
 	<api: #block getter: #activationAction registration: #whenActivationActionChanged:>
 	"This method is used to set the action to perform when I am activated"
@@ -46,7 +46,7 @@ CheckBoxModel >> activationAction: aBlock [
 	actionWhenActivatedHolder contents: aBlock
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 CheckBoxModel >> click [
 	<api: #do>
 	"Simulate a click on the checkbox
@@ -55,7 +55,7 @@ CheckBoxModel >> click [
 	self toggleState
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 CheckBoxModel >> desactivationAction: aBlock [
 	<api: #block getter: #desactivationAction registration: #whenDesactivationActionChanged:>
 	"This method is used to set the action to perform when I am desactivated"
@@ -63,19 +63,19 @@ CheckBoxModel >> desactivationAction: aBlock [
 	actionWhenDesactivatedHolder contents: aBlock
 ]
 
-{ #category : #focus }
+{ #category : 'focus' }
 CheckBoxModel >> eventKeyStrokeForNextFocus [
 	"String describing the keystroke to perform to jump to the next widget"
 	^ Character arrowRight asShortcut
 ]
 
-{ #category : #focus }
+{ #category : 'focus' }
 CheckBoxModel >> eventKeyStrokeForPreviousFocus [
 	"String describing the keystroke to perform to jump to the previous widget"
 	^ Character arrowLeft asShortcut
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 CheckBoxModel >> initialize [
 	"initialization code for CheckBox"
 
@@ -99,13 +99,13 @@ CheckBoxModel >> initialize [
 	
 ]
 
-{ #category : #morphic }
+{ #category : 'morphic' }
 CheckBoxModel >> label [
 	<api: #inspect>
 	^ labelHolder contents
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 CheckBoxModel >> label: aString [
 	<api: #string getter: #label registration: #whenLabelChanged:>
 	"Set the label of the checkbox"
@@ -113,7 +113,7 @@ CheckBoxModel >> label: aString [
 	labelHolder contents: aString.
 ]
 
-{ #category : #morphic }
+{ #category : 'morphic' }
 CheckBoxModel >> labelClickable [
 	<api: #inspect>
 	"Return true if the label can be clicked to select the checkbox"
@@ -121,7 +121,7 @@ CheckBoxModel >> labelClickable [
 	^ labelClickableHolder contents
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 CheckBoxModel >> labelClickable: aBoolean [
 	<api: #boolean getter: #labelClickable registration: #whenLabelClickableChanged:>
 	"Set if the label can be clicked to select the checkbox"
@@ -129,7 +129,7 @@ CheckBoxModel >> labelClickable: aBoolean [
 	labelClickableHolder contents: aBoolean
 ]
 
-{ #category : #morphic }
+{ #category : 'morphic' }
 CheckBoxModel >> state [
 	<api: #inspect>
 	"Return the current state of the checkBox"
@@ -137,7 +137,7 @@ CheckBoxModel >> state [
 	^ stateHolder contents
 ]
 
-{ #category : #morphic }
+{ #category : 'morphic' }
 CheckBoxModel >> state: aBoolean [
 	<api: #boolean getter: #state>
 	"Set if the checkbox is activated or not"
@@ -145,7 +145,7 @@ CheckBoxModel >> state: aBoolean [
 	stateHolder contents: aBoolean
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 CheckBoxModel >> toggleState [
 	<api: #do>
 	"Toogle the current state of the checkbox"
@@ -153,7 +153,7 @@ CheckBoxModel >> toggleState [
 	self state: self state not
 ]
 
-{ #category : #'protocol-events' }
+{ #category : 'protocol-events' }
 CheckBoxModel >> whenActivatedDo: aBlock [
 	<api: #event>
 	"This method is used to propagate the event that I have been activated" 
@@ -161,14 +161,14 @@ CheckBoxModel >> whenActivatedDo: aBlock [
 	stateHolder whenChangedDo: [:bool | bool ifTrue: aBlock ]
 ]
 
-{ #category : #'protocol-events' }
+{ #category : 'protocol-events' }
 CheckBoxModel >> whenActivationActionChanged: aBlock [
 	<api: #event>
 	"A block performed when the activation action changed"
 	actionWhenActivatedHolder whenChangedDo:  aBlock 
 ]
 
-{ #category : #'protocol-events' }
+{ #category : 'protocol-events' }
 CheckBoxModel >> whenChangedDo: aBlock [
 	<api: #event>
 	"This method is used to propagate the event that I have changed"
@@ -176,7 +176,7 @@ CheckBoxModel >> whenChangedDo: aBlock [
 	stateHolder whenChangedDo: aBlock
 ]
 
-{ #category : #'protocol-events' }
+{ #category : 'protocol-events' }
 CheckBoxModel >> whenDesactivatedDo: aBlock [
 	<api: #event>
 	"This method is used to propagate the event that I have been desactivated"
@@ -184,14 +184,14 @@ CheckBoxModel >> whenDesactivatedDo: aBlock [
 	stateHolder whenChangedDo: [:bool | bool ifFalse: aBlock ]
 ]
 
-{ #category : #'protocol-events' }
+{ #category : 'protocol-events' }
 CheckBoxModel >> whenDesactivationActionChanged: aBlock [
 	<api: #event>
 	"A block performed when the desactivation action changed"
 	actionWhenDesactivatedHolder whenChangedDo:  aBlock 
 ]
 
-{ #category : #'protocol-events' }
+{ #category : 'protocol-events' }
 CheckBoxModel >> whenLabelChanged: aBlock [
 	"A block performed when the label changed"
 	<api: #event>
@@ -199,7 +199,7 @@ CheckBoxModel >> whenLabelChanged: aBlock [
 	labelHolder whenChangedDo:  aBlock 
 ]
 
-{ #category : #'protocol-events' }
+{ #category : 'protocol-events' }
 CheckBoxModel >> whenLabelClickableChanged: aBlock [
 	"A block performed when the label click is activated or descativated"
 	<api: #event>

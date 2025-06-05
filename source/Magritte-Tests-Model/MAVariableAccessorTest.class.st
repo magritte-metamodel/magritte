@@ -1,25 +1,25 @@
 Class {
-	#name : #MAVariableAccessorTest,
-	#superclass : #MAAccessorTest,
+	#name : 'MAVariableAccessorTest',
+	#superclass : 'MAAccessorTest',
 	#category : 'Magritte-Tests-Model-Accessor'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 MAVariableAccessorTest class >> isAbstract [
 	^ false
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAVariableAccessorTest >> accessorInstance [
 	^ self actualClass name: 'value'
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAVariableAccessorTest >> actualClass [
 	^ MAVariableAccessor
 ]
 
-{ #category : #'tests-testing' }
+{ #category : 'tests-testing' }
 MAVariableAccessorTest >> testCanRead [
 	self assert: (self accessor canRead: self).
 
@@ -27,7 +27,7 @@ MAVariableAccessorTest >> testCanRead [
 	self deny: (self accessor canRead: self)
 ]
 
-{ #category : #'tests-testing' }
+{ #category : 'tests-testing' }
 MAVariableAccessorTest >> testCanWrite [
 	self assert: (self accessor canWrite: self).
 
@@ -35,13 +35,13 @@ MAVariableAccessorTest >> testCanWrite [
 	self deny: (self accessor canWrite: self)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MAVariableAccessorTest >> testName [
 	self accessor name: 'other'.
 	self assert: self accessor name = 'other'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MAVariableAccessorTest >> testRead [
 	self value: 123.
 	self assert: (self accessor read: self) = 123.
@@ -50,7 +50,7 @@ MAVariableAccessorTest >> testRead [
 	self assert: (self accessor read: self) = '12'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MAVariableAccessorTest >> testWrite [
 	self accessor write: 123 to: self.
 	self assert: self value = 123.

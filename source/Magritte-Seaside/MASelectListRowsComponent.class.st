@@ -2,24 +2,24 @@
 I am similar to MASelectListComponent, but rather than displaying the options in a drop-down I display the options in a list.
 "
 Class {
-	#name : #MASelectListRowsComponent,
-	#superclass : #MASelectListComponent,
+	#name : 'MASelectListRowsComponent',
+	#superclass : 'MASelectListComponent',
 	#category : 'Magritte-Seaside-Components'
 }
 
-{ #category : #private }
+{ #category : 'private' }
 MASelectListRowsComponent >> itemsDisplayed [
 	^ (self options size min: self maxItemsDisplayed) max: 5
 	
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MASelectListRowsComponent >> maxItemsDisplayed [
 	^ self magritteDescription propertyAt: #maxItemsDisplayed ifAbsent: [ 10 ]
 	
 ]
 
-{ #category : #'rendering-grouped' }
+{ #category : 'rendering-grouped' }
 MASelectListRowsComponent >> renderEditorForGroupedOn: html [ 
 	html select 
 		id: self labelId;
@@ -28,7 +28,7 @@ MASelectListRowsComponent >> renderEditorForGroupedOn: html [
 		with: [ self renderGroupsOn: html ]
 ]
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 MASelectListRowsComponent >> renderEditorForUngroupedOn: html [
 	html select
 		id: self labelId;

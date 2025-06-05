@@ -1,15 +1,15 @@
 Class {
-	#name : #MATokenElement,
-	#superclass : #BrButton,
+	#name : 'MATokenElement',
+	#superclass : 'BrButton',
 	#instVars : [
 		'object',
 		'removeAction',
 		'contextMenuActions'
 	],
-	#category : #'Magritte-GToolkit-Widgets'
+	#category : 'Magritte-GToolkit-Widgets'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MATokenElement >> contextMenuActions [
 
 	contextMenuActions ifNotNil: [ ^ contextMenuActions ].
@@ -18,7 +18,7 @@ MATokenElement >> contextMenuActions [
 		'Remove' -> [ self removeAction value ].
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MATokenElement >> initialize [
 
 	| clsListBuilder dropdownHandleBuilder dropdownAptitude |
@@ -76,25 +76,25 @@ MATokenElement >> initialize [
 		beSmallSize
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MATokenElement >> object [
 
 	^ object
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MATokenElement >> object: anObject [
 
 	object := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MATokenElement >> removeAction [
 
 	^ removeAction ifNil: [ [ self removeFromParent ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MATokenElement >> removeAction: aValuable [
 
 	removeAction := [ 

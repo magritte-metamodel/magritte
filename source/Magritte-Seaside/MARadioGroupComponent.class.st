@@ -2,27 +2,27 @@
 I display a set of radio buttons to render MASingleSelectionDescription.
 "
 Class {
-	#name : #MARadioGroupComponent,
-	#superclass : #MASingleSelectionComponent,
+	#name : 'MARadioGroupComponent',
+	#superclass : 'MASingleSelectionComponent',
 	#category : 'Magritte-Seaside-Components'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 MARadioGroupComponent class >> isAbstract [
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 MARadioGroupComponent >> hasLabelId [
 	^ self isReadOnly not
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MARadioGroupComponent >> optionId: anInteger [ 
 	^ self ajaxId: 'option' , anInteger greaseString
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MARadioGroupComponent >> optionsWithIndexDo: elementAndIndexBlock separatedBy: separatorBlock [
 	| index |
 	index := 1.
@@ -33,7 +33,7 @@ MARadioGroupComponent >> optionsWithIndexDo: elementAndIndexBlock separatedBy: s
 		separatedBy: separatorBlock
 ]
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 MARadioGroupComponent >> renderEditorOn: html [
 	| group |
 	group := html radioGroup.
@@ -50,7 +50,7 @@ MARadioGroupComponent >> renderEditorOn: html [
 				separatedBy: [ html break ] ]
 ]
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 MARadioGroupComponent >> renderOption: anObject index: anInteger in: aRadioGroup on: html [
 	| optionId |
 	optionId := self optionId: anInteger.

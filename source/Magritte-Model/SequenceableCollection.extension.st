@@ -1,11 +1,11 @@
-Extension { #name : #SequenceableCollection }
+Extension { #name : 'SequenceableCollection' }
 
-{ #category : #'*magritte-model' }
+{ #category : '*magritte-model' }
 SequenceableCollection >> asAccessor [
 	^ MAChainAccessor accessors: self
 ]
 
-{ #category : #'*magritte-model' }
+{ #category : '*magritte-model' }
 SequenceableCollection >> moveDown: anObject [
 	| first second |
 	first := self findFirst: [ :value | value == anObject ].
@@ -16,7 +16,7 @@ SequenceableCollection >> moveDown: anObject [
 	^ second
 ]
 
-{ #category : #'*magritte-model' }
+{ #category : '*magritte-model' }
 SequenceableCollection >> moveUp: anObject [
 	| first second |
 

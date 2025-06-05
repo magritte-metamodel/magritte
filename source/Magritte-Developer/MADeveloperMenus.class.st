@@ -1,10 +1,10 @@
 Class {
-	#name : #MADeveloperMenus,
-	#superclass : #Object,
+	#name : 'MADeveloperMenus',
+	#superclass : 'Object',
 	#category : 'Magritte-Developer'
 }
 
-{ #category : #'nautilus menus' }
+{ #category : 'nautilus menus' }
 MADeveloperMenus class >> maNautilusMethodMenu: aBuilder [
 	<nautilusGlobalClassMenu>
 

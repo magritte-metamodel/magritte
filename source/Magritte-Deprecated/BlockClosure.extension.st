@@ -1,6 +1,6 @@
-Extension { #name : #BlockClosure }
+Extension { #name : 'BlockClosure' }
 
-{ #category : #'*magritte-deprecated' }
+{ #category : '*magritte-deprecated' }
 BlockClosure >> magritteDynamicObject [
 	"Answer an object that will automatically evaluate the receiver when it receives a message. It will eventually pass the message to the resulting object. Use with caution, for details see *MADynamicObject*."
 	

@@ -1,28 +1,28 @@
 Class {
-	#name : #MAPatchMacroElement,
-	#superclass : #BlElement,
+	#name : 'MAPatchMacroElement',
+	#superclass : 'BlElement',
 	#instVars : [
 		'model',
 		'expander',
 		'header'
 	],
-	#category : #'Magritte-Merging-Bloc'
+	#category : 'Magritte-Merging-Bloc'
 }
 
-{ #category : #examples }
+{ #category : 'examples' }
 MAPatchMacroElement class >> example [
 	<gtExample>
 	^ MAPatchMacro example asElement
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 MAPatchMacroElement class >> on: macro [
 	^ self new
 		model: macro;
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAPatchMacroElement >> initialize [
 	super initialize.
 	
@@ -49,12 +49,12 @@ MAPatchMacroElement >> initialize [
 	^ self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAPatchMacroElement >> model [
 	^ model
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAPatchMacroElement >> model: macro [
 	model := macro.
 	
@@ -90,7 +90,7 @@ MAPatchMacroElement >> model: macro [
 		content ].
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAPatchMacroElement >> rule: aRule targetingGroup: group [
 	self model: aRule patch
 ]

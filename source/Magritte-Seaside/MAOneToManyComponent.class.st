@@ -1,6 +1,6 @@
 Class {
-	#name : #MAOneToManyComponent,
-	#superclass : #MARelationComponent,
+	#name : 'MAOneToManyComponent',
+	#superclass : 'MARelationComponent',
 	#instVars : [
 		'report',
 		'commandColumn'
@@ -8,12 +8,12 @@ Class {
 	#category : 'Magritte-Seaside-Components'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 MAOneToManyComponent class >> isAbstract [
 	^ false
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 MAOneToManyComponent >> add [
 	self root 
 		show: (self validatedFormOn: self selected new)
@@ -23,7 +23,7 @@ MAOneToManyComponent >> add [
 
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAOneToManyComponent >> buildCommandColumn [
 	|retVal|
 	retVal := MACommandColumn new setReport: self report.
@@ -38,59 +38,59 @@ MAOneToManyComponent >> buildCommandColumn [
 	^ retVal
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAOneToManyComponent >> buildReport [
 	^ (MAReport rows: self value description: self reference)
 		sortEnabled: self magritteDescription isOrdered not;
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAOneToManyComponent >> children [
 	^ Array with: self report
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAOneToManyComponent >> commandColumn [
 	^ commandColumn ifNil: [ commandColumn := self buildCommandColumn ]
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 MAOneToManyComponent >> down: anElement [
 	self value moveDown: anElement
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 MAOneToManyComponent >> edit: anObject [
 	self root 
 		call: (self validatedFormOn: anObject forOperation: 'Edit')
 		onAnswer: [ :answer | self refresh ]
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 MAOneToManyComponent >> refresh [
 	self report rows: self value
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 MAOneToManyComponent >> remove: anObject [
 	self value: (self value copyWithout: anObject).
 	self refresh
 ]
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 MAOneToManyComponent >> renderEditorOn: html [
 	self renderViewerOn: html.
 	self magritteDescription isDefinitive
 		ifFalse: [ self renderSelectListOn: html ]
 ]
 
-{ #category : #'rendering-buttons' }
+{ #category : 'rendering-buttons' }
 MAOneToManyComponent >> renderSelectButtonOn: html [
 	html submitButton on: #add of: self
 ]
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 MAOneToManyComponent >> renderViewerOn: html [
 	| columns |
 	columns := self report columns
@@ -101,22 +101,22 @@ MAOneToManyComponent >> renderViewerOn: html [
 	html render: self report
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAOneToManyComponent >> report [
 	^ report ifNil: [ report := self buildReport ]
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 MAOneToManyComponent >> up: anElement [
 	self value moveUp: anElement
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAOneToManyComponent >> validatedFormOn: result [
 	^ self validatedFormOn: result forOperation: 'Add'
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAOneToManyComponent >> validatedFormOn: result forOperation: aString [
 	^ result asComponent
 		addMessage: aString , ' ' , self selected label;

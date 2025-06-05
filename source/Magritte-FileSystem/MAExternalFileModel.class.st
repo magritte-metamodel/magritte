@@ -4,50 +4,50 @@ I manage the file-data I represent on the file-system. From the programmer this 
 I delegate my actual location on disk to MAFileDatabase (see class comment).
 "
 Class {
-	#name : #MAExternalFileModel,
-	#superclass : #MAFileModel,
+	#name : 'MAExternalFileModel',
+	#superclass : 'MAFileModel',
 	#instVars : [
 		'location',
 		'directory'
 	],
-	#category : #'Magritte-FileSystem'
+	#category : 'Magritte-FileSystem'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAExternalFileModel class >> baseDirectoryPath [
 	" deprecated: use MAFileDatabase baseDirectoryPath instead "
 	^MAFileDatabase baseDirectory fullName
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAExternalFileModel class >> baseDirectoryPath: aString [ 
 	" deprecated, but still used by pier "
 	MAFileDatabase baseDirectory: aString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAExternalFileModel class >> baseUrl [
 	" deprecated: use MAFileDatabase baseDirectoryPath instead "
 	^ MAFileDatabase baseUrl
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAExternalFileModel class >> baseUrl: aString [
 	" deprecated: use MAFileDatabase baseUrl instead "
 	^ MAFileDatabase baseUrl: aString
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 MAExternalFileModel >> = anObject [
     ^ super = anObject and: [ self directory = anObject directory ]
 ]
 
-{ #category : #configuration }
+{ #category : 'configuration' }
 MAExternalFileModel >> baseUrl [
 	^ self database baseUrl
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAExternalFileModel >> contents [
 	| stream |
 	^ self file exists
@@ -58,7 +58,7 @@ MAExternalFileModel >> contents [
 				ensure: [ stream close ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAExternalFileModel >> contents: aByteArray [
 	| stream |
 	stream := self writeStream.
@@ -67,24 +67,24 @@ MAExternalFileModel >> contents: aByteArray [
 	super contents: aByteArray
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAExternalFileModel >> database [
 
 	^ MAFileDatabase new.
 ]
 
-{ #category : #'accessing-dynamic' }
+{ #category : 'accessing-dynamic' }
 MAExternalFileModel >> directory [
 
 	^ directory ifNil: [ directory := self database uniqueLocation ].
 ]
 
-{ #category : #'accessing-dynamic' }
+{ #category : 'accessing-dynamic' }
 MAExternalFileModel >> file [
 	^(self directory / self filename) asFileReference
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 MAExternalFileModel >> finalize [
 	|  dir |
 	dir := self directory.
@@ -96,12 +96,12 @@ MAExternalFileModel >> finalize [
 	location := nil
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 MAExternalFileModel >> hash [
 	^ super hash bitXor: self directory hash
 ]
 
-{ #category : #copying }
+{ #category : 'copying' }
 MAExternalFileModel >> postCopy [
 	| previous |
 	super postCopy.
@@ -110,12 +110,12 @@ MAExternalFileModel >> postCopy [
 	self contents: previous
 ]
 
-{ #category : #'accessing-dynamic' }
+{ #category : 'accessing-dynamic' }
 MAExternalFileModel >> readStream [
 	^ self file binaryReadStream 
 ]
 
-{ #category : #'accessing-dynamic' }
+{ #category : 'accessing-dynamic' }
 MAExternalFileModel >> writeStream [
 	^ self file binaryWriteStream 
 ]

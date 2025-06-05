@@ -2,8 +2,8 @@
 A SliderModel is a spec model for a slider
 "
 Class {
-	#name : #SliderModel,
-	#superclass : #AbstractBasicWidget,
+	#name : 'SliderModel',
+	#superclass : 'AbstractBasicWidget',
 	#instVars : [
 		'max',
 		'min',
@@ -17,7 +17,7 @@ Class {
 	#category : 'Spec-Widgets'
 }
 
-{ #category : #specs }
+{ #category : 'specs' }
 SliderModel class >> defaultSpec [
 	<spec>
 	
@@ -38,14 +38,14 @@ SliderModel class >> defaultSpec [
 		yourself
 ]
 
-{ #category : #morphic }
+{ #category : 'morphic' }
 SliderModel >> absoluteValue [
 	<api: #inspect>
 	"Return the position of the slider in a scale between 0 and 1 despite of the min and max value"
 	^ absoluteValue contents
 ]
 
-{ #category : #morphic }
+{ #category : 'morphic' }
 SliderModel >> absoluteValue: aFloat [
 	<api: #float min: 0 max: 1 getter:#absoluteValue registration: #whenAbsoluteValueChanged:>
 	"Set the position of the slider in a scale between 0 and 1 despite of the min and max value"
@@ -53,19 +53,19 @@ SliderModel >> absoluteValue: aFloat [
 	absoluteValue contents: aFloat
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 SliderModel >> color: aColor [
 
 	self widget ifNotNil: [:w | w == self ifFalse: [ super color: aColor ]]
 ]
 
-{ #category : #morphic }
+{ #category : 'morphic' }
 SliderModel >> defaultValue [
 
 	^ 50
 ]
 
-{ #category : #initialize }
+{ #category : 'initialize' }
 SliderModel >> initialize [
 	"Initialization code for SliderModel"
 
@@ -100,7 +100,7 @@ SliderModel >> initialize [
 	labelHolder whenChangedDo: [	self widget ifNotNil: [:w | w updateLabel ]].
 ]
 
-{ #category : #morphic }
+{ #category : 'morphic' }
 SliderModel >> label [
 	<api: #inspect>
 	"Return the label of the slider"
@@ -108,7 +108,7 @@ SliderModel >> label [
 	^ labelHolder contents
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 SliderModel >> label: aString [
 	<api: #string getter: #label registration: #whenLabelChanged:>
 	"Set the label of the slider"
@@ -116,7 +116,7 @@ SliderModel >> label: aString [
 	labelHolder contents: aString
 ]
 
-{ #category : #morphic }
+{ #category : 'morphic' }
 SliderModel >> max [
 	<api: #inspect>
 	"Return the maximun value"
@@ -124,7 +124,7 @@ SliderModel >> max [
 	^ max contents
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 SliderModel >> max: anObject [
 	<api: #integer min: 1 max: 100 getter:#max registration: #whenMaxChanged:>
 	"Set the maximun value"
@@ -132,7 +132,7 @@ SliderModel >> max: anObject [
 	max contents: anObject
 ]
 
-{ #category : #morphic }
+{ #category : 'morphic' }
 SliderModel >> min [
 	<api: #inspect>
 	"Return the minimum value"
@@ -140,7 +140,7 @@ SliderModel >> min [
 	^ min contents
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 SliderModel >> min: anObject [
 	<api: #integer min: 0 max: 99 getter:#min registration: #whenMinChanged:>
 	"Set the minimum value"
@@ -148,7 +148,7 @@ SliderModel >> min: anObject [
 	min contents: anObject
 ]
 
-{ #category : #morphic }
+{ #category : 'morphic' }
 SliderModel >> quantum [
 	<api: #inspect>
 	"Return the quantum betwen values"
@@ -156,7 +156,7 @@ SliderModel >> quantum [
 	^ quantum contents
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 SliderModel >> quantum: aNumber [
 	<api: #integer min: #min max: #max getter:#quantum registration: #whenQuantumChanged:>
 	"Set the quantum betwen values"
@@ -164,7 +164,7 @@ SliderModel >> quantum: aNumber [
 	quantum contents: aNumber
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 SliderModel >> reset [
 	<api:#do>
 	"Reset the cursor to the minimum value"
@@ -172,7 +172,7 @@ SliderModel >> reset [
 	self value: self min
 ]
 
-{ #category : #morphic }
+{ #category : 'morphic' }
 SliderModel >> value [
 	<api: #inspect>
 	"Return the current value in a range between min and max"
@@ -180,7 +180,7 @@ SliderModel >> value [
 	^ value contents
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 SliderModel >> value: aNumber [
 	<api: #integer min: #min max: #max getter:#value registration: #whenValueChanged:>
 	"Set the value in a range between min and max"
@@ -189,7 +189,7 @@ SliderModel >> value: aNumber [
 	self changed: #value.
 ]
 
-{ #category : #'protocol-events' }
+{ #category : 'protocol-events' }
 SliderModel >> whenAbsoluteValueChangedDo: aBlock [
 	<api: #event>
 	"Block performed when the absolute value changed"
@@ -197,7 +197,7 @@ SliderModel >> whenAbsoluteValueChangedDo: aBlock [
 	absoluteValue whenChangedDo: aBlock
 ]
 
-{ #category : #'protocol-events' }
+{ #category : 'protocol-events' }
 SliderModel >> whenLabelChangedDo: aBlock [
 	<api: #event>
 	"Block performed when the label changed"
@@ -205,7 +205,7 @@ SliderModel >> whenLabelChangedDo: aBlock [
 	labelHolder whenChangedDo: aBlock
 ]
 
-{ #category : #'protocol-events' }
+{ #category : 'protocol-events' }
 SliderModel >> whenMaxChangedDo: aBlock [ 
 	<api: #event>
 	"Block performed when the maximum value changed"
@@ -213,7 +213,7 @@ SliderModel >> whenMaxChangedDo: aBlock [
 	max whenChangedDo: aBlock
 ]
 
-{ #category : #'protocol-events' }
+{ #category : 'protocol-events' }
 SliderModel >> whenMinChangedDo: aBlock [ 
 	<api: #event>
 	"Block performed when the minimum value changed"
@@ -221,7 +221,7 @@ SliderModel >> whenMinChangedDo: aBlock [
 	min whenChangedDo: aBlock
 ]
 
-{ #category : #'protocol-events' }
+{ #category : 'protocol-events' }
 SliderModel >> whenQuantumChangedDo: aBlock [ 
 	<api: #event>
 	"Block performed when the quantum value changed"
@@ -229,7 +229,7 @@ SliderModel >> whenQuantumChangedDo: aBlock [
 	quantum whenChangedDo: aBlock
 ]
 
-{ #category : #'protocol-events' }
+{ #category : 'protocol-events' }
 SliderModel >> whenValueChangedDo: aBlock [ 
 	<api: #event>
 	"Block performed when the value changed"

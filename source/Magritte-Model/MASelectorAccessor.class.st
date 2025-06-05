@@ -2,21 +2,21 @@
 I am the most common access strategy defined by a read- and a write-selector. I am mostly used together with standard getters and setters as usually defined by the accessing protocol. If there is only a read-selector specified, the write selector will be deduced automatically by adding a colon to the read-selector.
 "
 Class {
-	#name : #MASelectorAccessor,
-	#superclass : #MAAccessor,
+	#name : 'MASelectorAccessor',
+	#superclass : 'MAAccessor',
 	#instVars : [
 		'readSelector',
 		'writeSelector'
 	],
-	#category : #'Magritte-Model-Accessor'
+	#category : 'Magritte-Model-Accessor'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 MASelectorAccessor class >> isAbstract [
 	^ false
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 MASelectorAccessor class >> read: aReadSelector write: aWriteSelector [
 	^ self new
 		readSelector: aReadSelector;
@@ -24,36 +24,36 @@ MASelectorAccessor class >> read: aReadSelector write: aWriteSelector [
 		yourself
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 MASelectorAccessor class >> selector: aSelector [
 	^ self new
 		selector: aSelector;
 		yourself
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 MASelectorAccessor >> = anObject [
 	^ super = anObject
 		and: [ self readSelector = anObject readSelector
 		and: [ self writeSelector = anObject writeSelector ] ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 MASelectorAccessor >> canRead: aModel [
 	^ self readSelector notNil and: [ aModel respondsTo: self readSelector ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 MASelectorAccessor >> canWrite: aModel [
 	^ self writeSelector notNil and: [ aModel respondsTo: self writeSelector ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MASelectorAccessor >> defaultLabelFor: aDescription [
 	^ self readSelector asString normalizeCamelCase capitalized
 ]
 
-{ #category : #'accessing-magritte' }
+{ #category : 'accessing-magritte' }
 MASelectorAccessor >> descriptionSelector [
 	<magritteDescription>
 	^ MASymbolDescription new
@@ -61,53 +61,53 @@ MASelectorAccessor >> descriptionSelector [
 			yourself
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 MASelectorAccessor >> fieldDescription [
 	^ self readSelector asString
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 MASelectorAccessor >> handlesSelector: aSelector [
 	^ aSelector = self readSelector or: [ aSelector = self writeSelector ]
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 MASelectorAccessor >> hash [
 	^  super hash bitXor: (self readSelector hash bitXor: self writeSelector hash)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MASelectorAccessor >> name [
 	^ self readSelector
 ]
 
-{ #category : #model }
+{ #category : 'model' }
 MASelectorAccessor >> read: aModel [
 	^ aModel perform: self readSelector
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MASelectorAccessor >> readSelector [
 	^ readSelector
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MASelectorAccessor >> readSelector: aSelector [
 	readSelector := aSelector
 ]
 
-{ #category : #'accessing-dynamic' }
+{ #category : 'accessing-dynamic' }
 MASelectorAccessor >> selector [
 	^ self readSelector
 ]
 
-{ #category : #'accessing-dynamic' }
+{ #category : 'accessing-dynamic' }
 MASelectorAccessor >> selector: aSelector [ 
 	self readSelector: aSelector asSymbol.
 	self writeSelector: (aSelector greaseString copyWith: $:) asSymbol
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 MASelectorAccessor >> storeOn: aStream [
 	aStream nextPut: $(.
 	self class storeOn: aStream.
@@ -119,17 +119,17 @@ MASelectorAccessor >> storeOn: aStream [
 		nextPut: $)
 ]
 
-{ #category : #model }
+{ #category : 'model' }
 MASelectorAccessor >> write: anObject to: aModel [
 	^ aModel perform: self writeSelector with: anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MASelectorAccessor >> writeSelector [
 	^ writeSelector
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MASelectorAccessor >> writeSelector: aSelector [
 	writeSelector := aSelector
 ]

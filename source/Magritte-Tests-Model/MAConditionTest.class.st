@@ -1,10 +1,10 @@
 Class {
-	#name : #MAConditionTest,
-	#superclass : #TestCase,
+	#name : 'MAConditionTest',
+	#superclass : 'TestCase',
 	#category : 'Magritte-Tests-Model-Utility'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 MAConditionTest >> testConjunctive [
 	| condition |
 	condition := (MACondition selector: #isInteger) & (MACondition selector: #positive).
@@ -14,7 +14,7 @@ MAConditionTest >> testConjunctive [
 	self deny: (condition value: -1.5)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MAConditionTest >> testDisjunctive [
 	| condition |
 	condition := (MACondition selector: #isInteger) | (MACondition selector: #positive).
@@ -24,7 +24,7 @@ MAConditionTest >> testDisjunctive [
 	self deny: (condition value: -1.5)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MAConditionTest >> testNegation [
 	| condition |
 	condition := (MACondition selector: #isInteger) not.
@@ -32,7 +32,7 @@ MAConditionTest >> testNegation [
 	self deny: (condition value: 1)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MAConditionTest >> testReceiverSelector [
 	| condition |
 	condition := MACondition receiver: 1 selector: #=.
@@ -40,7 +40,7 @@ MAConditionTest >> testReceiverSelector [
 	self deny: (condition value: 0)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MAConditionTest >> testSelector [
 	| condition |
 	condition := MACondition selector: #isInteger.
@@ -50,7 +50,7 @@ MAConditionTest >> testSelector [
 	
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MAConditionTest >> testSelectorArgument [
 	| condition |
 	condition := MACondition selector: #< argument: 5.

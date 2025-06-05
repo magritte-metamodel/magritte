@@ -1,6 +1,6 @@
-Extension { #name : #MAPatchOperation }
+Extension { #name : 'MAPatchOperation' }
 
-{ #category : #'*Magritte-Merging-Bloc' }
+{ #category : '*Magritte-Merging-Bloc' }
 MAPatchOperation >> asElement [
 	^ BlElement new
 		layout: (BlLinearLayout horizontal cellSpacing: 10);

@@ -1,6 +1,6 @@
-Extension { #name : #String }
+Extension { #name : 'String' }
 
-{ #category : #'*Magritte-Model' }
+{ #category : '*Magritte-Model' }
 String >> matches: aString [
 	aString isEmpty ifTrue: [ ^ true ].
 	^ (aString includesAnyOf: '*#')
@@ -8,7 +8,7 @@ String >> matches: aString [
 		ifFalse: [ self includesSubstring: aString caseSensitive: false ]
 ]
 
-{ #category : #'*magritte-model' }
+{ #category : '*magritte-model' }
 String >> normalizeCamelCase [
 
 	^ self class streamContents: [ :out |

@@ -1,44 +1,44 @@
 Class {
-	#name : #MACommandColumn,
-	#superclass : #MAActionColumn,
+	#name : 'MACommandColumn',
+	#superclass : 'MAActionColumn',
 	#instVars : [
 		'commands'
 	],
 	#category : 'Magritte-Seaside-Report'
 }
 
-{ #category : #actions }
+{ #category : 'actions' }
 MACommandColumn >> addCommand: aBlock text: aString [
 	self commands add: aBlock -> aString
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 MACommandColumn >> addCommandOn: anObject selector: aSelector [
 	self addCommandOn: anObject selector: aSelector text: aSelector allButLast asCapitalizedPhrase
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 MACommandColumn >> addCommandOn: anObject selector: aSelector text: aString [
 	self addCommand: (MessageSend receiver: anObject selector: aSelector) text: aString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MACommandColumn >> commands [
 	^ commands
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MACommandColumn >> commands: aCollection [
 	commands := aCollection
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 MACommandColumn >> initialize [
 	super initialize.
 	self commands: OrderedCollection new
 ]
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 MACommandColumn >> renderCellFormContent: anObject on: html [
 	self commands
 		do: [ :each |
@@ -48,7 +48,7 @@ MACommandColumn >> renderCellFormContent: anObject on: html [
 		separatedBy: [ html space ]
 ]
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 MACommandColumn >> renderCellLinkContent: anObject on: html [
 	self commands
 		do: [ :each |

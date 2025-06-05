@@ -1,5 +1,5 @@
 Class {
-	#name : #MADynamicDescribedObject,
-	#superclass : #MADynamicVariable,
+	#name : 'MADynamicDescribedObject',
+	#superclass : 'MADynamicVariable',
 	#category : 'Magritte-Model-Utility'
 }

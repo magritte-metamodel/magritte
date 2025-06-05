@@ -1,20 +1,20 @@
 Class {
-	#name : #MAMultiselectListComponent,
-	#superclass : #MAMultipleSelectionComponent,
+	#name : 'MAMultiselectListComponent',
+	#superclass : 'MAMultipleSelectionComponent',
 	#category : 'Magritte-Seaside-Components'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 MAMultiselectListComponent class >> isAbstract [
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 MAMultiselectListComponent >> isDistinct [
 	^ true
 ]
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 MAMultiselectListComponent >> renderEditorOn: html [
 	html multiSelect
 		size: 8;

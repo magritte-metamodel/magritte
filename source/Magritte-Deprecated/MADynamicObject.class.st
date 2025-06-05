@@ -5,12 +5,12 @@ A dynamic object can be used for almost any property within Magritte that is not
 - Raising an unhandled exception will not always open a debugger on your proxy, because tools are unable to properly work with the invalid object and might even crash your image.
 "
 Class {
-	#name : #MADynamicObject,
-	#superclass : #MAProxyObject,
+	#name : 'MADynamicObject',
+	#superclass : 'MAProxyObject',
 	#category : 'Magritte-Deprecated'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MADynamicObject >> realSubject [
 	^ GRPlatform current
 		magritteEvaluate: super realSubject

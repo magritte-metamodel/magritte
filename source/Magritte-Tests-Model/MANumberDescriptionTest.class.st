@@ -1,40 +1,40 @@
 Class {
-	#name : #MANumberDescriptionTest,
-	#superclass : #MAMagnitudeDescriptionTest,
-	#category : #'Magritte-Tests-Model-Description'
+	#name : 'MANumberDescriptionTest',
+	#superclass : 'MAMagnitudeDescriptionTest',
+	#category : 'Magritte-Tests-Model-Description'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 MANumberDescriptionTest class >> isAbstract [
 	^ false
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MANumberDescriptionTest >> actualClass [
 	^ MANumberDescription
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MANumberDescriptionTest >> excludedInstance [
 	^ 0.6180
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MANumberDescriptionTest >> includedInstance [
 	^ 2.7182
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MANumberDescriptionTest >> maxInstance [
 	^ 3.1415
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MANumberDescriptionTest >> minInstance [
 	^ 1.6180
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MANumberDescriptionTest >> testBeInteger [
 	self description beInteger.
 	self assert: (self description isSatisfiedBy: 1).
@@ -43,7 +43,7 @@ MANumberDescriptionTest >> testBeInteger [
 	self deny: (self description isSatisfiedBy: 1.2)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MANumberDescriptionTest >> testBeNegative [
 	self description beNegative.
 	self assert: (self description isSatisfiedBy: -1).
@@ -52,7 +52,7 @@ MANumberDescriptionTest >> testBeNegative [
 	self deny: (self description isSatisfiedBy: 1.5)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MANumberDescriptionTest >> testBePositive [
 	self description bePositive.
 	self assert: (self description isSatisfiedBy: 1).
@@ -61,7 +61,7 @@ MANumberDescriptionTest >> testBePositive [
 	self deny: (self description isSatisfiedBy: -1)
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MANumberDescriptionTest >> testFromString [
 	"We do some special tests here because #visitNumberDescription: in
 	MAStringReader works around problems with Number>>readFrom."
@@ -85,7 +85,7 @@ MANumberDescriptionTest >> testFromString [
 			= -20 description: 'Negative numbers should be accepted'
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MANumberDescriptionTest >> testThousandsSeparatorCustom [
 	
 	self 
@@ -95,7 +95,7 @@ MANumberDescriptionTest >> testThousandsSeparatorCustom [
 		equals: 20000 "By default, commas should be ignored"
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MANumberDescriptionTest >> testThousandsSeparatorDefault [
 	
 	"self assert: (self description fromString: '') isNil description: 'Empty string should be parsed to nil'."
@@ -104,6 +104,6 @@ MANumberDescriptionTest >> testThousandsSeparatorDefault [
 		equals: 20000 "By default, commas should be ignored"
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MANumberDescriptionTest >> testValidateConditions [
 ]

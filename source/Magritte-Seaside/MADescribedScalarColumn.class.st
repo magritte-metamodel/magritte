@@ -1,15 +1,15 @@
 Class {
-	#name : #MADescribedScalarColumn,
-	#superclass : #MADescribedColumn,
+	#name : 'MADescribedScalarColumn',
+	#superclass : 'MADescribedColumn',
 	#category : 'Magritte-Seaside-Report'
 }
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 MADescribedScalarColumn >> renderCellContent: anObject on: html [
 	html render: (self magritteDescription reference toString: (self valueFor: anObject))
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 MADescribedScalarColumn >> valueFor: aRow [
 	^aRow
 ]

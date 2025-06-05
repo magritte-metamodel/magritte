@@ -1,6 +1,6 @@
-Extension { #name : #MADirectoryDescription }
+Extension { #name : 'MADirectoryDescription' }
 
-{ #category : #'*Magritte-Morph' }
-MADirectoryDescription class >> defaultMorphicClasses [
+{ #category : '*Magritte-Morph' }
+MADirectoryDescription classSide >> defaultMorphicClasses [
 	^ Array with: MAMorphicDirectory
 ]

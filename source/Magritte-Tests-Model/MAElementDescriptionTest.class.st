@@ -1,60 +1,60 @@
 Class {
-	#name : #MAElementDescriptionTest,
-	#superclass : #MADescriptionTest,
-	#category : #'Magritte-Tests-Model-Description'
+	#name : 'MAElementDescriptionTest',
+	#superclass : 'MADescriptionTest',
+	#category : 'Magritte-Tests-Model-Description'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 MAElementDescriptionTest class >> isAbstract [
 	^ true
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAElementDescriptionTest >> actualClass [
 	^ MAElementDescription
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAElementDescriptionTest >> emptyInstance [
 	^ String new
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAElementDescriptionTest >> includedInstance [
 	self subclassResponsibility
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAElementDescriptionTest >> includedInstanceString [
 	^ MAStringWriter write: self includedInstance description: self descriptionInstance
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAElementDescriptionTest >> invalidInstance [
 	^ Object new
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAElementDescriptionTest >> invalidInstanceString [
 	^ self invalidInstance greaseString
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAElementDescriptionTest >> nonIdenticalInstance [
 	^ self includedInstance copy
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAElementDescriptionTest >> nullInstance [
 	^ nil
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAElementDescriptionTest >> shouldSkipStringTests [
 	^ false
 ]
 
-{ #category : #'tests-validation' }
+{ #category : 'tests-validation' }
 MAElementDescriptionTest >> testAddCondition [
 	self description
 		addCondition: [ :value | value isNil ].
@@ -63,7 +63,7 @@ MAElementDescriptionTest >> testAddCondition [
 	self assert: self description conditions first value isString
 ]
 
-{ #category : #'tests-validation' }
+{ #category : 'tests-validation' }
 MAElementDescriptionTest >> testAddConditionLabelled [
 	self description
 		addCondition: [ :value | value isNil ]
@@ -73,13 +73,13 @@ MAElementDescriptionTest >> testAddConditionLabelled [
 	self assert: self description conditions first value = 'ist net nil'
 ]
 
-{ #category : #'tests-converting' }
+{ #category : 'tests-converting' }
 MAElementDescriptionTest >> testAsContainer [
 	self assert: (self description asContainer size) = 1.
 	self assert: (self description asContainer includes: self description)
 ]
 
-{ #category : #'tests-operators' }
+{ #category : 'tests-operators' }
 MAElementDescriptionTest >> testConcatenation [
 	| child1 child2 concatenate |
 	child1 := self description copy.
@@ -97,19 +97,19 @@ MAElementDescriptionTest >> testConcatenation [
 	self assert: concatenate children third = child2
 ]
 
-{ #category : #'tests-copying' }
+{ #category : 'tests-copying' }
 MAElementDescriptionTest >> testCopy [
 	super testCopy.
 	self assert: self description copy default = self description default
 ]
 
-{ #category : #'tests-accessing' }
+{ #category : 'tests-accessing' }
 MAElementDescriptionTest >> testDefault [
 	self description default: self includedInstance.
 	self assert: self description default = self includedInstance
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAElementDescriptionTest >> testDisplay: aBlockOrSymbol [
 	"All MAElementDescription classes should respect #display:, but rather than have a bunch of failing tests, we'll implement as needed"
 
@@ -119,7 +119,7 @@ MAElementDescriptionTest >> testDisplay: aBlockOrSymbol [
 		equals: (aBlockOrSymbol value: self includedInstance).
 ]
 
-{ #category : #'tests-strings' }
+{ #category : 'tests-strings' }
 MAElementDescriptionTest >> testFromString [
 	self shouldSkipStringTests ifTrue: [ ^ self ].
 	self assert: (self description
@@ -135,7 +135,7 @@ MAElementDescriptionTest >> testFromString [
 			equals: self includedInstance
 ]
 
-{ #category : #'tests-strings' }
+{ #category : 'tests-strings' }
 MAElementDescriptionTest >> testFromStringCollection [
 	self shouldSkipStringTests ifTrue: [ ^ self ].
 	self assert: (self description
@@ -155,7 +155,7 @@ MAElementDescriptionTest >> testFromStringCollection [
 					with: self includedInstance)
 ]
 
-{ #category : #'tests-strings' }
+{ #category : 'tests-strings' }
 MAElementDescriptionTest >> testFromStringEvaluated [
 	"This ensures that the parsing algorithm doesn't compile the input, what would cause a  security hole in the framework."
 
@@ -168,7 +168,7 @@ MAElementDescriptionTest >> testFromStringEvaluated [
 	self deny: (error isKindOf: ZeroDivide)
 ]
 
-{ #category : #'tests-strings' }
+{ #category : 'tests-strings' }
 MAElementDescriptionTest >> testFromStringInvalid [
 	self shouldSkipStringTests ifTrue: [ ^ self ].
 	self
@@ -176,7 +176,7 @@ MAElementDescriptionTest >> testFromStringInvalid [
 		raise: MAReadError
 ]
 
-{ #category : #'tests-strings' }
+{ #category : 'tests-strings' }
 MAElementDescriptionTest >> testFromStringNull [
 	self shouldSkipStringTests ifTrue: [ ^ self ].
 	self assert: (self description
@@ -189,12 +189,12 @@ MAElementDescriptionTest >> testFromStringNull [
 		reader: self description stringReader new) isNil
 ]
 
-{ #category : #'tests-accessing' }
+{ #category : 'tests-accessing' }
 MAElementDescriptionTest >> testKind [
 	self assert: (self includedInstance isKindOf: self description kind)
 ]
 
-{ #category : #'tests-validation' }
+{ #category : 'tests-validation' }
 MAElementDescriptionTest >> testKindErrorMessage [
 	self assert: self description kindErrorMessage notEmpty.
 
@@ -206,7 +206,7 @@ MAElementDescriptionTest >> testKindErrorMessage [
 		do: [ :err | self assert: self description kindErrorMessage = err messageText ]
 ]
 
-{ #category : #'tests-validation' }
+{ #category : 'tests-validation' }
 MAElementDescriptionTest >> testRequiredErrorMessage [
 	self assert: self description requiredErrorMessage notEmpty.
 
@@ -218,28 +218,28 @@ MAElementDescriptionTest >> testRequiredErrorMessage [
 		do: [ :err | self assert: self description requiredErrorMessage = err messageText ]
 ]
 
-{ #category : #'tests-testing' }
+{ #category : 'tests-testing' }
 MAElementDescriptionTest >> testSatisfied [
 	self assert: (self description isSatisfiedBy: self includedInstance).
 	self assert: (self description isSatisfiedBy: self nullInstance).
 	self deny: (self description isSatisfiedBy: self invalidInstance)
 ]
 
-{ #category : #'tests-accessing' }
+{ #category : 'tests-accessing' }
 MAElementDescriptionTest >> testStringReader [
 	| object |
 	self description stringReader: (object := MAStringReader new).
 	self assert: self description stringReader = object
 ]
 
-{ #category : #'tests-accessing' }
+{ #category : 'tests-accessing' }
 MAElementDescriptionTest >> testStringWriter [
 	| object |
 	self description stringWriter: (object := MAStringWriter new).
 	self assert: self description stringWriter = object
 ]
 
-{ #category : #'tests-strings' }
+{ #category : 'tests-strings' }
 MAElementDescriptionTest >> testToString [
 	self shouldSkipStringTests ifTrue: [ ^ self ].
 	self assert: (self description
@@ -255,7 +255,7 @@ MAElementDescriptionTest >> testToString [
 			= self includedInstanceString
 ]
 
-{ #category : #'tests-strings' }
+{ #category : 'tests-strings' }
 MAElementDescriptionTest >> testToStringCollection [
 	self shouldSkipStringTests ifTrue: [ ^ self ].
 	self assert: (self description
@@ -275,7 +275,7 @@ MAElementDescriptionTest >> testToStringCollection [
 				with: self includedInstanceString)
 ]
 
-{ #category : #'tests-strings' }
+{ #category : 'tests-strings' }
 MAElementDescriptionTest >> testToStringFromString [
 	self shouldSkipStringTests ifTrue: [ ^ self ].
 	self assert: (self description
@@ -296,7 +296,7 @@ MAElementDescriptionTest >> testToStringFromString [
 				= self includedInstance
 ]
 
-{ #category : #'tests-strings' }
+{ #category : 'tests-strings' }
 MAElementDescriptionTest >> testToStringNull [
 	self shouldSkipStringTests ifTrue: [ ^ self ].
 	self assert: (self description
@@ -312,7 +312,7 @@ MAElementDescriptionTest >> testToStringNull [
 			= self description undefined
 ]
 
-{ #category : #'tests-strings' }
+{ #category : 'tests-strings' }
 MAElementDescriptionTest >> testToStringUndefined [
 	self shouldSkipStringTests ifTrue: [ ^ self ].
 	self description undefined: 'n/a'.
@@ -329,13 +329,13 @@ MAElementDescriptionTest >> testToStringUndefined [
 			= 'n/a'
 ]
 
-{ #category : #'tests-accessing' }
+{ #category : 'tests-accessing' }
 MAElementDescriptionTest >> testUndefined [
 	self description undefined: 'nop'.
 	self assert: self description undefined = 'nop'
 ]
 
-{ #category : #'tests-accessing' }
+{ #category : 'tests-accessing' }
 MAElementDescriptionTest >> testUndefinedValue [
 	self description undefinedValue: 'null'.
 	self assert: self description undefinedValue equals: 'null'.
@@ -344,7 +344,7 @@ MAElementDescriptionTest >> testUndefinedValue [
 	self assert: (self nullInstance readUsing: self description) equals: 'null'
 ]
 
-{ #category : #'tests-validation' }
+{ #category : 'tests-validation' }
 MAElementDescriptionTest >> testValidate [
 	self description beRequired.
 	self
@@ -358,7 +358,7 @@ MAElementDescriptionTest >> testValidate [
 		raiseSingle: MARequiredError
 ]
 
-{ #category : #'tests-validation' }
+{ #category : 'tests-validation' }
 MAElementDescriptionTest >> testValidateConditions [
 	"This test might fail for MADateDescriptionTest, since there is a bug in Squeak."
 
@@ -375,7 +375,7 @@ MAElementDescriptionTest >> testValidateConditions [
 		raiseSingle: MAConditionError
 ]
 
-{ #category : #'tests-validation' }
+{ #category : 'tests-validation' }
 MAElementDescriptionTest >> testValidateKind [
 	self
 		should: [ self description validateKind: self invalidInstance ]
@@ -385,7 +385,7 @@ MAElementDescriptionTest >> testValidateKind [
 		raise: MAKindError
 ]
 
-{ #category : #'tests-validation' }
+{ #category : 'tests-validation' }
 MAElementDescriptionTest >> testValidateMultipleFailures [
 	"This test might fail for MADateDescriptionTest, since there is a bug in Squeak."
 
@@ -400,7 +400,7 @@ MAElementDescriptionTest >> testValidateMultipleFailures [
 		withExceptionDo: [ :e | self assert: e collection size equals: 2 ]
 ]
 
-{ #category : #'tests-validation' }
+{ #category : 'tests-validation' }
 MAElementDescriptionTest >> testValidateRequired [
 	self description beOptional.
 	self
@@ -419,7 +419,7 @@ MAElementDescriptionTest >> testValidateRequired [
 		raise: MARequiredError
 ]
 
-{ #category : #'tests-validation' }
+{ #category : 'tests-validation' }
 MAElementDescriptionTest >> testValidateSpecific [
 	self
 		shouldnt: [ self description validate: self includedInstance ]

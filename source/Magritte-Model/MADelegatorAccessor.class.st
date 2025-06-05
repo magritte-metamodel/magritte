@@ -2,45 +2,45 @@
 My access strategy is to delegate to the next accessor. I am not that useful all by myself, but subclasses might override certain methods to intercept access.
 "
 Class {
-	#name : #MADelegatorAccessor,
-	#superclass : #MAAccessor,
+	#name : 'MADelegatorAccessor',
+	#superclass : 'MAAccessor',
 	#instVars : [
 		'next'
 	],
-	#category : #'Magritte-Model-Accessor'
+	#category : 'Magritte-Model-Accessor'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 MADelegatorAccessor class >> isAbstract [
 	^ false
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 MADelegatorAccessor class >> on: anAccessor [
 	^ self new next: anAccessor
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 MADelegatorAccessor >> = anObject [
 	^ super = anObject and: [ self next = anObject next ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 MADelegatorAccessor >> canRead: aModel [
 	^ self next canRead: aModel
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 MADelegatorAccessor >> canWrite: aModel [
 	^ self next canWrite: aModel
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MADelegatorAccessor >> defaultLabelFor: aDescription [
 	^ self next defaultLabelFor: aDescription
 ]
 
-{ #category : #'accessing-magritte' }
+{ #category : 'accessing-magritte' }
 MADelegatorAccessor >> descriptionNext [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
@@ -51,38 +51,38 @@ MADelegatorAccessor >> descriptionNext [
 			yourself
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 MADelegatorAccessor >> hash [
 	^  super hash bitXor: self next hash
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MADelegatorAccessor >> name [
 	^ self next name
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MADelegatorAccessor >> next [
 	^ next
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MADelegatorAccessor >> next: anAccessor [ 
 	next := anAccessor asAccessor
 ]
 
-{ #category : #copying }
+{ #category : 'copying' }
 MADelegatorAccessor >> postCopy [
 	super postCopy.
 	next := next copy
 ]
 
-{ #category : #model }
+{ #category : 'model' }
 MADelegatorAccessor >> read: aModel [
 	^ self next read: aModel
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 MADelegatorAccessor >> storeOn: aStream [
 	aStream nextPut: $(.
 	self class storeOn: aStream.
@@ -92,7 +92,7 @@ MADelegatorAccessor >> storeOn: aStream [
 		nextPut: $)
 ]
 
-{ #category : #model }
+{ #category : 'model' }
 MADelegatorAccessor >> write: anObject to: aModel [
 	self next write: anObject to: aModel
 ]

@@ -1,19 +1,19 @@
 Class {
-	#name : #MADateSelectorComponent,
-	#superclass : #MADateInputComponent,
+	#name : 'MADateSelectorComponent',
+	#superclass : 'MADateInputComponent',
 	#category : 'Magritte-Seaside-Components'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 MADateSelectorComponent class >> isAbstract [
 	^false
 ]
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 MADateSelectorComponent >> renderButtonOn: html [
 ]
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 MADateSelectorComponent >> renderInputOn: html [
 	html dateInput
 		value: self value;

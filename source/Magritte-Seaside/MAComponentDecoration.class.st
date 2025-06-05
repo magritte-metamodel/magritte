@@ -1,10 +1,10 @@
 Class {
-	#name : #MAComponentDecoration,
-	#superclass : #WADecoration,
+	#name : 'MAComponentDecoration',
+	#superclass : 'WADecoration',
 	#category : 'Magritte-Seaside-Decorations'
 }
 
-{ #category : #defaults }
+{ #category : 'defaults' }
 MAComponentDecoration class >> defaultErrorClass [
 	^ MAError
 ]

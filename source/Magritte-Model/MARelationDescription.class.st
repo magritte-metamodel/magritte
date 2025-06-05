@@ -36,42 +36,42 @@ maintain) better working and well tested relationship descriptions
 that solve the current problems. - *Lukas>http://forum.world.st/magrite-toOne-relationship-and-component-creation-tp1561754p1563032.html*
 "
 Class {
-	#name : #MARelationDescription,
-	#superclass : #MAReferenceDescription,
+	#name : 'MARelationDescription',
+	#superclass : 'MAReferenceDescription',
 	#instVars : [
 		'classes'
 	],
-	#category : #'Magritte-Model-Description'
+	#category : 'Magritte-Model-Description'
 }
 
-{ #category : #'accessing-defaults' }
+{ #category : 'accessing-defaults' }
 MARelationDescription class >> defaultClasses [
 	^ Set new
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 MARelationDescription >> acceptMagritte: aVisitor [
 	aVisitor visitRelationDescription: self
 ]
 
-{ #category : #'accessing-dynamic' }
+{ #category : 'accessing-dynamic' }
 MARelationDescription >> allClasses [
 	^ (Array withAll: self classes)
 		sort: [ :a :b | a label caseInsensitiveLessOrEqual: b label ];
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MARelationDescription >> classes [
 	^ classes ifNil: [ classes := self class defaultClasses ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MARelationDescription >> classes: aCollection [
 	classes := aCollection
 ]
 
-{ #category : #'accessing-dynamic' }
+{ #category : 'accessing-dynamic' }
 MARelationDescription >> commonClass [
 	"Answer a common superclass of the classes of the receiver. The algorithm is implemented to be as efficient as possible. The inner loop will be only executed the first few iterations."
 
@@ -85,7 +85,7 @@ MARelationDescription >> commonClass [
 	^ current
 ]
 
-{ #category : #'acessing-magritte' }
+{ #category : 'acessing-magritte' }
 MARelationDescription >> descriptionClasses [
 	<magritteDescription>
 	^ MAMultipleOptionDescription new
@@ -100,7 +100,7 @@ MARelationDescription >> descriptionClasses [
 "1. There may be a better way. When generating description methods from meta-meta descriptions, without the line above, an unneeded `default: Set new;` was being added to the generated method."
 ]
 
-{ #category : #'acessing-magritte' }
+{ #category : 'acessing-magritte' }
 MARelationDescription >> descriptionReference [
 	<magritteDescription>
 	^ super descriptionReference
@@ -109,13 +109,13 @@ MARelationDescription >> descriptionReference [
 		yourself
 ]
 
-{ #category : #copying }
+{ #category : 'copying' }
 MARelationDescription >> postCopy [
 	super postCopy.
 	classes := classes copy
 ]
 
-{ #category : #'accessing-dynamic' }
+{ #category : 'accessing-dynamic' }
 MARelationDescription >> reference [
 	"The reference within a ==*MARelationDescription*== is calculated automatically from all the classes of the receiver, if set to ==nil==. By setting the reference to a ==*MAContainer*== instance it is possible to customize the reference description."
 

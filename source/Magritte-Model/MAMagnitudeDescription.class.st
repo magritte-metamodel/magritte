@@ -2,27 +2,27 @@
 I am an abstract description for subclasses of ==Magnitude==. The range of accepted values can be limited using the accessors ==min:== and ==max:==.
 "
 Class {
-	#name : #MAMagnitudeDescription,
-	#superclass : #MAElementDescription,
+	#name : 'MAMagnitudeDescription',
+	#superclass : 'MAElementDescription',
 	#category : 'Magritte-Model-Description'
 }
 
-{ #category : #'accessing-defaults' }
+{ #category : 'accessing-defaults' }
 MAMagnitudeDescription class >> defaultMax [
 	^ nil
 ]
 
-{ #category : #'accessing-defaults' }
+{ #category : 'accessing-defaults' }
 MAMagnitudeDescription class >> defaultMin [
 	^ nil
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 MAMagnitudeDescription >> acceptMagritte: aVisitor [
 	aVisitor visitMagnitudeDescription: self
 ]
 
-{ #category : #'acessing-magritte' }
+{ #category : 'acessing-magritte' }
 MAMagnitudeDescription >> descriptionMax [
 	<magritteDescription>
 	^ self class new
@@ -32,7 +32,7 @@ MAMagnitudeDescription >> descriptionMax [
 		yourself
 ]
 
-{ #category : #'acessing-magritte' }
+{ #category : 'acessing-magritte' }
 MAMagnitudeDescription >> descriptionMin [
 	<magritteDescription>
 	^ self class new
@@ -42,49 +42,49 @@ MAMagnitudeDescription >> descriptionMin [
 		yourself
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 MAMagnitudeDescription >> isSortable [
 	^ true
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 MAMagnitudeDescription >> isWithinRange: anObject [
 	^ (self min isNil or: [ self min <= anObject ])
 		and: [ self max isNil or: [ self max >= anObject ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAMagnitudeDescription >> max [
 	^ self propertyAt: #max ifAbsent: [ self class defaultMax ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAMagnitudeDescription >> max: aMagnitudeOrNil [
 	"Set the maximum for accepted values, or ==nil== if open."
 
 	self propertyAt: #max put: aMagnitudeOrNil
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAMagnitudeDescription >> min [
 	^ self propertyAt: #min ifAbsent: [ self class defaultMin ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAMagnitudeDescription >> min: aMagnitudeOrNil [
 	"Set the minimum for accepted values, or ==nil== if open."
 
 	self propertyAt: #min put: aMagnitudeOrNil
 ]
 
-{ #category : #conveniance }
+{ #category : 'conveniance' }
 MAMagnitudeDescription >> min: aMinimumObject max: aMaximumObject [
 	"Set the minimum and maximum of accepted values, or ==nil== if open."
 
 	self min: aMinimumObject; max: aMaximumObject
 ]
 
-{ #category : #'accessing-messages' }
+{ #category : 'accessing-messages' }
 MAMagnitudeDescription >> rangeErrorMessage [
 	| min max |
 	^ self propertyAt: #rangeErrorMessage ifAbsent: [
@@ -97,12 +97,12 @@ MAMagnitudeDescription >> rangeErrorMessage [
 			ifTrue: [ ^ 'Input must be below or equal to ' , max ] ]
 ]
 
-{ #category : #'accessing-messages' }
+{ #category : 'accessing-messages' }
 MAMagnitudeDescription >> rangeErrorMessage: aString [
 	self propertyAt: #rangeErrorMessage put: aString
 ]
 
-{ #category : #'validation-private' }
+{ #category : 'validation-private' }
 MAMagnitudeDescription >> validateSpecific: anObject [
 	super validateSpecific: anObject.
 	(self isWithinRange: anObject)

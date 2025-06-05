@@ -2,53 +2,53 @@
 I am a description of numbers, possible values are instances of ==Number== and all its subclasses, including ==Integer== and ==Float==. My visual representation could be a number input-box or even a slider-control.
 "
 Class {
-	#name : #MANumberDescription,
-	#superclass : #MAMagnitudeDescription,
-	#category : #'Magritte-Model-Description'
+	#name : 'MANumberDescription',
+	#superclass : 'MAMagnitudeDescription',
+	#category : 'Magritte-Model-Description'
 }
 
-{ #category : #'accessing-defaults' }
+{ #category : 'accessing-defaults' }
 MANumberDescription class >> defaultKind [
 	^ Number
 ]
 
-{ #category : #'accessing-defaults' }
+{ #category : 'accessing-defaults' }
 MANumberDescription class >> defaultThousandsSeparator [
 
 	^ $,
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 MANumberDescription class >> isAbstract [
 	^ false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MANumberDescription class >> label [
 	^ 'Number'
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 MANumberDescription >> acceptMagritte: aVisitor [
 	aVisitor visitNumberDescription: self
 ]
 
-{ #category : #convenience }
+{ #category : 'convenience' }
 MANumberDescription >> beInteger [
 	self addCondition: (MACondition selector: #isInteger) labelled: 'No integer was entered'
 ]
 
-{ #category : #convenience }
+{ #category : 'convenience' }
 MANumberDescription >> beNegative [
 	self addCondition: (MACondition selector: #negative) labelled: 'No negative number was entered'
 ]
 
-{ #category : #convenience }
+{ #category : 'convenience' }
 MANumberDescription >> bePositive [
 	self addCondition: (MACondition selector: #positive) labelled: 'No positive number was entered'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MANumberDescription >> thousandsSeparator [
 
 	^ self 
@@ -56,7 +56,7 @@ MANumberDescription >> thousandsSeparator [
 		ifAbsent: [ self class defaultThousandsSeparator ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MANumberDescription >> thousandsSeparator: aCharacter [
 
 	^ self 

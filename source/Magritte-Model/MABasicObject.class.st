@@ -1,10 +1,10 @@
 Class {
-	#name : #MABasicObject,
-	#superclass : #GRObject,
+	#name : 'MABasicObject',
+	#superclass : 'GRObject',
 	#category : 'Magritte-Model-Core'
 }
 
-{ #category : #'error handling' }
+{ #category : 'error handling' }
 MABasicObject class >> defaultErrorClass [
 	^ MAError
 ]

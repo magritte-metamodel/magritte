@@ -1,6 +1,6 @@
-Extension { #name : #MAExternalFileModel }
+Extension { #name : 'MAExternalFileModel' }
 
-{ #category : #'*magritte-gemstone-seaside-accessing' }
+{ #category : '*magritte-gemstone-seaside-accessing' }
 MAExternalFileModel >> url [
 	^ self baseUrl isNil
 		ifTrue: [ super url ]

@@ -1,40 +1,40 @@
 Class {
-	#name : #MAPropertyChangedAnnouncement,
-	#superclass : #Announcement,
+	#name : 'MAPropertyChangedAnnouncement',
+	#superclass : 'Announcement',
 	#instVars : [
 		'key',
 		'value',
 		'owner'
 	],
-	#category : #'Magritte-Model-Core'
+	#category : 'Magritte-Model-Core'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAPropertyChangedAnnouncement >> key [
 	^ key
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAPropertyChangedAnnouncement >> key: anObject [
 	key := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAPropertyChangedAnnouncement >> owner [
 	^ owner
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAPropertyChangedAnnouncement >> owner: anObject [
 	owner := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAPropertyChangedAnnouncement >> value [
 	^ value
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAPropertyChangedAnnouncement >> value: anObject [
 	value := anObject
 ]

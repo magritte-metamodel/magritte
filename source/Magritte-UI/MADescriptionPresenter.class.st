@@ -1,25 +1,25 @@
 Class {
-	#name : #MADescriptionPresenter,
-	#superclass : #Model,
+	#name : 'MADescriptionPresenter',
+	#superclass : 'Model',
 	#traits : 'MATDescriptionPresenter',
 	#classTraits : 'MATDescriptionPresenter classTrait',
 	#instVars : [
 		'view'
 	],
-	#category : #'Magritte-UI'
+	#category : 'Magritte-UI'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 MADescriptionPresenter class >> memento: aMemento [
 	^ self memento: aMemento description: aMemento magritteDescription
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 MADescriptionPresenter class >> memento: aMemento description: aDescription [
 	^ self memento: aMemento description: aDescription parent: nil
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 MADescriptionPresenter class >> memento: aMemento description: aDescription parent: aComponent [
 	^ self new
 		setMemento: aMemento;
@@ -28,7 +28,7 @@ MADescriptionPresenter class >> memento: aMemento description: aDescription pare
 		yourself
 ]
 
-{ #category : #prototypes }
+{ #category : 'prototypes' }
 MADescriptionPresenter >> barMorph: anArray [
 	| bar |
 	bar := self rectangleMorph
@@ -44,7 +44,7 @@ MADescriptionPresenter >> barMorph: anArray [
 	^ bar
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MADescriptionPresenter >> buildMorph [
 
 	| result |
@@ -57,17 +57,17 @@ MADescriptionPresenter >> buildMorph [
 	^ result
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MADescriptionPresenter >> buildMorphEditorOn: aMorph [
 	self buildMorphViewOn: aMorph
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MADescriptionPresenter >> buildMorphViewOn: aMorph [
 	self subclassResponsibility
 ]
 
-{ #category : #prototypes }
+{ #category : 'prototypes' }
 MADescriptionPresenter >> buttonMorph: aSelector [
 	| button |
 	button := PluggableButtonMorph
@@ -81,27 +81,27 @@ MADescriptionPresenter >> buttonMorph: aSelector [
 	^ button
 ]
 
-{ #category : #'private-morphic' }
+{ #category : 'private-morphic' }
 MADescriptionPresenter >> buttonState [
 	^ true
 ]
 
-{ #category : #'accessing-configuration' }
+{ #category : 'accessing-configuration' }
 MADescriptionPresenter >> defaultBackgroundColor [
 	^ self magritteDescription morphColor
 ]
 
-{ #category : #'accessing-configuration' }
+{ #category : 'accessing-configuration' }
 MADescriptionPresenter >> defaultSpacerSize [
 	^ 5
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MADescriptionPresenter >> morph [
 	^ view ifNil: [ view := self buildMorph ]
 ]
 
-{ #category : #prototypes }
+{ #category : 'prototypes' }
 MADescriptionPresenter >> rectangleMorph [
 	^ BorderedMorph new
 		borderWidth: 0;
@@ -113,12 +113,12 @@ MADescriptionPresenter >> rectangleMorph [
 		yourself
 ]
 
-{ #category : #prototypes }
+{ #category : 'prototypes' }
 MADescriptionPresenter >> stringMorph [
 	^ StringMorph new
 ]
 
-{ #category : #prototypes }
+{ #category : 'prototypes' }
 MADescriptionPresenter >> windowMorph [
 	^ SystemWindow labelled: self magritteDescription label
 ]

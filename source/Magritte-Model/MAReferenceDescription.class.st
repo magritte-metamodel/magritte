@@ -50,25 +50,25 @@ From *a 2006 thread>http://forum.world.st/MA-labaled-options-tp116188.html`*, se
 1. *Lukas on customizing references via the Magritte ML>http://forum.world.st/MAToOneRelationDescription-dispaly-data-tp117214p117218.html*
 "
 Class {
-	#name : #MAReferenceDescription,
-	#superclass : #MAElementDescription,
+	#name : 'MAReferenceDescription',
+	#superclass : 'MAElementDescription',
 	#instVars : [
 		'reference'
 	],
-	#category : #'Magritte-Model-Description'
+	#category : 'Magritte-Model-Description'
 }
 
-{ #category : #'accessing-defaults' }
+{ #category : 'accessing-defaults' }
 MAReferenceDescription class >> defaultReference [
 	^ MAStringDescription new
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 MAReferenceDescription >> acceptMagritte: aVisitor [
 	aVisitor visitReferenceDescription: self
 ]
 
-{ #category : #'acessing-magritte' }
+{ #category : 'acessing-magritte' }
 MAReferenceDescription >> descriptionReference [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
@@ -80,50 +80,50 @@ MAReferenceDescription >> descriptionReference [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAReferenceDescription >> gtSearchSource [
 	^ self propertyAt: #gtSearchSource ifAbsent: [ nil ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAReferenceDescription >> gtSearchSource: valuable [
 	self propertyAt: #gtSearchSource put: valuable
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAReferenceDescription >> gtSearchTransform [
 	^ self propertyAt: #gtSearchTransform ifAbsent: #yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAReferenceDescription >> gtSearchTransform: aValuable [
 	"aValuable - parameter is the object returned by the Search (already transformed by its send block if present)"
 
 	self propertyAt: #gtSearchTransform put: aValuable
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAReferenceDescription >> initializer [
 	^ self propertyAt: #initializer ifAbsent: [ #yourself ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAReferenceDescription >> initializer: valuable [
 	self propertyAt: #initializer put: valuable
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 MAReferenceDescription >> isMultiple [
 	^false
 ]
 
-{ #category : #copying }
+{ #category : 'copying' }
 MAReferenceDescription >> postCopy [
 	super postCopy.
 	reference := reference copy
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAReferenceDescription >> reference [
 	reference ifNil: [ reference := self class defaultReference ].
 	^ reference
@@ -131,7 +131,7 @@ MAReferenceDescription >> reference [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAReferenceDescription >> reference: aDescription [
 	reference := aDescription
 ]

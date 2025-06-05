@@ -1,35 +1,35 @@
 Class {
-	#name : #MAOptionboxColumn,
-	#superclass : #MASelectionColumn,
+	#name : 'MAOptionboxColumn',
+	#superclass : 'MASelectionColumn',
 	#category : 'Magritte-Seaside-Report'
 }
 
-{ #category : #'accessing-defaults' }
+{ #category : 'accessing-defaults' }
 MAOptionboxColumn >> defaultSelection [
 	^ nil
 ]
 
-{ #category : #'accessing-defaults' }
+{ #category : 'accessing-defaults' }
 MAOptionboxColumn >> defaultStringDeselected [
 	^ self webdings: '&nbsp;'
 ]
 
-{ #category : #'accessing-defaults' }
+{ #category : 'accessing-defaults' }
 MAOptionboxColumn >> defaultStringSelected [
 	^ self webdings: 'a'
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 MAOptionboxColumn >> deselectRow: anObject [
 	self selection: nil
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 MAOptionboxColumn >> isSelected: anObject [
 	^ self selection == anObject
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAOptionboxColumn >> radioGroupFor: html [
 	"This is a very bad thing, you might never have seen in your own life. Very strange things might happen here, but for now it mostly does what we need."
 
@@ -42,7 +42,7 @@ MAOptionboxColumn >> radioGroupFor: html [
 			self propertyAt: #radioGroupCallback put: html radioGroup ]
 ]
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 MAOptionboxColumn >> renderCellFormContent: anObject on: html [
 	html radioButton
 		group: (self radioGroupFor: html);
@@ -50,7 +50,7 @@ MAOptionboxColumn >> renderCellFormContent: anObject on: html [
 		callback: [ self selectRow: anObject ]
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 MAOptionboxColumn >> selectRow: anObject [
 	self selection: anObject
 ]

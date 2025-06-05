@@ -2,32 +2,32 @@
 I am a description of Smalltalk classes, possible values can be any of ==Smalltalk allClasses==.
 "
 Class {
-	#name : #MAClassDescription,
-	#superclass : #MAElementDescription,
-	#category : #'Magritte-Model-Description'
+	#name : 'MAClassDescription',
+	#superclass : 'MAElementDescription',
+	#category : 'Magritte-Model-Description'
 }
 
-{ #category : #'accessing-defaults' }
+{ #category : 'accessing-defaults' }
 MAClassDescription class >> defaultDisplayProperty [
 	^ #name
 ]
 
-{ #category : #'accessing-defaults' }
+{ #category : 'accessing-defaults' }
 MAClassDescription class >> defaultKind [
 	^ Class
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 MAClassDescription class >> isAbstract [
 	^ false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAClassDescription class >> label [
 	^ 'Class'
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 MAClassDescription >> acceptMagritte: aVisitor [
 	aVisitor visitClassDescription: self
 ]

@@ -1,7 +1,7 @@
-Extension { #name : #GRPackage }
+Extension { #name : 'GRPackage' }
 
-{ #category : #'*magritte-model' }
-GRPackage class >> magritteModel [
+{ #category : '*magritte-model' }
+GRPackage classSide >> magritteModel [
 	^ self new
 		name: 'Magritte-Model';
 		description: 'The Magritte metamodel.';
@@ -10,7 +10,7 @@ GRPackage class >> magritteModel [
 		yourself
 ]
 
-{ #category : #'*magritte-model' }
+{ #category : '*magritte-model' }
 GRPackage >> magritteUrl [
 	^ 'http://source.lukas-renggli.ch/magritte2'
 ]

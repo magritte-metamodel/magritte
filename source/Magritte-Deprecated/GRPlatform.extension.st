@@ -1,6 +1,6 @@
-Extension { #name : #GRPlatform }
+Extension { #name : 'GRPlatform' }
 
-{ #category : #'*magritte-deprecated' }
+{ #category : '*magritte-deprecated' }
 GRPlatform >> magritteEvaluate: aBlock onUnhandledErrorDo: errorBlock [
 	"Evaluate aBlock. If an Error is signaled and is not handled higher up the
 	stack, evaluate errorBlock with the Error instead of opening a debugger."
@@ -8,7 +8,7 @@ GRPlatform >> magritteEvaluate: aBlock onUnhandledErrorDo: errorBlock [
 	self subclassResponsibility
 ]
 
-{ #category : #'*magritte-deprecated' }
+{ #category : '*magritte-deprecated' }
 GRPlatform >> magritteRegister: anObject forMethodChangeNotificationsUsing: selector [
 	"Register anObject with the system to be notified whenever a method is
 	added, removed, or modified. When this happens, the specified selector
@@ -17,7 +17,7 @@ GRPlatform >> magritteRegister: anObject forMethodChangeNotificationsUsing: sele
 	self subclassResponsibility
 ]
 
-{ #category : #'*magritte-deprecated' }
+{ #category : '*magritte-deprecated' }
 GRPlatform >> magritteUnregister: anObject forMethodChangeNotificationsUsing: selector [
 	"Unregister anObject with the system for notification whenever a method is
 	added, removed, or modified. anObject should no longer receive notifications

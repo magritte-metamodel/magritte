@@ -1,10 +1,10 @@
 Class {
-	#name : #MAObjectTest,
-	#superclass : #TestCase,
+	#name : 'MAObjectTest',
+	#superclass : 'TestCase',
 	#category : 'Magritte-Tests-Model-Core'
 }
 
-{ #category : #building }
+{ #category : 'building' }
 MAObjectTest class >> buildTestClassFor: aClass [ 
 	"Utility method to create test cases for each object. Use like:
 	
@@ -37,43 +37,43 @@ MAObjectTest class >> buildTestClassFor: aClass [
 	aClass subclassesDo: [ :each | self buildTestClassFor: each ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 MAObjectTest class >> isAbstract [
 	^ true
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAObjectTest class >> packageNamesUnderTest [
 	^ #('Magritte-Model')
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 MAObjectTest class >> shouldInheritSelectors [
 	^ true
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAObjectTest >> actualClass [
 	^ MAObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAObjectTest >> instance [
 	self subclassResponsibility
 ]
 
-{ #category : #'tests-copying' }
+{ #category : 'tests-copying' }
 MAObjectTest >> testCopy [
 	self assert: self instance = self instance copy.
 	self deny: self instance == self instance copy
 ]
 
-{ #category : #'tests-copying' }
+{ #category : 'tests-copying' }
 MAObjectTest >> testCopyProperties [
 	self deny: self instance properties == self instance copy properties
 ]
 
-{ #category : #'tests-comparing' }
+{ #category : 'tests-comparing' }
 MAObjectTest >> testEqual [
 	self assert: self instance = self instance.
 	self assert: self instance = self instance copy.
@@ -83,19 +83,19 @@ MAObjectTest >> testEqual [
 	self deny: self instance = String new
 ]
 
-{ #category : #'tests-comparing' }
+{ #category : 'tests-comparing' }
 MAObjectTest >> testHash [
 	self assert: self instance hash isInteger.
 	self assert: self instance hash = self instance hash.
 	self assert: self instance hash = self instance copy hash
 ]
 
-{ #category : #'tests-testing' }
+{ #category : 'tests-testing' }
 MAObjectTest >> testIsDescription [
 	self deny: self instance isDescription
 ]
 
-{ #category : #'tests-properties' }
+{ #category : 'tests-properties' }
 MAObjectTest >> testProperties [
 	self assert: self instance properties notNil.
 	self instance instVarNamed: 'properties' put: nil.
@@ -113,21 +113,21 @@ MAObjectTest >> testProperties [
 	self instance instVarNamed: 'properties' put: nil
 ]
 
-{ #category : #'tests-properties' }
+{ #category : 'tests-properties' }
 MAObjectTest >> testPropertiesAt [
 	self assert: (self instance propertyAt: #foo put: 'bar') = 'bar'.
 	self assert: (self instance propertyAt: #foo) = 'bar'.
 	self should: [ self instance propertyAt: #bar ] raise: MAPropertyError
 ]
 
-{ #category : #'tests-properties' }
+{ #category : 'tests-properties' }
 MAObjectTest >> testPropertiesAtIfAbsent [
 	self assert: (self instance propertyAt: #foo put: 'bar') = 'bar'.
 	self assert: (self instance propertyAt: #foo ifAbsent: [ 'baz' ]) = 'bar'.
 	self assert: (self instance propertyAt: #bar ifAbsent: [ 'baz' ]) = 'baz'
 ]
 
-{ #category : #'tests-properties' }
+{ #category : 'tests-properties' }
 MAObjectTest >> testPropertiesAtIfAbsentPut [
 	self assert: (self instance propertyAt: #foo put: 'bar') = 'bar'.
 	self assert: (self instance propertyAt: #foo ifAbsentPut: [ 'baz' ]) = 'bar'.
@@ -137,14 +137,14 @@ MAObjectTest >> testPropertiesAtIfAbsentPut [
 	self assert: (self instance propertyAt: #bar) = 'baz'
 ]
 
-{ #category : #'tests-properties' }
+{ #category : 'tests-properties' }
 MAObjectTest >> testPropertiesAtIfPresent [
 	self assert: (self instance propertyAt: #foo ifPresent: [ :value | self assert: false ]) isNil.
 	self instance propertyAt: #foo put: 1.
 	self assert: (self instance propertyAt: #foo ifPresent: [ :value | self assert: value = 1. 2 ]) = 2
 ]
 
-{ #category : #'tests-properties' }
+{ #category : 'tests-properties' }
 MAObjectTest >> testPropertiesAtPut [
 	self instance propertyAt: #foo put: 'bar'.
 	self assert: (self instance propertyAt: #foo) = 'bar'.
@@ -153,7 +153,7 @@ MAObjectTest >> testPropertiesAtPut [
 	self assert: (self instance propertyAt: #foo) = 'baz'
 ]
 
-{ #category : #'tests-properties' }
+{ #category : 'tests-properties' }
 MAObjectTest >> testPropertiesHas [
 	self deny: (self instance hasProperty: #foo).
 	self instance propertyAt: #foo put: 'bar'.
@@ -161,7 +161,7 @@ MAObjectTest >> testPropertiesHas [
 	self deny: (self instance hasProperty: #bar)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MAObjectTest >> testSanity [
 	"If this test case fails, there is something wrong with the setup of the test-case."
 

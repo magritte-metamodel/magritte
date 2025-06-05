@@ -2,8 +2,8 @@
 I handle one line of text.
 "
 Class {
-	#name : #TextInputFieldModel,
-	#superclass : #TextModel,
+	#name : 'TextInputFieldModel',
+	#superclass : 'TextModel',
 	#instVars : [
 		'ghostText',
 		'alwaysAccept',
@@ -15,7 +15,7 @@ Class {
 	#category : 'Spec-Widgets'
 }
 
-{ #category : #specs }
+{ #category : 'specs' }
 TextInputFieldModel class >> defaultSpec [
 	<spec>
 	^ {#TextField.
@@ -35,7 +35,7 @@ TextInputFieldModel class >> defaultSpec [
 			#hideScrollBarsIndefinitely.}
 ]
 
-{ #category : #example }
+{ #category : 'example' }
 TextInputFieldModel class >> example [
 	| instance |
 	
@@ -45,13 +45,13 @@ TextInputFieldModel class >> example [
 	instance text: 'This is a text'
 ]
 
-{ #category : #specs }
+{ #category : 'specs' }
 TextInputFieldModel class >> title [
 
 	^ 'Text'
 ]
 
-{ #category : #morphic }
+{ #category : 'morphic' }
 TextInputFieldModel >> accept: aText [
 
 	textHolder contents: aText.
@@ -59,7 +59,7 @@ TextInputFieldModel >> accept: aText [
 	self changed: #clearUserEdits.
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 TextInputFieldModel >> acceptOnCR [
 	<api: #inspect>
 	"Return true if the text is accepted when the Enter key is stroked"
@@ -67,7 +67,7 @@ TextInputFieldModel >> acceptOnCR [
 	^ acceptOnCR contents
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 TextInputFieldModel >> acceptOnCR: aBoolean [
 	<api: #boolean getter: #acceptOnCR registration: #whenAcceptOnCRChanged:>
 	"Set if the text is accepted when the Enter key is stroked or not"
@@ -75,13 +75,13 @@ TextInputFieldModel >> acceptOnCR: aBoolean [
 	acceptOnCR contents: aBoolean
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TextInputFieldModel >> actionToPerformHolder [
 
 	^ actionToPerformHolder
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 TextInputFieldModel >> autoAccept [ 
 	<api: #inspect>
 	"Return true if the text is accepted after ech keystroke"
@@ -89,7 +89,7 @@ TextInputFieldModel >> autoAccept [
 	^ autoAccept contents
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 TextInputFieldModel >> autoAccept: aBoolean [
 	<api: #boolean getter: #autoAccept registration: #whenAutoAcceptChanged:>
 	"Set if the text is accepted after each keystroke or not"
@@ -97,7 +97,7 @@ TextInputFieldModel >> autoAccept: aBoolean [
 	autoAccept contents: aBoolean.
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 TextInputFieldModel >> beDecrypted [
 	<api: #do>
 	"Decrypt the entered text"
@@ -105,7 +105,7 @@ TextInputFieldModel >> beDecrypted [
 	self encrypted: false
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 TextInputFieldModel >> beEncrypted [
 	<api: #do>
 	"Encrypt the entered text"
@@ -113,7 +113,7 @@ TextInputFieldModel >> beEncrypted [
 	self encrypted: true
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 TextInputFieldModel >> defaultEntryCompletion [
 
 	| applicants |
@@ -130,19 +130,19 @@ TextInputFieldModel >> defaultEntryCompletion [
 						and: [currApplicant asUppercase includesSubstring: currText asString asUppercase]].
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TextInputFieldModel >> encrypted [
 
 	^ isEncrypted contents
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TextInputFieldModel >> encrypted: aBoolean [
 
 	isEncrypted contents: aBoolean 
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 TextInputFieldModel >> entryCompletion [
 	<api: #st getter: #entryCompletion registration: #whenEntryCompletionChanged:>
 	"Return an entry completion used to suggest text while typing"
@@ -150,7 +150,7 @@ TextInputFieldModel >> entryCompletion [
 	^ entryCompletion contents
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 TextInputFieldModel >> entryCompletion: anEntryCompletion [
 	<api: #st getter: #entryCompletion registration: #whenEntryCompletionChanged:>
 	"Set an entry completion used to suggest text while typing"
@@ -158,7 +158,7 @@ TextInputFieldModel >> entryCompletion: anEntryCompletion [
 	entryCompletion contents: anEntryCompletion.
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 TextInputFieldModel >> ghostText [
 	<api: #inspect>
 	"Return the ghost text of the text zone"
@@ -166,7 +166,7 @@ TextInputFieldModel >> ghostText [
 	^ ghostText contents
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 TextInputFieldModel >> ghostText: aText [
 	<api: #string getter: #ghostText registration: #whenGhostTextChanged:>
 	"Set the ghost text of the text zone"
@@ -174,7 +174,7 @@ TextInputFieldModel >> ghostText: aText [
 	ghostText contents: aText translated.
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TextInputFieldModel >> initialize [
 	"Initialization code for TextComposableModel"
 
@@ -192,13 +192,13 @@ TextInputFieldModel >> initialize [
 	isEncrypted whenChangedDo: [:bool | self widget ifNotNil: [:w | w encrypted: bool ]].
 ]
 
-{ #category : #NOCompletion }
+{ #category : 'NOCompletion' }
 TextInputFieldModel >> isCodeCompletionAllowed [
 	
 	^ false
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 TextInputFieldModel >> removeEntryCompletion [
 	< api:#do>
 	"Remove the entry completion"
@@ -206,13 +206,13 @@ TextInputFieldModel >> removeEntryCompletion [
 	self entryCompletion: nil
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TextInputFieldModel >> textHolder [
 
 	^ textHolder
 ]
 
-{ #category : #'protocol-events' }
+{ #category : 'protocol-events' }
 TextInputFieldModel >> whenAcceptOnCRChanged: aBlock [
 	<api: #event>
 	"aBlock will be performed when acceptOnCR changed"
@@ -220,7 +220,7 @@ TextInputFieldModel >> whenAcceptOnCRChanged: aBlock [
 	acceptOnCR whenChangedDo: aBlock
 ]
 
-{ #category : #'protocol-events' }
+{ #category : 'protocol-events' }
 TextInputFieldModel >> whenAutoAcceptChanged: aBlock [
 	<api: #event>
 	"aBlock will be performed when autoAccept changed"
@@ -228,7 +228,7 @@ TextInputFieldModel >> whenAutoAcceptChanged: aBlock [
 	autoAccept whenChangedDo: aBlock
 ]
 
-{ #category : #'protocol-events' }
+{ #category : 'protocol-events' }
 TextInputFieldModel >> whenEntryCompletionChanged: aBlock [
 	<api: #event>
 	"aBlock will be performed when entryCompletion changed"
@@ -236,7 +236,7 @@ TextInputFieldModel >> whenEntryCompletionChanged: aBlock [
 	entryCompletion whenChangedDo: aBlock
 ]
 
-{ #category : #'protocol-events' }
+{ #category : 'protocol-events' }
 TextInputFieldModel >> whenGhostTextChanged: aBlock [
 	<api: #event>
 	"aBlock will be performed when ghostText changed"

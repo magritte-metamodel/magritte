@@ -2,8 +2,8 @@
 A WindowModel is a spec model for a Window
 "
 Class {
-	#name : #WindowModel,
-	#superclass : #AbstractBasicWidget,
+	#name : 'WindowModel',
+	#superclass : 'AbstractBasicWidget',
 	#instVars : [
 		'model',
 		'initialExtent',
@@ -13,14 +13,14 @@ Class {
 	#category : 'Spec-Widgets'
 }
 
-{ #category : #specs }
+{ #category : 'specs' }
 WindowModel class >> defaultSpec [
 	<spec>
 	
 	^ #( WindowSpec model: model )
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 WindowModel >> addModelIn: widget withSpec: aSpec [
 
 	self model ifNil: [ ^ self ].
@@ -30,7 +30,7 @@ WindowModel >> addModelIn: widget withSpec: aSpec [
 		frame: (0@0 corner: 1@1)
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 WindowModel >> addModelIn: widget withSpecLayout: aSpec [
 
 	self model ifNil: [ ^ self ].
@@ -39,7 +39,7 @@ WindowModel >> addModelIn: widget withSpecLayout: aSpec [
 		frame: (0@0 corner: 1@1)
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 WindowModel >> buildWithSpec: aSpec [
 	"Build the widget using the spec name provided as argument"
 	| widget |
@@ -57,7 +57,7 @@ WindowModel >> buildWithSpec: aSpec [
 	^ widget
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 WindowModel >> buildWithSpecLayout: aSpec [
 	"Build the widget using the spec name provided as argument"
 	| widget |
@@ -75,30 +75,30 @@ WindowModel >> buildWithSpecLayout: aSpec [
 	^ widget
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 WindowModel >> close [
 	self widget ifNotNil: [ :w| w close ].
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 WindowModel >> defaultInitialExtent [
 	
 	^ 400@300
 ]
 
-{ #category : #focus }
+{ #category : 'focus' }
 WindowModel >> giveFocusToNextFrom: aModel [ 
 
 	^ self model giveFocusToNextFrom: aModel
 ]
 
-{ #category : #focus }
+{ #category : 'focus' }
 WindowModel >> giveFocusToPreviousFrom: aModel [ 
 
 	^ self model giveFocusToPreviousFrom: aModel 
 ]
 
-{ #category : #morphic }
+{ #category : 'morphic' }
 WindowModel >> initialExtent [
 
 	^ initialExtent contents
@@ -108,7 +108,7 @@ WindowModel >> initialExtent [
 								ifNil: [ self defaultInitialExtent ]]]
 ]
 
-{ #category : #initialize }
+{ #category : 'initialize' }
 WindowModel >> initialize [
 	"Initialization code for WindowModel"
 
@@ -122,7 +122,7 @@ WindowModel >> initialize [
 	model whenChangedDo: [:m | self updateTitle ].
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 WindowModel >> isDisplayed [
 
 	^ self window
@@ -130,25 +130,25 @@ WindowModel >> isDisplayed [
 		ifNotNil: [:w | w isDisplayed ]
 ]
 
-{ #category : #morphic }
+{ #category : 'morphic' }
 WindowModel >> model [
 	
 	^ model contents
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 WindowModel >> model: aModel [
 
 	model contents: aModel
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 WindowModel >> openModal: aWindow [ 
 
 	self widget ifNotNil: [:w | w openModal: aWindow ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 WindowModel >> openWithSpec: aSpec [
 
 	window := self buildWithSpec: aSpec.
@@ -156,7 +156,7 @@ WindowModel >> openWithSpec: aSpec [
 	window title: self title
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 WindowModel >> openWithSpecLayout: aSpec [
 
 	window := self buildWithSpecLayout: aSpec.
@@ -164,7 +164,7 @@ WindowModel >> openWithSpecLayout: aSpec [
 	window title: self title
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 WindowModel >> rebuildWithSpec: aSpec [
 	| sub |
 	
@@ -174,7 +174,7 @@ WindowModel >> rebuildWithSpec: aSpec [
 	self addModelIn: self widget withSpec: aSpec
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 WindowModel >> rebuildWithSpecLayout: aSpec [
 	| sub |
 	
@@ -184,7 +184,7 @@ WindowModel >> rebuildWithSpecLayout: aSpec [
 	self addModelIn: self widget withSpecLayout: aSpec
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 WindowModel >> title [
 
 	^ self model
@@ -192,14 +192,14 @@ WindowModel >> title [
 		ifNotNil: [:m | m title ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 WindowModel >> title: aString [
 
 	^ self widget
 		ifNotNil: [:w | w title: aString ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 WindowModel >> updateTitle [
 	"Update the window title"
 
@@ -207,13 +207,13 @@ WindowModel >> updateTitle [
 		ifNotNil: [:w | w title: self title ]
 ]
 
-{ #category : #'protocol-events' }
+{ #category : 'protocol-events' }
 WindowModel >> whenClosedDo: aBlock [
 
 	isClosedHolder whenChangedDo: [:bool | bool ifTrue: aBlock ]
 ]
 
-{ #category : #morphic }
+{ #category : 'morphic' }
 WindowModel >> windowIsClosing [
 
 	isClosedHolder contents: true

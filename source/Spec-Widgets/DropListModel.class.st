@@ -6,8 +6,8 @@ I am assume there is a little problem on an empty list, but frankly, who creates
 See DropListExample for an example
 "
 Class {
-	#name : #DropListModel,
-	#superclass : #AbstractBasicWidget,
+	#name : 'DropListModel',
+	#superclass : 'AbstractBasicWidget',
 	#instVars : [
 		'listHolder',
 		'selectionHolder'
@@ -15,7 +15,7 @@ Class {
 	#category : 'Spec-Widgets'
 }
 
-{ #category : #specs }
+{ #category : 'specs' }
 DropListModel class >> defaultSpec [
 	<spec>
 	
@@ -28,13 +28,13 @@ DropListModel class >> defaultSpec [
 			#setBalloonText:.					{ #model . #help}}
 ]
 
-{ #category : #specs }
+{ #category : 'specs' }
 DropListModel class >> title [
 
 	^ 'Drop List'
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 DropListModel >> addItemLabeled: aString do: aBlock [
 
 	| item |
@@ -44,37 +44,37 @@ DropListModel >> addItemLabeled: aString do: aBlock [
 	listHolder add: item.
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 DropListModel >> displayBlock: aBlock [
 	
 	listHolder replace: [ :e | e display: aBlock; yourself  ].
 ]
 
-{ #category : #focus }
+{ #category : 'focus' }
 DropListModel >> eventKeyStrokeForNextFocus [
 	"String describing the keystroke to perform to jump to the next widget"
 	^ Character arrowRight asShortcut
 ]
 
-{ #category : #focus }
+{ #category : 'focus' }
 DropListModel >> eventKeyStrokeForPreviousFocus [
 	"String describing the keystroke to perform to jump to the previous widget"
 	^ Character arrowLeft asShortcut
 ]
 
-{ #category : #morphic }
+{ #category : 'morphic' }
 DropListModel >> getIndex [
 
 	^ selectionHolder index contents
 ]
 
-{ #category : #morphic }
+{ #category : 'morphic' }
 DropListModel >> getList [
 
 	^ listHolder contents collect: #label
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 DropListModel >> initialize [
 	"Initialization code for DropListModel"
 
@@ -91,7 +91,7 @@ DropListModel >> initialize [
 	self whenSelectedItemChanged: [:item | item value ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 DropListModel >> internalResetSelection [
 
 	selectionHolder reset.
@@ -99,7 +99,7 @@ DropListModel >> internalResetSelection [
 		ifTrue: [ self silentlySetSelectedIndex: 1 ]
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 DropListModel >> items: aList [
 	<api: #st getter: #listItems>
 	"Populate the drop list with a list of DropItems"
@@ -109,7 +109,7 @@ DropListModel >> items: aList [
 	listHolder contents: dropListItems
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 DropListModel >> listItems [
 	<api: #inspect>
 	"Return the list used to populate the drop list"
@@ -117,7 +117,7 @@ DropListModel >> listItems [
 	^ listHolder contents collect: [ :e | e model ].
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 DropListModel >> listSize [
 	<api: #inspect>
 	"Return the size of the list of choices"
@@ -125,7 +125,7 @@ DropListModel >> listSize [
 	^ self listItems size
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 DropListModel >> resetSelection [
 	<api: #do>
 	"Reset the current selection state"
@@ -133,7 +133,7 @@ DropListModel >> resetSelection [
 	selectionHolder reset
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 DropListModel >> selectedIndex [
 	<api: #inspect>
 	"Useless method but it provides a better and more consistent API"
@@ -141,26 +141,26 @@ DropListModel >> selectedIndex [
 	^ self getIndex
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 DropListModel >> selectedIndexHolder [
 
 	^ selectionHolder index
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 DropListModel >> selectedItem [
 	<api: #inspect>
 
 	^ self selectedItemHolder contents model
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 DropListModel >> selectedItemHolder [
 
 	^ selectionHolder selection
 ]
 
-{ #category : #morphic }
+{ #category : 'morphic' }
 DropListModel >> setIndex: anIndex [
 	| item |
 
@@ -171,7 +171,7 @@ DropListModel >> setIndex: anIndex [
 	self changed: #getIndex
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 DropListModel >> setSelectedIndex: anIndex [
 	<api: #integer min:1 max:#listSize getter: #selectedIndex>
 	"Force the selection of the item at index anIndex"
@@ -183,7 +183,7 @@ DropListModel >> setSelectedIndex: anIndex [
 	selectionHolder selection contents: selection
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 DropListModel >> setSelectedItem: anItem [
 	<api: #st getter: #selectedItem>
 	"Force the selection of the item anItem"
@@ -195,7 +195,7 @@ DropListModel >> setSelectedItem: anItem [
 	selectionHolder selection contents: realItem.
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 DropListModel >> silentlySetSelectedIndex: anIndex [
 	"Force the selection of the item at index anIndex"
 	| selection |
@@ -205,7 +205,7 @@ DropListModel >> silentlySetSelectedIndex: anIndex [
 	selectionHolder selection contents: selection
 ]
 
-{ #category : #'protocol-events' }
+{ #category : 'protocol-events' }
 DropListModel >> whenSelectedItemChanged: aBlock [
 	<api: #event>
 	"Set a block to perform when the selected item is changed"
@@ -214,7 +214,7 @@ DropListModel >> whenSelectedItemChanged: aBlock [
 		aBlock cull: (new ifNotNil: [ :item | item model ]) cull: old cull: announcement cull: ann ]
 ]
 
-{ #category : #'protocol-events' }
+{ #category : 'protocol-events' }
 DropListModel >> whenSelectionChanged: aBlock [
 	<api: #event>
 	"Set a block to perform when the selection is changed"
@@ -226,7 +226,7 @@ DropListModel >> whenSelectionChanged: aBlock [
 	selectionHolder whenChangedDo: aBlock.
 ]
 
-{ #category : #'protocol-events' }
+{ #category : 'protocol-events' }
 DropListModel >> whenSelectionIndexChanged: aBlock [
 	<api: #event>
 	"Set a block to perform when the selected index is changed"

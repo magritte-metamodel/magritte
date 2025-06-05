@@ -1,20 +1,20 @@
 Class {
-	#name : #MAUndefinedComponent,
-	#superclass : #MAElementComponent,
+	#name : 'MAUndefinedComponent',
+	#superclass : 'MAElementComponent',
 	#category : 'Magritte-Seaside-Components'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 MAUndefinedComponent class >> isAbstract [
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 MAUndefinedComponent >> hasLabelId [
 	^ true
 ]
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 MAUndefinedComponent >> renderContentOn: html [
 	html span
 		id: self labelId;

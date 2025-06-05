@@ -1,1 +1,1 @@
-Package { #name : #'Magritte-Bootstrap' }
+Package { #name : 'Magritte-Bootstrap' }

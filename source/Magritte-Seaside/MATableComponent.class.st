@@ -1,6 +1,6 @@
 Class {
-	#name : #MATableComponent,
-	#superclass : #MAElementComponent,
+	#name : 'MATableComponent',
+	#superclass : 'MAElementComponent',
 	#instVars : [
 		'descriptionTable',
 		'componentTable'
@@ -8,12 +8,12 @@ Class {
 	#category : 'Magritte-Seaside-Components'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 MATableComponent class >> isAbstract [
 	^ false
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MATableComponent >> buildComponentTable [
 	^ self descriptionTable collect: [ :row :col :each |
 		each componentClass
@@ -22,14 +22,14 @@ MATableComponent >> buildComponentTable [
 			parent: self ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MATableComponent >> buildDataTable [
 	^ MATableModel
 		rows: self magritteDescription rowCount
 		columns: self magritteDescription columnCount
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MATableComponent >> buildDescriptionTable [
 	^ self dataTable collect: 
 		[ :row :col :each | 
@@ -43,17 +43,17 @@ MATableComponent >> buildDescriptionTable [
 			yourself ]
 ]
 
-{ #category : #'accessing-dynamic' }
+{ #category : 'accessing-dynamic' }
 MATableComponent >> children [
 	^ self componentTable contents
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MATableComponent >> componentTable [
 	^ componentTable ifNil: [ componentTable := self buildComponentTable ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MATableComponent >> dataTable [
 	self value isNil
 		ifTrue: [ self value: self buildDataTable ]
@@ -66,24 +66,24 @@ MATableComponent >> dataTable [
 	^ self value
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MATableComponent >> descriptionTable [
 	^ descriptionTable ifNil: [ descriptionTable := self buildDescriptionTable ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 MATableComponent >> hasLabelId [
 	^ true
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MATableComponent >> readUsing: aDescription [
 	^ self dataTable
 		at: (aDescription propertyAt: #row)
 		at: (aDescription propertyAt: #column)
 ]
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 MATableComponent >> renderViewerOn: html [ 
 	html table
 		id: self labelId;
@@ -102,7 +102,7 @@ MATableComponent >> renderViewerOn: html [
 								at: cindex) ] ] ] ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MATableComponent >> write: anObject using: aDescription [
 	^ self dataTable
 		at: (aDescription propertyAt: #row)

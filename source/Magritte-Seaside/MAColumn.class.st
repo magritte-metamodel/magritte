@@ -1,6 +1,6 @@
 Class {
-	#name : #MAColumn,
-	#superclass : #MAObject,
+	#name : 'MAColumn',
+	#superclass : 'MAObject',
 	#instVars : [
 		'report',
 		'accessor'
@@ -8,24 +8,24 @@ Class {
 	#category : 'Magritte-Seaside-Report'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 MAColumn class >> isAbstract [
 	^ false
 ]
 
-{ #category : #'accessing-settings' }
+{ #category : 'accessing-settings' }
 MAColumn >> accessor [
 	^ accessor
 ]
 
-{ #category : #'accessing-settings' }
+{ #category : 'accessing-settings' }
 MAColumn >> accessor: anAccessor [
 	"Set the accessor used to get the column value for a given row object."
 
 	accessor := anAccessor asAccessor
 ]
 
-{ #category : #deprecated }
+{ #category : 'deprecated' }
 MAColumn >> cascade: anArray [ 
 	self 
 		greaseDeprecatedApi: 'MAColumn>>#cascade:'
@@ -33,64 +33,64 @@ MAColumn >> cascade: anArray [
 	self accessor: anArray
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAColumn >> column [
 	^ self report cache collect: [ :each | self valueFor: each ]
 ]
 
-{ #category : #'accessing-settings' }
+{ #category : 'accessing-settings' }
 MAColumn >> comment [
 	^ self propertyAt: #comment ifAbsent: [ self defaultComment ]
 ]
 
-{ #category : #'accessing-settings' }
+{ #category : 'accessing-settings' }
 MAColumn >> comment: aString [
 	"A descriptive comment of this column."
 
 	self propertyAt: #comment put: aString
 ]
 
-{ #category : #'accessing-defaults' }
+{ #category : 'accessing-defaults' }
 MAColumn >> defaultComment [
 	^ nil
 ]
 
-{ #category : #'accessing-defaults' }
+{ #category : 'accessing-defaults' }
 MAColumn >> defaultFilter [
 	^ false
 ]
 
-{ #category : #'accessing-defaults' }
+{ #category : 'accessing-defaults' }
 MAColumn >> defaultFooter [
 	^ nil
 ]
 
-{ #category : #'accessing-defaults' }
+{ #category : 'accessing-defaults' }
 MAColumn >> defaultFormatter [
 	^ MessageSend receiver: self selector: #stringFor:
 ]
 
-{ #category : #'accessing-defaults' }
+{ #category : 'accessing-defaults' }
 MAColumn >> defaultLabel [
 	^ self accessor selector asCapitalizedPhrase
 ]
 
-{ #category : #'accessing-defaults' }
+{ #category : 'accessing-defaults' }
 MAColumn >> defaultRenderer [
 	^ MessageSend receiver: self selector: #renderCellContent:on:
 ]
 
-{ #category : #'accessing-defaults' }
+{ #category : 'accessing-defaults' }
 MAColumn >> defaultSorter [
 	^ [ :a :b | self sort: a and: b ]
 ]
 
-{ #category : #'accessing-defaults' }
+{ #category : 'accessing-defaults' }
 MAColumn >> defaultVisible [
 	^ true
 ]
 
-{ #category : #'acessing-magritte' }
+{ #category : 'acessing-magritte' }
 MAColumn >> descriptionComment [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -100,7 +100,7 @@ MAColumn >> descriptionComment [
 		yourself
 ]
 
-{ #category : #'acessing-magritte' }
+{ #category : 'acessing-magritte' }
 MAColumn >> descriptionTitle [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -110,7 +110,7 @@ MAColumn >> descriptionTitle [
 		yourself
 ]
 
-{ #category : #exporting }
+{ #category : 'exporting' }
 MAColumn >> exportContent: anObject index: aNumber on: aStream [
 	| string |
 	string := (self formatter value: anObject) collect: [ :char | 
@@ -120,44 +120,44 @@ MAColumn >> exportContent: anObject index: aNumber on: aStream [
 	aStream nextPutAll: string
 ]
 
-{ #category : #exporting }
+{ #category : 'exporting' }
 MAColumn >> exportHeadOn: aStream [
 	self label isNil
 		ifFalse: [ aStream nextPutAll: self label ]
 ]
 
-{ #category : #'accessing-settings' }
+{ #category : 'accessing-settings' }
 MAColumn >> filter [
 	^ self propertyAt: #filter ifAbsent: [ self defaultFilter ]
 ]
 
-{ #category : #'accessing-settings' }
+{ #category : 'accessing-settings' }
 MAColumn >> filter: aBoolean [
 	"Enable or disable filtering of this column."
 
 	self propertyAt: #filter put: aBoolean
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAColumn >> filterBlock [
 	^ self 
 		propertyAt: #filterValue
 		ifPresent: [ :value | [ :row | (self valueFor: row) = value ] ]
 ]
 
-{ #category : #'accessing-settings' }
+{ #category : 'accessing-settings' }
 MAColumn >> footer [
 	^ self propertyAt: #footer ifAbsent: [ self defaultFooter ]
 ]
 
-{ #category : #'accessing-settings' }
+{ #category : 'accessing-settings' }
 MAColumn >> footer: aBlock [
 	"A block that renders the footer of this column."
 	
 	self propertyAt: #footer put: aBlock
 ]
 
-{ #category : #deprecated }
+{ #category : 'deprecated' }
 MAColumn >> format [
 	self 
 		greaseDeprecatedApi: 'MAColumn>>#format'
@@ -165,7 +165,7 @@ MAColumn >> format [
 	^ self renderer
 ]
 
-{ #category : #deprecated }
+{ #category : 'deprecated' }
 MAColumn >> format: aBlock [ 
 	self 
 		greaseDeprecatedApi: 'MAColumn>>#format:'
@@ -173,89 +173,89 @@ MAColumn >> format: aBlock [
 	self renderer: aBlock
 ]
 
-{ #category : #'accessing-settings' }
+{ #category : 'accessing-settings' }
 MAColumn >> formatter [
 	^ self propertyAt: #formatter ifAbsent: [ self defaultFormatter ]
 ]
 
-{ #category : #'accessing-settings' }
+{ #category : 'accessing-settings' }
 MAColumn >> formatter: aBlock [
 	"A block that converts the row value to a string."
 	
 	self propertyAt: #formatter put: aBlock
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAColumn >> index [
 	^ self report columns indexOf: self
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 MAColumn >> initialize [
 	super initialize.
 	self accessor: #yourself
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 MAColumn >> isFiltered [
 	^ self filter
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 MAColumn >> isReversed [
 	^ self report sortReversed
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 MAColumn >> isSortable [
 	^ self report sortEnabled and: [ self sorter notNil ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 MAColumn >> isSorted [
 	^ self report sortColumn == self
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 MAColumn >> isVisible [
 	^ self visible
 ]
 
-{ #category : #'accessing-settings' }
+{ #category : 'accessing-settings' }
 MAColumn >> label [
 	^ self propertyAt: #label ifAbsent: [ self defaultLabel ]
 ]
 
-{ #category : #'accessing-settings' }
+{ #category : 'accessing-settings' }
 MAColumn >> label: aString [
 	"The label of this column, also used to toggle the sort order of this column."
 	
 	self propertyAt: #label put: aString
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 MAColumn >> refresh [
 	self properties removeKey: #uniqueValues ifAbsent: [ ]
 ]
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 MAColumn >> renderCell: anObject index: anInteger on: html [
 	html tableData
 		class: self tableDataClass;
 		with: [ self renderer valueWithEnoughArguments: (Array with: anObject with: html with: anInteger) ]
 ]
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 MAColumn >> renderCellContent: anObject on: html [
 	html render: (self formatter value: (self valueFor: anObject))
 ]
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 MAColumn >> renderFilterCellOn: html [
 	html tableHeading: [ self renderFilterContentOn: html ]
 ]
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 MAColumn >> renderFilterContentOn: html [
 	self isFiltered 
 		ifFalse: [ ^ self ].
@@ -274,17 +274,17 @@ MAColumn >> renderFilterContentOn: html [
 				self report refresh ] ]
 ]
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 MAColumn >> renderFootCellOn: html [
 	html tableData: [ self renderFootContentOn: html ]
 ]
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 MAColumn >> renderFootContentOn: html [
 	html render: self footer
 ]
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 MAColumn >> renderHeadCellOn: html [
 	html tableHeading
 		title: self comment;
@@ -299,29 +299,29 @@ MAColumn >> renderHeadCellOn: html [
 						with: [ self renderHeadContentOn: html ] ] ]
 ]
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 MAColumn >> renderHeadContentOn: html [
 	html render: self label
 ]
 
-{ #category : #'accessing-settings' }
+{ #category : 'accessing-settings' }
 MAColumn >> renderer [
 	^ self propertyAt: #renderer ifAbsent: [ self defaultRenderer ]
 ]
 
-{ #category : #'accessing-settings' }
+{ #category : 'accessing-settings' }
 MAColumn >> renderer: aBlock [
 	"A block that renders the row value to HTML."
 
 	self propertyAt: #renderer put: aBlock
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAColumn >> report [
 	^ report
 ]
 
-{ #category : #deprecated }
+{ #category : 'deprecated' }
 MAColumn >> selector: aSymbol [ 
 	self 
 		greaseDeprecatedApi: 'MAColumn>>#selector:'
@@ -329,12 +329,12 @@ MAColumn >> selector: aSymbol [
 	self accessor: aSymbol
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 MAColumn >> setReport: aReport [
 	report := aReport
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAColumn >> sort: aFirstObject and: aSecondObject [
 	| one two |
 	one := self valueFor: aFirstObject.
@@ -345,7 +345,7 @@ MAColumn >> sort: aFirstObject and: aSecondObject [
 	^ one <= two
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAColumn >> sortRows: aCollection [
 	| result |
 	result := SortedCollection new: aCollection size.
@@ -357,19 +357,19 @@ MAColumn >> sortRows: aCollection [
 		ifTrue: [ result reverse ]
 ]
 
-{ #category : #'accessing-settings' }
+{ #category : 'accessing-settings' }
 MAColumn >> sorter [
 	^ self propertyAt: #sorter ifAbsent: [ self defaultSorter ]
 ]
 
-{ #category : #'accessing-settings' }
+{ #category : 'accessing-settings' }
 MAColumn >> sorter: aBlock [
 	"A sort block for this column."
 
 	self propertyAt: #sorter put: aBlock
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAColumn >> sorterStyle [
 	^ self isSorted
 		ifTrue: [
@@ -379,23 +379,23 @@ MAColumn >> sorterStyle [
 		ifFalse: [ String new ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAColumn >> stringFor: anObject [ 
 	"Answer a string representation of the row value."
 	^ anObject greaseString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAColumn >> tableDataClass [
 	^ nil
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAColumn >> tableHeadingClass [
 	^ nil
 ]
 
-{ #category : #deprecated }
+{ #category : 'deprecated' }
 MAColumn >> title [
 	self 
 		greaseDeprecatedApi: 'MAColumn>>#title'
@@ -403,7 +403,7 @@ MAColumn >> title [
 	^ self label
 ]
 
-{ #category : #deprecated }
+{ #category : 'deprecated' }
 MAColumn >> title: aString [ 
 	self 
 		greaseDeprecatedApi: 'MAColumn>>#title:'
@@ -411,7 +411,7 @@ MAColumn >> title: aString [
 	self label: aString
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAColumn >> uniqueValues [
 	"Answer the unique rows with the unique values, used for filtering."
 
@@ -427,19 +427,19 @@ MAColumn >> uniqueValues [
 			collect: [ :row | self valueFor: row ] ]
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 MAColumn >> valueFor: aRow [
 	"Answer the column value for aRow."
 
 	^ accessor read: aRow
 ]
 
-{ #category : #'accessing-settings' }
+{ #category : 'accessing-settings' }
 MAColumn >> visible [
 	^ self propertyAt: #visible ifAbsent: [ self defaultVisible ]
 ]
 
-{ #category : #'accessing-settings' }
+{ #category : 'accessing-settings' }
 MAColumn >> visible: aBoolean [
 	"Make this column visible or invisible."
 	

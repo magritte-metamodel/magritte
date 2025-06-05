@@ -1,20 +1,20 @@
 Class {
-	#name : #MACheckedMementoTest,
-	#superclass : #MACachedMementoTest,
-	#category : #'Magritte-Tests-Model-Memento'
+	#name : 'MACheckedMementoTest',
+	#superclass : 'MACachedMementoTest',
+	#category : 'Magritte-Tests-Model-Memento'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 MACheckedMementoTest class >> isAbstract [
 	^ false
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MACheckedMementoTest >> actualClass [
 	^ MACheckedMemento
 ]
 
-{ #category : #'tests-actions' }
+{ #category : 'tests-actions' }
 MACheckedMementoTest >> testConflictCommit [
 	self write: self includedInstance.
 	self assert: self read = self includedInstance.
@@ -33,7 +33,7 @@ MACheckedMementoTest >> testConflictCommit [
 	self deny: self memento hasConflict
 ]
 
-{ #category : #'tests-actions' }
+{ #category : 'tests-actions' }
 MACheckedMementoTest >> testConflictReset [
 	self write: self includedInstance.
 	self assert: self read = self includedInstance.
@@ -52,12 +52,12 @@ MACheckedMementoTest >> testConflictReset [
 	self deny: self memento hasConflict
 ]
 
-{ #category : #'tests-accessing' }
+{ #category : 'tests-accessing' }
 MACheckedMementoTest >> testOriginal [
 	self assert: self memento original size = self magritteDescription size
 ]
 
-{ #category : #'tests-actions' }
+{ #category : 'tests-actions' }
 MACheckedMementoTest >> testValidateConflictCommit [
 	self write: self includedInstance.
 	self shouldnt: [ self memento validate ] raise: MAValidationError.
@@ -69,7 +69,7 @@ MACheckedMementoTest >> testValidateConflictCommit [
 	self shouldnt: [ self memento validate ] raise: MAValidationError
 ]
 
-{ #category : #'tests-actions' }
+{ #category : 'tests-actions' }
 MACheckedMementoTest >> testValidateConflictReset [
 	self write: self includedInstance.
 	self shouldnt: [ self memento validate ] raise: MAValidationError.
@@ -81,7 +81,7 @@ MACheckedMementoTest >> testValidateConflictReset [
 	self shouldnt: [ self memento validate ] raise: MAValidationError
 ]
 
-{ #category : #'tests-actions' }
+{ #category : 'tests-actions' }
 MACheckedMementoTest >> testValidateFailsOnReferencedCollectionChange [
 
 	| occupants obj |

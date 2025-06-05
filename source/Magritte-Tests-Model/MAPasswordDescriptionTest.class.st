@@ -1,20 +1,20 @@
 Class {
-	#name : #MAPasswordDescriptionTest,
-	#superclass : #MAStringDescriptionTest,
+	#name : 'MAPasswordDescriptionTest',
+	#superclass : 'MAStringDescriptionTest',
 	#category : 'Magritte-Tests-Model-Description'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 MAPasswordDescriptionTest class >> isAbstract [
 	^ false
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAPasswordDescriptionTest >> actualClass [
 	^ MAPasswordDescription
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MAPasswordDescriptionTest >> testIsObfuscated [
 	self deny: (self description isObfuscated: '').
 	self deny: (self description isObfuscated: nil).
@@ -23,7 +23,7 @@ MAPasswordDescriptionTest >> testIsObfuscated [
 	self assert: (self description isObfuscated:  '******')
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MAPasswordDescriptionTest >> testObfuscated [
 	self assert: (self description obfuscated: nil) = ''.
 	self assert: (self description obfuscated: 'zork') = '****'.

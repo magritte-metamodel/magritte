@@ -1,10 +1,10 @@
 Class {
-	#name : #MADateInputComponent,
-	#superclass : #MATextInputComponent,
+	#name : 'MADateInputComponent',
+	#superclass : 'MATextInputComponent',
 	#category : 'Magritte-Seaside-Components'
 }
 
-{ #category : #actions }
+{ #category : 'actions' }
 MADateInputComponent >> choose [
 	| calendar |
 	calendar := WAMiniCalendar new.
@@ -18,12 +18,12 @@ MADateInputComponent >> choose [
 	self chooser: calendar
 ]
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 MADateInputComponent >> renderButtonOn: html [
 	html submitButton on: #choose of: self
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 MADateInputComponent >> today [
 	| calendar |
 	calendar := WAMiniCalendar new.

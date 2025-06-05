@@ -1,36 +1,36 @@
 Class {
-	#name : #MAChainAccessorTest,
-	#superclass : #MADelegatorAccessorTest,
+	#name : 'MAChainAccessorTest',
+	#superclass : 'MADelegatorAccessorTest',
 	#category : 'Magritte-Tests-Model-Accessor'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 MAChainAccessorTest class >> isAbstract [
 	^ false
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAChainAccessorTest >> accessorInstance [
 	^ self actualClass accessors: #( holder contents value )
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAChainAccessorTest >> actualClass [
 	^ MAChainAccessor
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAChainAccessorTest >> holder [
 	^ MAValueHolder on: self
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MAChainAccessorTest >> testAccessor [
 	self accessor accessor: self.
 	self assert: self accessor accessor = self
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MAChainAccessorTest >> testAsAccessor [
 	super testAsAccessor.
 	
@@ -46,21 +46,21 @@ MAChainAccessorTest >> testAsAccessor [
 	self assert: (accessor accessor selector = #value)
 ]
 
-{ #category : #'tests-testing' }
+{ #category : 'tests-testing' }
 MAChainAccessorTest >> testCanRead [
 	self assert: (self accessor canRead: self).
 	self accessor next accessor readSelector: #zork.
 	self deny: (self accessor canRead: self)
 ]
 
-{ #category : #'tests-testing' }
+{ #category : 'tests-testing' }
 MAChainAccessorTest >> testCanWrite [
 	self assert: (self accessor canWrite: self).
 	self accessor next accessor writeSelector: #zork.
 	self deny: (self accessor accessor canWrite: self)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MAChainAccessorTest >> testKind [
 	self assert: self accessor class equals: MAChainAccessor.
 	self assert: self accessor accessor class equals: MASelectorAccessor.
@@ -69,7 +69,7 @@ MAChainAccessorTest >> testKind [
 	self assert: self accessor next next class equals: MASelectorAccessor
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MAChainAccessorTest >> testNext [
 	| next |
 	next := #foo asAccessor.
@@ -77,7 +77,7 @@ MAChainAccessorTest >> testNext [
 	self assert: self accessor next = next
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MAChainAccessorTest >> testRead [
 	self value: 123.
 	self assert: (self accessor read: self) = 123.
@@ -86,14 +86,14 @@ MAChainAccessorTest >> testRead [
 	self assert: (self accessor read: self) = '12'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MAChainAccessorTest >> testSelector [
 	self assert: self accessor accessor selector equals: #holder.
 	self assert: self accessor next accessor selector equals: #contents.
 	self assert: self accessor next next selector equals: #value
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MAChainAccessorTest >> testWrite [
 	self accessor write: 123 to: self.
 	self assert: self value = 123.

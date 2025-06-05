@@ -1,37 +1,37 @@
 Class {
-	#name : #MAValidatorVisitor,
-	#superclass : #MAVisitor,
+	#name : 'MAValidatorVisitor',
+	#superclass : 'MAVisitor',
 	#instVars : [
 		'object'
 	],
-	#category : #'Magritte-Model-Visitor'
+	#category : 'Magritte-Model-Visitor'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 MAValidatorVisitor class >> on: anObject description: aDescription [
 	^ self new on: anObject description: aDescription
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAValidatorVisitor >> object [
 	"Answer the currently validated object."
 
 	^ object
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 MAValidatorVisitor >> on: anObject description: aDescription [
 	self use: anObject during: [ self visit: aDescription ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAValidatorVisitor >> use: anObject during: aBlock [
 	| previous |
 	previous := object. object := anObject.
 	^ aBlock ensure: [ object := previous ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAValidatorVisitor >> validate: anObject using: aDescription [
 	aDescription validateRequired: anObject.
 	anObject = aDescription undefinedValue ifTrue: [ ^ self ].
@@ -44,7 +44,7 @@ MAValidatorVisitor >> validate: anObject using: aDescription [
 		
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 MAValidatorVisitor >> visit: aDescription [
 	"Only visit objects that are visible and that can be changed."
 	
@@ -68,7 +68,7 @@ MAValidatorVisitor >> visit: aDescription [
 			signal: aDescription label ]
 ]
 
-{ #category : #'visiting-descriptions' }
+{ #category : 'visiting-descriptions' }
 MAValidatorVisitor >> visitContainer: aDescription [
 	
 	super visitContainer: aDescription.
@@ -79,7 +79,7 @@ MAValidatorVisitor >> visitContainer: aDescription [
 				during: [ self visit: description ] ] ]
 ]
 
-{ #category : #'visiting-descriptions' }
+{ #category : 'visiting-descriptions' }
 MAValidatorVisitor >> visitDescription: aDescription [
 	self validate: self object using: aDescription
 ]

@@ -1,6 +1,6 @@
-Extension { #name : #MATimeDescription }
+Extension { #name : 'MATimeDescription' }
 
-{ #category : #'*magritte-seaside' }
-MATimeDescription class >> defaultComponentClasses [
+{ #category : '*magritte-seaside' }
+MATimeDescription classSide >> defaultComponentClasses [
 	^ Array with: MATimeInputComponent with: MATimeSelectorComponent
 ]

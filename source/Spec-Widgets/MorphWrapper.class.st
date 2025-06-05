@@ -2,8 +2,8 @@
 A MorphWrapper is used to wrap a morph with a layout in the goal to be easily added to another morph
 "
 Class {
-	#name : #MorphWrapper,
-	#superclass : #Object,
+	#name : 'MorphWrapper',
+	#superclass : 'Object',
 	#instVars : [
 		'layout',
 		'morph'
@@ -11,7 +11,7 @@ Class {
 	#category : 'Spec-Widgets-Utilities'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 MorphWrapper class >> morph: morph layout: layout [ 
 
 	^ self new
@@ -20,7 +20,7 @@ MorphWrapper class >> morph: morph layout: layout [
 		yourself
 ]
 
-{ #category : #adding }
+{ #category : 'adding' }
 MorphWrapper >> addIn: aContainer [
 		
 	aContainer
@@ -28,19 +28,19 @@ MorphWrapper >> addIn: aContainer [
 		fullFrame: layout
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MorphWrapper >> frame: rectangle [
 	
 	layout := rectangle asLayoutFrame
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MorphWrapper >> fullFrame: anObject [
 	
 	layout := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MorphWrapper >> morph: anObject [
 	
 	morph := anObject

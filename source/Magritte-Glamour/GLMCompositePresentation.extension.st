@@ -1,6 +1,6 @@
-Extension { #name : #GLMCompositePresentation }
+Extension { #name : 'GLMCompositePresentation' }
 
-{ #category : #'*Magritte-Glamour' }
+{ #category : '*Magritte-Glamour' }
 GLMCompositePresentation >> magritte [
 	^ self custom: GLMMagrittePresentation new
 ]

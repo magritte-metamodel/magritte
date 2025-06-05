@@ -1,10 +1,10 @@
 Class {
-	#name : #MAMorphicOneToMany,
-	#superclass : #MAMorphicRelation,
-	#category : #'Magritte-Morph-Model'
+	#name : 'MAMorphicOneToMany',
+	#superclass : 'MAMorphicRelation',
+	#category : 'Magritte-Morph-Model'
 }
 
-{ #category : #actions }
+{ #category : 'actions' }
 MAMorphicOneToMany >> add [
 
 	self newRelation asMagritteMorph
@@ -16,7 +16,7 @@ MAMorphicOneToMany >> add [
 		openInWorld
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAMorphicOneToMany >> add: anObject [
 	| rowParent lastRowIndex newRow |
 	rowParent := morph submorphs second.
@@ -29,28 +29,27 @@ MAMorphicOneToMany >> add: anObject [
 			after: (rowParent submorphs at: lastRowIndex) ].
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAMorphicOneToMany >> buildMorphView [
 
 	| table scrollPane |
 	table := self rectangleMorph
-		listDirection: #topToBottom;
-		yourself.
-	self value ifNotNil: [ :v | v do: [ :e | MAElementRow addMorphFor: e of: self to: table ] ].
-	self magritteDescription isDefinitive
-		ifFalse: [ self addSelectListTo: table ].
-	scrollPane := GeneralScrollPane new
-			changeScrollerTableLayout;
-			hResizing: #shrinkWrap;
-			yourself.
+		         listDirection: #topToBottom;
+		         yourself.
+	self value ifNotNil: [ :v |
+		v do: [ :e | MAElementRow addMorphFor: e of: self to: table ] ].
+	self magritteDescription isDefinitive ifFalse: [
+		self addSelectListTo: table ].
 	table computeBounds. "Layout so we know the height, which is needed below"
-	scrollPane
-		height: (table height min: 200);
-		scrollTarget: table.
+	scrollPane := (UIManager default newScrollPaneFor: table)
+		              changeScrollerTableLayout;
+		              hResizing: #shrinkWrap;
+		              yourself.
+	scrollPane height: (table height min: 200).
 	^ scrollPane
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAMorphicOneToMany >> buildSelectButton [
 	^ self theme builder
 		newButtonFor: self
@@ -59,7 +58,7 @@ MAMorphicOneToMany >> buildSelectButton [
 		help: ''
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAMorphicOneToMany >> remove: anObject [
 	self value: (self value copyWithout: anObject).
 ]

@@ -2,17 +2,17 @@
 I am an abstract description for all basic description types.
 "
 Class {
-	#name : #MAElementDescription,
-	#superclass : #MADescription,
-	#category : #'Magritte-Model-Description'
+	#name : 'MAElementDescription',
+	#superclass : 'MADescription',
+	#category : 'Magritte-Model-Description'
 }
 
-{ #category : #'accessing-defaults' }
+{ #category : 'accessing-defaults' }
 MAElementDescription class >> defaultAutoAccept [
 	^ false
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 MAElementDescription class >> new [
 	"override #new so that we can create an object without adding it to the collection returned by: MAElementDescription withAllConcreteClasses,
 	that is so we can call  MAElementDescription new magritteDescription  and it works as expected, which is used in MADescriptionEditor>>#buildReport .
@@ -20,17 +20,17 @@ MAElementDescription class >> new [
 	^ self basicNew initialize
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 MAElementDescription >> acceptMagritte: aVisitor [
 	aVisitor visitElementDescription: self
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 MAElementDescription >> asContainer [
 	^ MAContainer with: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAElementDescription >> autoAccept [
 	"Define whether new memento values should be automatically propagated to a model.
 	
@@ -41,7 +41,7 @@ MAElementDescription >> autoAccept [
 		ifAbsent: [ self class defaultAutoAccept ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAElementDescription >> autoAccept: aBoolean [
 	"Set whether new memento values should be automatically propagated to a model.
 	
@@ -50,29 +50,29 @@ MAElementDescription >> autoAccept: aBoolean [
 	self propertyAt: #autoAccept put: aBoolean
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAElementDescription >> default [
 	^ self propertyAt: #default ifAbsent: [ self class defaultDefault ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAElementDescription >> default: anObject [
 	self propertyAt: #default put: anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAElementDescription >> definingContext [
 	
 	^ self propertyAt: #definingContext ifAbsent: [ nil ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAElementDescription >> definingContext: anMADefiningContext [
 	
 	^ self propertyAt: #definingContext  put: anMADefiningContext
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 MAElementDescription >> handleMessage: aMessage for: anObject [
 	"We do no error checking; you probably want to send #handlesSelector: first to make sure"
 	^ aMessage numArgs = 0
@@ -80,22 +80,22 @@ MAElementDescription >> handleMessage: aMessage for: anObject [
 		ifFalse: [ anObject write: aMessage argument using: self ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 MAElementDescription >> handlesSelector: aSelector [
 	^ self accessor handlesSelector: aSelector
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAElementDescription >> initialAnswer [
 	^ self propertyAt: #initialAnswer ifAbsent: [ self default ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAElementDescription >> initialAnswer: aValuable [
 	self propertyAt: #initialAnswer put: aValuable
 ]
 
-{ #category : #utility }
+{ #category : 'utility' }
 MAElementDescription >> isIgnorableValue: anObject [
 
 	| ignorableValues isIgnorableDefault |
@@ -110,7 +110,7 @@ MAElementDescription >> isIgnorableValue: anObject [
 	^ ignorableValues includes: anObject
 ]
 
-{ #category : #'lazy initialization' }
+{ #category : 'lazy initialization' }
 MAElementDescription >> lazilyInitializeFrom: currentValue for: anObject [
 	"- The default value is cached if the description's #shouldCacheDefault property is true. An example when caching is necessary is for to-many relations because the user may modify the collection, which will then be thrown away if not cached
 
@@ -131,12 +131,12 @@ MAElementDescription >> lazilyInitializeFrom: currentValue for: anObject [
 	^ defaultValue
 ]
 
-{ #category : #'*magritte-model' }
+{ #category : 'testing' }
 MAElementDescription >> printFor: anObject on: aWriteStream [ 
 	(self read: anObject) ifNotNil: [ :value | aWriteStream nextPutAll: (self toString: value) ]
 ]
 
-{ #category : #utility }
+{ #category : 'utility' }
 MAElementDescription >> shouldWrite: anObject over: anotherObject [
 
 	self isVisible ifFalse: [ ^ false ].
@@ -155,7 +155,7 @@ MAElementDescription >> shouldWrite: anObject over: anotherObject [
 		2) objects (e.g. strings and other value objects) that override #= to mean something other than identity comparison."
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 MAElementDescription >> storeOn: aStream [
 	
 	| source formattedSource |

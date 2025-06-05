@@ -1,6 +1,6 @@
-Extension { #name : #GtPhlowView }
+Extension { #name : 'GtPhlowView' }
 
-{ #category : #'*Magritte-GToolkit' }
+{ #category : '*Magritte-GToolkit' }
 GtPhlowView >> maOn: anObject perform: aMessageSymbol withContext: aContext [
 	"Adapted from on:perform:withArguments:"
 	<return: #GtPhlowView>

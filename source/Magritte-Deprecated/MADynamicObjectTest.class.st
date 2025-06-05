@@ -1,10 +1,10 @@
 Class {
-	#name : #MADynamicObjectTest,
-	#superclass : #TestCase,
+	#name : 'MADynamicObjectTest',
+	#superclass : 'TestCase',
 	#category : 'Magritte-Deprecated'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 MADynamicObjectTest >> testCalculated [
 	| object dummy |
 	object := [ Time millisecondClockValue ] magritteDynamicObject.
@@ -14,7 +14,7 @@ MADynamicObjectTest >> testCalculated [
 	self assert: dummy < object yourself
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MADynamicObjectTest >> testCollection [
 	| object |
 	object := [ OrderedCollection with: 1 with: 2 ] magritteDynamicObject.
@@ -28,7 +28,7 @@ MADynamicObjectTest >> testCollection [
 	self assert: object second = 2
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MADynamicObjectTest >> testConstant [
 	| object |
 	object := [ self ] magritteDynamicObject.
@@ -38,7 +38,7 @@ MADynamicObjectTest >> testConstant [
 	self assert: object = 123
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MADynamicObjectTest >> testCopy [
 	| object first second |
 	object := [ Time millisecondClockValue ] magritteDynamicObject copy.
@@ -49,7 +49,7 @@ MADynamicObjectTest >> testCopy [
 	self assert: first < second
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MADynamicObjectTest >> testCounter [
 	| object counter |
 	counter := nil.
@@ -64,7 +64,7 @@ MADynamicObjectTest >> testCounter [
 	self assert: object yourself yourself = 3
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MADynamicObjectTest >> testDynamic [
 	| object collection |
 	collection := nil.
@@ -85,7 +85,7 @@ MADynamicObjectTest >> testDynamic [
 	self assert: object third = 3
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MADynamicObjectTest >> testException [
 	| object |
 	object := [ 1 / 0 ] magritteDynamicObject.
@@ -94,7 +94,7 @@ MADynamicObjectTest >> testException [
 		raise: ZeroDivide
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MADynamicObjectTest >> testNilOrNotNil [
 	| object |
 	object := [ 1 ] magritteDynamicObject.

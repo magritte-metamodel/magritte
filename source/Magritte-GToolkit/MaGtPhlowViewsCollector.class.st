@@ -1,15 +1,15 @@
 Class {
-	#name : #MaGtPhlowViewsCollector,
-	#superclass : #GtPhlowViewsCollector,
-	#category : #'Magritte-GToolkit'
+	#name : 'MaGtPhlowViewsCollector',
+	#superclass : 'GtPhlowViewsCollector',
+	#category : 'Magritte-GToolkit'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MaGtPhlowViewsCollector class >> defaultViewPragmaNames [
 	^ #( #maGtView )
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 MaGtPhlowViewsCollector >> collect [
 	<return: #Array of: #GtPhlowView>
 	<gtCollector>
