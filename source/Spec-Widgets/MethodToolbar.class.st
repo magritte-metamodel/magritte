@@ -8,8 +8,8 @@ b method: (ButtonModel>>#state:).
 b method: nil
 "
 Class {
-	#name : #MethodToolbar,
-	#superclass : #ComposableModel,
+	#name : 'MethodToolbar',
+	#superclass : 'ComposableModel',
 	#instVars : [
 		'methodHolder',
 		'browseModel',
@@ -22,7 +22,7 @@ Class {
 	#category : 'Spec-Widgets-PolyWidgets'
 }
 
-{ #category : #specs }
+{ #category : 'specs' }
 MethodToolbar class >> defaultSpec [
 	<spec>
 	^ { #Panel.
@@ -37,13 +37,13 @@ MethodToolbar class >> defaultSpec [
 			#vResizing:.	#shrinkWrap.	}
 ]
 
-{ #category : #specs }
+{ #category : 'specs' }
 MethodToolbar class >> title [
 
 	^ 'Toolbar'
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MethodToolbar >> addAll: aWindow  withSpec: aSpec [
 
 	aWindow
@@ -52,39 +52,39 @@ MethodToolbar >> addAll: aWindow  withSpec: aSpec [
 		
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MethodToolbar >> browseMethod [
 
 	methodHolder contents
 		ifNotNil: [:aMethod | aMethod browse ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MethodToolbar >> browseModel [
 
 	^ browseModel
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MethodToolbar >> dropListModel [
 
 	^ dropListModel
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MethodToolbar >> implementorsMethod [
 
 	methodHolder contents
 		ifNotNil: [:aMethod | self model browseMessagesFrom: aMethod selector ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MethodToolbar >> implementorsModel [
 
 	^ implementorsModel
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 MethodToolbar >> initialize [
 	"Initialization code for MethodToolbar"
 
@@ -94,7 +94,7 @@ MethodToolbar >> initialize [
 	super initialize.
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 MethodToolbar >> initializeWidgets [
 	
 	self instantiateModels: #(
@@ -113,19 +113,19 @@ MethodToolbar >> initializeWidgets [
 
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 MethodToolbar >> method: aMethod [
 
 	methodHolder contents: aMethod
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MethodToolbar >> model [
 
 	^ model
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 MethodToolbar >> registerForChanges [
 
 	methodHolder whenChangedDo: [:contents || boolean |
@@ -138,20 +138,20 @@ MethodToolbar >> registerForChanges [
 		implementorsModel state: boolean]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MethodToolbar >> sendersMethod [
 
 	methodHolder contents
 		ifNotNil: [:aMethod | self model browseSendersOfMessagesFrom: aMethod selector ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MethodToolbar >> sendersModel [
 
 	^ sendersModel
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 MethodToolbar >> setBrowseModel [
 	
 	browseModel
@@ -162,13 +162,13 @@ MethodToolbar >> setBrowseModel [
 
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 MethodToolbar >> setDropListItems: aCollection [
 
 	dropListModel items: aCollection
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 MethodToolbar >> setFocusOrder [
 
 	self focusOrder
@@ -179,7 +179,7 @@ MethodToolbar >> setFocusOrder [
 		
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 MethodToolbar >> setImplementorsModel [
 	
 	implementorsModel
@@ -190,7 +190,7 @@ MethodToolbar >> setImplementorsModel [
 
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 MethodToolbar >> setSendersModel [
 	
 	sendersModel
@@ -201,7 +201,7 @@ MethodToolbar >> setSendersModel [
 
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 MethodToolbar >> setVersionModel [
 	
 	versionModel
@@ -212,14 +212,14 @@ MethodToolbar >> setVersionModel [
 
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MethodToolbar >> versionMethod [
 
 	methodHolder contents
 		ifNotNil: [:aMethod | self model browseVersionsFrom: aMethod ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MethodToolbar >> versionModel [
 
 	^ versionModel

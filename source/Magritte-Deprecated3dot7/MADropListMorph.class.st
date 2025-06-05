@@ -1,5 +1,5 @@
 Class {
-	#name : #MADropListMorph,
-	#superclass : #MAMorphicDropList,
-	#category : #'Magritte-Deprecated3dot7'
+	#name : 'MADropListMorph',
+	#superclass : 'MAMorphicDropList',
+	#category : 'Magritte-Deprecated3dot7'
 }

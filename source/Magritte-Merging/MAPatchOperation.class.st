@@ -1,6 +1,6 @@
 Class {
-	#name : #MAPatchOperation,
-	#superclass : #Object,
+	#name : 'MAPatchOperation',
+	#superclass : 'Object',
 	#instVars : [
 		'receiver',
 		'field',
@@ -8,24 +8,24 @@ Class {
 		'newValue',
 		'isEnabled'
 	],
-	#category : #'Magritte-Merging'
+	#category : 'Magritte-Merging'
 }
 
-{ #category : #examples }
+{ #category : 'examples' }
 MAPatchOperation class >> example [
 	| desc |
 	desc := MAContainer samplePersonDescription.
 	^ MAPatchOperation for: MAContainer samplePersonHarryPotter set: desc children first to: 'Harry James Potter'
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 MAPatchOperation class >> example2 [
 	| desc |
 	desc := MAContainer samplePersonDescription.
 	^ MAPatchOperation for: MAContainer samplePersonHarryPotter set: desc children second to: 'Godric''s Hollow, England'
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 MAPatchOperation class >> for: anObject set: aDescription to: anotherObject [
 	^ self new
 		receiver: anObject; 
@@ -34,29 +34,29 @@ MAPatchOperation class >> for: anObject set: aDescription to: anotherObject [
 		yourself
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 MAPatchOperation >> = rhs [
 	self species = rhs species ifFalse: [ ^ false ].
 	^ self receiver = rhs receiver and: [ self field = rhs field and: [ self oldValue = rhs oldValue and: [ self newValue = rhs newValue ] ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAPatchOperation >> cacheOldValue [
 	(self receiver isNil or: [ self field isNil ]) ifTrue: [ ^ self ].
 	self oldValue: (self receiver readUsing: self field)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAPatchOperation >> children [
 	^ #()
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 MAPatchOperation >> diffStrings [
 	^ { self field label, ': ', self oldValue asString. self field label, ': ', self newValue asString }
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAPatchOperation >> elementGtViewFor: aView [
 	<gtView>
 	^ aView explicit
@@ -65,74 +65,74 @@ MAPatchOperation >> elementGtViewFor: aView [
 		stencil: [ self asElement asScrollableElement ]
 ]
 
-{ #category : #execution }
+{ #category : 'execution' }
 MAPatchOperation >> execute [
 	self isEnabled ifFalse: [ ^ self ].
 	self field accessor write: newValue to: receiver
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAPatchOperation >> field [
 	^ field
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAPatchOperation >> field: anObject [
 	field := anObject.
 	self cacheOldValue
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 MAPatchOperation >> hash [
 	^ ((self receiver hash bitXor: self field hash) bitXor: self oldValue hash) bitXor: self newValue hash
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAPatchOperation >> isEmptyOrNil [
 	^ false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAPatchOperation >> isEnabled [
 	^ isEnabled ifNil: [ true ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAPatchOperation >> isEnabled: aBoolean [
 	isEnabled := aBoolean
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAPatchOperation >> isNoOp [
 	^ self oldValue = self newValue
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAPatchOperation >> newValue [
 	^ newValue
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAPatchOperation >> newValue: anObject [
 	newValue := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAPatchOperation >> oldValue [
 	^ oldValue 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAPatchOperation >> oldValue: anObject [
 	oldValue := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAPatchOperation >> operations [
 	^ { self }
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 MAPatchOperation >> printOn: aStream [
 
 	aStream
@@ -144,28 +144,28 @@ MAPatchOperation >> printOn: aStream [
 		print: newValue
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAPatchOperation >> receiver [
 	^ receiver
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAPatchOperation >> receiver: anObject [
 	receiver := anObject.
 	self cacheOldValue
 ]
 
-{ #category : #'macro compatibility' }
+{ #category : 'macro compatibility' }
 MAPatchOperation >> receivers [
 	^ { self receiver }
 ]
 
-{ #category : #execution }
+{ #category : 'execution' }
 MAPatchOperation >> undo [
 	self field accessor write: oldValue to: receiver
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAPatchOperation >> valuePatch [
 	^ self newValue patchRelativeToBase: self oldValue
 ]

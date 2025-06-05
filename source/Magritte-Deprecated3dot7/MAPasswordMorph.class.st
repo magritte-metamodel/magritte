@@ -1,5 +1,5 @@
 Class {
-	#name : #MAPasswordMorph,
-	#superclass : #MAMorphicPassword,
-	#category : #'Magritte-Deprecated3dot7'
+	#name : 'MAPasswordMorph',
+	#superclass : 'MAMorphicPassword',
+	#category : 'Magritte-Deprecated3dot7'
 }

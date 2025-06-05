@@ -1,10 +1,10 @@
 Class {
-	#name : #MAGtInputFieldAptitude,
-	#superclass : #BrGlamorousInputFieldSpacingAptitude,
-	#category : #'Magritte-GToolkit'
+	#name : 'MAGtInputFieldAptitude',
+	#superclass : 'BrGlamorousInputFieldSpacingAptitude',
+	#category : 'Magritte-GToolkit'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAGtInputFieldAptitude >> initialize [
 
 	super initialize.

@@ -1,6 +1,6 @@
-Extension { #name : #WAComponent }
+Extension { #name : 'WAComponent' }
 
-{ #category : #'*magritte-seaside' }
+{ #category : '*magritte-seaside' }
 WAComponent >> isMagritteContainer [
 	^ false
 ]

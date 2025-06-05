@@ -2,63 +2,63 @@
 I am an access strategy to be used on dictionary-like model objects. I use my ==key== to read from and write to indexed collections. I am mainly used for prototyping as it allows one to treat dictionaries like objects with object-based instance variables.
 "
 Class {
-	#name : #MADictionaryAccessor,
-	#superclass : #MAAccessor,
+	#name : 'MADictionaryAccessor',
+	#superclass : 'MAAccessor',
 	#instVars : [
 		'key'
 	],
-	#category : #'Magritte-Model-Accessor'
+	#category : 'Magritte-Model-Accessor'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 MADictionaryAccessor class >> isAbstract [
 	^ false
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 MADictionaryAccessor class >> key: aSymbol [
 	^ self new
 		key: aSymbol;
 		yourself
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 MADictionaryAccessor >> = anObject [
 	^ super = anObject
 		and: [ self key = anObject key ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 MADictionaryAccessor >> canRead: aModel [
 	^ true
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 MADictionaryAccessor >> canWrite: aModel [
 	^ true
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MADictionaryAccessor >> defaultLabelFor: aDescription [
 	^ self key asString normalizeCamelCase capitalized
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 MADictionaryAccessor >> hash [
 	^ super hash bitXor: self key hash
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MADictionaryAccessor >> key [
 	^ key
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MADictionaryAccessor >> key: aKey [
 	key := aKey
 ]
 
-{ #category : #'magritte-accessing' }
+{ #category : 'magritte-accessing' }
 MADictionaryAccessor >> keyDescription [
 	<magritteDescription>
 	^ MASymbolDescription new
@@ -67,17 +67,17 @@ MADictionaryAccessor >> keyDescription [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MADictionaryAccessor >> name [
 	^ self key
 ]
 
-{ #category : #model }
+{ #category : 'model' }
 MADictionaryAccessor >> read: aModel [
 	^ aModel at: self key ifAbsent: [ nil ]
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 MADictionaryAccessor >> storeOn: aStream [
 	aStream nextPut: $(.
 	self class storeOn: aStream.
@@ -87,7 +87,7 @@ MADictionaryAccessor >> storeOn: aStream [
 		nextPut: $)
 ]
 
-{ #category : #model }
+{ #category : 'model' }
 MADictionaryAccessor >> write: anObject to: aModel [
 	aModel at: self key put: anObject
 ]

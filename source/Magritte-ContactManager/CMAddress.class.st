@@ -2,8 +2,8 @@
 A simple address for a city located in Switzerland.
 "
 Class {
-	#name : #CMAddress,
-	#superclass : #Object,
+	#name : 'CMAddress',
+	#superclass : 'Object',
 	#instVars : [
 		'street',
 		'plz',
@@ -14,7 +14,7 @@ Class {
 	#category : 'Magritte-ContactManager'
 }
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 CMAddress >> = anObject [
 	^ self species = anObject species
 		and: [ self street = anObject street
@@ -23,17 +23,17 @@ CMAddress >> = anObject [
 		and: [ self canton = anObject canton ] ] ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CMAddress >> canton [
 	^ canton
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CMAddress >> canton: anObject [
 	canton := anObject
 ]
 
-{ #category : #descriptions }
+{ #category : 'descriptions' }
 CMAddress >> descriptionCanton [
 	<magritteDescription>
 	
@@ -47,7 +47,7 @@ CMAddress >> descriptionCanton [
 		yourself
 ]
 
-{ #category : #descriptions }
+{ #category : 'descriptions' }
 CMAddress >> descriptionPlace [
 	<magritteDescription>
 	
@@ -58,7 +58,7 @@ CMAddress >> descriptionPlace [
 			yourself
 ]
 
-{ #category : #descriptions }
+{ #category : 'descriptions' }
 CMAddress >> descriptionPlz [
 	<magritteDescription>
 	^ MANumberDescription new
@@ -70,7 +70,7 @@ CMAddress >> descriptionPlz [
 		yourself
 ]
 
-{ #category : #descriptions }
+{ #category : 'descriptions' }
 CMAddress >> descriptionStreet [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -80,47 +80,47 @@ CMAddress >> descriptionStreet [
 		yourself
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 CMAddress >> hash [
 	^ self street hash bitXor: self place hash
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CMAddress >> nationality [
 	^ nationality
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CMAddress >> nationality: anObject [
 	nationality := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CMAddress >> place [
 	^ place
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CMAddress >> place: anObject [
 	place := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CMAddress >> plz [
 	^ plz
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CMAddress >> plz: anObject [
 	plz := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CMAddress >> street [
 	^ street
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CMAddress >> street: anObject [
 	street := anObject
 ]

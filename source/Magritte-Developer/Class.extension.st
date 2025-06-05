@@ -1,6 +1,6 @@
-Extension { #name : #Class }
+Extension { #name : 'Class' }
 
-{ #category : #'*Magritte-Developer' }
+{ #category : '*Magritte-Developer' }
 Class >> maAddField [
 	| fieldName |
 	fieldName := UIManager default request: 'Field name?'.

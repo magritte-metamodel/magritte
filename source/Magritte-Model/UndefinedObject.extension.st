@@ -1,16 +1,16 @@
-Extension { #name : #UndefinedObject }
+Extension { #name : 'UndefinedObject' }
 
-{ #category : #'*Magritte-Model' }
+{ #category : '*Magritte-Model' }
 UndefinedObject >> asAccessor [
 	^ MANullAccessor new
 ]
 
-{ #category : #'*Magritte-Model' }
+{ #category : '*Magritte-Model' }
 UndefinedObject >> label [
 	^ 'n/a'
 ]
 
-{ #category : #'*Magritte-Model' }
+{ #category : '*Magritte-Model' }
 UndefinedObject >> magritteDescription [
 	^ MAContainer new
 ]

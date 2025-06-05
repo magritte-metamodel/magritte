@@ -1,10 +1,10 @@
 Class {
-	#name : #MAMorphicCheckbox,
-	#superclass : #MAMorphicElement,
-	#category : #'Magritte-Morph-Model'
+	#name : 'MAMorphicCheckbox',
+	#superclass : 'MAMorphicElement',
+	#category : 'Magritte-Morph-Model'
 }
 
-{ #category : #private }
+{ #category : 'private' }
 MAMorphicCheckbox >> buildMorphView [
 	^ self theme
 		newCheckboxIn: nil
@@ -16,17 +16,17 @@ MAMorphicCheckbox >> buildMorphView [
 		help: self magritteDescription comment
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 MAMorphicCheckbox >> enabled [
 	^ true
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 MAMorphicCheckbox >> selected [
 	^ (self value ifNil: [ self magritteDescription default ]) ifNil: [ false ]
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 MAMorphicCheckbox >> selected: aBoolean [
 	self value: aBoolean 
 ]

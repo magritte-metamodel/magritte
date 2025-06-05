@@ -1,26 +1,26 @@
 Class {
-	#name : #MAMorphicDescription,
-	#superclass : #Model,
+	#name : 'MAMorphicDescription',
+	#superclass : 'Model',
 	#instVars : [
 		'memento',
 		'description',
 		'parent',
 		'morph'
 	],
-	#category : #'Magritte-Morph-Model'
+	#category : 'Magritte-Morph-Model'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 MAMorphicDescription class >> memento: aMemento [
 	^ self memento: aMemento description: aMemento magritteDescription
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 MAMorphicDescription class >> memento: aMemento description: aDescription [
 	^ self memento: aMemento description: aDescription parent: nil
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 MAMorphicDescription class >> memento: aMemento description: aDescription parent: aComponent [
 	^ self new
 		setMemento: aMemento;
@@ -29,7 +29,7 @@ MAMorphicDescription class >> memento: aMemento description: aDescription parent
 		yourself
 ]
 
-{ #category : #prototypes }
+{ #category : 'prototypes' }
 MAMorphicDescription >> barMorph: anArray [
 	| bar |
 	bar := self rectangleMorph
@@ -45,7 +45,7 @@ MAMorphicDescription >> barMorph: anArray [
 	^ bar
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAMorphicDescription >> buildMorph [
 
 	| result |
@@ -58,17 +58,17 @@ MAMorphicDescription >> buildMorph [
 	^ result
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAMorphicDescription >> buildMorphEditorOn: aMorph [
 	self buildMorphViewOn: aMorph
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAMorphicDescription >> buildMorphViewOn: aMorph [
 	self subclassResponsibility
 ]
 
-{ #category : #prototypes }
+{ #category : 'prototypes' }
 MAMorphicDescription >> buttonMorph: aSelector [
 	| button |
 	button := PluggableButtonMorph
@@ -82,52 +82,52 @@ MAMorphicDescription >> buttonMorph: aSelector [
 	^ button
 ]
 
-{ #category : #'private-morphic' }
+{ #category : 'private-morphic' }
 MAMorphicDescription >> buttonState [
 	^ true
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 MAMorphicDescription >> commit [
 	self memento commit
 ]
 
-{ #category : #'accessing-configuration' }
+{ #category : 'accessing-configuration' }
 MAMorphicDescription >> defaultBackgroundColor [
 	^ self magritteDescription morphColor
 ]
 
-{ #category : #'accessing-configuration' }
+{ #category : 'accessing-configuration' }
 MAMorphicDescription >> defaultSpacerSize [
 	^ 5
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAMorphicDescription >> magritteDescription [
 	^ description
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAMorphicDescription >> memento [
 	^ memento
 ]
 
-{ #category : #'accessing-dynamic' }
+{ #category : 'accessing-dynamic' }
 MAMorphicDescription >> model [
 	^ self memento model
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAMorphicDescription >> morph [
 	^ morph ifNil: [ morph := self buildMorph ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAMorphicDescription >> parent [
 	^ parent
 ]
 
-{ #category : #prototypes }
+{ #category : 'prototypes' }
 MAMorphicDescription >> rectangleMorph [
 	^ BorderedMorph new
 		borderWidth: 0;
@@ -139,39 +139,39 @@ MAMorphicDescription >> rectangleMorph [
 		yourself
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 MAMorphicDescription >> reset [
 	self memento reset
 ]
 
-{ #category : #'accessing-dynamic' }
+{ #category : 'accessing-dynamic' }
 MAMorphicDescription >> root [
 	^ self parent isNil
 		ifTrue: [ self ]
 		ifFalse: [ self parent root ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 MAMorphicDescription >> setDescription: aDescription [
 	description := aDescription
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 MAMorphicDescription >> setMemento: aMemento [
 	memento := aMemento
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 MAMorphicDescription >> setParent: aMorph [
 	parent := aMorph
 ]
 
-{ #category : #prototypes }
+{ #category : 'prototypes' }
 MAMorphicDescription >> stringMorph [
 	^ StringMorph new
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 MAMorphicDescription >> validate [
 	"Flushes the cached state of some morphic elements (such as text-morphs) to the memento and then does the validation. I don't know of a better flush the morphic contents (happy flickering), probably morphic is just too limited to customize that easily or I am too dumb to find out."
 
@@ -181,7 +181,7 @@ MAMorphicDescription >> validate [
 	self memento validate
 ]
 
-{ #category : #prototypes }
+{ #category : 'prototypes' }
 MAMorphicDescription >> windowMorph [
 	^ SystemWindow labelled: self magritteDescription label
 ]

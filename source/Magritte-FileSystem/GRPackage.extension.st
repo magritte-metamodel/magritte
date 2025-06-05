@@ -1,7 +1,7 @@
-Extension { #name : #GRPackage }
+Extension { #name : 'GRPackage' }
 
-{ #category : #'*magritte-filesystem' }
-GRPackage class >> magritteFileSystem [
+{ #category : '*magritte-filesystem' }
+GRPackage classSide >> magritteFileSystem [
 	^ self new
 		name: 'Magritte-FileSystem';
 		addDependency: 'Magritte-Files-Model';

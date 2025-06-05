@@ -1,5 +1,5 @@
 Class {
-	#name : #MAListMorph,
-	#superclass : #MAMorphicList,
-	#category : #'Magritte-Deprecated3dot7'
+	#name : 'MAListMorph',
+	#superclass : 'MAMorphicList',
+	#category : 'Magritte-Deprecated3dot7'
 }

@@ -1,61 +1,61 @@
 Trait {
-	#name : #MATDescriptionPresenter,
+	#name : 'MATDescriptionPresenter',
 	#instVars : [
 		'memento',
 		'description',
 		'parent'
 	],
-	#category : #'Magritte-UI'
+	#category : 'Magritte-UI'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 MATDescriptionPresenter >> isRoot [
 	^ self parent isNil
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MATDescriptionPresenter >> magritteDescription [
 	^ description
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MATDescriptionPresenter >> memento [
 	^ memento
 ]
 
-{ #category : #'accessing-dynamic' }
+{ #category : 'accessing-dynamic' }
 MATDescriptionPresenter >> model [
 	^ self memento model
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MATDescriptionPresenter >> parent [
 	^ parent
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 MATDescriptionPresenter >> reset [
 	self memento reset
 ]
 
-{ #category : #'accessing-dynamic' }
+{ #category : 'accessing-dynamic' }
 MATDescriptionPresenter >> root [
 	^ self isRoot
 		ifTrue: [ self ]
 		ifFalse: [ self parent root ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 MATDescriptionPresenter >> setDescription: aDescription [
 	description := aDescription
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 MATDescriptionPresenter >> setMemento: aMemento [
 	memento := aMemento
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 MATDescriptionPresenter >> setParent: aMorph [
 	parent := aMorph
 ]

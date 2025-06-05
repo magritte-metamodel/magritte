@@ -2,29 +2,29 @@
 A PanelMorphWithSplitters is which add splitters the way SystemWindow do it
 "
 Class {
-	#name : #PanelMorphWithSplitters,
-	#superclass : #PanelMorph,
+	#name : 'PanelMorphWithSplitters',
+	#superclass : 'PanelMorph',
 	#instVars : [
 		'paneMorphs'
 	],
 	#category : 'Spec-Widgets-Utilities'
 }
 
-{ #category : #'submorphs-add/remove' }
+{ #category : 'submorphs-add/remove' }
 PanelMorphWithSplitters >> addMorph: aMorph [
 
 	paneMorphs add: aMorph.
 	^ super addMorph: aMorph
 ]
 
-{ #category : #'submorphs-add/remove' }
+{ #category : 'submorphs-add/remove' }
 PanelMorphWithSplitters >> addMorph: aMorph fullFrame: aLayout [
 
 	paneMorphs add: aMorph.
 	super addMorph: aMorph fullFrame: aLayout
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 PanelMorphWithSplitters >> addPaneHSplitterBetween: topMorphs and: bottomMorphs [
 	"Add a horizontal splitter for the given morphs that share a common bottom fraction.
 	If there is a horizontal discontinuity apply the splitter to the first contiguous group.
@@ -72,7 +72,7 @@ PanelMorphWithSplitters >> addPaneHSplitterBetween: topMorphs and: bottomMorphs 
 	^topGroup
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 PanelMorphWithSplitters >> addPaneHSplitters [
 	"Add the horizontal pane splitters."
 
@@ -90,7 +90,7 @@ PanelMorphWithSplitters >> addPaneHSplitters [
 			copyWithoutAll: (self addPaneHSplitterBetween: sameBottom and: sameTop)]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 PanelMorphWithSplitters >> addPaneSplitters [
 	"Add the vertical and horizontal pane splitters."
 
@@ -100,7 +100,7 @@ PanelMorphWithSplitters >> addPaneSplitters [
 	self linkSplittersToSplitters
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 PanelMorphWithSplitters >> addPaneVSplitterBetween: leftMorphs and: rightMorphs [
 	"Add a vertical splitter for the given morphs that share a common right fraction.
 	If there is a vertical discontinuity apply the splitter to the first contiguous group.
@@ -145,7 +145,7 @@ PanelMorphWithSplitters >> addPaneVSplitterBetween: leftMorphs and: rightMorphs 
 	^leftGroup
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 PanelMorphWithSplitters >> addPaneVSplitters [
 	"Add the vertical pane splitters."
 
@@ -164,7 +164,7 @@ PanelMorphWithSplitters >> addPaneVSplitters [
 			copyWithoutAll: (self addPaneVSplitterBetween: sameRight and: sameLeft)]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 PanelMorphWithSplitters >> initialize [
 	"Initialization code for PanelMorphWithSplitter"
 
@@ -173,14 +173,14 @@ PanelMorphWithSplitters >> initialize [
 	paneMorphs := OrderedCollection new.
 ]
 
-{ #category : #'layout-properties' }
+{ #category : 'layout-properties' }
 PanelMorphWithSplitters >> layoutFrame: aFrame [
 
 	self activate.
 	super layoutFrame: aFrame
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 PanelMorphWithSplitters >> linkSplittersToSplitters [
 	"The pane morphs are already linked. Cross link the splitters as appropriate."
 	

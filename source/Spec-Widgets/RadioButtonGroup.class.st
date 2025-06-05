@@ -2,15 +2,15 @@
 A RadioButtonGroup is a group for radio buttons which ensure that only radio button of this group is activated at the same time.
 "
 Class {
-	#name : #RadioButtonGroup,
-	#superclass : #Object,
+	#name : 'RadioButtonGroup',
+	#superclass : 'Object',
 	#instVars : [
 		'buttons'
 	],
 	#category : 'Spec-Widgets-Utilities'
 }
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 RadioButtonGroup >> addRadioButton: aButton [
 
 	buttons do: [:b | 
@@ -21,14 +21,14 @@ RadioButtonGroup >> addRadioButton: aButton [
 	aButton privateSetState: false
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 RadioButtonGroup >> default: aButton [
 
 	aButton privateSetState: true.
 	aButton takeKeyboardFocus.
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 RadioButtonGroup >> initialize [
 	"Initialization code for RadioButtonGroup"
 

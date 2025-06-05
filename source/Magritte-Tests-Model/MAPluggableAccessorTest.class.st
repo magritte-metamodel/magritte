@@ -1,34 +1,34 @@
 Class {
-	#name : #MAPluggableAccessorTest,
-	#superclass : #MAAccessorTest,
-	#category : #'Magritte-Tests-Model-Accessor'
+	#name : 'MAPluggableAccessorTest',
+	#superclass : 'MAAccessorTest',
+	#category : 'Magritte-Tests-Model-Accessor'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 MAPluggableAccessorTest class >> isAbstract [
 	^ false
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAPluggableAccessorTest >> accessorInstance [
 	^ self actualClass
 		read: [ :model | model value ]
 		write: [ :model :object | model value: object ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAPluggableAccessorTest >> actualClass [
 	^ MAPluggableAccessor
 ]
 
-{ #category : #'tests-testing' }
+{ #category : 'tests-testing' }
 MAPluggableAccessorTest >> testCanRead [
 	self assert: (self instance canRead: self).
 	self instance readBlock: nil.
 	self deny: (self instance canRead: self)
 ]
 
-{ #category : #'tests-testing' }
+{ #category : 'tests-testing' }
 MAPluggableAccessorTest >> testCanWrite [
 	self assert: (self instance canWrite: nil).
 	self assert: (self instance canWrite: 123).
@@ -40,7 +40,7 @@ MAPluggableAccessorTest >> testCanWrite [
 	self deny: (self instance canWrite: self)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MAPluggableAccessorTest >> testRead [
 	self value: 123.
 	self assert: (self accessor read: self) = 123.
@@ -49,19 +49,19 @@ MAPluggableAccessorTest >> testRead [
 	self assert: (self accessor read: self) = '12'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MAPluggableAccessorTest >> testReadBlock [
 	self accessor readBlock: [ :model |
 		self assert: model = self. 123 ].
 	self assert: (self accessor read: self) = 123
 ]
 
-{ #category : #'tests-identity' }
+{ #category : 'tests-identity' }
 MAPluggableAccessorTest >> testStore [
 	"The class BlockContext is not serializeable, ignore this test."
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MAPluggableAccessorTest >> testWrite [
 	self accessor write: 123 to: self.
 	self assert: self value = 123.
@@ -70,7 +70,7 @@ MAPluggableAccessorTest >> testWrite [
 	self assert: self value = '123'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MAPluggableAccessorTest >> testWriteBlock [
 	self accessor writeBlock: [ :model :object |
 		self assert: model = self.

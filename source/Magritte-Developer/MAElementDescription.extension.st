@@ -1,6 +1,6 @@
-Extension { #name : #MAElementDescription }
+Extension { #name : 'MAElementDescription' }
 
-{ #category : #'*Magritte-Developer' }
+{ #category : '*Magritte-Developer' }
 MAElementDescription >> addTo: aClass as: aSymbol [
 	| source formattedSource |
 	source := String streamContents: [ :s | 

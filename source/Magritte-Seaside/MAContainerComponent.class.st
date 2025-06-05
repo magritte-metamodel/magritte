@@ -1,6 +1,6 @@
 Class {
-	#name : #MAContainerComponent,
-	#superclass : #MADescriptionComponent,
+	#name : 'MAContainerComponent',
+	#superclass : 'MADescriptionComponent',
 	#instVars : [
 		'children',
 		'readonly',
@@ -10,48 +10,48 @@ Class {
 	#category : 'Magritte-Seaside-Components'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 MAContainerComponent class >> isAbstract [
 	^ false
 ]
 
-{ #category : #decorating }
+{ #category : 'decorating' }
 MAContainerComponent >> addForm [
 	self addForm: #( save cancel )
 ]
 
-{ #category : #decorating }
+{ #category : 'decorating' }
 MAContainerComponent >> addForm: aCollection [
 	self addDecoration: (MAFormDecoration buttons: aCollection)
 ]
 
-{ #category : #decorating }
+{ #category : 'decorating' }
 MAContainerComponent >> addSwitch [
 	self addDecoration: MASwitchDecoration new.
 	self readOnly: true
 ]
 
-{ #category : #decorating }
+{ #category : 'decorating' }
 MAContainerComponent >> addValidatedForm [
 	self addForm; addValidation
 ]
 
-{ #category : #decorating }
+{ #category : 'decorating' }
 MAContainerComponent >> addValidatedForm: aCollection [
 	self addForm: aCollection; addValidation
 ]
 
-{ #category : #decorating }
+{ #category : 'decorating' }
 MAContainerComponent >> addValidatedSwitch [
 	self addSwitch; addValidation
 ]
 
-{ #category : #decorating }
+{ #category : 'decorating' }
 MAContainerComponent >> addValidation [
 	self addDecoration: MAValidationDecoration new
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAContainerComponent >> buildChildren [
 	^ self magritteDescription
 		inject: Dictionary new
@@ -62,32 +62,32 @@ MAContainerComponent >> buildChildren [
 			result ]
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 MAContainerComponent >> cancel [
 	self reset; answer: nil
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAContainerComponent >> childAt: aDescription [
 	^ children at: aDescription ifAbsent: [ nil ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAContainerComponent >> children [
 	^ children values
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 MAContainerComponent >> commit [
 	self withContainersDo: [ :each | each commitMemento ]
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 MAContainerComponent >> commitMemento [
 	self memento commit
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAContainerComponent >> doValidateTo: aCollectionOfErrors [
 	self 
 		onValidationError: [ self memento validate ] 
@@ -98,35 +98,35 @@ MAContainerComponent >> doValidateTo: aCollectionOfErrors [
 			addTo: aCollectionOfErrors ]
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 MAContainerComponent >> edit [
 	self readOnly: false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAContainerComponent >> errors [
 	"Answer a collection of exceptions, the list of standing errors."
 
 	^ errors
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 MAContainerComponent >> initialize [
 	super initialize.
 	errors := OrderedCollection new
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 MAContainerComponent >> isMagritteContainer [
 	^ true
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 MAContainerComponent >> isReadOnly [
 	^ super isReadOnly or: [ self readOnly ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 MAContainerComponent >> isReadonly [
 	self 
 		deprecated: 'Use #isReadOnly instead.' 
@@ -137,7 +137,7 @@ MAContainerComponent >> isReadonly [
 	^ self isReadOnly
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAContainerComponent >> magritteDescription [
 	^magritteDescription ifNil: [
 		| model builder |
@@ -149,17 +149,17 @@ MAContainerComponent >> magritteDescription [
 		magritteDescription ]
 ]
 
-{ #category : #'accessing-properties' }
+{ #category : 'accessing-properties' }
 MAContainerComponent >> readOnly [
 	^ readonly ifNil: [ readonly := false ]
 ]
 
-{ #category : #'accessing-properties' }
+{ #category : 'accessing-properties' }
 MAContainerComponent >> readOnly: aBoolean [
 	readonly := aBoolean
 ]
 
-{ #category : #'accessing-properties' }
+{ #category : 'accessing-properties' }
 MAContainerComponent >> readonly [
 	self 
 		deprecated: 'Use #readOnly instead.' 
@@ -170,7 +170,7 @@ MAContainerComponent >> readonly [
 		^ self readOnly
 ]
 
-{ #category : #'accessing-properties' }
+{ #category : 'accessing-properties' }
 MAContainerComponent >> readonly: aBoolean [
 	self 
 		deprecated: 'Use #readOnly: instead.' 
@@ -181,50 +181,50 @@ MAContainerComponent >> readonly: aBoolean [
 		^ self readOnly: aBoolean
 ]
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 MAContainerComponent >> renderContentOn: html [
 	self magritteDescription componentRenderer
 		component: self on: html
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 MAContainerComponent >> reset [
 	self withContainersDo: [ :each | each memento reset ]
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 MAContainerComponent >> save [
 	self validate ifFalse: [ ^ self ].
 	self commit; answer: self model
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 MAContainerComponent >> setChildren: aDictionary [
 	children := aDictionary
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 MAContainerComponent >> setDescription: aDescription [
 	magritteDescription := nil.
 	super setDescription: aDescription.
 	self setChildren: self buildChildren
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 MAContainerComponent >> validate [
 	errors := OrderedCollection new.
 	self withContainersDo: [ :each | each doValidateTo: errors ].
 	^ errors isEmpty
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAContainerComponent >> withContainersDo: aBlock [
 	"This does a depth first search through all children and evaluates a block for all container components that have their own memento."
 	
 	self withContainersDo: aBlock in: self
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAContainerComponent >> withContainersDo: aBlock in: aComponent [
 	"This does a depth first search through all children and evaluates a block for all container components that have their own memento."
 	

@@ -1,32 +1,32 @@
-Extension { #name : #MADescription }
+Extension { #name : 'MADescription' }
 
-{ #category : #'*magritte-seaside-accessing' }
+{ #category : '*magritte-seaside-accessing' }
 MADescription >> componentClass [
 	^ self propertyAt: #componentClass ifAbsent: [ self class defaultComponentClass ]
 ]
 
-{ #category : #'*magritte-seaside-accessing' }
+{ #category : '*magritte-seaside-accessing' }
 MADescription >> componentClass: aClass [
 	self propertyAt: #componentClass put: aClass
 ]
 
-{ #category : #'*magritte-seaside-accessing' }
+{ #category : '*magritte-seaside-accessing' }
 MADescription >> cssClass: aString [
 	(self propertyAt: #cssClasses ifAbsentPut: [ self class defaultCssClasses ])
 		add: aString
 ]
 
-{ #category : #'*magritte-seaside-accessing' }
+{ #category : '*magritte-seaside-accessing' }
 MADescription >> cssClasses [
 	^ self propertyAt: #cssClasses ifAbsent: [ self class defaultCssClasses ]
 ]
 
-{ #category : #'*magritte-seaside-accessing' }
+{ #category : '*magritte-seaside-accessing' }
 MADescription >> cssClasses: aCollection [
 	self propertyAt: #cssClasses put: aCollection
 ]
 
-{ #category : #'*magritte-seaside-accessing' }
+{ #category : '*magritte-seaside-accessing' }
 MADescription >> currentCssClasses [
 	| classes |
 	classes := OrderedCollection withAll: self cssClasses.
@@ -37,35 +37,35 @@ MADescription >> currentCssClasses [
 	^classes
 ]
 
-{ #category : #'*magritte-seaside-defaults' }
-MADescription class >> defaultComponentClass [
+{ #category : '*magritte-seaside-defaults' }
+MADescription classSide >> defaultComponentClass [
 	^ self defaultComponentClasses isEmpty
 		ifTrue: [ MAUndefinedComponent ]
 		ifFalse: [ self defaultComponentClasses first ]
 ]
 
-{ #category : #'*magritte-seaside-defaults' }
-MADescription class >> defaultComponentClasses [
+{ #category : '*magritte-seaside-defaults' }
+MADescription classSide >> defaultComponentClasses [
 	^ Array with: MAUndefinedComponent
 ]
 
-{ #category : #'*magritte-seaside-defaults' }
-MADescription class >> defaultCssClasses [
+{ #category : '*magritte-seaside-defaults' }
+MADescription classSide >> defaultCssClasses [
 	^ OrderedCollection new
 ]
 
-{ #category : #'*magritte-seaside-defaults' }
-MADescription class >> defaultReportColumnClass [
+{ #category : '*magritte-seaside-defaults' }
+MADescription classSide >> defaultReportColumnClass [
 	^ self defaultReportColumnClasses notEmpty
 		ifTrue: [ self defaultReportColumnClasses first ]
 ]
 
-{ #category : #'*magritte-seaside-defaults' }
-MADescription class >> defaultReportColumnClasses [
+{ #category : '*magritte-seaside-defaults' }
+MADescription classSide >> defaultReportColumnClasses [
 	^ Array with: MADescribedColumn
 ]
 
-{ #category : #'*magritte-seaside-description' }
+{ #category : '*magritte-seaside-description' }
 MADescription >> descriptionComponentClass [
 	<magritteDescription>
 	^ MASingleOptionDescription new
@@ -78,7 +78,7 @@ MADescription >> descriptionComponentClass [
 		yourself
 ]
 
-{ #category : #'*magritte-seaside-description' }
+{ #category : '*magritte-seaside-description' }
 MADescription >> descriptionReportColumnClass [
 	<magritteDescription>
 	^ MASingleOptionDescription new
@@ -91,12 +91,12 @@ MADescription >> descriptionReportColumnClass [
 		yourself
 ]
 
-{ #category : #'*magritte-seaside-accessing' }
+{ #category : '*magritte-seaside-accessing' }
 MADescription >> reportColumnClass [
 	^ self propertyAt: #reportColumnClass ifAbsent: [ self class defaultReportColumnClass ]
 ]
 
-{ #category : #'*magritte-seaside-accessing' }
+{ #category : '*magritte-seaside-accessing' }
 MADescription >> reportColumnClass: aClass [
 	self propertyAt: #reportColumnClass put: aClass
 ]

@@ -1,19 +1,19 @@
 Class {
-	#name : #GLMMorphicMagritteRenderer,
-	#superclass : #GLMMorphicWidgetRenderer,
+	#name : 'GLMMorphicMagritteRenderer',
+	#superclass : 'GLMMorphicWidgetRenderer',
 	#instVars : [
 		'scrollPane',
 		'containerMorphClass'
 	],
-	#category : #'Magritte-Glamour'
+	#category : 'Magritte-Glamour'
 }
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 GLMMorphicMagritteRenderer >> actOnPresentationUpdated: ann [
 	scrollPane scrollTarget: (self magritteMorphFrom: ann presentation) 
 ]
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 GLMMorphicMagritteRenderer >> magritteMorphFrom: aMagrittePresentation [
 	| toShow description magritteMorph magritteDescriptionMorph |
 	toShow := aMagrittePresentation displayValue.
@@ -34,7 +34,7 @@ GLMMorphicMagritteRenderer >> magritteMorphFrom: aMagrittePresentation [
 	^ magritteMorph
 ]
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 GLMMorphicMagritteRenderer >> render: aMagrittePresentation [
 	scrollPane := GeneralScrollPane new.
 	scrollPane changeScrollerTableLayout.

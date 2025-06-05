@@ -2,34 +2,34 @@
 Password seaside component, I display stars '*' instead of the text typed by the user. My description is MAPasswordDescription.
 "
 Class {
-	#name : #MATextPasswordComponent,
-	#superclass : #MAElementComponent,
+	#name : 'MATextPasswordComponent',
+	#superclass : 'MAElementComponent',
 	#category : 'Magritte-Seaside-Components'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 MATextPasswordComponent class >> isAbstract [
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 MATextPasswordComponent >> hasLabelId [
 	^ self isReadOnly not
 ]
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 MATextPasswordComponent >> renderEditorOn: html [
 	html passwordInput
 		id: self labelId;
 		on: #string of: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MATextPasswordComponent >> string [
 	^ self magritteDescription obfuscated: super string
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MATextPasswordComponent >> string: aString [
 	(self magritteDescription isObfuscated: aString)
 		ifFalse: [ super string: aString ]

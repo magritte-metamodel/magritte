@@ -1,13 +1,13 @@
 Class {
-	#name : #MAPatchMacro,
-	#superclass : #Object,
+	#name : 'MAPatchMacro',
+	#superclass : 'Object',
 	#instVars : [
 		'operations'
 	],
-	#category : #'Magritte-Merging'
+	#category : 'Magritte-Merging'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAPatchMacro class >> example [
 	<gtExample>
 	^ self
@@ -23,7 +23,7 @@ MAPatchMacro class >> example [
 			macro operations size should equal: 2 ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAPatchMacro >> addOperationFor: modelObject set: aDescription to: valueObject [
 	| newOp |
 	newOp := MAPatchOperation
@@ -34,12 +34,12 @@ MAPatchMacro >> addOperationFor: modelObject set: aDescription to: valueObject [
 	^ self operations add: newOp.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAPatchMacro >> children [
 	^ self operations
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAPatchMacro >> diffStrings [
 	| lhs rhs |
 	lhs := String streamContents: [ :lstr |
@@ -54,7 +54,7 @@ MAPatchMacro >> diffStrings [
 	^ { lhs. rhs }
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAPatchMacro >> elementGtViewFor: aView [
 	<gtView>
 	^ aView explicit
@@ -63,27 +63,27 @@ MAPatchMacro >> elementGtViewFor: aView [
 		stencil: [ self asElement asScrollableElement ]
 ]
 
-{ #category : #execution }
+{ #category : 'execution' }
 MAPatchMacro >> execute [
 	self operations do: #execute
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAPatchMacro >> isEmptyOrNil [
 	^ self operations isEmpty
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAPatchMacro >> operations [
 	^ self maLazyInstVarUsing: self operationsDescription
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAPatchMacro >> operations: anObject [
 	operations := anObject
 ]
 
-{ #category : #'accessing-magritte' }
+{ #category : 'accessing-magritte' }
 MAPatchMacro >> operationsDescription [
 	<magritteDescription>
 	<gtInspectorPresentationOrder: 1>
@@ -94,7 +94,7 @@ MAPatchMacro >> operationsDescription [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAPatchMacro >> operationsGtViewFor: aView [
 	<gtView>
 	
@@ -104,7 +104,7 @@ MAPatchMacro >> operationsGtViewFor: aView [
 		items: [ self operations ]
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 MAPatchMacro >> printOn: aStream [
 
 	self receivers
@@ -116,12 +116,12 @@ MAPatchMacro >> printOn: aStream [
 		ifEmpty: [ super printOn: aStream ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAPatchMacro >> receivers [
 	^ self operations collect: #receivers as: Set
 ]
 
-{ #category : #execution }
+{ #category : 'execution' }
 MAPatchMacro >> undo [
 	self operations do: #undo
 ]

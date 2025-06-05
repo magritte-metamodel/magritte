@@ -1,36 +1,36 @@
 Class {
-	#name : #MASortBlock,
-	#superclass : #MABasicObject,
+	#name : 'MASortBlock',
+	#superclass : 'MABasicObject',
 	#instVars : [
 		'accessor',
 		'selector'
 	],
-	#category : #'Magritte-Model-Utility'
+	#category : 'Magritte-Model-Utility'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 MASortBlock class >> accessor: anAccessor selector: aSelector [
 	^ self basicNew initializeAccessor: anAccessor selector: aSelector
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 MASortBlock class >> selector: aSelector [ 
 	^ self 
 		accessor: MAIdentityAccessor new
 		selector: aSelector
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 MASortBlock >> fixTemps [
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 MASortBlock >> initializeAccessor: anAccessor selector: aSelector [
 	accessor := anAccessor asAccessor.
 	selector := aSelector
 ]
 
-{ #category : #evaluating }
+{ #category : 'evaluating' }
 MASortBlock >> value: aFirstObject value: aSecondObject [
 	^ (accessor read: aFirstObject)
 		perform: selector

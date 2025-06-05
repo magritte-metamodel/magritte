@@ -1,10 +1,10 @@
 Class {
-	#name : #MAOneToManyScalarComponent,
-	#superclass : #MAOneToManyComponent,
+	#name : 'MAOneToManyScalarComponent',
+	#superclass : 'MAOneToManyComponent',
 	#category : 'Magritte-Seaside-Components'
 }
 
-{ #category : #actions }
+{ #category : 'actions' }
 MAOneToManyScalarComponent >> add [
 	| holder holderDescription |
 	holder := MAValueHolder new.
@@ -22,7 +22,7 @@ MAOneToManyScalarComponent >> add [
 				ifFalse: [ self value: (self value copyWith: holder contents); refresh ] ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAOneToManyScalarComponent >> buildCommandColumn [
 	|retVal|
 	retVal := MAIndexedCommandColumn new
@@ -41,12 +41,12 @@ MAOneToManyScalarComponent >> buildCommandColumn [
 	^ retVal
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAOneToManyScalarComponent >> buildReport [
 	^ MAReport rows: self value description: self magritteDescription
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 MAOneToManyScalarComponent >> edit: anObject index: anInteger [ 
 	"sorry, but a collection might include duplicates like #(1 2 1) and you only want to edit the one with the correct index"
 	| holder holderDescription |
@@ -76,7 +76,7 @@ MAOneToManyScalarComponent >> edit: anObject index: anInteger [
 			self refresh ]
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 MAOneToManyScalarComponent >> remove: anObject index: anInteger [
 	"sorry, but a collection might include duplicates like #(1 2 1) and you only want to remove the one with the correct index"
 	self value: (self value isSequenceable

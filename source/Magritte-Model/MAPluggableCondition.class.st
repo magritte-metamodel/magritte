@@ -1,16 +1,16 @@
 Class {
-	#name : #MAPluggableCondition,
-	#superclass : #MACondition,
+	#name : 'MAPluggableCondition',
+	#superclass : 'MACondition',
 	#instVars : [
 		'receiver',
 		'selector',
 		'arguments',
 		'index'
 	],
-	#category : #'Magritte-Model-Utility'
+	#category : 'Magritte-Model-Utility'
 }
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 MAPluggableCondition >> initializeReceiver: anObject selector: aSelector arguments: anArray index: anInteger [
 	receiver := anObject.
 	selector := aSelector.
@@ -18,7 +18,7 @@ MAPluggableCondition >> initializeReceiver: anObject selector: aSelector argumen
 	index := anInteger
 ]
 
-{ #category : #evaluating }
+{ #category : 'evaluating' }
 MAPluggableCondition >> value: anObject [
 	| actualReceiver actualArguments |
 	actualReceiver := index = 0

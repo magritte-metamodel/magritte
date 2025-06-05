@@ -1,1 +1,1 @@
-Package { #name : #'Magritte-GToolkit' }
+Package { #name : 'Magritte-GToolkit' }

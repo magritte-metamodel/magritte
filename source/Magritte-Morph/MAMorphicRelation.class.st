@@ -1,21 +1,21 @@
 Class {
-	#name : #MAMorphicRelation,
-	#superclass : #MAMorphicElement,
+	#name : 'MAMorphicRelation',
+	#superclass : 'MAMorphicElement',
 	#instVars : [
 		'selected',
 		'selectedIndex'
 	],
-	#category : #'Magritte-Morph-Model'
+	#category : 'Magritte-Morph-Model'
 }
 
-{ #category : #'private-building' }
+{ #category : 'private-building' }
 MAMorphicRelation >> addSelectListTo: aMorph [
 
 	self classes ifEmpty: [ ^ self ].
 	aMorph addMorphBack: self buildSelectList
 ]
 
-{ #category : #'private-building' }
+{ #category : 'private-building' }
 MAMorphicRelation >> buildClassChooser [
 	| items |
 	items := self classes collect: [ :e | e label ].
@@ -27,12 +27,12 @@ MAMorphicRelation >> buildClassChooser [
 		help: ''
 ]
 
-{ #category : #'private-building' }
+{ #category : 'private-building' }
 MAMorphicRelation >> buildSelectButton [
 	self subclassResponsibility
 ]
 
-{ #category : #'private-building' }
+{ #category : 'private-building' }
 MAMorphicRelation >> buildSelectList [
 
 	| list |
@@ -45,13 +45,13 @@ MAMorphicRelation >> buildSelectList [
 			yourself.
 ]
 
-{ #category : #'accessing-dynamic' }
+{ #category : 'accessing-dynamic' }
 MAMorphicRelation >> classes [
 
 	^ self magritteDescription classes asSortedCollection: #name ascending.
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAMorphicRelation >> newRelation [
 
 	| instance |
@@ -61,17 +61,17 @@ MAMorphicRelation >> newRelation [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAMorphicRelation >> selected [
 	^ self classes at: self selectedIndex
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAMorphicRelation >> selectedIndex [
 	^ selectedIndex ifNil: [ selectedIndex := 1 ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAMorphicRelation >> selectedIndex: anInteger [
 	selectedIndex := anInteger.
 ]

@@ -2,32 +2,32 @@
 Besides caching values like my superclass, I also remember the original values of the model at the time the cache is built. With this information I am able to detect edit conflicts and can prevent accidental loss of data by merging the changes.
 "
 Class {
-	#name : #MACheckedMemento,
-	#superclass : #MACachedMemento,
+	#name : 'MACheckedMemento',
+	#superclass : 'MACachedMemento',
 	#instVars : [
 		'original'
 	],
-	#category : #'Magritte-Model-Memento'
+	#category : 'Magritte-Model-Memento'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 MACheckedMemento >> hasConflict [
 	"Answer ==true==, if there is an edit conflict."
 
 	^ self hasChanges and: [ self hasModelChangedElsewhere ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 MACheckedMemento >> hasModelChangedElsewhere [
 	^ self has: self original changedFrom: self pullRaw
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MACheckedMemento >> original [
 	^ original
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 MACheckedMemento >> reset [
 
 	| dict |
@@ -49,12 +49,12 @@ MACheckedMemento >> reset [
 	Another is that we had at one time done the copying in MACachedMemento>>#cookPullRaw:, but it proved too dangerous because the *cache* also contained copies, not just the *original* as here. For example (ignoring the question of whether this is good design), what if the model required that a field point to a *particular* collection? We might replace that particular collection with a copy, which then goes out of sync with the 'real' collection. Now, outside changes also 'bleed' into caches, but it seems not to matter. If a user was worried about outside changes, they would use an MACheckedMemento which would flag the problem during validation, not an MACachedMemento. Choosing a cached memento means we are specifically *not* checking for whether the model has changed elsewhere. Since the cache is changing with the model, there will be nothing to commit unless we explicitly change the field in the memento, which seems like the expected behavior."
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 MACheckedMemento >> setOriginal: aDictionary [
 	original := aDictionary
 ]
 
-{ #category : #'private-testing' }
+{ #category : 'private-testing' }
 MACheckedMemento >> shouldPush: anObject using: aDescription [
 
 	| originalValue cachedValue didChangeHere |
@@ -66,7 +66,7 @@ MACheckedMemento >> shouldPush: anObject using: aDescription [
 	^ didChangeHere and: [ super shouldPush: anObject using: aDescription ]
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 MACheckedMemento >> validate [
 	self hasConflict
 		ifFalse: [ ^ super validate ].

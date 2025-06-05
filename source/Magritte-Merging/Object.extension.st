@@ -1,13 +1,13 @@
-Extension { #name : #Object }
+Extension { #name : 'Object' }
 
-{ #category : #'*Magritte-Merging' }
+{ #category : '*Magritte-Merging' }
 Object >> is: newValue anInterestingReplacementFor: oldValue [
 	newValue isNil ifTrue: [ ^ false ].
 	oldValue = newValue ifTrue: [ ^ false ].
 	^ true
 ]
 
-{ #category : #'*Magritte-Merging' }
+{ #category : '*Magritte-Merging' }
 Object >> patchRelativeToBase: baseName [ 
 
 	| operations relevantFields relevantOperations |
@@ -19,7 +19,7 @@ Object >> patchRelativeToBase: baseName [
 		yourself
 ]
 
-{ #category : #'*Magritte-Merging' }
+{ #category : '*Magritte-Merging' }
 Object >> patchRelativeToBase: oldValue as: description of: receiver [ 
 
 		^ (receiver is: self anInterestingReplacementFor: oldValue)

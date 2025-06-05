@@ -1,25 +1,25 @@
 Class {
-	#name : #MAToManyRelationDescriptionTest,
-	#superclass : #MARelationDescriptionTest,
-	#category : #'Magritte-Tests-Model-Description'
+	#name : 'MAToManyRelationDescriptionTest',
+	#superclass : 'MARelationDescriptionTest',
+	#category : 'Magritte-Tests-Model-Description'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 MAToManyRelationDescriptionTest class >> isAbstract [
 	^ false
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAToManyRelationDescriptionTest >> actualClass [
 	^ MAToManyRelationDescription
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAToManyRelationDescriptionTest >> includedInstance [
 	^ Array with: self addressInstance1 with: self addressInstance2
 ]
 
-{ #category : #'tests-properties' }
+{ #category : 'tests-properties' }
 MAToManyRelationDescriptionTest >> testDefinitive [
 	self description beDefinitive.
 	self assert: self description isDefinitive.
@@ -30,7 +30,7 @@ MAToManyRelationDescriptionTest >> testDefinitive [
 	self deny: self description definitive
 ]
 
-{ #category : #'tests-properties' }
+{ #category : 'tests-properties' }
 MAToManyRelationDescriptionTest >> testOrdered [
 	self description beOrdered.
 	self assert: self description isOrdered.
@@ -41,7 +41,7 @@ MAToManyRelationDescriptionTest >> testOrdered [
 	self deny: self description ordered
 ]
 
-{ #category : #'tests-properties' }
+{ #category : 'tests-properties' }
 MAToManyRelationDescriptionTest >> testSorted [
 	self description beSorted.
 	self assert: self description isSorted.

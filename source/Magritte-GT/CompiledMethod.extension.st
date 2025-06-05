@@ -1,11 +1,11 @@
-Extension { #name : #CompiledMethod }
+Extension { #name : 'CompiledMethod' }
 
-{ #category : #'*Magritte-GT' }
+{ #category : '*Magritte-GT' }
 CompiledMethod >> maIsDescription [
 	^ self hasPragmaNamed: #magritteDescription
 ]
 
-{ #category : #'*Magritte-GT' }
+{ #category : '*Magritte-GT' }
 CompiledMethod class >> maNautilusMethodMenu: aBuilder [
 	<nautilusGlobalMethodMenu>
 
@@ -20,7 +20,7 @@ CompiledMethod class >> maNautilusMethodMenu: aBuilder [
 		help: 'Display in Inspector'.
 ]
 
-{ #category : #'*Magritte-GT' }
+{ #category : '*Magritte-GT' }
 CompiledMethod >> maShowInGtInspector [
 	
 	| order |
@@ -33,7 +33,7 @@ CompiledMethod >> maShowInGtInspector [
 
 ]
 
-{ #category : #'*Magritte-GT' }
+{ #category : '*Magritte-GT' }
 CompiledMethod >> maShowInGtInspectorOrder: aNumber [
 	
 	| nodes newPragmaNode |	

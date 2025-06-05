@@ -2,15 +2,15 @@
 A LabelModel is a spec model for Labels
 "
 Class {
-	#name : #LabelModel,
-	#superclass : #AbstractBasicWidget,
+	#name : 'LabelModel',
+	#superclass : 'AbstractBasicWidget',
 	#instVars : [
 		'textHolder'
 	],
 	#category : 'Spec-Widgets'
 }
 
-{ #category : #specs }
+{ #category : 'specs' }
 LabelModel class >> defaultSpec [
 	<spec>
 	^ {#LabelSpec.
@@ -24,20 +24,20 @@ LabelModel class >> defaultSpec [
 			#setBalloonText:.					{ #model . #help}}
 ]
 
-{ #category : #specs }
+{ #category : 'specs' }
 LabelModel class >> title [
 
 	^ 'Label Morph'
 ]
 
-{ #category : #morphic }
+{ #category : 'morphic' }
 LabelModel >> getText [
 	<api: #inspect>
 
 	^ textHolder contents
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 LabelModel >> initialize [
 	"Initialization code for LabelModel"
 
@@ -48,7 +48,7 @@ LabelModel >> initialize [
 	textHolder whenChangedDo: [ self changed: #getText ].
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 LabelModel >> text: aText [
 	<api: #string getter: #getText registration: #whenTextChanged:>
 	"Set the text of the label"
@@ -56,7 +56,7 @@ LabelModel >> text: aText [
 	textHolder contents: aText
 ]
 
-{ #category : #'protocol-events' }
+{ #category : 'protocol-events' }
 LabelModel >> whenTextChanged: aBlock [
 	<api: #event>
 	"Set a block to performed when the text is changed"

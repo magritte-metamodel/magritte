@@ -1,25 +1,25 @@
 Class {
-	#name : #MACachedMementoTest,
-	#superclass : #MAMementoTest,
-	#category : #'Magritte-Tests-Model-Memento'
+	#name : 'MACachedMementoTest',
+	#superclass : 'MAMementoTest',
+	#category : 'Magritte-Tests-Model-Memento'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 MACachedMementoTest class >> isAbstract [
 	^ false
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MACachedMementoTest >> actualClass [
 	^ MACachedMemento
 ]
 
-{ #category : #'tests-accessing' }
+{ #category : 'tests-accessing' }
 MACachedMementoTest >> testCache [
 	self assert: self memento cache size = self magritteDescription size
 ]
 
-{ #category : #'tests-actions' }
+{ #category : 'tests-actions' }
 MACachedMementoTest >> testCommit [
 	self write: self includedInstance.
 	self assert: self read = self includedInstance.
@@ -32,7 +32,7 @@ MACachedMementoTest >> testCommit [
 	self deny: self memento hasChanges
 ]
 
-{ #category : #'tests-basic' }
+{ #category : 'tests-basic' }
 MACachedMementoTest >> testRead [
 	self assert: self read = self defaultInstance.
 
@@ -40,7 +40,7 @@ MACachedMementoTest >> testRead [
 	self assert: self read = self defaultInstance
 ]
 
-{ #category : #'tests-actions' }
+{ #category : 'tests-actions' }
 MACachedMementoTest >> testReset [
 	self value: self defaultInstance.
 	self write: self includedInstance.
@@ -52,7 +52,7 @@ MACachedMementoTest >> testReset [
 	self deny: self memento hasChanges
 ]
 
-{ #category : #'tests-basic' }
+{ #category : 'tests-basic' }
 MACachedMementoTest >> testWrite [
 	self write: self includedInstance.
 	self assert: self read = self includedInstance.

@@ -1,25 +1,25 @@
 Class {
-	#name : #MAContainerTest,
-	#superclass : #MADescriptionTest,
+	#name : 'MAContainerTest',
+	#superclass : 'MADescriptionTest',
 	#instVars : [
 		'child1',
 		'child2',
 		'child3'
 	],
-	#category : #'Magritte-Tests-Model-Description'
+	#category : 'Magritte-Tests-Model-Description'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 MAContainerTest class >> isAbstract [
 	^ false
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAContainerTest >> actualClass [
 	^ MAContainer
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAContainerTest >> child1 [
 	^ child1 ifNil: 
 		[ child1 := MAStringDescription new
@@ -29,7 +29,7 @@ MAContainerTest >> child1 [
 			yourself ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAContainerTest >> child2 [
 	^ child2 ifNil: 
 		[ child2 := MAStringDescription new
@@ -39,7 +39,7 @@ MAContainerTest >> child2 [
 			yourself ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAContainerTest >> child3 [
 	^ child3 ifNil: 
 		[ child3 := MAStringDescription new
@@ -49,7 +49,7 @@ MAContainerTest >> child3 [
 			yourself ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAContainerTest >> exampleInstance [
 	^ MACachedMemento new
 		setDescription: self description;
@@ -61,7 +61,7 @@ MAContainerTest >> exampleInstance [
 		yourself
 ]
 
-{ #category : #'tests-adding' }
+{ #category : 'tests-adding' }
 MAContainerTest >> testAdd [
 	self description add: self child1.
 	self assert: (self description size = 1).
@@ -73,7 +73,7 @@ MAContainerTest >> testAdd [
 	self assert: (self description includes: self child2)
 ]
 
-{ #category : #'tests-adding' }
+{ #category : 'tests-adding' }
 MAContainerTest >> testAddAll [
 	self description
 		addAll: (Array with: self child1 with: self child2).
@@ -83,27 +83,27 @@ MAContainerTest >> testAddAll [
 	self assert: (self description includes: self child2)
 ]
 
-{ #category : #'tests-enumerating' }
+{ #category : 'tests-enumerating' }
 MAContainerTest >> testAllSatisfy [
 	self description add: self child1; add: self child2.
 	self assert: (self description allSatisfy: [ :each | each = self child1 or: [ each = self child2 ] ]).
 	self deny: (self description allSatisfy: [ :each | each = self child1 ])
 ]
 
-{ #category : #'tests-enumerating' }
+{ #category : 'tests-enumerating' }
 MAContainerTest >> testAnySatisfy [
 	self description add: self child1; add: self child2.
 	self assert: (self description anySatisfy: [ :each | each = self child2 ]).
 	self deny: (self description anySatisfy: [ :each | each isNil ])
 ]
 
-{ #category : #'tests-converting' }
+{ #category : 'tests-converting' }
 MAContainerTest >> testAsContainer [
 	self assert: self description asContainer = self description.
 	self assert: self description asContainer == self description
 ]
 
-{ #category : #'tests-enumerating' }
+{ #category : 'tests-enumerating' }
 MAContainerTest >> testAt [
 	self description add: self child1; add: self child2.
 	self assert: (self description at: 1) = self child1.
@@ -111,7 +111,7 @@ MAContainerTest >> testAt [
 	self should: [ self description at: 3 ] raise: Error
 ]
 
-{ #category : #'tests-enumerating' }
+{ #category : 'tests-enumerating' }
 MAContainerTest >> testAtIfAbsent [
 	self description add: self child1; add: self child2.
 	self assert: (self description at: 1 ifAbsent: [ 'not' ]) = self child1.
@@ -119,13 +119,13 @@ MAContainerTest >> testAtIfAbsent [
 	self assert: (self description at: 3 ifAbsent: [ 'not' ]) = 'not'
 ]
 
-{ #category : #'tests-accessing' }
+{ #category : 'tests-accessing' }
 MAContainerTest >> testChildren [
 	self assert: self description children isCollection.
 	self assert: self description children isEmpty
 ]
 
-{ #category : #'tests-enumerating' }
+{ #category : 'tests-enumerating' }
 MAContainerTest >> testCollect [
 	| collected |
 	self description add: self child1; add: self child2.
@@ -145,7 +145,7 @@ MAContainerTest >> testCollect [
 	self deny: self description == collected
 ]
 
-{ #category : #'tests-operators' }
+{ #category : 'tests-operators' }
 MAContainerTest >> testConcatenate [
 	| concatenate |
 	concatenate := self child1 , self child2.
@@ -160,7 +160,7 @@ MAContainerTest >> testConcatenate [
 	self assert: concatenate children third = self child3
 ]
 
-{ #category : #'tests-copying' }
+{ #category : 'tests-copying' }
 MAContainerTest >> testCopy [
 	self description add: self child1; add: self child2.
 	super testCopy.
@@ -170,13 +170,13 @@ MAContainerTest >> testCopy [
 	self assert: self description copy children second = self description children second
 ]
 
-{ #category : #'tests-copying' }
+{ #category : 'tests-copying' }
 MAContainerTest >> testCopyEmpty [
 	self description add: self child1; add: self child2.
 	self assert: self description copyEmpty isEmpty
 ]
 
-{ #category : #'tests-copying' }
+{ #category : 'tests-copying' }
 MAContainerTest >> testCopyFromTo [
 	| copied |
 	self description add: self child1; add: self child2; add: self child3.
@@ -189,7 +189,7 @@ MAContainerTest >> testCopyFromTo [
 	self assert: copied children second = self child3
 ]
 
-{ #category : #'tests-copying' }
+{ #category : 'tests-copying' }
 MAContainerTest >> testCopyWithout [
 	| copied |
 	self description add: self child1; add: self child2; add: self child3.
@@ -202,7 +202,7 @@ MAContainerTest >> testCopyWithout [
 	self assert: copied children second = self child3
 ]
 
-{ #category : #'tests-copying' }
+{ #category : 'tests-copying' }
 MAContainerTest >> testCopyWithoutAll [
 	| copied |
 	self description add: self child1; add: self child2; add: self child3.
@@ -214,7 +214,7 @@ MAContainerTest >> testCopyWithoutAll [
 	self assert: copied children first = self child2
 ]
 
-{ #category : #'tests-enumerating' }
+{ #category : 'tests-enumerating' }
 MAContainerTest >> testDetect [
 	self description add: self child1.
 	self assert: (self description
@@ -223,7 +223,7 @@ MAContainerTest >> testDetect [
 		detect: [ :each | self child2 = each ] ] raise: Error
 ]
 
-{ #category : #'tests-enumerating' }
+{ #category : 'tests-enumerating' }
 MAContainerTest >> testDetectIfNone [
 	self description add: self child1.
 	self assert: (self description
@@ -234,7 +234,7 @@ MAContainerTest >> testDetectIfNone [
 		ifNone: [ 123 ]) = 123
 ]
 
-{ #category : #'tests-enumerating' }
+{ #category : 'tests-enumerating' }
 MAContainerTest >> testDo [
 	| collection children |
 	collection := self description class defaultCollection.
@@ -246,7 +246,7 @@ MAContainerTest >> testDo [
 		self assert: (children at: index) = (collection at: index) ]
 ]
 
-{ #category : #'tests-enumerating' }
+{ #category : 'tests-enumerating' }
 MAContainerTest >> testDoSepratedBy [
 	| collection |
 	collection := OrderedCollection new.
@@ -260,28 +260,28 @@ MAContainerTest >> testDoSepratedBy [
 	self assert: collection third = self child2
 ]
 
-{ #category : #'tests-testing' }
+{ #category : 'tests-testing' }
 MAContainerTest >> testEmpty [
 	self assert: self description isEmpty.
 	self description add: self child1.
 	self deny: self description isEmpty
 ]
 
-{ #category : #'tests-testing' }
+{ #category : 'tests-testing' }
 MAContainerTest >> testHasChildren [
 	super testHasChildren.
 	self description add: self child1.
 	self assert: self description hasChildren
 ]
 
-{ #category : #'tests-testing' }
+{ #category : 'tests-testing' }
 MAContainerTest >> testIncludes [
 	self deny: (self description includes: self child1).
 	self description add: self child1.
 	self assert: (self description includes: self child1)
 ]
 
-{ #category : #'tests-enumerating' }
+{ #category : 'tests-enumerating' }
 MAContainerTest >> testInjectInto [
 	self description add: self child1; add: self child2.
 	self assert: (self description
@@ -289,7 +289,7 @@ MAContainerTest >> testInjectInto [
 		into: [ :result :each | result , ' ' , each label ]) = 'start child1 child2'
 ]
 
-{ #category : #'tests-operators' }
+{ #category : 'tests-operators' }
 MAContainerTest >> testIntersection [
 	| a b union |
 	a := self child1 , self child2.
@@ -302,12 +302,12 @@ MAContainerTest >> testIntersection [
 	self deny: (union includes: self child3)
 ]
 
-{ #category : #'tests-testing' }
+{ #category : 'tests-testing' }
 MAContainerTest >> testIsContainer [
 	self assert: self description isContainer
 ]
 
-{ #category : #'tests-enumerating' }
+{ #category : 'tests-enumerating' }
 MAContainerTest >> testKeysAndValuesDo [
 	self description
 		add: self child1;
@@ -322,7 +322,7 @@ MAContainerTest >> testKeysAndValuesDo [
 					ifFalse: [ self assert: false ] ] ]
 ]
 
-{ #category : #'tests-moving' }
+{ #category : 'tests-moving' }
 MAContainerTest >> testMoveDown [
 	self description add: self child1; add: self child2.
 	self assert: self description children first = self child1.
@@ -337,7 +337,7 @@ MAContainerTest >> testMoveDown [
 	self assert: self description children second = self child1
 ]
 
-{ #category : #'tests-moving' }
+{ #category : 'tests-moving' }
 MAContainerTest >> testMoveUp [
 	self description add: self child1; add: self child2.
 	self assert: self description children first = self child1.
@@ -352,7 +352,7 @@ MAContainerTest >> testMoveUp [
 	self assert: self description children second = self child1
 ]
 
-{ #category : #'tests-validating' }
+{ #category : 'tests-validating' }
 MAContainerTest >> testNoFailingValidation [
 	| example |
 	self description
@@ -364,20 +364,20 @@ MAContainerTest >> testNoFailingValidation [
 		raise: MAValidationError
 ]
 
-{ #category : #'tests-enumerating' }
+{ #category : 'tests-enumerating' }
 MAContainerTest >> testNoneSatisfy [
 	self description add: self child1; add: self child2.
 	self assert: (self description noneSatisfy: [ :each | each isNil ])
 ]
 
-{ #category : #'tests-testing' }
+{ #category : 'tests-testing' }
 MAContainerTest >> testNotEmpty [
 	self deny: self description notEmpty.
 	self description add: self child1.
 	self assert: self description notEmpty
 ]
 
-{ #category : #'tests-validating' }
+{ #category : 'tests-validating' }
 MAContainerTest >> testOneFailingValidation [
 	| example |
 	self description
@@ -400,7 +400,7 @@ MAContainerTest >> testOneFailingValidation [
 			self assert: err collection first tag = self child2 ]
 ]
 
-{ #category : #'tests-enumerating' }
+{ #category : 'tests-enumerating' }
 MAContainerTest >> testReject [
 	| rejected |
 	self description add: self child1; add: self child2.
@@ -412,7 +412,7 @@ MAContainerTest >> testReject [
 	self assert: rejected isEmpty
 ]
 
-{ #category : #'tests-removing' }
+{ #category : 'tests-removing' }
 MAContainerTest >> testRemove [
 	self description add: self child1; add: self child2.
 
@@ -425,7 +425,7 @@ MAContainerTest >> testRemove [
 	self assert: self description isEmpty
 ]
 
-{ #category : #'tests-removing' }
+{ #category : 'tests-removing' }
 MAContainerTest >> testRemoveAll [
 	self description add: self child1; add: self child2.
 
@@ -433,7 +433,7 @@ MAContainerTest >> testRemoveAll [
 	self assert: self description isEmpty
 ]
 
-{ #category : #'tests-enumerating' }
+{ #category : 'tests-enumerating' }
 MAContainerTest >> testSelect [
 	| selected |
 	self description add: self child1; add: self child2.
@@ -445,7 +445,7 @@ MAContainerTest >> testSelect [
 	self assert: selected isEmpty
 ]
 
-{ #category : #'tests-accessing' }
+{ #category : 'tests-accessing' }
 MAContainerTest >> testSize [
 	self assert: self description size isZero.
 	self description add: self child1.
@@ -456,7 +456,7 @@ MAContainerTest >> testSize [
 	self assert: self description size = 3
 ]
 
-{ #category : #'tests-validating' }
+{ #category : 'tests-validating' }
 MAContainerTest >> testTwoFailingValidation [
 	| example |
 	self description
@@ -483,7 +483,7 @@ MAContainerTest >> testTwoFailingValidation [
 			self assert: err collection last tag = self child2 ]
 ]
 
-{ #category : #'tests-operators' }
+{ #category : 'tests-operators' }
 MAContainerTest >> testUnion [
 	| a b union |
 	a := self child1 , self child2.
@@ -496,7 +496,7 @@ MAContainerTest >> testUnion [
 	self assert: (union includes: self child3)
 ]
 
-{ #category : #'tests-enumerating' }
+{ #category : 'tests-enumerating' }
 MAContainerTest >> testWithDo [
 	self description add: self child1; add: self child2.
 	self description with: self description children

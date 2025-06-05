@@ -15,33 +15,33 @@ The files are currently stored using the following scheme:
 4. This is the original filename. Subclasses might want to store other cached versions of the same file there, for example resized images, etc.
 "
 Class {
-	#name : #MAFileDatabase,
-	#superclass : #Object,
+	#name : 'MAFileDatabase',
+	#superclass : 'Object',
 	#classInstVars : [
 		'baseDirectory',
 		'baseUrl'
 	],
-	#category : #'Magritte-FileSystem'
+	#category : 'Magritte-FileSystem'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAFileDatabase class >> baseDirectory [
 	^ baseDirectory ifNil: [ FileLocator imageDirectory / 'files' ].
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAFileDatabase class >> baseDirectory: aStringOrDirectory [
 	"Defines where the files are stored. If this value is set to nil, it defaults to a subdirectory of of the current image-location."
 
 	baseDirectory := aStringOrDirectory asFileReference.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAFileDatabase class >> baseUrl [
 	^ baseUrl
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAFileDatabase class >> baseUrl: aString [
 	"Defines the base-URL where the files are served from, when using an external web server. This setting is left to nil by default, causing the files to be served trough the image."
 
@@ -51,7 +51,7 @@ MAFileDatabase class >> baseUrl: aString [
 			ifTrue: [ aString copyUpToLast: $/ ] ]
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 MAFileDatabase class >> garbageCollect [
 	"Remove obsolete files from the file-system that are not referenced from the image anymore. This method has to be called manually and is not intended to be portable."
 	
@@ -67,24 +67,24 @@ MAFileDatabase class >> garbageCollect [
 		(mark includes: directory) ifFalse: [ directory recursiveDelete ] ]
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 MAFileDatabase class >> locationDefinition [
 	^ #( ( 2 '63450af8d9c2e17b' ) ( 30 'iaojv41bw67e0tud5m9rgplqfy8x3cs2kznh' ) )
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAFileDatabase >> baseDirectory [
 
 	^ self class baseDirectory.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAFileDatabase >> baseUrl [
 
 	^ self class baseUrl.
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAFileDatabase >> randomIdentifierName [
 
 	| digits idLength allowedCharacters |
@@ -95,7 +95,7 @@ MAFileDatabase >> randomIdentifierName [
 		idLength timesRepeat: [ str nextPut: allowedCharacters atRandom ] ].
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAFileDatabase >> randomPartitionFolderName [
 	"Returns a string between '00' to 'FF'"
 
@@ -104,7 +104,7 @@ MAFileDatabase >> randomPartitionFolderName [
 	^ twoCharacterHexString asLowercase.
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 MAFileDatabase >> uniqueLocation [
 	"Finds an unique path to be used and create the necessary sub directories."
 

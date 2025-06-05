@@ -1,14 +1,14 @@
 Class {
-	#name : #MADescriptionContext,
-	#superclass : #MABasicObject,
+	#name : 'MADescriptionContext',
+	#superclass : 'MABasicObject',
 	#instVars : [
 		'modelClass',
 		'methodSelector'
 	],
-	#category : #'Magritte-Model-Utility'
+	#category : 'Magritte-Model-Utility'
 }
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 MADescriptionContext >> = anObject [
 	self == anObject
 		ifTrue: [ ^ true ].
@@ -20,13 +20,13 @@ MADescriptionContext >> = anObject [
 		and: [ self modelClass = anObject modelClass ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MADescriptionContext >> compiledMethod [
 	^ self methodClass
 		ifNotNil: [ :aClass | aClass >> self methodSelector asSymbol ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MADescriptionContext >> compiledMethodGtViewFor: aView [
 	 <gtView>
 		
@@ -37,38 +37,38 @@ MADescriptionContext >> compiledMethodGtViewFor: aView [
 		view: #gtSourceFor:
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 MADescriptionContext >> hash [
 	^ self methodSelector hash
 		bitXor: (self modelClass hash)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MADescriptionContext >> methodClass [
 	^ self modelClass whichClassIncludesSelector: self methodSelector
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MADescriptionContext >> methodSelector [
 	^ methodSelector
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MADescriptionContext >> methodSelector: anObject [
 	methodSelector := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MADescriptionContext >> modelClass [
 	^ modelClass
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MADescriptionContext >> modelClass: anObject [
 	modelClass := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MADescriptionContext >> printOn: aStream [
 	| aMethodClass |
 	super printOn: aStream.

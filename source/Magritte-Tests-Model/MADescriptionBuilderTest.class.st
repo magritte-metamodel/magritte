@@ -1,16 +1,16 @@
 Class {
-	#name : #MADescriptionBuilderTest,
-	#superclass : #TestCase,
-	#category : #'Magritte-Tests-Model-Utility'
+	#name : 'MADescriptionBuilderTest',
+	#superclass : 'TestCase',
+	#category : 'Magritte-Tests-Model-Utility'
 }
 
-{ #category : #'acessing-magritte' }
+{ #category : 'acessing-magritte' }
 MADescriptionBuilderTest >> descriptionContainer [
 	<magritteContainer>
 	^ super descriptionContainer label: 'mock'
 ]
 
-{ #category : #'acessing-magritte' }
+{ #category : 'acessing-magritte' }
 MADescriptionBuilderTest >> descriptionContainer: aDescription [
 	<magritteContainer>
 	^ aDescription
@@ -18,7 +18,7 @@ MADescriptionBuilderTest >> descriptionContainer: aDescription [
 		yourself
 ]
 
-{ #category : #'acessing-magritte' }
+{ #category : 'acessing-magritte' }
 MADescriptionBuilderTest >> descriptionContainerFoo: aDescription [
 	<magritteContainer>
 	^ aDescription
@@ -26,7 +26,7 @@ MADescriptionBuilderTest >> descriptionContainerFoo: aDescription [
 		yourself
 ]
 
-{ #category : #'acessing-magritte' }
+{ #category : 'acessing-magritte' }
 MADescriptionBuilderTest >> descriptionDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new 
@@ -35,7 +35,7 @@ MADescriptionBuilderTest >> descriptionDescription [
 		yourself
 ]
 
-{ #category : #'acessing-magritte' }
+{ #category : 'acessing-magritte' }
 MADescriptionBuilderTest >> descriptionDescription: aDescription [
 	<magritteDescription: #descriptionDescription>
 	^ aDescription
@@ -43,7 +43,7 @@ MADescriptionBuilderTest >> descriptionDescription: aDescription [
 		yourself
 ]
 
-{ #category : #'acessing-magritte' }
+{ #category : 'acessing-magritte' }
 MADescriptionBuilderTest >> descriptionDescriptionBar: aDescription [
 	<magritteDescription: #descriptionDescription>
 	^ aDescription
@@ -51,20 +51,20 @@ MADescriptionBuilderTest >> descriptionDescriptionBar: aDescription [
 		yourself
 ]
 
-{ #category : #'acessing-magritte' }
+{ #category : 'acessing-magritte' }
 MADescriptionBuilderTest >> descriptionDescriptionRec: aDescription [
 	<magritteDescription: #descriptionDescription>
 	^ aDescription reference: self magritteDescription
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MADescriptionBuilderTest >> testContainer [
 	self assert: self magritteDescription label = 'mock'.
 	self assert: (self magritteDescription hasProperty: #foo).
 	self assert: (self magritteDescription hasProperty: #bar)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MADescriptionBuilderTest >> testDescription [
 	self assert: self magritteDescription size = 1.
 	self assert: self magritteDescription children first label = 'foo'.
@@ -72,7 +72,7 @@ MADescriptionBuilderTest >> testDescription [
 	self assert: (self magritteDescription children first hasProperty: #bar)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MADescriptionBuilderTest >> testExtension [
 	| description |
 	description := MAMockAddress new magritteDescription
@@ -81,14 +81,14 @@ MADescriptionBuilderTest >> testExtension [
 	self assert: description isVisible not
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MADescriptionBuilderTest >> testNilled [
 	| description |
 	description := MAMockAddress new magritteDescription.
 	self assert: description size = 5
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MADescriptionBuilderTest >> testRecursive [
 	self assert: self magritteDescription children first reference = self magritteDescription
 ]

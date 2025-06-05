@@ -4,8 +4,8 @@ A ButtonComposableModel is an applicative model which handle a basic button.
 self example
 "
 Class {
-	#name : #ButtonModel,
-	#superclass : #AbstractBasicWidget,
+	#name : 'ButtonModel',
+	#superclass : 'AbstractBasicWidget',
 	#instVars : [
 		'actionHolder',
 		'labelHolder',
@@ -16,7 +16,7 @@ Class {
 	#category : 'Spec-Widgets'
 }
 
-{ #category : #specs }
+{ #category : 'specs' }
 ButtonModel class >> defaultSpec [
 	<spec>
 	^ {#ButtonSpec.
@@ -31,7 +31,7 @@ ButtonModel class >> defaultSpec [
 			#eventHandler:.					{	#EventHandler. #on:send:to:. #keyStroke.	#keyStroke:fromMorph:. #model	}}
 ]
 
-{ #category : #example }
+{ #category : 'example' }
 ButtonModel class >> example [
 
 	| b |
@@ -40,13 +40,13 @@ ButtonModel class >> example [
 	b label: 'Click me'.
 ]
 
-{ #category : #specs }
+{ #category : 'specs' }
 ButtonModel class >> title [
 
 	^ 'Button'
 ]
 
-{ #category : #morphic }
+{ #category : 'morphic' }
 ButtonModel >> action [
 
 	self widget ifNotNil: [:m | m takeKeyboardFocus ].
@@ -55,7 +55,7 @@ ButtonModel >> action [
 	actionPerformedHolder contents: nil.
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 ButtonModel >> action: aBlock [
 	<api: #block getter: #getAction registration: #whenActionChangedDo:>
 	"set the block performed when the button is clicked"
@@ -63,31 +63,31 @@ ButtonModel >> action: aBlock [
 	actionHolder contents: aBlock
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 ButtonModel >> askBeforeChanging [
 
 	^ askBeforeChangingHolder contents
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 ButtonModel >> askBeforeChanging: aBoolean [
 
 	askBeforeChangingHolder contents: aBoolean
 ]
 
-{ #category : #focus }
+{ #category : 'focus' }
 ButtonModel >> eventKeyStrokeForNextFocus [
 	"String describing the keystroke to perform to jump to the next widget"
 	^ Character arrowRight asShortcut
 ]
 
-{ #category : #focus }
+{ #category : 'focus' }
 ButtonModel >> eventKeyStrokeForPreviousFocus [
 	"String describing the keystroke to perform to jump to the previous widget"
 	^ Character arrowLeft asShortcut
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 ButtonModel >> getAction [
 	<api: #inspect>
 	"get the block performed when the button is clicked"
@@ -95,7 +95,7 @@ ButtonModel >> getAction [
 	^ actionHolder contents
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 ButtonModel >> initialize [
 	"Initialization code for ButtonComposableModel"
 
@@ -120,26 +120,26 @@ ButtonModel >> initialize [
 	self on: Character space asShortcut do: [ self action ].
 ]
 
-{ #category : #morphic }
+{ #category : 'morphic' }
 ButtonModel >> label [
 	<api: #inspect>
 	^ labelHolder contents
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 ButtonModel >> label: aStringOrImageMorph [
 	<api: #string getter: #label registration: #whenLabelChangedDo:>
 
 	labelHolder contents: aStringOrImageMorph
 ]
 
-{ #category : #morphic }
+{ #category : 'morphic' }
 ButtonModel >> state [
 	<api: #inspect>
 	^ stateHolder contents
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 ButtonModel >> state: aBoolean [
 	<api: #boolean getter: #state registration: #whenStateChangedDo:>
 	"set if the button is highlighted"
@@ -147,13 +147,13 @@ ButtonModel >> state: aBoolean [
 	^ stateHolder contents: aBoolean
 ]
 
-{ #category : #'protocol-events' }
+{ #category : 'protocol-events' }
 ButtonModel >> whenActionChangedDo: aBlock [ 
 
 	actionHolder whenChangedDo: aBlock
 ]
 
-{ #category : #'protocol-events' }
+{ #category : 'protocol-events' }
 ButtonModel >> whenActionPerformedDo: aBlock [
 	<api: #event>
 	"set a block to perform after that the button has been aclicked, and its action performed"
@@ -161,7 +161,7 @@ ButtonModel >> whenActionPerformedDo: aBlock [
 	actionPerformedHolder whenChangedDo: aBlock
 ]
 
-{ #category : #'protocol-events' }
+{ #category : 'protocol-events' }
 ButtonModel >> whenLabelChangedDo: aBlock [
 	<api: #event>
 	"set a block to perform after that the button has been aclicked, and its action performed"
@@ -169,7 +169,7 @@ ButtonModel >> whenLabelChangedDo: aBlock [
 	labelHolder whenChangedDo: aBlock
 ]
 
-{ #category : #'protocol-events' }
+{ #category : 'protocol-events' }
 ButtonModel >> whenStateChangedDo: aBlock [
 	<api: #event>
 	"set a block to perform after that the button has been aclicked, and its action performed"

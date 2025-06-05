@@ -1,15 +1,15 @@
 Class {
-	#name : #MADirectoryDescription,
-	#superclass : #MAFileDescription,
-	#category : #'Magritte-Model-Description'
+	#name : 'MADirectoryDescription',
+	#superclass : 'MAFileDescription',
+	#category : 'Magritte-Model-Description'
 }
 
-{ #category : #acessing }
+{ #category : 'acessing' }
 MADirectoryDescription class >> label [
 	^ 'Directory'
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 MADirectoryDescription >> acceptMagritte: aVisitor [
 	aVisitor visitDirectoryDescription: self
 ]

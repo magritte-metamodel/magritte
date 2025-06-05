@@ -1,1 +1,1 @@
-Package { #name : #'Magritte-Merging-Bloc' }
+Package { #name : 'Magritte-Merging-Bloc' }

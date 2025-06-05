@@ -1,33 +1,33 @@
 Class {
-	#name : #MAFileSystem,
-	#superclass : #Object,
+	#name : 'MAFileSystem',
+	#superclass : 'Object',
 	#category : 'Magritte-FileSystem'
 }
 
-{ #category : #paths }
+{ #category : 'paths' }
 MAFileSystem class >> extensionFor: aString [ 
 
 	^ aString asFileReference extension.
 ]
 
-{ #category : #entries }
+{ #category : 'entries' }
 MAFileSystem class >> fileSizeFor: filenameString [ 
 	^ filenameString asFileReference size
 ]
 
-{ #category : #paths }
+{ #category : 'paths' }
 MAFileSystem class >> fullNameFor: aString [ 
 
 	^ aString asFileReference fullName.
 ]
 
-{ #category : #locations }
+{ #category : 'locations' }
 MAFileSystem class >> imageDirectory [
 
 	^ FileLocator imageDirectory.
 ]
 
-{ #category : #'mime types' }
+{ #category : 'mime types' }
 MAFileSystem class >> mimeTypesForExtension: aString [ 
 
 	| types |

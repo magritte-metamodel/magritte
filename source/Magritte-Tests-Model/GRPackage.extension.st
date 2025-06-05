@@ -1,7 +1,7 @@
-Extension { #name : #GRPackage }
+Extension { #name : 'GRPackage' }
 
-{ #category : #'*magritte-tests-model' }
-GRPackage class >> magritteTestsModel [
+{ #category : '*magritte-tests-model' }
+GRPackage classSide >> magritteTestsModel [
 	^ self new
 		name: 'Magritte-Tests-Model';
 		description: 'Unit tests for the Magritte metamodel.';

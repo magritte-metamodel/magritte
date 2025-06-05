@@ -1,6 +1,6 @@
-Extension { #name : #MAVisitor }
+Extension { #name : 'MAVisitor' }
 
-{ #category : #'*Magritte-Money' }
+{ #category : '*Magritte-Money' }
 MAVisitor >> visitMoneyDescription: anObject [
 	self visitElementDescription: anObject
 ]

@@ -1,1 +1,1 @@
-Package { #name : #'Magritte-Model' }
+Package { #name : 'Magritte-Model' }

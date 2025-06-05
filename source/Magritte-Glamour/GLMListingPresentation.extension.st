@@ -1,6 +1,6 @@
-Extension { #name : #GLMListingPresentation }
+Extension { #name : 'GLMListingPresentation' }
 
-{ #category : #'*Magritte-Glamour' }
+{ #category : '*Magritte-Glamour' }
 GLMListingPresentation >> maAddSelectionActionsFor: aClass [ 
 	
 	aClass magritteActions do: [ :desc |

@@ -1,6 +1,6 @@
 Class {
-	#name : #MADescriptionEditor,
-	#superclass : #MAExampleEditor,
+	#name : 'MADescriptionEditor',
+	#superclass : 'MAExampleEditor',
 	#instVars : [
 		'example',
 		'selected',
@@ -9,26 +9,26 @@ Class {
 	#category : 'Magritte-Seaside-Examples'
 }
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 MADescriptionEditor class >> initialize [
 	WAAdmin register: self asApplicationAt: 'magritte/editor'
 ]
 
-{ #category : #'actions-items' }
+{ #category : 'actions-items' }
 MADescriptionEditor >> addDescription: aDescription [
 	self
 		show: (self buildEditorFor: aDescription titled: 'Add ' , aDescription class label)
 		onAnswer: [ :element | element isNil ifFalse: [ self appendDescription: element ] ]
 ]
 
-{ #category : #'actions-items' }
+{ #category : 'actions-items' }
 MADescriptionEditor >> appendDescription: aDescription [
 	self magritteDescription add: aDescription.
 	self refresh
 
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MADescriptionEditor >> buildReport [
 	^ (MAReport rows: self magritteDescription children description: MAElementDescription new magritteDescription)
 		addColumn: (MAColumn new
@@ -44,17 +44,17 @@ MADescriptionEditor >> buildReport [
 		yourself
 ]
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 MADescriptionEditor >> children [
 	^super children copyWith: selectedComponent
 ]
 
-{ #category : #'accessing-configuration' }
+{ #category : 'accessing-configuration' }
 MADescriptionEditor >> defaultDescription [
 	^ MAContainer new
 ]
 
-{ #category : #'accessing-configuration' }
+{ #category : 'accessing-configuration' }
 MADescriptionEditor >> defaultDescriptionClasses [
 	^ OrderedCollection new
 		add: MAStringDescription;
@@ -83,12 +83,12 @@ MADescriptionEditor >> defaultDescriptionClasses [
 		yourself
 ]
 
-{ #category : #'accessing-configuration' }
+{ #category : 'accessing-configuration' }
 MADescriptionEditor >> defaultExampleInstance [
 	^ MAAdaptiveModel description: self magritteDescription
 ]
 
-{ #category : #'actions-items' }
+{ #category : 'actions-items' }
 MADescriptionEditor >> editDescription: aDescription [
 	self
 		show: (self
@@ -97,12 +97,12 @@ MADescriptionEditor >> editDescription: aDescription [
 		onAnswer: [ self refresh ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MADescriptionEditor >> example [
 	^ example ifNil: [ example := self defaultExampleInstance ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 MADescriptionEditor >> initialize [
 	super initialize.
 	selected :=  MADescriptionHolder new.
@@ -110,7 +110,7 @@ MADescriptionEditor >> initialize [
 
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 MADescriptionEditor >> preview [
 	self show: (self example asComponent
 		addMessage: self magritteDescription label;
@@ -118,13 +118,13 @@ MADescriptionEditor >> preview [
 		yourself)
 ]
 
-{ #category : #'actions-items' }
+{ #category : 'actions-items' }
 MADescriptionEditor >> removeDescription: aDescription [
 	self magritteDescription remove: aDescription.
 	self refresh
 ]
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 MADescriptionEditor >> renderButtonsOn: html [
 	html submitButton
 		callback: [

@@ -1,12 +1,12 @@
 Class {
-	#name : #MABlocContainerPresenter,
-	#superclass : #MADescriptionPresenter,
+	#name : 'MABlocContainerPresenter',
+	#superclass : 'MADescriptionPresenter',
 	#traits : 'MATContainerPresenter',
 	#classTraits : 'MATContainerPresenter classTrait',
-	#category : #'Magritte-UI'
+	#category : 'Magritte-UI'
 }
 
-{ #category : #decorating }
+{ #category : 'decorating' }
 MABlocContainerPresenter >> addButtons: anArray [
 	view := self rectangleMorph
 		addMorphBack: self morph;
@@ -14,7 +14,7 @@ MABlocContainerPresenter >> addButtons: anArray [
 		yourself
 ]
 
-{ #category : #decorating }
+{ #category : 'decorating' }
 MABlocContainerPresenter >> addWindow [
 	| scrollPane newMorph |
 	scrollPane := GeneralScrollPane new.
@@ -32,7 +32,7 @@ MABlocContainerPresenter >> addWindow [
 		yourself
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MABlocContainerPresenter >> buildChildren [
 	self flag: 'very similar in Seaside, except children kept in a dictionary, not a sequencable collection. Why?'.
 	^ Array streamContents: [ :stream |
@@ -44,7 +44,7 @@ MABlocContainerPresenter >> buildChildren [
 					parent: self) ] ] ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MABlocContainerPresenter >> buildMorphViewOn: aMorph [
 
 	| toolbar |
@@ -63,7 +63,7 @@ MABlocContainerPresenter >> buildMorphViewOn: aMorph [
 		
 ]
 
-{ #category : #morphic }
+{ #category : 'morphic' }
 MABlocContainerPresenter >> callInHand [
 	| result |
 	result := nil.
@@ -72,7 +72,7 @@ MABlocContainerPresenter >> callInHand [
 	^ result
 ]
 
-{ #category : #morphic }
+{ #category : 'morphic' }
 MABlocContainerPresenter >> callInWorld [
 	| result |
 	result := nil.
@@ -81,7 +81,7 @@ MABlocContainerPresenter >> callInWorld [
 	^ result
 ]
 
-{ #category : #'error handling' }
+{ #category : 'error handling' }
 MABlocContainerPresenter >> doesNotUnderstand: aMessage [
 	"Forward callbacks from #addButtons: to the model if appropriate"
 
@@ -90,23 +90,23 @@ MABlocContainerPresenter >> doesNotUnderstand: aMessage [
 		ifFalse: [ super doesNotUnderstand: aMessage ].
 ]
 
-{ #category : #answering }
+{ #category : 'answering' }
 MABlocContainerPresenter >> onAnswer: aBlock [
 	answerBlock := aBlock
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MABlocContainerPresenter >> onCancel [
 	self reset.
 	self flag: 'that resets the memento, but we need to reset the form values'
 ]
 
-{ #category : #morphic }
+{ #category : 'morphic' }
 MABlocContainerPresenter >> openInHand [
 	^ self morph openInHand
 ]
 
-{ #category : #morphic }
+{ #category : 'morphic' }
 MABlocContainerPresenter >> openInWindow [
 
 	^ self
@@ -114,12 +114,12 @@ MABlocContainerPresenter >> openInWindow [
 		openInWorld.
 ]
 
-{ #category : #morphic }
+{ #category : 'morphic' }
 MABlocContainerPresenter >> openInWorld [
 	^ self morph openInWorld
 ]
 
-{ #category : #morphic }
+{ #category : 'morphic' }
 MABlocContainerPresenter >> waitUntilClosed [
 	[ self morph world notNil ]
 		whileTrue: [ self morph outermostWorldMorph doOneCycle ]

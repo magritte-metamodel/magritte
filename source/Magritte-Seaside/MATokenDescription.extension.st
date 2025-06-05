@@ -1,6 +1,6 @@
-Extension { #name : #MATokenDescription }
+Extension { #name : 'MATokenDescription' }
 
-{ #category : #'*magritte-seaside-defaults' }
-MATokenDescription class >> defaultComponentClasses [
+{ #category : '*magritte-seaside-defaults' }
+MATokenDescription classSide >> defaultComponentClasses [
 	^ Array with: MATextInputComponent
 ]

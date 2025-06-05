@@ -1,15 +1,15 @@
 Class {
-	#name : #MAMorphicExternalEditor,
-	#superclass : #MAMorphicOneToOne,
-	#category : #'Magritte-Morph-Model'
+	#name : 'MAMorphicExternalEditor',
+	#superclass : 'MAMorphicOneToOne',
+	#category : 'Magritte-Morph-Model'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 MAMorphicExternalEditor class >> isAbstract [
 	^ false
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 MAMorphicExternalEditor >> create [
 	self newRelation asMagritteMorph
 		onAnswer: [ :result | result isNil ifFalse: [ self value: result ] ];
@@ -18,18 +18,18 @@ MAMorphicExternalEditor >> create [
 		openInWorld
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 MAMorphicExternalEditor >> edit [
 	self chooser: (self editorFor: self value)
 ]
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 MAMorphicExternalEditor >> renderButtonsOn: html [
 	html submitButton on: #remove of: self.
 	html submitButton on: #edit of: self
 ]
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 MAMorphicExternalEditor >> renderViewerOn: html [
 	html render: (self reference toString: self value)
 ]

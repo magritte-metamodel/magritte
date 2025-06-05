@@ -1,12 +1,12 @@
 Class {
-	#name : #MAContainerPresenter,
-	#superclass : #MADescriptionPresenter,
+	#name : 'MAContainerPresenter',
+	#superclass : 'MADescriptionPresenter',
 	#traits : 'MATContainerPresenter @ {#superValidate->#validate}',
 	#classTraits : 'MATContainerPresenter classTrait',
-	#category : #'Magritte-UI'
+	#category : 'Magritte-UI'
 }
 
-{ #category : #decorating }
+{ #category : 'decorating' }
 MAContainerPresenter >> addButtons: anArray [
 	view := self rectangleMorph
 		addMorphBack: self morph;
@@ -14,7 +14,7 @@ MAContainerPresenter >> addButtons: anArray [
 		yourself
 ]
 
-{ #category : #decorating }
+{ #category : 'decorating' }
 MAContainerPresenter >> addWindow [
 	| scrollPane newMorph |
 	scrollPane := GeneralScrollPane new.
@@ -32,7 +32,7 @@ MAContainerPresenter >> addWindow [
 		yourself
 ]
 
-{ #category : #answering }
+{ #category : 'answering' }
 MAContainerPresenter >> answer: anObject [
 
 	| didUserCancel |
@@ -44,7 +44,7 @@ MAContainerPresenter >> answer: anObject [
 	answerBlock value: anObject.
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAContainerPresenter >> buildChildren [
 	self flag: 'very similar in Seaside, except children kept in a dictionary, not a sequencable collection. Why?'.
 	^ Array streamContents: [ :stream |
@@ -56,7 +56,7 @@ MAContainerPresenter >> buildChildren [
 					parent: self) ] ] ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAContainerPresenter >> buildMorphViewOn: aMorph [
 
 	| toolbar |
@@ -75,7 +75,7 @@ MAContainerPresenter >> buildMorphViewOn: aMorph [
 		
 ]
 
-{ #category : #morphic }
+{ #category : 'morphic' }
 MAContainerPresenter >> callInHand [
 	| result |
 	result := nil.
@@ -84,7 +84,7 @@ MAContainerPresenter >> callInHand [
 	^ result
 ]
 
-{ #category : #morphic }
+{ #category : 'morphic' }
 MAContainerPresenter >> callInWorld [
 	| result |
 	result := nil.
@@ -93,7 +93,7 @@ MAContainerPresenter >> callInWorld [
 	^ result
 ]
 
-{ #category : #'error handling' }
+{ #category : 'error handling' }
 MAContainerPresenter >> doesNotUnderstand: aMessage [
 	"Forward callbacks from #addButtons: to the model if appropriate"
 
@@ -102,17 +102,17 @@ MAContainerPresenter >> doesNotUnderstand: aMessage [
 		ifFalse: [ super doesNotUnderstand: aMessage ].
 ]
 
-{ #category : #answering }
+{ #category : 'answering' }
 MAContainerPresenter >> onAnswer: aBlock [
 	answerBlock := aBlock
 ]
 
-{ #category : #morphic }
+{ #category : 'morphic' }
 MAContainerPresenter >> openInHand [
 	^ self morph openInHand
 ]
 
-{ #category : #morphic }
+{ #category : 'morphic' }
 MAContainerPresenter >> openInWindow [
 
 	^ self
@@ -120,12 +120,12 @@ MAContainerPresenter >> openInWindow [
 		openInWorld.
 ]
 
-{ #category : #morphic }
+{ #category : 'morphic' }
 MAContainerPresenter >> openInWorld [
 	^ self morph openInWorld
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 MAContainerPresenter >> validate [
 	"Flushes the cached state of some morphic elements (such as text-morphs) to the memento and then does the validation. I don't know of a better flush the morphic contents (happy flickering), probably morphic is just too limited to customize that easily or I am too dumb to find out."
 
@@ -135,7 +135,7 @@ MAContainerPresenter >> validate [
 	self superValidate
 ]
 
-{ #category : #morphic }
+{ #category : 'morphic' }
 MAContainerPresenter >> waitUntilClosed [
 	[ self morph world notNil ]
 		whileTrue: [ self morph outermostWorldMorph doOneCycle ]

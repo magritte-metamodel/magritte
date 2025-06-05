@@ -1,6 +1,6 @@
-Extension { #name : #MAPasswordDescription }
+Extension { #name : 'MAPasswordDescription' }
 
-{ #category : #'*magritte-seaside-default' }
-MAPasswordDescription class >> defaultComponentClasses [
+{ #category : '*magritte-seaside-default' }
+MAPasswordDescription classSide >> defaultComponentClasses [
 	^ Array with: MATextPasswordComponent with: MAVerifiedPasswordComponent with: MATextInputComponent
 ]

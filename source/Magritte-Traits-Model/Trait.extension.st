@@ -1,6 +1,6 @@
-Extension { #name : #Trait }
+Extension { #name : 'Trait' }
 
-{ #category : #'*magritte-traits-model-configuration' }
+{ #category : '*magritte-traits-model-configuration' }
 Trait >> descriptionContainer [
 	"Return the default description container."
 	<magritteContainer>
@@ -9,7 +9,7 @@ Trait >> descriptionContainer [
 		yourself
 ]
 
-{ #category : #'*magritte-traits-model-accessing' }
+{ #category : '*magritte-traits-model-accessing' }
 Trait >> label [
 	"Answer a human-readable name of the receiving class. This implementation tries to be smart and return a nice label, unfortunately for a lot of classes this doesn't work well so subclasses might want to override this method and return soemthing more meaningfull to end-users."
 

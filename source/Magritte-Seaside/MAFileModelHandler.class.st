@@ -1,28 +1,28 @@
 Class {
-	#name : #MAFileModelHandler,
-	#superclass : #WARequestHandler,
+	#name : 'MAFileModelHandler',
+	#superclass : 'WARequestHandler',
 	#instVars : [
 		'model'
 	],
 	#category : 'Magritte-Seaside-Core'
 }
 
-{ #category : #'error handling' }
+{ #category : 'error handling' }
 MAFileModelHandler class >> defaultErrorClass [
 	^ MAError
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 MAFileModelHandler class >> on: aFileModel [
 	^ self new initializeOn: aFileModel
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 MAFileModelHandler >> = aHandler [
 	^ self species = aHandler species and: [ self model = aHandler model ]
 ]
 
-{ #category : #processing }
+{ #category : 'processing' }
 MAFileModelHandler >> handleFiltered: aRequestContext [
 	| response mimeType |
 	response := aRequestContext response.
@@ -37,17 +37,17 @@ MAFileModelHandler >> handleFiltered: aRequestContext [
 		respond
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 MAFileModelHandler >> hash [
 	^ self model hash
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 MAFileModelHandler >> initializeOn: aFileModel [
 	model := aFileModel
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAFileModelHandler >> model [
 	^ model
 ]

@@ -1,10 +1,10 @@
 Class {
-	#name : #MAToggleColumn,
-	#superclass : #MADescribedColumn,
+	#name : 'MAToggleColumn',
+	#superclass : 'MADescribedColumn',
 	#category : 'Magritte-Seaside-Report'
 }
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 MAToggleColumn >> renderCellContent: anObject on: html [
 	| value |
 	value := self valueFor: anObject.

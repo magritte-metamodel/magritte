@@ -9,18 +9,18 @@ Instance Variables:
 	buildedDescription: The result
 "
 Class {
-	#name : #MADescriptionBuilder,
-	#superclass : #MAVisitor,
+	#name : 'MADescriptionBuilder',
+	#superclass : 'MAVisitor',
 	#instVars : [
 		'model',
 		'target',
 		'priority',
 		'builtDescription'
 	],
-	#category : #'Magritte-Model-Builder'
+	#category : 'Magritte-Model-Builder'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MADescriptionBuilder class >> buildFrom: aDescription target: aTarget [
 	^ self new 
 		target: aTarget;
@@ -28,7 +28,7 @@ MADescriptionBuilder class >> buildFrom: aDescription target: aTarget [
 		builtDescription
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MADescriptionBuilder class >> buildFrom: aDescription target: aTarget model: aModel [
 	^ self new 
 		target: aTarget;
@@ -37,58 +37,58 @@ MADescriptionBuilder class >> buildFrom: aDescription target: aTarget model: aMo
 		builtDescription
 ]
 
-{ #category : #'accessing defaults' }
+{ #category : 'accessing defaults' }
 MADescriptionBuilder class >> defaultPriority [
 	^0
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MADescriptionBuilder >> buildFrom: aDescription target: aTarget [ 
 	self target: aTarget; visit: aDescription.
 	^self builtDescription
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 MADescriptionBuilder >> builtDescription [
 	^builtDescription
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MADescriptionBuilder >> model [
 	^model
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MADescriptionBuilder >> model: aModel [
 	model := aModel
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MADescriptionBuilder >> priority [
 	^ priority ifNil: [ ^self class defaultPriority ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MADescriptionBuilder >> priority: anObject [
 	priority := anObject
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 MADescriptionBuilder >> setBuiltDescription: aDescription [ 
 	builtDescription := aDescription
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MADescriptionBuilder >> target [
 	^ target
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MADescriptionBuilder >> target: anObject [
 	target := anObject
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 MADescriptionBuilder >> visitContainer: aContainer [
 	builtDescription := aContainer copy.
 	builtDescription removeAll.
@@ -96,7 +96,7 @@ MADescriptionBuilder >> visitContainer: aContainer [
 		self visit: each copy ]
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 MADescriptionBuilder >> visitDescription: anObject [
 	builtDescription
 		ifNil: [ self setBuiltDescription: anObject]

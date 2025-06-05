@@ -2,20 +2,20 @@
 I am a null access strategy and I should be neither read nor written. I am still comparable to other strategies by holding onto a unique-identifier.
 "
 Class {
-	#name : #MANullAccessor,
-	#superclass : #MAAccessor,
+	#name : 'MANullAccessor',
+	#superclass : 'MAAccessor',
 	#instVars : [
 		'uuid'
 	],
-	#category : #'Magritte-Model-Accessor'
+	#category : 'Magritte-Model-Accessor'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 MANullAccessor class >> isAbstract [
 	^ false
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 MANullAccessor class >> new [
 	| random uuid |
 	random := GRPlatform current newRandom.
@@ -24,35 +24,35 @@ MANullAccessor class >> new [
 	^ self uuid: uuid
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 MANullAccessor class >> uuid: anObject [
 	^ self basicNew
 		uuid: anObject;
 		yourself
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 MANullAccessor >> = anObject [
 	^ super = anObject
 		and: [ self uuid = anObject uuid ]
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 MANullAccessor >> hash [
 	^ super hash bitXor: self uuid hash
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MANullAccessor >> maSetUp: aClass for: anMAElementDescription [
 	"do nothing"
 ]
 
-{ #category : #model }
+{ #category : 'model' }
 MANullAccessor >> read: aModel [ 
 	MAReadError signal: 'This message is not appropriate for this object'
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 MANullAccessor >> storeOn: aStream [
 	aStream nextPut: $(.
 	self class storeOn: aStream.
@@ -62,21 +62,21 @@ MANullAccessor >> storeOn: aStream [
 		nextPut: $)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MANullAccessor >> storeVia: anAccessor inDescriptionOn: aStream [
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MANullAccessor >> uuid [
 	^ uuid
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MANullAccessor >> uuid: anObject [
 	uuid := anObject
 ]
 
-{ #category : #model }
+{ #category : 'model' }
 MANullAccessor >> write: anObject to: aModel [ 
 	MAWriteError signal: 'This message is not appropriate for this object'
 ]

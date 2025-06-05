@@ -1,6 +1,6 @@
 Class {
-	#name : #MAActionDescription,
-	#superclass : #MAObject,
+	#name : 'MAActionDescription',
+	#superclass : 'MAObject',
 	#instVars : [
 		'enableBlock',
 		'model',
@@ -12,38 +12,38 @@ Class {
 		'isMutator',
 		'shortcut'
 	],
-	#category : #'Magritte-Model-Description'
+	#category : 'Magritte-Model-Description'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 MAActionDescription class >> isAbstract [
 	^ false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAActionDescription class >> maPragma [
 	"Annotate constructor methods with this pragma to get picked up by Magritte; similar to #magritteDescription"
 	^ #magritteActionDescription
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 MAActionDescription >> <= anObject [
 
 	^ self priority <= anObject priority
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 MAActionDescription >> = anObject [
 	^ self == anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAActionDescription >> action [
 
 	^ action
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAActionDescription >> action: aValuable [
 
 	| anOldAction |
@@ -53,36 +53,36 @@ MAActionDescription >> action: aValuable [
 	self propertyAnnounceKey: #action oldValue: anOldAction newValue: aValuable
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAActionDescription >> comment [
 
 	^ comment ifNil: [ '' ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAActionDescription >> comment: aString [
 
 	comment := aString.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAActionDescription >> definingContext [
 	
 	^ self propertyAt: #definingContext ifAbsent: [ nil ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAActionDescription >> definingContext: anMADefiningContext [
 	
 	^ self propertyAt: #definingContext  put: anMADefiningContext
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAActionDescription >> enableBlock [
 	^ enableBlock ifNil: [ true ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAActionDescription >> enableBlock: aBlock [
 	"aBlock
 		- one argument (optional); the model object
@@ -91,64 +91,64 @@ MAActionDescription >> enableBlock: aBlock [
 	enableBlock := aBlock.
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 MAActionDescription >> hash [
 	^ super hash bitXor: self action hash
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAActionDescription >> icon [
 	^ icon ifNotNil: [ self iconNamed: icon ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAActionDescription >> icon: aSymbol [
 	"Browse available via `Smalltalk ui icons`"
 	icon := aSymbol
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 MAActionDescription >> initialize [
 
 	super initialize.
 	enableBlock := [ true ].
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 MAActionDescription >> isEnabled [
 
 	^ enableBlock cull: model.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAActionDescription >> isLabelVisible [
 	"Experiment: Are label and icon 'either-or', or might a user want both?"
 	^ self propertyAt: #isLabelVisible ifAbsent: [ true ].
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAActionDescription >> isLabelVisible: aBoolean [
 	self propertyAt: #isLabelVisible put: aBoolean
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAActionDescription >> isMutator [
 	^ isMutator ifNil: [ true ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAActionDescription >> isMutator: anObject [
 	"Does the action I describe potentially change the object it acts on?"
 	isMutator := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAActionDescription >> label [
 
 	^ label ifNil: [ action asString capitalized normalizeCamelCase ].
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAActionDescription >> label: aString [
 
 	| anOldLabel |
@@ -158,32 +158,32 @@ MAActionDescription >> label: aString [
 	self propertyAnnounceKey: #label oldValue: anOldLabel newValue: aString
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAActionDescription >> performOn: aModel [
 
 	action cull: aModel.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAActionDescription >> printOn: aStream [
 	super printOn: aStream.
 	aStream nextPutAll: ' label: '; print: self label.
 	aStream nextPutAll: ' comment: '; print: self comment
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAActionDescription >> priority [
 
 	^ priority ifNil: [ 0 ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAActionDescription >> priority: anInteger [ 
 
 	priority := anInteger.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAActionDescription >> selector [
 	self 
 		deprecated: 'Renamed to #action because now accepts any valuable as an action (e.g. aBlock).'
@@ -194,7 +194,7 @@ MAActionDescription >> selector [
 	^ self action
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAActionDescription >> selector: aValuable [
 		self 
 		deprecated: 'Renamed to #action: because now accepts any valuable as an action (e.g. aBlock).'
@@ -206,12 +206,12 @@ MAActionDescription >> selector: aValuable [
 	self action: aValuable.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAActionDescription >> shortcut [
 	^ shortcut
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAActionDescription >> shortcut: anObject [
 	shortcut := anObject
 ]

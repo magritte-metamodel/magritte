@@ -1,32 +1,32 @@
 Class {
-	#name : #MASelectorAccessorTest,
-	#superclass : #MAAccessorTest,
-	#category : #'Magritte-Tests-Model-Accessor'
+	#name : 'MASelectorAccessorTest',
+	#superclass : 'MAAccessorTest',
+	#category : 'Magritte-Tests-Model-Accessor'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 MASelectorAccessorTest class >> isAbstract [
 	^ false
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MASelectorAccessorTest >> accessorInstance [
 	^ self actualClass selector: #value
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MASelectorAccessorTest >> actualClass [
 	^ MASelectorAccessor
 ]
 
-{ #category : #'tests-identity' }
+{ #category : 'tests-identity' }
 MASelectorAccessorTest >> testAsAccessor [
 	super testAsAccessor.
 	self assert: #value asAccessor = self instance.
 	self deny: #value asAccessor == self instance
 ]
 
-{ #category : #'tests-testing' }
+{ #category : 'tests-testing' }
 MASelectorAccessorTest >> testCanRead [
 	self assert: (self accessor canRead: self).
 
@@ -37,7 +37,7 @@ MASelectorAccessorTest >> testCanRead [
 	self deny: (self accessor canRead: self)
 ]
 
-{ #category : #'tests-testing' }
+{ #category : 'tests-testing' }
 MASelectorAccessorTest >> testCanWrite [
 	self assert: (self accessor canWrite: self).
 
@@ -48,7 +48,7 @@ MASelectorAccessorTest >> testCanWrite [
 	self deny: (self accessor canWrite: self)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MASelectorAccessorTest >> testRead [
 	self value: 123.
 	self assert: (self accessor read: self) = 123.
@@ -57,7 +57,7 @@ MASelectorAccessorTest >> testRead [
 	self assert: (self accessor read: self) = '12'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MASelectorAccessorTest >> testReadSelector [
 	self accessor readSelector: #contents.
 
@@ -66,7 +66,7 @@ MASelectorAccessorTest >> testReadSelector [
 	self assert: self accessor writeSelector = #value:
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MASelectorAccessorTest >> testSelector [
 	self accessor selector: #contents.
 
@@ -75,7 +75,7 @@ MASelectorAccessorTest >> testSelector [
 	self assert: self accessor writeSelector = #contents:
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MASelectorAccessorTest >> testWrite [
 	self accessor write: 123 to: self.
 	self assert: self value = 123.
@@ -84,7 +84,7 @@ MASelectorAccessorTest >> testWrite [
 	self assert: self value = '123'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MASelectorAccessorTest >> testWriteSelector [
 	self accessor writeSelector: #contents:.
 

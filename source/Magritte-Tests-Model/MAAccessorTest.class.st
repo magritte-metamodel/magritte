@@ -1,66 +1,66 @@
 Class {
-	#name : #MAAccessorTest,
-	#superclass : #MAObjectTest,
+	#name : 'MAAccessorTest',
+	#superclass : 'MAObjectTest',
 	#instVars : [
 		'accessor',
 		'value'
 	],
-	#category : #'Magritte-Tests-Model-Accessor'
+	#category : 'Magritte-Tests-Model-Accessor'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 MAAccessorTest class >> isAbstract [
 	^ true
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAAccessorTest >> accessor [
 	^ accessor
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAAccessorTest >> accessorInstance [
 	self subclassResponsibility
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAAccessorTest >> actualClass [
 	^ MAAccessor
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAAccessorTest >> instance [
 	^ accessor
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 MAAccessorTest >> setUp [
 	super setUp.
 	accessor := self accessorInstance
 ]
 
-{ #category : #'tests-identity' }
+{ #category : 'tests-identity' }
 MAAccessorTest >> testAsAccessor [
 	self assert: self instance asAccessor = self instance.
 	self assert: self instance asAccessor == self instance
 ]
 
-{ #category : #'tests-testing' }
+{ #category : 'tests-testing' }
 MAAccessorTest >> testCanRead [
 	self subclassResponsibility
 ]
 
-{ #category : #'tests-testing' }
+{ #category : 'tests-testing' }
 MAAccessorTest >> testCanWrite [
 	self subclassResponsibility
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MAAccessorTest >> testRead [
 	self subclassResponsibility
 ]
 
-{ #category : #'tests-identity' }
+{ #category : 'tests-identity' }
 MAAccessorTest >> testStore [
 	| evaluator |
 	evaluator := GRPlatform current
@@ -72,17 +72,17 @@ MAAccessorTest >> testStore [
 				evaluate) = self accessor
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MAAccessorTest >> testWrite [
 	self subclassResponsibility
 ]
 
-{ #category : #'accessing-model' }
+{ #category : 'accessing-model' }
 MAAccessorTest >> value [
 	^ value
 ]
 
-{ #category : #'accessing-model' }
+{ #category : 'accessing-model' }
 MAAccessorTest >> value: anObject [
 	value := anObject
 ]

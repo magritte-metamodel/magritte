@@ -6,21 +6,21 @@ I am an abstract memento. I am a stand-in for an object, typically for reading a
 - the ==description== currently used to describe this ==model==
 "
 Class {
-	#name : #MAMemento,
-	#superclass : #MAObject,
+	#name : 'MAMemento',
+	#superclass : 'MAObject',
 	#instVars : [
 		'model',
 		'description'
 	],
-	#category : #'Magritte-Model-Memento'
+	#category : 'Magritte-Model-Memento'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 MAMemento class >> model: aModel [
 	^ self model: aModel description: aModel magritteDescription
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 MAMemento class >> model: aModel description: aDescription [
 	^ self new
 		setModel: aModel;
@@ -28,12 +28,12 @@ MAMemento class >> model: aModel description: aDescription [
 		reset; yourself
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 MAMemento >> commit [
 	"Commit the receiver into the model."
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAMemento >> cookRawPull: aDictionary [
 	"The reason for the somewhat cryptic message name is that each subclass is free to perform any needed actions. Here we just replace undefinedValues with default values"
 
@@ -44,7 +44,7 @@ MAMemento >> cookRawPull: aDictionary [
 				put: elemDescription default ] ]
 ]
 
-{ #category : #'reflective operations' }
+{ #category : 'reflective operations' }
 MAMemento >> doesNotUnderstand: aMessage [
   ^ self magritteDescription children 
   	detect: [ :desc | desc handlesSelector: aMessage selector ] 
@@ -52,7 +52,7 @@ MAMemento >> doesNotUnderstand: aMessage [
   	ifNone: [ super doesNotUnderstand: aMessage ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAMemento >> has: firstDictionary changedFrom: secondDictionary [
 	
 	self magritteDescription do: [ :desc |
@@ -64,24 +64,24 @@ MAMemento >> has: firstDictionary changedFrom: secondDictionary [
 	^ false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAMemento >> magritteDescription [
 	"`#modelDescription` would probably be clearer, but we want to be polymorphic (see implementors)"
 	^ description
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAMemento >> model [
 	^ model
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 MAMemento >> printOn: aStream [
 	super printOn: aStream.
 	aStream nextPutAll: ' model: '; print: self model
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAMemento >> pull [
 	"Utility method to pull the model into a dictionary mapping descriptions to values. nil values are replaced with the default ones of the model."
 
@@ -91,13 +91,13 @@ MAMemento >> pull [
 	^ result
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAMemento >> pullRaw [
 	
 	^ self pullRawTransforming: [ :e | e ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAMemento >> pullRawTransforming: aBlock [
 	| result |
 	result := Dictionary new.
@@ -109,7 +109,7 @@ MAMemento >> pullRawTransforming: aBlock [
 	^ result
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAMemento >> push: aDictionary [
 	"Utility method to push a dictionary mapping descriptions to values into the model."
 
@@ -118,27 +118,27 @@ MAMemento >> push: aDictionary [
 			ifTrue: [ self model write: value using: key ] ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAMemento >> readUsing: aDescription [
 	^ self subclassResponsibility
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 MAMemento >> reset [
 	"Reset the memento from the model."
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 MAMemento >> setDescription: aDescription [
 	description := aDescription
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 MAMemento >> setModel: aModel [
 	model := aModel
 ]
 
-{ #category : #'private-testing' }
+{ #category : 'private-testing' }
 MAMemento >> shouldPush: anObject using: aDescription [
 
 	| modelValue |
@@ -146,7 +146,7 @@ MAMemento >> shouldPush: anObject using: aDescription [
 	^ aDescription shouldWrite: anObject over: modelValue.
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 MAMemento >> validate [
 	"Check if the data in the receiver would be valid if committed. In case of problems an exception is raised."
 

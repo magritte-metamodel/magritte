@@ -1,6 +1,6 @@
-Extension { #name : #MAElementDescription }
+Extension { #name : 'MAElementDescription' }
 
-{ #category : #'*Magritte-GToolkit' }
+{ #category : '*Magritte-GToolkit' }
 MAElementDescription >> gtAddColumnTo: aView [
 
 	self 
@@ -26,13 +26,13 @@ MAElementDescription >> gtAddColumnTo: aView [
 			text: [ :anObj | self readToString: anObj ]
 ]
 
-{ #category : #'*Magritte-GToolkit' }
+{ #category : '*Magritte-GToolkit' }
 MAElementDescription >> gtCustomizeView: aView for: anObject [
 	aView title = aView defaultTitle ifTrue: [ aView title: self label ].
 	self flag: 'port #glmAddSelectionActions. Currently views don''t have context menus, so maybe add at top and disable if no selection (possible?)'.
 ]
 
-{ #category : #'*Magritte-GToolkit' }
+{ #category : '*Magritte-GToolkit' }
 MAElementDescription >> gtView [
 	| valuable |
 	valuable := self 
@@ -46,7 +46,7 @@ MAElementDescription >> gtView [
 			view ]
 ]
 
-{ #category : #'*Magritte-GToolkit' }
+{ #category : '*Magritte-GToolkit' }
 MAElementDescription >> gtView: aValuable [
 	"aValuable:
 		- FYI a default title, label, and selection actions will be added automatically by Magritte (see #glmCustomizeView:for:).

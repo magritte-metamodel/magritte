@@ -1,10 +1,10 @@
 Class {
-	#name : #MADeveloperTests,
-	#superclass : #TestCase,
-	#category : #'Magritte-Developer-Tests'
+	#name : 'MADeveloperTests',
+	#superclass : 'TestCase',
+	#category : 'Magritte-Developer-Tests'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MADeveloperTests >> testGenerateDescriptionSource [
 
 	| desc |

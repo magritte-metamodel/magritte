@@ -1,57 +1,57 @@
 Class {
-	#name : #MADescriptionTest,
-	#superclass : #MAObjectTest,
+	#name : 'MADescriptionTest',
+	#superclass : 'MAObjectTest',
 	#instVars : [
 		'description'
 	],
-	#category : #'Magritte-Tests-Model-Description'
+	#category : 'Magritte-Tests-Model-Description'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 MADescriptionTest class >> isAbstract [
 	^ true
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 MADescriptionTest class >> shouldInheritSelectors [
 	^ true
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MADescriptionTest >> actualClass [
 	^ MADescription
 ]
 
-{ #category : #'acessing-magritte' }
+{ #category : 'acessing-magritte' }
 MADescriptionTest >> description [
 	^ description
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MADescriptionTest >> descriptionInstance [
 	^ self actualClass new
 		accessor: MANullAccessor new;
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MADescriptionTest >> instance [
 	^ description
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 MADescriptionTest >> setUp [
 	super setUp.
 	description := self descriptionInstance.
 	self assert: description accessor notNil
 ]
 
-{ #category : #asserting }
+{ #category : 'asserting' }
 MADescriptionTest >> should: aBlock raiseSingle: aClass [ 
 	self should: aBlock raiseSingle: aClass withExceptionDo: [ :e | ]
 ]
 
-{ #category : #asserting }
+{ #category : 'asserting' }
 MADescriptionTest >> should: aBlock raiseSingle: aClass withExceptionDo: exceptionBlock [
 	self should: aBlock
 		raise: MAMultipleErrors
@@ -61,37 +61,37 @@ MADescriptionTest >> should: aBlock raiseSingle: aClass withExceptionDo: excepti
 			exceptionBlock value: e collection first ].
 ]
 
-{ #category : #'tests-accessing' }
+{ #category : 'tests-accessing' }
 MADescriptionTest >> testAccessor [
 	self description accessor: (MASelectorAccessor selector: #foo).
 	self assert: self description accessor selector = #foo
 ]
 
-{ #category : #'tests-converting' }
+{ #category : 'tests-converting' }
 MADescriptionTest >> testAsContainer [
 	self subclassResponsibility
 ]
 
-{ #category : #'tests-accessing' }
+{ #category : 'tests-accessing' }
 MADescriptionTest >> testComment [
 	self description comment: 'bar'.
 	self assert: self description comment = 'bar'
 ]
 
-{ #category : #'tests-copying' }
+{ #category : 'tests-copying' }
 MADescriptionTest >> testCopyAccessor [
 	self assert: self description copy accessor = self description accessor.
 	self deny: self description copy accessor == self description accessor
 ]
 
-{ #category : #'tests-accessing' }
+{ #category : 'tests-accessing' }
 MADescriptionTest >> testDefaultLabel [
 	self assert: self description label = ''.
 	self description accessor: #foo.
 	self assert: self description label = 'Foo'
 ]
 
-{ #category : #'tests-identity' }
+{ #category : 'tests-identity' }
 MADescriptionTest >> testDictionaryKey [
 	| dictionary |
 	dictionary := Dictionary new.
@@ -103,19 +103,19 @@ MADescriptionTest >> testDictionaryKey [
 	self assert: (dictionary at: self instance) = 2
 ]
 
-{ #category : #'tests-accessing' }
+{ #category : 'tests-accessing' }
 MADescriptionTest >> testGroup [
 	self assert: self description group isNil.
 	self description group: 'foo'.
 	self assert: self description group = 'foo'
 ]
 
-{ #category : #'tests-testing' }
+{ #category : 'tests-testing' }
 MADescriptionTest >> testHasChildren [
 	self deny: self description hasChildren
 ]
 
-{ #category : #'tests-testing' }
+{ #category : 'tests-testing' }
 MADescriptionTest >> testHasComment [
 	self description comment: nil.
 	self deny: self description hasComment.
@@ -127,7 +127,7 @@ MADescriptionTest >> testHasComment [
 	self assert:  self description hasComment
 ]
 
-{ #category : #'tests-testing' }
+{ #category : 'tests-testing' }
 MADescriptionTest >> testHasLabel [
 	self description label: nil.
 	self deny: self description hasLabel.
@@ -139,34 +139,34 @@ MADescriptionTest >> testHasLabel [
 	self assert:  self description hasLabel
 ]
 
-{ #category : #'tests-testing' }
+{ #category : 'tests-testing' }
 MADescriptionTest >> testIsContainer [
 	self deny: self description isContainer
 ]
 
-{ #category : #'tests-testing' }
+{ #category : 'tests-testing' }
 MADescriptionTest >> testIsDescription [
 	self assert: self description isDescription
 ]
 
-{ #category : #'tests-testing' }
+{ #category : 'tests-testing' }
 MADescriptionTest >> testIsSortable [
 	self assert: (self description isSortable or: [ self description isSortable not ])
 ]
 
-{ #category : #'tests-accessing' }
+{ #category : 'tests-accessing' }
 MADescriptionTest >> testLabel [
 	self description label: 'foo'.
 	self assert: self description label = 'foo'
 ]
 
-{ #category : #'tests-accessing' }
+{ #category : 'tests-accessing' }
 MADescriptionTest >> testPriority [
 	self description priority: 123.
 	self assert: self description priority = 123
 ]
 
-{ #category : #'tests-actions' }
+{ #category : 'tests-actions' }
 MADescriptionTest >> testReadOnly [
 	self description beReadOnly.
 	self assert: self description readOnly.
@@ -177,7 +177,7 @@ MADescriptionTest >> testReadOnly [
 	self deny: self description isReadOnly
 ]
 
-{ #category : #'tests-actions' }
+{ #category : 'tests-actions' }
 MADescriptionTest >> testRequired [
 	self description beRequired.
 	self assert: self description required.
@@ -188,7 +188,7 @@ MADescriptionTest >> testRequired [
 	self deny: self description isRequired
 ]
 
-{ #category : #'tests-identity' }
+{ #category : 'tests-identity' }
 MADescriptionTest >> testSetElement [
 	| set |
 	set := Set new.
@@ -202,7 +202,7 @@ MADescriptionTest >> testSetElement [
 	self assert: (set includes: self instance)
 ]
 
-{ #category : #'tests-actions' }
+{ #category : 'tests-actions' }
 MADescriptionTest >> testVisible [
 	self description beHidden.
 	self deny: self description visible.

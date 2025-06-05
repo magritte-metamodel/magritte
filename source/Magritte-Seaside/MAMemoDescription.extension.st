@@ -1,6 +1,6 @@
-Extension { #name : #MAMemoDescription }
+Extension { #name : 'MAMemoDescription' }
 
-{ #category : #'*magritte-seaside-defaults' }
-MAMemoDescription class >> defaultComponentClasses [
+{ #category : '*magritte-seaside-defaults' }
+MAMemoDescription classSide >> defaultComponentClasses [
 	^ Array with: MATextAreaComponent
 ]

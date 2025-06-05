@@ -6,8 +6,8 @@ A RadioButtonModel is a spec model for RadioButton
 You can also have a look at RadioButtonGroupExample for a full example of how to use them with a group.
 "
 Class {
-	#name : #RadioButtonModel,
-	#superclass : #AbstractBasicWidget,
+	#name : 'RadioButtonModel',
+	#superclass : 'AbstractBasicWidget',
 	#instVars : [
 		'actionWhenActivatedHolder',
 		'actionWhenDesactivatedHolder',
@@ -18,7 +18,7 @@ Class {
 	#category : 'Spec-Widgets'
 }
 
-{ #category : #specs }
+{ #category : 'specs' }
 RadioButtonModel class >> defaultSpec [
 	<spec>
 	^ {#CheckboxSpec.
@@ -33,25 +33,25 @@ RadioButtonModel class >> defaultSpec [
 			#borderColor:.						#(model borderColor)}
 ]
 
-{ #category : #specs }
+{ #category : 'specs' }
 RadioButtonModel class >> title [
 
 	^ 'Radio Button'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 RadioButtonModel >> actionWhenActivatedHolder [
 	
 	^ actionWhenActivatedHolder
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 RadioButtonModel >> actionWhenDesactivatedHolder [
 	
 	^ actionWhenDesactivatedHolder
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 RadioButtonModel >> activationAction: aBlock [
 	<api: #block getter: #activationAction registration: #whenActivationActionChanged:>
 	"This method is used to set the action to perform when I am activated"
@@ -59,7 +59,7 @@ RadioButtonModel >> activationAction: aBlock [
 	actionWhenActivatedHolder contents: aBlock
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 RadioButtonModel >> click [
 	<api: #do>
 	"Simulate a click on the radioButton.
@@ -68,7 +68,7 @@ RadioButtonModel >> click [
 	self toggleState
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 RadioButtonModel >> desactivationAction: aBlock [
 	<api: #block getter: #desactivationAction registration: #whenDesactivationActionChanged:>
 	"This method is used to set the action to perform when I am desactivated"
@@ -76,25 +76,25 @@ RadioButtonModel >> desactivationAction: aBlock [
 	actionWhenDesactivatedHolder contents: aBlock
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 RadioButtonModel >> enabledHolder [
 	
 	^ enabledHolder
 ]
 
-{ #category : #focus }
+{ #category : 'focus' }
 RadioButtonModel >> eventKeyStrokeForNextFocus [
 	"String describing the keystroke to perform to jump to the next widget"
 	^ Character arrowRight asShortcut
 ]
 
-{ #category : #focus }
+{ #category : 'focus' }
 RadioButtonModel >> eventKeyStrokeForPreviousFocus [
 	"String describing the keystroke to perform to jump to the previous widget"
 	^ Character arrowLeft asShortcut
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 RadioButtonModel >> initialize [
 	"initialization code for CheckBox"
 
@@ -118,13 +118,13 @@ RadioButtonModel >> initialize [
 	
 ]
 
-{ #category : #morphic }
+{ #category : 'morphic' }
 RadioButtonModel >> label [
 	<api: #inspect>
 	^ labelHolder contents
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 RadioButtonModel >> label: aString [
 	<api: #string getter: #label registration: #whenLabelChanged:>
 	"Set the label of the radioButton"
@@ -132,7 +132,7 @@ RadioButtonModel >> label: aString [
 	labelHolder contents: aString.
 ]
 
-{ #category : #morphic }
+{ #category : 'morphic' }
 RadioButtonModel >> labelClickable [
 	<api: #inspect>
 	"Return true if the label can be clicked to select the radioButton"
@@ -140,7 +140,7 @@ RadioButtonModel >> labelClickable [
 	^ labelClickableHolder contents
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 RadioButtonModel >> labelClickable: aBoolean [
 	<api: #boolean getter: #labelClickable registration: #whenLabelClickableChanged:>
 	"Set if the label can be clicked to select the radioButton"
@@ -148,7 +148,7 @@ RadioButtonModel >> labelClickable: aBoolean [
 	labelClickableHolder contents: aBoolean
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 RadioButtonModel >> privateSetState: aBoolean [
 	"Should only be used by RadioButtonGroup"
 	
@@ -156,7 +156,7 @@ RadioButtonModel >> privateSetState: aBoolean [
 	self changed: #state
 ]
 
-{ #category : #morphic }
+{ #category : 'morphic' }
 RadioButtonModel >> state [
 	<api: #inspect>
 	"Return the current state of the radio button"
@@ -164,7 +164,7 @@ RadioButtonModel >> state [
 	^ stateHolder contents
 ]
 
-{ #category : #morphic }
+{ #category : 'morphic' }
 RadioButtonModel >> state: aBoolean [
 	<api: #boolean getter: #state>
 	"Set if the checkbox is activated or not"
@@ -172,34 +172,34 @@ RadioButtonModel >> state: aBoolean [
 	stateHolder contents: aBoolean
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 RadioButtonModel >> stateHolder [
 	
 	^ stateHolder
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 RadioButtonModel >> toggleState [
 	"Toogle the current state of the radioButton"
 
 	self state: self state not
 ]
 
-{ #category : #'protocol-events' }
+{ #category : 'protocol-events' }
 RadioButtonModel >> whenActivatedDo: aBlock [
 	"This method is used to propagate the event that I have been activated" 
 	
 	stateHolder whenChangedDo: [:bool | bool ifTrue: aBlock ]
 ]
 
-{ #category : #'protocol-events' }
+{ #category : 'protocol-events' }
 RadioButtonModel >> whenActivationActionChanged: aBlock [
 	<api: #event>
 	"A block performed when the activation action changed"
 	actionWhenActivatedHolder whenChangedDo:  aBlock 
 ]
 
-{ #category : #'protocol-events' }
+{ #category : 'protocol-events' }
 RadioButtonModel >> whenChangedDo: aBlock [
 	<api: #event>
 	"This method is used to propagate the event that I have changed"
@@ -207,21 +207,21 @@ RadioButtonModel >> whenChangedDo: aBlock [
 	stateHolder whenChangedDo: aBlock
 ]
 
-{ #category : #'protocol-events' }
+{ #category : 'protocol-events' }
 RadioButtonModel >> whenDesactivatedDo: aBlock [
 	"This method is used to propagate the event that I have been desactivated"
 	
 	stateHolder whenChangedDo: [:bool | bool ifFalse: aBlock ]
 ]
 
-{ #category : #'protocol-events' }
+{ #category : 'protocol-events' }
 RadioButtonModel >> whenDesactivationActionChanged: aBlock [
 	<api: #event>
 	"A block performed when the desactivation action changed"
 	actionWhenDesactivatedHolder whenChangedDo:  aBlock 
 ]
 
-{ #category : #'protocol-events' }
+{ #category : 'protocol-events' }
 RadioButtonModel >> whenLabelChanged: aBlock [
 	"A block performed when the label changed"
 	<api: #event>
@@ -229,7 +229,7 @@ RadioButtonModel >> whenLabelChanged: aBlock [
 	labelHolder whenChangedDo:  aBlock 
 ]
 
-{ #category : #'protocol-events' }
+{ #category : 'protocol-events' }
 RadioButtonModel >> whenLabelClickableChanged: aBlock [
 	"A block performed when the label click is activated or descativated"
 	<api: #event>

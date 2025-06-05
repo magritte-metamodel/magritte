@@ -1,24 +1,24 @@
 Class {
-	#name : #MACssRenderer,
-	#superclass : #MAComponentRenderer,
+	#name : 'MACssRenderer',
+	#superclass : 'MAComponentRenderer',
 	#category : 'Magritte-Seaside-Renderer'
 }
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 MACssRenderer >> renderContainer: aDescription [ 
 	html definitionList
 		class: (self classFor: aDescription);
 		with: [ super renderContainer: aDescription ]
 ]
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 MACssRenderer >> renderControl: aDescription [
 	html definitionData
 		class: (self classFor: aDescription);
 		with: [ super renderControl: aDescription ]
 ]
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 MACssRenderer >> renderGroup: aDescription [
 	super renderGroup: aDescription.
 	group isNil ifTrue: [ ^ self ].
@@ -27,7 +27,7 @@ MACssRenderer >> renderGroup: aDescription [
 		with: group
 ]
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 MACssRenderer >> renderLabel: aDescription [
 	html definitionTerm
 		title: aDescription comment;

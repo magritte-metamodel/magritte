@@ -2,17 +2,17 @@
 I provide a basic display for all subclasses of MAElementDescription (only for readonly descriptions). The object is just displayed as a string. For more complex behaviour, overried #renderViewerOn:. 
 "
 Class {
-	#name : #MAElementComponent,
-	#superclass : #MADescriptionComponent,
+	#name : 'MAElementComponent',
+	#superclass : 'MADescriptionComponent',
 	#category : 'Magritte-Seaside-Components'
 }
 
-{ #category : #calling }
+{ #category : 'calling' }
 MAElementComponent >> chooser: aComponent [
 	self chooser: aComponent titled: 'Edit ' , self magritteDescription label
 ]
 
-{ #category : #calling }
+{ #category : 'calling' }
 MAElementComponent >> chooser: aComponent titled: aString [
 	self root
 		show: (aComponent
@@ -23,43 +23,43 @@ MAElementComponent >> chooser: aComponent titled: aString [
 				ifFalse: [ self value: result ] ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 MAElementComponent >> hasLabelId [
 	"Return whether somewhere an element is rendered with the id ==labelId== that can be reference by a <label>-tag."
 
 	^ false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAElementComponent >> reference [
 	^ self magritteDescription reference
 ]
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 MAElementComponent >> renderContentOn: html [
 	self isReadOnly
 		ifTrue: [ self renderViewerOn: html ]
 		ifFalse: [ self renderEditorOn: html ]
 ]
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 MAElementComponent >> renderEditorOn: html [
 	self renderViewerOn: html
 ]
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 MAElementComponent >> renderViewerOn: html [
 	html render: self string
 ]
 
-{ #category : #'accessing-model' }
+{ #category : 'accessing-model' }
 MAElementComponent >> string [
 	^ self value isString
 		ifTrue: [ self value ]
 		ifFalse: [ self magritteDescription toString: self value ]
 ]
 
-{ #category : #'accessing-model' }
+{ #category : 'accessing-model' }
 MAElementComponent >> string: aString [
 	| value |
 	value := [ self magritteDescription fromString: aString ]
@@ -67,12 +67,12 @@ MAElementComponent >> string: aString [
 	self value: value
 ]
 
-{ #category : #'accessing-model' }
+{ #category : 'accessing-model' }
 MAElementComponent >> value [
 	^ self memento readUsing: self magritteDescription
 ]
 
-{ #category : #'accessing-model' }
+{ #category : 'accessing-model' }
 MAElementComponent >> value: anObject [
 	self memento write: anObject using: self magritteDescription
 ]

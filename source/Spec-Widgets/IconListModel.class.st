@@ -2,15 +2,15 @@
 An IconListModel is a spec model for icon list
 "
 Class {
-	#name : #IconListModel,
-	#superclass : #ListComposableModel,
+	#name : 'IconListModel',
+	#superclass : 'ListComposableModel',
 	#instVars : [
 		'iconHolder'
 	],
 	#category : 'Spec-Widgets'
 }
 
-{ #category : #specs }
+{ #category : 'specs' }
 IconListModel class >> defaultSpec [
 	<spec>
 	^ {#IconListSpec.
@@ -33,7 +33,7 @@ IconListModel class >> defaultSpec [
 			#vResizing:. 					#spaceFill}
 ]
 
-{ #category : #example }
+{ #category : 'example' }
 IconListModel class >> example [
 
 	self new
@@ -42,13 +42,13 @@ IconListModel class >> example [
 		openWithSpec
 ]
 
-{ #category : #morphic }
+{ #category : 'morphic' }
 IconListModel >> getIconFor: anItem [
 
 	^ iconHolder contents cull: anItem cull: self
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 IconListModel >> icons [
 	<api: #inspect>
 	"Return the block which takes an item as argument and returns the icon to display in the list"
@@ -56,14 +56,14 @@ IconListModel >> icons [
 	^ iconHolder contents
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 IconListModel >> icons: aBlock [
 	<api: #block getter: #icon registration: #whenIconsChanged: >
 	"Set a block which takes an item as argument and returns the icon to display in the list"
 	iconHolder contents: aBlock
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IconListModel >> initialize [
 	"Initialization code for IconListModel"
 
@@ -72,7 +72,7 @@ IconListModel >> initialize [
 	iconHolder := [:item | nil ] asValueHolder.
 ]
 
-{ #category : #'protocol-events' }
+{ #category : 'protocol-events' }
 IconListModel >> whenIconsChanged: aBlock [ 
 	<api: #block>
 	

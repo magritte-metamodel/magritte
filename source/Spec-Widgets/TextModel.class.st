@@ -3,8 +3,8 @@ I handle basic multi-line text. Try:
 	""self example""
 "
 Class {
-	#name : #TextModel,
-	#superclass : #AbstractBasicWidget,
+	#name : 'TextModel',
+	#superclass : 'AbstractBasicWidget',
 	#instVars : [
 		'aboutToStyleHolder',
 		'behaviorHolder',
@@ -19,7 +19,7 @@ Class {
 	#category : 'Spec-Widgets'
 }
 
-{ #category : #specs }
+{ #category : 'specs' }
 TextModel class >> defaultSpec [
 	<spec>
 	
@@ -36,7 +36,7 @@ TextModel class >> defaultSpec [
 			yourself
 ]
 
-{ #category : #example }
+{ #category : 'example' }
 TextModel class >> example [
 
 	| instance |	
@@ -46,13 +46,13 @@ TextModel class >> example [
 If this had been an actual emergency...'.
 ]
 
-{ #category : #specs }
+{ #category : 'specs' }
 TextModel class >> title [
 
 	^ 'Text'
 ]
 
-{ #category : #'protocol-shout' }
+{ #category : 'protocol-shout' }
 TextModel >> aboutToStyle: aBoolean [	
 	<api: #boolean getter: #isAboutToStyle registration: #whenAboutToStyleChanged:>
 	"Set if the text zone must be styled"
@@ -60,7 +60,7 @@ TextModel >> aboutToStyle: aBoolean [
 	aboutToStyleHolder contents: [ aBoolean ]
 ]
 
-{ #category : #'protocol-shout' }
+{ #category : 'protocol-shout' }
 TextModel >> aboutToStyleBlock [
 	<api: #inspect>
 	"Return the block used to know if the text must be styled"	
@@ -68,7 +68,7 @@ TextModel >> aboutToStyleBlock [
 	^ aboutToStyleHolder contents
 ]
 
-{ #category : #'protocol-shout' }
+{ #category : 'protocol-shout' }
 TextModel >> aboutToStyleBlock: aBlockReturningABoolean [
 	<api: #block getter: #aboutToStyleBlock registration: #whenAboutToStyleBlockChanged:>
 	"Set the block used to know if the text must be styled.
@@ -77,7 +77,7 @@ TextModel >> aboutToStyleBlock: aBlockReturningABoolean [
 	aboutToStyleHolder contents: aBlockReturningABoolean
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 TextModel >> accept [
 	<api: #do>
 	"Accep the current pendingtext"
@@ -85,7 +85,7 @@ TextModel >> accept [
 	self widget ifNotNil: [:w | w accept ]
 ]
 
-{ #category : #morphic }
+{ #category : 'morphic' }
 TextModel >> accept: aText notifying: aNotifyier [
 
 	textHolder contents: aText.
@@ -96,7 +96,7 @@ TextModel >> accept: aText notifying: aNotifyier [
 	self changed: #clearUserEdits.
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 TextModel >> acceptBlock [
 	<api: #inspect>
 	"Return the block to perform when the text is accepted.
@@ -105,7 +105,7 @@ TextModel >> acceptBlock [
 	^ actionToPerformHolder contents
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 TextModel >> acceptBlock: aBlockWithOneArgument [
 	<api: #block getter: #acceptBlock registration: #whenAcceptBlockChanged:>
 	"Set the block to perform when the text is accepted.
@@ -114,7 +114,7 @@ TextModel >> acceptBlock: aBlockWithOneArgument [
 	actionToPerformHolder contents: aBlockWithOneArgument
 ]
 
-{ #category : #'protocol-shout' }
+{ #category : 'protocol-shout' }
 TextModel >> behavior [
 	<api: #inspect>
 	"Return the class corresponding to the method class of the source code you are editing"
@@ -122,7 +122,7 @@ TextModel >> behavior [
 	^ behaviorHolder contents
 ]
 
-{ #category : #'protocol-shout' }
+{ #category : 'protocol-shout' }
 TextModel >> behavior: aClass [
 	< api: #st getter: #behavior registration: #whenBehaviorChanged:>
 	"Set the class corresponding to the method class of the source code you are editing"
@@ -130,14 +130,14 @@ TextModel >> behavior: aClass [
 	behaviorHolder contents: aClass
 ]
 
-{ #category : #morphic }
+{ #category : 'morphic' }
 TextModel >> clearUserEditFlag [
 	
 	self text: self getText.
 	self changed: #clearUserEdits
 ]
 
-{ #category : #morphic }
+{ #category : 'morphic' }
 TextModel >> codePaneMenu: aMenu shifted: shifted [ 
 	"Note that unless we override perform:orSendTo:, 
 	PluggableTextController will respond to all menu items in a 
@@ -148,44 +148,44 @@ TextModel >> codePaneMenu: aMenu shifted: shifted [
 			ifFalse: [SmalltalkEditor yellowButtonMenu].
 ]
 
-{ #category : #morphic }
+{ #category : 'morphic' }
 TextModel >> doItContext [
 
 	^ doItContext contents
 ]
 
-{ #category : #morphic }
+{ #category : 'morphic' }
 TextModel >> doItContext: anObject [
 
 	doItContext contents: anObject
 ]
 
-{ #category : #morphic }
+{ #category : 'morphic' }
 TextModel >> doItReceiver [
 
 	^ doItReceiver contents
 ]
 
-{ #category : #morphic }
+{ #category : 'morphic' }
 TextModel >> doItReceiver: anObject [
 
 	doItReceiver contents: anObject
 ]
 
-{ #category : #focus }
+{ #category : 'focus' }
 TextModel >> eventKeyStrokeForNextFocus [
 	"String describing the keystroke to perform to jump to the next widget"
 	^ Character arrowRight command ctrl asShortcut
 ]
 
-{ #category : #focus }
+{ #category : 'focus' }
 TextModel >> eventKeyStrokeForPreviousFocus [
 	"String describing the keystroke to perform to jump to the previous widget"
 
 	^ Character arrowLeft command ctrl asShortcut
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 TextModel >> getSelection [
 	<api:#inspect>
 	"Get the text selection"
@@ -195,19 +195,19 @@ TextModel >> getSelection [
 		ifNotNil: [:w | w selectionInterval ]
 ]
 
-{ #category : #morphic }
+{ #category : 'morphic' }
 TextModel >> getText [
 	<api: #inspect>	
 	^ textHolder contents
 ]
 
-{ #category : #NOCompletion }
+{ #category : 'NOCompletion' }
 TextModel >> guessTypeForName: aString [
 
 	^nil
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 TextModel >> hasEditingConflicts [
 	<api:#inspect>
 	"Return if the text zone has editing conflicts"
@@ -217,7 +217,7 @@ TextModel >> hasEditingConflicts [
 		ifNotNil: [:w | w hasEditingConflicts ]
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 TextModel >> hasEditingConflicts: aBoolean [
 	<api:#boolean getter: #hasEditingConflicts>
 	"Set if the text zone has editing conflicts"
@@ -227,7 +227,7 @@ TextModel >> hasEditingConflicts: aBoolean [
 		ifNotNil: [:w | w hasEditingConflicts: aBoolean ]
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 TextModel >> hasUnacceptedEdits [
 	<api:#inspect>
 	"Return if the text zone has unaccepted edits (orange corner)"
@@ -237,7 +237,7 @@ TextModel >> hasUnacceptedEdits [
 		ifNotNil: [:w | w hasUnacceptedEdits ]
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 TextModel >> hasUnacceptedEdits: aBoolean [
 	<api:#boolean getter: #hasUnacceptedEdits>
 	"Return if the text zone has unaccepted edits (orange corner)"
@@ -247,7 +247,7 @@ TextModel >> hasUnacceptedEdits: aBoolean [
 		ifNotNil: [:w | w hasUnacceptedEdits: aBoolean ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TextModel >> initialize [
 	"Initialization code for TextComposableModel"
 
@@ -268,7 +268,7 @@ TextModel >> initialize [
 	self registerEventsForShout
 ]
 
-{ #category : #'protocol-shout' }
+{ #category : 'protocol-shout' }
 TextModel >> isAboutToStyle [
 	< api: #inspect>
 	"Return if the text zone is shouted or not"
@@ -276,7 +276,7 @@ TextModel >> isAboutToStyle [
 	^ self aboutToStyleBlock value
 ]
 
-{ #category : #NOCompletion }
+{ #category : 'NOCompletion' }
 TextModel >> isCodeCompletionAllowed [
 	<api:#inspect>
 	"Return if code completion is allowed"
@@ -284,7 +284,7 @@ TextModel >> isCodeCompletionAllowed [
 	^ isCodeCompletionAllowedHolder contents
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 TextModel >> isCodeCompletionAllowed: aBoolean [
 	<api: #boolean getter: #isCodeCompletionAllowed registration: #whenCodeCompletionAllowedChanged:>
 	"Set if code completion is allowed"
@@ -292,13 +292,13 @@ TextModel >> isCodeCompletionAllowed: aBoolean [
 	isCodeCompletionAllowedHolder contents: aBoolean
 ]
 
-{ #category : #'private-shout' }
+{ #category : 'private-shout' }
 TextModel >> okToStyle [
 
 	^ true
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 TextModel >> pendingText [
 	<api: #inspect>
 	"Return the current pending text"
@@ -308,7 +308,7 @@ TextModel >> pendingText [
 		ifNotNil: [:w |  ^ w text ]
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 TextModel >> pendingText: aText [
 	<api: #string getter: #pendingText>
 	"Set the pending text. Do no accept it"
@@ -320,13 +320,13 @@ TextModel >> pendingText: aText [
 			w hasUnacceptedEdits: true ]
 ]
 
-{ #category : #morphic }
+{ #category : 'morphic' }
 TextModel >> readSelection [
 	<api: #inspect>
 	^ readSelectionHolder contents cull: (self widget ifNil: [ nil ] ifNotNil: [:w | w text ]) cull: self
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 TextModel >> readSelectionBlock [
 	<api: #inspect>
 	"Return the block used to calculate the text selection"
@@ -334,7 +334,7 @@ TextModel >> readSelectionBlock [
 	^ readSelectionHolder contents
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 TextModel >> readSelectionBlock: aBlock [
 	<api: #block getter: #readSelectionBlock registration: #whenReadSelectionIsChanged:>
 	"Set the block used to calculate the text selection"
@@ -342,13 +342,13 @@ TextModel >> readSelectionBlock: aBlock [
 	^ readSelectionHolder contents: aBlock
 ]
 
-{ #category : #NOCompletion }
+{ #category : 'NOCompletion' }
 TextModel >> receiverClass [
 
 	^ self behavior
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TextModel >> registerEvents [
 
 	textHolder whenChangedDo: [ self changed: #getText ].
@@ -356,7 +356,7 @@ TextModel >> registerEvents [
 	enabledHolder whenChangedDo: [ :bool | self widget ifNotNil: [:w | w enabled: bool ] ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TextModel >> registerEventsForShout [
 	aboutToStyleHolder whenChangedDo: [ self changed: #getText ].
 	behaviorHolder
@@ -365,19 +365,19 @@ TextModel >> registerEventsForShout [
 			self changed: #getText ]
 ]
 
-{ #category : #morphic }
+{ #category : 'morphic' }
 TextModel >> selectedBehavior [
 
 	^ behaviorHolder contents
 ]
 
-{ #category : #NOCompletion }
+{ #category : 'NOCompletion' }
 TextModel >> selectedClassOrMetaClass [
 
 	^ self behavior
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 TextModel >> setSelection: anInterval [
 	<api: #st getter: #getSelection>
 	"Set the text selection without changing the readSelectionBlock"
@@ -387,19 +387,19 @@ TextModel >> setSelection: anInterval [
 		ifNotNil: [:w | w setSelection: anInterval ]
 ]
 
-{ #category : #morphic }
+{ #category : 'morphic' }
 TextModel >> shoutAboutToStyle: aMorph [
 	
 	^ self isAboutToStyle
 ]
 
-{ #category : #'morphic-polymorphism' }
+{ #category : 'morphic-polymorphism' }
 TextModel >> text [
 
 	^ self getText
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 TextModel >> text: aText [
 	<api: #string getter: #getText registration: #whenTextChanged:>
 	"Set the text of the text zone"
@@ -407,7 +407,7 @@ TextModel >> text: aText [
 	textHolder contents: aText
 ]
 
-{ #category : #'protocol-events' }
+{ #category : 'protocol-events' }
 TextModel >> whenAboutToStyleBlockChanged: aBlock [
 	<api: #event>
 	"Set a block to perform when the about to style block changed"
@@ -415,7 +415,7 @@ TextModel >> whenAboutToStyleBlockChanged: aBlock [
 	aboutToStyleHolder whenChangedDo: aBlock
 ]
 
-{ #category : #'protocol-events' }
+{ #category : 'protocol-events' }
 TextModel >> whenAboutToStyleChanged: aBlock [
 	<api: #event>
 	"Set a block to perform when the about to style block changed"
@@ -424,7 +424,7 @@ TextModel >> whenAboutToStyleChanged: aBlock [
 		aBlock cull: (block value) cull: old cull: announcement cull: announcer ]
 ]
 
-{ #category : #'protocol-events' }
+{ #category : 'protocol-events' }
 TextModel >> whenAcceptBlockChanged: aBlock [
 	<api: #event>
 	"Set a block to perform when the accept block changed"
@@ -432,7 +432,7 @@ TextModel >> whenAcceptBlockChanged: aBlock [
 	actionToPerformHolder whenChangedDo: aBlock
 ]
 
-{ #category : #'protocol-events' }
+{ #category : 'protocol-events' }
 TextModel >> whenBehaviorChanged: aBlock [
 	<api: #event>
 	"Set a block to perform when the behavior class changed"
@@ -440,7 +440,7 @@ TextModel >> whenBehaviorChanged: aBlock [
 	behaviorHolder whenChangedDo: aBlock
 ]
 
-{ #category : #'protocol-events' }
+{ #category : 'protocol-events' }
 TextModel >> whenCodeCompletionAllowedChanged: aBlock [
 	<api: #event>
 	"Set a block to perform when the code completion value changed"
@@ -448,7 +448,7 @@ TextModel >> whenCodeCompletionAllowedChanged: aBlock [
 	actionPerformedHolder whenChangedDo: aBlock
 ]
 
-{ #category : #'protocol-events' }
+{ #category : 'protocol-events' }
 TextModel >> whenReadSelectionIsChanged: aBlock [
 	<api: #event>
 	"Set a block to perform when the read selection block changed"
@@ -456,7 +456,7 @@ TextModel >> whenReadSelectionIsChanged: aBlock [
 	readSelectionHolder whenChangedDo: aBlock
 ]
 
-{ #category : #'protocol-events' }
+{ #category : 'protocol-events' }
 TextModel >> whenTextChanged: aBlock [
 	<api: #event>
 	"Set a block to perform when the text changed"
@@ -464,7 +464,7 @@ TextModel >> whenTextChanged: aBlock [
 	textHolder whenChangedDo: aBlock
 ]
 
-{ #category : #'protocol-events' }
+{ #category : 'protocol-events' }
 TextModel >> whenTextIsAccepted: aBlock [
 	<api: #event>
 	"Set a block to perform when the text is accepted"

@@ -1,14 +1,14 @@
 Class {
-	#name : #MADerivedDescriptions,
-	#superclass : #TestCase,
+	#name : 'MADerivedDescriptions',
+	#superclass : 'TestCase',
 	#instVars : [
 		'baseModel',
 		'derivedModel'
 	],
-	#category : #'Magritte-Tests-Model-Utility'
+	#category : 'Magritte-Tests-Model-Utility'
 }
 
-{ #category : #running }
+{ #category : 'running' }
 MADerivedDescriptions >> setUp [
 	super setUp.
 	
@@ -16,13 +16,13 @@ MADerivedDescriptions >> setUp [
 	derivedModel := MAMockAddress2 new. 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MADerivedDescriptions >> testContainer [
 	self assert: (baseModel magritteDescription hasProperty: #addressContainerBase).
 	self assert: (derivedModel magritteDescription hasProperty: #addressContainerDerived)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MADerivedDescriptions >> testDescription [
 	| baseDescription derivedDescription |
 	

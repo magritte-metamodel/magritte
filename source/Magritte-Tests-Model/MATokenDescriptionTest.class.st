@@ -1,25 +1,25 @@
 Class {
-	#name : #MATokenDescriptionTest,
-	#superclass : #MAReferenceDescriptionTest,
-	#category : #'Magritte-Tests-Model-Description'
+	#name : 'MATokenDescriptionTest',
+	#superclass : 'MAReferenceDescriptionTest',
+	#category : 'Magritte-Tests-Model-Description'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 MATokenDescriptionTest class >> isAbstract [
 	^ false
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MATokenDescriptionTest >> actualClass [
 	^ MATokenDescription
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MATokenDescriptionTest >> includedInstance [
 	^ #( 'foo' 'bar' )
 ]
 
-{ #category : #'tests-strings' }
+{ #category : 'tests-strings' }
 MATokenDescriptionTest >> testFromStringInvalid [
 	"There is no invalid string input."
 ]

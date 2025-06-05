@@ -1,10 +1,10 @@
 Class {
-	#name : #MACollectionExtensionTest,
-	#superclass : #TestCase,
-	#category : #'Magritte-Tests-Model-Models'
+	#name : 'MACollectionExtensionTest',
+	#superclass : 'TestCase',
+	#category : 'Magritte-Tests-Model-Models'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 MACollectionExtensionTest >> testAsMultilineString [
 
 	| expectedResult |

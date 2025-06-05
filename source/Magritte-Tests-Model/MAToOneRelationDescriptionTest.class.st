@@ -1,20 +1,20 @@
 Class {
-	#name : #MAToOneRelationDescriptionTest,
-	#superclass : #MARelationDescriptionTest,
-	#category : #'Magritte-Tests-Model-Description'
+	#name : 'MAToOneRelationDescriptionTest',
+	#superclass : 'MARelationDescriptionTest',
+	#category : 'Magritte-Tests-Model-Description'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 MAToOneRelationDescriptionTest class >> isAbstract [
 	^ false
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAToOneRelationDescriptionTest >> actualClass [
 	^ MAToOneRelationDescription
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAToOneRelationDescriptionTest >> includedInstance [
 	^ self addressInstance1
 ]

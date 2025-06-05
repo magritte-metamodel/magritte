@@ -1,6 +1,6 @@
-Extension { #name : #MAMultipleOptionDescription }
+Extension { #name : 'MAMultipleOptionDescription' }
 
-{ #category : #'*Magritte-Morph' }
-MAMultipleOptionDescription class >> defaultMorphicClasses [
+{ #category : '*Magritte-Morph' }
+MAMultipleOptionDescription classSide >> defaultMorphicClasses [
 	^ Array with: MAMorphicTokenCompletion with: MAMorphicMultiSelectList
 ]

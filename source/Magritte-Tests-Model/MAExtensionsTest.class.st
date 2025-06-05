@@ -1,10 +1,10 @@
 Class {
-	#name : #MAExtensionsTest,
-	#superclass : #TestCase,
-	#category : #'Magritte-Tests-Model-Utility'
+	#name : 'MAExtensionsTest',
+	#superclass : 'TestCase',
+	#category : 'Magritte-Tests-Model-Utility'
 }
 
-{ #category : #helpers }
+{ #category : 'helpers' }
 MAExtensionsTest >> does: aCollection haveEqualElementsTo: anotherCollection [
 	aCollection size = anotherCollection size ifFalse: [ ^ false ].
 	1 to: aCollection size do: [ :index |
@@ -14,14 +14,14 @@ MAExtensionsTest >> does: aCollection haveEqualElementsTo: anotherCollection [
 	^ true
 ]
 
-{ #category : #'tests-string' }
+{ #category : 'tests-string' }
 MAExtensionsTest >> testAsString [
 	self assert: Object new greaseString = Object new printString.
 	self assert: 'Hello World' greaseString = 'Hello World'.
 	self assert: 123 greaseString = '123'
 ]
 
-{ #category : #'tests-collection' }
+{ #category : 'tests-collection' }
 MAExtensionsTest >> testCopyWithAll [
 	| col res |
 	col := #( a b ).
@@ -44,7 +44,7 @@ MAExtensionsTest >> testCopyWithAll [
 	self deny: col == res
 ]
 
-{ #category : #'tests-collection' }
+{ #category : 'tests-collection' }
 MAExtensionsTest >> testCopyWithoutFirst [
 	| col res |
 	col := #( a b a c ).
@@ -60,7 +60,7 @@ MAExtensionsTest >> testCopyWithoutFirst [
 	self deny: col == res
 ]
 
-{ #category : #'tests-integer' }
+{ #category : 'tests-integer' }
 MAExtensionsTest >> testFileSize [
 	self assert: (1000) asFileSize = '1000 B'.
 	self assert: (1024) asFileSize = '1 KB'.
@@ -77,7 +77,7 @@ MAExtensionsTest >> testFileSize [
 	" etc "
 ]
 
-{ #category : #'tests-collection' }
+{ #category : 'tests-collection' }
 MAExtensionsTest >> testHasEqualElements [
 	| one two |
 	one := #( 1 2 3 ).
@@ -96,7 +96,7 @@ MAExtensionsTest >> testHasEqualElements [
 	
 ]
 
-{ #category : #'tests-collection' }
+{ #category : 'tests-collection' }
 MAExtensionsTest >> testIntersection [
 	| group |
 	group := #( 1 2 3 ).
@@ -108,7 +108,7 @@ MAExtensionsTest >> testIntersection [
 	self assert: (self does: (group intersection: #( 2 )) haveEqualElementsTo: #( 2 ))
 ]
 
-{ #category : #'tests-collection' }
+{ #category : 'tests-collection' }
 MAExtensionsTest >> testIsCollection [
 	self deny: Object new isCollection.
 	self deny: nil isCollection.
@@ -117,14 +117,14 @@ MAExtensionsTest >> testIsCollection [
 	self assert: #(a b c) isCollection
 ]
 
-{ #category : #'tests-string' }
+{ #category : 'tests-string' }
 MAExtensionsTest >> testIsUnary [
 	self assert: #testIsUnary isUnary.
 	self deny: #+ isUnary.
 	self deny: #with:with: isUnary.	
 ]
 
-{ #category : #'tests-string' }
+{ #category : 'tests-string' }
 MAExtensionsTest >> testLines [
 	self assert: ('') lines = #().
 	self assert: ('foo') lines = #('foo').
@@ -132,7 +132,7 @@ MAExtensionsTest >> testLines [
 	self assert: ('foo' , (String with: Character cr with: Character lf) , 'bar') lines = #('foo' 'bar')
 ]
 
-{ #category : #'tests-string' }
+{ #category : 'tests-string' }
 MAExtensionsTest >> testMatches [
 	self assert: ('' matches: '').
 	self assert: ('zort' matches: '').
@@ -155,7 +155,7 @@ MAExtensionsTest >> testMatches [
 	self assert: ('afoodezortorfoo3zort' matches: '*foo*zort')
 ]
 
-{ #category : #'tests-collection' }
+{ #category : 'tests-collection' }
 MAExtensionsTest >> testMoveDown [
 	| col |
 	col := Array with: 1 with: 2 with: 3.
@@ -173,7 +173,7 @@ MAExtensionsTest >> testMoveDown [
 	self assert: col = #( 2 3 1 )
 ]
 
-{ #category : #'tests-collection' }
+{ #category : 'tests-collection' }
 MAExtensionsTest >> testMoveUp [
 	| col |
 	col := Array with: 1 with: 2 with: 3.
@@ -191,7 +191,7 @@ MAExtensionsTest >> testMoveUp [
 	self assert: col = #( 3 1 2 )
 ]
 
-{ #category : #'tests-string' }
+{ #category : 'tests-string' }
 MAExtensionsTest >> testPrintingConvenience [
 
 	| result table |
@@ -214,7 +214,7 @@ MAExtensionsTest >> testPrintingConvenience [
 		self assert: result equals: expected ].
 ]
 
-{ #category : #'tests-collection' }
+{ #category : 'tests-collection' }
 MAExtensionsTest >> testReduce [
 	self should: [ #() reduce: [ :a :b | a ] ] raise: Error.
 	self assert: ((1 to: 9) reduce: [ :a :b | a ]) = 1.
@@ -225,7 +225,7 @@ MAExtensionsTest >> testReduce [
 	self assert: (#('a' 'b' 'c') reduce: [ :a :b | b , ' ' , a ]) = 'c b a'
 ]
 
-{ #category : #'tests-collection' }
+{ #category : 'tests-collection' }
 MAExtensionsTest >> testSort [
 	| array |
 	array := Array with: 2 with: 3 with: 1.
@@ -237,7 +237,7 @@ MAExtensionsTest >> testSort [
 	self assert: (self does: array haveEqualElementsTo: #( 3 2 1 )).
 ]
 
-{ #category : #'tests-string' }
+{ #category : 'tests-string' }
 MAExtensionsTest >> testSubstringCaseSensitive [
 	self deny: ('' includesSubstring: '' caseSensitive: true).
 	self deny: ('' includesSubstring: '' caseSensitive: false).
@@ -262,7 +262,7 @@ MAExtensionsTest >> testSubstringCaseSensitive [
 
 ]
 
-{ #category : #'tests-errors' }
+{ #category : 'tests-errors' }
 MAExtensionsTest >> testValidationError [
 	| result |
 	result := [ MARequiredError signal: 'some message' ]

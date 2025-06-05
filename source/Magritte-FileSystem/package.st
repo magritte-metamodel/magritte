@@ -1,1 +1,1 @@
-Package { #name : #'Magritte-FileSystem' }
+Package { #name : 'Magritte-FileSystem' }

@@ -1,6 +1,6 @@
 Class {
-	#name : #MAMockAddress,
-	#superclass : #Object,
+	#name : 'MAMockAddress',
+	#superclass : 'Object',
 	#instVars : [
 		'place',
 		'street',
@@ -8,10 +8,10 @@ Class {
 		'plzType',
 		'occupants'
 	],
-	#category : #'Magritte-Tests-Model-Mocks'
+	#category : 'Magritte-Tests-Model-Mocks'
 }
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 MAMockAddress >> = anObject [
 	^ self species = anObject species
 		and: [ self street = anObject street
@@ -19,7 +19,7 @@ MAMockAddress >> = anObject [
 		and: [ self place = anObject place ] ] ]
 ]
 
-{ #category : #'acessing-magritte' }
+{ #category : 'acessing-magritte' }
 MAMockAddress >> descriptionContainer [
 	<magritteContainer>
 	^ super descriptionContainer
@@ -27,31 +27,31 @@ MAMockAddress >> descriptionContainer [
 		yourself
 ]
 
-{ #category : #'acessing-magritte' }
+{ #category : 'acessing-magritte' }
 MAMockAddress >> descriptionNilled1 [
 	<magritteDescription>
 	^ nil
 ]
 
-{ #category : #'acessing-magritte' }
+{ #category : 'acessing-magritte' }
 MAMockAddress >> descriptionNilled1: aDescription [
 	<magritteDescription: #descriptionNilled1>
 	^ aDescription beRequired
 ]
 
-{ #category : #'acessing-magritte' }
+{ #category : 'acessing-magritte' }
 MAMockAddress >> descriptionNilled2 [
 	<magritteDescription>
 	^ MAStringDescription new
 ]
 
-{ #category : #'acessing-magritte' }
+{ #category : 'acessing-magritte' }
 MAMockAddress >> descriptionNilled2: aDescription [
 	<magritteDescription: #descriptionNilled2>
 	^ nil
 ]
 
-{ #category : #'acessing-magritte' }
+{ #category : 'acessing-magritte' }
 MAMockAddress >> descriptionPlace [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -60,19 +60,19 @@ MAMockAddress >> descriptionPlace [
 		yourself
 ]
 
-{ #category : #'acessing-magritte' }
+{ #category : 'acessing-magritte' }
 MAMockAddress >> descriptionPlace: aDescription [
 	<magritteDescription: #descriptionPlace>
 	^ aDescription beRequired
 ]
 
-{ #category : #'acessing-magritte' }
+{ #category : 'acessing-magritte' }
 MAMockAddress >> descriptionPlaceOther: aDescription [
 	<magritteDescription: #descriptionPlace>
 	^ aDescription beHidden
 ]
 
-{ #category : #'acessing-magritte' }
+{ #category : 'acessing-magritte' }
 MAMockAddress >> descriptionPlz [
 	<magritteDescription>
 	^ MANumberDescription new
@@ -82,7 +82,7 @@ MAMockAddress >> descriptionPlz [
 		yourself
 ]
 
-{ #category : #'acessing-magritte' }
+{ #category : 'acessing-magritte' }
 MAMockAddress >> descriptionStreet [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -90,22 +90,22 @@ MAMockAddress >> descriptionStreet [
 		yourself
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 MAMockAddress >> hash [
 	^ self street hash
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAMockAddress >> occupants [
 	^ occupants
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAMockAddress >> occupants: anObject [
 	occupants := anObject
 ]
 
-{ #category : #'acessing-magritte' }
+{ #category : 'acessing-magritte' }
 MAMockAddress >> occupantsDescription [
 	<magritteDescription>
 	^ MAToManyRelationDescription new
@@ -114,37 +114,37 @@ MAMockAddress >> occupantsDescription [
 		yourself
 ]
 
-{ #category : #'accessing-generated' }
+{ #category : 'accessing-generated' }
 MAMockAddress >> place [
 	^ place
 ]
 
-{ #category : #'accessing-generated' }
+{ #category : 'accessing-generated' }
 MAMockAddress >> place: anObject [
 	place := anObject
 ]
 
-{ #category : #'accessing-generated' }
+{ #category : 'accessing-generated' }
 MAMockAddress >> plz [
 	^ plz
 ]
 
-{ #category : #'accessing-generated' }
+{ #category : 'accessing-generated' }
 MAMockAddress >> plz: anObject [
 	plz := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAMockAddress >> plzType [
 	^ plzType
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAMockAddress >> plzType: anObject [
 	plzType := anObject
 ]
 
-{ #category : #'acessing-magritte' }
+{ #category : 'acessing-magritte' }
 MAMockAddress >> plzTypeDescription [
 	<magritteDescription>
 	^ MASingleOptionDescription new
@@ -153,12 +153,12 @@ MAMockAddress >> plzTypeDescription [
 		yourself
 ]
 
-{ #category : #'accessing-generated' }
+{ #category : 'accessing-generated' }
 MAMockAddress >> street [
 	^ street
 ]
 
-{ #category : #'accessing-generated' }
+{ #category : 'accessing-generated' }
 MAMockAddress >> street: anObject [
 	street := anObject
 ]

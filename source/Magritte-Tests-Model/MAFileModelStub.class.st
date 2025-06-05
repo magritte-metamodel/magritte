@@ -1,5 +1,5 @@
 Class {
-	#name : #MAFileModelStub,
-	#superclass : #MAFileModel,
-	#category : #'Magritte-Tests-Model-Description'
+	#name : 'MAFileModelStub',
+	#superclass : 'MAFileModel',
+	#category : 'Magritte-Tests-Model-Description'
 }

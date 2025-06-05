@@ -2,32 +2,32 @@
 I surround the owning component with a XHTML form element and render the form buttons.
 "
 Class {
-	#name : #MAFormDecoration,
-	#superclass : #MAContainerDecoration,
+	#name : 'MAFormDecoration',
+	#superclass : 'MAContainerDecoration',
 	#instVars : [
 		'buttons'
 	],
 	#category : 'Magritte-Seaside-Decorations'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 MAFormDecoration class >> buttons: aCollection [
 	^ self new
 		addButtons: aCollection;
 		yourself
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 MAFormDecoration >> addButton: aSymbol [
 	self addButton: aSymbol label: (self labelForSelector: aSymbol)
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 MAFormDecoration >> addButton: aSymbolOrOneArgumentBlock label: aString [
 	self buttons add: aSymbolOrOneArgumentBlock -> aString
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 MAFormDecoration >> addButtons: aCollection [
 	aCollection do: [ :each |
 		each isVariableBinding
@@ -35,17 +35,17 @@ MAFormDecoration >> addButtons: aCollection [
 			ifTrue: [ self addButton: each key label: each value ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAFormDecoration >> buttons [
 	^ buttons
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAFormDecoration >> buttons: aCollection [
 	buttons := aCollection
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 MAFormDecoration >> initialize [
 	super initialize.
 	self buttons: OrderedCollection new

@@ -1,13 +1,13 @@
 Class {
-	#name : #MAPackageRefactoring,
-	#superclass : #RBRefactoring,
+	#name : 'MAPackageRefactoring',
+	#superclass : 'RBRefactoring',
 	#instVars : [
 		'classes'
 	],
 	#category : 'Magritte-Pharo-Tools'
 }
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 MAPackageRefactoring class >> model: model classes: classes [
 	^  self new
 		model: model;
@@ -15,22 +15,22 @@ MAPackageRefactoring class >> model: model classes: classes [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAPackageRefactoring >> classes [
 	^ classes
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAPackageRefactoring >> classes: anObject [
 	classes := anObject
 ]
 
-{ #category : #preconditions }
+{ #category : 'preconditions' }
 MAPackageRefactoring >> preconditions [
 	^ RBCondition empty
 ]
 
-{ #category : #transforming }
+{ #category : 'transforming' }
 MAPackageRefactoring >> transform [
 	self classes 
 		collect: [ :each | MAClassRefactoring model: self model className: each ]

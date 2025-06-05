@@ -2,27 +2,27 @@
 I am a description of colors, possible values are instances of ==Color==. My visual representation could be a color-chooser.
 "
 Class {
-	#name : #MAColorDescription,
-	#superclass : #MAElementDescription,
-	#category : #'Magritte-Model-Description'
+	#name : 'MAColorDescription',
+	#superclass : 'MAElementDescription',
+	#category : 'Magritte-Model-Description'
 }
 
-{ #category : #'accessing-defaults' }
+{ #category : 'accessing-defaults' }
 MAColorDescription class >> defaultKind [
 	^ GRPlatform current magritteColorClass
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 MAColorDescription class >> isAbstract [
 	^ false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAColorDescription class >> label [
 	^ 'Color'
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 MAColorDescription >> acceptMagritte: aVisitor [
 	aVisitor visitColorDescription: self
 ]

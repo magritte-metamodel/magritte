@@ -1,1 +1,1 @@
-Package { #name : #'Magritte-Deprecated' }
+Package { #name : 'Magritte-Deprecated' }

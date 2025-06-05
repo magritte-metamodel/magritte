@@ -2,12 +2,12 @@
 A MultiColumnListModel is a spec model for Multi columns list
 "
 Class {
-	#name : #MultiColumnListModel,
-	#superclass : #ListComposableModel,
+	#name : 'MultiColumnListModel',
+	#superclass : 'ListComposableModel',
 	#category : 'Spec-Widgets'
 }
 
-{ #category : #specs }
+{ #category : 'specs' }
 MultiColumnListModel class >> defaultSpec [
 	<spec>
 	^ {#MultiColumnListSpec.
@@ -29,19 +29,19 @@ MultiColumnListModel class >> defaultSpec [
 			#vResizing:. 					#spaceFill}
 ]
 
-{ #category : #'remove me' }
+{ #category : 'remove me' }
 MultiColumnListModel >> getIndex [
 
 	^ selectionHolder index contents
 ]
 
-{ #category : #morphic }
+{ #category : 'morphic' }
 MultiColumnListModel >> listElementAt: anIndex [
 
 	^ self wrapItem: (self listItems at: anIndex) index: anIndex 
 ]
 
-{ #category : #morphic }
+{ #category : 'morphic' }
 MultiColumnListModel >> setIndex: anIndex [
 
 	self allowToSelect ifFalse: [ ^ self ].
@@ -50,7 +50,7 @@ MultiColumnListModel >> setIndex: anIndex [
 	selectionHolder selection contents: (self listItems at: anIndex ifAbsent: [ nil ]).
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 MultiColumnListModel >> setSelectedIndex: anIndex [
 	<api: #integer min: 0 max: #listSize getter: #selectedIndex registration: #whenSelectionIndexChanged:>
 	"Set the index of the item you want to be selected"

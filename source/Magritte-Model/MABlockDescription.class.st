@@ -1,35 +1,35 @@
 Class {
-	#name : #MABlockDescription,
-	#superclass : #MAElementDescription,
-	#category : #'Magritte-Model-Description'
+	#name : 'MABlockDescription',
+	#superclass : 'MAElementDescription',
+	#category : 'Magritte-Model-Description'
 }
 
-{ #category : #'accessing-defaults' }
+{ #category : 'accessing-defaults' }
 MABlockDescription class >> defaultKind [
 	^ BlockClosure
 ]
 
-{ #category : #'accessing-defaults' }
+{ #category : 'accessing-defaults' }
 MABlockDescription class >> defaultLineCount [
 	^ 3
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 MABlockDescription class >> isAbstract [
 	^ false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MABlockDescription class >> label [
 	^ 'Block'
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 MABlockDescription >> acceptMagritte: aVisitor [
 	aVisitor visitBlockDescription: self
 ]
 
-{ #category : #'accessing-magritte' }
+{ #category : 'accessing-magritte' }
 MABlockDescription >> descriptionLineCount [
 	<magritteDescription>
 	^ MANumberDescription new
@@ -42,12 +42,12 @@ MABlockDescription >> descriptionLineCount [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MABlockDescription >> lineCount [
 	^ self propertyAt: #lineCount ifAbsent: [ self class defaultLineCount ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MABlockDescription >> lineCount: anInteger [
 	self propertyAt: #lineCount put: anInteger
 ]

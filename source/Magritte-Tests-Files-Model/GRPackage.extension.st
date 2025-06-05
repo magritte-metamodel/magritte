@@ -1,7 +1,7 @@
-Extension { #name : #GRPackage }
+Extension { #name : 'GRPackage' }
 
-{ #category : #'*magritte-tests-files-model' }
-GRPackage class >> magritteTestsFilesModel [
+{ #category : '*magritte-tests-files-model' }
+GRPackage classSide >> magritteTestsFilesModel [
 	^ self new
 		name: 'Magritte-Tests-Files-Model';
 		addDependency: 'Magritte-Tests-Model';

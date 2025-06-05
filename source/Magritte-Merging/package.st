@@ -1,1 +1,1 @@
-Package { #name : #'Magritte-Merging' }
+Package { #name : 'Magritte-Merging' }

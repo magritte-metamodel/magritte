@@ -1,30 +1,30 @@
 Class {
-	#name : #MARelationComponent,
-	#superclass : #MAElementComponent,
+	#name : 'MARelationComponent',
+	#superclass : 'MAElementComponent',
 	#instVars : [
 		'selected'
 	],
 	#category : 'Magritte-Seaside-Components'
 }
 
-{ #category : #'accessing-dynamic' }
+{ #category : 'accessing-dynamic' }
 MARelationComponent >> classes [
 	^ self magritteDescription classes
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MARelationComponent >> editorFor: anObject [
 	^ anObject asComponent
 		addValidatedForm;
 		yourself
 ]
 
-{ #category : #'rendering-tools' }
+{ #category : 'rendering-tools' }
 MARelationComponent >> renderSelectButtonOn: html [
 	self subclassResponsibility
 ]
 
-{ #category : #'rendering-tools' }
+{ #category : 'rendering-tools' }
 MARelationComponent >> renderSelectListOn: html [
 	self classes size > 1 ifTrue: [
 		html select
@@ -36,12 +36,12 @@ MARelationComponent >> renderSelectListOn: html [
 		ifTrue: [ self renderSelectButtonOn: html ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MARelationComponent >> selected [
 	^ selected ifNil: [ selected := self classes first ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MARelationComponent >> selected: aClass [
 	selected := aClass
 ]

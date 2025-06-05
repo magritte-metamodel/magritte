@@ -2,37 +2,37 @@
 I am a container holding a collection of descriptions and I keep them sorted according to their priority.
 "
 Class {
-	#name : #MAPriorityContainer,
-	#superclass : #MAContainer,
-	#category : #'Magritte-Model-Description'
+	#name : 'MAPriorityContainer',
+	#superclass : 'MAContainer',
+	#category : 'Magritte-Model-Description'
 }
 
-{ #category : #'accessing-defaults' }
+{ #category : 'accessing-defaults' }
 MAPriorityContainer class >> defaultCollection [
 	^ SortedCollection new
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 MAPriorityContainer >> acceptMagritte: aVisitor [
 	aVisitor visitPriorityContainer: self
 ]
 
-{ #category : #moving }
+{ #category : 'moving' }
 MAPriorityContainer >> moveDown: aDescription [
 	self shouldNotImplement
 ]
 
-{ #category : #moving }
+{ #category : 'moving' }
 MAPriorityContainer >> moveUp: aDescription [
 	self shouldNotImplement
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 MAPriorityContainer >> resort [
 	self setChildren: self children copy
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 MAPriorityContainer >> setChildren: aCollection [
 	super setChildren: aCollection asSortedCollection
 ]

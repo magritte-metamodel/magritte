@@ -1,6 +1,6 @@
-Extension { #name : #Object }
+Extension { #name : 'Object' }
 
-{ #category : #'*Magritte-GT' }
+{ #category : '*Magritte-GT' }
 Object >> exampleGtInspectorReadOnlyMagritteIn: composite [
 	"<gtInspectorPresentationOrder: 300>"
 	"A simple GT presentation. Disabled by default because we have one that shows the full editable form, but could be useful..."
@@ -15,7 +15,7 @@ Object >> exampleGtInspectorReadOnlyMagritteIn: composite [
 		send: #value
 ]
 
-{ #category : #'*Magritte-GT' }
+{ #category : '*Magritte-GT' }
 Object >> gtInspectorMagritteIn: composite [
 	<gtInspectorPresentationOrder: 40>
 	composite magritte

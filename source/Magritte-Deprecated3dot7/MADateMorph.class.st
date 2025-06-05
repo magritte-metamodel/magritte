@@ -1,5 +1,5 @@
 Class {
-	#name : #MADateMorph,
-	#superclass : #MAMorphicDate,
-	#category : #'Magritte-Deprecated3dot7'
+	#name : 'MADateMorph',
+	#superclass : 'MAMorphicDate',
+	#category : 'Magritte-Deprecated3dot7'
 }

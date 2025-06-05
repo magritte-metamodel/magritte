@@ -1,7 +1,7 @@
-Extension { #name : #GRPackage }
+Extension { #name : 'GRPackage' }
 
-{ #category : #'*magritte-seaside' }
-GRPackage class >> magritteSeaside [
+{ #category : '*magritte-seaside' }
+GRPackage classSide >> magritteSeaside [
 	^ self new
 		name: 'Magritte-Seaside';
 		description: 'Seaside integration for the Magritte metamodel.';

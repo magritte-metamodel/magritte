@@ -1,40 +1,40 @@
 Class {
-	#name : #MARangeComponent,
-	#superclass : #MAElementComponent,
+	#name : 'MARangeComponent',
+	#superclass : 'MAElementComponent',
 	#category : 'Magritte-Seaside-Components'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 MARangeComponent class >> isAbstract [
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 MARangeComponent >> hasLabelId [
 	^ self isReadOnly not
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MARangeComponent >> labelId [
 	^ self id
 ]
 
-{ #category : #'accessing-dynamic' }
+{ #category : 'accessing-dynamic' }
 MARangeComponent >> max [
 	^ self magritteDescription max ifNil: [ 100 ]
 ]
 
-{ #category : #'accessing-dynamic' }
+{ #category : 'accessing-dynamic' }
 MARangeComponent >> min [
 	^ self magritteDescription min ifNil: [ -100 ]
 ]
 
-{ #category : #'accessing-dynamic' }
+{ #category : 'accessing-dynamic' }
 MARangeComponent >> range [
 	^ self max - self min
 ]
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 MARangeComponent >> renderEditorOn: html [
 	html rangeInput
 		id: self id;
@@ -46,7 +46,7 @@ MARangeComponent >> renderEditorOn: html [
 	html script: self updateScript
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MARangeComponent >> updateScript [
 	^ String streamContents: [ :stream |
 		stream
@@ -57,12 +57,12 @@ MARangeComponent >> updateScript [
 			nextPutAll: ');' ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MARangeComponent >> value [
 	^ ((super value ifNil: [ 0 ]) - self min) * 100 / self range
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MARangeComponent >> value: aNumber [
 	super value: (aNumber isNil ifFalse: [ aNumber * self range / 100 + self min ])
 ]

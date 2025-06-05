@@ -1,34 +1,34 @@
 Class {
-	#name : #MAFileModelTest,
-	#superclass : #TestCase,
+	#name : 'MAFileModelTest',
+	#superclass : 'TestCase',
 	#instVars : [
 		'model'
 	],
-	#category : #'Magritte-Tests-Model-Models'
+	#category : 'Magritte-Tests-Model-Models'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 MAFileModelTest class >> isAbstract [
 	^ self name = #MAFileModelTest
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAFileModelTest >> actualClass [
 	^ self subclassResponsibility
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 MAFileModelTest >> setUp [
 	super setUp.
 	model := self actualClass new
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 MAFileModelTest >> tearDown [
 	model finalize
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MAFileModelTest >> testComparing [
 	| other |
 	other := self actualClass new.
@@ -43,7 +43,7 @@ MAFileModelTest >> testComparing [
 	other finalize.	"should be in tearDown;  for now, at least let's discard when we pass"
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MAFileModelTest >> testContents [
 	self assert: model contents isEmpty.
 
@@ -52,7 +52,7 @@ MAFileModelTest >> testContents [
 	self assert: model filesize = 3
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MAFileModelTest >> testFilename [
 	self assert: model filename = 'unknown'.
 	self assert: model extension isEmpty.
@@ -62,7 +62,7 @@ MAFileModelTest >> testFilename [
 	self assert: model extension = 'txt'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MAFileModelTest >> testIsEmpty [
 	self assert: model isEmpty.
 
@@ -76,7 +76,7 @@ MAFileModelTest >> testIsEmpty [
 	self deny: model isEmpty
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MAFileModelTest >> testMimetype [
 	self assert: model mimetype = 'application/octet-stream'.
 	self assert: model maintype = 'application'.
@@ -88,7 +88,7 @@ MAFileModelTest >> testMimetype [
 	self assert: model subtype = 'html'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MAFileModelTest >> testMimetypeApplication [
 	model mimetype: 'application/pdf'.
 
@@ -99,7 +99,7 @@ MAFileModelTest >> testMimetypeApplication [
 	self deny: model isVideo
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MAFileModelTest >> testMimetypeAudio [
 	model mimetype: 'audio/mpeg'.
 
@@ -110,7 +110,7 @@ MAFileModelTest >> testMimetypeAudio [
 	self deny: model isVideo
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MAFileModelTest >> testMimetypeDefault [
 	self assert: model isApplication.
 	self deny: model isAudio.
@@ -119,7 +119,7 @@ MAFileModelTest >> testMimetypeDefault [
 	self deny: model isVideo
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MAFileModelTest >> testMimetypeImage [
 	model mimetype: 'image/png'.
 
@@ -130,7 +130,7 @@ MAFileModelTest >> testMimetypeImage [
 	self deny: model isVideo
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MAFileModelTest >> testMimetypeText [
 	model mimetype: 'text/xml'.
 
@@ -141,7 +141,7 @@ MAFileModelTest >> testMimetypeText [
 	self deny: model isVideo
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MAFileModelTest >> testMimetypeVideo [
 	model mimetype: 'video/mpeg'.
 	

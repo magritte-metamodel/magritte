@@ -2,15 +2,15 @@
 A DialogWindowModel is a model used to describe a DialogWindow
 "
 Class {
-	#name : #DialogWindowModel,
-	#superclass : #WindowModel,
+	#name : 'DialogWindowModel',
+	#superclass : 'WindowModel',
 	#instVars : [
 		'contentMorph'
 	],
 	#category : 'Spec-Widgets'
 }
 
-{ #category : #specs }
+{ #category : 'specs' }
 DialogWindowModel class >> defaultSpec [
 	<spec>
 	
@@ -20,7 +20,7 @@ DialogWindowModel class >> defaultSpec [
 			model: model )
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 DialogWindowModel >> buildWithSpec: aSpec [
 	"Build the widget using the spec name provided as argument"
 	| widget |
@@ -39,7 +39,7 @@ DialogWindowModel >> buildWithSpec: aSpec [
 	^ widget
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 DialogWindowModel >> buildWithSpecLayout: aSpec [
 	"Build the widget using the spec name provided as argument"
 	| widget |
@@ -58,14 +58,14 @@ DialogWindowModel >> buildWithSpecLayout: aSpec [
 	^ widget
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 DialogWindowModel >> cancelAction: aBlock [
 
 	^ self widget
 		ifNotNil: [:w | w cancelAction: aBlock ]
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 DialogWindowModel >> cancelled [
 
 	^ self widget
@@ -73,20 +73,20 @@ DialogWindowModel >> cancelled [
 		ifNotNil: [:w | w cancelled ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DialogWindowModel >> contentMorph [
 
 	^ contentMorph
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 DialogWindowModel >> okAction: aBlock [
 
 	^ self widget
 		ifNotNil: [:w | w okAction: aBlock ]
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 DialogWindowModel >> toolbar [
 
 	^ self widget

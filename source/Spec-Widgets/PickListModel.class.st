@@ -2,8 +2,8 @@
 A PickList is a tick list done using spec.
 "
 Class {
-	#name : #PickListModel,
-	#superclass : #ComposableModel,
+	#name : 'PickListModel',
+	#superclass : 'ComposableModel',
 	#instVars : [
 		'defaultValueHolder',
 		'labelClickableHolder',
@@ -18,7 +18,7 @@ Class {
 	#category : 'Spec-Widgets-PolyWidgets'
 }
 
-{ #category : #specs }
+{ #category : 'specs' }
 PickListModel class >> defaultSpec [
 	<spec>
 	
@@ -27,7 +27,7 @@ PickListModel class >> defaultSpec [
 		yourself
 ]
 
-{ #category : #example }
+{ #category : 'example' }
 PickListModel class >> example [
 	"self example"
 	| instance |
@@ -37,62 +37,62 @@ PickListModel class >> example [
 	instance items: { {1. 2. 4}. 'Foo'. 123}
 ]
 
-{ #category : #specs }
+{ #category : 'specs' }
 PickListModel class >> title [
 
 	^ 'Pick List Example'
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 PickListModel >> addPicked: item [
 
 	pickedItemsHolder add: item.
 	pickedItemsHolder contentsChanged: true to: item.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PickListModel >> blockToPerformOnWrappers [
 
 	^ blockToPerformOnWrappers contents
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PickListModel >> blockToPerformOnWrappers: aBlock [
 
 	blockToPerformOnWrappers contents: aBlock
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 PickListModel >> checkboxFor: anItem [
 
 	^ associationsItemToWrapper at: anItem ifAbsent: [ nil ]
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 PickListModel >> defaultValue [
 
 	^ defaultValueHolder contents
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 PickListModel >> defaultValue: aBoolean [
 
 	defaultValueHolder contents: aBoolean
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 PickListModel >> displayBlock: aBlock [
 
 	wrapHolder contents: aBlock
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 PickListModel >> indexFor: aCheckbox [
 
 	^ listModel listItems indexOf: aCheckbox.
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 PickListModel >> initialize [
 	"Initialization code for PickList"
 
@@ -108,7 +108,7 @@ PickListModel >> initialize [
 	super initialize.
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 PickListModel >> initializePresenter [
 	
 	labelClickableHolder whenChangedDo: [:aBoolean | 
@@ -117,7 +117,7 @@ PickListModel >> initializePresenter [
 	defaultValueHolder whenChangedDo: [:value | associationsWrapperToItem keysDo: [:cb | cb state: value ]].
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 PickListModel >> initializeWidgets [
 	
 	self instantiateModels: #( listModel ListComposableModel ).
@@ -125,13 +125,13 @@ PickListModel >> initializeWidgets [
 	self focusOrder add: listModel
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 PickListModel >> itemFor: aCheckbox [
 
 	^ associationsWrapperToItem at: aCheckbox ifAbsent: [ nil ]
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 PickListModel >> items: aCollection [
 
 	associationsWrapperToItem removeAll.
@@ -139,50 +139,50 @@ PickListModel >> items: aCollection [
 	listModel items: (aCollection collectWithIndex: [:e :i | self wrap: e at: i ]).
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 PickListModel >> labelClickable [
 	
 	^ labelClickableHolder contents
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 PickListModel >> labelClickable: aBoolean [
 
 	labelClickableHolder contents: aBoolean
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PickListModel >> listModel [
 
 	^ listModel
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 PickListModel >> pickedItems [
 	"Returns the selected items according to the order they have been picked"
 	
 	^ pickedItemsHolder contents
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 PickListModel >> removePicked: item [
 
 	pickedItemsHolder remove: item ifAbsent: [ ^ self ].
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 PickListModel >> resetSelection [
 
 	listModel resetSelection
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 PickListModel >> selectedIndex [
 
 	^ listModel selectedIndex
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 PickListModel >> selectedItem [
 
 	^ associationsWrapperToItem 
@@ -190,7 +190,7 @@ PickListModel >> selectedItem [
 		ifAbsent: [ nil ]
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 PickListModel >> selectedItems [
 	"Returns the selected items according to the list order"
 	| wrappers items |
@@ -204,25 +204,25 @@ PickListModel >> selectedItems [
 	^ items
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 PickListModel >> setSelectedIndex: anIndex [
 
 	listModel setSelectedIndex: anIndex
 ]
 
-{ #category : #'protocol-events' }
+{ #category : 'protocol-events' }
 PickListModel >> whenListChanged: aBlock [
 
 	listModel whenListChanged: aBlock
 ]
 
-{ #category : #'protocol-events' }
+{ #category : 'protocol-events' }
 PickListModel >> whenPickedItemsChanged: aBlock [
 
 	pickedItemsHolder whenChangedDo: aBlock
 ]
 
-{ #category : #'protocol-events' }
+{ #category : 'protocol-events' }
 PickListModel >> whenSelectedItemChanged: aBlock [
 	| newBlock |
 	
@@ -230,19 +230,19 @@ PickListModel >> whenSelectedItemChanged: aBlock [
 	listModel whenSelectedItemChanged: newBlock
 ]
 
-{ #category : #'protocol-events' }
+{ #category : 'protocol-events' }
 PickListModel >> whenSelectionChanged: aBlock [
 
 	listModel whenSelectionChanged: aBlock
 ]
 
-{ #category : #'protocol-events' }
+{ #category : 'protocol-events' }
 PickListModel >> whenSelectionIndexChanged: aBlock [
 
 	listModel whenSelectionIndexChanged: aBlock
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 PickListModel >> wrap: item at: index [
 	| checkBox |
 
@@ -274,13 +274,13 @@ PickListModel >> wrap: item at: index [
 	^ checkBox
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PickListModel >> wrapHolder [
 
 	^ wrapHolder
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 PickListModel >> wrappers [
 
 	^ associationsWrapperToItem keys

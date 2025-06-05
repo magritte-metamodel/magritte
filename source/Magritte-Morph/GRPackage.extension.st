@@ -1,7 +1,7 @@
-Extension { #name : #GRPackage }
+Extension { #name : 'GRPackage' }
 
-{ #category : #'*magritte-morph' }
-GRPackage class >> magritteMorph [
+{ #category : '*magritte-morph' }
+GRPackage classSide >> magritteMorph [
 	^ self new
 		name: 'Magritte-Morph';
 		description: 'Morphic integration for the Magritte metamodel.';

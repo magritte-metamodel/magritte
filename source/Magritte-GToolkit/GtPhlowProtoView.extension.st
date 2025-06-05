@@ -1,6 +1,6 @@
-Extension { #name : #GtPhlowProtoView }
+Extension { #name : 'GtPhlowProtoView' }
 
-{ #category : #'*Magritte-GToolkit' }
+{ #category : '*Magritte-GToolkit' }
 GtPhlowProtoView >> maColumnedListOf: aClassOrContainer [
 	
 	^ self 
@@ -8,7 +8,7 @@ GtPhlowProtoView >> maColumnedListOf: aClassOrContainer [
 		descriptionsSelect: [ :desc | true ]
 ]
 
-{ #category : #'*Magritte-GToolkit' }
+{ #category : '*Magritte-GToolkit' }
 GtPhlowProtoView >> maColumnedListOf: aClassOrContainer descriptionsSelect: aBlock [
 	
 	| result container |

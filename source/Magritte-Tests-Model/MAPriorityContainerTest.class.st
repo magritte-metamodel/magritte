@@ -1,25 +1,25 @@
 Class {
-	#name : #MAPriorityContainerTest,
-	#superclass : #MAContainerTest,
-	#category : #'Magritte-Tests-Model-Description'
+	#name : 'MAPriorityContainerTest',
+	#superclass : 'MAContainerTest',
+	#category : 'Magritte-Tests-Model-Description'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 MAPriorityContainerTest class >> isAbstract [
 	^ false
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAPriorityContainerTest >> actualClass [
 	^ MAPriorityContainer
 ]
 
-{ #category : #'tests-moving' }
+{ #category : 'tests-moving' }
 MAPriorityContainerTest >> testMoveDown [
 	self should: [ super testMoveDown ] raise: Error
 ]
 
-{ #category : #'tests-moving' }
+{ #category : 'tests-moving' }
 MAPriorityContainerTest >> testMoveUp [
 	self should: [ super testMoveUp ] raise: Error
 ]

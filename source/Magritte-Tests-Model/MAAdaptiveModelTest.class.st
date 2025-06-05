@@ -1,23 +1,23 @@
 Class {
-	#name : #MAAdaptiveModelTest,
-	#superclass : #TestCase,
+	#name : 'MAAdaptiveModelTest',
+	#superclass : 'TestCase',
 	#instVars : [
 		'scaffolder'
 	],
-	#category : #'Magritte-Tests-Model-Models'
+	#category : 'Magritte-Tests-Model-Models'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAAdaptiveModelTest >> descriptions [
 	^ self scaffolder magritteDescription children
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAAdaptiveModelTest >> scaffolder [
 	^ scaffolder
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 MAAdaptiveModelTest >> setUp [
 	scaffolder := MAAdaptiveModel new.
 	scaffolder magritteDescription
@@ -27,13 +27,13 @@ MAAdaptiveModelTest >> setUp [
 	scaffolder write: 123 using: self descriptions second
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MAAdaptiveModelTest >> testRead [
 	self assert: (self scaffolder readUsing: self descriptions first) = 'foo'.
 	self assert: (self scaffolder readUsing: self descriptions second) = 123
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MAAdaptiveModelTest >> testWrite [
 	self scaffolder write: 'bar' using: self descriptions first.
 	self scaffolder write: 321 using: self descriptions second.

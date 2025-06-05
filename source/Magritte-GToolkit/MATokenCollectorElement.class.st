@@ -1,17 +1,17 @@
 Class {
-	#name : #MATokenCollectorElement,
-	#superclass : #MATokenSelectorElement,
-	#category : #'Magritte-GToolkit-Widgets'
+	#name : 'MATokenCollectorElement',
+	#superclass : 'MATokenSelectorElement',
+	#category : 'Magritte-GToolkit-Widgets'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MATokenCollectorElement >> onTokenRemovedFor: anObject [
 	| collection |
 	collection := self object readUsing: self relationDescription.
 	collection remove: anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MATokenCollectorElement >> onTokenRequestFor: anObject [
 	| collection |
 	collection := self object readUsing: self relationDescription.
@@ -19,7 +19,7 @@ MATokenCollectorElement >> onTokenRequestFor: anObject [
 	self refreshTokens
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MATokenCollectorElement >> refreshTokens [
 
 	| collection |

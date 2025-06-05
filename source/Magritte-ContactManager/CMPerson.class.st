@@ -2,8 +2,8 @@
 A simple modle of a person.
 "
 Class {
-	#name : #CMPerson,
-	#superclass : #Object,
+	#name : 'CMPerson',
+	#superclass : 'Object',
 	#instVars : [
 		'title',
 		'firstName',
@@ -19,7 +19,7 @@ Class {
 	#category : 'Magritte-ContactManager'
 }
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 CMPerson >> = anObject [
 	^ self species = anObject species
 		and: [ self title = anObject title
@@ -31,23 +31,23 @@ CMPerson >> = anObject [
 		and: [ self homeAddress = anObject homeAddress ] ] ] ] ] ] ]
 ]
 
-{ #category : #'accessing-calculated' }
+{ #category : 'accessing-calculated' }
 CMPerson >> age [
 	^ self birthday notNil
 		ifTrue: [ Date current year - self birthday year ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CMPerson >> birthday [
 	^ birthday
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CMPerson >> birthday: anObject [
 	birthday := anObject
 ]
 
-{ #category : #descriptions }
+{ #category : 'descriptions' }
 CMPerson >> descriptionAge [
 	<magritteDescription>
 	 ^ MANumberDescription new
@@ -58,7 +58,7 @@ CMPerson >> descriptionAge [
 		yourself
 ]
 
-{ #category : #descriptions }
+{ #category : 'descriptions' }
 CMPerson >> descriptionBirthday [
 	<magritteDescription>
 	^ MADateDescription new
@@ -68,7 +68,7 @@ CMPerson >> descriptionBirthday [
 		yourself
 ]
 
-{ #category : #descriptions }
+{ #category : 'descriptions' }
 CMPerson >> descriptionFirstName [
 	<magritteDescription>
 	
@@ -80,7 +80,7 @@ CMPerson >> descriptionFirstName [
 			yourself
 ]
 
-{ #category : #descriptions }
+{ #category : 'descriptions' }
 CMPerson >> descriptionHomeAddress [
 	<magritteDescription>
 	
@@ -93,7 +93,7 @@ CMPerson >> descriptionHomeAddress [
 			yourself
 ]
 
-{ #category : #descriptions }
+{ #category : 'descriptions' }
 CMPerson >> descriptionLastName [
 	<magritteDescription>
 	
@@ -105,7 +105,7 @@ CMPerson >> descriptionLastName [
 		yourself
 ]
 
-{ #category : #descriptions }
+{ #category : 'descriptions' }
 CMPerson >> descriptionOfficeAddress [
 	<magritteDescription>
 	
@@ -118,7 +118,7 @@ CMPerson >> descriptionOfficeAddress [
 			yourself
 ]
 
-{ #category : #descriptions }
+{ #category : 'descriptions' }
 CMPerson >> descriptionPassword [
 	<magritteDescription>
 	
@@ -130,7 +130,7 @@ CMPerson >> descriptionPassword [
 			yourself
 ]
 
-{ #category : #descriptions }
+{ #category : 'descriptions' }
 CMPerson >> descriptionPhoneNumbers [
 	<magritteDescription>
 	
@@ -143,7 +143,7 @@ CMPerson >> descriptionPhoneNumbers [
 		yourself
 ]
 
-{ #category : #descriptions }
+{ #category : 'descriptions' }
 CMPerson >> descriptionPicture [
 	<magritteDescription>
 	
@@ -155,7 +155,7 @@ CMPerson >> descriptionPicture [
 		yourself
 ]
 
-{ #category : #descriptions }
+{ #category : 'descriptions' }
 CMPerson >> descriptionTitle [
 	<magritteDescription>
 	
@@ -167,97 +167,97 @@ CMPerson >> descriptionTitle [
 			yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CMPerson >> email [
 	^ email
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CMPerson >> email: anObject [
 	email := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CMPerson >> firstName [
 	^ firstName
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CMPerson >> firstName: anObject [
 	firstName := anObject
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 CMPerson >> hash [
 	^ self firstName hash bitXor: self lastName hash
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CMPerson >> homeAddress [
 	^ homeAddress
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CMPerson >> homeAddress: anObject [
 	homeAddress := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CMPerson >> lastName [
 	^ lastName
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CMPerson >> lastName: anObject [
 	lastName := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CMPerson >> officeAddress [
 	^ officeAddress
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CMPerson >> officeAddress: anObject [
 	officeAddress := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CMPerson >> password [
 	^ password
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CMPerson >> password: aString [
 	password := aString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CMPerson >> phones [
 	^ phones
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CMPerson >> phones: anObject [
 	phones := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CMPerson >> picture [
 	^ picture
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CMPerson >> picture: anObject [
 	picture := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CMPerson >> title [
 	^ title
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CMPerson >> title: anObject [
 	title := anObject
 ]

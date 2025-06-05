@@ -1,6 +1,6 @@
-Extension { #name : #MASelectorAccessor }
+Extension { #name : 'MASelectorAccessor' }
 
-{ #category : #'*Magritte-Developer-private' }
+{ #category : '*Magritte-Developer-private' }
 MASelectorAccessor >> maCompile: templateString asAccessor: aSymbol forinstVarNamed: variableName in: aClass [ 
 	(aClass canUnderstand: aSymbol) ifTrue: [ ^ self ].
 	aClass
@@ -8,7 +8,7 @@ MASelectorAccessor >> maCompile: templateString asAccessor: aSymbol forinstVarNa
 		classified: #accessing
 ]
 
-{ #category : #'*Magritte-Developer-private' }
+{ #category : '*Magritte-Developer-private' }
 MASelectorAccessor >> maSetUp: aClass for: anMAElementDescription [
 	"Ensure inst var, setter and getter exist"
 
@@ -30,12 +30,12 @@ MASelectorAccessor >> maSetUp: aClass for: anMAElementDescription [
 		in: aClass.
 ]
 
-{ #category : #'*Magritte-Developer-private' }
+{ #category : '*Magritte-Developer-private' }
 MASelectorAccessor >> store: anObject inDescriptionOn: aStream [ 
 	anObject storeVia: self inDescriptionOn: aStream.
 ]
 
-{ #category : #'*Magritte-Developer-private' }
+{ #category : '*Magritte-Developer-private' }
 MASelectorAccessor >> storeVia: anAccessor inDescriptionOn: aStream [ 
 	| isSymmetrical |
 	isSymmetrical := self writeSelector = (self readSelector, ':') asSymbol.

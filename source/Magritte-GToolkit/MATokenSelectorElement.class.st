@@ -1,15 +1,15 @@
 Class {
-	#name : #MATokenSelectorElement,
-	#superclass : #BrHorizontalPane,
+	#name : 'MATokenSelectorElement',
+	#superclass : 'BrHorizontalPane',
 	#instVars : [
 		'object',
 		'relationDescription',
 		'tokenContainer'
 	],
-	#category : #'Magritte-GToolkit-Widgets'
+	#category : 'Magritte-GToolkit-Widgets'
 }
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 MATokenSelectorElement class >> forObject: anObject withRelationDescription: aDescription [
 	^ self basicNew
 		object: anObject;
@@ -18,7 +18,7 @@ MATokenSelectorElement class >> forObject: anObject withRelationDescription: aDe
 		yourself.
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 MATokenSelectorElement >> addTokenFor: anObject [
 	
 	| token |
@@ -30,7 +30,7 @@ MATokenSelectorElement >> addTokenFor: anObject [
 	self tokenContainer addChild: token
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 MATokenSelectorElement >> initialize [
 	| searchButton |
 	super initialize.
@@ -62,30 +62,30 @@ MATokenSelectorElement >> initialize [
 		addChild: self tokenContainer
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MATokenSelectorElement >> object [
 
 	^ object
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MATokenSelectorElement >> object: anObject [
 
 	object := anObject
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 MATokenSelectorElement >> onTokenRemovedFor: anObject [
 	self relationDescription write: nil to: self object
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 MATokenSelectorElement >> onTokenRequestFor: anObject [
 	self relationDescription write: anObject to: self object.
 	self refreshTokens
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 MATokenSelectorElement >> refreshTokens [
 
 	| currentValue |
@@ -94,19 +94,19 @@ MATokenSelectorElement >> refreshTokens [
 	currentValue ifNotNil: [ self addTokenFor: currentValue ].
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MATokenSelectorElement >> relationDescription [
 
 	^ relationDescription
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MATokenSelectorElement >> relationDescription: anObject [
 
 	relationDescription := anObject
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 MATokenSelectorElement >> tokenContainer [
 	tokenContainer ifNotNil: [ ^ tokenContainer ].
 	

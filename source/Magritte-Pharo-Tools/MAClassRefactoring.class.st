@@ -1,10 +1,10 @@
 Class {
-	#name : #MAClassRefactoring,
-	#superclass : #RBClassRefactoring,
+	#name : 'MAClassRefactoring',
+	#superclass : 'RBClassRefactoring',
 	#category : 'Magritte-Pharo-Tools'
 }
 
-{ #category : #transforming }
+{ #category : 'transforming' }
 MAClassRefactoring >> descriptionMethodRename [
 	| class |
 	class := self classObjectFor: className asSymbol.
@@ -12,12 +12,12 @@ MAClassRefactoring >> descriptionMethodRename [
 		self performComponentRefactoring: (MADescriptionRenameRefactoring forClass: class) ]
 ]
 
-{ #category : #preconditions }
+{ #category : 'preconditions' }
 MAClassRefactoring >> preconditions [
 	^ RBCondition empty
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAClassRefactoring >> refactorings [
 	| class |
 	class := self theClass.
@@ -28,14 +28,14 @@ MAClassRefactoring >> refactorings [
 				in: class ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAClassRefactoring >> theClass [
 	| class |
 	class := self classObjectFor: className asSymbol.
 	^ class isMeta ifFalse: [ class theMetaClass ] ifTrue: [ class ]
 ]
 
-{ #category : #transforming }
+{ #category : 'transforming' }
 MAClassRefactoring >> transform [
 	self descriptionMethodRename.
 	self refactorings do: [ :each | self performComponentRefactoring: each ]

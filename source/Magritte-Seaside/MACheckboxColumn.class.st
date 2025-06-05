@@ -1,42 +1,42 @@
 Class {
-	#name : #MACheckboxColumn,
-	#superclass : #MASelectionColumn,
+	#name : 'MACheckboxColumn',
+	#superclass : 'MASelectionColumn',
 	#category : 'Magritte-Seaside-Report'
 }
 
-{ #category : #'accessing-defaults' }
+{ #category : 'accessing-defaults' }
 MACheckboxColumn >> defaultSelection [
 	^ Set new
 ]
 
-{ #category : #'accessing-defaults' }
+{ #category : 'accessing-defaults' }
 MACheckboxColumn >> defaultStringDeselected [
 	^ self webdings: 'c'
 ]
 
-{ #category : #'accessing-defaults' }
+{ #category : 'accessing-defaults' }
 MACheckboxColumn >> defaultStringSelected [
 	^ self webdings: 'g'
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 MACheckboxColumn >> deselectRow: anObject [
 	self selection remove: anObject ifAbsent: nil
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 MACheckboxColumn >> isSelected: anObject [
 	^ self selection includes: anObject
 ]
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 MACheckboxColumn >> renderCellFormContent: anObject on: html [
 	html checkbox
 		value: (self isSelected: anObject);
 		callback: [ :value | self selectRow: anObject value: value ]
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 MACheckboxColumn >> selectRow: anObject [
 	self selection add: anObject
 ]

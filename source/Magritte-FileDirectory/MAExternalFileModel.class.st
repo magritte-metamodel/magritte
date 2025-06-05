@@ -15,8 +15,8 @@ The files are currently stored using the following scheme:
 #This is the original file-name. Subclasses might want to store other cached versions of the same file there, for example resized images, etc.
 "
 Class {
-	#name : #MAExternalFileModel,
-	#superclass : #MAFileModel,
+	#name : 'MAExternalFileModel',
+	#superclass : 'MAFileModel',
 	#instVars : [
 		'location'
 	],
@@ -27,12 +27,12 @@ Class {
 	#category : 'Magritte-FileDirectory'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAExternalFileModel class >> baseDirectory [
 	^ baseDirectory ifNil: [ FileDirectory default directoryNamed: 'files' ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAExternalFileModel class >> baseDirectory: aStringOrDirectory [
 	"Defines the base-directory where the files are stored. If this value is set to nil, it default to a subdirectory of of the current image-location."
 
@@ -41,22 +41,22 @@ MAExternalFileModel class >> baseDirectory: aStringOrDirectory [
 		ifFalse: [ aStringOrDirectory ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAExternalFileModel class >> baseDirectoryPath [
 	^ self baseDirectory pathName
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAExternalFileModel class >> baseDirectoryPath: aString [
 	self baseDirectory: (FileDirectory on: aString)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAExternalFileModel class >> baseUrl [
 	^ baseUrl
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAExternalFileModel class >> baseUrl: aString [
 	"Defines the base-URL where the files are served from, when using an external web server. This setting is left to nil by default, causing the files to be served trough the image."
 
@@ -66,7 +66,7 @@ MAExternalFileModel class >> baseUrl: aString [
 			ifTrue: [ aString copyUpToLast: $/ ] ]
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 MAExternalFileModel class >> garbageCollect [
 	"Remove obsolete files from the file-system that do not have a counterpart in memory anymore. This method has to be called manually and is not intended to be portable."
 	
@@ -86,32 +86,32 @@ MAExternalFileModel class >> garbageCollect [
 			ifFalse: [ directory recursiveDelete ] ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 MAExternalFileModel class >> initialize [
 	baseDirectory := baseUrl := nil
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 MAExternalFileModel class >> locationDefinition [
 	^ #( ( 2 '63450af8d9c2e17b' ) ( 30 'iaojv41bw67e0tud5m9rgplqfy8x3cs2kznh' ) )
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 MAExternalFileModel >> = anObject [
     ^ super = anObject and: [ self location = anObject location ]
 ]
 
-{ #category : #configuration }
+{ #category : 'configuration' }
 MAExternalFileModel >> baseDirectory [
 	^ self class baseDirectory
 ]
 
-{ #category : #configuration }
+{ #category : 'configuration' }
 MAExternalFileModel >> baseUrl [
 	^ self class baseUrl
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAExternalFileModel >> contents [
 	| stream |
 	^ (self directory exists and: [ self directory fileExists: self filename ])
@@ -122,7 +122,7 @@ MAExternalFileModel >> contents [
 				ensure: [ stream close ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MAExternalFileModel >> contents: aByteArray [
 	| stream |
 	stream := self writeStream.
@@ -131,14 +131,14 @@ MAExternalFileModel >> contents: aByteArray [
 	super contents: aByteArray
 ]
 
-{ #category : #'accessing-dynamic' }
+{ #category : 'accessing-dynamic' }
 MAExternalFileModel >> directory [
 	^ self location
 		inject: self baseDirectory
 		into: [ :result :each | result directoryNamed: each ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 MAExternalFileModel >> finalize [
 	| directory |
 	directory := self directory.
@@ -150,22 +150,22 @@ MAExternalFileModel >> finalize [
 	location := nil
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 MAExternalFileModel >> hash [
 	^ super hash bitXor: self location hash
 ]
 
-{ #category : #'accessing-dynamic' }
+{ #category : 'accessing-dynamic' }
 MAExternalFileModel >> location [
 	^ location ifNil: [ location := self uniqueLocation: self locationDefinition ]
 ]
 
-{ #category : #configuration }
+{ #category : 'configuration' }
 MAExternalFileModel >> locationDefinition [
 	^ self class locationDefinition
 ]
 
-{ #category : #copying }
+{ #category : 'copying' }
 MAExternalFileModel >> postCopy [
 	| previous |
 	super postCopy.
@@ -174,12 +174,12 @@ MAExternalFileModel >> postCopy [
 	self contents: previous
 ]
 
-{ #category : #'accessing-dynamic' }
+{ #category : 'accessing-dynamic' }
 MAExternalFileModel >> readStream [
 	^ (self directory readOnlyFileNamed: self filename) binary
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAExternalFileModel >> uniqueLocation: aLocationDefinition [
 	"Finds an unique path to be used and create the necessary sub directories."
 
@@ -200,7 +200,7 @@ MAExternalFileModel >> uniqueLocation: aLocationDefinition [
 	^ result
 ]
 
-{ #category : #'accessing-dynamic' }
+{ #category : 'accessing-dynamic' }
 MAExternalFileModel >> writeStream [
 	^ (self directory forceNewFileNamed: self filename) binary
 ]

@@ -1,10 +1,10 @@
 Class {
-	#name : #MAComposedDescriptionBuilder,
-	#superclass : #MADescriptionBuilder,
-	#category : #'Magritte-Model-Builder'
+	#name : 'MAComposedDescriptionBuilder',
+	#superclass : 'MADescriptionBuilder',
+	#category : 'Magritte-Model-Builder'
 }
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 MAComposedDescriptionBuilder >> setBuiltDescription: aDescription [ 
 	| builders |
 	builders := self target magritteDescription descriptionBuilders.
@@ -12,7 +12,7 @@ MAComposedDescriptionBuilder >> setBuiltDescription: aDescription [
 	builders do: [ :each | builtDescription := each buildFrom: builtDescription target: target model: model ]
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 MAComposedDescriptionBuilder >> visitContainer: aContainer [
 	| builders |
 	builders := aContainer descriptionBuilders.
@@ -20,7 +20,7 @@ MAComposedDescriptionBuilder >> visitContainer: aContainer [
 	builders do: [ :each | builtDescription := each buildFrom: builtDescription target: self target model: self model ]
 ]
 
-{ #category : #'visiting-description' }
+{ #category : 'visiting-description' }
 MAComposedDescriptionBuilder >> visitRelationDescription: aDescription [
 	| builders buildedReference relationValue |
 	builders := self target magritteDescription descriptionBuilders.

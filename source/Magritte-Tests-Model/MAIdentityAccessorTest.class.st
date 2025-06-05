@@ -1,40 +1,40 @@
 Class {
-	#name : #MAIdentityAccessorTest,
-	#superclass : #MAAccessorTest,
-	#category : #'Magritte-Tests-Model-Accessor'
+	#name : 'MAIdentityAccessorTest',
+	#superclass : 'MAAccessorTest',
+	#category : 'Magritte-Tests-Model-Accessor'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 MAIdentityAccessorTest class >> isAbstract [
 	^ false
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAIdentityAccessorTest >> accessorInstance [
 	^ self actualClass new
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MAIdentityAccessorTest >> actualClass [
 	^ MAIdentityAccessor
 ]
 
-{ #category : #'tests-testing' }
+{ #category : 'tests-testing' }
 MAIdentityAccessorTest >> testCanRead [
 	self assert: (self accessor canRead: self)
 ]
 
-{ #category : #'tests-testing' }
+{ #category : 'tests-testing' }
 MAIdentityAccessorTest >> testCanWrite [
 	self deny: (self accessor canWrite: self)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MAIdentityAccessorTest >> testRead [
 	self assert: (self accessor read: 123) = 123
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MAIdentityAccessorTest >> testWrite [
 	self
 		should: [ self accessor write: 123 to: self ]
